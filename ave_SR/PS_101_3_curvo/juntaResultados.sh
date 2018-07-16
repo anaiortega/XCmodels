@@ -1,0 +1,4 @@
+cat results_losInfV1/verifications/verifRsl_normStrsULS.py results_losInfV2/verifications/verifRsl_normStrsULS.py results_losSup/verifications/verifRsl_normStrsULS.py results_pilas/verifications/verifRsl_normStrsULS.py results_riostrEstr/verifications/verifRsl_normStrsULS.py results_RPlosInf/verifications/verifRsl_normStrsULS.py  results_RPlosSup/verifications/verifRsl_normStrsULS.py results_RPvoladzCent/verifications/verifRsl_normStrsULS.py   results_RPvoladzExtr/verifications/verifRsl_normStrsULS.py   results_voladzCent/verifications/verifRsl_normStrsULS.py   results_voladzExtr/verifications/verifRsl_normStrsULS.py > results/verifications/verifRsl_normStrsULS.py
+
+
+cat results_pilas/verifications/verifRsl_shearULS.py results_riostrEstr/verifications/verifRsl_shearULS.py results_murAlig/verifications/verifRsl_shearULS.py >  results/verifications/verifRsl_shearULS.py

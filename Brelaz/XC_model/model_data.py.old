@@ -1,0 +1,259 @@
+# -*- coding: utf-8 -*-
+import math
+
+import os
+import xc_base
+import geom
+import xc
+import math
+from model import predefined_spaces
+from model.geometry import grid_model as gm
+from model.mesh import finit_el_model as fem
+from model.boundary_cond import elastic_foundation as ef
+from model.sets import sets_mng as sets
+from materials import typical_materials as tm
+from actions import loads
+from actions import load_cases as lcases
+from actions import combinations as cc
+from actions.earth_pressure import earth_pressure as ep
+
+#Auxiliary data
+ #Geometry
+slope=-0.18 #Deck Y-direction slope (%)
+alpha=math.atan(slope)
+proj_fc=math.cos(alpha)   #projection factor
+delta_Y=3.9*proj_fc
+L_long_side_Y=29.3*proj_fc
+L_short_side_Y=21.6*proj_fc
+delta_crossect_1=0.21
+
+deckTh=0.25 #Deck thickness
+curbTh=0.50 #Curbs thickness
+
+hCables=0.1 # Position (Z) of cables above the deck median plane 
+
+#Materials
+fcmConcr=30e6
+EcConcr=8500*fcmConcr/1e6**(1/3.0)*1e6
+cpoisConcr=0.2                #Poisson's coefficient of concrete
+densConcr= 2500               #specific mass of concrete (kg/m3)
+
+Ecabl= 2.1e11 # Young modulus of the steel [Pa]
+area_cable=1e-6   #cross-section area [m2]
+sigmaPret=210e6  #prestressing stress [Pa]
+
+eSize= 0.5     #length of elements
+
+#             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
+FEcase= xc.ProblemaEF()
+prep=FEcase.getPreprocessor
+nodes= prep.getNodeLoader
+elements= prep.getElementLoader
+elements.dimElem= 3
+# Problem type
+modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the dimension of
+                  #the space: nodes by three coordinates (x,y,z) and 
+                  #six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
+
+#           **** Grid model for the generation of the DECK ****
+
+# coordinates in global X,Y,Z axes for the grid generation
+xList_deck=[0,0.45,6.45,8.15]
+yList_deck=[0,delta_Y+3,L_long_side_Y-delta_Y,L_long_side_Y]
+zList_deck=[0,0.4]
+#auxiliary data
+lastXpos=len(xList_deck)-1
+lastYpos=len(yList_deck)-1
+lastZpos=len(zList_deck)-1
+
+# grid model definition
+gridDeck= gm.GridModel(prep,xList_deck,yList_deck,zList_deck)
+
+# Grid geometric entities definition (points, lines, surfaces)
+# Points' generation
+gridDeck.generatePoints()
+
+#Displacements of the grid points in a range
+r= gm.IJKRange((0,0,0),(1,0,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,delta_Y,delta_Y*math.tan(alpha)]))
+r= gm.IJKRange((0,lastYpos,0),(1,lastYpos,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,-delta_Y,(L_long_side_Y-delta_Y)*math.tan(alpha)]))
+r= gm.IJKRange((0,1,0),(lastXpos,1,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,0,yList_deck[1]*math.tan(alpha)]))
+r= gm.IJKRange((0,2,0),(lastXpos,2,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,0,yList_deck[2]*math.tan(alpha)]))
+r= gm.IJKRange((2,lastYpos,0),(lastXpos,lastYpos,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,0,yList_deck[lastYpos]*math.tan(alpha)]))
+r= gm.IJKRange((lastXpos,0,0),(lastXpos,lastYpos,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,0,delta_crossect_1]))
+r= gm.IJKRange((0,0,lastZpos),(0,lastYpos,lastZpos))
+gridDeck.movePointsRange(r,xc.Vector([0.0,0,0.2]))
+
+#Ranges for surfaces
+deck_rg=[gm.IJKRange((0,0,0),(lastXpos,lastYpos,0))]
+curb_rg=[gm.IJKRange((0,0,0),(0,lastYpos,lastZpos)),gm.IJKRange((lastXpos,0,0),(lastXpos,lastYpos,lastZpos))]
+#Lines generation
+#beamX=gridDeck.genLinMultiRegion(lstIJKRange=beamX_rg,nameSet='beamX')
+
+#Surfaces generation
+deck=gridDeck.genSurfMultiRegion(lstIJKRange=deck_rg,nameSet='deck')
+deck.description='Deck'
+curb=gridDeck.genSurfMultiRegion(lstIJKRange=curb_rg,nameSet='curb')
+curb.description='Curbs'
+
+
+#           **** Grid model for the generation of the PRESTRESSING CABLES ****
+
+# coordinates in global X,Y,Z axes for the grid generation
+xList_cabl=[0.1457,1.5469,3.1680,4.7891,6.4112,7.9025]
+yList_cabl=[0,L_long_side_Y]
+zList_cabl=[hCables]
+#auxiliary data
+lastXpos_cabl=len(xList_cabl)-1
+lastYpos_cabl=len(yList_cabl)-1
+lastZpos_cabl=len(zList_cabl)-1
+
+# grid model definition
+gridCables= gm.GridModel(prep,xList_cabl,yList_cabl,zList_cabl)
+
+# Grid geometric entities definition (points, lines, surfaces)
+# Points' generation
+gridCables.generatePoints()
+
+#Displacements of the grid points in a range
+deltZ_max=L_long_side_Y*math.tan(alpha)
+for i in range(0,1):
+    deltY=delta_Y
+    deltZ=deltY*math.tan(alpha)
+    r= gm.IJKRange((i,0,0),(i,0,lastZpos_cabl))
+    gridCables.movePointsRange(r,xc.Vector([0.0,deltY,deltZ]))
+    r= gm.IJKRange((i,lastYpos_cabl,0),(i,lastYpos_cabl,lastZpos_cabl))
+    gridCables.movePointsRange(r,xc.Vector([0.0,-deltY,deltZ_max-deltZ]))
+
+slope_aux=delta_Y/(xList_deck[2]-xList_deck[1])
+for i in range(1,lastXpos_cabl):
+    deltY=delta_Y-slope_aux*(xList_cabl[i]-xList_deck[1])
+    deltZ=deltY*math.tan(alpha)
+    r= gm.IJKRange((i,0,0),(i,0,lastZpos_cabl))
+    gridCables.movePointsRange(r,xc.Vector([0.0,deltY,deltZ]))
+    r= gm.IJKRange((i,lastYpos_cabl,0),(i,lastYpos_cabl,lastZpos_cabl))
+    gridCables.movePointsRange(r,xc.Vector([0.0,-deltY,deltZ_max-deltZ]))
+
+i=lastXpos_cabl
+deltZ_global=delta_crossect_1/(xList_deck[3]-xList_deck[2])*(xList_cabl[i]-xList_deck[2])
+r= gm.IJKRange((i,0,0),(i,lastYpos_cabl,lastZpos_cabl))
+gridCables.movePointsRange(r,xc.Vector([0.0,0.0,deltZ_global]))
+r= gm.IJKRange((i,lastYpos_cabl,0),(i,lastYpos_cabl,lastZpos_cabl))
+gridCables.movePointsRange(r,xc.Vector([0.0,0.0,deltZ_max]))
+
+
+#Lines generation
+cabl_rg=gm.IJKRange((0,0,0),(lastXpos_cabl,lastYpos_cabl,0)).extractIncludedJranges()
+cables=gridCables.genLinMultiRegion(lstIJKRange=cabl_rg,nameSet='cables')
+cables.description='Prestressing cables'
+
+
+
+
+
+#                         *** MATERIALS *** 
+concrete=tm.MaterialData(name='concrete',E=EcConcr,nu=cpoisConcr,rho=densConcr)
+
+# Isotropic elastic section-material appropiate for plate and shell analysis
+deck_mat=tm.DeckMaterialData(name='deck_mat',thickness= deckTh,material=concrete)
+deck_mat.setupElasticSection(preprocessor=prep)   #creates de section-material
+curb_mat=tm.DeckMaterialData(name='curb_mat',thickness= curbTh,material=concrete)
+curb_mat.setupElasticSection(preprocessor=prep)   #creates de section-material
+
+#Geometric sections
+#rectangular sections
+# from materials import section_properties as sectpr
+# geomSectCabl=sectpr.RectangularSection(name='geomSectCabl',b=0.01,h=0.01)
+
+# Elastic material-section appropiate for 3D beam analysis, including shear
+  # deformations.
+  # Attributes:
+  #   name:         name identifying the section
+  #   section:      instance of a class that defines the geometric and
+  #                 mechanical characteristiscs
+  #                 of a section (e.g: RectangularSection, CircularSection,
+  #                 ISection, ...)
+  #   material:     instance of a class that defines the elastic modulus,
+  #                 shear modulus and mass density of the material
+from materials import typical_materials
+
+cabl_mat=typical_materials.defCableMaterial(prep, name="cabl_mat",E=Ecabl,prestress=sigmaPret,rho=0.0)
+
+
+#                         ***FE model - MESH***
+
+cabl_mesh=fem.LinSetToMesh(linSet=cables,matSect=cabl_mat,elemSize=5*eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='corot_truss')
+cabl_mesh.generateMesh(prep)    # mesh this set of lines
+
+deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize,elemType='shell_mitc4')
+deck_mesh.generateMesh(prep)     #mesh the set of surfaces
+
+curb_mesh=fem.SurfSetToMesh(surfSet=curb,matSect=curb_mat,elemSize=eSize,elemType='shell_mitc4')
+curb_mesh.generateMesh(prep)     #mesh the set of surfaces
+
+#fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamY_mesh,columnZ_mesh,found_mesh,wall_mesh])     #mesh these sets
+
+
+shells=deck+curb
+overallSet=deck+curb+cables
+
+
+# Connection between cables and deck
+gluedDOFs= [0,1,2,3,4,5]
+deckElem=shells.getElements
+cablNod=cables.getNodes
+for n in cablNod:
+    nearElem=deckElem.getNearestElement(n.getCurrentPos3d(0.0))
+    modelSpace.constraints.newGlueNodeToElement(n,nearElem,xc.ID(gluedDOFs))
+
+
+#                       ***BOUNDARY CONDITIONS***
+
+#Linear bearings. Coordinates imported from FreeCAD model 
+#short side
+freecad_points_ss=[[39719.0585938,13598.6582031,0.0],[39726.2617188,13596.6875,0.0],[39739.640625,13593.7138672,0.0],[39754.6914062,13592.0419922,0.0],[39771.0429688,13590.7412109,0.0],[39785.5351562,13590.7412109,0.0],[39806.7148438,13591.2988281,0.0],[39829.7539062,13591.6708984,0.0],[39851.8671875,13592.4140625,0.0],[39873.4179688,13592.5996094,0.0],[39886.0546875,13592.9707031,0.0],[39902.03125,13595.7578125,0.0],[39907.7929688,13597.6162109,0.0],[39911.3242188,13598.7314453,0.0]]
+
+#long side
+freecad_points_ls=[[39671.0390625,13517.5419922,0.0],[39677.9140625,13522.9296875,0.0],[39689.0625,13529.0615234,0.0],[39701.5117188,13535.5644531,0.0],[39717.6757812,13540.953125,0.0],[39733.8398438,13543.9257812,0.0],[39746.8476562,13544.6689453,0.0],[39771.0,13543.9257812,0.0],[39795.5273438,13544.296875,0.0],[39812.671875,13543.6523438,0.0],[39831.9609375,13543.6523438,0.0],[39852.6132812,13542.7441406,0.0],[39870.9921875,13543.1982422,0.0],[39895.5039062,13542.0634766,0.0],[39913.8867188,13541.3828125,0.0],[39924.5507812,13540.7021484,0.0],[39936.125,13537.5253906,0.0],[39947.4726562,13531.3974609,0.0],[39955.6445312,13524.5888672,0.0],[39959.5,13518.2353516,0.0]]
+
+#transformation from FreeCAD points to model coordinates
+shortSide_coord=[[-(i[1]-13599)/10.,(i[0]-39667)/10.] for i in freecad_points_ss]
+longSide_coord=[[-(i[1]-13599)/10.,(i[0]-39667)/10.] for i in freecad_points_ls]
+
+mesh= FEcase.getDomain.getMesh
+constraints=prep.getConstraintLoader
+#Constraint uz=0 in short side linear bearing.
+for coo in shortSide_coord:
+    n=mesh.getNearestNode(geom.Pos3d(coo[0],coo[1],0))
+    constraints.newSPConstraint(n.tag,2,0.0) #uz=0 
+#Constraint uz=0 in long side linear bearing.
+for coo in longSide_coord:
+    n=mesh.getNearestNode(geom.Pos3d(coo[0],coo[1],0))
+    constraints.newSPConstraint(n.tag,2,0.0) #uz=0 
+
+# Constraint uy=0 in the left linear side
+r=gm.IJKRange((0,0,0),(lastXpos,0,0))
+pt_left=gridDeck.getSetPntRange(r,'pt_left')
+for pt in pt_left.getPoints:
+    n=pt.getNode()
+    constraints.newSPConstraint(n.tag,1,0.0) #uy=0
+
+#                       ***ACTIONS***
+
+#Inertial load (density*acceleration) applied to the elements in a set
+grav=9.81 #Gravity acceleration (m/s2)
+#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh,deck_mesh,wall_mesh,found_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[deck_mesh,curb_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+
+#    ***LOAD CASES***
+GselfWeight=lcases.LoadCase(preprocessor=prep,name="GselfWeight",loadPType="default",timeSType="constant_ts")
+GselfWeight.create()
+GselfWeight.addLstLoads([selfWeight])
+
+
+

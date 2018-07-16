@@ -1,0 +1,19 @@
+rm results_losInf/internalForces/*
+rm results_RPlosInf/internalForces/*
+rm results_RPvoladzExtr/internalForces/*
+rm results_losSup/internalForces/*
+rm results_RPlosSup/internalForces/*
+rm results_voladzCent/internalForces/*
+rm results_murAlig/internalForces/*
+rm results_RPvoladzCent/internalForces/*
+rm results_voladzExtr/internalForces/*
+
+rm results_losInf/verifications/*
+rm results_RPlosInf/verifications/*
+rm results_RPvoladzExtr/verifications/*
+rm results_losSup/verifications/*
+rm results_RPlosSup/verifications/*
+rm results_voladzCent/verifications/*
+rm results_murAlig/verifications/*
+rm results_RPvoladzCent/verifications/*
+rm results_voladzExtr/verifications/*

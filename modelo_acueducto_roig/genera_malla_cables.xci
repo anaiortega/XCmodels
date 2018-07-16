@@ -1,0 +1,191 @@
+def mallaCablesIzda(lA,lB,lC):
+
+    sets(lA(malla()))
+    CondContornoNodosInterioresLinea(lA,"Nodo6GDLGirosImpedidos")
+    CondContornoNodoDorsalLinea(lA,"fijaNodo6GDL")
+    sets(lB(malla()))
+    CondContornoNodosInterioresLinea(lB,"Nodo6GDLGirosImpedidos")
+    sets(lC(malla()))
+    CondContornoNodosInterioresLinea(lC,"Nodo6GDLGirosImpedidos")
+
+
+def mallaCablesDcha(lA,lB,lC):
+
+    sets(lA(malla()))
+    CondContornoNodosInterioresLinea(lA,"Nodo6GDLGirosImpedidos")
+    sets(lB(malla()))
+    CondContornoNodosInterioresLinea(lB,"Nodo6GDLGirosImpedidos")
+    sets(lC(malla()))
+    CondContornoNodosInterioresLinea(lC,"Nodo6GDLGirosImpedidos")
+    CondContornoNodoFrontalLinea(lC,"fijaNodo6GDL")
+
+
+
+def pesoPropioCables(A,B,C):
+
+    cad
+
+        # Peso propio de los cables
+        linea[A]
+
+            pesoPorNodo= pesoTirante*longElem
+            for_each_interior_nod
+              ( load([0,0,pesoPorNodo,0,0,0]) )
+
+        linea[B]
+
+            pesoPorNodo= pesoTirante*longElem
+            for_each_interior_nod
+              ( load([0,0,pesoPorNodo,0,0,0]) )
+
+        linea[C]
+
+            pesoPorNodo= pesoTirante*longElem
+            for_each_interior_nod
+              ( load([0,0,pesoPorNodo,0,0,0]) )
+
+
+
+
+def colocaCablesIzda(A,B,C):
+
+    lA= "l"+int(A)
+    lB= "l"+int(B)
+    lC= "l"+int(C)
+    mdlr
+
+        mallaCablesIzda(lA,lB,lC)
+        dom
+
+            print "Número de elementos tras colocar cable a la izquierda: ",nelem,"n"
+
+
+
+
+def colocaCablesDcha(A,B,C):
+
+    lA= "l"+int(A)
+    lB= "l"+int(B)
+    lC= "l"+int(C)
+    mdlr
+
+        mallaCablesDcha(lA,lB,lC)
+        dom
+
+            print "Número de elementos tras colocar cable a la derecha: ",nelem,"n"
+
+
+
+
+mdlr
+
+    loads(set_current_load_pattern("G"))
+    sets
+
+        vector3dUniformLoadGlobalSetLineas("lineasTuberia",[0.0,0.0,pesoTuberia])
+        vector3dUniformLoadGlobalSetElementos("l1",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l2",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l6",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l10",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l11",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l16",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l17",[0.0,0.0,pesoMastil])
+
+    loads(add_to_domain("G"))
+
+nPaso= 0
+
+let(nPaso= resuelvePaso("G",1))
+
+mdlr
+
+    elementos
+
+        elem_semilla
+
+            nmb_material("cable")
+            dim_elem(3)
+            corot_truss(A(areaTirante))
+
+
+
+
+colocaCablesIzda(111,121,131)
+mdlr(pesoPropioCables(111,121,131)())
+
+let(nPaso= resuelvePaso("G",1))
+colocaCablesDcha(141,151,161)
+mdlr(pesoPropioCables(141,151,161)())
+let(nPaso= resuelvePaso("G",1))
+
+# Quitamos el apeo
+mdlr( constraints(remove_fix(tagFixApeoTuberia)))
+let(nPaso= resuelvePaso("G",1))
+
+mdlr
+
+    sets
+
+        vector3dUniformLoadGlobalSetElementos("l3",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l7",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l12",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l18",[0.0,0.0,pesoMastil])
+
+
+let(nPaso= resuelvePaso("G",1))
+
+colocaCablesIzda(112,122,132)
+let(nPaso= resuelvePaso("G",1))
+mdlr(pesoPropioCables(112,122,132)())
+let(nPaso= resuelvePaso("G",1))
+
+retensaElementos("lineasTirantes",sigmaPretIni/6,sigmaPretIni/2)
+let(nPaso= resuelvePaso("G",1))
+
+colocaCablesDcha(142,152,162)
+let(nPaso= resuelvePaso("G",1))
+mdlr(pesoPropioCables(142,152,162)())
+let(nPaso= resuelvePaso("G",1))
+
+mdlr
+
+    sets
+
+        vector3dUniformLoadGlobalSetElementos("l4",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l5",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l8",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l9",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l13",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l19",[0.0,0.0,pesoMastil])
+
+
+
+retensaElementos("lineasTirantes",sigmaPretIni/6,sigmaPretIni/2)
+let(nPaso= resuelvePaso("G",1))
+
+colocaCablesIzda(113,123,133)
+let(nPaso= resuelvePaso("G",1))
+mdlr(pesoPropioCables(113,123,133)())
+let(nPaso= resuelvePaso("G",1))
+
+colocaCablesDcha(143,153,163)
+let(nPaso= resuelvePaso("G",1))
+mdlr(pesoPropioCables(143,153,163)())
+let(nPaso= resuelvePaso("G",1))
+
+mdlr
+
+    sets
+
+        vector3dUniformLoadGlobalSetElementos("l14",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l15",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l20",[0.0,0.0,pesoMastil])
+        vector3dUniformLoadGlobalSetElementos("l21",[0.0,0.0,pesoMastil])
+
+
+let(nPaso= resuelvePaso("G",1))
+
+colocaCablesDcha(144,154,164)
+let(nPaso= resuelvePaso("G",1))
+mdlr(pesoPropioCables(144,154,164)())
+let(nPaso= resuelvePaso("G",1))

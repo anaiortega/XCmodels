@@ -1,0 +1,632 @@
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeighttotaluX}
+\caption{Poids propre. Total, déplacement en direction X [mm]} \label{selfWeighttotaluX}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeighttotaluY}
+\caption{Poids propre. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeighttotaluZ}
+\caption{Poids propre. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckN1}
+\caption{Poids propre. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckN2}
+\caption{Poids propre. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckM1}
+\caption{Poids propre. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckM2}
+\caption{Poids propre. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckQ1}
+\caption{Poids propre. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightsetDeckQ2}
+\caption{Poids propre. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightbeamElementsMy}
+%% \caption{Poids propre. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+%% \end{center}
+%% \end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightbeamElementsQz}
+\caption{Poids propre. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/selfWeightbeamElementsN}
+%% \caption{Poids propre. Beamelements, effort normal associé au facteur de capacité [kN]}
+%% \end{center}
+%% \end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadtotaluX}
+\caption{Charge permanente. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadtotaluY}
+\caption{Charge permanente. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadtotaluZ}
+\caption{Charge permanente. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckN1}
+\caption{Charge permanente. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckN2}
+\caption{Charge permanente. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckM1}
+\caption{Charge permanente. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckM2}
+\caption{Charge permanente. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckQ1}
+\caption{Charge permanente. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadsetDeckQ2}
+\caption{Charge permanente. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadbeamElementsMy}
+\caption{Charge permanente. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadbeamElementsQz}
+\caption{Charge permanente. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/deadLoadbeamElementsN}
+\caption{Charge permanente. Beamelements, effort normal associé au facteur de capacité [kN]}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagetotaluX}
+\caption{Retrait. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagetotaluY}
+\caption{Retrait. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagetotaluZ}
+\caption{Retrait. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckN1}
+\caption{Retrait. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckN2}
+\caption{Retrait. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckM1}
+\caption{Retrait. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckM2}
+\caption{Retrait. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckQ1}
+\caption{Retrait. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagesetDeckQ2}
+\caption{Retrait. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagebeamElementsMy}
+\caption{Retrait. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagebeamElementsMz}
+\caption{Retrait. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagebeamElementsQy}
+\caption{Retrait. Beamelements, effort tranchant direction y [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagebeamElementsQz}
+\caption{Retrait. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/shrinkagebeamElementsN}
+\caption{Retrait. Beamelements, effort normal associé au facteur de capacité [kN]}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAtotaluX}
+\caption{Rassemblement de personnes. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAtotaluY}
+\caption{Rassemblement de personnes. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAtotaluZ}
+\caption{Rassemblement de personnes. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckN1}
+\caption{Rassemblement de personnes. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckN2}
+\caption{Rassemblement de personnes. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckM1}
+\caption{Rassemblement de personnes. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckM2}
+\caption{Rassemblement de personnes. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckQ1}
+\caption{Rassemblement de personnes. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAsetDeckQ2}
+\caption{Rassemblement de personnes. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAbeamElementsMy}
+\caption{Rassemblement de personnes. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAbeamElementsMz}
+\caption{Rassemblement de personnes. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAbeamElementsQy}
+\caption{Rassemblement de personnes. Beamelements, effort tranchant direction y [kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAbeamElementsQz}
+%% \caption{Rassemblement de personnes. Beamelements, effort tranchant direction z [kN]}
+%% \end{center}
+%% \end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadAbeamElementsN}
+\caption{Rassemblement de personnes. Beamelements, effort normal associé au facteur de capacité [kN]}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBtotaluX}
+\caption{Véhicule d'entrétien. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBtotaluY}
+\caption{Véhicule d'entrétien. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBtotaluZ}
+\caption{Véhicule d'entrétien. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckN1}
+\caption{Véhicule d'entrétien. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckN2}
+\caption{Véhicule d'entrétien. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckM1}
+\caption{Véhicule d'entrétien. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckM2}
+\caption{Véhicule d'entrétien. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckQ1}
+\caption{Véhicule d'entrétien. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBsetDeckQ2}
+\caption{Véhicule d'entrétien. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBbeamElementsMy}
+%% \caption{Véhicule d'entrétien. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+%% \end{center}
+%% \end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBbeamElementsMz}
+\caption{Véhicule d'entrétien. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBbeamElementsQy}
+%% \caption{Véhicule d'entrétien. Beamelements, effort tranchant direction y [kN]}
+%% \end{center}
+%% \end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBbeamElementsQz}
+\caption{Véhicule d'entrétien. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/liveLoadBbeamElementsN}
+\caption{Véhicule d'entrétien. Beamelements, effort normal associé au facteur de capacité [kN]}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturetotaluX}
+\caption{Température. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturetotaluY}
+\caption{Température. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturetotaluZ}
+\caption{Température. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckN1}
+\caption{Température. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckN2}
+\caption{Température. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckM1}
+\caption{Température. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckM2}
+\caption{Température. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckQ1}
+\caption{Température. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturesetDeckQ2}
+\caption{Température. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturebeamElementsMy}
+\caption{Température. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturebeamElementsMz}
+\caption{Température. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturebeamElementsQy}
+\caption{Température. Beamelements, effort tranchant direction y [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturebeamElementsQz}
+\caption{Température. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/temperaturebeamElementsN}
+%% \caption{Température. Beamelements, effort normal associé au facteur de capacité [kN]}
+%% \end{center}
+%% \end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadtotaluX}
+\caption{Neige. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadtotaluY}
+\caption{Neige. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadtotaluZ}
+\caption{Neige. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckN1}
+\caption{Neige. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckN2}
+\caption{Neige. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckM1}
+\caption{Neige. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckM2}
+\caption{Neige. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckQ1}
+\caption{Neige. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadsetDeckQ2}
+\caption{Neige. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadbeamElementsMy}
+\caption{Neige. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+%% \begin{figure}
+%% \begin{center}
+%% \includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadbeamElementsQz}
+%% \caption{Neige. Beamelements, effort tranchant direction z [kN]}
+%% \end{center}
+%% \end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/snowLoadbeamElementsN}
+\caption{Neige. Beamelements, effort normal associé au facteur de capacité [kN]}
+\end{center}
+\end{figure}
+\clearpage
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquaketotaluX}
+\caption{Séisme. Total, déplacement en direction X [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquaketotaluY}
+\caption{Séisme. Total, déplacement en direction Y [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquaketotaluZ}
+\caption{Séisme. Total, déplacement en direction Z [mm]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckN1}
+\caption{Séisme. Setdeck, effort normal direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckN2}
+\caption{Séisme. Setdeck, effort normal direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckM1}
+\caption{Séisme. Setdeck, moment de flexion direction 1 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckM2}
+\caption{Séisme. Setdeck, moment de flexion adirection 2 [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckQ1}
+\caption{Séisme. Setdeck, effort tranchant direction 1 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakesetDeckQ2}
+\caption{Séisme. Setdeck, effort tranchant direction 2 [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakebeamElementsMy}
+\caption{Séisme. Beamelements, moment de flexion associé au facteur de capacité [m.kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakebeamElementsQz}
+\caption{Séisme. Beamelements, effort tranchant direction z [kN]}
+\end{center}
+\end{figure}
+\begin{figure}
+\begin{center}
+\includegraphics[width=70mm]{annex/graphics/resSimplLC/earthquakebeamElementsN}
+\caption{Séisme. Beamelements, effort normal associé au facteur de capacité [kN]} \label{earthquakebeamElementsN}
+\end{center}
+\end{figure}
+\clearpage

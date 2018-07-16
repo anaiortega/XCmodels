@@ -1,0 +1,30 @@
+# Viento Y
+def vientoYCables(nmbSetLineas,cargaUnif):
+
+    nmbSetLineas
+
+        lineas
+
+            for_each
+
+                vientoPorNodo= cargaUnif*longElem
+                for_each_interior_nod
+                  ( load([0,vientoPorNodo,0,0,0,0]) )
+
+
+
+
+
+mdlr
+
+    loads(set_current_load_pattern("VTY"))
+    sets
+
+        vector3dUniformLoadGlobalSetLineas("lineasMastil",[0,0.74e3,0])
+        vector3dUniformLoadGlobalSetLineas("lineasTuberia",[0,1.6e3,0])
+        vientoYCables("lineasTirantes",0.1e3)
+
+    loads(add_to_domain("VTY"))
+
+let(nPaso= resuelvePaso("VTY",1))
+

@@ -1,0 +1,17 @@
+nuevo_archivo_salida["reacc"]("reacciones.txt")
+for
+
+    inicio(expr(i=0) ) continua(i<numAcciones) incremento(expr(i=tonum(i+1)))
+    bucle
+
+        "reacc".write("Resolviendo para acción: ",listaAcciones[i],"n")
+        resuelveCaso(listaAcciones[i])
+        trataResultsAcc(listaAcciones[i],"reacc")
+        mdlr
+
+            dom(revert_to_start())
+
+
+
+
+cierra_archivo_salida("reacc")

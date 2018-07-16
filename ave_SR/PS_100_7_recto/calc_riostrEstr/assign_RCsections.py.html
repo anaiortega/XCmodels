@@ -1,0 +1,45 @@
+<html><head>
+<title>assign_RCsections.py</title>
+<meta name="Generator" content="htmlizer/[twisted, version 16.0.0]" />
+<link rel="alternate" href="assign_RCsections.py" type="text/x-python" />
+
+</head>
+<body>
+<pre><span class="py-src-comment"># -*- coding: utf-8 -*-</span>
+<span class="py-src-keyword">import</span> <span class="py-src-variable">os</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">postprocess</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">RC_material_distribution</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">postprocess</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">element_section_map</span>
+
+<span class="py-src-comment"># Reinforced concrete material distribution over the elements of the FE model.</span>
+<span class="py-src-comment"># Concrete of type concrete01 with no tension branch</span>
+
+<span class="py-src-comment">#FE model generation</span>
+<span class="py-src-variable">execfile</span>(<span class="py-src-string">"../model_data.py"</span>)
+
+<span class="py-src-comment">#RC-sections definition file.</span>
+<span class="py-src-variable">execfile</span>(<span class="py-src-string">"../sectionsDef.py"</span>)
+
+
+
+<span class="py-src-comment">#list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'sectionsDef.py') that we want to process in order to run different limit-state checkings.</span>
+<span class="py-src-variable">lstOfSectRecords</span>=[<span class="py-src-variable">riostrEstr1RCSects</span>]
+
+
+<span class="py-src-variable">reinfConcreteSectionDistribution</span>= <span class="py-src-variable">RC_material_distribution</span>.<span class="py-src-variable">RCMaterialDistribution</span>()
+<span class="py-src-variable">sections</span>= <span class="py-src-variable">reinfConcreteSectionDistribution</span>.<span class="py-src-variable">sectionDefinition</span> <span class="py-src-comment">#sections container</span>
+
+<span class="py-src-comment">#Generation of 2 fiber sections (1 and 2 direction) for each record in list</span>
+<span class="py-src-comment">#lstOfSectRecords. Inclusion of these section-groups in the sections container</span>
+<span class="py-src-keyword">for</span> <span class="py-src-variable">secRec</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">lstOfSectRecords</span>:
+    <span class="py-src-variable">secRec</span>.<span class="py-src-variable">creaTwoSections</span>()    
+    <span class="py-src-variable">sections</span>.<span class="py-src-variable">append</span>(<span class="py-src-variable">secRec</span>)
+
+<span class="py-src-comment">#Generation of the distribution of material extended to the elements of the</span>
+<span class="py-src-comment">#FE model, assigning to each element the section-group that corresponds to it</span>
+<span class="py-src-keyword">for</span> <span class="py-src-variable">secRec</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">lstOfSectRecords</span>:
+    <span class="py-src-variable">elset</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getSets</span>.<span class="py-src-variable">getSet</span>(<span class="py-src-variable">secRec</span>.<span class="py-src-variable">elemSetName</span>)
+    <span class="py-src-variable">reinfConcreteSectionDistribution</span>.<span class="py-src-variable">assign</span>(<span class="py-src-variable">elemSet</span>=<span class="py-src-variable">elset</span>.<span class="py-src-variable">getElements</span>,<span class="py-src-variable">setRCSects</span>=<span class="py-src-variable">secRec</span>)
+<span class="py-src-variable">reinfConcreteSectionDistribution</span>.<span class="py-src-variable">dump</span>()
+
+</pre>
+</body>

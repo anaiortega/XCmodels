@@ -1,0 +1,18 @@
+mdlr
+
+    nodos
+
+        ncoo_def(3) # Dimensiones de los nodos
+        ngdl_def(6) # Grados de libertad de los nodos
+        nod_semilla[0](coo(0.0,0.0,0.0))
+
+    # Definimos transformaciones geométricas
+    geom_transf
+
+        corot3d["linY"] ( set_xz_vector(coo(0,1,0)) )
+
+
+
+execfile("genera_malla_mastiles.xci")
+execfile("genera_malla_tuberia.xci")
+execfile("genera_malla_cables.xci")

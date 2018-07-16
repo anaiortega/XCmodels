@@ -1,0 +1,4 @@
+preprocessor.getElementHandler.getElement(1).setProp("ULS_normalStressesResistanceSect1",BiaxialBendingControlVars(idSection= "beamRCsects1", combName= "ELU01", CF=0.0140052004964,N= 0.0,My= 0.0,Mz= 1.0))
+preprocessor.getElementHandler.getElement(1).setProp("ULS_normalStressesResistanceSect2",BiaxialBendingControlVars(idSection= "beamRCsects2", combName= "ELU01", CF=0.0140052003002,N= 0.0,My= 0.0,Mz= -1.0))
+preprocessor.getElementHandler.getElement(2).setProp("ULS_normalStressesResistanceSect1",BiaxialBendingControlVars(idSection= "beamRCsects1", combName= "ELU01", CF=0.0140052004964,N= 0.0,My= 0.0,Mz= 1.0))
+preprocessor.getElementHandler.getElement(2).setProp("ULS_normalStressesResistanceSect2",BiaxialBendingControlVars(idSection= "beamRCsects2", combName= "ELU01", CF=0.0140052003002,N= 0.0,My= 0.0,Mz= -1.0))

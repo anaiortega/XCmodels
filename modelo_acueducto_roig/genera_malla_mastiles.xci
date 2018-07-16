@@ -1,0 +1,21 @@
+mdlr
+
+    elementos
+
+        elem_semilla
+
+            nmb_transf("linY")
+            nmb_material("sccMastil")
+            force_beam_column_3d( rho(densMastil) )
+
+
+    sets
+
+        lineasMastil(malla())
+
+    dom
+
+        print "Número de elementos tras mallado mástiles: ",nelem,"n"
+
+
+empotraArranques(puntosArranqueMastil)

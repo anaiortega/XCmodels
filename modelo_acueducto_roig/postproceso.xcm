@@ -1,0 +1,23 @@
+
+def_prop["trataResultsAcc","sub"](nmbComb,fName)
+
+    mdlr(dom
+
+         fName.write("section(Resultados caso: ",nmbComb," paso: ",commitTag,")n")
+         fName.write("subsection(Reacciones)n")
+         calculate_nodal_reactions(1)
+         listaReacciones(nmbComb,puntosFijosTuberia,"%7.2f",fName,"subsubsection","Reacciones en extremos tubería")
+         listaReacciones(nmbComb,puntosArranqueMastil,"%7.2f",fName,"subsubsection","Reacciones en arranques mástiles")
+         listaReacciones(nmbComb,puntosArranqueCable,"%7.2f",fName,"subsubsection","Reacciones en arranques cables")
+         fName.write("subsection(Desplazamientos)n")
+         listaDesplazamientosPuntos(nmbComb,puntosAltosMastil,"%7.3f",fName,"subsubsection","Desplazamientos en extremos mástiles")
+       ))
+    listaDesplazamientosNodosLineas(nmbComb,"lineasTirantes","%7.3f",fName,"subsubsection","Desplazamientos en cables")
+    listaDesplazamientosNodosLineas(nmbComb,"lineasTuberia","%7.3f",fName,"subsubsection","Desplazamientos en tubería")
+
+    fName.write("subsection(Esfuerzos)n")
+    listaEsfuerzosBarrasLineas(nmbComb,"lineasMastil","%7.2f",fName,"subsubsection","Esfuerzos en mástiles")
+    listaEsfuerzosBarrasLineas(nmbComb,"lineasTuberia","%7.2f",fName,"subsubsection","Esfuerzos en tubería")
+    fName.write("twocolumnn")
+    listaEsfuerzosTrussLineas(nmbComb,"lineasTirantes","%7.2f",fName,"subsubsection","Esfuerzos en cables")
+    fName.write("onecolumnn")

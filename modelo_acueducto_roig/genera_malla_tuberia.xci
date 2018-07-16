@@ -1,0 +1,49 @@
+mdlr
+
+    elementos
+
+        elem_semilla
+
+            nmb_transf("linY")
+            nmb_material("sccTuberia")
+            num_sec(3) # Número de secciones a lo largo del elemento.
+            force_beam_column_3d( rho(densTuberia) )
+
+
+    sets
+
+        lineasTuberia(malla())
+
+    dom
+
+        print "Número de elementos tras mallado tuberia: ",nelem,"n"
+
+
+
+nodoMovilTuberia= 0
+nodoFijoTuberia= 0
+nodoApeoTuberia= 0
+tagFixApeoTuberia= 0
+
+mdlr
+
+    cad
+
+        pnt[puntoMovilTuberia](set(nodoMovilTuberia= tag_nodo))
+        pnt[puntoFijoTuberia](set(nodoFijoTuberia= tag_nodo))
+        pnt[puntoApeoTuberia](set(nodoApeoTuberia= tag_nodo))
+
+    constraints
+
+print "nodoMovilTuberia= ",nodoMovilTuberia,"n"
+print "nodoFijoTuberia= ",nodoFijoTuberia,"n"
+print "nodoApeoTuberia= ",nodoApeoTuberia,"n"
+        fix[nodoMovilTuberia,1] ( valor(0.0) ) # desplaz. Y
+        fix[nodoMovilTuberia,2] ( valor(0.0) ) # desplaz. Z
+        fix[nodoMovilTuberia,3] ( valor(0.0) ) # giro torsión
+        Nodo6GDLGirosLibres(nodoFijoTuberia)
+        fix[nodoFijoTuberia,3] ( valor(0.0) ) # giro torsión
+
+        fix[nodoApeoTuberia,2] ( valor(0.0) ) # Apeo provisional.
+        set(tagFixApeoTuberia= getTagNextConstraint-1)
+

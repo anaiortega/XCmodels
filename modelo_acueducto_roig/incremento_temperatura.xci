@@ -1,0 +1,79 @@
+coefDilat= 1.2e-5 # Coeficiente de dilatación del acero
+deltaT= -1.5*3/4*49.58 # Incremento de temperatura
+strain= coefDilat*deltaT
+
+print "strain= ",strain,"n"
+
+# Incremento de temperatura
+def strainBeams(nmbSetLineas,strain):
+
+    tagsElems= 
+    nmbSetLineas
+
+        set(tagsElems= getListTagElementos)
+
+    mdlr
+
+        loads
+
+            beam_strain_load
+
+                elementList(tagsElems)
+                plano_deformacion_1( constante(strain) )
+                plano_deformacion_2( constante(strain) )
+
+
+
+
+
+# Incremento de temperatura
+def strainTrusses(nmbSetLineas,strain):
+
+    tagsElems= 
+    nmbSetLineas
+
+        set(tagsElems= getListTagElementos)
+
+    mdlr
+
+        loads
+
+            truss_temp_load
+
+                elementList(tagsElems) 
+                e1(strain)
+                e2(strain)
+
+
+
+
+mdlr(dom(set_load_const(0.0))) # maintain constant loads and reset time to zero
+
+mdlr
+
+    loads(set_current_load_pattern("Ta"))
+    sets
+
+        
+        strainTrusses("lineasTirantes",strain)
+#         strainBeams("lineasTuberia",strain)(
+        strainBeams("lineasMastil",strain)())
+
+    loads(add_to_domain("Ta"))
+
+
+sol_proc
+
+    control
+
+        solu_method["smt","sm"]
+
+            regula_falsi_line_search
+            newton_line_search_soln_algo
+
+            norm_unbalance_conv_test( tol(0.075) print_flag(1) max_num_iter(1000))
+            band_gen_lin_soe(band_gen_lin_lapack_solver())
+
+
+
+let(nPaso= resuelvePaso("Ta",10))

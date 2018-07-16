@@ -1,0 +1,14 @@
+mdlr(loads
+
+    constant_ts["cts"]( factor(1.0) ) # Time series: constant_ts[nombre](factor)
+    linear_ts["lts"]( factor(1.0) ) # Time series: linear_ts[nombre](factor)
+    set_current_time_series("cts")
+    load_pattern["G"](gamma_f(1.35)) # PesoPropio
+    load_pattern["A"](gamma_f(1.35)) # Agua
+    load_pattern["VTY"](gamma_f(0.9)) # Viento
+    set_current_time_series("lts")
+    load_pattern["Ta"]() # Temperatura
+  ))
+
+listaAcciones= listaNombresLoadPatterns()
+numAcciones= listaAcciones.size

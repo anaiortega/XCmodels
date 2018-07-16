@@ -1,0 +1,10 @@
+mdlr
+
+    loads(set_current_load_pattern("A"))
+    sets
+
+        vector3dUniformLoadGlobalSetLineas("lineasTuberia",[0.0,0.0,pesoAgua])
+
+    loads(add_to_domain("A"))
+
+let(nPaso= resuelvePaso("A",1))

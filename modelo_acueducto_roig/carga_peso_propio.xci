@@ -1,0 +1,18 @@
+# Peso propio
+set_current_load_pattern("G")
+sets
+
+    vector3dUniformLoadGlobalSetLineas("lineasMastil",[0.0,0.0,densElem])
+    vector3dUniformLoadGlobalSetLineas("lineasTuberia",[0.0,0.0,densElem])
+
+c( XXX arreglar
+    # Carga debida al desapeo
+    lineasTuberia
+
+        elemento_con_tag(93)
+
+            vector3d_point_load_global([0,0,-285e3])
+
+
+
+

@@ -1,0 +1,6 @@
+preprocessor.getElementHandler.getElement(1).setProp("ULS_normalStressesResistanceSect1",BiaxialBendingControlVars(idSection= "beamRCsect1", combName= "allLoads", CF=0.0965505877649,N= -8.2891151301e-22,My= 1.03613939126e-22,Mz= 2.0))
+preprocessor.getElementHandler.getElement(1).setProp("ULS_normalStressesResistanceSect2",BiaxialBendingControlVars(idSection= "beamRCsect2", combName= "allLoads", CF=0.0482752938824,N= -8.2891151301e-22,My= 5.18069695631e-23,Mz= 1.0))
+preprocessor.getElementHandler.getElement(2).setProp("ULS_normalStressesResistanceSect1",BiaxialBendingControlVars(idSection= "beamRCsect1", combName= "allLoads", CF=0.0965505877649,N= 0.0,My= -1.03613939126e-22,Mz= 2.0))
+preprocessor.getElementHandler.getElement(2).setProp("ULS_normalStressesResistanceSect2",BiaxialBendingControlVars(idSection= "beamRCsect2", combName= "allLoads", CF=0.0482752938824,N= 0.0,My= -2.59034847815e-23,Mz= 1.0))
+preprocessor.getElementHandler.getElement(3).setProp("ULS_normalStressesResistanceSect1",BiaxialBendingControlVars(idSection= "beamRCsect1", combName= "allLoads", CF=0.0965505877649,N= 0.0,My= 7.67000966918e-16,Mz= 2.0))
+preprocessor.getElementHandler.getElement(3).setProp("ULS_normalStressesResistanceSect2",BiaxialBendingControlVars(idSection= "beamRCsect2", combName= "allLoads", CF=0.0482752938824,N= 0.0,My= 1.15119360444e-16,Mz= 1.0))

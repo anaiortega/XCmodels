@@ -1,0 +1,90 @@
+Es= 2.1e11
+nu= 0.3
+Gs= Es/(2*(1+nu))
+densAcero= 7850
+
+rIntTuberia= 1.794/2.0
+espTuberia= 17.5e-3
+RExtTuberia= rIntTuberia+espTuberia
+densTuberia= 0.0
+pesoTuberia= 0.0
+areaIntTuberia= math.pi*sqr(rIntTuberia)
+pesoAgua= areaIntTuberia*-9810
+print "pesoAgua= ",pesoAgua/1e3," kN/mn"
+
+rIntMastil= 0.85/2.0
+espMastil= 20e-3
+RExtMastil= rIntMastil+espMastil
+densMastil= 0.0
+pesoMastil= 0.0 
+
+Ecable= 205000e6
+DefTesadoCable= 1.5e-3
+sigmaPret= DefTesadoCable*Ecable
+sigmaPretIni= sigmaPret*0.5
+print "sigmaPret= ",sigmaPret/1e6," MPan"
+RTirante= 72e-3/2.0
+areaTirante= math.pi*sqr(RTirante)
+densTirante= densAcero*areaTirante
+pesoTirante= densTirante*-9.81
+
+mdlr
+
+    materiales
+
+         elastic_material["acero"]( E(Es) rho(densAcero) )
+         cable_material["cable"](E(Ecable) prestress(sigmaPretIni) unitWeightEff(densTirante) )
+         geom_secc["geomSeccTuberia"]
+
+             regiones
+
+                 reg_circ["acero"]
+
+                     nDivCirc(1000)
+                     centro(0.0,0.0)
+                     extRad(RExtTuberia)
+                     intRad(rIntTuberia)
+                     initAng(0.0)
+                     finalAng(2*math.pi)
+                     set(densTuberia= getArea*densAcero)
+                     set(pesoTuberia= tonum(densTuberia*(-9.81)))
+                     print "densTuberia= ",densTuberia,"n"
+                     print "peso tubería por metro: ",pesoTuberia/1e3,"kN n"
+
+                print "A= ",getAreaSeccHomogeneizada(Es),"n"
+
+
+         geom_secc["geomSeccMastil"]
+
+             regiones
+
+                 reg_circ["acero"]
+
+                     nDivCirc(1000)
+                     centro(0.0,0.0)
+                     extRad(RExtMastil)
+                     intRad(rIntMastil)
+                     initAng(0.0)
+                     finalAng(2*math.pi)
+                     set(densMastil= getArea*densAcero)
+                     set(pesoMastil= tonum(densMastil*(-9.81)))
+                     print "densMastil= ",densMastil,"n"
+                     print "peso mástiles por metro: ",pesoMastil/1e3,"kN n"
+
+
+
+
+
+         elasticShearSection3d["sccTuberia"]
+
+             paramSeccion( E(Es) G(Gs) )
+             geomSeccion("geomSeccTuberia")
+             paramSeccion( alpha(alphaSeccAnilloCircular(RExtTuberia,rIntTuberia)))
+
+         elasticShearSection3d["sccMastil"]
+
+             paramSeccion( E(Es) G(Gs) alpha(alphaSeccAnilloCircular(RExtMastil,rIntMastil)))
+             geomSeccion("geomSeccMastil")
+             paramSeccion( alpha(alphaSeccAnilloCircular(RExtMastil,rIntMastil)) )
+
+

@@ -1,0 +1,8 @@
+# Viento Y
+set_current_load_pattern("VTY")
+# Viento en fachadas
+sets
+
+    vector3dUniformLoadGlobalSetLineas("lineasMastil",[0,0.74e3,0])
+    vector3dUniformLoadGlobalSetLineas("lineasTuberia",[0,1.6e3,0])
+

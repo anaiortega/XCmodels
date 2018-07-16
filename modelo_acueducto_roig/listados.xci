@@ -1,0 +1,51 @@
+nuevo_archivo_salida["datos"]("resultados/datos.txt")
+
+datos.write("twocolumnn")
+datos.write("subsection(Definición de puntos)n")
+listaKPtsSet("total","datos","%5.2f")
+datos.write("onecolumnn")
+
+listaEntidadesSet("lineasMastil","datos","listaElementosBarraSet","%5.2f","subsection","Definición de los mástiles")
+listaEntidadesSet("lineasTuberia","datos","listaElementosBarraSet","%5.2f","subsection","Definición de la tubería")
+
+datos.write("twocolumnn")
+datos.write("subsection(Definición de los tirantes)n")
+listaEntidadesLinea("l111","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 11")
+listaEntidadesLinea("l121","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 21")
+listaEntidadesLinea("l131","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 31")
+listaEntidadesLinea("l112","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 12")
+listaEntidadesLinea("l122","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 22")
+listaEntidadesLinea("l132","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 32")
+listaEntidadesLinea("l113","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 13")
+listaEntidadesLinea("l123","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 23")
+listaEntidadesLinea("l133","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 33")
+
+listaEntidadesLinea("l141","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 41")
+listaEntidadesLinea("l151","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 51")
+listaEntidadesLinea("l161","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 61")
+listaEntidadesLinea("l142","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 42")
+listaEntidadesLinea("l152","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 52")
+listaEntidadesLinea("l162","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 62")
+listaEntidadesLinea("l143","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 43")
+listaEntidadesLinea("l153","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 53")
+listaEntidadesLinea("l163","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 63")
+listaEntidadesLinea("l144","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 44")
+listaEntidadesLinea("l154","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 54")
+listaEntidadesLinea("l164","datos","listaElementosTrussSet","%5.2f","subsubsection","Barra 64")
+
+datos.write("subsection(Definición de las acciones)n")
+for
+
+    inicio(expr(i=0) ) continua(i<numAcciones) incremento(expr(i=tonum(i+1)))
+    bucle
+
+        datos.write("subsubsection(Cargas de la acción: ",listaAcciones[i],")n")
+        datos.write("begin(small)n")
+        ListaCargasElementos(listaAcciones[i],"datos","%5.2f")
+        ListaCargasNodos(listaAcciones[i],"datos","%5.2f")
+        datos.write("end(small)n")
+
+
+datos.write("onecolumnn")
+
+cierra_archivo_salida("datos")

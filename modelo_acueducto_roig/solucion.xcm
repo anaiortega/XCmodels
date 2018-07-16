@@ -1,0 +1,47 @@
+def resuelvePaso(nmbCaso,nPasos):
+
+    tipo("double")
+    paso= 
+    mdlr(dom(let(paso= commitTag)))
+    nmbPaso= "paso"+format(int(paso),"%02d")
+    nmbFile= "resultados/result_caso"+nmbCaso+"_"+nmbPaso+".txt"
+    nuevo_archivo_salida[nmbPaso](nmbFile)
+    "log".write("Resolviendo caso: ",nmbCaso," paso: ",nmbPaso,"n")
+    sol_proc
+
+        control
+
+            solu_method["smt","sm"]
+
+                load_control_integrator(dLambda1(1.0/nPasos) )
+
+
+        static_analysis["smt"]( analyze(nPasos) expr(analOk= result) )
+
+    if
+
+        cond(tonum(analOk)!=0.0)
+        then(print("Error al resolver el paso '",paso,"'.n") )
+
+    trataResultsAcc(nmbCaso,nmbPaso)
+    cierra_archivo_salida(nmbPaso)
+    mdlr(dom(let(paso= commitTag)))    
+    return(paso)
+
+
+def resuelveCaso(nmbComb)
+
+    mdlr(loads(add_to_domain(nmbComb)))
+    sol_proc
+
+        static_analysis["smt"]( analyze(Nstep) expr(analOk= result) )
+
+    mdlr
+
+        loads(remove_from_domain(nmbComb))
+
+    if
+
+        cond(tonum(analOk)!=0.0)
+        then(print("Error al resolver el caso '",nmbComb,"'.n") fin())
+

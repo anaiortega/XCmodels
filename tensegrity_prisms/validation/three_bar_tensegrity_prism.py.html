@@ -1,0 +1,304 @@
+<html><head>
+<title>three_bar_tensegrity_prism.py</title>
+<meta name="Generator" content="htmlizer/[twisted, version 16.0.0]" />
+<link rel="alternate" href="three_bar_tensegrity_prism.py" type="text/x-python" />
+
+</head>
+<body>
+<pre><span class="py-src-comment"># -*- coding: utf-8 -*-</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">__future__</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">division</span>
+
+<span class="py-src-variable">__author__</span>= <span class="py-src-string">"Ana Ortega (AO_O) and Luis C. Pérez Tato (LCPT)"</span>
+<span class="py-src-variable">__copyright__</span>= <span class="py-src-string">"Copyright 2017, AO_O and LCPT"</span>
+<span class="py-src-variable">__license__</span>= <span class="py-src-string">"GPL"</span>
+<span class="py-src-variable">__version__</span>= <span class="py-src-string">"3.0"</span>
+<span class="py-src-variable">__email__</span>= <span class="py-src-string">"ana.ortega@ciccp.es l.pereztato@ciccp.es"</span> 
+
+<span class="py-src-keyword">import</span> <span class="py-src-variable">os</span>
+<span class="py-src-keyword">import</span> <span class="py-src-variable">xc_base</span>
+<span class="py-src-keyword">import</span> <span class="py-src-variable">geom</span>
+<span class="py-src-keyword">import</span> <span class="py-src-variable">xc</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">model</span>.<span class="py-src-variable">geometry</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">tensegrity</span>
+<span class="py-src-keyword">import</span> <span class="py-src-variable">math</span>
+
+<span class="py-src-comment">#FE problem</span>
+<span class="py-src-comment">#Data</span>
+<span class="py-src-comment">#    geometry</span>
+<span class="py-src-variable">nSidPol</span>=<span class="py-src-number">3</span>     <span class="py-src-comment"># number of sides of the regular n-polygon</span>
+<span class="py-src-variable">rBasCirc</span>=<span class="py-src-number">1.0</span> <span class="py-src-comment"># radius of the base circle circunscribing the n-polygon</span>
+<span class="py-src-variable">rTopCirc</span>=<span class="py-src-number">1.0</span> <span class="py-src-comment"># radius of the top circle circunscribing the n-polygon</span>
+<span class="py-src-variable">Hprism</span>=<span class="py-src-number">1</span>     <span class="py-src-comment"># height of the prism [m]</span>
+<span class="py-src-comment">#    materials</span>
+<span class="py-src-comment">#struts material stiffness= EA=100 [N]</span>
+<span class="py-src-variable">Estruts</span>=<span class="py-src-number">2.1e5</span>    <span class="py-src-comment"># elastic modulus [Pa]</span>
+<span class="py-src-variable">strutArea</span>=<span class="py-src-number">1</span> <span class="py-src-comment"># area [m2]</span>
+<span class="py-src-comment"># Gstruts=79.3e9   # shear modulus [Pa] </span>
+<span class="py-src-comment"># rhoStruts=7850   # mass density [kg/m3]</span>
+<span class="py-src-comment"># fyStruts=200e6   # yield strength [Pa]</span>
+<span class="py-src-comment"># nuStruts=0.3     # Poisson's coefficient</span>
+<span class="py-src-comment"># strutRint=50e-3-10.95e-3  #internal radius [m]</span>
+<span class="py-src-comment"># strutRext=50e-3           #external radius [m]</span>
+
+<span class="py-src-comment">#diagonal cables material stiffness= sqrt(3) [N/m]</span>
+<span class="py-src-variable">EdiagCable</span>=<span class="py-src-number">2.1e5</span>      <span class="py-src-comment">#elastic modulus</span>
+<span class="py-src-comment">#diagArea=math.sqrt(3)*1e-5</span>
+<span class="py-src-variable">diagArea</span>=<span class="py-src-number">1</span>
+<span class="py-src-variable">rhoDiagCable</span>=<span class="py-src-number">0.0</span>  <span class="py-src-comment"># effective self weight (gravity component of weight per</span>
+                  <span class="py-src-comment">#volume transverse to the cable)</span>
+<span class="py-src-variable">sigmaPrestrDiagCable</span>=<span class="py-src-number">210</span> <span class="py-src-comment">#final prestress [N]</span>
+
+<span class="py-src-comment">#saddle cables material stiffness= 1 [N/m]</span>
+<span class="py-src-variable">EsaddCable</span>=<span class="py-src-number">2.1e5</span>  <span class="py-src-comment">#elastic modulus</span>
+<span class="py-src-variable">saddArea</span>=<span class="py-src-number">1</span>
+<span class="py-src-variable">rhoSaddCable</span>=<span class="py-src-number">0.0</span>  <span class="py-src-comment"># effective self weight (gravity component of weight per</span>
+                  <span class="py-src-comment">#volume transverse to the cable)</span>
+<span class="py-src-variable">sigmaPrestrSaddCable</span>=<span class="py-src-number">210</span> <span class="py-src-comment">#final prestress</span>
+
+
+<span class="py-src-keyword">from</span> <span class="py-src-variable">model</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">predefined_spaces</span>
+
+<span class="py-src-variable">FEcase</span>= <span class="py-src-variable">xc</span>.<span class="py-src-variable">ProblemaEF</span>()
+<span class="py-src-variable">prep</span>=<span class="py-src-variable">FEcase</span>.<span class="py-src-variable">getPreprocessor</span>   
+<span class="py-src-variable">points</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getCad</span>.<span class="py-src-variable">getPoints</span>
+<span class="py-src-variable">lines</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getCad</span>.<span class="py-src-variable">getLines</span>
+<span class="py-src-variable">nodes</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getNodeLoader</span>
+<span class="py-src-variable">sets</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getSets</span>
+<span class="py-src-variable">elements</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getElementLoader</span>
+
+<span class="py-src-comment"># Problem type</span>
+<span class="py-src-variable">modelSpace</span>= <span class="py-src-variable">predefined_spaces</span>.<span class="py-src-variable">gdls_elasticidad3D</span>(<span class="py-src-variable">nodes</span>) <span class="py-src-comment">#Defines the dimension of</span>
+                  <span class="py-src-comment">#the space: nodes by three coordinates (x,y,z) and six</span>
+                  <span class="py-src-comment">#DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)</span>
+
+<span class="py-src-variable">prismGeom</span>=<span class="py-src-variable">tensegrity</span>.<span class="py-src-variable">tensegrityPrism</span>(<span class="py-src-variable">nSidPol</span>=<span class="py-src-variable">nSidPol</span>,<span class="py-src-variable">RbaseC</span>=<span class="py-src-variable">rBasCirc</span>,<span class="py-src-variable">RtopC</span>=<span class="py-src-variable">rTopCirc</span>,<span class="py-src-variable">Hprism</span>=<span class="py-src-variable">Hprism</span>)
+<span class="py-src-comment">#Joints generation</span>
+<span class="py-src-variable">jointsCCoor</span>=<span class="py-src-variable">prismGeom</span>.<span class="py-src-variable">genJointsCoor</span>()
+<span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">jointsCCoor</span>.<span class="py-src-variable">index</span>:
+    <span class="py-src-variable">points</span>.<span class="py-src-variable">newPntIDPos3d</span>(<span class="py-src-variable">int</span>(<span class="py-src-variable">float</span>(<span class="py-src-variable">i</span>[<span class="py-src-number">2</span>:])),<span class="py-src-variable">geom</span>.<span class="py-src-variable">Pos3d</span>(<span class="py-src-variable">jointsCCoor</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">X</span>,<span class="py-src-variable">jointsCCoor</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">Y</span>,<span class="py-src-variable">jointsCCoor</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">Z</span>))
+    
+<span class="py-src-comment">#Lines generation</span>
+<span class="py-src-variable">linsJoints</span>=<span class="py-src-variable">prismGeom</span>.<span class="py-src-variable">genLineLinkedJoints</span>()
+<span class="py-src-variable">ljInd</span>=<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">index</span>
+<span class="py-src-comment">#lines to struts</span>
+<span class="py-src-variable">strutSet</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getSets</span>.<span class="py-src-variable">defSet</span>(<span class="py-src-string">'strutSet'</span>)
+<span class="py-src-variable">indStruts</span>=[<span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>] <span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">range</span>(<span class="py-src-variable">len</span>(<span class="py-src-variable">ljInd</span>)) <span class="py-src-keyword">if</span> <span class="py-src-string">'strut'</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>]]
+<span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">indStruts</span>:
+    <span class="py-src-variable">l</span>=<span class="py-src-variable">lines</span>.<span class="py-src-variable">newLine</span>(<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">i_jt</span>,<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">j_jt</span>)
+    <span class="py-src-variable">l</span>.<span class="py-src-variable">nDiv</span>=<span class="py-src-number">1</span>   <span class="py-src-comment">#initialization of number or divisions</span>
+    <span class="py-src-variable">strutSet</span>.<span class="py-src-variable">getLines</span>.<span class="py-src-variable">append</span>(<span class="py-src-variable">l</span>)
+<span class="py-src-comment">#lines to saddle cables</span>
+<span class="py-src-variable">saddSet</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getSets</span>.<span class="py-src-variable">defSet</span>(<span class="py-src-string">'saddSet'</span>)
+<span class="py-src-variable">indSadd</span>=[<span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>] <span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">range</span>(<span class="py-src-variable">len</span>(<span class="py-src-variable">ljInd</span>)) <span class="py-src-keyword">if</span> <span class="py-src-string">'sadd'</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>]]
+<span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">indSadd</span>:
+    <span class="py-src-variable">l</span>=<span class="py-src-variable">lines</span>.<span class="py-src-variable">newLine</span>(<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">i_jt</span>,<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">j_jt</span>)
+    <span class="py-src-variable">l</span>.<span class="py-src-variable">nDiv</span>=<span class="py-src-number">1</span>   
+    <span class="py-src-variable">saddSet</span>.<span class="py-src-variable">getLines</span>.<span class="py-src-variable">append</span>(<span class="py-src-variable">l</span>)
+<span class="py-src-comment">#lines to diagonal cables</span>
+<span class="py-src-variable">diagSet</span>=<span class="py-src-variable">prep</span>.<span class="py-src-variable">getSets</span>.<span class="py-src-variable">defSet</span>(<span class="py-src-string">'diagSet'</span>)
+<span class="py-src-variable">indDiag</span>=[<span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>] <span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">range</span>(<span class="py-src-variable">len</span>(<span class="py-src-variable">ljInd</span>)) <span class="py-src-keyword">if</span> <span class="py-src-string">'diag'</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">ljInd</span>[<span class="py-src-variable">i</span>]]
+<span class="py-src-keyword">for</span> <span class="py-src-variable">i</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">indDiag</span>:
+    <span class="py-src-variable">l</span>=<span class="py-src-variable">lines</span>.<span class="py-src-variable">newLine</span>(<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">i_jt</span>,<span class="py-src-variable">linsJoints</span>.<span class="py-src-variable">loc</span>[<span class="py-src-variable">i</span>].<span class="py-src-variable">j_jt</span>)
+    <span class="py-src-variable">l</span>.<span class="py-src-variable">nDiv</span>=<span class="py-src-number">1</span>   
+    <span class="py-src-variable">diagSet</span>.<span class="py-src-variable">getLines</span>.<span class="py-src-variable">append</span>(<span class="py-src-variable">l</span>)
+
+<span class="py-src-comment"># #Sections definition</span>
+<span class="py-src-comment"># from materials import paramCircularSection</span>
+<span class="py-src-comment"># strutSect=paramCircularSection.CircularSection(name='strutSect',Rext=strutRext,Rint=strutRint)</span>
+
+<span class="py-src-comment">#Materials definition</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">materials</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">typical_materials</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">materials</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">typical_materials</span>
+<span class="py-src-comment">#struts material</span>
+<span class="py-src-variable">strutMat</span>=<span class="py-src-variable">typical_materials</span>.<span class="py-src-variable">defElasticMaterial</span>(<span class="py-src-variable">preprocessor</span>=<span class="py-src-variable">prep</span>, <span class="py-src-variable">name</span>=<span class="py-src-string">"strutMat"</span>,<span class="py-src-variable">E</span>=<span class="py-src-variable">Estruts</span>)
+<span class="py-src-comment">#cables materials</span>
+<span class="py-src-variable">diagCableMat</span>=<span class="py-src-variable">typical_materials</span>.<span class="py-src-variable">defCableMaterial</span>(<span class="py-src-variable">preprocessor</span>=<span class="py-src-variable">prep</span>,<span class="py-src-variable">name</span>=<span class="py-src-string">'diagCableMat'</span>,<span class="py-src-variable">E</span>=<span class="py-src-variable">EdiagCable</span>,<span class="py-src-variable">prestress</span>=<span class="py-src-variable">sigmaPrestrDiagCable</span>,<span class="py-src-variable">rho</span>=<span class="py-src-variable">rhoDiagCable</span>)
+<span class="py-src-variable">saddCableMat</span>=<span class="py-src-variable">typical_materials</span>.<span class="py-src-variable">defCableMaterial</span>(<span class="py-src-variable">preprocessor</span>=<span class="py-src-variable">prep</span>,<span class="py-src-variable">name</span>=<span class="py-src-string">'saddCableMat'</span>,<span class="py-src-variable">E</span>=<span class="py-src-variable">EdiagCable</span>,<span class="py-src-variable">prestress</span>=<span class="py-src-variable">sigmaPrestrSaddCable</span>,<span class="py-src-variable">rho</span>=<span class="py-src-variable">rhoSaddCable</span>)
+
+<span class="py-src-comment"># Plotting of CAD entities</span>
+<span class="py-src-comment"># from xcVtk.malla_cad import vtk_grafico_cad</span>
+<span class="py-src-comment"># defDisplay= vtk_grafico_cad.RecordDefDisplayCAD()</span>
+<span class="py-src-comment"># totalSet= prep.getSets.getSet('total')</span>
+<span class="py-src-comment"># defDisplay.displayBlocks(xcSet=totalSet,fName= None,caption= 'Model grid')</span>
+
+<span class="py-src-comment"># Seed element for struts</span>
+<span class="py-src-variable">seedElemLoader</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getElementLoader</span>.<span class="py-src-variable">seedElemLoader</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultMaterial</span>= <span class="py-src-string">"strutMat"</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">dimElem</span>= <span class="py-src-number">3</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultTag</span>= <span class="py-src-number">1</span> 
+<span class="py-src-variable">strutTruss</span>= <span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">newElement</span>(<span class="py-src-string">"corot_truss"</span>,<span class="py-src-variable">xc</span>.<span class="py-src-variable">ID</span>([<span class="py-src-number">0</span>,<span class="py-src-number">0</span>]))
+<span class="py-src-variable">strutTruss</span>.<span class="py-src-variable">area</span>= <span class="py-src-variable">strutArea</span>
+<span class="py-src-variable">strutSet</span>.<span class="py-src-variable">genMesh</span>(<span class="py-src-variable">xc</span>.<span class="py-src-variable">meshDir</span>.<span class="py-src-variable">I</span>)
+<span class="py-src-comment"># Seed element for diagonal cables</span>
+<span class="py-src-variable">seedElemLoader</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getElementLoader</span>.<span class="py-src-variable">seedElemLoader</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultMaterial</span>= <span class="py-src-string">"diagCableMat"</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">dimElem</span>= <span class="py-src-number">3</span>    <span class="py-src-comment"># three-dimensional space </span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultTag</span>= <span class="py-src-number">1</span> 
+<span class="py-src-variable">diagTruss</span>= <span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">newElement</span>(<span class="py-src-string">"corot_truss"</span>,<span class="py-src-variable">xc</span>.<span class="py-src-variable">ID</span>([<span class="py-src-number">0</span>,<span class="py-src-number">0</span>]))
+<span class="py-src-variable">diagTruss</span>.<span class="py-src-variable">area</span>= <span class="py-src-variable">diagArea</span>
+<span class="py-src-variable">diagSet</span>.<span class="py-src-variable">genMesh</span>(<span class="py-src-variable">xc</span>.<span class="py-src-variable">meshDir</span>.<span class="py-src-variable">I</span>)
+<span class="py-src-comment"># Seed element for saddle cables</span>
+<span class="py-src-variable">seedElemLoader</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getElementLoader</span>.<span class="py-src-variable">seedElemLoader</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultMaterial</span>= <span class="py-src-string">"saddCableMat"</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">dimElem</span>= <span class="py-src-number">3</span>
+<span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">defaultTag</span>= <span class="py-src-number">1</span> 
+<span class="py-src-variable">saddTruss</span>= <span class="py-src-variable">seedElemLoader</span>.<span class="py-src-variable">newElement</span>(<span class="py-src-string">"corot_truss"</span>,<span class="py-src-variable">xc</span>.<span class="py-src-variable">ID</span>([<span class="py-src-number">0</span>,<span class="py-src-number">0</span>]))
+<span class="py-src-variable">saddTruss</span>.<span class="py-src-variable">area</span>= <span class="py-src-variable">saddArea</span>
+<span class="py-src-variable">saddSet</span>.<span class="py-src-variable">genMesh</span>(<span class="py-src-variable">xc</span>.<span class="py-src-variable">meshDir</span>.<span class="py-src-variable">I</span>)
+
+
+<span class="py-src-comment"># Constraints</span>
+<span class="py-src-variable">constr</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getConstraintLoader</span>
+<span class="py-src-variable">n1</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">1</span>).<span class="py-src-variable">getNode</span>()  <span class="py-src-comment">#node associated with point 1 </span>
+<span class="py-src-variable">constr</span>.<span class="py-src-variable">newSPConstraint</span>(<span class="py-src-variable">n1</span>.<span class="py-src-variable">tag</span>,<span class="py-src-number">0</span>,<span class="py-src-number">0.0</span>) <span class="py-src-comment"># ux=0</span>
+<span class="py-src-variable">constr</span>.<span class="py-src-variable">newSPConstraint</span>(<span class="py-src-variable">n1</span>.<span class="py-src-variable">tag</span>,<span class="py-src-number">1</span>,<span class="py-src-number">0.0</span>) <span class="py-src-comment"># uy=0</span>
+<span class="py-src-variable">constr</span>.<span class="py-src-variable">newSPConstraint</span>(<span class="py-src-variable">n1</span>.<span class="py-src-variable">tag</span>,<span class="py-src-number">2</span>,<span class="py-src-number">0.0</span>) <span class="py-src-comment"># uz=0</span>
+<span class="py-src-keyword">for</span> <span class="py-src-variable">p</span> <span class="py-src-keyword">in</span> <span class="py-src-variable">range</span>(<span class="py-src-number">2</span>,<span class="py-src-variable">nSidPol</span>+<span class="py-src-number">1</span>):
+    <span class="py-src-variable">n</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-variable">p</span>).<span class="py-src-variable">getNode</span>()
+    <span class="py-src-variable">constr</span>.<span class="py-src-variable">newSPConstraint</span>(<span class="py-src-variable">n</span>.<span class="py-src-variable">tag</span>,<span class="py-src-number">2</span>,<span class="py-src-number">0.0</span>) <span class="py-src-comment"># uz=0</span>
+
+    
+<span class="py-src-variable">strutSet</span>.<span class="py-src-variable">fillDownwards</span>()
+<span class="py-src-variable">diagSet</span>.<span class="py-src-variable">fillDownwards</span>()
+<span class="py-src-variable">saddSet</span>.<span class="py-src-variable">fillDownwards</span>()
+
+<span class="py-src-comment"># Displaying of the mesh</span>
+<span class="py-src-comment"># from xcVtk.malla_ef import vtk_grafico_ef</span>
+<span class="py-src-comment"># defDisplay= vtk_grafico_ef.RecordDefDisplayEF()</span>
+<span class="py-src-comment"># totalSet= prep.getSets.getSet('total')</span>
+<span class="py-src-comment"># defDisplay.grafico_mef(xcSet=totalSet,caption= 'All elements',viewNm='XYZPos')</span>
+<span class="py-src-comment"># defDisplay.grafico_mef(xcSet=strutSet,caption= 'Struts',viewNm='XYZPos')</span>
+<span class="py-src-comment"># defDisplay.grafico_mef(xcSet=diagSet,caption= 'Diagonal',viewNm='XYZPos')</span>
+<span class="py-src-comment"># defDisplay.grafico_mef(xcSet=saddSet,caption= 'Saddle cables',viewNm='XYZPos')</span>
+<span class="py-src-comment"># quit()</span>
+
+
+
+
+<span class="py-src-comment"># Loads definition</span>
+<span class="py-src-variable">cargas</span>= <span class="py-src-variable">prep</span>.<span class="py-src-variable">getLoadLoader</span>
+<span class="py-src-variable">casos</span>= <span class="py-src-variable">cargas</span>.<span class="py-src-variable">getLoadPatterns</span>
+<span class="py-src-comment">#Load modulation.</span>
+<span class="py-src-variable">ts</span>= <span class="py-src-variable">casos</span>.<span class="py-src-variable">newTimeSeries</span>(<span class="py-src-string">"constant_ts"</span>,<span class="py-src-string">"ts"</span>)
+<span class="py-src-variable">casos</span>.<span class="py-src-variable">currentTimeSeries</span>= <span class="py-src-string">"ts"</span>
+<span class="py-src-variable">lPattern</span>= <span class="py-src-string">"0"</span>
+<span class="py-src-variable">lp0</span>= <span class="py-src-variable">casos</span>.<span class="py-src-variable">newLoadPattern</span>(<span class="py-src-string">"default"</span>,<span class="py-src-variable">lPattern</span>)
+<span class="py-src-comment"># imposed displacements</span>
+<span class="py-src-comment"># lp0.newSPConstraint(2,0,0.001) #(node, DOF, value)</span>
+<span class="py-src-comment"># lp0.newSPConstraint(2,0,0.001) #(node, DOF, value)</span>
+<span class="py-src-comment"># lp0.newSPConstraint(3,1,0.001) </span>
+<span class="py-src-comment"># lp0.newSPConstraint(4,0,0.001)</span>
+<span class="py-src-comment"># lp0.newSPConstraint(4,1,0.001) </span>
+<span class="py-src-comment">#Loads</span>
+<span class="py-src-comment">#lp0.newNodalLoad(2,xc.Vector([210,0,0]))</span>
+<span class="py-src-comment">#lp0.newNodalLoad(4,xc.Vector([210,210,0]))</span>
+<span class="py-src-variable">casos</span>.<span class="py-src-variable">addToDomain</span>(<span class="py-src-variable">lPattern</span>) <span class="py-src-comment"># Add load case to domain</span>
+
+<span class="py-src-comment"># Solution procedure</span>
+<span class="py-src-variable">solu</span>= <span class="py-src-variable">FEcase</span>.<span class="py-src-variable">getSoluProc</span>
+<span class="py-src-variable">solCtrl</span>= <span class="py-src-variable">solu</span>.<span class="py-src-variable">getSoluControl</span>
+<span class="py-src-variable">solModels</span>= <span class="py-src-variable">solCtrl</span>.<span class="py-src-variable">getModelWrapperContainer</span>
+<span class="py-src-variable">sm</span>= <span class="py-src-variable">solModels</span>.<span class="py-src-variable">newModelWrapper</span>(<span class="py-src-string">"sm"</span>)
+<span class="py-src-variable">numberer</span>= <span class="py-src-variable">sm</span>.<span class="py-src-variable">newNumberer</span>(<span class="py-src-string">"default_numberer"</span>)
+<span class="py-src-variable">numberer</span>.<span class="py-src-variable">useAlgorithm</span>(<span class="py-src-string">"rcm"</span>)   <span class="py-src-comment"># graph algorithm: reverse Cuthill-Macgee.</span>
+<span class="py-src-variable">cHandler</span>= <span class="py-src-variable">sm</span>.<span class="py-src-variable">newConstraintHandler</span>(<span class="py-src-string">"penalty_constraint_handler"</span>)
+<span class="py-src-variable">cHandler</span>.<span class="py-src-variable">alphaSP</span>= <span class="py-src-number">1.0e15</span>  <span class="py-src-comment">#Factor applied with single-freedom constraints</span>
+<span class="py-src-variable">cHandler</span>.<span class="py-src-variable">alphaMP</span>= <span class="py-src-number">1.0e15</span>  <span class="py-src-comment">#Factor applied with multi-freedom constraints</span>
+<span class="py-src-variable">solMethods</span>= <span class="py-src-variable">solCtrl</span>.<span class="py-src-variable">getSoluMethodContainer</span>
+<span class="py-src-variable">smt</span>= <span class="py-src-variable">solMethods</span>.<span class="py-src-variable">newSoluMethod</span>(<span class="py-src-string">"smt"</span>,<span class="py-src-string">"sm"</span>) <span class="py-src-comment"># newSoluMethod(nameSoluMethod,nameWrapper)</span>
+<span class="py-src-variable">solAlgo</span>= <span class="py-src-variable">smt</span>.<span class="py-src-variable">newSolutionAlgorithm</span>(<span class="py-src-string">"newton_raphson_soln_algo"</span>)
+<span class="py-src-variable">ctest</span>= <span class="py-src-variable">smt</span>.<span class="py-src-variable">newConvergenceTest</span>(<span class="py-src-string">"norm_unbalance_conv_test"</span>)
+<span class="py-src-variable">ctest</span>.<span class="py-src-variable">tol</span>= <span class="py-src-number">1e-3</span>
+<span class="py-src-variable">ctest</span>.<span class="py-src-variable">maxNumIter</span>= <span class="py-src-number">100</span>
+<span class="py-src-variable">ctest</span>.<span class="py-src-variable">printFlag</span>= <span class="py-src-number">1</span> <span class="py-src-comment">#flag used to print information on convergence (optional)</span>
+<span class="py-src-variable">integ</span>= <span class="py-src-variable">smt</span>.<span class="py-src-variable">newIntegrator</span>(<span class="py-src-string">"load_control_integrator"</span>,<span class="py-src-variable">xc</span>.<span class="py-src-variable">Vector</span>([]))
+<span class="py-src-variable">integ</span>.<span class="py-src-variable">dLambda1</span>= <span class="py-src-number">0.1</span>
+<span class="py-src-variable">soe</span>= <span class="py-src-variable">smt</span>.<span class="py-src-variable">newSystemOfEqn</span>(<span class="py-src-string">"band_gen_lin_soe"</span>)
+<span class="py-src-variable">solver</span>= <span class="py-src-variable">soe</span>.<span class="py-src-variable">newSolver</span>(<span class="py-src-string">"band_gen_lin_lapack_solver"</span>)
+<span class="py-src-variable">analysis</span>= <span class="py-src-variable">solu</span>.<span class="py-src-variable">newAnalysis</span>(<span class="py-src-string">"static_analysis"</span>,<span class="py-src-string">"smt"</span>,<span class="py-src-string">""</span>)
+<span class="py-src-variable">result</span>= <span class="py-src-variable">analysis</span>.<span class="py-src-variable">analyze</span>(<span class="py-src-number">1</span>)
+
+
+<span class="py-src-variable">nodes</span>.<span class="py-src-variable">calculateNodalReactions</span>(<span class="py-src-variable">True</span>)
+
+
+<span class="py-src-variable">n1</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">1</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-variable">n2</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">2</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-variable">n3</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">3</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-variable">n4</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">4</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-variable">n5</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">5</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-variable">n6</span>=<span class="py-src-variable">points</span>.<span class="py-src-variable">get</span>(<span class="py-src-number">6</span>).<span class="py-src-variable">getNode</span>()
+<span class="py-src-keyword">print</span> <span class="py-src-variable">n1</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">0</span>],<span class="py-src-variable">n1</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">1</span>],<span class="py-src-variable">n1</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">2</span>]
+<span class="py-src-keyword">print</span> <span class="py-src-variable">n4</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">0</span>],<span class="py-src-variable">n4</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">1</span>],<span class="py-src-variable">n4</span>.<span class="py-src-variable">getDisp</span>[<span class="py-src-number">2</span>]
+
+<span class="py-src-variable">strut1</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">1</span>)
+<span class="py-src-variable">strut2</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">2</span>)
+<span class="py-src-variable">strut3</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">3</span>)
+<span class="py-src-variable">diag1</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">5</span>)
+<span class="py-src-variable">diag2</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">6</span>)
+<span class="py-src-variable">diag3</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">7</span>)
+<span class="py-src-variable">saddTop1</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">9</span>)
+<span class="py-src-variable">saddTop2</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">10</span>)
+<span class="py-src-variable">saddTop3</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">11</span>)
+<span class="py-src-variable">saddBot1</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">12</span>)
+<span class="py-src-variable">saddBot2</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">13</span>)
+<span class="py-src-variable">saddBot3</span>=<span class="py-src-variable">elements</span>.<span class="py-src-variable">getElement</span>(<span class="py-src-number">14</span>)
+
+<span class="py-src-variable">F_strut1</span>=<span class="py-src-variable">strut1</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_strut2</span>=<span class="py-src-variable">strut2</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_strut3</span>=<span class="py-src-variable">strut3</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_diag1</span>=<span class="py-src-variable">diag1</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_diag2</span>=<span class="py-src-variable">diag2</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_diag3</span>=<span class="py-src-variable">diag3</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddTop1</span>=<span class="py-src-variable">saddTop1</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddTop2</span>=<span class="py-src-variable">saddTop2</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddTop3</span>=<span class="py-src-variable">saddTop3</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddBot1</span>=<span class="py-src-variable">saddBot1</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddBot2</span>=<span class="py-src-variable">saddBot2</span>.<span class="py-src-variable">getN</span>()
+<span class="py-src-variable">F_saddBot3</span>=<span class="py-src-variable">saddBot3</span>.<span class="py-src-variable">getN</span>()
+
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_strut1"</span>, <span class="py-src-variable">F_strut1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_strut2"</span>, <span class="py-src-variable">F_strut2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_strut3"</span>, <span class="py-src-variable">F_strut3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_diag1"</span>, <span class="py-src-variable">F_diag1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_diag2"</span>, <span class="py-src-variable">F_diag2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_diag3"</span>, <span class="py-src-variable">F_diag3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddTop1"</span>, <span class="py-src-variable">F_saddTop1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddTop2"</span>, <span class="py-src-variable">F_saddTop2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddTop3"</span>, <span class="py-src-variable">F_saddTop3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddBot1"</span>, <span class="py-src-variable">F_saddBot1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddBot2"</span>, <span class="py-src-variable">F_saddBot2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"F_saddBot3"</span>, <span class="py-src-variable">F_saddBot3</span>
+
+<span class="py-src-variable">deltaL_strut1</span>= <span class="py-src-variable">strut1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">strut1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_strut2</span>= <span class="py-src-variable">strut2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">strut2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_strut3</span>= <span class="py-src-variable">strut3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">strut3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_diag1</span>= <span class="py-src-variable">diag1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">diag1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_diag2</span>= <span class="py-src-variable">diag2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">diag2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_diag3</span>= <span class="py-src-variable">diag3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">diag3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddTop1</span>= <span class="py-src-variable">saddTop1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddTop1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddTop2</span>= <span class="py-src-variable">saddTop2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddTop2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddTop3</span>= <span class="py-src-variable">saddTop3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddTop3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddBot1</span>= <span class="py-src-variable">saddBot1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddBot1</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddBot2</span>= <span class="py-src-variable">saddBot2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddBot2</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+<span class="py-src-variable">deltaL_saddBot3</span>= <span class="py-src-variable">saddBot3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">True</span>).<span class="py-src-variable">getLongitud</span>()-<span class="py-src-variable">saddBot3</span>.<span class="py-src-variable">getLineSegment</span>(<span class="py-src-variable">False</span>).<span class="py-src-variable">getLongitud</span>()
+
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_strut1"</span>, <span class="py-src-variable">deltaL_strut1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_strut2"</span>, <span class="py-src-variable">deltaL_strut2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_strut3"</span>, <span class="py-src-variable">deltaL_strut3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_diag1"</span>, <span class="py-src-variable">deltaL_diag1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_diag2"</span>, <span class="py-src-variable">deltaL_diag2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_diag3"</span>, <span class="py-src-variable">deltaL_diag3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddTop1"</span>, <span class="py-src-variable">deltaL_saddTop1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddTop2"</span>, <span class="py-src-variable">deltaL_saddTop2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddTop3"</span>, <span class="py-src-variable">deltaL_saddTop3</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddBot1"</span>, <span class="py-src-variable">deltaL_saddBot1</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddBot2"</span>, <span class="py-src-variable">deltaL_saddBot2</span>
+<span class="py-src-keyword">print</span> <span class="py-src-string">"deltaL_saddBot3"</span>, <span class="py-src-variable">deltaL_saddBot3</span>
+
+<span class="py-src-keyword">from</span> <span class="py-src-variable">xcVtk</span>.<span class="py-src-variable">malla_ef</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">QuickGraphics</span> <span class="py-src-keyword">as</span> <span class="py-src-variable">qg</span>
+<span class="py-src-variable">lcs</span>=<span class="py-src-variable">qg</span>.<span class="py-src-variable">QuickGraphics</span>(<span class="py-src-variable">FEcase</span>)
+<span class="py-src-variable">lcs</span>.<span class="py-src-variable">displayDispRot</span>(<span class="py-src-variable">itemToDisp</span>=<span class="py-src-string">'uZ'</span>)
+<span class="py-src-variable">quit</span>()
+
+</pre>
+</body>

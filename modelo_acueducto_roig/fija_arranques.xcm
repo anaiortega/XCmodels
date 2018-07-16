@@ -1,0 +1,33 @@
+def_prop["empotraArranques","sub"](list lstPuntosArranque)
+
+    nodosArranque= 
+    sz= lstPuntosArranque.size
+    i= 0
+    # Formamos la lista de nodos de arranque.
+    for
+
+        inicio(set(i=0) ) continua(i<sz) incremento(set(i=i+1))
+        bucle
+          ( mdlr(cad(pnt[lstPuntosArranque[i]]( nodosArranque( inserta(tag_nodo) ) ) )))
+
+
+    fijaNodo6GDLLista(nodosArranque)
+    print("empotrados nodos: ",nodosArranque,"n")
+
+def_prop["apoyaArranques","sub"](list lstPuntosArranque)
+
+    nodosArranque= 
+    sz= lstPuntosArranque.size
+    i= 0
+    # Formamos la lista de nodos de arranque.
+    for
+
+        inicio(set(i=0) ) continua(i<sz) incremento(set(i=i+1))
+        bucle
+          ( mdlr(cad(pnt[lstPuntosArranque[i]]( nodosArranque( inserta(tag_nodo) ) ) )))
+
+
+    Nodo6GDLGirosLibresLista(nodosArranque)
+    print("apoyados nodos: ",nodosArranque,"n")
+
+

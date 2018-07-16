@@ -1,0 +1,65 @@
+tensioned fibers
+material =  <xc.Steel01 object at 0x7f97572889f0>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288910>
+stress=  -246.575596308
+material =  <xc.Steel01 object at 0x7f97572889f0>
+stress=  785211.949434
+material =  <xc.Steel01 object at 0x7f9757288910>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f97572889f0>
+stress=  -246.575596309
+material =  <xc.Steel01 object at 0x7f9757288910>
+stress=  785211.949434
+AsTens= 0.0008 nFibers=  2
+x=  -0.2 d=  0.249133323403 h=  0.3
+Aceff=  0.0599999999998
+tensioned fibers
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288bb0>
+stress=  -246.575596308
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  785211.949434
+material =  <xc.Steel01 object at 0x7f9757288bb0>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  -246.575596309
+material =  <xc.Steel01 object at 0x7f9757288bb0>
+stress=  785211.949434
+AsTens= 0.0008 nFibers=  2
+x=  -0.2 d=  0.249133323403 h=  0.3
+Aceff=  0.0599999999998
+tensioned fibers
+material =  <xc.Steel01 object at 0x7f9757288a60>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288c90>
+stress=  -246.575596308
+material =  <xc.Steel01 object at 0x7f9757288a60>
+stress=  785211.949434
+material =  <xc.Steel01 object at 0x7f9757288c90>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288a60>
+stress=  -246.575596309
+material =  <xc.Steel01 object at 0x7f9757288c90>
+stress=  785211.949434
+AsTens= 0.0008 nFibers=  2
+x=  -0.2 d=  0.249133323403 h=  0.3
+Aceff=  0.0599999999998
+tensioned fibers
+material =  <xc.Steel01 object at 0x7f9757288e50>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  -246.575596308
+material =  <xc.Steel01 object at 0x7f9757288e50>
+stress=  785211.949434
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  -785705.100627
+material =  <xc.Steel01 object at 0x7f9757288e50>
+stress=  -246.575596309
+material =  <xc.Steel01 object at 0x7f9757288d00>
+stress=  785211.949434
+AsTens= 0.0008 nFibers=  2
+x=  -0.2 d=  0.249133323403 h=  0.3
+Aceff=  0.0599999999998
+dgKHA25
