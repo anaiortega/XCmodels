@@ -289,7 +289,7 @@ legLines= abutmentLegLines+pierLegLines
 stations= [refMassongexAbutment,refMassongexPier,refBexPier,refBexAbutment]
 
 def createLaneAxisLines():
-    retval= [geom.Polilinea3d(),geom.Polilinea3d(),geom.Polilinea3d()]
+    retval= [geom.Polyline3d(),geom.Polyline3d(),geom.Polyline3d()]
     for s in stations:
         index= 0
         for p in laneAxisLines:
@@ -299,7 +299,7 @@ def createLaneAxisLines():
     return retval
 
 def createLaneRegionsPolygons():
-    lines= [geom.Polilinea3d(),geom.Polilinea3d(),geom.Polilinea3d(),geom.Polilinea3d()]
+    lines= [geom.Polyline3d(),geom.Polyline3d(),geom.Polyline3d(),geom.Polyline3d()]
     for s in stations:
         index= 0
         for p in laneLines:

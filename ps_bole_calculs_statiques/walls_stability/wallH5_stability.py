@@ -3,7 +3,7 @@
    Wall stability
    Earth pressure computed according to Janssen theory.
 '''
-from geotecnia import earth_pressure
+from geotechnics import earth_pressure
 import math
 import scipy.integrate
 import xc_base

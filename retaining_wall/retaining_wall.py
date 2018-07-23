@@ -7,8 +7,8 @@ import geom
 import xc
 from materials.sia262 import SIA262_materials
 from materials import typical_materials
-from geotecnia import earth_pressure as ep
-from geotecnia import FrictionalCohesionalSoil as fcs
+from geotechnics import earth_pressure as ep
+from geotechnics import FrictionalCohesionalSoil as fcs
 from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
