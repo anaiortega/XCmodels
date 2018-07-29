@@ -128,7 +128,7 @@ def getOverturningSafetyFactor(svd):
     M= svd.getMoment()
 
     #Overturning safety factor.
-    foundationPlane= geom.Recta2d(geom.Pos2d(0.0,0.0), geom.Pos2d(1e3,0.0))
+    foundationPlane= geom.Line2d(geom.Pos2d(0.0,0.0), geom.Pos2d(1e3,0.0))
     zml= svd.zeroMomentLine()
     p= foundationPlane.getIntersectionWithLine(zml)[0] # Intersection with
                                                        # foundation plane.

@@ -9,7 +9,7 @@ import scipy.integrate
 import xc_base
 import geom
 
-B= 1.35
+B= 1.60 #1.35
 H= 3.5
 fillPhi= math.radians(30)
 delta= 2.0/3.0*fillPhi
@@ -34,7 +34,7 @@ gammaSoil= 21e3 #16 to 22 kN/m3
 
 soil= earth_pressure.RankineSoil(phi= fillPhi, rho= gammaSoil)
 k0= 1-math.sin(fillPhi) # earth pressure at rest.
-K= soil.Ka()
+K= k0#soil.Ka()
 print 'K= ', K
 x= list()
 earth_pressure= list()
@@ -92,7 +92,7 @@ def getOverturningSafetyFactor(svd):
     M= svd.getMoment()
 
     #Overturning safety factor.
-    foundationPlane= geom.Recta2d(geom.Pos2d(0.0,0.0), geom.Pos2d(1e3,0.0))
+    foundationPlane= geom.Line2d(geom.Pos2d(0.0,0.0), geom.Pos2d(1e3,0.0))
     zml= svd.zeroMomentLine()
     p= foundationPlane.getIntersectionWithLine(zml)[0] # Intersection with
                                                        # foundation plane.
