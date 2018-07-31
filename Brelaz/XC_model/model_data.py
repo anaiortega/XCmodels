@@ -258,8 +258,8 @@ for n in cablNod:
 
 
 #                       ***BOUNDARY CONDITIONS***
-#execfile('/home/ana/projects/XCprojects/Brelaz/XC_model/sets_springs.py')
-execfile('/home/luis/Documents/XCprojects/Brelaz/XC_model/sets_springs.py')
+#execfile('/home/ana/projects/XCmodels/Brelaz/XC_model/sets_springs.py')
+execfile('/home/luis/Documents/XCmodels/Brelaz/XC_model/sets_springs.py')
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in

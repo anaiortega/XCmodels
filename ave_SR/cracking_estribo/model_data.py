@@ -6,7 +6,7 @@ import geom
 import xc
 import math
 
-fullProjPath='/home/ana/projects/XCprojects/ave_SR/cracking_estribo/'
+fullProjPath='/home/ana/projects/XCmodels/ave_SR/cracking_estribo/'
 execfile(fullProjPath+'env_config.py')
 
 execfile('../basic_data.py')

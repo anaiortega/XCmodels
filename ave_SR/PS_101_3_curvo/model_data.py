@@ -10,7 +10,7 @@ from model import predefined_spaces
 from model.geometry import grid_model as gm
 
 
-fullProjPath='/home/ana/projects/XCprojects/ave_SR/PS_101_3_curvo/'
+fullProjPath='/home/ana/projects/XCmodels/ave_SR/PS_101_3_curvo/'
 execfile(fullProjPath+'env_config.py')
 
 execfile('../basic_data.py')
