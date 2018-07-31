@@ -20,7 +20,7 @@ from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
 
 # Default configuration of environment variables.
-fullProjPath='/home/ana/projects/XCprojects/workingModel/'
+fullProjPath='/home/ana/projects/XCmodels/workingModel/'
 execfile(fullProjPath+'env_config.py')
 
 #Auxiliary data
