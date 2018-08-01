@@ -1,145 +1,41 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 import math
-import dxfgrabber
 from scipy.spatial.distance import cdist
 import numpy as np
-import re
-from import_export import BlockTopologyEntities as bte
 from import_export import NeutralMeshDescription as nmd
 from miscUtils import LogMessages as lmsg
+from import_export import DxfReader
+import re
 
-
-dxf= dxfgrabber.readfile("rampe_quai_2.dxf")
-layerstoimport= ['floor.*','bulkhead.*','roof.*','parapet.*','middle.*','side.*']
-
-def layerToImport(layerName):
-  for regExp in layerstoimport:
-    if(re.match(regExp,layerName)):
-      return True
-  return False
+layerNamesToImport= ['floor.*','bulkhead.*','roof.*','parapet.*','middle.*','side.*']
 
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-layerNames= []
-for layer in dxf.layers:
-  layerName= layer.name
-  if(layerToImport(layer.name)):
-    layerNames.append(layer.name)
+dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo)
 
-print layerNames
- 
-points= []
-for obj in dxf.entities:
-  type= obj.dxftype
-  if(layerToImport(obj.layer)):
-    if(type == '3DFACE'):
-      for pt in obj.points:
-        points.append(getRelativeCoo(pt))
-    elif(type == 'LINE'):
-      for pt in [obj.start,obj.end]:
-        points.append(getRelativeCoo(pt))
-    elif(type == 'POINT'):
-      points.append(getRelativeCoo(obj.point))
-
-def getIndexNearestPoint(pt, kPts):
-  return cdist([pt], kPts).argmin()
-
-def getNearestPoint(pt, kPts):
-  return kPts[getIndexNearestPoint(pt, kPts)]
-
-#Get k-points.
-threshold= 0.01
-kPoints= [points[0]]
-for p in points:
-  nearestPoint= getNearestPoint(p,kPoints)
-  dist= cdist([p],[nearestPoint])[0][0]
-  if(dist>threshold):
-    kPoints.append(p)
-
-print 'points= ', len(points)
-print 'kPoints= ', len(kPoints)
-
-#Get points
-points= {}
-for obj in dxf.entities:
-  type= obj.dxftype
-  layerName= obj.layer
-  if(layerToImport(layerName)):
-    if(type == 'POINT'):
-      vertices= [-1]
-      p= getRelativeCoo(obj.point)
-      vertices[0]= getIndexNearestPoint(p,kPoints)
-      points[obj.handle]= (layerName, vertices)
-
-print 'points= ', len(points)
-
-
-#Get lines
-lines= {}
-polylines= {}
-for obj in dxf.entities:
-  type= obj.dxftype
-  lineName= obj.layer
-  if(layerToImport(lineName)):
-    if(type == 'LINE'):
-      vertices= [-1,-1]
-      p1= getRelativeCoo(obj.start)
-      p2= getRelativeCoo(obj.end)
-      length= cdist([p1],[p2])[0][0]
-      vertices[0]= getIndexNearestPoint(p1,kPoints)
-      vertices[1]= getIndexNearestPoint(p2,kPoints)
-      if(vertices[0]==vertices[1]):
-        print 'Error in line ', lineName, ' vertices are equal: ', vertices
-      if(length>threshold):
-        lines[lineName]= vertices
-      else:
-        print 'line too short: ', p1, p2, length
-    elif(type == 'POLYLINE'):
-      vertices= set()
-      for p in obj.points:
-        rCoo= getRelativeCoo(p)
-        vertices.add(getIndexNearestPoint(rCoo,kPoints))
-        polylines[lineName]= vertices
-
-print 'lines= ', len(lines)
-print 'polylines= ', len(polylines)
-
+print dxfImport.layersToImport
+'''
+print 'kPoints= ', len(dxfImport.kPoints)
+print 'points= ', len(dxfImport.points)
+print 'lines= ', len(dxfImport.lines)
+print 'polylines= ', len(dxfImport.polylines)
 #Get faces
-facesByLayer= {}
-for name in layerNames:
-  facesByLayer[name]= dict()
-
-labelDict= {}
-for obj in dxf.entities:
-  type= obj.dxftype
-  layerName= obj.layer
-  if(layerToImport(layerName)):
-    facesDict= facesByLayer[layerName]
-    if(type == '3DFACE'):
-      vertices= []
-      for pt in obj.points:
-        p= getRelativeCoo(pt)
-        idx= getIndexNearestPoint(p,kPoints)
-        vertices.append(idx)
-      #print layerName, obj.handle
-      labelDict[obj.handle]= [layerName]
-      facesDict[obj.handle]= vertices
-
-for name in layerNames:
+for name in dxfImport.layersToImport:
   print name
-  print facesByLayer[name]
+  print dxfImport.facesByLayer[name]
+'''
 
 #Orientation
-supportOrientationVector= np.array([0,0,1])
-for key in lines:
-  vertices= lines[key]
-  v= np.array(kPoints[vertices[1]])-np.array(kPoints[vertices[0]])
-  dotProd= np.dot(v,supportOrientationVector)
-  if(dotProd<0):
-    lines[key]= list(reversed(vertices))
-  #print key, vertices, v, dotProd
+# supportOrientationVector= np.array([0,0,1])
+# for key in dxfImport.lines:
+#   vertices= dxfImport.lines[key]
+#   v= np.array(kPoints[vertices[1]])-np.array(kPoints[vertices[0]])
+#   dotProd= np.dot(v,supportOrientationVector)
+#   if(dotProd<0):
+#     lines[key]= list(reversed(vertices))
+#   #print key, vertices, v, dotProd
 
 def getAverageOrientationFaces(faces):
   retval= [[0.0,0.0,0.0],[0.0,0.0,0.0]]
@@ -161,6 +57,7 @@ def getAngle(sampleVector, v1):
   
 def checkFacesOrientation(faces,sampleVectors):
   retval= {}
+  kPoints= dxfImport.kPoints
   for key in faces:
     vertices= faces[key]
     #orientation of local Z vector.
@@ -188,7 +85,7 @@ def checkFacesOrientation(faces,sampleVectors):
     v1= np.array(kPoints[retval[key][1]])-np.array(kPoints[retval[key][0]])
     angle= getAngle(sampleVectors[0],v1)
     if(abs(angle)>(math.pi/4.0)):
-      lmsg.error('angle: '+ str(math.degrees(angle)) + ' greater than 45 degrees after three girations.')
+      lmsg.warning('angle: '+ str(math.degrees(angle)) + ' greater than 45 degrees after three rotations.')
   return retval
 
 def printFaces(faces):
@@ -199,8 +96,8 @@ def printFaces(faces):
     v= np.cross(v1,v2)
     print key, vertices, v
 
-for name in layerNames:
-  faceGroup= facesByLayer[name]
+for name in dxfImport.layersToImport:
+  faceGroup= dxfImport.facesByLayer[name]
   deckOrientationVectors= [np.array([1,0,0]),np.array([0,1,0])]
   if(re.match("floor.*",name) or re.match("roof.*",name)):
     deckOrientationVectors= [np.array([1,0,0]),np.array([0,0,1])]
@@ -208,39 +105,18 @@ for name in layerNames:
     deckOrientationVectors= [np.array([0,0,1]),np.array([1,0,0])]
   elif(re.match("side.*",name) or re.match("middle.*",name)):
     deckOrientationVectors= [np.array([0,0,1]),np.array([0,1,0])]
-  facesByLayer[name]= checkFacesOrientation(faceGroup,deckOrientationVectors)
+  dxfImport.facesByLayer[name]= checkFacesOrientation(faceGroup,deckOrientationVectors)
 
 
 
 
 #Block topology
-blocks= bte.BlockData()
-blocks.name= 'Tour_rampes'
-
-counter= 0
-for p in kPoints:
-  blocks.appendPoint(id= counter,x= p[0],y= p[1],z= p[2])
-  counter+= 1
-
-counter= 0
-for key in lines:
-  line= lines[key]
-  block= bte.BlockRecord(counter,'line',line,[key])
-  blocks.appendBlock(block)
-  counter+= 1
-
-for name in layerNames:
-  fg= facesByLayer[name]
-  for key in fg:
-    face= fg[key]
-    block= bte.BlockRecord(counter,'face',face,labelDict[key])
-    blocks.appendBlock(block)
-    counter+= 1
+blocks= dxfImport.exportBlockTopology('Tour_ramps')
 
 fileName= 'xc_model_blocks'
 ieData= nmd.XCImportExportData()
 ieData.outputFileName= fileName
-ieData.problemName= 'gilamontDock'
+ieData.problemName= 'tourRamps'
 ieData.blockData= blocks
 
 ieData.writeToXCFile()
