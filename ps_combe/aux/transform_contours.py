@@ -16,15 +16,15 @@ t5= getType5BeamPoints(0.0)
 
 t6= getType6BeamPoints(0.0)
 
-txt4= 'polT4= geom.Poligono2d('
+txt4= 'polT4= geom.Polygon2d('
 for p in t4:
   txt4+= 'geom.Pos2d('+str(p[0]/100.0)+','+str(p[1]/100.0)+'), '
 
-txt5= 'polT5= geom.Poligono2d(['
+txt5= 'polT5= geom.Polygon2d(['
 for p in t5:
   txt5+= 'geom.Pos2d('+str(p[0]/100.0)+','+str(p[1]/100.0)+'), '
 
-txt6= 'polT6= geom.Poligono2d(['
+txt6= 'polT6= geom.Polygon2d(['
 for p in t6:
   txt6+= 'geom.Pos2d('+str(p[0]/100.0)+','+str(p[1]/100.0)+'), '
 

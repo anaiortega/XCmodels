@@ -306,7 +306,7 @@ def createLaneRegionsPolygons():
             pGlobal= s.getPosGlobal(p)
             lines[index].agregaVertice(pGlobal)
             index+= 1
-    polygons= [geom.Poligono2d(),geom.Poligono2d(),geom.Poligono2d()]
+    polygons= [geom.Polygon2d(),geom.Polygon2d(),geom.Polygon2d()]
     sz= len(stations)
     for i in range(0,sz):
         for j in [0,1,2]:

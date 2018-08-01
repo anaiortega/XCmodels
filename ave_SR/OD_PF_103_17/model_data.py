@@ -452,7 +452,7 @@ def mueveX(x,y):
     return retval
 
 def polygon(xCent,yCent,Lx,Ly):
-    pol=geom.Poligono2d()
+    pol=geom.Polygon2d()
     ymin=yCent-Ly/2.0
     ymax=yCent+Ly/2.0
     pol.agregaVertice(geom.Pos2d(mueveX(xCent-Lx/2.0,ymin),ymin))

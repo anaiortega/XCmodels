@@ -352,14 +352,14 @@ deadLoadBarr=loads.UniformLoadOnLines(name='deadLoadKerb',xcSet=barrs,loadVector
 
 # *Traffic loads
 # Sets definition
-poly_lane_Bern=geom.Poligono2d()
+poly_lane_Bern=geom.Polygon2d()
 poly_lane_Bern.agregaVertice(geom.Pos2d(xList_deck[1],0))
 poly_lane_Bern.agregaVertice(geom.Pos2d(xList_deck[1],yList_deck[lastYpos]))
 poly_lane_Bern.agregaVertice(geom.Pos2d(xList_deck[1]+3,yList_deck[lastYpos]))
 poly_lane_Bern.agregaVertice(geom.Pos2d(xList_deck[1]+3,0))
 lane_Bern=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=deck,prismBase=poly_lane_Bern,prismAxis='Z',setName='lane_Bern')
 
-poly_lane_Lausanne=geom.Poligono2d()
+poly_lane_Lausanne=geom.Polygon2d()
 poly_lane_Lausanne.agregaVertice(geom.Pos2d(xList_deck[1]+3,0))
 poly_lane_Lausanne.agregaVertice(geom.Pos2d(xList_deck[1]+3,yList_deck[lastYpos]))
 poly_lane_Lausanne.agregaVertice(geom.Pos2d(xList_deck[2],yList_deck[lastYpos]))
@@ -371,14 +371,14 @@ rest_A.name='rest_A'
 rest_B=lane_Lausanne+sideway
 rest_B.name='rest_B'
 
-poly_lane1_Acc=geom.Poligono2d()
+poly_lane1_Acc=geom.Polygon2d()
 poly_lane1_Acc.agregaVertice(geom.Pos2d(xList_deck[lastXpos]-3,0))
 poly_lane1_Acc.agregaVertice(geom.Pos2d(xList_deck[lastXpos]-3,yList_deck[lastYpos]))
 poly_lane1_Acc.agregaVertice(geom.Pos2d(xList_deck[lastXpos],yList_deck[lastYpos]))
 poly_lane1_Acc.agregaVertice(geom.Pos2d(xList_deck[lastXpos],0))
 lane1_Acc=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=deck,prismBase=poly_lane1_Acc,prismAxis='Z',setName='lane1_Acc')
 
-poly_rest_Acc=geom.Poligono2d()
+poly_rest_Acc=geom.Polygon2d()
 poly_rest_Acc.agregaVertice(geom.Pos2d(xList_deck[1],0))
 poly_rest_Acc.agregaVertice(geom.Pos2d(xList_deck[1],yList_deck[lastYpos]))
 poly_rest_Acc.agregaVertice(geom.Pos2d(xList_deck[lastXpos]-3,yList_deck[lastYpos]))

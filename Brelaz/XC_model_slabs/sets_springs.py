@@ -1,5 +1,5 @@
 
-short_wall=  geom.Poligono2d() # Contour of the short bearing wall
+short_wall=  geom.Polygon2d() # Contour of the short bearing wall
 short_wall.agregaVertice(geom.Pos2d(0.00470630638301,4.66260480881))
 short_wall.agregaVertice(geom.Pos2d(0.637861073017,7.10972166061))
 short_wall.agregaVertice(geom.Pos2d(1.02176041097,10.6289414802))
@@ -17,7 +17,7 @@ short_wall.agregaVertice(geom.Pos2d(0.327295213938,7.2866101265))
 short_wall.agregaVertice(geom.Pos2d(0.169979244471,6.59615755081))
 short_wall.agregaVertice(geom.Pos2d(-0.00809708889574,6.39837121964))
 
-long_wall=geom.Poligono2d() # Contour of the long bearing wall
+long_wall=geom.Polygon2d() # Contour of the long bearing wall
 long_wall.agregaVertice(geom.Pos2d(8.114361763,-1.73313308149e-09))
 long_wall.agregaVertice(geom.Pos2d(6.76596832275,2.02290296555))
 long_wall.agregaVertice(geom.Pos2d(5.7817697525,4.37147188187))
@@ -46,7 +46,7 @@ long_wall.agregaVertice(geom.Pos2d(7.46937465668,1.87837505341))
 long_wall.agregaVertice(geom.Pos2d(8.39999961853,0.426232159138))
 long_wall.agregaVertice(geom.Pos2d(8.39999961853,-1.73313308149e-09))
 
-inside_area=geom.Poligono2d() 
+inside_area=geom.Polygon2d() 
 inside_area.agregaVertice(geom.Pos2d(-3.80714126891e-09,4.59544086456))
 inside_area.agregaVertice(geom.Pos2d(0.677704155445,6.9423160553))
 inside_area.agregaVertice(geom.Pos2d(1.0814306736,10.5950431824))

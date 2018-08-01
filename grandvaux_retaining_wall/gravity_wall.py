@@ -50,7 +50,7 @@ for i in range(0,11):
 
 totalEarthPressure= scipy.integrate.simps(earth_pressure,x)
 
-earthPressurePolygon=geom.Poligono2d()
+earthPressurePolygon=geom.Polygon2d()
 
 for cx,cy in zip(x,earth_pressure):
   earthPressurePolygon.agregaVertice(geom.Pos2d(cx,cy))
@@ -65,7 +65,7 @@ print 'earthPressureSVD: ', earthPressureSVD
 
 # Gravity wall.
 foundationCenter= geom.Pos2d(B/2.0,0.0)
-gravityWallPolygon= geom.Poligono2d()
+gravityWallPolygon= geom.Polygon2d()
 gravityWallPolygon.agregaVertice(geom.Pos2d(0.0,0.0))
 gravityWallPolygon.agregaVertice(geom.Pos2d(B,0.0))
 gravityWallPolygon.agregaVertice(geom.Pos2d(B,H))

@@ -374,7 +374,7 @@ Qptren_carr=nQptren_carr*Qptren
 L_Qptren_carr=(nQptren_carr-1)*distEjesTren
 
 def polygon(xCent,yCent,Lx,Ly):
-    pol=geom.Poligono2d()
+    pol=geom.Polygon2d()
     pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
     pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
     pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))

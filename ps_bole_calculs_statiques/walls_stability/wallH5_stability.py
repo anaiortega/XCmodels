@@ -32,7 +32,7 @@ for i in range(0,11):
 
 totalEarthPressure= scipy.integrate.simps(results5_16,x)
 
-earthPressurePolygon=geom.Poligono2d()
+earthPressurePolygon=geom.Polygon2d()
 
 for cx,cy in zip(x,results5_16):
   earthPressurePolygon.agregaVertice(geom.Pos2d(cx,cy))
@@ -51,7 +51,7 @@ print 'B/H= 0.1', results5_16
 
 # Spandrel wall.
 foundationCenter= geom.Pos2d(foundationWidth/2.0,0.0)
-spandrelWallPolygon= geom.Poligono2d()
+spandrelWallPolygon= geom.Polygon2d()
 spandrelWallPolygon.agregaVertice(geom.Pos2d(0.0,0.0))
 spandrelWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,0.0))
 spandrelWallPolygon.agregaVertice(geom.Pos2d(1.05,H))
@@ -64,7 +64,7 @@ spandrelWallWeightSVD= geom.SVD2d(geom.VDesliz2d(spandrelWallPolygonCentroid,geo
 print 'spandrelWallWeightSVD: ', spandrelWallWeightSVD
 
 # backfill weight over the wall.
-backfillOverWallPolygon= geom.Poligono2d()
+backfillOverWallPolygon= geom.Polygon2d()
 backfillOverWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,0.0))
 backfillOverWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,H))
 backfillOverWallPolygon.agregaVertice(geom.Pos2d(1.05,H))
