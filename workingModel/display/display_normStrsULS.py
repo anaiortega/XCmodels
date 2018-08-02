@@ -10,17 +10,19 @@ execfile("../model_gen.py")
 #Load properties to display:
 execfile(cfg.verifNormStrFile)
 
-limitStateLabel= lsd.normalStressesResistance.label
 
-#Possible arguments: 'CF', 'N', 'My','Mz'
-argument= 'CF'
+#  Config
+argument= 'CF' #Possible arguments: 'CF', 'N', 'My','Mz'
+fUnitConv=1.0  #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
+setDisp= foot  #Set of shell elements to be displayed
+viewName='XYZPos'    #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
+                     #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
+rgMinMax=(0,1.0)     #truncate values to be included in the range
+                     #(if None -> don't truncate)
+#  End config 
 
-# if("FCCP" in attributeName):
-#   extrapolate_elem_attr.flatten_attribute(xcSet.getElements,attributeName,1,2)
 
-#Set of shell elements to display
-setDisp= found
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,cfg.capTexts,defFScale=0.0,rgMinMax=(0,1))
+dls.displayFieldDirs1and2(limitStateLabel=lsd.normalStressesResistance.label,argument=argument,elementSet=setDisp,component=None,fUnitConv=fUnitConv,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0,viewName=viewName,rgMinMax=rgMinMax)
 
 
 

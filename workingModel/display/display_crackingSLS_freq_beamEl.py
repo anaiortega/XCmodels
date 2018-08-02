@@ -6,32 +6,27 @@ from postprocess.xcVtk import control_var_diagram as cvd
 
 execfile("../model_gen.py") #FE model generation
 
-
-setDispRes=beamX   #set of linear elements to which display results 
-setDisp=beamX    #set of elements (any type) to be displayed
-
-#Available arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
-argument= 'N'
-
-
 #Load properties to display:
 execfile(cfg.verifCrackFreqFile)
 
-limitStateLabel= lsd.freqLoadsCrackControl.label
+#  Config
+argument= 'wk'      #Available arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
+setsDispRes=[beamX]  #list of linear elements sets for which to display results 
+setDisp=overallSet   #set of elements (any type) to be displayed
+scaleFactor=1e2        #scale factor for the diagram (can be negative)
+fUnitConv=1e3          #unit conversion factor (i.e m->mm => fUnitConv= 1e3)
+viewName='XYZPos'    #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
+                     #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
+#  End config 
 
-diagram= cvd.ControlVarDiagram(scaleFactor= 1,fUnitConv= 1e-3,sets=[setDispRes],attributeName= limitStateLabel,component= argument)
+
+diagram= cvd.ControlVarDiagram(scaleFactor=scaleFactor,fUnitConv=fUnitConv,sets=setsDispRes,attributeName=lsd.freqLoadsCrackControl.label,component=argument)
 diagram.addDiagram()
-
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
- #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
- #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
-#defDisplay.viewName= "YPos" #Point of view.
 defDisplay.setupGrid(setDisp)
 defDisplay.defineMeshScene(None,defFScale=0.0)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.
-
-caption= cfg.capTexts[limitStateLabel] + ', ' + cfg.capTexts[argument] + '. '+ setDispRes.description.capitalize() 
-caption= cfg.capTexts[limitStateLabel] + ', ' + cfg.capTexts[argument] + '. '+ setDispRes.description.capitalize() + ', ' + 'Dir. 1'
+caption= cfg.capTexts[lsd.freqLoadsCrackControl.label] + ', ' + cfg.capTexts[argument] + '. '+ setsDispRes[0].description.capitalize() + ', ' 
 defDisplay.displayScene(caption)
 
 

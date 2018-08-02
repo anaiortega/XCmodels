@@ -7,7 +7,6 @@ execfile("../model_gen.py") #FE model generation
 
 #Set of entities for which checking is going to be performed.
 setCalc= overallSet
-setCalc=allShells
 
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 
