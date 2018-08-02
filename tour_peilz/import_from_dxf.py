@@ -13,7 +13,8 @@ layerNamesToImport= ['floor.*','bulkhead.*','roof.*','parapet.*','middle.*','sid
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo)
+dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
+#dxfImport= DxfReader.DXFImport("rr.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
 
 print dxfImport.layersToImport
 '''
