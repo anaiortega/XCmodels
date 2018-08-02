@@ -14,7 +14,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.normalStressesResistance.label
 lsd.normalStressesResistance.controller= lscheck.BiaxialBendingNormalStressController(limitStateLabel)
-meanFCs= lsd.normalStressesResistance.check(reinfConcreteSections,setCalc=wall)
+meanFCs= lsd.normalStressesResistance.check(reinfConcreteSections,setCalc=overallSet)
 
 
 
