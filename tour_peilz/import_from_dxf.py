@@ -8,12 +8,12 @@ from miscUtils import LogMessages as lmsg
 from import_export import DxfReader
 import re
 
-layerNamesToImport= ['floor.*','bulkhead.*','roof.*','parapet.*','middle.*','side.*']
+layerNamesToImport= ['floor.*','middle.*','bulkhead.*','roof.*','parapet.*','side.*']
 
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
+dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False)
 #dxfImport= DxfReader.DXFImport("rr.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
 
 print dxfImport.layersToImport

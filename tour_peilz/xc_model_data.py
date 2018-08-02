@@ -11,6 +11,7 @@ from materials.sia262 import SIA262_materials
 from materials.sections import section_properties
 
 from model.boundary_cond import spring_bound_cond as sprbc
+from model.sets import sets_mng as sets
 
 #Parts definition
 import re
@@ -137,13 +138,30 @@ for key in layerSets:
         seedElemHandler.defaultMaterial= s.getProp('material').name
         s.genMesh(xc.meshDir.I)
 
+shell_elements= preprocessor.getSets.defSet('shell_elements')
+for key in layerSets:
+    layerSet= layerSets[key]
+    for s in layerSet.getSurfaces:
+        for e in s.getElements():
+            shell_elements.getElements.append(e)
+shell_elements.fillDownwards()
+        
 print 'number of nodes= ', len(xcTotalSet.getNodes)
 
 # *** Constraints ***
 wModulus= 3e7 #[N/m3]
 
+floor_elements= preprocessor.getSets.defSet('floor_elements')
+for s in floor_set.getSurfaces:
+    for e in s.getElements():
+        floor_elements.getElements.append(e)
+floor_elements.fillDownwards()
+
 foundation= sprbc.ElasticFoundation(wModulus=wModulus,cRoz=0.002)
-foundation.generateSprings(xcSet=floor_set)
+foundation.generateSprings(xcSet=floor_elements)
+
+
+print 'number of nodes= ', len(xcTotalSet.getNodes)
 
 # *** Loads ***
 loadManager= preprocessor.getLoadHandler
@@ -165,3 +183,33 @@ for key in layerSets:
         weight= s.getProp('selfWeight')
         for e in s.getElements():
             e.vector3dUniformLoadGlobal(weight)
+
+#Dead load: pavement.
+cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
+deadLoadVector=xc.Vector([0.0,0.0,-0.11*24e3]) #Pavement load.
+for s in floor_set.getSurfaces:
+    for e in s.getElements():
+        e.vector3dUniformLoadGlobal(deadLoadVector)
+for s in roof_set.getSurfaces:
+    for e in s.getElements():
+        e.vector3dUniformLoadGlobal(deadLoadVector)
+
+#Dead load:
+
+
+#Live load: passenger shelter load perimeter.
+cLC= loadCaseManager.setCurrentLoadCase('liveLoadA')
+passengerShelterCorners= [geom.Pos3d(46.5900,11.6750,10.2360),geom.Pos3d(46.5900, 9.3250, 10.2360), geom.Pos3d(41.8400, 9.3250, 10.2360), geom.Pos3d(41.8400, 11.6750, 10.2360)]
+
+roof_elements= preprocessor.getSets.defSet('roof_elements')
+for s in roof_set.getSurfaces:
+    for e in s.getElements():
+        roof_elements.getElements.append(e)
+
+poly_shelter_load_perimeter=geom.Polygon2d()
+for p in passengerShelterCorners:
+    poly_shelter_load_perimeter.agregaVertice(geom.Pos2d(p.x,p.y))
+shelter_elements= sets.set_included_in_orthoPrism(preprocessor,setInit=roof_elements,prismBase= poly_shelter_load_perimeter,prismAxis='Z',setName='shelter_elements')
+for e in shelter_elements.getElements:
+    e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,5.0e3])) #SIA 261:2014 table 8
+
