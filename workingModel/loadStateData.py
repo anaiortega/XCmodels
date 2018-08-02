@@ -244,7 +244,7 @@ Q9.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q9.setsToDispBeamLoads=[overallSet]
 Q9.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q9.viewName="XYZPos"
-Q9.vectorScalePointLoads=0.05
+Q9.vectorScalePointLoads=0.35
 
 Q10=graphical_reports.RecordLoadCaseDisp(loadCaseName='QwheelDeck1',loadCaseDescr='Q10: load of a wheel over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q10.unitsScaleLoads=1e-3
@@ -262,7 +262,7 @@ Q10.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q10.viewName="XYZPos"
 Q10.vectorScalePointLoads=0.05
 
-Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q11.unitsScaleLoads=1e-3
 Q11.vectorScaleLoads=0.005
 Q11.unitsScaleDispl=1e3

@@ -145,30 +145,11 @@ sympy-plots-for-*.tex/
 #text files
 *.txt
 
+#directories
+**/annex
+**/results
+
 #specific files
-section_report/B500S_design_stress_strain_diagram.eps
-section_report/diagNMy.eps
-section_report/diagNMy.jpeg
-section_report/diagNMz.eps
-section_report/diagNMz.jpeg
-underpassCrissier/annex/sectionsReport/*.eps
-underpassCrissier/annex/sectionsReport/*.tex
-underpassCrissier/annex/sectionsReport/*.jpeg
-underpassCrissier/annex/*.tex
-underpassCrissier/annex/*.eps
-underpassCrissier/annex/*.jpg
-underpassCrissier/annex/*.pdf
-underpassCrissier/annex/*.jpeg
-underpassCrissier/annex/graphiques/*.jpeg
-underpassCrissier/annex/graphiques/*.eps
-underpassCrissier/annex/tex/*.tex
-underpassCrissier/results/internalForces/*.csv
-underpassCrissier/results/verifications/*.tex
-underpassCrissier/results/verifications/*.py
-underpassCrissier/results/verifications/old
-steel_beams/figures/*.eps
-steel_beams/figures/*.jpeg
-workingModel/results/verifications/*.tex
-workingModel/results/verifications/*.py
+
 
 

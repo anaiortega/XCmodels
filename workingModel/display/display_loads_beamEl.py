@@ -9,7 +9,8 @@ execfile('../loadStateData.py')
 #                      'transZComponent'
 
 loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7,Q9]
-loadCasesToDisplay=[LS1,LS2]
+#loadCasesToDisplay=[LS1,LS2]
+loadCasesToDisplay=[Q9]
 #End data
 
 for lc in loadCasesToDisplay:

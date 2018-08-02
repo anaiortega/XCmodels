@@ -9,13 +9,18 @@ execfile("../model_gen.py")
 #Load properties to display:
 execfile(cfg.verifCrackFreqFile)
 
-limitStateLabel= lsd.freqLoadsCrackControl.label
-#Possible arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
-argument= 'wk'
 
-setDisp= allShells
+#  Config
+argument= 'wk'    #Possible arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
+fUnitConv=1e3     #unit conversion factor (i.e m->mm => fUnitConv= 1e3)
+setDisp= wall     #Set of shell elements to be displayed
+viewName='XYZPos' #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
+                  #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
+rgMinMax=(0,0.3)  #truncate values to be included in the range
+                  #(if None -> don't truncate)
+#  End config 
 
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,component=None,fUnitConv=1e3,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0)
+dls.displayFieldDirs1and2(limitStateLabel=lsd.freqLoadsCrackControl.label,argument=argument,elementSet=setDisp,component=None,fUnitConv=fUnitConv,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0,viewName=viewName,rgMinMax=rgMinMax) 
 
 
 

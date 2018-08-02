@@ -9,33 +9,24 @@ execfile("../model_gen.py") #FE model generation
 #Load properties to display:
 execfile(cfg.verifShearFile)
 
+#  Config
+argument= 'CF'      #Available arguments: 'CF', 'N', 'My', 'Mz', 'Mu',
+                     #'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'CF'
+setsDispRes=[beamY]   #list of linear elements sets for which
+                                    #to display results 
+setDisp=overallSet   #set of elements (any type) to be displayed
+scaleFactor=1     #scale factor for the diagram (can be negative)
+fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
+viewName='XYZPos'    #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
+                     #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
+#  End config 
 
-
-limitStateLabel= lsd.shearResistance.label
-
-
-#Available arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'CF'
-argument= 'Vcu'
-
-setDispRes=beamX   #set of linear elements to which display results 
-
-#setDisp=overallSet    #set of elements (any type) to be displayed
-setDisp=beamX
-
-diagram= cvd.ControlVarDiagram(scaleFactor= 1,fUnitConv= 1,sets=[setDispRes],attributeName= limitStateLabel,component= argument)
+diagram= cvd.ControlVarDiagram(scaleFactor=scaleFactor,fUnitConv=fUnitConv,sets=setsDispRes,attributeName=lsd.shearResistance.label,component=argument)
 diagram.addDiagram()
-
-
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
- #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
- #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
-defDisplay.viewName= "YPos" #Point of view.
+defDisplay.viewName=viewName
 defDisplay.setupGrid(setDisp)
 defDisplay.defineMeshScene(None,defFScale=0.0)
-defDisplay.appendDiagram(diagram) #Append diagram to the scene.
-
-caption= cfg.capTexts[limitStateLabel] + ', ' + cfg.capTexts[argument] + '. '+ setDispRes.description.capitalize() + ', ' + 'Dir. 1'
+defDisplay.appendDiagram(diagram)
+caption= cfg.capTexts[lsd.shearResistance.label] + ', ' + cfg.capTexts[argument] + '. '+ setsDispRes[0].description.capitalize() 
 defDisplay.displayScene(caption)
-
-
-

@@ -16,6 +16,6 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 setsTodisp=[decklv1,decklv2,foot,wall,columnZ,beamY,beamX]
-setsTodisp=[allShellsRes]
+#setsTodisp=[allShellsRes]
 #setsTodisp=[decklv1,decklv2]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.020,scaleConstr=0.30)

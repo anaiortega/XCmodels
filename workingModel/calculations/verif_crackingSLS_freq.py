@@ -3,7 +3,7 @@ from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking as lschck  #Checking material for cracking limit state according to SIA262
 
-execfile('../env_config.py')
+execfile("../model_gen.py") #FE model generation
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

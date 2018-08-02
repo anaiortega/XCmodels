@@ -29,12 +29,12 @@ LbeamX=5
 LbeamY=6
 LcolumnZ=6
 Wfoot=2.0
-hbeamX=0.25
+hbeamX=0.5
 hbeamY=0.3
-hcolumnZ=0.25
-wbeamX=0.5
+hcolumnZ=0.40
+wbeamX=0.35
 wbeamY=0.5
-wcolumnZ=0.25
+wcolumnZ=0.40
 deckTh=0.20
 wallTh=0.5
 footTh=0.7
@@ -45,7 +45,7 @@ qdeck2=2e3   #N/m2
 Qbeam=3e3  #N/m
 qunifBeam=5e3
 qLinDeck2=30 #N/m
-Qwheel=2e3  #N
+Qwheel=5e3  #N
 firad=math.radians(31)  #internal friction angle (radians)                   
 KearthPress=(1-math.sin(firad))/(1+math.sin(firad))     #Active coefficient of p
 densSoil=800       #mass density of the soil (kg/m3)
@@ -298,7 +298,7 @@ unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv2,l
 #     if EarthPressureModel==None no earth thrust is considered
 #     vDir: unit xc vector defining pressures direction
 
-soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=0, gammaWater=densWater*grav)
+soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos]-3, gammaSoil=densSoil*grav, zWater=0, gammaWater=densWater*grav)
 earthPressLoadWall= loads.EarthPressLoad(name= 'earthPressLoadWall', xcSet=wall,soilData=soil01, vDir=xc.Vector([0,1,0]))
 
 earthPressLoadColumn= loads.EarthPressLoad(name= 'earthPressLoadColumn', xcSet=columnZ,soilData=soil01, vDir=xc.Vector([0,1,0]))
@@ -444,11 +444,11 @@ QvehicleDeck1.addLstLoads([vehicleDeck1])
 
 LS1=lcases.LoadCase(preprocessor=prep,name="LS1",loadPType="default",timeSType="constant_ts")
 LS1.create()
-LS1.addLstLoads([selfWeight,unifLoadDeck1,unifLoadDeck2,earthPressLoadWall,earthPressLoadColumn,earthPColumnStrL,earthPColumnLinL,wheelDeck1])
+LS1.addLstLoads([selfWeight,unifLoadDeck1,unifLoadDeck2,earthPressLoadWall,earthPressLoadColumn,earthPColumnStrL,earthPColumnLinL])
 
 LS2=lcases.LoadCase(preprocessor=prep,name="LS2",loadPType="default",timeSType="constant_ts")
 LS2.create()
-LS2.addLstLoads([selfWeight,earthPColumnHrzL,unifLoadBeamsY,QpuntBeams,unifLoadLinDeck2,vehicleDeck1])
+LS2.addLstLoads([selfWeight,earthPColumnHrzL,unifLoadBeamsY,QpuntBeams,unifLoadLinDeck2,wheelDeck1])
     
 #    ***LIMIT STATE COMBINATIONS***
 combContainer= cc.CombContainer()  #Container of load combinations
