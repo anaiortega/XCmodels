@@ -24,7 +24,7 @@ argument= 'CF'
 
 setDisp= allShells
 #setDisp=decks
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,cfg.capTexts,defFScale=0.0)
+dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,cfg.capTexts,defFScale=0.0,rgMinMax=(0,1))
 
 
 

@@ -15,11 +15,11 @@ limitStateLabel= lsd.normalStressesResistance.label
 #Possible arguments: 'CF', 'N', 'My', 'Mz'
 argument= 'CF'
 
-setDispRes=beamX   #set of linear elements to which display results 
+setsDispRes=[beamX]   #set of linear elements to which display results 
 setDisp=overallSet   #set of elements (any type) to be displayed
 
 
-diagram= cvd.ControlVarDiagram(scaleFactor= 1,fUnitConv= 1000,sets=[beamX],attributeName= limitStateLabel,component= argument)
+diagram= cvd.ControlVarDiagram(scaleFactor= 1,fUnitConv= 1000,sets=setsDispRes,attributeName= limitStateLabel,component= argument)
 diagram.addDiagram()
 
 

@@ -15,7 +15,7 @@ argument= 'wk'
 
 setDisp= allShells
 
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,component=None,fUnitConv=1e3,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0)
+dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,component=None,fUnitConv=1e3,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0,rgMinMax=(0,0.3))
 
 
 

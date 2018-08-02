@@ -14,9 +14,9 @@ from materials.sections.fiber_section import defSimpleRCSection as rcs
 
 deckRCSects= rcs.RecordRCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh,elemSetName=decks.name)  
 deckRCSects.dir1PositvRebarRows=[rcs.rebLayer(12,150,35)]
-deckRCSects.dir1NegatvRebarRows=[rcs.rebLayer(12,150,35)]
-deckRCSects.dir2PositvRebarRows=[rcs.rebLayer(16,150,35)]
-deckRCSects.dir2NegatvRebarRows=[rcs.rebLayer(16,150,35)]
+deckRCSects.dir1NegatvRebarRows=[rcs.rebLayer(12,200,35)]
+deckRCSects.dir2PositvRebarRows=[rcs.rebLayer(16,250,35)]
+deckRCSects.dir2NegatvRebarRows=[rcs.rebLayer(16,100,35)]
 import math
 areaFi8=math.pi*0.008**2/4.
 shear1=rcs.RecordShearReinforcement(familyName= "shear1",nShReinfBranches= 1.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.radians(30))
