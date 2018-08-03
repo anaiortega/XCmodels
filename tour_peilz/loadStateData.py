@@ -99,3 +99,39 @@ G3.unitsScaleDispl= 1e3
 G3.vectorScaleLoads= 0.05
 #G3.viewName= "-X+Y+Z"
 G3.unitsDispl='[mm]'
+
+Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='liveLoadA',loadCaseDescr='Q1: live load A',loadCaseExpr='1.0*liveLoadA',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q1.unitsScaleLoads= 1e-3
+Q1.unitsScaleForc= 1e-3
+Q1.unitsScaleMom= 1e-3
+Q1.unitsScaleDispl= 1e3
+Q1.vectorScaleLoads= 0.2
+#Q1.viewName= "-X+Y+Z"
+Q1.unitsDispl='[mm]'
+
+Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='liveLoadB',loadCaseDescr='Q2: live load B',loadCaseExpr='1.0*liveLoadB',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q2.unitsScaleLoads= 1e-3
+Q2.unitsScaleForc= 1e-3
+Q2.unitsScaleMom= 1e-3
+Q2.unitsScaleDispl= 1e3
+Q2.vectorScaleLoads= 0.05
+#Q2.viewName= "-X+Y+Z"
+Q2.unitsDispl='[mm]'
+
+Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='railLoad',loadCaseDescr='Q3: earth pressure from rail load',loadCaseExpr='1.0*railLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q3.unitsScaleLoads= 1e-3
+Q3.unitsScaleForc= 1e-3
+Q3.unitsScaleMom= 1e-3
+Q3.unitsScaleDispl= 1e3
+Q3.vectorScaleLoads= 0.3
+Q3.viewName= "-X-Y+Z"
+Q3.unitsDispl='[mm]'
+
+Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='nosingLoad',loadCaseDescr='Q4: earth pressure from nosing load',loadCaseExpr='1.0*nosingLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q4.unitsScaleLoads= 1e-3
+Q4.unitsScaleForc= 1e-3
+Q4.unitsScaleMom= 1e-3
+Q4.unitsScaleDispl= 1e3
+Q4.vectorScaleLoads= 1
+Q4.viewName= "-X-Y+Z"
+Q4.unitsDispl='[mm]'

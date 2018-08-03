@@ -78,10 +78,16 @@ rhoFloor= hFloor*dens
 shellFloor= typical_materials.defElasticMembranePlateSection(preprocessor,"shellFloor",EcFloor,nu,rhoFloor,hFloor)
 
 floor_set= layerSets['floor_a_middle']+layerSets['floor_a_middle']+layerSets['floor_stairs']+layerSets['floor_middle_b']
+floor_centroids= []
 
 for s in floor_set.getSurfaces:
     s.setProp('material', shellFloor)
     s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor]))
+    plg= s.getPolygon()
+    area= plg.getArea()
+    perimetro= plg.getPerimetro()
+    if (area>2 and (area/perimetro)>0.1):
+        floor_centroids.append(s.getCentroid())
 
 #Sides.
 EcSides= Econcrete # Concrete's Young modulus.
@@ -131,7 +137,6 @@ rhoRoof= hRoof*dens
 shellRoof= typical_materials.defElasticMembranePlateSection(preprocessor,"shellRoof",EcRoof,nu,rhoRoof,hRoof)
 
 roof_set= layerSets['roof_01']
-
 for s in roof_set.getSurfaces:
     s.setProp('material', shellRoof)
     s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoRoof]))
@@ -171,6 +176,12 @@ for s in roof_set.getSurfaces:
     for e in s.getElements():
         roof_elements.getElements.append(e)
 roof_elements.fillDownwards()
+roof_centroids= []
+roof_bnd= roof_elements.getNodes.getBnd(0.0)
+roof_center= roof_bnd.getCenterOfMass()
+roof_centroids.append(roof_center+geom.Vector3d(-0.9,0,0))
+roof_centroids.append(roof_center+geom.Vector3d(+0.9,0,0))
+
 
 sides_elements= preprocessor.getSets.defSet('sides_elements')
 for s in sides_set.getSurfaces:
@@ -185,6 +196,13 @@ for s in bulkheads_set.getSurfaces:
 bulkheads_elements.fillDownwards()
 
 lateral_elements= sides_elements+bulkheads_elements
+
+side_a_set= layerSets['side_a']
+side_a_elements= preprocessor.getSets.defSet('side_a_elements')
+for s in side_a_set.getSurfaces:
+    for e in s.getElements():
+        side_a_elements.getElements.append(e)
+side_a_elements.fillDownwards()
 
 # *** Constraints ***
 foundation= sprbc.ElasticFoundation(wModulus=kS,cRoz=0.002)
@@ -202,7 +220,7 @@ loadCases.currentTimeSeries= "ts"
 
 #Load case definition
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'liveLoadA', 'liveLoadB', 'railway','snow','earthquake']
+loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'liveLoadA', 'liveLoadB', 'railLoad', 'nosingLoad','earthquake']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 #Self weight.
@@ -265,14 +283,62 @@ for e in lateral_elements.getElements:
     e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
     
 
-#Live load: passenger shelter load perimeter.
+#Live load.
 cLC= loadCaseManager.setCurrentLoadCase('liveLoadA')
 
+uniformLoad= xc.Vector([0.0,0.0,-5.0e3])
+# poly_shelter_load_perimeter=geom.Polygon2d()
+# for p in passengerShelterCorners:
+#     poly_shelter_load_perimeter.agregaVertice(geom.Pos2d(p.x,p.y))
+# shelter_elements= sets.set_included_in_orthoPrism(preprocessor,setInit=roof_elements,prismBase= poly_shelter_load_perimeter,prismAxis='Z',setName='shelter_elements')
+for e in roof_elements.getElements:
+    e.vector3dUniformLoadGlobal(uniformLoad) #SIA 261:2014 table 8
+for s in floor_set.getSurfaces:
+    for e in s.getElements():
+        e.vector3dUniformLoadGlobal(uniformLoad)
 
-poly_shelter_load_perimeter=geom.Polygon2d()
-for p in passengerShelterCorners:
-    poly_shelter_load_perimeter.agregaVertice(geom.Pos2d(p.x,p.y))
-shelter_elements= sets.set_included_in_orthoPrism(preprocessor,setInit=roof_elements,prismBase= poly_shelter_load_perimeter,prismAxis='Z',setName='shelter_elements')
-for e in shelter_elements.getElements:
-    e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,5.0e3])) #SIA 261:2014 table 8
+cLC= loadCaseManager.setCurrentLoadCase('liveLoadB')
+for p in floor_centroids:
+    n= floor_elements.getNearestNode(p)
+    cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-45e3,0,0,0]))
+for p in roof_centroids:
+    n= roof_elements.getNearestNode(p)
+    cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-45e3,0,0,0]))
 
+railLoad= loadCaseManager.setCurrentLoadCase('railLoad')
+distRailCLWall= 4.5 #Distance from the center line of the rail track to the wall
+railLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 50e3,zLoad= 10.23-0.7, distWall= distRailCLWall, stripWidth= 3.0)
+
+
+for e in side_a_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    localKVector= e.getCoordTransf.getG3Vector
+    pressure= railLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
+    e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
+
+#Nosing load
+railLoad= loadCaseManager.setCurrentLoadCase('nosingLoad')
+fNosingLoad= 100e3
+nosingLoadLength= 3*0.6+(distRailCLWall-1.435/2.0)
+nosingLoadSurface= nosingLoadLength*3.0
+qNosingLoad= fNosingLoad/nosingLoadSurface
+horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(backFillSoilModel.phi,qLoad= qNosingLoad,zLoad= 10.23-0.7, distWall= distRailCLWall, widthLoadArea= 2.0)
+horizontalLoad.setup()
+centerNosingLoad= side_a_elements.getNodes.getCentroid(0.0)
+xMinNosingLoad= centerNosingLoad.x-nosingLoadLength/2.0
+xMaxNosingLoad= centerNosingLoad.x+nosingLoadLength/2.0
+for e in side_a_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    if(elemCentroid.x>xMinNosingLoad and elemCentroid.x<=xMaxNosingLoad):
+        localKVector= e.getCoordTransf.getG3Vector
+        pressure= horizontalLoad.getPressure(elemCentroid.z)
+        e.vector3dUniformLoadGlobal(pressure*localKVector) #SIA 261:2014 table 8
+
+#Accidental actions. Earthquake
+quakeLoad= loadCaseManager.setCurrentLoadCase('earthquake')
+kh=  0.11
+kv=  kh/2.0
+# Aq= wall.getMononobeOkabeDryOverpressure(backFillSoilModel,kv,kh)
+# print 'Aq= ',Aq
+# quakeEarthPressure= earth_pressure.UniformLoadOnStem(Aq)
+# wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backFillDelta)
