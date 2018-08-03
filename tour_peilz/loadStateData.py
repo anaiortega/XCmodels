@@ -73,7 +73,7 @@ Definition of record objects with these attributes:
   hCamFctBeams:  factor that applies to the height of the camera position for
                  beam displays (defaults to 1)
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='selfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='G1',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 G1.unitsScaleLoads= 1e-3
 G1.unitsScaleForc= 1e-3
 G1.unitsScaleMom= 1e-3
