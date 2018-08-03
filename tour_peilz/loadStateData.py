@@ -73,12 +73,12 @@ Definition of record objects with these attributes:
   hCamFctBeams:  factor that applies to the height of the camera position for
                  beam displays (defaults to 1)
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='G1',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='selfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 G1.unitsScaleLoads= 1e-3
 G1.unitsScaleForc= 1e-3
 G1.unitsScaleMom= 1e-3
 G1.unitsScaleDispl= 1e3
-G1.vectorScaleLoads= 1e-3
+G1.vectorScaleLoads= 0.1
 #G1.viewName= "-X+Y+Z"
 G1.unitsDispl='[mm]'
 
@@ -87,6 +87,15 @@ G2.unitsScaleLoads= 1e-3
 G2.unitsScaleForc= 1e-3
 G2.unitsScaleMom= 1e-3
 G2.unitsScaleDispl= 1e3
-G2.vectorScaleLoads= 1e-3
+G2.vectorScaleLoads= 0.25
 #G2.viewName= "-X+Y+Z"
 G2.unitsDispl='[mm]'
+
+G3=graphical_reports.RecordLoadCaseDisp(loadCaseName='earthPressure',loadCaseDescr='G3: earth pressure',loadCaseExpr='1.0*earth_pressure',setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+G3.unitsScaleLoads= 1e-3
+G3.unitsScaleForc= 1e-3
+G3.unitsScaleMom= 1e-3
+G3.unitsScaleDispl= 1e3
+G3.vectorScaleLoads= 0.05
+#G3.viewName= "-X+Y+Z"
+G3.unitsDispl='[mm]'

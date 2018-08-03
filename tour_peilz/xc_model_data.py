@@ -22,6 +22,8 @@ from model import predefined_spaces
 #Loads
 from actions import load_cases as lcm
 from actions import combinations as combs
+from geotechnics import earth_pressure as ep
+from actions.earth_pressure import earth_pressure
 
 #Solution
 from solution import predefined_solutions
@@ -52,7 +54,9 @@ for key in layerSets:
     layerSets[key].fillDownwards()
 
 preprocessor.getMultiBlockTopology.getSurfaces.conciliaNDivs()
-    
+
+gravity=9.81 #Aceleración de la gravedad (m/s2)
+
 # *** Materials *** 
 concrete= SIA262_materials.c30_37
 nu= 0.3 # Poisson coefficient.
@@ -60,6 +64,11 @@ dens= 2500 # Density kg/m3.
 reductionFactor= 1.0 
 #reductionFactor= 7.0 #Reduction factor
 Econcrete= concrete.getEcm()/reductionFactor
+
+#Soil
+kS= 30e6 #Module de réaction du sol (estimé).
+backFillSoilModel= ep.RankineSoil(phi= math.radians(32),rho= 2000) #Characteristic values.
+gSoil= backFillSoilModel.rho*gravity
 
 #Floor.
 EcFloor= Econcrete # Concrete's Young modulus.
@@ -72,7 +81,7 @@ floor_set= layerSets['floor_a_middle']+layerSets['floor_a_middle']+layerSets['fl
 
 for s in floor_set.getSurfaces:
     s.setProp('material', shellFloor)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-9.81*rhoFloor]))
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor]))
 
 #Sides.
 EcSides= Econcrete # Concrete's Young modulus.
@@ -85,7 +94,7 @@ sides_set= layerSets['middle']+layerSets['side_a']+layerSets['side_b']+layerSets
 
 for s in sides_set.getSurfaces:
     s.setProp('material', shellSides)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-9.81*rhoSides]))
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoSides]))
 
 #Bulkheads
 EcBulkheads= Econcrete # Concrete's Young modulus.
@@ -98,7 +107,7 @@ bulkheads_set= layerSets['bulkhead_01']+layerSets['bulkhead_03']
 
 for s in bulkheads_set.getSurfaces:
     s.setProp('material', shellBulkheads)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-9.81*rhoBulkheads]))
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoBulkheads]))
 
 #Parapets
 EcParapets= Econcrete # Concrete's Young modulus.
@@ -111,7 +120,7 @@ parapets_set= layerSets['parapets_01']
 
 for s in parapets_set.getSurfaces:
     s.setProp('material', shellParapets)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-9.81*rhoParapets]))
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoParapets]))
 
 
 #Roof.
@@ -125,7 +134,7 @@ roof_set= layerSets['roof_01']
 
 for s in roof_set.getSurfaces:
     s.setProp('material', shellRoof)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-9.81*rhoRoof]))
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoRoof]))
 
 # *** Meshing ***
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
@@ -145,11 +154,11 @@ for key in layerSets:
         for e in s.getElements():
             shell_elements.getElements.append(e)
 shell_elements.fillDownwards()
+shell_elements.genDescr= 'Model shell elements.'
         
 print 'number of nodes= ', len(xcTotalSet.getNodes)
 
-# *** Constraints ***
-wModulus= 3e7 #[N/m3]
+# *** Sets ***
 
 floor_elements= preprocessor.getSets.defSet('floor_elements')
 for s in floor_set.getSurfaces:
@@ -157,7 +166,28 @@ for s in floor_set.getSurfaces:
         floor_elements.getElements.append(e)
 floor_elements.fillDownwards()
 
-foundation= sprbc.ElasticFoundation(wModulus=wModulus,cRoz=0.002)
+roof_elements= preprocessor.getSets.defSet('roof_elements')
+for s in roof_set.getSurfaces:
+    for e in s.getElements():
+        roof_elements.getElements.append(e)
+roof_elements.fillDownwards()
+
+sides_elements= preprocessor.getSets.defSet('sides_elements')
+for s in sides_set.getSurfaces:
+    for e in s.getElements():
+        sides_elements.getElements.append(e)
+sides_elements.fillDownwards()
+
+bulkheads_elements= preprocessor.getSets.defSet('bulkheads_elements')
+for s in bulkheads_set.getSurfaces:
+    for e in s.getElements():
+        bulkheads_elements.getElements.append(e)
+bulkheads_elements.fillDownwards()
+
+lateral_elements= sides_elements+bulkheads_elements
+
+# *** Constraints ***
+foundation= sprbc.ElasticFoundation(wModulus=kS,cRoz=0.002)
 foundation.generateSprings(xcSet=floor_elements)
 
 
@@ -172,7 +202,7 @@ loadCases.currentTimeSeries= "ts"
 
 #Load case definition
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earth_pressure', 'liveLoadA', 'liveLoadB', 'railway','snow','earthquake']
+loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'liveLoadA', 'liveLoadB', 'railway','snow','earthquake']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 #Self weight.
@@ -194,17 +224,50 @@ for s in roof_set.getSurfaces:
     for e in s.getElements():
         e.vector3dUniformLoadGlobal(deadLoadVector)
 
-#Dead load:
+#Dead load: passenger shelter dead load.
+passengerShelterCorners= [geom.Pos3d(46.5900,11.6750,10.2360),geom.Pos3d(46.5900, 9.3250, 10.2360), geom.Pos3d(41.8400, 9.3250, 10.2360), geom.Pos3d(41.8400, 11.6750, 10.2360)]
 
+for p in passengerShelterCorners:
+    n= roof_elements.getNearestNode(p)
+    cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-6.65e3,0,0,0]))
+
+#Dead load on the shelter perimeter.
+segments= [(0,1), (1,2), (2,3), (3,0)]
+for s in segments:
+    sI= geom.Segment3d(passengerShelterCorners[s[0]],passengerShelterCorners[s[1]])
+    sI_nodes= []
+    for n in roof_elements.getNodes:
+        pos= n.getInitialPos3d
+        dist= sI.distPto(pos)
+        if dist<0.21:
+            sI_nodes.append(n)
+    node_load= -4e3*sI.getLength()/len(sI_nodes)
+    for n in sI_nodes:
+        cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,node_load,0,0,0]))
+
+#Dead load: earth pressure.
+cLC= loadCaseManager.setCurrentLoadCase('earthPressure')
+K0= backFillSoilModel.K0Jaky()
+zGroundBackFill= 10.23 #Back fill
+backFillPressureModel=  earth_pressure.EarthPressureModel(K= K0, zGround= zGroundBackFill, gammaSoil= gSoil, zWater= -1e3, gammaWater= 1000*gravity)
+
+modelCentroid= lateral_elements.getNodes.getCentroid(0.0)
+for e in lateral_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    v= elemCentroid-modelCentroid
+    localKVector= e.getCoordTransf.getG3Vector
+    sign= v.dot(geom.Vector3d(localKVector[0],localKVector[1],localKVector[2]))
+    if sign<0:
+        sign= -1
+    else:
+        sign= 1
+    pressure= -sign*backFillPressureModel.getPressure(elemCentroid.z)*localKVector
+    e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
+    
 
 #Live load: passenger shelter load perimeter.
 cLC= loadCaseManager.setCurrentLoadCase('liveLoadA')
-passengerShelterCorners= [geom.Pos3d(46.5900,11.6750,10.2360),geom.Pos3d(46.5900, 9.3250, 10.2360), geom.Pos3d(41.8400, 9.3250, 10.2360), geom.Pos3d(41.8400, 11.6750, 10.2360)]
 
-roof_elements= preprocessor.getSets.defSet('roof_elements')
-for s in roof_set.getSurfaces:
-    for e in s.getElements():
-        roof_elements.getElements.append(e)
 
 poly_shelter_load_perimeter=geom.Polygon2d()
 for p in passengerShelterCorners:
