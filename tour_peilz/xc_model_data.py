@@ -336,14 +336,17 @@ for e in side_a_elements.getElements:
 
 #Accidental actions. Earthquake
 quakeLoad= loadCaseManager.setCurrentLoadCase('earthquake')
-structureHeight= zGroundBackFill-5.3593 #m height of the structure.
+xLimit= 24.5
+structureHeightA= zGroundBackFill-8.5518 #m height of the structure zone A.
+structureHeightB= zGroundBackFill-5.3593 #m height of the structure zone B.
 # kh: seismic coefficient of horizontal acceleration.
 # kv: seismic coefficient of vertical acceleration.
 # psi: back face inclination of the structure (<= PI/2)
 # delta_ad angle of friction soil - structure.
 # beta slope inclination of backfill.
 # Kas: static earth pressure coefficient 
-mononobeOkabe= earth_pressure.MononobeOkabePressureDistribution(zGround= zGroundBackFill, gamma_soil= gSoil, H= structureHeight, kv= 0.11/2.0, kh= 0.11, psi= math.radians(90), phi= backFillSoilModel.phi, delta_ad= 0.0, beta= 0.0, Kas= K0)
+mononobeOkabeA= earth_pressure.MononobeOkabePressureDistribution(zGround= zGroundBackFill, gamma_soil= gSoil, H= structureHeightA, kv= 0.11/2.0, kh= 0.11, psi= math.radians(90), phi= backFillSoilModel.phi, delta_ad= 0.0, beta= 0.0, Kas= K0)
+mononobeOkabeB= earth_pressure.MononobeOkabePressureDistribution(zGround= zGroundBackFill, gamma_soil= gSoil, H= structureHeightB, kv= 0.11/2.0, kh= 0.11, psi= math.radians(90), phi= backFillSoilModel.phi, delta_ad= 0.0, beta= 0.0, Kas= K0)
 
 for e in lateral_elements.getElements:
     elemCentroid= e.getPosCentroid(True)
@@ -354,6 +357,10 @@ for e in lateral_elements.getElements:
         sign= -1
     else:
         sign= 1
-    pressure= sign*mononobeOkabe.getPressure(elemCentroid.z)*localKVector
-    e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
+    pressure= 0.0
+    if(elemCentroid.x<xLimit):
+      pressure= sign*mononobeOkabeA.getPressure(elemCentroid.z)*localKVector
+    else:
+      pressure= sign*mononobeOkabeB.getPressure(elemCentroid.z)*localKVector
+    e.vector3dUniformLoadGlobal(pressure) 
 
