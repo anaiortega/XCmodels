@@ -135,3 +135,12 @@ Q4.unitsScaleDispl= 1e3
 Q4.vectorScaleLoads= 1
 Q4.viewName= "-X-Y+Z"
 Q4.unitsDispl='[mm]'
+
+A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='earthquake',loadCaseDescr='A1: earthquake',loadCaseExpr='1.0*earthquake',setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+A1.unitsScaleLoads= 1e-3
+A1.unitsScaleForc= 1e-3
+A1.unitsScaleMom= 1e-3
+A1.unitsScaleDispl= 1e3
+A1.vectorScaleLoads= 0.1
+#A1.viewName= "-X+Y+Z"
+A1.unitsDispl='[mm]'
