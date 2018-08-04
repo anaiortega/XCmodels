@@ -85,8 +85,8 @@ for s in floor_set.getSurfaces:
     s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor]))
     plg= s.getPolygon()
     area= plg.getArea()
-    perimetro= plg.getPerimetro()
-    if (area>2 and (area/perimetro)>0.1):
+    perimeter= plg.getPerimeter()
+    if (area>2 and (area/perimeter)>0.1):
         floor_centroids.append(s.getCentroid())
 
 #Sides.
