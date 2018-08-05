@@ -61,8 +61,8 @@ gravity=9.81 #Aceleración de la gravedad (m/s2)
 concrete= SIA262_materials.c30_37
 nu= 0.3 # Poisson coefficient.
 dens= 2500 # Density kg/m3.
-reductionFactor= 1.0 
-#reductionFactor= 6.0 #Reduction factor
+#reductionFactor= 1.0 
+reductionFactor= 6.0 #Reduction factor
 Econcrete= concrete.getEcm()/reductionFactor
 
 #Soil
