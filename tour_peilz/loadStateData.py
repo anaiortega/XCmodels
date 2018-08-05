@@ -100,7 +100,7 @@ G3.vectorScaleLoads= 0.05
 #G3.viewName= "-X+Y+Z"
 G3.unitsDispl='[mm]'
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='liveLoadA',loadCaseDescr='Q1: live load A',loadCaseExpr='1.0*liveLoadA',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='pedestrianLoad',loadCaseDescr='Q1: live load A',loadCaseExpr='1.0*pedestrianLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1.unitsScaleLoads= 1e-3
 Q1.unitsScaleForc= 1e-3
 Q1.unitsScaleMom= 1e-3
@@ -109,7 +109,7 @@ Q1.vectorScaleLoads= 0.2
 #Q1.viewName= "-X+Y+Z"
 Q1.unitsDispl='[mm]'
 
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='liveLoadB',loadCaseDescr='Q2: live load B',loadCaseExpr='1.0*liveLoadB',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='singleAxeLoad',loadCaseDescr='Q2: live load B',loadCaseExpr='1.0*singleAxeLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 Q2.unitsScaleLoads= 1e-3
 Q2.unitsScaleForc= 1e-3
 Q2.unitsScaleMom= 1e-3
@@ -118,7 +118,7 @@ Q2.vectorScaleLoads= 0.05
 #Q2.viewName= "-X+Y+Z"
 Q2.unitsDispl='[mm]'
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='railLoad',loadCaseDescr='Q3: earth pressure from rail load',loadCaseExpr='1.0*railLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='LM1',loadCaseDescr='Q3: earth pressure from rail load',loadCaseExpr='1.0*LM1',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 Q3.unitsScaleLoads= 1e-3
 Q3.unitsScaleForc= 1e-3
 Q3.unitsScaleMom= 1e-3
