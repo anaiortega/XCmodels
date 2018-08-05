@@ -8,7 +8,7 @@ execfile('loadStateData.py')
 #ordered list of load cases (from those defined in loadStateData.py
 #or redefined lately) to be displayed:
 #loadCasesToDisplay= [G2]
-loadCasesToDisplay= [lcDisplays['SLSQP_2']]
+loadCasesToDisplay= [lcDisplays['SLSF_3']]
 
 #End data
 

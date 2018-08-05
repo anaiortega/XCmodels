@@ -62,7 +62,7 @@ concrete= SIA262_materials.c30_37
 nu= 0.3 # Poisson coefficient.
 dens= 2500 # Density kg/m3.
 reductionFactor= 1.0 
-#reductionFactor= 7.0 #Reduction factor
+#reductionFactor= 6.0 #Reduction factor
 Econcrete= concrete.getEcm()/reductionFactor
 
 #Soil
@@ -205,6 +205,23 @@ for s in side_a_set.getSurfaces:
 side_a_elements.fillDownwards()
 
 # *** Constraints ***
+
+#Underpass frame.
+underpassFrame= [geom.Pos3d(24.4821,7.075,8.4793),geom.Pos3d(30.2246,7.075,8.4793),geom.Pos3d(30.2246,7.075,5.3593),geom.Pos3d(24.4821,7.075,5.3593)]
+
+frameBC= sprbc.SpringBC('frameBC',modelSpace,Ky= 1e8)
+segments= [(0,1), (1,2), (2,3), (3,0)]
+frame_nodes= []
+for s in segments:
+    sI= geom.Segment3d(underpassFrame[s[0]],underpassFrame[s[1]])
+    for n in shell_elements.getNodes:
+        pos= n.getInitialPos3d
+        dist= sI.distPto(pos)
+        if dist<0.1:
+            frame_nodes.append(n)
+frameBC.applyOnNodesLst(frame_nodes)
+
+#Foundation.
 foundation= sprbc.ElasticFoundation(wModulus=kS,cRoz=0.002)
 foundation.generateSprings(xcSet=floor_elements)
 

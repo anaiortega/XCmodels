@@ -150,3 +150,18 @@ lcDisplays= {}
 for key in combContainer.SLS.qp:
     comb= combContainer.SLS.qp[key]
     lcDisplays[key]= comb.getRecordLoadCaseDisp(setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+
+#Frequent
+for key in combContainer.SLS.freq:
+    comb= combContainer.SLS.freq[key]
+    lcDisplays[key]= comb.getRecordLoadCaseDisp(setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+
+#Rare
+for key in combContainer.SLS.rare:
+    comb= combContainer.SLS.rare[key]
+    lcDisplays[key]= comb.getRecordLoadCaseDisp(setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
+
+#Permanent and transitory situations.
+for key in combContainer.ULS.perm:
+    comb= combContainer.ULS.perm[key]
+    lcDisplays[key]= comb.getRecordLoadCaseDisp(setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
