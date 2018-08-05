@@ -144,3 +144,9 @@ A1.unitsScaleDispl= 1e3
 A1.vectorScaleLoads= 0.1
 #A1.viewName= "-X+Y+Z"
 A1.unitsDispl='[mm]'
+
+lcDisplays= {}
+#Quasi-permanent situations.
+for key in combContainer.SLS.qp:
+    comb= combContainer.SLS.qp[key]
+    lcDisplays[key]= comb.getRecordLoadCaseDisp(setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
