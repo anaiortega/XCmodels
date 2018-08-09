@@ -64,25 +64,43 @@ fi26s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
-slabRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='slabRCSect',sectionDescr="foundation slab.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
-slabRCSect.dir1PositvRebarRows=[fi14s150r40] #Longitudinal
-slabRCSect.dir1NegatvRebarRows=[fi14s150r40] #
-slabRCSect.dir2PositvRebarRows=[fi12s150r50] #Transverse
-slabRCSect.dir2NegatvRebarRows=[fi12s150r50] #
+slab30RCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='slab30RCSect',sectionDescr="foundation slab thickness 30 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
+slab30RCSect.dir1PositvRebarRows=[fi14s150r40] #Longitudinal
+slab30RCSect.dir1NegatvRebarRows=[fi14s150r40] #
+slab30RCSect.dir2PositvRebarRows=[fi14s150r50] #Transverse
+slab30RCSect.dir2NegatvRebarRows=[fi14s150r50] #
 
-slabRCSect.creaTwoSections() 
-sections.append(slabRCSect)
+slab30RCSect.creaTwoSections() 
+sections.append(slab30RCSect)
 
-wallRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='wallRCSect',sectionDescr="walls.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
-wallRCSect.dir1PositvRebarRows=[fi14s150r40] #Vertical
-wallRCSect.dir1NegatvRebarRows=[fi14s150r40] #
-wallRCSect.dir2PositvRebarRows=[fi14s150r50] #Horizontal
-wallRCSect.dir2NegatvRebarRows=[fi14s150r50] #
+slab40RCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='slab40RCSect',sectionDescr="foundation slab thickness 40 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
+slab40RCSect.dir1PositvRebarRows=[fi16s150r40] #Longitudinal
+slab40RCSect.dir1NegatvRebarRows=[fi16s150r40] #
+slab40RCSect.dir2PositvRebarRows=[fi14s150r50] #Transverse
+slab40RCSect.dir2NegatvRebarRows=[fi14s150r50] #
 
-wallRCSect.creaTwoSections() 
-sections.append(wallRCSect)
+slab40RCSect.creaTwoSections() 
+sections.append(slab40RCSect)
 
-deckRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='deckRCSect',sectionDescr="roof deck.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
+wall30RCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='wall30RCSect',sectionDescr="walls thickness 30 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
+wall30RCSect.dir1PositvRebarRows=[fi14s150r40] #Vertical
+wall30RCSect.dir1NegatvRebarRows=[fi14s150r40] #
+wall30RCSect.dir2PositvRebarRows=[fi14s150r50] #Horizontal
+wall30RCSect.dir2NegatvRebarRows=[fi14s150r50] #
+
+wall30RCSect.creaTwoSections() 
+sections.append(wall30RCSect)
+
+wall40RCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='wall40RCSect',sectionDescr="walls thickness 40 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
+wall40RCSect.dir1PositvRebarRows=[fi16s150r40] #Vertical
+wall40RCSect.dir1NegatvRebarRows=[fi16s150r40] #
+wall40RCSect.dir2PositvRebarRows=[fi14s150r50] #Horizontal
+wall40RCSect.dir2NegatvRebarRows=[fi14s150r50] #
+
+wall40RCSect.creaTwoSections() 
+sections.append(wall40RCSect)
+
+deckRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='deckRCSect',sectionDescr="roof deck.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
 deckRCSect.dir1PositvRebarRows=[fi16s150r40] #Longitudinal
 deckRCSect.dir1NegatvRebarRows=[fi16s150r40] #
 deckRCSect.dir2PositvRebarRows=[fi16s150r50] #Transverse

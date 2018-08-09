@@ -37,7 +37,7 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the dimensio
                   #three DOF for each node (Ux,Uy,Uz)
 
 
-dxfLayerNames= ['roof_01', 'floor_a_middle', 'bulkhead_03', 'middle', 'parapets_01', 'bulkhead_01', 'floor_stairs', 'floor_middle_b', 'side_b', 'side_b_stairs', 'side_a', 'side_a_stairs']
+dxfLayerNames= ['roof_01', 'floor_a_middle', 'bulkhead_03', 'middle', 'middle_ramp', 'parapets_01', 'bulkhead_01', 'floor_stairs', 'floor_middle_b', 'side_b', 'side_b_stairs', 'side_a', 'side_a_stairs']
 
 layerSets= {}
 for layerName in dxfLayerNames:
@@ -72,48 +72,79 @@ gSoil= backFillSoilModel.rho*gravity
 
 #Floor.
 EcFloor= Econcrete # Concrete's Young modulus.
-hFloor= 0.30 # Floor thickness.
-rhoFloor= hFloor*dens
 
-shellFloor= typical_materials.defElasticMembranePlateSection(preprocessor,"shellFloor",EcFloor,nu,rhoFloor,hFloor)
 
-floor_set= layerSets['floor_a_middle']+layerSets['floor_a_middle']+layerSets['floor_stairs']+layerSets['floor_middle_b']
+floor_set= layerSets['floor_a_middle']+layerSets['floor_stairs']+layerSets['floor_middle_b']
+
+floor40_set= layerSets['floor_a_middle']
+hFloor40= 0.40 # Floor thickness.
+rhoFloor40= hFloor40*dens
+shellFloor40= typical_materials.defElasticMembranePlateSection(preprocessor,"shellFloor40",EcFloor,nu,rhoFloor40,hFloor40)
+for s in floor40_set.getSurfaces:
+    s.setProp('material', shellFloor40)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor40]))
+
+floor30_set= layerSets['floor_stairs']+layerSets['floor_middle_b']
+hFloor30= 0.30 # Floor thickness.
+rhoFloor30= hFloor30*dens
+shellFloor30= typical_materials.defElasticMembranePlateSection(preprocessor,"shellFloor30",EcFloor,nu,rhoFloor30,hFloor30)
+for s in floor30_set.getSurfaces:
+    s.setProp('material', shellFloor30)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor30]))
+
 floor_centroids= []
 
 for s in floor_set.getSurfaces:
-    s.setProp('material', shellFloor)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoFloor]))
     plg= s.getPolygon()
     area= plg.getArea()
     perimeter= plg.getPerimeter()
     if (area>2 and (area/perimeter)>0.1):
         floor_centroids.append(s.getCentroid())
 
+
+
 #Sides.
 EcSides= Econcrete # Concrete's Young modulus.
-hSides= 0.30 # Sides thickness.
-rhoSides= hSides*dens
 
-shellSides= typical_materials.defElasticMembranePlateSection(preprocessor,"shellSides",EcSides,nu,rhoSides,hSides)
+sides_set= layerSets['middle']+layerSets['middle_ramp']+layerSets['side_a']+layerSets['side_b']+layerSets['side_b_stairs']+layerSets['side_a_stairs']
 
-sides_set= layerSets['middle']+layerSets['side_a']+layerSets['side_b']+layerSets['side_b_stairs']+layerSets['side_a_stairs']
+sides40_set= layerSets['side_a']+layerSets['middle']
+hSides40= 0.40 # Sides thickness.
+rhoSides40= hSides40*dens
+shellSides40= typical_materials.defElasticMembranePlateSection(preprocessor,"shellSides40",EcSides,nu,rhoSides40,hSides40)
+for s in sides40_set.getSurfaces:
+    s.setProp('material', shellSides40)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoSides40]))
 
-for s in sides_set.getSurfaces:
-    s.setProp('material', shellSides)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoSides]))
+sides30_set= layerSets['middle_ramp']+layerSets['side_b']+layerSets['side_b_stairs']+layerSets['side_a_stairs']
+hSides30= 0.30 # Sides thickness.
+rhoSides30= hSides30*dens
+shellSides30= typical_materials.defElasticMembranePlateSection(preprocessor,"shellSides30",EcSides,nu,rhoSides30,hSides30)
+for s in sides30_set.getSurfaces:
+    s.setProp('material', shellSides30)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoSides30]))
 
 #Bulkheads
 EcBulkheads= Econcrete # Concrete's Young modulus.
-hBulkheads= 0.30 # Bulkheads thickness.
-rhoBulkheads= hBulkheads*dens
-
-shellBulkheads= typical_materials.defElasticMembranePlateSection(preprocessor,"shellBulkheads",EcBulkheads,nu,rhoBulkheads,hBulkheads)
 
 bulkheads_set= layerSets['bulkhead_01']+layerSets['bulkhead_03']
 
+bulkheads40_set= layerSets['bulkhead_03']
+hBulkheads40= 0.40 # Bulkheads thickness.
+rhoBulkheads40= hBulkheads40*dens
+shellBulkheads40= typical_materials.defElasticMembranePlateSection(preprocessor,"shellBulkheads40",EcBulkheads,nu,rhoBulkheads40,hBulkheads40)
 for s in bulkheads_set.getSurfaces:
-    s.setProp('material', shellBulkheads)
-    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoBulkheads]))
+    s.setProp('material', shellBulkheads40)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoBulkheads40]))
+
+bulkheads30_set= layerSets['bulkhead_01']
+hBulkheads30= 0.30 # Bulkheads thickness.
+rhoBulkheads30= hBulkheads30*dens
+shellBulkheads30= typical_materials.defElasticMembranePlateSection(preprocessor,"shellBulkheads30",EcBulkheads,nu,rhoBulkheads30,hBulkheads30)
+for s in bulkheads_set.getSurfaces:
+    s.setProp('material', shellBulkheads30)
+    s.setProp('selfWeight', xc.Vector([0.0,0.0,-gravity*rhoBulkheads30]))
+
 
 #Parapets
 EcParapets= Econcrete # Concrete's Young modulus.
@@ -171,6 +202,18 @@ for s in floor_set.getSurfaces:
         floor_elements.getElements.append(e)
 floor_elements.fillDownwards()
 
+floor30_elements= preprocessor.getSets.defSet('floor30_elements')
+for s in floor30_set.getSurfaces:
+    for e in s.getElements():
+        floor30_elements.getElements.append(e)
+floor30_elements.fillDownwards()
+
+floor40_elements= preprocessor.getSets.defSet('floor40_elements')
+for s in floor40_set.getSurfaces:
+    for e in s.getElements():
+        floor40_elements.getElements.append(e)
+floor40_elements.fillDownwards()
+
 roof_elements= preprocessor.getSets.defSet('roof_elements')
 for s in roof_set.getSurfaces:
     for e in s.getElements():
@@ -189,13 +232,39 @@ for s in sides_set.getSurfaces:
         sides_elements.getElements.append(e)
 sides_elements.fillDownwards()
 
+sides30_elements= preprocessor.getSets.defSet('sides30_elements')
+for s in sides_set.getSurfaces:
+    for e in s.getElements():
+        sides30_elements.getElements.append(e)
+sides30_elements.fillDownwards()
+
+sides40_elements= preprocessor.getSets.defSet('sides40_elements')
+for s in sides_set.getSurfaces:
+    for e in s.getElements():
+        sides40_elements.getElements.append(e)
+sides40_elements.fillDownwards()
+
 bulkheads_elements= preprocessor.getSets.defSet('bulkheads_elements')
 for s in bulkheads_set.getSurfaces:
     for e in s.getElements():
         bulkheads_elements.getElements.append(e)
 bulkheads_elements.fillDownwards()
 
+bulkheads30_elements= preprocessor.getSets.defSet('bulkheads30_elements')
+for s in bulkheads_set.getSurfaces:
+    for e in s.getElements():
+        bulkheads30_elements.getElements.append(e)
+bulkheads30_elements.fillDownwards()
+
+bulkheads40_elements= preprocessor.getSets.defSet('bulkheads40_elements')
+for s in bulkheads_set.getSurfaces:
+    for e in s.getElements():
+        bulkheads40_elements.getElements.append(e)
+bulkheads40_elements.fillDownwards()
+
 lateral_elements= sides_elements+bulkheads_elements
+lateral40_elements= sides40_elements+bulkheads40_elements
+lateral30_elements= lateral_elements-lateral40_elements
 
 side_a_set= layerSets['side_a']
 side_a_elements= preprocessor.getSets.defSet('side_a_elements')
