@@ -18,7 +18,7 @@ elementsWithSection= reinfConcreteSectionDistribution.getElementSet(preprocessor
 limitStateLabel= lsd.normalStressesResistance.label
 
 #Possible arguments: 'CF', 'N', 'My', 'Mz'
-argument= 'CF'
+argument= 'My'
 setDisp= elementsWithSection
 #setDisp= setDock 
 #setDisp= setParapet

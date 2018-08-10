@@ -23,7 +23,7 @@ limitStateLabel= lsd.shearResistance.label
 
 
 #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-argument= 'CF'
+argument= 'Vz'
 
 
 # #Flatten values.
@@ -32,7 +32,7 @@ argument= 'CF'
 
 
 setDisp= elementsWithSection
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,capTexts,viewName="-X+Y+Z",defFScale=0.0)
+dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,capTexts)#,viewName="-X+Y+Z",defFScale=0.0)
 
 
 

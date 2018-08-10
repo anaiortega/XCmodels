@@ -192,8 +192,6 @@ for key in layerSets:
 shell_elements.fillDownwards()
 shell_elements.genDescr= 'Model shell elements.'
         
-print 'number of nodes= ', len(xcTotalSet.getNodes)
-
 # *** Sets ***
 
 floor_elements= preprocessor.getSets.defSet('floor_elements')
@@ -233,13 +231,13 @@ for s in sides_set.getSurfaces:
 sides_elements.fillDownwards()
 
 sides30_elements= preprocessor.getSets.defSet('sides30_elements')
-for s in sides_set.getSurfaces:
+for s in sides30_set.getSurfaces:
     for e in s.getElements():
         sides30_elements.getElements.append(e)
 sides30_elements.fillDownwards()
 
 sides40_elements= preprocessor.getSets.defSet('sides40_elements')
-for s in sides_set.getSurfaces:
+for s in sides40_set.getSurfaces:
     for e in s.getElements():
         sides40_elements.getElements.append(e)
 sides40_elements.fillDownwards()
@@ -249,6 +247,7 @@ for s in bulkheads_set.getSurfaces:
     for e in s.getElements():
         bulkheads_elements.getElements.append(e)
 bulkheads_elements.fillDownwards()
+
 
 bulkheads30_elements= preprocessor.getSets.defSet('bulkheads30_elements')
 for s in bulkheads_set.getSurfaces:
@@ -294,8 +293,6 @@ frameBC.applyOnNodesLst(frame_nodes)
 foundation= sprbc.ElasticFoundation(wModulus=kS,cRoz=0.002)
 foundation.generateSprings(xcSet=floor_elements)
 
-
-print 'number of nodes= ', len(xcTotalSet.getNodes)
 
 # *** Loads ***
 loadManager= preprocessor.getLoadHandler
