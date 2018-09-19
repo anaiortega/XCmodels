@@ -23,7 +23,7 @@ limitStateLabel= lsd.shearResistance.label
 
 
 #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-argument= 'Vz'
+argument= 'Vy'
 
 
 # #Flatten values.

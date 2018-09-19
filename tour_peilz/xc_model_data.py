@@ -272,6 +272,13 @@ for s in side_a_set.getSurfaces:
         side_a_elements.getElements.append(e)
 side_a_elements.fillDownwards()
 
+side_b_set= layerSets['side_b']
+side_b_elements= preprocessor.getSets.defSet('side_b_elements')
+for s in side_b_set.getSurfaces:
+    for e in s.getElements():
+        side_b_elements.getElements.append(e)
+side_b_elements.fillDownwards()
+
 # *** Constraints ***
 
 #Underpass frame.
@@ -303,7 +310,7 @@ loadCases.currentTimeSeries= "ts"
 
 #Load case definition
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'pedestrianLoad', 'singleAxeLoad', 'LM1', 'nosingLoad','earthquake']
+loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'pedestrianLoad', 'singleAxeLoad', 'LM1', 'nosingLoad', 'roadTrafficLoad', 'earthquake']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 #Self weight.
@@ -366,7 +373,7 @@ for e in lateral_elements.getElements:
     e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
     
 
-#Live load.
+#Live load: pedestrian loads.
 cLC= loadCaseManager.setCurrentLoadCase('pedestrianLoad')
 
 uniformLoad= xc.Vector([0.0,0.0,-5.0e3])
@@ -379,6 +386,12 @@ for e in roof_elements.getElements:
 for s in floor_set.getSurfaces:
     for e in s.getElements():
         e.vector3dUniformLoadGlobal(uniformLoad)
+pedestrianLoadOnPlatform= earth_pressure.LineVerticalLoadOnBackfill(qLoad= 25e3,zLoad= 10.23, distWall= 2.45/2.0)
+for e in side_a_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    localKVector= e.getCoordTransf.getG3Vector
+    pressure= pedestrianLoadOnPlatform.getPressure(elemCentroid.z)*localKVector
+    e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
 
 cLC= loadCaseManager.setCurrentLoadCase('singleAxeLoad')
 for p in floor_centroids:
@@ -388,10 +401,21 @@ for p in roof_centroids:
     n= roof_elements.getNearestNode(p)
     cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-45e3,0,0,0]))
 
+#Live load: road traffic load.
+cLC= loadCaseManager.setCurrentLoadCase('roadTrafficLoad')
+roadTrafficLoadEarthPressure= earth_pressure.UniformLoadOnBackfill(K= K0,qLoad= 11.02e3)
+for e in side_b_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    localKVector= e.getCoordTransf.getG3Vector
+    pressure= -roadTrafficLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
+    e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
+
+
+#Live load: rail traffic load.
+
 railLoad= loadCaseManager.setCurrentLoadCase('LM1')
 distRailCLWall= 4.5 #Distance from the center line of the rail track to the wall
 railLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 50e3,zLoad= 10.23-0.7, distWall= distRailCLWall, stripWidth= 3.0)
-
 
 for e in side_a_elements.getElements:
     elemCentroid= e.getPosCentroid(True)
@@ -453,12 +477,13 @@ combContainer= combs.CombContainer()
 #Quasi-permanent situations.
 combContainer.SLS.qp.add('SLSQP_1','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 0.50*pedestrianLoad + 0.30*singleAxeLoad')
 combContainer.SLS.qp.add('SLSQP_2','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 0.30*pedestrianLoad + 0.50*singleAxeLoad')
-combContainer.SLS.qp.add('SLSQP_3','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*LM1 + 1.00*nosingLoad')
 
 #Frequent
 combContainer.SLS.freq.add('SLSF_1','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 0.70*pedestrianLoad + 0.50*singleAxeLoad')
 combContainer.SLS.freq.add('SLSF_2','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 0.50*pedestrianLoad + 0.70*singleAxeLoad')
-combContainer.SLS.freq.add('SLSF_3','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*LM1 + 1.00*nosingLoad')
+combContainer.SLS.freq.add('SLSF_3','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 0.75 * roadTrafficLoad')
+combContainer.SLS.freq.add('SLSF_4','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*LM1 + 1.00*nosingLoad + 0.75 * roadTrafficLoad')
+combContainer.SLS.freq.add('SLSF_5','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*LM1 + 1.00*nosingLoad + 0.3 * pedestrianLoad')
 
 #Rare
 combContainer.SLS.rare.add('SLSR_1','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 1.00*pedestrianLoad')
@@ -466,6 +491,7 @@ combContainer.SLS.rare.add('SLSR_2','1.00*selfWeight + 1.00*deadLoad + 0.70*eart
 combContainer.SLS.rare.add('SLSR_3','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 1.00*singleAxeLoad')
 combContainer.SLS.rare.add('SLSR_4','1.00*selfWeight + 1.00*deadLoad + 0.70*earthPressure + 0.70*pedestrianLoad + 1.00*singleAxeLoad')
 combContainer.SLS.rare.add('SLSR_5','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*LM1 + 1.00*nosingLoad')
+combContainer.SLS.rare.add('SLSR_6','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*roadTrafficLoad')
 
 #Permanent and transitory situations.
 combContainer.ULS.perm.add('ULS_01','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.50*pedestrianLoad + 1.05*singleAxeLoad')
@@ -474,12 +500,21 @@ combContainer.ULS.perm.add('ULS_03','1.35*selfWeight + 1.35*deadLoad + 0.70*eart
 combContainer.ULS.perm.add('ULS_04','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
 combContainer.ULS.perm.add('ULS_05','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*pedestrianLoad + 1.50*LM1 + 1.50*nosingLoad')
 combContainer.ULS.perm.add('ULS_06','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
-combContainer.ULS.perm.add('ULS_07','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.50*pedestrianLoad + 1.05*singleAxeLoad')
-combContainer.ULS.perm.add('ULS_08','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.50*singleAxeLoad')
-combContainer.ULS.perm.add('ULS_09','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.50*LM1 + 1.50*nosingLoad')
-combContainer.ULS.perm.add('ULS_10','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
-combContainer.ULS.perm.add('ULS_11','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.50*LM1 + 1.50*nosingLoad')
-combContainer.ULS.perm.add('ULS_12','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
+combContainer.ULS.perm.add('ULS_07','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_08','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*singleAxeLoad + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_09','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*pedestrianLoad + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_10','1.35*selfWeight + 1.35*deadLoad + 0.70*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_11','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.50*pedestrianLoad + 1.05*singleAxeLoad')
+combContainer.ULS.perm.add('ULS_12','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.50*singleAxeLoad')
+combContainer.ULS.perm.add('ULS_13','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.50*LM1 + 1.50*nosingLoad')
+combContainer.ULS.perm.add('ULS_14','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
+combContainer.ULS.perm.add('ULS_15','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.50*LM1 + 1.50*nosingLoad')
+combContainer.ULS.perm.add('ULS_16','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.50*LM1 + 1.50*nosingLoad')
+combContainer.ULS.perm.add('ULS_17','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_18','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*singleAxeLoad + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_19','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.5*roadTrafficLoad')
+combContainer.ULS.perm.add('ULS_20','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.5*roadTrafficLoad')
+
 #Accidental
-combContainer.ULS.perm.add('ULSA_5','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 0.3*LM1 + 1.00*earthquake')
+combContainer.ULS.perm.add('ULSA_5','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*earthquake')
 

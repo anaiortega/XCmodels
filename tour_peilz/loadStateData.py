@@ -106,7 +106,7 @@ Q1.unitsScaleForc= 1e-3
 Q1.unitsScaleMom= 1e-3
 Q1.unitsScaleDispl= 1e3
 Q1.vectorScaleLoads= 0.2
-#Q1.viewName= "-X+Y+Z"
+Q1.viewName= "-X-Y+Z"
 Q1.unitsDispl='[mm]'
 
 Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='singleAxeLoad',loadCaseDescr='Q2: live load B',loadCaseExpr='1.0*singleAxeLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
@@ -135,6 +135,15 @@ Q4.unitsScaleDispl= 1e3
 Q4.vectorScaleLoads= 1
 Q4.viewName= "-X-Y+Z"
 Q4.unitsDispl='[mm]'
+
+Q5=graphical_reports.RecordLoadCaseDisp(loadCaseName='roadTrafficLoad',loadCaseDescr='Q5: earth pressure from road traffic load',loadCaseExpr='1.0*roadTrafficLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q5.unitsScaleLoads= 1e-3
+Q5.unitsScaleForc= 1e-3
+Q5.unitsScaleMom= 1e-3
+Q5.unitsScaleDispl= 1e3
+Q5.vectorScaleLoads= 0.25
+#Q5.viewName= "-X-Y+Z"
+Q5.unitsDispl='[mm]'
 
 A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='earthquake',loadCaseDescr='A1: earthquake',loadCaseExpr='1.0*earthquake',setsToDispLoads=[shell_elements],setsToDispDspRot=[shell_elements],setsToDispIntForc=[shell_elements])
 A1.unitsScaleLoads= 1e-3
