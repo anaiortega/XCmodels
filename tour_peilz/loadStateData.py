@@ -87,6 +87,6 @@ G2.unitsScaleLoads= 1e-3
 G2.unitsScaleForc= 1e-3
 G2.unitsScaleMom= 1e-3
 G2.unitsScaleDispl= 1e3
-G2.vectorScaleLoads= 1e-3
+G2.vectorScaleLoads= 0.5
 #G2.viewName= "-X+Y+Z"
 G2.unitsDispl='[mm]'
