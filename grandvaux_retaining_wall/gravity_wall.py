@@ -60,8 +60,8 @@ earthPressurePolygon.agregaVertice(geom.Pos2d(0,0))
 earthPressurePolygonCentroid= earthPressurePolygon.getCenterOfMass()
 earthPressureVector= geom.Vector2d(-totalEarthPressure,-Fv)
 earthPressureTail= geom.Pos2d(B,H-earthPressurePolygonCentroid.x)
-earthPressureSVD= geom.SVD2d(geom.VDesliz2d(earthPressureTail,earthPressureVector))
-print 'earthPressureSVD: ', earthPressureSVD
+earthPressureSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(earthPressureTail,earthPressureVector))
+print 'earthPressureSVS: ', earthPressureSVS
 
 # Gravity wall.
 foundationCenter= geom.Pos2d(B/2.0,0.0)
@@ -74,17 +74,17 @@ gravityWallPolygonCentroid= gravityWallPolygon.getCenterOfMass()
 gravityWallPolygonArea= gravityWallPolygon.getArea()
 gravityWallUnitWeight= 24e3
 gravityWallPolygonWeight= gravityWallUnitWeight*gravityWallPolygonArea
-gravityWallWeightSVD= geom.SVD2d(geom.VDesliz2d(gravityWallPolygonCentroid,geom.Vector2d(0.0,-gravityWallPolygonWeight)))
-print 'gravityWallWeightSVD: ', gravityWallWeightSVD
+gravityWallWeightSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(gravityWallPolygonCentroid,geom.Vector2d(0.0,-gravityWallPolygonWeight)))
+print 'gravityWallWeightSVS: ', gravityWallWeightSVS
 
 # permanent load on the backfill.
 traficLoadOnBackfillPosition= geom.Pos2d(B,H/2.0)
 traficLoadOnBackfillValueH= -K*5e3
 traficLoadOnBackfillValueV= traficLoadOnBackfillValueH*math.tan(delta)
-traficLoadOnBackfillSVD= geom.SVD2d(geom.VDesliz2d(traficLoadOnBackfillPosition,geom.Vector2d(traficLoadOnBackfillValueH,traficLoadOnBackfillValueV)))
-print 'traficLoadOnBackfillValue: ', traficLoadOnBackfillSVD
+traficLoadOnBackfillSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(traficLoadOnBackfillPosition,geom.Vector2d(traficLoadOnBackfillValueH,traficLoadOnBackfillValueV)))
+print 'traficLoadOnBackfillValue: ', traficLoadOnBackfillSVS
 
-selfWeightSVD= gravityWallWeightSVD
+selfWeightSVS= gravityWallWeightSVS
 
 def getOverturningSafetyFactor(svd):
     svd= svd.reduceTo(foundationCenter)
@@ -116,10 +116,10 @@ def getSlidingSafetyFactor(svd):
     return F
 
 # Resultant.
-svdAB= 0.9*selfWeightSVD+1.35*earthPressureSVD
-svdAG= 0.8*selfWeightSVD+1.35*earthPressureSVD
-svdBB= 0.9*selfWeightSVD+1.35*earthPressureSVD+1.35*traficLoadOnBackfillSVD
-svdBG= 0.8*selfWeightSVD+1.35*earthPressureSVD+1.35*traficLoadOnBackfillSVD
+svdAB= 0.9*selfWeightSVS+1.35*earthPressureSVS
+svdAG= 0.8*selfWeightSVS+1.35*earthPressureSVS
+svdBB= 0.9*selfWeightSVS+1.35*earthPressureSVS+1.35*traficLoadOnBackfillSVS
+svdBG= 0.8*selfWeightSVS+1.35*earthPressureSVS+1.35*traficLoadOnBackfillSVS
 
 
 Fo= getOverturningSafetyFactor(svdAB)

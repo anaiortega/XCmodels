@@ -27,7 +27,7 @@ for i in range(0,11):
   sigma_h= k*gammaSoil*z
   fv= sigma_h*math.tan(delta)*stepHeight
   Fv+= fv
-  x.append(z)
+  x.append(z)r
   results5_16.append(sigma_h)
 
 totalEarthPressure= scipy.integrate.simps(results5_16,x)
@@ -42,8 +42,8 @@ earthPressurePolygon.agregaVertice(geom.Pos2d(0,0))
 earthPressurePolygonCentroid= earthPressurePolygon.getCenterOfMass()
 earthPressureVector= geom.Vector2d(-totalEarthPressure,-Fv)
 earthPressureTail= geom.Pos2d(foundationWidth,H-earthPressurePolygonCentroid.x)
-earthPressureSVD= geom.SVD2d(geom.VDesliz2d(earthPressureTail,earthPressureVector))
-print 'earthPressureSVD: ', earthPressureSVD
+earthPressureSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(earthPressureTail,earthPressureVector))
+print 'earthPressureSVS: ', earthPressureSVS
 
 '''
 print 'B/H= 0.1', results5_16
@@ -60,8 +60,8 @@ spandrelWallPolygonCentroid= spandrelWallPolygon.getCenterOfMass()
 spandrelWallPolygonArea= spandrelWallPolygon.getArea()
 spandrelWallUnitWeight= 19
 spandrelWallPolygonWeight= spandrelWallUnitWeight*spandrelWallPolygonArea
-spandrelWallWeightSVD= geom.SVD2d(geom.VDesliz2d(spandrelWallPolygonCentroid,geom.Vector2d(0.0,-spandrelWallPolygonWeight)))
-print 'spandrelWallWeightSVD: ', spandrelWallWeightSVD
+spandrelWallWeightSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(spandrelWallPolygonCentroid,geom.Vector2d(0.0,-spandrelWallPolygonWeight)))
+print 'spandrelWallWeightSVS: ', spandrelWallWeightSVS
 
 # backfill weight over the wall.
 backfillOverWallPolygon= geom.Polygon2d()
@@ -71,58 +71,58 @@ backfillOverWallPolygon.agregaVertice(geom.Pos2d(1.05,H))
 backfillOverWallPolygonCentroid= backfillOverWallPolygon.getCenterOfMass()
 backfillOverWallPolygonArea= backfillOverWallPolygon.getArea()
 backfillOverWallPolygonWeight= gammaSoil*backfillOverWallPolygonArea
-backfillOverWallWeightSVD= geom.SVD2d(geom.VDesliz2d(backfillOverWallPolygonCentroid,geom.Vector2d(0.0,-backfillOverWallPolygonWeight)))
-print 'backfillOverWallWeightSVD: ', backfillOverWallWeightSVD
+backfillOverWallWeightSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(backfillOverWallPolygonCentroid,geom.Vector2d(0.0,-backfillOverWallPolygonWeight)))
+print 'backfillOverWallWeightSVS: ', backfillOverWallWeightSVS
 
 # permanent load on top of the wall.
 permanentLoadWPosition= geom.Pos2d((0.1+1.05)/2.0,H)
 permanentLoadWValue= 71181.4/2.0/1e3/0.9
-permanentLoadWSVD= geom.SVD2d(geom.VDesliz2d(permanentLoadWPosition,geom.Vector2d(permanentLoadWValue*math.tan(fillPhi),-permanentLoadWValue)))
-print 'permanentLoadWValue: ', permanentLoadWSVD
+permanentLoadWSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(permanentLoadWPosition,geom.Vector2d(permanentLoadWValue*math.tan(fillPhi),-permanentLoadWValue)))
+print 'permanentLoadWValue: ', permanentLoadWSVS
 
 # permanent load on the backfill.
 permanentLoadBPosition= geom.Pos2d(foundationWidth,H/2.0)
 permanentLoadBValueH= -k0*15091.4/B/1e3/0.9
 permanentLoadBValueV= permanentLoadBValueH*math.tan(delta)
-permanentLoadBSVD= geom.SVD2d(geom.VDesliz2d(permanentLoadBPosition,geom.Vector2d(permanentLoadBValueH,permanentLoadBValueV)))
-print 'permanentLoadBValue: ', permanentLoadBSVD
+permanentLoadBSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(permanentLoadBPosition,geom.Vector2d(permanentLoadBValueH,permanentLoadBValueV)))
+print 'permanentLoadBValue: ', permanentLoadBSVS
 
 vehicleLoadFactor= 1.0 #143.97/120 #To find the maximal load
 
 # vehicle load on top of the wall.
 vehicleLoadWPosition= geom.Pos2d((0.1+1.05)/2.0,H)
 vehicleLoadWValue= vehicleLoadFactor*36356.6/2.0/1e3
-vehicleLoadWSVD= geom.SVD2d(geom.VDesliz2d(vehicleLoadWPosition,geom.Vector2d(vehicleLoadWValue*math.tan(fillPhi),-vehicleLoadWValue)))
-print 'vehicleLoadWValue: ', vehicleLoadWSVD
+vehicleLoadWSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(vehicleLoadWPosition,geom.Vector2d(vehicleLoadWValue*math.tan(fillPhi),-vehicleLoadWValue)))
+print 'vehicleLoadWValue: ', vehicleLoadWSVS
 
 # vehicle load on the backfill.
 vehicleLoadBPosition= geom.Pos2d(foundationWidth,H/2.0)
 vehicleLoadBValueH= vehicleLoadFactor*-k0*43643.4/B/1e3
 vehicleLoadBValueV= vehicleLoadBValueH*math.tan(delta)
-vehicleLoadBSVD= geom.SVD2d(geom.VDesliz2d(vehicleLoadBPosition,geom.Vector2d(vehicleLoadBValueH,vehicleLoadBValueV)))
-print 'vehicleLoadBValue: ', vehicleLoadBSVD
+vehicleLoadBSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(vehicleLoadBPosition,geom.Vector2d(vehicleLoadBValueH,vehicleLoadBValueV)))
+print 'vehicleLoadBValue: ', vehicleLoadBSVS
 
 # truck load on top of the wall.
 truckLoadWPosition= geom.Pos2d((0.1+1.05)/2.0,H)
 truckLoadWValue= 73802.4/2.0/1e3
-truckLoadWSVD= geom.SVD2d(geom.VDesliz2d(truckLoadWPosition,geom.Vector2d(truckLoadWValue*math.tan(fillPhi),-truckLoadWValue)))
-print 'truckLoadWValue: ', truckLoadWSVD
+truckLoadWSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(truckLoadWPosition,geom.Vector2d(truckLoadWValue*math.tan(fillPhi),-truckLoadWValue)))
+print 'truckLoadWValue: ', truckLoadWSVS
 
 # truck load on the backfill.
 truckLoadBPosition= geom.Pos2d(foundationWidth,H/2.0)
 truckLoadBValueH= -k0*86197.6/B/1e3
 truckLoadBValueV= truckLoadBValueH*math.tan(delta)
-truckLoadBSVD= geom.SVD2d(geom.VDesliz2d(truckLoadBPosition,geom.Vector2d(truckLoadBValueH,truckLoadBValueV)))
-print 'truckLoadBValue: ', truckLoadBSVD
+truckLoadBSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(truckLoadBPosition,geom.Vector2d(truckLoadBValueH,truckLoadBValueV)))
+print 'truckLoadBValue: ', truckLoadBSVS
 
 
-selfWeightSVD= spandrelWallWeightSVD+backfillOverWallWeightSVD+permanentLoadWSVD+permanentLoadBSVD
+selfWeightSVS= spandrelWallWeightSVS+backfillOverWallWeightSVS+permanentLoadWSVS+permanentLoadBSVS
 
-vehicleLoadSVD= vehicleLoadWSVD+vehicleLoadBSVD
-truckLoadSVD= truckLoadWSVD+truckLoadBSVD
+vehicleLoadSVS= vehicleLoadWSVS+vehicleLoadBSVS
+truckLoadSVS= truckLoadWSVS+truckLoadBSVS
 
-#pruebaSVD= geom.SVD2d(geom.VDesliz2d(foundationCenter+geom.Vector2d(0,H),geom.Vector2d(1.0,-1.0)))
-#pruebaSVD= geom.SVD2d(geom.VDesliz2d(foundationCenter+geom.Vector2d(-1,0),geom.Vector2d(0.0,-1.0)))
+#pruebaSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(foundationCenter+geom.Vector2d(0,H),geom.Vector2d(1.0,-1.0)))
+#pruebaSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(foundationCenter+geom.Vector2d(-1,0),geom.Vector2d(0.0,-1.0)))
 
 def getOverturningSafetyFactor(svd):
     svd= svd.reduceTo(foundationCenter)
@@ -154,11 +154,11 @@ def getSlidingSafetyFactor(svd):
     return F
 
 # Resultant.
-svdAB= 0.9*selfWeightSVD+1.35*earthPressureSVD
-svdAG= 0.8*selfWeightSVD+1.35*earthPressureSVD
-svdBB= 0.9*selfWeightSVD+1.35*earthPressureSVD+1.35*vehicleLoadSVD
-svdBG= 0.8*selfWeightSVD+1.35*earthPressureSVD+1.35*vehicleLoadSVD
-svdC= 1.0*selfWeightSVD+1.0*earthPressureSVD+1.0*truckLoadSVD
+svdAB= 0.9*selfWeightSVS+1.35*earthPressureSVS
+svdAG= 0.8*selfWeightSVS+1.35*earthPressureSVS
+svdBB= 0.9*selfWeightSVS+1.35*earthPressureSVS+1.35*vehicleLoadSVS
+svdBG= 0.8*selfWeightSVS+1.35*earthPressureSVS+1.35*vehicleLoadSVS
+svdC= 1.0*selfWeightSVS+1.0*earthPressureSVS+1.0*truckLoadSVS
 
 
 Fo= getOverturningSafetyFactor(svdAB)
