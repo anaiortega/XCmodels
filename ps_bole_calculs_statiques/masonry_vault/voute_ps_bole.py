@@ -7,7 +7,7 @@ import numpy as np
 import pydoc
 import rough_calculations.masonryVault as masonryVault
 
-#Obtención de los coeficientes del polinomio a partir de 4 points del arco 
+#Compute the polynomial coefficients from four points of the arc 
 x1= 2.90
 x2= 6.83
 x3= 11.12

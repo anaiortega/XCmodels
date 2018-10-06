@@ -9,9 +9,8 @@ import rough_calculations.masonry_bridge
 import basicClasses as bc
 from scipy.optimize import minimize
 
-#Obtención de los coeficientes del polinomio a partir de 4 points del arco 
-#(los 4 points que tomamos son los obtenidos como coordenadas de las rótulas 
-#en el ejemplo de la tesis)
+#Compute the polynomial coefficients from four points of the arc 
+#(we take the points corresponding to the hinges in the example)
 xA= 3.156
 xC= 6.175
 xD= 10.996
