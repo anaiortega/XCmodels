@@ -11,3 +11,7 @@ setToDisp= xcTotalSet #impactOnBody #totalSet
 
 defDisplay.FEmeshGraphic(xcSet= setToDisp,caption='',viewNm="-X+Y+Z",defFScale=1.0)
 
+writer = vtk.vtkXMLUnstructuredGridWriter();
+writer.SetFileName("test.vtp");
+writer.SetInputData(defDisplay.gridRecord.uGrid)
+writer.Write()
