@@ -392,7 +392,7 @@
         </def_table>
     </def_container>
     <def_container clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" progid="DataAddLoad.EP_SurfaceForceFree.1">
-        <def_table clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="ef1ecaac-4ca3-4c97-a7dd-1476ef7bdec9" name="XML\default" progid="DataAddLoad.EP_SurfaceForceFree.1" size="12" type="vertical">
+        <def_table clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="6b2f0cde-aecb-41d9-80e0-9570f86deee3" name="XML\default" progid="DataAddLoad.EP_SurfaceForceFree.1" size="12" type="vertical">
             <def_property id="{AACF96D6-D986-421C-9FF2-D0B696A6B1F6}" name="Load case" type="ref" x="0">
                 <def_ref id="{0908D21F-481F-11D4-AB84-00C06C452330}" progid="DataSetScia.EP_LoadCase.1" />
             </def_property>
@@ -466,23 +466,4 @@
                     <def_property id="{75DC4AAF-00BC-47AB-96CA-BD9402457753}" name="Distance" type="real" x="13" />
                     <def_property id="{056DBA2C-44AC-418D-B891-FBC587D1E0BA}" name="Vector X" type="real" x="14" />
                     <def_property id="{5019F985-7FA2-4DAB-AC36-62C75DF20E72}" name="Vector Y" type="real" x="15" />
-                    <def_property id="{6B466680-68F2-484E-BD20-E00A39E81C4F}" name="Vector Z" type="real" x="16" />
-                    <def_property id="{EA11631F-7A6E-466B-A658-FE19AE705499}" name="Referenced Entity" type="enum" x="17">
-                        <def_enum size="2">
-                            <it_enum t="Existing Node" v="0" /><it_enum t="New Point" v="1" />
-                        </def_enum>
-                    </def_property>
-                    <def_property id="{AEA22588-8EF1-4D75-B66D-1B0171E77D72}" name="Referenced Entity" type="enum" x="18">
-                        <def_enum size="2">
-                            <it_enum t="Existing Node" v="0" /><it_enum t="New Point" v="1" />
-                        </def_enum>
-                    </def_property>
-                    <def_property id="{691F7087-E286-480A-ADBD-478710E6341C}" name="Coord ux" type="real" x="19" />
-                    <def_property id="{DBE9CDE0-61D0-4379-B822-085F36333AD6}" name="Coord uy" type="real" x="20" />
-                    <def_property id="{E12A9C50-CF65-4B97-8C59-46DAF880AE8A}" name="Coord uz" type="real" x="21" />
-                    <def_property id="{ECDF6620-F0FD-4476-B095-3610E641C35C}" name="Edge" type="string" x="22" />
-                </def_subtable>
-            </def_property>
-        </def_table>
-    </def_container>
-</def_project>
+                    <def_property id="{6B466680-68F2-484E-BD20-E00A39E81C4F}" name="Vector Z" 
