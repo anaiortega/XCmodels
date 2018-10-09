@@ -10,7 +10,7 @@ import xc
 from materials.ehe import EHE_materials
 from postprocess.reports import graph_material as mg
 
-# Coeficientes de seguridad.
+# Partial safety factors
 gammac= 1.5 # Partial safety factor for concrete strength.
 gammas= 1.15 # Partial safety factor for steel strength.
 
@@ -25,7 +25,7 @@ prueba= xc.FEProblem()
 preprocessor=  prueba.getPreprocessor
 # Definimos materiales
 concr=EHE_materials.HA25
-concr.alfacc=0.85    #f_maxd= 0.85*fcd coeficiente de fatiga del hormigón (generalmente alfacc=1)
+concr.alfacc=0.85    #f_maxd= 0.85*fcd concrete fatigue factor (generalmente alfacc=1)
 concreteDiagram= concr.defDiagD(preprocessor)
 Ec= concreteDiagram.getTangent
 reinfSteel= EHE_materials.B500S

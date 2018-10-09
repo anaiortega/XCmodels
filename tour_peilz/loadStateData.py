@@ -127,6 +127,15 @@ Q3.vectorScaleLoads= 0.3
 Q3.viewName= "-X-Y+Z"
 Q3.unitsDispl='[mm]'
 
+Q3d=graphical_reports.RecordLoadCaseDisp(loadCaseName='DLM1',loadCaseDescr='Q3d: derailment load',loadCaseExpr='1.0*DLM1',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
+Q3d.unitsScaleLoads= 1e-3
+Q3d.unitsScaleForc= 1e-3
+Q3d.unitsScaleMom= 1e-3
+Q3d.unitsScaleDispl= 1e3
+Q3d.vectorScaleLoads= 0.3
+Q3d.viewName= "-X-Y+Z"
+Q3d.unitsDispl='[mm]'
+
 Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='nosingLoad',loadCaseDescr='Q4: earth pressure from nosing load',loadCaseExpr='1.0*nosingLoad',setsToDispLoads=[shell_elements],setsToDispDspRot=[],setsToDispIntForc=[])
 Q4.unitsScaleLoads= 1e-3
 Q4.unitsScaleForc= 1e-3

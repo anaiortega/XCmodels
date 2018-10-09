@@ -30,7 +30,7 @@ areaFi34= SIA262_materials.section_barres_courantes[34e-3]
 areaFi40= SIA262_materials.section_barres_courantes[40e-3]
 
 concrete= EHE_materials.HA45
-concrete.alfacc=0.85    #coeficiente de fatiga del hormigón (generalmente se toma alfacc=1)
+concrete.alfacc=0.85    #concrete fatigue factor (generalmente se toma alfacc=1)
 reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15

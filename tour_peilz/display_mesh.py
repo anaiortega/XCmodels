@@ -3,6 +3,7 @@
 execfile('xc_model_data.py')
 execfile('captionTexts.py')
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
+import vtk
 
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()

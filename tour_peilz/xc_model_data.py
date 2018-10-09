@@ -291,7 +291,7 @@ for s in segments:
     sI= geom.Segment3d(underpassFrame[s[0]],underpassFrame[s[1]])
     for n in shell_elements.getNodes:
         pos= n.getInitialPos3d
-        dist= sI.distPto(pos)
+        dist= sI.distPos3d(pos)
         if dist<0.1:
             frame_nodes.append(n)
 frameBC.applyOnNodesLst(frame_nodes)
@@ -310,7 +310,7 @@ loadCases.currentTimeSeries= "ts"
 
 #Load case definition
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'pedestrianLoad', 'singleAxeLoad', 'LM1', 'nosingLoad', 'roadTrafficLoad', 'earthquake']
+loadCaseNames= ['selfWeight','deadLoad','passengers_shelter','earthPressure', 'pedestrianLoad', 'singleAxeLoad', 'LM1', 'DLM1', 'nosingLoad', 'roadTrafficLoad', 'earthquake']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 #Self weight.
@@ -346,7 +346,7 @@ for s in segments:
     sI_nodes= []
     for n in roof_elements.getNodes:
         pos= n.getInitialPos3d
-        dist= sI.distPto(pos)
+        dist= sI.distPos3d(pos)
         if dist<0.21:
             sI_nodes.append(n)
     node_load= -4e3*sI.getLength()/len(sI_nodes)
@@ -422,6 +422,19 @@ for e in side_a_elements.getElements:
     localKVector= e.getCoordTransf.getG3Vector
     pressure= railLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
     e.vector3dUniformLoadGlobal(pressure) #SIA 261:2014 table 8
+
+derailmentLoad= loadCaseManager.setCurrentLoadCase('DLM1')
+derailmentLoadStripWidth= 0.45
+platformWidth= 2.5
+distDerailmentLoadWall= platformWidth+derailmentLoadStripWidth/2.0 #Distance from the center line of the derailment load to the wall
+derailmentLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 145e3/derailmentLoadStripWidth,zLoad= 10.23-0.4, distWall= distDerailmentLoadWall, stripWidth= derailmentLoadStripWidth)
+
+for e in side_a_elements.getElements:
+    elemCentroid= e.getPosCentroid(True)
+    if(elemCentroid.x>24.5 and elemCentroid.x<44.5):
+        localKVector= e.getCoordTransf.getG3Vector
+        pressure= derailmentLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
+        e.vector3dUniformLoadGlobal(pressure)
 
 #Nosing load
 railLoad= loadCaseManager.setCurrentLoadCase('nosingLoad')
@@ -516,5 +529,6 @@ combContainer.ULS.perm.add('ULS_19','1.35*selfWeight + 1.35*deadLoad + 1.35*eart
 combContainer.ULS.perm.add('ULS_20','1.35*selfWeight + 1.35*deadLoad + 1.35*earthPressure + 1.05*pedestrianLoad + 1.05*singleAxeLoad + 1.5*roadTrafficLoad')
 
 #Accidental
-combContainer.ULS.perm.add('ULSA_5','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*earthquake')
+combContainer.ULS.perm.add('ULSA_1','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*earthquake')
+combContainer.ULS.perm.add('ULSA_2','1.00*selfWeight + 1.00*deadLoad + 1.00*earthPressure + 1.00*DLM1')
 
