@@ -166,9 +166,9 @@ for e in parapetSet.getElements:
 # Dead load
 cLC= loadCaseManager.setCurrentLoadCase('GdeadLoad')
 dz0= 0.23
-dz1= 0.23+0.8 # Foot path
-dz2= dz1+4 #Carriageway
-dz3= dz2+0.15 #Bordure
+dz1= 0.23+0.18 #+0.8 Foot path removed 10/10/2018 LCPT
+dz2= dz1+4.64 #Carriageway
+dz3= dz2+0.18 #Bordure
 deckZones=[dz0,dz1,dz2,dz3]
 footpathWeight= 0.25*24e3+1e3 #24 kN/m3 + deck waterproofing (1kN/m2).
 wearingWeight= 0.11*24e3+1e3 #24 kN/m3 + deck waterproofing (1kN/m2).

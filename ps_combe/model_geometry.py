@@ -294,7 +294,7 @@ def createLaneAxisLines():
         index= 0
         for p in laneAxisLines:
             pGlobal= s.getPosGlobal(p)
-            retval[index].agregaVertice(pGlobal)
+            retval[index].appendVertex(pGlobal)
             index+= 1
     return retval
 
@@ -304,19 +304,19 @@ def createLaneRegionsPolygons():
         index= 0
         for p in laneLines:
             pGlobal= s.getPosGlobal(p)
-            lines[index].agregaVertice(pGlobal)
+            lines[index].appendVertex(pGlobal)
             index+= 1
     polygons= [geom.Polygon2d(),geom.Polygon2d(),geom.Polygon2d()]
     sz= len(stations)
     for i in range(0,sz):
         for j in [0,1,2]:
           pt= lines[j][i]
-          polygons[j].agregaVertice(geom.Pos2d(pt.x,pt.y))
+          polygons[j].appendVertex(geom.Pos2d(pt.x,pt.y))
     for i in range(0,sz):
         j= sz-i-1
         for k in [1,2,3]:
           pt= lines[k][j]
-          polygons[k-1].agregaVertice(geom.Pos2d(pt.x,pt.y))
+          polygons[k-1].appendVertex(geom.Pos2d(pt.x,pt.y))
     return polygons
 
     
