@@ -2,7 +2,8 @@
 
 execfile('../model_data.py')
 execfile('../../PSs/loadStateDataActions.py')
-execfile('../../PSs/loadStateData.py')
+#execfile('../../PSs/loadStateData.py')
+execfile('./loadStateData.py')
 
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 

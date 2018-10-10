@@ -211,8 +211,9 @@ columnZ_mat= tm.BeamMaterialData(name= 'columnZ_mat', section=geomSectColumnZ, m
 columnZ_mat.setupElasticShear3DSection(preprocessor=prep)
 
 #                         ***FE model - MESH***
-# IMPORTANT: it's convenient to generate the mesh of surfaces before meshing the lines,
-#            otherwise, sets of shells can take also beam elements touched by them
+# IMPORTANT: it's convenient to generate the mesh of surfaces before meshing
+# the lines, otherwise, sets of shells can take also beam elements touched by
+# them
 
 beamX_mesh=fem.LinSetToMesh(linSet=beamX,matSect=beamX_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
