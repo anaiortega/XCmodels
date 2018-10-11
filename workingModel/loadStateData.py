@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1 -> autoscale).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -52,7 +52,7 @@ Definition of record objects with these attributes:
                     display internal forces (defaults to [])
   scaleDispBeamIntForc: tuple (escN,escQ,escM) correponding to the scales to 
                   apply to displays of, respectively, N Q and M beam internal 
-                  forces (defaults to (1.0,1.0,1.0))
+                  forces (defaults to (1.0,1.0,1.0) -> auto-scale)
   unitsScaleForc: factor to apply to internal forces if we want to change
                  the units (defaults to 1).
   unitsForc: text to especify the units in which forces are 
@@ -79,7 +79,6 @@ Definition of record objects with these attributes:
 
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
-#G1.vectorScaleLoads=0.5/4.91
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleMom=1e-3
@@ -88,7 +87,6 @@ G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
 G1.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G1.scaleDispBeamIntForc=(0.5,1.0,1.0)
 G1.viewName="XYZPos"
 G1.setsToDispBeamLoads=[beamY]
 G1.vectorScalePointLoads=0.005
@@ -105,7 +103,6 @@ Q1.unitsScaleForc=1e-3
 Q1.unitsForc='[kN]'
 Q1.setsToDispBeamIntForc=[]
 Q1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q1.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q1.viewName="XYZPos"
 Q1.setsToDispBeamLoads=[]
 Q1.vectorScalePointLoads=0.005
@@ -121,7 +118,6 @@ Q2.unitsScaleForc=1e-3
 Q2.unitsForc='[kN]'
 Q2.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q2.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q2.viewName="XYZPos"
 Q2.setsToDispBeamLoads=[overallSet]
 Q2.vectorScalePointLoads=0.005
@@ -138,7 +134,6 @@ Q3.unitsScaleForc=1e-3
 Q3.unitsForc='[kN]'
 Q3.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q3.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q3.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q3.viewName="XYZPos"
 Q3.setsToDispBeamLoads=[overallSet]
 Q3.vectorScalePointLoads=0.005
@@ -154,7 +149,6 @@ Q4.unitsScaleForc=1e-3
 Q4.unitsForc='[kN]'
 Q4.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q4.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q4.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q4.viewName="XYZPos"
 Q4.setsToDispBeamLoads=[overallSet]
 Q4.vectorScalePointLoads=0.005
@@ -170,7 +164,6 @@ Q5.unitsScaleForc=1e-3
 Q5.unitsForc='[kN]'
 Q5.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q5.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q5.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q5.viewName="XYZPos"
 Q5.setsToDispBeamLoads=[overallSet]
 Q5.vectorScalePointLoads=0.005
@@ -186,7 +179,6 @@ Q6.unitsScaleForc=1e-3
 Q6.unitsForc='[kN]'
 Q6.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q6.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q6.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q6.viewName="XYZPos"
 Q6.setsToDispBeamLoads=[overallSet]
 Q6.vectorScalePointLoads=0.005
@@ -202,7 +194,6 @@ Q7.unitsScaleForc=1e-3
 Q7.unitsForc='[kN]'
 Q7.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q7.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q7.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q7.viewName="XYZPos"
 Q7.setsToDispBeamLoads=[overallSet]
 Q7.vectorScalePointLoads=0.005
@@ -218,7 +209,6 @@ Q8.unitsScaleForc=1e-3
 Q8.unitsForc='[kN]'
 Q8.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q8.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q8.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q8.viewName="XYZPos"
 Q8.vectorScalePointLoads=0.005
 
@@ -233,7 +223,6 @@ Q9.unitsForc='[kN]'
 Q9.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q9.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q9.setsToDispBeamLoads=[overallSet]
-Q9.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q9.viewName="XYZPos"
 Q9.vectorScalePointLoads=0.35
 
@@ -248,13 +237,11 @@ Q10.unitsForc='[kN]'
 Q10.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q10.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q10.setsToDispBeamLoads=[overallSet]
-Q10.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q10.viewName="XYZPos"
 Q10.vectorScalePointLoads=0.05
 
 Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q11.unitsScaleLoads=1e-3
-#Q11.vectorScaleLoads=0.5/48.8
 Q11.unitsScaleDispl=1e3
 Q11.unitsDispl='[mm]'
 Q11.unitsScaleMom=1e-3
@@ -264,13 +251,11 @@ Q11.unitsForc='[kN]'
 Q11.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q11.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q11.setsToDispBeamLoads=[overallSet]
-Q11.scaleDispBeamIntForc=(1.5,1.5,1.5)
 Q11.viewName="XYZPos"
 Q11.vectorScalePointLoads=0.05
 
 Comb1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS1',loadCaseDescr='Comb1: combination 1 ',loadCaseExpr='1.0*LS1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
 Comb1.unitsScaleLoads=1e-3
-#Comb1.vectorScaleLoads=0.05
 Comb1.unitsScaleDispl=1e3
 Comb1.unitsDispl='[mm]'
 Comb1.unitsScaleMom=1e-3
@@ -280,14 +265,12 @@ Comb1.unitsForc='[kN]'
 Comb1.setsToDispBeamIntForc=[allBeams]
 Comb1.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Comb1.setsToDispBeamLoads=[allBeams]
-Comb1.scaleDispBeamIntForc=(0.05,0.005,0.005)
 Comb1.compElLoad='transComponent'
 Comb1.viewName="XYZPos"
 Comb1.vectorScalePointLoads=0.05
 
 Comb2=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS2',loadCaseDescr='Comb2: combination 2 ',loadCaseExpr='1.0*LS2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
 Comb2.unitsScaleLoads=1e-3
-#Comb2.vectorScaleLoads=0.05
 Comb2.unitsScaleDispl=1e3
 Comb2.unitsDispl='[mm]'
 Comb2.unitsScaleMom=1e-3
@@ -297,7 +280,6 @@ Comb2.unitsForc='[kN]'
 Comb2.setsToDispBeamIntForc=[allBeams]
 Comb2.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Comb2.setsToDispBeamLoads=[allBeams]
-Comb2.scaleDispBeamIntForc=(0.05,0.005,0.005)
 Comb2.compElLoad='transComponent'
 Comb2.viewName="XYZPos"
 Comb2.vectorScalePointLoads=0.05
