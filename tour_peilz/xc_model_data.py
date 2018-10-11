@@ -379,7 +379,7 @@ cLC= loadCaseManager.setCurrentLoadCase('pedestrianLoad')
 uniformLoad= xc.Vector([0.0,0.0,-5.0e3])
 # poly_shelter_load_perimeter=geom.Polygon2d()
 # for p in passengerShelterCorners:
-#     poly_shelter_load_perimeter.agregaVertice(geom.Pos2d(p.x,p.y))
+#     poly_shelter_load_perimeter.appendVertex(geom.Pos2d(p.x,p.y))
 # shelter_elements= sets.set_included_in_orthoPrism(preprocessor,setInit=roof_elements,prismBase= poly_shelter_load_perimeter,prismAxis='Z',setName='shelter_elements')
 for e in roof_elements.getElements:
     e.vector3dUniformLoadGlobal(uniformLoad) #SIA 261:2014 table 8

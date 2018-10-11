@@ -35,10 +35,10 @@ totalEarthPressure= scipy.integrate.simps(results5_16,x)
 earthPressurePolygon=geom.Polygon2d()
 
 for cx,cy in zip(x,results5_16):
-  earthPressurePolygon.agregaVertice(geom.Pos2d(cx,cy))
+  earthPressurePolygon.appendVertex(geom.Pos2d(cx,cy))
 
-earthPressurePolygon.agregaVertice(geom.Pos2d(x[-1],0.0))
-earthPressurePolygon.agregaVertice(geom.Pos2d(0,0))
+earthPressurePolygon.appendVertex(geom.Pos2d(x[-1],0.0))
+earthPressurePolygon.appendVertex(geom.Pos2d(0,0))
 earthPressurePolygonCentroid= earthPressurePolygon.getCenterOfMass()
 earthPressureVector= geom.Vector2d(-totalEarthPressure,-Fv)
 earthPressureTail= geom.Pos2d(foundationWidth,H-earthPressurePolygonCentroid.x)
@@ -52,10 +52,10 @@ print 'B/H= 0.1', results5_16
 # Spandrel wall.
 foundationCenter= geom.Pos2d(foundationWidth/2.0,0.0)
 spandrelWallPolygon= geom.Polygon2d()
-spandrelWallPolygon.agregaVertice(geom.Pos2d(0.0,0.0))
-spandrelWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,0.0))
-spandrelWallPolygon.agregaVertice(geom.Pos2d(1.05,H))
-spandrelWallPolygon.agregaVertice(geom.Pos2d(0.00,H))
+spandrelWallPolygon.appendVertex(geom.Pos2d(0.0,0.0))
+spandrelWallPolygon.appendVertex(geom.Pos2d(foundationWidth,0.0))
+spandrelWallPolygon.appendVertex(geom.Pos2d(1.05,H))
+spandrelWallPolygon.appendVertex(geom.Pos2d(0.00,H))
 spandrelWallPolygonCentroid= spandrelWallPolygon.getCenterOfMass()
 spandrelWallPolygonArea= spandrelWallPolygon.getArea()
 spandrelWallUnitWeight= 19
@@ -65,9 +65,9 @@ print 'spandrelWallWeightSVS: ', spandrelWallWeightSVS
 
 # backfill weight over the wall.
 backfillOverWallPolygon= geom.Polygon2d()
-backfillOverWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,0.0))
-backfillOverWallPolygon.agregaVertice(geom.Pos2d(foundationWidth,H))
-backfillOverWallPolygon.agregaVertice(geom.Pos2d(1.05,H))
+backfillOverWallPolygon.appendVertex(geom.Pos2d(foundationWidth,0.0))
+backfillOverWallPolygon.appendVertex(geom.Pos2d(foundationWidth,H))
+backfillOverWallPolygon.appendVertex(geom.Pos2d(1.05,H))
 backfillOverWallPolygonCentroid= backfillOverWallPolygon.getCenterOfMass()
 backfillOverWallPolygonArea= backfillOverWallPolygon.getArea()
 backfillOverWallPolygonWeight= gammaSoil*backfillOverWallPolygonArea

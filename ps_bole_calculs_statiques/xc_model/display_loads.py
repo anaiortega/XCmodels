@@ -8,13 +8,12 @@ execfile('./loadStateData.py')
 #available components: 'axialComponent', 'transComponent', 'transYComponent',
 #                      'transZComponent'
 
-loadCasesToDisplay=[A1]
+loadCasesToDisplay=[G2]
 
 #End data
 
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispBeamLoads:
-        print 'set:', st.name
         lcs=qg.QuickGraphics(deck)
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', ' +  ', '  + lc.unitsLoads

@@ -455,10 +455,10 @@ def polygon(xCent,yCent,Lx,Ly):
     pol=geom.Polygon2d()
     ymin=yCent-Ly/2.0
     ymax=yCent+Ly/2.0
-    pol.agregaVertice(geom.Pos2d(mueveX(xCent-Lx/2.0,ymin),ymin))
-    pol.agregaVertice(geom.Pos2d(mueveX(xCent-Lx/2.0,ymax),ymax))
-    pol.agregaVertice(geom.Pos2d(mueveX(xCent+Lx/2.0,ymax),ymax))
-    pol.agregaVertice(geom.Pos2d(mueveX(xCent+Lx/2.0,ymin),ymin))
+    pol.appendVertex(geom.Pos2d(mueveX(xCent-Lx/2.0,ymin),ymin))
+    pol.appendVertex(geom.Pos2d(mueveX(xCent-Lx/2.0,ymax),ymax))
+    pol.appendVertex(geom.Pos2d(mueveX(xCent+Lx/2.0,ymax),ymax))
+    pol.appendVertex(geom.Pos2d(mueveX(xCent+Lx/2.0,ymin),ymin))
     return pol
 
 def qLinYsobreMontera(prep,setBusq,hMont,angrepRad,x_coord,y_inic,y_fin,qLin,nameToLoad):

@@ -53,10 +53,10 @@ totalEarthPressure= scipy.integrate.simps(earth_pressure,x)
 earthPressurePolygon=geom.Polygon2d()
 
 for cx,cy in zip(x,earth_pressure):
-  earthPressurePolygon.agregaVertice(geom.Pos2d(cx,cy))
+  earthPressurePolygon.appendVertex(geom.Pos2d(cx,cy))
 
-earthPressurePolygon.agregaVertice(geom.Pos2d(x[-1],0.0))
-earthPressurePolygon.agregaVertice(geom.Pos2d(0,0))
+earthPressurePolygon.appendVertex(geom.Pos2d(x[-1],0.0))
+earthPressurePolygon.appendVertex(geom.Pos2d(0,0))
 earthPressurePolygonCentroid= earthPressurePolygon.getCenterOfMass()
 earthPressureVector= geom.Vector2d(-totalEarthPressure,-Fv)
 earthPressureTail= geom.Pos2d(B,H-earthPressurePolygonCentroid.x)
@@ -66,10 +66,10 @@ print 'earthPressureSVS: ', earthPressureSVS
 # Gravity wall.
 foundationCenter= geom.Pos2d(B/2.0,0.0)
 gravityWallPolygon= geom.Polygon2d()
-gravityWallPolygon.agregaVertice(geom.Pos2d(0.0,0.0))
-gravityWallPolygon.agregaVertice(geom.Pos2d(B,0.0))
-gravityWallPolygon.agregaVertice(geom.Pos2d(B,H))
-gravityWallPolygon.agregaVertice(geom.Pos2d(0.00,H))
+gravityWallPolygon.appendVertex(geom.Pos2d(0.0,0.0))
+gravityWallPolygon.appendVertex(geom.Pos2d(B,0.0))
+gravityWallPolygon.appendVertex(geom.Pos2d(B,H))
+gravityWallPolygon.appendVertex(geom.Pos2d(0.00,H))
 gravityWallPolygonCentroid= gravityWallPolygon.getCenterOfMass()
 gravityWallPolygonArea= gravityWallPolygon.getArea()
 gravityWallUnitWeight= 24e3

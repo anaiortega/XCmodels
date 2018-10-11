@@ -451,10 +451,10 @@ L_Qptren_carr=(nQptren_carr-1)*distEjesTren
 
 def polygon(xCent,yCent,Lx,Ly):
     pol=geom.Polygon2d()
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
     return pol
 
 def qLinYsobreMontera(prep,setBusq,hMont,angrepRad,x_coord,y_inic,y_fin,qLin,nameToLoad):

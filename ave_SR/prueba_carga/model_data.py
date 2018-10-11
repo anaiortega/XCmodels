@@ -309,10 +309,10 @@ L_Qptren_carr=(nQptren_carr-1)*distEjesTren
 
 def polygon(xCent,yCent,Lx,Ly):
     pol=geom.Polygon2d()
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
     return pol
 
 
@@ -436,10 +436,10 @@ combContainer.ULS.perm.add("ELU003","1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q2")
 
 def polygon(xCent,yCent,Lx,Ly):
     pol=geom.Polygon2d()
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
-    pol.agregaVertice(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent-Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent-Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent+Ly/2.0))
+    pol.appendVertex(geom.Pos2d(xCent+Lx/2.0,yCent-Ly/2.0))
     return pol
 
 L=xList[-1]
