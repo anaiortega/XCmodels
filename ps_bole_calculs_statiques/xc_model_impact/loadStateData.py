@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -78,7 +78,6 @@ A1.unitsScaleLoads= 1e-3
 A1.unitsScaleForc= 1e-3
 A1.unitsScaleMom= 1e-3
 A1.unitsScaleDispl= 1e3
-A1.vectorScaleLoads= 1e-3
 A1.viewName= "-X+Y+Z"
 A1.unitsDispl='[mm]'
 
@@ -87,7 +86,6 @@ A2.unitsScaleLoads= 1e-3
 A2.unitsScaleForc= 1e-3
 A2.unitsScaleMom= 1e-3
 A2.unitsScaleDispl= 1e3
-A2.vectorScaleLoads= 1e-3
 A2.viewName= "-X+Y+Z"
 A2.unitsDispl='[mm]'
 

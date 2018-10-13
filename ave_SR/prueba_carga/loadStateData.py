@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -76,7 +76,6 @@ Definition of record objects with these attributes:
 
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1',loadCaseDescr='Q1: Prueba de carga estática',loadCaseExpr='1.0*Q1',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q1.unitsScaleLoads=1e-3
-Q1.vectorScaleLoads=0.05
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleMom=1e-3
@@ -90,7 +89,6 @@ Q1.listIntForc=['M2']
 
 Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q2',loadCaseDescr='Q2: tren de cargas ferroviario (2 vías)',loadCaseExpr='1.00*Q2',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q2.unitsScaleLoads=1e-3
-Q2.vectorScaleLoads=0.05
 Q2.unitsScaleDispl=1e3
 Q2.unitsDispl='[mm]'
 Q2.unitsScaleMom=1e-3
@@ -104,7 +102,6 @@ Q2.listIntForc=['M2']
 
 Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3',loadCaseDescr='Q3: tren de cargas ferroviario (1 vía)',loadCaseExpr='1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q3.unitsScaleLoads=1e-3
-Q3.vectorScaleLoads=0.05
 Q3.unitsScaleDispl=1e3
 Q3.unitsDispl='[mm]'
 Q3.unitsScaleMom=1e-3
@@ -118,7 +115,6 @@ Q3.listIntForc=['M2']
 
 PrueCarga=graphical_reports.RecordLoadCaseDisp(loadCaseName='PC',loadCaseDescr='PrueCarga: Prueba de carga estática',loadCaseExpr='1.0*G1+1.00*G3+1.0*Q1',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 PrueCarga.unitsScaleLoads=1e-3
-PrueCarga.vectorScaleLoads=0.05
 PrueCarga.unitsScaleDispl=1e3
 PrueCarga.unitsDispl='[mm]'
 PrueCarga.unitsScaleMom=1e-3
@@ -132,7 +128,6 @@ PrueCarga.listIntForc=['M2']
 
 Qtren2vias=graphical_reports.RecordLoadCaseDisp(loadCaseName='TF2',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q2',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Qtren2vias.unitsScaleLoads=1e-3
-Qtren2vias.vectorScaleLoads=0.05
 Qtren2vias.unitsScaleDispl=1e3
 Qtren2vias.unitsDispl='[mm]'
 Qtren2vias.unitsScaleMom=1e-3
@@ -146,7 +141,6 @@ Qtren2vias.listIntForc=['M2']
 
 Qtren1via=graphical_reports.RecordLoadCaseDisp(loadCaseName='TF1',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Qtren1via.unitsScaleLoads=1e-3
-Qtren1via.vectorScaleLoads=0.05
 Qtren1via.unitsScaleDispl=1e3
 Qtren1via.unitsDispl='[mm]'
 Qtren1via.unitsScaleMom=1e-3

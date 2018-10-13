@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -78,7 +78,6 @@ G1.unitsScaleLoads= 1e-3
 G1.unitsScaleForc= 1e-3
 G1.unitsScaleMom= 1e-3
 G1.unitsScaleDispl= 1e3
-G1.vectorScaleLoads= 0.1
 #G1.viewName= "-X+Y+Z"
 G1.unitsDispl='[mm]'
 
@@ -87,7 +86,6 @@ G2.unitsScaleLoads= 1e-3
 G2.unitsScaleForc= 1e-3
 G2.unitsScaleMom= 1e-3
 G2.unitsScaleDispl= 1e3
-G2.vectorScaleLoads= 0.25
 #G2.viewName= "-X+Y+Z"
 G2.unitsDispl='[mm]'
 
@@ -96,7 +94,6 @@ G3.unitsScaleLoads= 1e-3
 G3.unitsScaleForc= 1e-3
 G3.unitsScaleMom= 1e-3
 G3.unitsScaleDispl= 1e3
-G3.vectorScaleLoads= 0.05
 #G3.viewName= "-X+Y+Z"
 G3.unitsDispl='[mm]'
 
@@ -105,7 +102,6 @@ Q1.unitsScaleLoads= 1e-3
 Q1.unitsScaleForc= 1e-3
 Q1.unitsScaleMom= 1e-3
 Q1.unitsScaleDispl= 1e3
-Q1.vectorScaleLoads= 0.2
 Q1.viewName= "-X-Y+Z"
 Q1.unitsDispl='[mm]'
 
@@ -114,7 +110,6 @@ Q2.unitsScaleLoads= 1e-3
 Q2.unitsScaleForc= 1e-3
 Q2.unitsScaleMom= 1e-3
 Q2.unitsScaleDispl= 1e3
-Q2.vectorScaleLoads= 0.05
 #Q2.viewName= "-X+Y+Z"
 Q2.unitsDispl='[mm]'
 
@@ -123,7 +118,6 @@ Q3.unitsScaleLoads= 1e-3
 Q3.unitsScaleForc= 1e-3
 Q3.unitsScaleMom= 1e-3
 Q3.unitsScaleDispl= 1e3
-Q3.vectorScaleLoads= 0.3
 Q3.viewName= "-X-Y+Z"
 Q3.unitsDispl='[mm]'
 
@@ -132,7 +126,6 @@ Q3d.unitsScaleLoads= 1e-3
 Q3d.unitsScaleForc= 1e-3
 Q3d.unitsScaleMom= 1e-3
 Q3d.unitsScaleDispl= 1e3
-Q3d.vectorScaleLoads= 0.3
 Q3d.viewName= "-X-Y+Z"
 Q3d.unitsDispl='[mm]'
 
@@ -141,7 +134,6 @@ Q4.unitsScaleLoads= 1e-3
 Q4.unitsScaleForc= 1e-3
 Q4.unitsScaleMom= 1e-3
 Q4.unitsScaleDispl= 1e3
-Q4.vectorScaleLoads= 1
 Q4.viewName= "-X-Y+Z"
 Q4.unitsDispl='[mm]'
 
@@ -150,7 +142,6 @@ Q5.unitsScaleLoads= 1e-3
 Q5.unitsScaleForc= 1e-3
 Q5.unitsScaleMom= 1e-3
 Q5.unitsScaleDispl= 1e3
-Q5.vectorScaleLoads= 0.25
 #Q5.viewName= "-X-Y+Z"
 Q5.unitsDispl='[mm]'
 
@@ -159,7 +150,6 @@ A1.unitsScaleLoads= 1e-3
 A1.unitsScaleForc= 1e-3
 A1.unitsScaleMom= 1e-3
 A1.unitsScaleDispl= 1e3
-A1.vectorScaleLoads= 0.1
 #A1.viewName= "-X+Y+Z"
 A1.unitsDispl='[mm]'
 

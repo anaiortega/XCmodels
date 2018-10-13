@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -75,7 +75,6 @@ Definition of record objects with these attributes:
 '''
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='G1',loadCaseDescr='G1: Peso propio',loadCaseExpr='1.0*G1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 G1.unitsScaleLoads=1e-3
-G1.vectorScaleLoads=0.05
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleMom=1e-3
@@ -87,7 +86,6 @@ G1.hCamFct=1
 
 G2a=graphical_reports.RecordLoadCaseDisp(loadCaseName='G2a',loadCaseDescr='G2a: Carga muerta en servicio',loadCaseExpr='1.0*G2a',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 G2a.unitsScaleLoads=1e-3
-G2a.vectorScaleLoads=0.05
 G2a.unitsScaleDispl=1e3
 G2a.unitsDispl='[mm]'
 G2a.unitsScaleMom=1e-3
@@ -99,7 +97,6 @@ G2a.hCamFct=1
 
 G2b=graphical_reports.RecordLoadCaseDisp(loadCaseName='G2b',loadCaseDescr='G2b: Carga muerta desbalastado 1',loadCaseExpr='1.0*G2b',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 G2b.unitsScaleLoads=1e-3
-G2b.vectorScaleLoads=0.05
 G2b.unitsScaleDispl=1e3
 G2b.unitsDispl='[mm]'
 G2b.unitsScaleMom=1e-3
@@ -111,7 +108,6 @@ G2b.hCamFct=1
 
 G2c=graphical_reports.RecordLoadCaseDisp(loadCaseName='G2c',loadCaseDescr='G2c: Carga muerta desbalastado 2',loadCaseExpr='1.0*G2c',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 G2c.unitsScaleLoads=1e-3
-G2c.vectorScaleLoads=0.05
 G2c.unitsScaleDispl=1e3
 G2c.unitsDispl='[mm]'
 G2c.unitsScaleMom=1e-3
@@ -123,7 +119,6 @@ G2c.hCamFct=1
 
 G3=graphical_reports.RecordLoadCaseDisp(loadCaseName='G3',loadCaseDescr='G3: Empuje del terreno',loadCaseExpr='1.0*G3',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 G3.unitsScaleLoads=1e-3
-G3.vectorScaleLoads=0.05
 G3.unitsScaleDispl=1e3
 G3.unitsDispl='[mm]'
 G3.unitsScaleMom=1e-3
@@ -135,7 +130,6 @@ G3.hCamFct=1
 
 Q1a=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a',loadCaseDescr='Q1a: Tren de cargas posición 1',loadCaseExpr='1.0*Q1a',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 Q1a.unitsScaleLoads=1e-3
-Q1a.vectorScaleLoads=0.05
 Q1a.unitsScaleDispl=1e3
 Q1a.unitsDispl='[mm]'
 Q1a.unitsScaleMom=1e-3
@@ -147,7 +141,6 @@ Q1a.hCamFct=1
 
 Q1a_1via=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a_1via',loadCaseDescr='Q1a_1via: Tren de cargas posición 1 en sit. desbalastado',loadCaseExpr='1.0*Q1a_1via',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 Q1a_1via.unitsScaleLoads=1e-3
-Q1a_1via.vectorScaleLoads=0.05
 Q1a_1via.unitsScaleDispl=1e3
 Q1a_1via.unitsDispl='[mm]'
 Q1a_1via.unitsScaleMom=1e-3
@@ -159,7 +152,6 @@ Q1a_1via.hCamFct=1
 
 Q1b=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b',loadCaseDescr='Q1b: Tren de cargas posición 2',loadCaseExpr='1.0*Q1b',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 Q1b.unitsScaleLoads=1e-3
-Q1b.vectorScaleLoads=0.05
 Q1b.unitsScaleDispl=1e3
 Q1b.unitsDispl='[mm]'
 Q1b.unitsScaleMom=1e-3
@@ -171,7 +163,6 @@ Q1b.hCamFct=1
 
 Q1c=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1c',loadCaseDescr='Q1c: Tren de cargas posición 3',loadCaseExpr='1.0*Q1c',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 Q1c.unitsScaleLoads=1e-3
-Q1c.vectorScaleLoads=0.05
 Q1c.unitsScaleDispl=1e3
 Q1c.unitsDispl='[mm]'
 Q1c.unitsScaleMom=1e-3
@@ -183,7 +174,6 @@ Q1c.hCamFct=1
 
 Q2b=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q2b',loadCaseDescr='Q2b: SC paso fauna y nivel agua',loadCaseExpr='1.0*Q2b',setsToDispLoads=[loscPlusHasti],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 Q2b.unitsScaleLoads=1e-3
-Q2b.vectorScaleLoads=0.05
 Q2b.unitsScaleDispl=1e3
 Q2b.unitsDispl='[mm]'
 Q2b.unitsScaleMom=1e-3
@@ -195,7 +185,6 @@ Q2b.hCamFct=1
 
 A1a=graphical_reports.RecordLoadCaseDisp(loadCaseName='A1a',loadCaseDescr='A1a: Descarrilamiento situación 1',loadCaseExpr='1.0*A1a',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 A1a.unitsScaleLoads=1e-3
-A1a.vectorScaleLoads=0.05
 A1a.unitsScaleDispl=1e3
 A1a.unitsDispl='[mm]'
 A1a.unitsScaleMom=1e-3
@@ -207,7 +196,6 @@ A1a.hCamFct=1
 
 A1b=graphical_reports.RecordLoadCaseDisp(loadCaseName='A1b',loadCaseDescr='A1b: Descarrilamiento situación 2',loadCaseExpr='1.0*A1b',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 A1b.unitsScaleLoads=1e-3
-A1b.vectorScaleLoads=0.05
 A1b.unitsScaleDispl=1e3
 A1b.unitsDispl='[mm]'
 A1b.unitsScaleMom=1e-3
@@ -219,7 +207,6 @@ A1b.hCamFct=1
 
 C1=graphical_reports.RecordLoadCaseDisp(loadCaseName='C1',loadCaseDescr='C1: Empuje del terreno (construcción)',loadCaseExpr='1.0*C1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[losas_M1M2,hastIzq_M1M2])
 C1.unitsScaleLoads=1e-3
-C1.vectorScaleLoads=0.05
 C1.unitsScaleDispl=1e3
 C1.unitsDispl='[mm]'
 C1.unitsScaleMom=1e-3

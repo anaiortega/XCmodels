@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -52,7 +52,7 @@ Definition of record objects with these attributes:
                     display internal forces (defaults to [])
   scaleDispBeamIntForc: tuple (escN,escQ,escM) correponding to the scales to 
                   apply to displays of, respectively, N Q and M beam internal 
-                  forces (defaults to (1.0,1.0,1.0))
+                  forces (defaults to (1.0,1.0,1.0) -> auto-scale)
   unitsScaleForc: factor to apply to internal forces if we want to change
                  the units (defaults to 1).
   unitsForc: text to especify the units in which forces are 
@@ -75,7 +75,6 @@ Definition of record objects with these attributes:
 '''
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase01',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*lcase01',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
-G1.vectorScaleLoads=0.05
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleMom=1e-3
@@ -84,7 +83,6 @@ G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
 G1.setsToDispBeamIntForc=[beamSet]
 G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G1.scaleDispBeamIntForc=(1.5,1.5,1.5)
 G1.viewName="XYZPos"
 G1.setsToDispBeamLoads=[beamSet]
 G1.vectorScalePointLoads=0.005
@@ -93,7 +91,6 @@ G1.hCamFct=1
 
 G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase02',loadCaseDescr='G2: self weight',loadCaseExpr='1.0*lcase02',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G2.unitsScaleLoads=1e-3
-G2.vectorScaleLoads=0.05
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'
 G2.unitsScaleMom=1e-3
@@ -102,7 +99,6 @@ G2.unitsScaleForc=1e-3
 G2.unitsForc='[kN]'
 G2.setsToDispBeamIntForc=[beamSet]
 G2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G2.scaleDispBeamIntForc=(1.5,1.5,1.5)
 G2.viewName="XYZPos"
 G2.setsToDispBeamLoads=[beamSet]
 G2.vectorScalePointLoads=0.005

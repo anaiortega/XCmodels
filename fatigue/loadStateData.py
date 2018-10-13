@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -76,7 +76,6 @@ Definition of record objects with these attributes:
 
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qcantlv',loadCaseDescr='Q1: uniform load on the cantilever',loadCaseExpr='1.0*Qcantlv',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[xcTotalSet])
 Q1.unitsScaleLoads=1e-3
-Q1.vectorScaleLoads=0.05
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleMom=1e-3
