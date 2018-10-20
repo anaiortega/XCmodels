@@ -170,7 +170,7 @@ xcTotalSet= preprocessor.getSets.getSet('total')
 
 
 # \incluye{"geom_acueducto.xci"}
-# \incluye{"geom_secciones.xci"}
+# \incluye{"sections_geometry.xci"}
 
 # \incluye{"define_casos_carga.xci"}
 # \incluye{"genera_malla.xcm"}

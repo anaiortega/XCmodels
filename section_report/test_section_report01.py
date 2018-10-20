@@ -12,7 +12,7 @@ import math
 from materials.sia262 import SIA262_materials
 from materials.sections.fiber_section import defSimpleRCSection
 from materials.sections.fiber_section import sectionReport as sr
-from materials.sections.fiber_section import plotGeomSeccion as pg
+from materials.sections.fiber_section import plotSectionGeometry as pg
 from postprocess.reports import graph_material as mg
 
 areaFi6= SIA262_materials.section_barres_courantes[6e-3]

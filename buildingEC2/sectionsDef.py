@@ -8,7 +8,6 @@ import xc
 # Macros
 #from materials.ehe import auxEHE
 from materials.sections.fiber_section import defSimpleRCSection
-from materials import parametrosSeccionRectangular
 from materials.xLamina import membranePlateRCSectionContainer as sc
 
 
