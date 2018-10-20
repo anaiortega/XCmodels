@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -170,7 +170,6 @@ QAcc_unif.unitsDispl='[mm]'
 
 
 QA_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadA_point',loadCaseDescr='QA: live load A_point',loadCaseExpr='1.0*QliveLoadA_point',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[])
-QA_point.vectorScaleLoads=2e-2
 QA_point.unitsScaleLoads=1e-3
 QA_point.unitsScaleForc=1e-3
 QA_point.unitsScaleMom=1e-3
@@ -178,7 +177,6 @@ QA_point.unitsScaleDispl=1e3
 QA_point.unitsDispl='[mm]'
 
 QB_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadB_point',loadCaseDescr='QB: live load B_point',loadCaseExpr='1.0*QliveLoadB_point',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[])
-QB_point.vectorScaleLoads=2e-2
 QB_point.unitsScaleLoads=1e-3
 QB_point.unitsScaleForc=1e-3
 QB_point.unitsScaleMom=1e-3
@@ -186,7 +184,6 @@ QB_point.unitsScaleDispl=1e3
 QB_point.unitsDispl='[mm]'
 
 QF_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QfatigueLoad_point',loadCaseDescr='QF: fatigue load_point',loadCaseExpr='1.0*QfatigueLoad_point',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[])
-QF_point.vectorScaleLoads=2e-2
 QF_point.unitsScaleLoads=1e-3
 QF_point.unitsScaleForc=1e-3
 QF_point.unitsScaleMom=1e-3
@@ -194,7 +191,6 @@ QF_point.unitsScaleDispl=1e3
 QF_point.unitsDispl='[mm]'
 
 QAcc_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qaccidental_point',loadCaseDescr='QAcc: accidental_point',loadCaseExpr='1.0*Qaccidental_point',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[overallSet])
-QAcc_point.vectorScaleLoads=2e-2
 QAcc_point.unitsScaleLoads=1e-3
 QAcc_point.unitsScaleForc=1e-3
 QAcc_point.unitsScaleMom=1e-3

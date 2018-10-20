@@ -16,7 +16,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of loads (defaults to 1).
+                 representation of loads (defaults to 1 -> auto-scale).
   multByElemAreaLoads: boolean value that must be True if we want to 
                  represent the total load on each element 
                  (=load multiplied by element area) and False if we 
@@ -54,17 +54,14 @@ G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleMom=1e-3
-G1.vectorScaleLoads=0.05
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qwind',loadCaseDescr='Q1: wind',loadCaseExpr='1.0*Qwind',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleMom=1e-3
-Q1.vectorScaleLoads=0.05
 A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='AvehicCrash',loadCaseDescr='A1: vehicle crash',loadCaseExpr='1.0*AvehicCrash',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleMom=1e-3
-Q1.vectorScaleLoads=0.05
 

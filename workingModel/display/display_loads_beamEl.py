@@ -8,7 +8,7 @@ execfile('../loadStateData.py')
 #available components: 'axialComponent', 'transComponent', 'transYComponent',
 #                      'transZComponent'
 
-loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7,Q9]
+loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7]
 #loadCasesToDisplay=[LS1,LS2]
 #loadCasesToDisplay=[Q9]
 #End data

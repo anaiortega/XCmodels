@@ -21,7 +21,7 @@ Definition of record objects with these attributes:
   unitsLoads: text to especify the units in which loads are 
                  represented (defaults to 'units:[m,kN]')
   vectorScaleLoads: factor to apply to the vectors length in the 
-                 representation of element loads (defaults to 1).
+                 representation of element loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
   multByElemAreaLoads: boolean value that must be True if we want to 
@@ -52,7 +52,7 @@ Definition of record objects with these attributes:
                     display internal forces (defaults to [])
   scaleDispBeamIntForc: tuple (escN,escQ,escM) correponding to the scales to 
                   apply to displays of, respectively, N Q and M beam internal 
-                  forces (defaults to (1.0,1.0,1.0))
+                  forces (defaults to (1.0,1.0,1.0) -> auto-scale)
   unitsScaleForc: factor to apply to internal forces if we want to change
                  the units (defaults to 1).
   unitsForc: text to especify the units in which forces are 
@@ -83,10 +83,8 @@ G1.unitsScaleMom=1e-3
 G1.unitsMom='[m.kN]'
 G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
-G1.vectorScaleLoads=0.05
 G1.setsToDispBeamIntForc=[colsSet]
 G1.listBeamIntForc=['Mz','Qy','N']
-G1.scaleDispBeamIntForc=(0.05,0.05,0.05)
 G1.viewNameBeams="YPos"
 G1.setsToDispBeamLoads=[colsSet]
 G1.vectorScalePointLoads=0.005
@@ -100,10 +98,8 @@ Q1.unitsScaleMom=1e-3
 Q1.unitsMom='[m.kN]'
 Q1.unitsScaleForc=1e-3
 Q1.unitsForc='[kN]'
-Q1.vectorScaleLoads=0.05
 Q1.setsToDispBeamIntForc=[colsSet]
 Q1.listBeamIntForc=['Mz','Qy','N']
-Q1.scaleDispBeamIntForc=(0.05,0.05,0.05)
 Q1.viewNameBeams="YPos"
 Q1.setsToDispBeamLoads=[colsSet]
 Q1.vectorScalePointLoads=0.005
@@ -117,10 +113,8 @@ A1.unitsScaleMom=1e-3
 A1.unitsMom='[m.kN]'
 A1.unitsScaleForc=1e-3
 A1.unitsForc='[kN]'
-A1.vectorScaleLoads=0.05
 A1.setsToDispBeamIntForc=[colsSet]
 A1.listBeamIntForc=['Mz','Qy','N']
-A1.scaleDispBeamIntForc=(0.05,0.05,0.05)
 A1.viewNameBeams="YPos"
 A1.setsToDispBeamLoads=[colsSet]
 A1.vectorScalePointLoads=0.005
