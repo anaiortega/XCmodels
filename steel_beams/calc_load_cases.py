@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# This script calculates and prints reactions on bearings for each load case
+
 
 execfile('model_data.py')
 def resultAction(prb,nmbAction):

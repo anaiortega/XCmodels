@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#Calculates ELU01 combination
 
 execfile('model_data.py')
 def resultComb(prb,nmbComb):
