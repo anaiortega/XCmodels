@@ -39,17 +39,17 @@ import vtk
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import vtk_internal_force_diagram as ifd
-from postprocess.xcVtk import ElementPropertyDiagram as epd
+from postprocess.xcVtk import element_property_diagram as epd
 
 defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 #diagram= ifd.InternalForceDiagram(0.1,1e-3,[setMainBeam],"Mz")
 #diagram= epd.ElementPropertyDiagram(1,1,[setMainBeam],"chiLT")
-diagram= epd.ElementPropertyDiagram(10,1,[setMainBeam],"FCTNCP")
+#diagram= epd.ElementPropertyDiagram(scaleFactor=10,fUnitConv=1,sets=[setMainBeam],propertyName="FCTNCP")
 #diagram= epd.ElementPropertyDiagram(-0.02,1e-3,[setMainBeam],"Mz-")
 #diagram= epd.ElementPropertyDiagram(-0.02,1e-3,[setMainBeam],"Mz+")
-#diagram= epd.ElementPropertyDiagram(10,1,[setMainBeam],"FCVCP")
+diagram= epd.ElementPropertyDiagram(10,1,[setMainBeam],"FCVCP")
 #diagram= epd.ElementPropertyDiagram(0.1,1e-3,[setMainBeam],"Vy+")
 #diagram= epd.ElementPropertyDiagram(0.1,1e-3,[setMainBeam],"Vy-")
 diagram.addDiagram()
@@ -60,8 +60,8 @@ defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.
 
-execfile('draw_supports.py')
-defDisplay.renderer.AddActor(supportsActor)
+#execfile('draw_supports.py')
+#defDisplay.renderer.AddActor(supportsActor)
 
 defDisplay.displayScene()
 

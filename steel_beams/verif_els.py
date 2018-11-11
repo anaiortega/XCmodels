@@ -57,7 +57,7 @@ defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.
 
-execfile('draw_supports.py')
-defDisplay.renderer.AddActor(supportsActor)
+# execfile('draw_supports.py')
+# defDisplay.renderer.AddActor(supportsActor)
 
 defDisplay.displayScene()
