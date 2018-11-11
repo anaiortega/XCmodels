@@ -36,12 +36,12 @@ resultComb(mainBeam,"ELU01")
 #resultComb(mainBeam,"ELU03")
 
 import vtk
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import vtk_internal_force_diagram as ifd
 from postprocess.xcVtk import ElementPropertyDiagram as epd
 
-defGrid= vtk_grafico_base.RecordDefGrid()
+defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 #diagram= ifd.InternalForceDiagram(0.1,1e-3,[setMainBeam],"Mz")

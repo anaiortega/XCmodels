@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 
 model_path="../"
 #Project directory structure

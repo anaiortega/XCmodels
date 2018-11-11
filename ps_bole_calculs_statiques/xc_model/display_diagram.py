@@ -2,7 +2,7 @@ execfile('fe_model.py')
 execfile('loadStateData.py')
 
 #Graphic output
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import vtk_internal_force_diagram as gde
 from postprocess.xcVtk.FE_model import quick_graphics as qg

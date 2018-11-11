@@ -39,11 +39,11 @@ for n in setTotal.getNodes:
 print 'x= ', x, 'disMax=', dispMax*1000, 'mm', 'combDispMax=', combDispMax, 'f= L/', 1.0/fmax
 
 import vtk
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import node_property_diagram as npd
 
-defGrid= vtk_grafico_base.RecordDefGrid()
+defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 diagram= npd.NodePropertyDiagram(-0.1,1e3,[setTotal],"dispMax")

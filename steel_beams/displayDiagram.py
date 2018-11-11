@@ -3,11 +3,11 @@
 execfile('calc_combs.py')
 import datetime
 import vtk
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import vtk_internal_force_diagram as ifd
 
-defGrid= vtk_grafico_base.RecordDefGrid()
+defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 #diagram= ifd.InternalForceDiagram(scale=0.02,fUnitConv=1e-3,sets=[setMainBeam],component="Mz")
