@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import control_var_diagram as cvd
 
@@ -15,8 +16,6 @@ setsDispRes=[beamX]  #list of linear elements sets for which to display results
 setDisp=overallSet   #set of elements (any type) to be displayed
 scaleFactor=1e2        #scale factor for the diagram (can be negative)
 fUnitConv=1e3          #unit conversion factor (i.e m->mm => fUnitConv= 1e3)
-viewName='XYZPos'    #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
-                     #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
 #  End config 
 
 

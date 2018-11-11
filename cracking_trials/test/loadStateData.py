@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase01',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*lcase01',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
@@ -83,11 +79,11 @@ G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
 G1.setsToDispBeamIntForc=[beamSet]
 G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G1.viewName="XYZPos"
+G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G1.setsToDispBeamLoads=[beamSet]
 G1.vectorScalePointLoads=0.005
 G1.compElLoad='axialComponent'
-G1.hCamFct=1
+
 
 G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase02',loadCaseDescr='G2: self weight',loadCaseExpr='1.0*lcase02',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G2.unitsScaleLoads=1e-3
@@ -99,9 +95,9 @@ G2.unitsScaleForc=1e-3
 G2.unitsForc='[kN]'
 G2.setsToDispBeamIntForc=[beamSet]
 G2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G2.viewName="XYZPos"
+G2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G2.setsToDispBeamLoads=[beamSet]
 G2.vectorScalePointLoads=0.005
 G2.compElLoad='axialComponent'
-G2.hCamFct=1
+
 

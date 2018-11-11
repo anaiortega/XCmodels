@@ -17,7 +17,7 @@ diagram.addDiagram()
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #defDisplay.windowHeight= 300
-defDisplay.viewName= "YPos" #Point of view.
+defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
 defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.

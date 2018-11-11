@@ -3,6 +3,7 @@ import os
 
 execfile('model_data.py')
 execfile('loadStateData.py')
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 #ordered list of load cases (from those defined in ./loadStateData.py

@@ -13,7 +13,7 @@ loadCasesToDisplay=[LC1_deadLoadBearingStructure,LC2_deadLoadInterior,LC3_deadLo
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:
         capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
-        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewNm=lc.viewName,hCamFct=lc.hCamFct,caption= capt,fileName=None)
+        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None)
 
 
 

@@ -3,7 +3,9 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
+from postprocess.xcVtk import vtk_graphic_base
 '''
 Definition of record objects with these attributes:
   loadCaseName:  name of the load case to be depicted
@@ -61,17 +63,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 
 
@@ -87,11 +84,11 @@ G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
 G1.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G1.viewName="XYZPos"
+G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G1.setsToDispBeamLoads=[beamY]
 G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
-G1.hCamFct=1
+
 
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qdecks',loadCaseDescr='Q1: uniform load on the decks',loadCaseExpr='1.0*Qdecks',setsToDispLoads=[decks],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q1.unitsScaleLoads=1e-3
@@ -103,7 +100,7 @@ Q1.unitsScaleForc=1e-3
 Q1.unitsForc='[kN]'
 Q1.setsToDispBeamIntForc=[]
 Q1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q1.viewName="XYZPos"
+Q1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1.setsToDispBeamLoads=[]
 Q1.vectorScalePointLoads=0.005
 Q1.compElLoad='transComponent'
@@ -118,7 +115,7 @@ Q2.unitsScaleForc=1e-3
 Q2.unitsForc='[kN]'
 Q2.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q2.viewName="XYZPos"
+Q2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q2.setsToDispBeamLoads=[overallSet]
 Q2.vectorScalePointLoads=0.005
 Q2.compElLoad='transComponent'
@@ -134,7 +131,7 @@ Q3.unitsScaleForc=1e-3
 Q3.unitsForc='[kN]'
 Q3.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q3.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q3.viewName="XYZPos"
+Q3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q3.setsToDispBeamLoads=[overallSet]
 Q3.vectorScalePointLoads=0.005
 Q3.compElLoad='transComponent'
@@ -149,7 +146,7 @@ Q4.unitsScaleForc=1e-3
 Q4.unitsForc='[kN]'
 Q4.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q4.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q4.viewName="XYZPos"
+Q4.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q4.setsToDispBeamLoads=[overallSet]
 Q4.vectorScalePointLoads=0.005
 Q4.compElLoad='transComponent'
@@ -164,7 +161,7 @@ Q5.unitsScaleForc=1e-3
 Q5.unitsForc='[kN]'
 Q5.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q5.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q5.viewName="XYZPos"
+Q5.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q5.setsToDispBeamLoads=[overallSet]
 Q5.vectorScalePointLoads=0.005
 Q5.compElLoad='transComponent'
@@ -179,7 +176,7 @@ Q6.unitsScaleForc=1e-3
 Q6.unitsForc='[kN]'
 Q6.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q6.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q6.viewName="XYZPos"
+Q6.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q6.setsToDispBeamLoads=[overallSet]
 Q6.vectorScalePointLoads=0.005
 Q6.compElLoad='transComponent'
@@ -194,7 +191,7 @@ Q7.unitsScaleForc=1e-3
 Q7.unitsForc='[kN]'
 Q7.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q7.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q7.viewName="XYZPos"
+Q7.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q7.setsToDispBeamLoads=[overallSet]
 Q7.vectorScalePointLoads=0.005
 Q7.compElLoad='transComponent'
@@ -209,7 +206,7 @@ Q8.unitsScaleForc=1e-3
 Q8.unitsForc='[kN]'
 Q8.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q8.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q8.viewName="XYZPos"
+Q8.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q8.vectorScalePointLoads=0.005
 
 Q9=graphical_reports.RecordLoadCaseDisp(loadCaseName='QpntBeams',loadCaseDescr='Q9: point loads on beams',loadCaseExpr='1.0*QpntBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
@@ -223,7 +220,7 @@ Q9.unitsForc='[kN]'
 Q9.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q9.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q9.setsToDispBeamLoads=[overallSet]
-Q9.viewName="XYZPos"
+Q9.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q9.vectorScalePointLoads=0.35
 
 Q10=graphical_reports.RecordLoadCaseDisp(loadCaseName='QwheelDeck1',loadCaseDescr='Q10: load of a wheel over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[decklv1],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
@@ -237,7 +234,7 @@ Q10.unitsForc='[kN]'
 Q10.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q10.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q10.setsToDispBeamLoads=[overallSet]
-Q10.viewName="XYZPos"
+Q10.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q10.vectorScalePointLoads=0.05
 
 Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
@@ -251,7 +248,7 @@ Q11.unitsForc='[kN]'
 Q11.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q11.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q11.setsToDispBeamLoads=[overallSet]
-Q11.viewName="XYZPos"
+Q11.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q11.vectorScalePointLoads=0.05
 
 Comb1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS1',loadCaseDescr='Comb1: combination 1 ',loadCaseExpr='1.0*LS1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
@@ -266,7 +263,7 @@ Comb1.setsToDispBeamIntForc=[allBeams]
 Comb1.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Comb1.setsToDispBeamLoads=[allBeams]
 Comb1.compElLoad='transComponent'
-Comb1.viewName="XYZPos"
+Comb1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Comb1.vectorScalePointLoads=0.05
 
 Comb2=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS2',loadCaseDescr='Comb2: combination 2 ',loadCaseExpr='1.0*LS2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
@@ -281,5 +278,5 @@ Comb2.setsToDispBeamIntForc=[allBeams]
 Comb2.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Comb2.setsToDispBeamLoads=[allBeams]
 Comb2.compElLoad='transComponent'
-Comb2.viewName="XYZPos"
+Comb2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Comb2.vectorScalePointLoads=0.05

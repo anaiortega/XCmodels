@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1',loadCaseDescr='Q1: Prueba de carga estática',loadCaseExpr='1.0*Q1',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
@@ -82,8 +78,8 @@ Q1.unitsScaleMom=1e-3
 Q1.unitsMom='[m.kN]'
 Q1.unitsScaleForc=1e-3
 Q1.unitsForc='[kN]'
-Q1.viewName="XYZPos"
-Q1.hCamFct=1
+Q1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1.listDspRot=[]
 Q1.listIntForc=['M2']
 
@@ -95,8 +91,8 @@ Q2.unitsScaleMom=1e-3
 Q2.unitsMom='[m.kN]'
 Q2.unitsScaleForc=1e-3
 Q2.unitsForc='[kN]'
-Q2.viewName="XYZPos"
-Q2.hCamFct=1
+Q2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q2.listDspRot=[]
 Q2.listIntForc=['M2']
 
@@ -108,8 +104,8 @@ Q3.unitsScaleMom=1e-3
 Q3.unitsMom='[m.kN]'
 Q3.unitsScaleForc=1e-3
 Q3.unitsForc='[kN]'
-Q3.viewName="XYZPos"
-Q3.hCamFct=1
+Q3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q3.listDspRot=[]
 Q3.listIntForc=['M2']
 
@@ -121,8 +117,8 @@ PrueCarga.unitsScaleMom=1e-3
 PrueCarga.unitsMom='[m.kN]'
 PrueCarga.unitsScaleForc=1e-3
 PrueCarga.unitsForc='[kN]'
-PrueCarga.viewName="XYZPos"
-PrueCarga.hCamFct=1
+PrueCarga.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 PrueCarga.listDspRot=[]
 PrueCarga.listIntForc=['M2']
 
@@ -134,8 +130,8 @@ Qtren2vias.unitsScaleMom=1e-3
 Qtren2vias.unitsMom='[m.kN]'
 Qtren2vias.unitsScaleForc=1e-3
 Qtren2vias.unitsForc='[kN]'
-Qtren2vias.viewName="XYZPos"
-Qtren2vias.hCamFct=1
+Qtren2vias.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Qtren2vias.listDspRot=[]
 Qtren2vias.listIntForc=['M2']
 
@@ -147,8 +143,8 @@ Qtren1via.unitsScaleMom=1e-3
 Qtren1via.unitsMom='[m.kN]'
 Qtren1via.unitsScaleForc=1e-3
 Qtren1via.unitsForc='[kN]'
-Qtren1via.viewName="XYZPos"
-Qtren1via.hCamFct=1
+Qtren1via.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Qtren1via.listDspRot=[]
 Qtren1via.listIntForc=['M2']
 

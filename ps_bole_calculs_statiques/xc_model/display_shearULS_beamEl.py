@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import control_var_diagram as cvd
 from postprocess import limit_state_data as lsd
@@ -36,7 +37,7 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
 
-defDisplay.viewName= "ZPos" #Point of view.
+defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('ZPos') #Point of view.
 defDisplay.setupGrid(setDispRes)
 
 defDisplay.defineMeshScene(None)

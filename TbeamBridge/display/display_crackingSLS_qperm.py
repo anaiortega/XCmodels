@@ -3,6 +3,7 @@
 from postprocess.control_vars import *
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import Fields
 
 

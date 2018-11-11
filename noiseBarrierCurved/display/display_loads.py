@@ -13,7 +13,7 @@ loadCasesToDisplay=[G1]
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:
         capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
-        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewNm=lc.viewName,caption= capt)
+        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef=lc.cameraParameters,caption= capt)
 
 
 

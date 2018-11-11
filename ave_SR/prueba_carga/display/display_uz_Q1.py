@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 
 execfile('../model_data.py')
@@ -25,4 +26,4 @@ for lc in loadCasesToDisplay:
             else:
                 fcUn=1.0
                 unDesc=''
-            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,viewName=lc.viewName,hCamFct=lc.hCamFct,fileName='figures/uz_Q1.jpg',defFScale=1)
+            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,viewDef= lc.cameraParameters,fileName='figures/uz_Q1.jpg',defFScale=1)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import control_var_diagram as cvd
 
@@ -17,14 +18,12 @@ setsDispRes=[beamY]   #list of linear elements sets for which
 setDisp=overallSet   #set of elements (any type) to be displayed
 scaleFactor=1     #scale factor for the diagram (can be negative)
 fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
-viewName='XYZPos'    #predefined view names: 'XYZPos','XNeg','XPos','YNeg',
-                     #'YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
 #  End config 
 
 diagram= cvd.ControlVarDiagram(scaleFactor=scaleFactor,fUnitConv=fUnitConv,sets=setsDispRes,attributeName=lsd.shearResistance.label,component=argument)
 diagram.addDiagram()
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-defDisplay.viewName=viewName
+defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 defDisplay.setupGrid(setDisp)
 defDisplay.defineMeshScene(None,defFScale=0.0)
 defDisplay.appendDiagram(diagram)

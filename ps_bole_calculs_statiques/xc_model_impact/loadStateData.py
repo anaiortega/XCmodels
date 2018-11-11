@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,24 +62,19 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='A1',loadCaseDescr='A1: impact on parapet head',loadCaseExpr='1.0*A1',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
 A1.unitsScaleLoads= 1e-3
 A1.unitsScaleForc= 1e-3
 A1.unitsScaleMom= 1e-3
 A1.unitsScaleDispl= 1e3
-A1.viewName= "-X+Y+Z"
+A1.cameraParameters= vtk_graphic_base.CameraParameters('-X+Y+Z')
 A1.unitsDispl='[mm]'
 
 A2=graphical_reports.RecordLoadCaseDisp(loadCaseName='A2',loadCaseDescr='A2: impact on parapet body',loadCaseExpr='1.0*A2',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
@@ -86,6 +82,6 @@ A2.unitsScaleLoads= 1e-3
 A2.unitsScaleForc= 1e-3
 A2.unitsScaleMom= 1e-3
 A2.unitsScaleDispl= 1e3
-A2.viewName= "-X+Y+Z"
+A2.cameraParameters= vtk_graphic_base.CameraParameters('-X+Y+Z')
 A2.unitsDispl='[mm]'
 

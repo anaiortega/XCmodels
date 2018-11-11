@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import control_var_diagram as cvd
 
@@ -32,7 +33,7 @@ diagram.addDiagram()
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
  #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
-#defDisplay.viewName= "YPos" #Point of view.
+#defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
 defDisplay.setupGrid(setDisp.elSet)
 defDisplay.defineMeshScene(None)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.

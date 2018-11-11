@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 setsIntF=[allLosas,murAlig,diafRP]
 setsBeamIntF=[riostrEstr,pilas]
@@ -84,8 +80,8 @@ G1.unitsScaleMom=1e-3
 G1.unitsMom='[m.kN]'
 G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
-G1.viewName="XYZPos"
-G1.hCamFct=1
+G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 G1.setsToDispBeamIntForc=setsBeamIntF
 G1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -97,8 +93,8 @@ G2.unitsScaleMom=1e-3
 G2.unitsMom='[m.kN]'
 G2.unitsScaleForc=1e-3
 G2.unitsForc='[kN]'
-G2.viewName="XYZPos"
-G2.hCamFct=1
+G2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 G2.setsToDispBeamIntForc=setsBeamIntF
 G2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -111,8 +107,8 @@ G3.unitsScaleMom=1e-3
 G3.unitsMom='[m.kN]'
 G3.unitsScaleForc=1e-3
 G3.unitsForc='[kN]'
-G3.viewName="XYZNeg"
-G3.hCamFct=1
+G3.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 G3.setsToDispBeamIntForc=setsBeamIntF
 G3.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -124,8 +120,8 @@ Q1a_1.unitsScaleMom=1e-3
 Q1a_1.unitsMom='[m.kN]'
 Q1a_1.unitsScaleForc=1e-3
 Q1a_1.unitsForc='[kN]'
-Q1a_1.viewName="XYZPos"
-Q1a_1.hCamFct=1
+Q1a_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1a_1.setsToDispBeamIntForc=setsBeamIntF
 Q1a_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -137,8 +133,8 @@ Q1a_2.unitsScaleMom=1e-3
 Q1a_2.unitsMom='[m.kN]'
 Q1a_2.unitsScaleForc=1e-3
 Q1a_2.unitsForc='[kN]'
-Q1a_2.viewName="XYZPos"
-Q1a_2.hCamFct=1
+Q1a_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1a_2.setsToDispBeamIntForc=setsBeamIntF
 Q1a_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -150,8 +146,8 @@ Q1b_1.unitsScaleMom=1e-3
 Q1b_1.unitsMom='[m.kN]'
 Q1b_1.unitsScaleForc=1e-3
 Q1b_1.unitsForc='[kN]'
-Q1b_1.viewName="XYZPos"
-Q1b_1.hCamFct=1
+Q1b_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1b_1.setsToDispBeamIntForc=setsBeamIntF
 Q1b_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -163,8 +159,8 @@ Q1b_2.unitsScaleMom=1e-3
 Q1b_2.unitsMom='[m.kN]'
 Q1b_2.unitsScaleForc=1e-3
 Q1b_2.unitsForc='[kN]'
-Q1b_2.viewName="XYZPos"
-Q1b_2.hCamFct=1
+Q1b_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1b_2.setsToDispBeamIntForc=setsBeamIntF
 Q1b_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -176,8 +172,8 @@ Q1c.unitsScaleMom=1e-3
 Q1c.unitsMom='[m.kN]'
 Q1c.unitsScaleForc=1e-3
 Q1c.unitsForc='[kN]'
-Q1c.viewName="XYZPos"
-Q1c.hCamFct=1
+Q1c.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1c.setsToDispBeamIntForc=setsBeamIntF
 Q1c.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -189,8 +185,8 @@ Q1d.unitsScaleMom=1e-3
 Q1d.unitsMom='[m.kN]'
 Q1d.unitsScaleForc=1e-3
 Q1d.unitsForc='[kN]'
-Q1d.viewName="XYZPos"
-Q1d.hCamFct=1
+Q1d.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1d.setsToDispBeamIntForc=setsBeamIntF
 Q1d.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -202,8 +198,8 @@ Q1e.unitsScaleMom=1e-3
 Q1e.unitsMom='[m.kN]'
 Q1e.unitsScaleForc=1e-3
 Q1e.unitsForc='[kN]'
-Q1e.viewName="XYZPos"
-Q1e.hCamFct=1
+Q1e.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1e.setsToDispBeamIntForc=setsBeamIntF
 Q1e.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -215,8 +211,8 @@ Q1f.unitsScaleMom=1e-3
 Q1f.unitsMom='[m.kN]'
 Q1f.unitsScaleForc=1e-3
 Q1f.unitsForc='[kN]'
-Q1f.viewName="XYZPos"
-Q1f.hCamFct=1
+Q1f.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1f.setsToDispBeamIntForc=setsBeamIntF
 Q1f.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -230,8 +226,8 @@ Q1b_fren.unitsScaleMom=1e-3
 Q1b_fren.unitsMom='[m.kN]'
 Q1b_fren.unitsScaleForc=1e-3
 Q1b_fren.unitsForc='[kN]'
-Q1b_fren.viewName="XYZPos"
-Q1b_fren.hCamFct=1
+Q1b_fren.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1b_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1b_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -243,8 +239,8 @@ Q1d_fren.unitsScaleMom=1e-3
 Q1d_fren.unitsMom='[m.kN]'
 Q1d_fren.unitsScaleForc=1e-3
 Q1d_fren.unitsForc='[kN]'
-Q1d_fren.viewName="XYZPos"
-Q1d_fren.hCamFct=1
+Q1d_fren.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1d_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1d_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -256,8 +252,8 @@ Q1e_fren.unitsScaleMom=1e-3
 Q1e_fren.unitsMom='[m.kN]'
 Q1e_fren.unitsScaleForc=1e-3
 Q1e_fren.unitsForc='[kN]'
-Q1e_fren.viewName="XYZPos"
-Q1e_fren.hCamFct=1
+Q1e_fren.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 Q1e_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1e_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -270,8 +266,8 @@ Q2_1.unitsScaleMom=1e-3
 Q2_1.unitsMom='[m.kN]'
 Q2_1.unitsScaleForc=1e-3
 Q2_1.unitsForc='[kN]'
-Q2_1.viewName="XYZNeg"
-Q2_1.hCamFct=1
+Q2_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q2_1.setsToDispBeamLoads=setsBeamIntF
 Q2_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -284,8 +280,8 @@ Q2_2.unitsScaleMom=1e-3
 Q2_2.unitsMom='[m.kN]'
 Q2_2.unitsScaleForc=1e-3
 Q2_2.unitsForc='[kN]'
-Q2_2.viewName="XYZNeg"
-Q2_2.hCamFct=1
+Q2_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q2_2.setsToDispBeamLoads=setsBeamIntF
 Q2_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -297,8 +293,8 @@ Q3_1.unitsScaleMom=1e-3
 Q3_1.unitsMom='[m.kN]'
 Q3_1.unitsScaleForc=1e-3
 Q3_1.unitsForc='[kN]'
-Q3_1.viewName="XYZNeg"
-Q3_1.hCamFct=1
+Q3_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q3_1.setsToDispBeamLoads=setsBeamIntF
 Q3_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -310,8 +306,8 @@ Q3_2.unitsScaleMom=1e-3
 Q3_2.unitsMom='[m.kN]'
 Q3_2.unitsScaleForc=1e-3
 Q3_2.unitsForc='[kN]'
-Q3_2.viewName="XYZNeg"
-Q3_2.hCamFct=1
+Q3_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q3_2.setsToDispBeamLoads=setsBeamIntF
 Q3_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -323,8 +319,8 @@ Q3_3.unitsScaleMom=1e-3
 Q3_3.unitsMom='[m.kN]'
 Q3_3.unitsScaleForc=1e-3
 Q3_3.unitsForc='[kN]'
-Q3_3.viewName="XYZNeg"
-Q3_3.hCamFct=1
+Q3_3.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q3_3.setsToDispBeamLoads=setsBeamIntF
 Q3_3.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -336,8 +332,8 @@ Q3_4.unitsScaleMom=1e-3
 Q3_4.unitsMom='[m.kN]'
 Q3_4.unitsScaleForc=1e-3
 Q3_4.unitsForc='[kN]'
-Q3_4.viewName="XYZNeg"
-Q3_4.hCamFct=1
+Q3_4.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 Q3_4.setsToDispBeamLoads=setsBeamIntF
 Q3_4.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
@@ -350,8 +346,8 @@ Q3_1_neopr.unitsScaleMom=1e-3
 Q3_1_neopr.unitsMom='[m.kN]'
 Q3_1_neopr.unitsScaleForc=1e-3
 Q3_1_neopr.unitsForc='[kN]'
-Q3_1_neopr.viewName="XYZNeg"
-Q3_1_neopr.hCamFct=1
+Q3_1_neopr.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 
 Q3_2_neopr=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_2_neopr',loadCaseDescr='Q3_2_neopr: Temperatura uniforme, dilatación',loadCaseExpr='1.0*Q3_2_neopr',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_2_neopr.unitsScaleLoads=1e-3
@@ -361,8 +357,8 @@ Q3_2_neopr.unitsScaleMom=1e-3
 Q3_2_neopr.unitsMom='[m.kN]'
 Q3_2_neopr.unitsScaleForc=1e-3
 Q3_2_neopr.unitsForc='[kN]'
-Q3_2_neopr.viewName="XYZNeg"
-Q3_2_neopr.hCamFct=1
+Q3_2_neopr.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
+
 
 resLoadCases=[G1,G2,G3,Q1a_1,Q1a_2,Q1b_1,Q1b_2,Q1c,Q1d,Q1e,Q1f,Q1b_fren,Q1e_fren,Q1d_fren,Q2_1,Q2_2,Q3_1,Q3_2,Q3_3,Q3_4]
 resLoadCases_neopr=[G1,G2,G3,Q1a_1,Q1a_2,Q1b_1,Q1b_2,Q1c,Q1d,Q1e,Q1f,Q1b_fren,Q1e_fren,Q1d_fren,Q2_1,Q2_2,Q3_1,Q3_2,Q3_3,Q3_4,Q3_1_neopr,Q3_2_neopr]

@@ -2,6 +2,7 @@
 import os
 from postprocess import limit_state_data as lsd
 from postprocess import element_section_map
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from miscUtils import LogMessages as lmsg
 

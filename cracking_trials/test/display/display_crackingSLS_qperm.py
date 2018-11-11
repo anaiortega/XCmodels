@@ -2,6 +2,7 @@
 
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_display_limit_state as dls
 
 

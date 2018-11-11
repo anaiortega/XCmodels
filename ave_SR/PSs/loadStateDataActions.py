@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 
 Q1a_1_carro=lcases.LoadCase(preprocessor=prep,name="Q1a_1_carro")
@@ -144,8 +140,8 @@ Q1a_1_carro.unitsScaleMom=1e-3
 Q1a_1_carro.unitsMom='[m.kN]'
 Q1a_1_carro.unitsScaleForc=1e-3
 Q1a_1_carro.unitsForc='[kN]'
-Q1a_1_carro.viewName="ZPos"
-Q1a_1_carro.hCamFct=1
+Q1a_1_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1a_2_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a_2_carro',loadCaseDescr='Q1a_2_carro',loadCaseExpr='1.0*Q1a_2_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1a_2_carro.unitsScaleLoads=1e-3
@@ -156,8 +152,8 @@ Q1a_2_carro.unitsScaleMom=1e-3
 Q1a_2_carro.unitsMom='[m.kN]'
 Q1a_2_carro.unitsScaleForc=1e-3
 Q1a_2_carro.unitsForc='[kN]'
-Q1a_2_carro.viewName="ZPos"
-Q1a_2_carro.hCamFct=1
+Q1a_2_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1b_1_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b_1_carro',loadCaseDescr='Q1b_1_carro',loadCaseExpr='1.0*Q1b_1_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1b_1_carro.unitsScaleLoads=1e-3
@@ -168,8 +164,8 @@ Q1b_1_carro.unitsScaleMom=1e-3
 Q1b_1_carro.unitsMom='[m.kN]'
 Q1b_1_carro.unitsScaleForc=1e-3
 Q1b_1_carro.unitsForc='[kN]'
-Q1b_1_carro.viewName="ZPos"
-Q1b_1_carro.hCamFct=1
+Q1b_1_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1b_2_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b_2_carro',loadCaseDescr='Q1b_2_carro',loadCaseExpr='1.0*Q1b_2_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1b_2_carro.unitsScaleLoads=1e-3
@@ -180,8 +176,8 @@ Q1b_2_carro.unitsScaleMom=1e-3
 Q1b_2_carro.unitsMom='[m.kN]'
 Q1b_2_carro.unitsScaleForc=1e-3
 Q1b_2_carro.unitsForc='[kN]'
-Q1b_2_carro.viewName="ZPos"
-Q1b_2_carro.hCamFct=1
+Q1b_2_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1c_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1c_carro',loadCaseDescr='Q1c_carro',loadCaseExpr='1.0*Q1c_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1c_carro.unitsScaleLoads=1e-3
@@ -192,8 +188,8 @@ Q1c_carro.unitsScaleMom=1e-3
 Q1c_carro.unitsMom='[m.kN]'
 Q1c_carro.unitsScaleForc=1e-3
 Q1c_carro.unitsForc='[kN]'
-Q1c_carro.viewName="ZPos"
-Q1c_carro.hCamFct=1
+Q1c_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1d_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1d_carro',loadCaseDescr='Q1d_carro',loadCaseExpr='1.0*Q1d_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1d_carro.unitsScaleLoads=1e-3
@@ -204,8 +200,8 @@ Q1d_carro.unitsScaleMom=1e-3
 Q1d_carro.unitsMom='[m.kN]'
 Q1d_carro.unitsScaleForc=1e-3
 Q1d_carro.unitsForc='[kN]'
-Q1d_carro.viewName="ZPos"
-Q1d_carro.hCamFct=1
+Q1d_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1e_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1e_carro',loadCaseDescr='Q1e_carro',loadCaseExpr='1.0*Q1e_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1e_carro.unitsScaleLoads=1e-3
@@ -216,8 +212,8 @@ Q1e_carro.unitsScaleMom=1e-3
 Q1e_carro.unitsMom='[m.kN]'
 Q1e_carro.unitsScaleForc=1e-3
 Q1e_carro.unitsForc='[kN]'
-Q1e_carro.viewName="ZPos"
-Q1e_carro.hCamFct=1
+Q1e_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Q1f_carro=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1f_carro',loadCaseDescr='Q1f_carro',loadCaseExpr='1.0*Q1f_carro',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 Q1f_carro.unitsScaleLoads=1e-3
@@ -228,8 +224,8 @@ Q1f_carro.unitsScaleMom=1e-3
 Q1f_carro.unitsMom='[m.kN]'
 Q1f_carro.unitsScaleForc=1e-3
 Q1f_carro.unitsForc='[kN]'
-Q1f_carro.viewName="ZPos"
-Q1f_carro.hCamFct=1
+Q1f_carro.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 q_sit1=graphical_reports.RecordLoadCaseDisp(loadCaseName='q_sit1',loadCaseDescr='Carga uniforme tráfico Q1a_1 y Q1a_2',loadCaseExpr='1.0*q_sit1',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 q_sit1.unitsScaleLoads=1e-3
@@ -240,8 +236,8 @@ q_sit1.unitsScaleMom=1e-3
 q_sit1.unitsMom='[m.kN]'
 q_sit1.unitsScaleForc=1e-3
 q_sit1.unitsForc='[kN]'
-q_sit1.viewName="XYZPos"
-q_sit1.hCamFct=1
+q_sit1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 
 q_sit2=graphical_reports.RecordLoadCaseDisp(loadCaseName='q_sit2',loadCaseDescr='Carga uniforme tráfico Q1b_1 y Q1b_2',loadCaseExpr='1.0*q_sit2',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 q_sit2.unitsScaleLoads=1e-3
@@ -252,8 +248,8 @@ q_sit2.unitsScaleMom=1e-3
 q_sit2.unitsMom='[m.kN]'
 q_sit2.unitsScaleForc=1e-3
 q_sit2.unitsForc='[kN]'
-q_sit2.viewName="XYZPos"
-q_sit2.hCamFct=1
+q_sit2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 
 q_sit3=graphical_reports.RecordLoadCaseDisp(loadCaseName='q_sit3',loadCaseDescr='Carga uniforme tráfico Q1c',loadCaseExpr='1.0*q_sit3',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 q_sit3.unitsScaleLoads=1e-3
@@ -264,8 +260,8 @@ q_sit3.unitsScaleMom=1e-3
 q_sit3.unitsMom='[m.kN]'
 q_sit3.unitsScaleForc=1e-3
 q_sit3.unitsForc='[kN]'
-q_sit3.viewName="XYZPos"
-q_sit3.hCamFct=1
+q_sit3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 
 q_sit4=graphical_reports.RecordLoadCaseDisp(loadCaseName='q_sit4',loadCaseDescr='Carga uniforme tráfico Q1d y Q1e',loadCaseExpr='1.0*q_sit4',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 q_sit4.unitsScaleLoads=1e-3
@@ -276,8 +272,8 @@ q_sit4.unitsScaleMom=1e-3
 q_sit4.unitsMom='[m.kN]'
 q_sit4.unitsScaleForc=1e-3
 q_sit4.unitsForc='[kN]'
-q_sit4.viewName="XYZPos"
-q_sit4.hCamFct=1
+q_sit4.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 
 q_sit5=graphical_reports.RecordLoadCaseDisp(loadCaseName='q_sit5',loadCaseDescr='Carga uniforme tráfico Q1f',loadCaseExpr='1.0*q_sit5',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 q_sit5.unitsScaleLoads=1e-3
@@ -288,8 +284,8 @@ q_sit5.unitsScaleMom=1e-3
 q_sit5.unitsMom='[m.kN]'
 q_sit5.unitsScaleForc=1e-3
 q_sit5.unitsForc='[kN]'
-q_sit5.viewName="XYZPos"
-q_sit5.hCamFct=1
+q_sit5.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+
 
 frenCent=graphical_reports.RecordLoadCaseDisp(loadCaseName='frenCent',loadCaseDescr='frenCent',loadCaseExpr='1.0*frenCent',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 frenCent.unitsScaleLoads=1e-3
@@ -300,8 +296,8 @@ frenCent.unitsScaleMom=1e-3
 frenCent.unitsMom='[m.kN]'
 frenCent.unitsScaleForc=1e-3
 frenCent.unitsForc='[kN]'
-frenCent.viewName="ZPos"
-frenCent.hCamFct=1
+frenCent.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 frenExt=graphical_reports.RecordLoadCaseDisp(loadCaseName='frenExt',loadCaseDescr='frenExt',loadCaseExpr='1.0*frenExt',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[])
 frenExt.unitsScaleLoads=1e-3
@@ -312,8 +308,8 @@ frenExt.unitsScaleMom=1e-3
 frenExt.unitsMom='[m.kN]'
 frenExt.unitsScaleForc=1e-3
 frenExt.unitsForc='[kN]'
-frenExt.viewName="ZPos"
-frenExt.hCamFct=1
+frenExt.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
+
 
 Qcarro=[G2,Q1a_1_carro,Q1a_2_carro,Q1b_1_carro,Q1b_2_carro,Q1c_carro,Q1d_carro,Q1e_carro,Q1f_carro]
 qunif=[q_sit1,q_sit2,q_sit3,q_sit4,q_sit5]

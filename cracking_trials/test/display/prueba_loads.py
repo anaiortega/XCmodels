@@ -18,7 +18,7 @@ loadCasesToDisplay=[PP]
 for lc in loadCasesToDisplay:
         lcs=qg.QuickGraphics(FEcase)
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
-        lcs.dispLoadCaseBeamEl(loadCaseName='PP',setToDisplay=overallSet,fUnitConv=1,elLoadComp='transComponent',elLoadScaleF=1,nodLoadScaleF=1,viewName="XYZPos",hCamFct=1,caption= '',fileName=None)
+        lcs.dispLoadCaseBeamEl(loadCaseName='PP',setToDisplay=overallSet,fUnitConv=1,elLoadComp='transComponent',elLoadScaleF=1,nodLoadScaleF=1, vtk_graphic_base.CameraParameters('XYZPos',1),caption= '',fileName=None)
 
 
 

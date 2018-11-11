@@ -15,7 +15,7 @@ loadCasesToDisplay=[PP]
 #End data
 
 for lc in loadCasesToDisplay:
-        qg.displayLoad(preprocessor=prep,setToDisplay=overallSet,loadCaseNm=lc.name,unitsScale=1e-3,vectorScale=0.005, multByElemArea=False,viewNm='XYZPos',hCamFct=1,caption='',fileName=None,defFScale=1.0)
+        qg.displayLoad(preprocessor=prep,setToDisplay=overallSet,loadCaseNm=lc.name,unitsScale=1e-3,vectorScale=0.005, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption='',fileName=None,defFScale=1.0)
 
 
 

@@ -15,5 +15,5 @@ for lc in loadCasesToDisplay:
     for st in lc.setsToDispBeamLoads:
         lcs=gm.QuickGraphics(model)
         capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
-        lcs.dispLoadCaseBeamEl(loadCaseName=lc.loadCaseName,setToDisplay=st.elSet,fUnitConv=lc.unitsScaleLoads,elLoadComp=lc.compElLoad,elLoadScaleF=lc.vectorScaleLoads,nodLoadScaleF=lc.vectorScalePointLoads,viewName=lc.viewName,hCamFc=lc.hCamFc,caption= capt,fileName=None)
+        lcs.dispLoadCaseBeamEl(loadCaseName=lc.loadCaseName,setToDisplay=st.elSet,fUnitConv=lc.unitsScaleLoads,elLoadComp=lc.compElLoad,elLoadScaleF=lc.vectorScaleLoads,nodLoadScaleF=lc.vectorScalePointLoads,viewDef=lc.cameraParameters,caption= capt,fileName=None)
 

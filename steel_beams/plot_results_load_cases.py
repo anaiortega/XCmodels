@@ -27,19 +27,19 @@ txtVy= "Effort tranchant (parallel à l'axe faible)"
 
 figN= utils_display.SlideDefinition("Beams","N",figDescr= txtN,reinfDescr= '',units= "[kN]")
 figN.diagrams.append(ifd.InternalForceDiagram(2.0,1e-3,[setMainBeam],"N"))
-figN.viewName= "YPos"
+figN.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 internalForcesFigList.append(figN)
 figMz= utils_display.SlideDefinition("Beams","Mz",figDescr= txtMz,reinfDescr= '',units= "[kN m]")
 figMz.diagrams.append(ifd.InternalForceDiagram(0.05,1e-3,[setMainBeam],"Mz"))
-figMz.viewName= "YPos"
+figMz.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 internalForcesFigList.append(figMz)
 figVy= utils_display.SlideDefinition("Beams","Vy",figDescr= txtVy,reinfDescr= '',units= "[kN]")
 figVy.diagrams.append(ifd.InternalForceDiagram(0.2,1e-3,[setMainBeam],"Qy"))
-figVy.viewName= "YPos"
+figVy.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 internalForcesFigList.append(figVy)
 
 tp= utils_display.TakePhotos("total")
-#tp.defDisplay.viewName= "YPos"
+#tp.defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 tp.pthGraphOutput= "figures/"
 
 import os
