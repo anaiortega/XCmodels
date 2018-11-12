@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import load_vector_field as lvf
 
@@ -18,14 +19,13 @@ for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', ' + lc.unitsLoads
-#        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewNm=lc.viewName,caption= capt)
+#        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt)
         defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
         defDisplay.setupGrid(st)
         vField=lvf.LoadVectorField(lc.loadCaseName,lc.unitsScaleLoads,lc.vectorScaleLoads)
         vField.multiplyByElementArea=lc.multByElemAreaLoads
         vField.dumpLoads(preprocessor)
-        defDisplay.viewName= lc.viewName
-        #defDisplay.hCamFct=1.0
+        defDisplay.cameraParameters= lc.viewDef
         defDisplay.defineMeshScene(None) 
         vField.addToDisplay(defDisplay)
         defDisplay.displayScene(caption=capt)

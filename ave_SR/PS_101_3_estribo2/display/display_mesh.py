@@ -2,6 +2,7 @@
 
 execfile('../model_data.py')
 execfile('../../PSs/captionTexts.py')
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 #  caption:  text to write in the graphic
@@ -25,5 +26,5 @@ if Lvoladzd >0:
 lstSets=[zap,murestr,aleti,aletd]
 
 
-defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo2_dors.jpg',caption='P.S. 101.3. Estribo 2. Malla de elementos. Vista dorsal',nodeSize=0.050,scaleConstr=0.70,viewName='XYZPos')
-defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo2_fron.jpg',caption='P.S. 101.3. Estribo 2. Malla de elementos. Vista frontal',nodeSize=0.050,scaleConstr=0.70,viewName='YNeg')
+defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo2_dors.jpg',caption='P.S. 101.3. Estribo 2. Malla de elementos. Vista dorsal',nodeSize=0.050,scaleConstr=0.70)
+defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo2_fron.jpg',caption='P.S. 101.3. Estribo 2. Malla de elementos. Vista frontal',nodeSize=0.050,scaleConstr=0.70)

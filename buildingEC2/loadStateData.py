@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,16 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
     
 '''
 LC1_deadLoadBearingStructure=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1_deadLoadBearingStructure',loadCaseDescr='LC1: dead load of the bearing structure',loadCaseExpr='1.0*LC1_deadLoadBearingStructure',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
@@ -83,11 +80,11 @@ LC1_deadLoadBearingStructure.unitsScaleForc=1
 LC1_deadLoadBearingStructure.unitsForc='[kN]' 
 LC1_deadLoadBearingStructure.setsToDispBeamIntForc=[columnsSet] 
 LC1_deadLoadBearingStructure.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC1_deadLoadBearingStructure.viewName='-X-Y+Z' 
+LC1_deadLoadBearingStructure.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z') 
 LC1_deadLoadBearingStructure.setsToDispBeamLoads=[] 
 LC1_deadLoadBearingStructure.vectorScalePointLoads=0.005 
 LC1_deadLoadBearingStructure.compElLoad='transComponent' 
-LC1_deadLoadBearingStructure.hCamFct=1
+
 
 LC2_deadLoadInterior=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC2_deadLoadInterior',loadCaseDescr='LC2: dead load of the interior',loadCaseExpr='1.0*LC2_deadLoadInterior',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC2_deadLoadInterior.unitsScaleLoads=1 
@@ -99,7 +96,7 @@ LC2_deadLoadInterior.unitsScaleForc=1
 LC2_deadLoadInterior.unitsForc='[kN]' 
 LC2_deadLoadInterior.setsToDispBeamIntForc=[columnsSet] 
 LC2_deadLoadInterior.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC2_deadLoadInterior.viewName='-X-Y+Z'  
+LC2_deadLoadInterior.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC2_deadLoadInterior.setsToDispBeamLoads=[] 
 LC2_deadLoadInterior.vectorScalePointLoads=0.005 
 LC2_deadLoadInterior.compElLoad='transComponent' 
@@ -114,7 +111,7 @@ LC3_deadLoadFacade.unitsScaleForc=1
 LC3_deadLoadFacade.unitsForc='[kN]' 
 LC3_deadLoadFacade.setsToDispBeamIntForc=[columnsSet] 
 LC3_deadLoadFacade.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC3_deadLoadFacade.viewName='-X-Y+Z'  
+LC3_deadLoadFacade.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC3_deadLoadFacade.setsToDispBeamLoads=[] 
 LC3_deadLoadFacade.vectorScalePointLoads=0.005 
 LC3_deadLoadFacade.compElLoad='transComponent' 
@@ -129,7 +126,7 @@ LC51_windX.unitsScaleForc=1
 LC51_windX.unitsForc='[kN]' 
 LC51_windX.setsToDispBeamIntForc=[columnsSet] 
 LC51_windX.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC51_windX.viewName='-X-Y+Z'  
+LC51_windX.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC51_windX.setsToDispBeamLoads=[] 
 LC51_windX.vectorScalePointLoads=0.005 
 LC51_windX.compElLoad='transComponent' 
@@ -144,7 +141,7 @@ LC101_windY.unitsScaleForc=1
 LC101_windY.unitsForc='[kN]' 
 LC101_windY.setsToDispBeamIntForc=[columnsSet] 
 LC101_windY.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC101_windY.viewName='-X-Y+Z'  
+LC101_windY.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC101_windY.setsToDispBeamLoads=[] 
 LC101_windY.vectorScalePointLoads=0.005 
 LC101_windY.compElLoad='transComponent' 
@@ -159,7 +156,7 @@ LC201_snowRoof.unitsScaleForc=1
 LC201_snowRoof.unitsForc='[kN]' 
 LC201_snowRoof.setsToDispBeamIntForc=[columnsSet] 
 LC201_snowRoof.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC201_snowRoof.viewName='-X-Y+Z'  
+LC201_snowRoof.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC201_snowRoof.setsToDispBeamLoads=[] 
 LC201_snowRoof.vectorScalePointLoads=0.005 
 LC201_snowRoof.compElLoad='transComponent' 
@@ -174,7 +171,7 @@ LC202_snowAx1_2.unitsScaleForc=1
 LC202_snowAx1_2.unitsForc='[kN]' 
 LC202_snowAx1_2.setsToDispBeamIntForc=[columnsSet] 
 LC202_snowAx1_2.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC202_snowAx1_2.viewName='-X-Y+Z'  
+LC202_snowAx1_2.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC202_snowAx1_2.setsToDispBeamLoads=[] 
 LC202_snowAx1_2.vectorScalePointLoads=0.005 
 LC202_snowAx1_2.compElLoad='transComponent' 
@@ -189,7 +186,7 @@ LC203_snowAx2_3.unitsScaleForc=1
 LC203_snowAx2_3.unitsForc='[kN]' 
 LC203_snowAx2_3.setsToDispBeamIntForc=[columnsSet] 
 LC203_snowAx2_3.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC203_snowAx2_3.viewName='-X-Y+Z'  
+LC203_snowAx2_3.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC203_snowAx2_3.setsToDispBeamLoads=[] 
 LC203_snowAx2_3.vectorScalePointLoads=0.005 
 LC203_snowAx2_3.compElLoad='transComponent' 
@@ -204,7 +201,7 @@ LC204_snowAx3_4.unitsScaleForc=1
 LC204_snowAx3_4.unitsForc='[kN]' 
 LC204_snowAx3_4.setsToDispBeamIntForc=[columnsSet] 
 LC204_snowAx3_4.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC204_snowAx3_4.viewName='-X-Y+Z'  
+LC204_snowAx3_4.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC204_snowAx3_4.setsToDispBeamLoads=[] 
 LC204_snowAx3_4.vectorScalePointLoads=0.005 
 LC204_snowAx3_4.compElLoad='transComponent' 
@@ -219,7 +216,7 @@ LC205_snowAx4_5.unitsScaleForc=1
 LC205_snowAx4_5.unitsForc='[kN]' 
 LC205_snowAx4_5.setsToDispBeamIntForc=[columnsSet] 
 LC205_snowAx4_5.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC205_snowAx4_5.viewName='-X-Y+Z'  
+LC205_snowAx4_5.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC205_snowAx4_5.setsToDispBeamLoads=[] 
 LC205_snowAx4_5.vectorScalePointLoads=0.005 
 LC205_snowAx4_5.compElLoad='transComponent' 
@@ -234,7 +231,7 @@ LC206_snowAx5_6.unitsScaleForc=1
 LC206_snowAx5_6.unitsForc='[kN]' 
 LC206_snowAx5_6.setsToDispBeamIntForc=[columnsSet] 
 LC206_snowAx5_6.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC206_snowAx5_6.viewName='-X-Y+Z'  
+LC206_snowAx5_6.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC206_snowAx5_6.setsToDispBeamLoads=[] 
 LC206_snowAx5_6.vectorScalePointLoads=0.005 
 LC206_snowAx5_6.compElLoad='transComponent' 
@@ -249,7 +246,7 @@ LC1326_servRoof.unitsScaleForc=1
 LC1326_servRoof.unitsForc='[kN]' 
 LC1326_servRoof.setsToDispBeamIntForc=[columnsSet] 
 LC1326_servRoof.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC1326_servRoof.viewName='-X-Y+Z'  
+LC1326_servRoof.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC1326_servRoof.setsToDispBeamLoads=[] 
 LC1326_servRoof.vectorScalePointLoads=0.005 
 LC1326_servRoof.compElLoad='transComponent' 
@@ -264,7 +261,7 @@ LC1336_servRoof.unitsScaleForc=1
 LC1336_servRoof.unitsForc='[kN]' 
 LC1336_servRoof.setsToDispBeamIntForc=[columnsSet] 
 LC1336_servRoof.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC1336_servRoof.viewName='-X-Y+Z'  
+LC1336_servRoof.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC1336_servRoof.setsToDispBeamLoads=[] 
 LC1336_servRoof.vectorScalePointLoads=0.005 
 LC1336_servRoof.compElLoad='transComponent' 
@@ -279,7 +276,7 @@ LC1356_servRoof.unitsScaleForc=1
 LC1356_servRoof.unitsForc='[kN]' 
 LC1356_servRoof.setsToDispBeamIntForc=[columnsSet] 
 LC1356_servRoof.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC1356_servRoof.viewName='-X-Y+Z'  
+LC1356_servRoof.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC1356_servRoof.setsToDispBeamLoads=[] 
 LC1356_servRoof.vectorScalePointLoads=0.005 
 LC1356_servRoof.compElLoad='transComponent' 
@@ -294,7 +291,7 @@ LC1366_servRoof.unitsScaleForc=1
 LC1366_servRoof.unitsForc='[kN]' 
 LC1366_servRoof.setsToDispBeamIntForc=[columnsSet] 
 LC1366_servRoof.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC1366_servRoof.viewName='-X-Y+Z'  
+LC1366_servRoof.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
 LC1366_servRoof.setsToDispBeamLoads=[] 
 LC1366_servRoof.vectorScalePointLoads=0.005 
 LC1366_servRoof.compElLoad='transComponent' 
@@ -309,8 +306,7 @@ LC10001_serv1.unitsScaleForc=1
 LC10001_serv1.unitsForc='[kN]' 
 LC10001_serv1.setsToDispBeamIntForc=[columnsSet] 
 LC10001_serv1.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10001_serv1.viewName='-X-Y+Z'
-LC10001_serv1.hCamFct=0.5
+LC10001_serv1.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10001_serv1.setsToDispBeamLoads=[] 
 LC10001_serv1.vectorScalePointLoads=0.005 
 LC10001_serv1.compElLoad='transComponent' 
@@ -325,8 +321,7 @@ LC10011_serv1.unitsScaleForc=1
 LC10011_serv1.unitsForc='[kN]' 
 LC10011_serv1.setsToDispBeamIntForc=[columnsSet] 
 LC10011_serv1.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10011_serv1.viewName='-X-Y+Z'  
-LC10001_serv1.hCamFct=0.5
+LC10011_serv1.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10011_serv1.setsToDispBeamLoads=[] 
 LC10011_serv1.vectorScalePointLoads=0.005 
 LC10011_serv1.compElLoad='transComponent' 
@@ -341,8 +336,7 @@ LC10021_serv1.unitsScaleForc=1
 LC10021_serv1.unitsForc='[kN]' 
 LC10021_serv1.setsToDispBeamIntForc=[columnsSet] 
 LC10021_serv1.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10021_serv1.viewName='-X-Y+Z'  
-LC10021_serv1.hCamFct=0.5
+LC10021_serv1.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10021_serv1.setsToDispBeamLoads=[] 
 LC10021_serv1.vectorScalePointLoads=0.005 
 LC10021_serv1.compElLoad='transComponent' 
@@ -357,8 +351,7 @@ LC10031_serv1.unitsScaleForc=1
 LC10031_serv1.unitsForc='[kN]' 
 LC10031_serv1.setsToDispBeamIntForc=[columnsSet] 
 LC10031_serv1.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10031_serv1.viewName='-X-Y+Z'  
-LC10031_serv1.hCamFct=0.5
+LC10031_serv1.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10031_serv1.setsToDispBeamLoads=[] 
 LC10031_serv1.vectorScalePointLoads=0.005 
 LC10031_serv1.compElLoad='transComponent' 
@@ -373,8 +366,7 @@ LC10101_servParking.unitsScaleForc=1
 LC10101_servParking.unitsForc='[kN]' 
 LC10101_servParking.setsToDispBeamIntForc=[columnsSet] 
 LC10101_servParking.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10101_servParking.viewName='-X-Y+Z'  
-LC10101_servParking.hCamFct=0.5
+LC10101_servParking.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10101_servParking.setsToDispBeamLoads=[] 
 LC10101_servParking.vectorScalePointLoads=0.005 
 LC10101_servParking.compElLoad='transComponent' 
@@ -389,8 +381,7 @@ LC10111_servParking.unitsScaleForc=1
 LC10111_servParking.unitsForc='[kN]' 
 LC10111_servParking.setsToDispBeamIntForc=[columnsSet] 
 LC10111_servParking.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10111_servParking.viewName='-X-Y+Z'  
-LC10111_servParking.hCamFct=0.5
+LC10111_servParking.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10111_servParking.setsToDispBeamLoads=[] 
 LC10111_servParking.vectorScalePointLoads=0.005 
 LC10111_servParking.compElLoad='transComponent' 
@@ -405,8 +396,7 @@ LC10121_servParking.unitsScaleForc=1
 LC10121_servParking.unitsForc='[kN]' 
 LC10121_servParking.setsToDispBeamIntForc=[columnsSet] 
 LC10121_servParking.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10121_servParking.viewName='-X-Y+Z'  
-LC10121_servParking.hCamFct=0.5
+LC10121_servParking.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10121_servParking.setsToDispBeamLoads=[] 
 LC10121_servParking.vectorScalePointLoads=0.005 
 LC10121_servParking.compElLoad='transComponent' 
@@ -421,8 +411,7 @@ LC10131_servParking.unitsScaleForc=1
 LC10131_servParking.unitsForc='[kN]' 
 LC10131_servParking.setsToDispBeamIntForc=[columnsSet] 
 LC10131_servParking.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-LC10131_servParking.viewName='-X-Y+Z'  
-LC10131_servParking.hCamFct=0.5
+LC10131_servParking.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z',0.5)
 LC10131_servParking.setsToDispBeamLoads=[] 
 LC10131_servParking.vectorScalePointLoads=0.005 
 LC10131_servParking.compElLoad='transComponent' 
@@ -438,8 +427,8 @@ ELUmaxMy.unitsScaleForc=1
 ELUmaxMy.unitsForc='[kN]' 
 ELUmaxMy.setsToDispBeamIntForc=[columnsSet] 
 ELUmaxMy.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUmaxMy.viewName='-X-Y+Z'  
-ELUmaxMy.hCamFct=1
+ELUmaxMy.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUmaxMy.setsToDispBeamLoads=[] 
 ELUmaxMy.vectorScalePointLoads=0.005 
 ELUmaxMy.compElLoad='transComponent' 
@@ -454,8 +443,8 @@ ELUmaxMz.unitsScaleForc=1
 ELUmaxMz.unitsForc='[kN]' 
 ELUmaxMz.setsToDispBeamIntForc=[columnsSet] 
 ELUmaxMz.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUmaxMz.viewName='-X-Y+Z'  
-ELUmaxMz.hCamFct=1
+ELUmaxMz.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUmaxMz.setsToDispBeamLoads=[] 
 ELUmaxMz.vectorScalePointLoads=0.005 
 ELUmaxMz.compElLoad='transComponent' 
@@ -470,8 +459,8 @@ ELUmaxVy.unitsScaleForc=1
 ELUmaxVy.unitsForc='[kN]' 
 ELUmaxVy.setsToDispBeamIntForc=[columnsSet] 
 ELUmaxVy.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUmaxVy.viewName='-X-Y+Z'  
-ELUmaxVy.hCamFct=1
+ELUmaxVy.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUmaxVy.setsToDispBeamLoads=[] 
 ELUmaxVy.vectorScalePointLoads=0.005 
 ELUmaxVy.compElLoad='transComponent' 
@@ -486,8 +475,8 @@ ELUmaxVz.unitsScaleForc=1
 ELUmaxVz.unitsForc='[kN]' 
 ELUmaxVz.setsToDispBeamIntForc=[columnsSet] 
 ELUmaxVz.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUmaxVz.viewName='-X-Y+Z'  
-ELUmaxVz.hCamFct=1
+ELUmaxVz.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUmaxVz.setsToDispBeamLoads=[] 
 ELUmaxVz.vectorScalePointLoads=0.005 
 ELUmaxVz.compElLoad='transComponent' 
@@ -502,8 +491,8 @@ ELUmaxN.unitsScaleForc=1
 ELUmaxN.unitsForc='[kN]' 
 ELUmaxN.setsToDispBeamIntForc=[columnsSet] 
 ELUmaxN.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUmaxN.viewName='-X-Y+Z'  
-ELUmaxN.hCamFct=1
+ELUmaxN.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUmaxN.setsToDispBeamLoads=[] 
 ELUmaxN.vectorScalePointLoads=0.005 
 ELUmaxN.compElLoad='transComponent' 
@@ -518,8 +507,8 @@ ELUminMy.unitsScaleForc=1
 ELUminMy.unitsForc='[kN]' 
 ELUminMy.setsToDispBeamIntForc=[columnsSet] 
 ELUminMy.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUminMy.viewName='-X-Y+Z'  
-ELUminMy.hCamFct=1
+ELUminMy.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUminMy.setsToDispBeamLoads=[] 
 ELUminMy.vectorScalePointLoads=0.005 
 ELUminMy.compElLoad='transComponent' 
@@ -534,8 +523,8 @@ ELUminMz.unitsScaleForc=1
 ELUminMz.unitsForc='[kN]' 
 ELUminMz.setsToDispBeamIntForc=[columnsSet] 
 ELUminMz.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUminMz.viewName='-X-Y+Z'  
-ELUminMz.hCamFct=1
+ELUminMz.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUminMz.setsToDispBeamLoads=[] 
 ELUminMz.vectorScalePointLoads=0.005 
 ELUminMz.compElLoad='transComponent' 
@@ -550,8 +539,8 @@ ELUminVy.unitsScaleForc=1
 ELUminVy.unitsForc='[kN]' 
 ELUminVy.setsToDispBeamIntForc=[columnsSet] 
 ELUminVy.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUminVy.viewName='-X-Y+Z'  
-ELUminVy.hCamFct=1
+ELUminVy.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUminVy.setsToDispBeamLoads=[] 
 ELUminVy.vectorScalePointLoads=0.005 
 ELUminVy.compElLoad='transComponent' 
@@ -566,8 +555,8 @@ ELUminVz.unitsScaleForc=1
 ELUminVz.unitsForc='[kN]' 
 ELUminVz.setsToDispBeamIntForc=[columnsSet] 
 ELUminVz.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUminVz.viewName='-X-Y+Z'  
-ELUminVz.hCamFct=1
+ELUminVz.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUminVz.setsToDispBeamLoads=[] 
 ELUminVz.vectorScalePointLoads=0.005 
 ELUminVz.compElLoad='transComponent' 
@@ -582,8 +571,8 @@ ELUminN.unitsScaleForc=1
 ELUminN.unitsForc='[kN]' 
 ELUminN.setsToDispBeamIntForc=[columnsSet] 
 ELUminN.listBeamIntForc=['My','Mz','Qy','Qz','N'] 
-ELUminN.viewName='-X-Y+Z'  
-ELUminN.hCamFct=1
+ELUminN.cameraParameters= vtk_graphic_base.CameraParameters('-X-Y+Z')  
+
 ELUminN.setsToDispBeamLoads=[] 
 ELUminN.vectorScalePointLoads=0.005 
 ELUminN.compElLoad='transComponent' 

@@ -2,6 +2,7 @@
 
 execfile('../model_data.py')
 execfile('../../PSs/captionTexts.py')
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 #  caption:  text to write in the graphic
@@ -28,8 +29,8 @@ lstSets=[zap,murestr,aleti,aletd]
 
 #defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,voladzCent,voladzExtr],fName= None,caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 #defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,voladzCent],fName= None,caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos',nodeSize=0.050,scaleConstr=0.70,viewName='XYZPos')
-#defDisplay.displayMesh(xcSets=lstSets,fName= None,caption='P.S. 101.3. Estribo 1. Malla de elementos',nodeSize=0.050,scaleConstr=0.70,viewName='XYZPos')
-defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1_dors.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos. Vista dorsal',nodeSize=0.050,scaleConstr=0.70,viewName='XYZPos')
-defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1_fron.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos. Vista frontal',nodeSize=0.050,scaleConstr=0.70,viewName='YNeg')
+#defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos',nodeSize=0.050,scaleConstr=0.70)
+#defDisplay.displayMesh(xcSets=lstSets,fName= None,caption='P.S. 101.3. Estribo 1. Malla de elementos',nodeSize=0.050,scaleConstr=0.70)
+defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1_dors.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos. Vista dorsal',nodeSize=0.050,scaleConstr=0.70)
+defDisplay.displayMesh(xcSets=lstSets,fName= 'estribo1_fron.jpg',caption='P.S. 101.3. Estribo 1. Malla de elementos. Vista frontal',nodeSize=0.050,scaleConstr=0.70)
 

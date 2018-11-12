@@ -37,12 +37,12 @@ resultComb(mainBeam,"ELU01")
 
 quit()
 import vtk
-from postprocess.xcVtk import vtk_grafico_base
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import vtk_internal_force_diagram as ifd
 from postprocess.xcVtk import element_property_diagram as epd
 
-defGrid= vtk_grafico_base.RecordDefGrid()
+defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 #diagram= ifd.InternalForceDiagram(0.1,1e-3,[setMainBeam],"Mz")
@@ -56,7 +56,7 @@ diagram= epd.ElementPropertyDiagram(1,1,[setMainBeam],"chiLT")
 diagram.addDiagram()
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-defDisplay.viewName= "YPos"
+defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.

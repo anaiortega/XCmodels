@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos") when displaying beam elements
+  
 '''
 
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qcantlv',loadCaseDescr='Q1: uniform load on the cantilever',loadCaseExpr='1.0*Qcantlv',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[xcTotalSet])
@@ -82,6 +78,6 @@ Q1.unitsScaleMom=1e-3
 Q1.unitsMom='[m.kN]'
 Q1.unitsScaleForc=1e-3
 Q1.unitsForc='[kN]'
-Q1.viewName="XYZPos"
+Q1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1.listDspRot=['uZ']
 Q1.listIntForc=['M2','Q2']

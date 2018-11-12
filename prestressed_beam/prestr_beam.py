@@ -230,11 +230,11 @@ analOk= analisis.analyze(1)
 
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 lcs=QGrph.QuickGraphics(FEcase)
-lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 1: prestressing of tendon 1',viewName="YNeg",hCamFct=1,fileName='twoTendonsUz01.png',defFScale=2e2)
+lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 1: prestressing of tendon 1',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz01.png',defFScale=2e2)
 
-lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 1: prestressing of tendon 1',viewName="YNeg",hCamFct=1,fileName='twoTendonsMz01.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 1: prestressing of tendon 1',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz01.png',defFScale=1)
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 1: prestressing of tendon 1',viewName="XYZNeg",hCamFct=1,fileName='twoTendons_t1_N01.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 1: prestressing of tendon 1', vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t1_N01.png',defFScale=1)
 
 # Phase 2: self-weight
 #Add uniform load on beam elems to current load pattern
@@ -245,24 +245,24 @@ analOk= analisis.analyze(1)
 
 
 
-lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 2: self-weight',viewName="YNeg",hCamFct=1,fileName='twoTendonsUz02.png',defFScale=2e2)
+lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 2: self-weight',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz02.png',defFScale=2e2)
 
-lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-0.05,unitDescription='beam [kNm]. Phase 2: self-weight',viewName="YNeg",hCamFct=1,fileName='twoTendonsMz02.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-0.05,unitDescription='beam [kNm]. Phase 2: self-weight',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz02.png',defFScale=1)
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 2: self-weight',viewName="XYZNeg",hCamFct=1,fileName='twoTendons_t1_N02.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 2: self-weight', vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t1_N02.png',defFScale=1)
 
 # Phase 3: revive tendon 2
 tendon2Set.aliveElements()
 mesh.meltAliveNodes("block2") # Reactivate inactive nodes.
 analOk= analisis.analyze(1)
 
-lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 3: prestressing of tendon 2',viewName="YNeg",hCamFct=1,fileName='twoTendonsUz03.png',defFScale=2e2)
+lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 3: prestressing of tendon 2',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz03.png',defFScale=2e2)
 
-#lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=beamSet,fConvUnits= 1e-2,scaleFactor=1e-3,unitDescription='',viewName="ZPos",hCamFct=1,fileName=None,defFScale=1)
-lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 3: prestressing of tendon 2 ',viewName="YNeg",hCamFct=1,fileName='twoTendonsMz03.png',defFScale=1)
+#lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=beamSet,fConvUnits= 1e-2,scaleFactor=1e-3,unitDescription='', vtk_graphic_base.CameraParameters('ZPos',1),fileName=None,defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 3: prestressing of tendon 2 ',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz03.png',defFScale=1)
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 3: prestressing of tendon 2',viewName="XYZNeg",hCamFct=1,fileName='twoTendons_t1_N03.png',defFScale=1)
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon2Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 2 [kN]. Phase 3: prestressing of tendon 2',viewName="XYZNeg",hCamFct=1,fileName='twoTendons_t2_N03.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 3: prestressing of tendon 2', vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t1_N03.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon2Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 2 [kN]. Phase 3: prestressing of tendon 2', vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t2_N03.png',defFScale=1)
 
 
 #delta= nodes.getNode(nnodesBeam).getDisp[0]

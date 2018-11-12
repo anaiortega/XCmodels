@@ -67,7 +67,7 @@ print "totalMass: ",totalMass
 modeToDisplay= 1
 figureCaption= 'Mode '+str(modeToDisplay)+' deformed shape and equivalent static loads.'
 from postprocess.xcVtk.FE_model import quick_graphics as qg
-qg.displayEigenResults(preprocessor,eigenMode=modeToDisplay, setToDisplay=xcTotalSet, defShapeScale=2.0,equLoadVctScale=1.5,accelMode=ah[modeToDisplay-1],unitsScale=1e-3,viewNm="XYZPos",hCamFct=1.0,caption= figureCaption,fileName=None)
+qg.displayEigenResults(preprocessor,eigenMode=modeToDisplay, setToDisplay=xcTotalSet, defShapeScale=2.0,equLoadVctScale=1.5,accelMode=ah[modeToDisplay-1],unitsScale=1e-3,vtk_graphic_base.CameraParameters('XYZPos'),caption= figureCaption,fileName=None)
 
 import csv
 with open('earthquake_loads.csv','w') as csvfile:

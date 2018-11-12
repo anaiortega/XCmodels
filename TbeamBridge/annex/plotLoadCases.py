@@ -27,9 +27,8 @@ loadCasesGr=[]    #List of objects of type graphLoadCase.RecordLoadCaseDisp
   #                  (=load multiplied by element area) and False if we 
   #                  are going to depict the value of the uniform load 
   #                  per unit area (defaults to False)
-  #  viewName:       name of the view  that contains the renderer (possible
-  #                  options: "XYZPos", "XPos", "XNeg","YPos", "YNeg",
-  #                  "ZPos", "ZNeg") (defaults to "XYZPos")
+  #  cameraParameters:  parameters that define the position and orientation of the
+  #                     camera (defaults to "XYZPos")
   #  descGrph:       description text to be displayed in the graphic
   #  captTex:        caption to describe the graphic content in the tex file
   #  lablTex:        label to be associated to the graphic in the tex file

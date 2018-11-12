@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -44,9 +45,8 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (possible
-                 options: "XYZPos", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg") (defaults to "XYZPos")
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
 
 '''
 

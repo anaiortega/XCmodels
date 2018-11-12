@@ -190,7 +190,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 xcTotalSet=utils_display.setToDisplay(elSet=preprocessor.getSets.getSet('total'),genDescr='',sectDescr=[])
 
 lcs=QGrph.QuickGraphics(FEcase)
-#lcs.displayDispRot(itemToDisp='uX',setToDisplay=xcTotalSet.elSet,fConvUnits=1000,unitDescription='mm',viewName="XYZPos",hCamFct=1,fileName=None,defFScale=0.0)
+#lcs.displayDispRot(itemToDisp='uX',setToDisplay=xcTotalSet.elSet,fConvUnits=1000,unitDescription='mm', vtk_graphic_base.CameraParameters('XYZPos',1),fileName=None,defFScale=0.0)
 
 # lcs.displayDispRot(itemToDisp='uZ',defFScale=1e2)
 # lcs.displayDispRot(itemToDisp='uY')
@@ -198,7 +198,7 @@ lcs=QGrph.QuickGraphics(FEcase)
 lcs.loadCaseName='Prestressing stress= 420 Mpa                                                   '
 xcTotalSet.elSet.name=''
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1e-3,unitDescription=': Axial forces (kN)',viewName="XYPos",hCamFct=1,fileName='val_quad01.jpg',defFScale=25.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1e-3,unitDescription=': Axial forces (kN)', vtk_graphic_base.CameraParameters('XYPos',1),fileName='val_quad01.jpg',defFScale=25.0)
 
 
 

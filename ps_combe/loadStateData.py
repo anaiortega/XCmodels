@@ -3,6 +3,7 @@
 '''In this script we define default data of load cases to be used (or changed)
 while displaying loads or results associated to single load cases 
 '''
+from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
 '''
 Definition of record objects with these attributes:
@@ -61,17 +62,12 @@ Definition of record objects with these attributes:
                  the units (defaults to 1).
   unitsMom:  text to especify the units in which bending moments are 
                  represented (defaults to '[kN.m/m]')
-  viewName:  name of the view  that contains the renderer (available standard 
-                 views: "XYZPos", "XYZNeg", "XPos", "XNeg","YPos", "YNeg",
-                 "ZPos", "ZNeg", "+X+Y+Z", "+X+Y-Z", "+X-Y+Z", "+X-Y-Z", 
-                 "-X+Y+Z", "-X+Y-Z", 
-                 "-X-Y+Z", "-X-Y-Z")  (defaults to "XYZPos")
-  hCamFct:   factor that applies to the height of the camera position 
-                 in order to change perspective of isometric views 
-                 (defaults to 1, usual values 0.1 to 10)
-  viewNameBeams: name of the view  for beam elements displays (defaults to "XYZPos")
-  hCamFctBeams:  factor that applies to the height of the camera position for
-                 beam displays (defaults to 1)
+  cameraParameters: parameters that define the position and orientation of the
+                 camera (defaults to "XYZPos")
+  
+  cameraParametersBeams: parameters that define the position and orientation of the
+                 camera for beam elements displays (defaults to "XYZPos")
+  
 '''
 
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[shells])
@@ -99,9 +95,9 @@ S.unitsMom='[m.kN]'
 S.unitsForc='[kN]'
 S.setsToDispBeamIntForc=[beamLines]
 S.listBeamIntForc=['N','Qy','Mz']
-S.viewName="XYZPos"
+S.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 S.compElLoad='transComponent'
-S.hCamFct=1
+
 
 Q269A_unif= graphical_reports.RecordLoadCaseDisp(loadCaseName='liveLoad269_1',loadCaseDescr='SIA 269 load model 1 (mid span)',loadCaseExpr='1.0*liveLoad269_1',setsToDispLoads=[shells],setsToDispDspRot=[shells],setsToDispIntForc=[])
 Q269A_unif.unitsScaleLoads=1e-3
@@ -202,9 +198,9 @@ T.unitsMom='[m.kN]'
 T.unitsForc='[kN]'
 T.setsToDispBeamIntForc=[beams]
 T.listBeamIntForc=['My','Mz','Qy','Qz','N']
-T.viewName="XYZPos"
+T.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 T.compElLoad='transComponent'
-T.hCamFct=1
+
 
 tempDown= graphical_reports.RecordLoadCaseDisp(loadCaseName='TmpDown',loadCaseDescr='Température -20',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.5*temp_down',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[deckSurfaces])
 tempDown.unitsScaleLoads=1e-3
@@ -217,9 +213,9 @@ tempDown.unitsMom='[m.kN]'
 tempDown.unitsForc='[kN]'
 tempDown.setsToDispBeamIntForc=[beamLines]
 tempDown.listBeamIntForc=['N','Qy','Mz']
-tempDown.viewName="XYZPos"
+tempDown.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 tempDown.compElLoad='transComponent'
-tempDown.hCamFct=1
+
 
 tempUp= graphical_reports.RecordLoadCaseDisp(loadCaseName='TmpUp',loadCaseDescr='Température +20',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.5*temp_up',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[deckSurfaces])
 tempUp.unitsScaleLoads=1e-3
@@ -232,9 +228,9 @@ tempUp.unitsMom='[m.kN]'
 tempUp.unitsForc='[kN]'
 tempUp.setsToDispBeamIntForc=[beamLines]
 tempUp.listBeamIntForc=['N','Qy','Mz']
-tempUp.viewName="XYZPos"
+tempUp.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 tempUp.compElLoad='transComponent'
-tempUp.hCamFct=1
+
 
 brake1= graphical_reports.RecordLoadCaseDisp(loadCaseName='Brake',loadCaseDescr='Brake disp.',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+0.75*liveLoad269_1+1.5*temp_up',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[])
 brake1.unitsScaleLoads=1e-3
@@ -247,9 +243,9 @@ brake1.unitsMom='[m.kN]'
 brake1.unitsForc='[kN]'
 brake1.setsToDispBeamIntForc=[]
 brake1.listBeamIntForc=['N','Qy','Mz']
-brake1.viewName="XYZPos"
+brake1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 brake1.compElLoad='transComponent'
-brake1.hCamFct=1
+
 
 brake2= graphical_reports.RecordLoadCaseDisp(loadCaseName='Brake',loadCaseDescr='Brake disp.',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.0*liveLoad269_1+0.6*temp_up',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[])
 brake2.unitsScaleLoads=1e-3
@@ -262,9 +258,9 @@ brake2.unitsMom='[m.kN]'
 brake2.unitsForc='[kN]'
 brake2.setsToDispBeamIntForc=[]
 brake2.listBeamIntForc=['N','Qy','Mz']
-brake2.viewName="XYZPos"
+brake2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 brake2.compElLoad='transComponent'
-brake2.hCamFct=1
+
 
 ELU01= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU01',loadCaseDescr='SIA 269 LM1 A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.5*liveLoad269_1',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[deckSurfaces])
 ELU01.unitsScaleLoads=1e-3
@@ -277,9 +273,9 @@ ELU01.unitsMom='[m.kN]'
 ELU01.unitsForc='[kN]'
 ELU01.setsToDispBeamIntForc=[beamLines]
 ELU01.listBeamIntForc=['N','Qy','Mz']
-ELU01.viewName="XYZPos"
+ELU01.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU01.compElLoad='transComponent'
-ELU01.hCamFct=1
+
 
 ELU02= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU02',loadCaseDescr='SIA 269 LM1 B',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.5*liveLoad269_2',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU02.unitsScaleLoads=1e-3
@@ -292,9 +288,9 @@ ELU02.unitsMom='[m.kN]'
 ELU02.unitsForc='[kN]'
 ELU02.setsToDispBeamIntForc=[beamLines]
 ELU02.listBeamIntForc=['N','Qy','Mz']
-ELU02.viewName="XYZPos"
+ELU02.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU02.compElLoad='transComponent'
-ELU02.hCamFct=1
+
 
 ELU03= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU03',loadCaseDescr='SIA 664 Crane LM1 A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Crane_1',setsToDispLoads=[],setsToDispDspRot=[deckSurfaces],setsToDispIntForc=[deckSurfaces])
 ELU03.unitsScaleLoads=1e-3
@@ -307,9 +303,9 @@ ELU03.unitsMom='[m.kN]'
 ELU03.unitsForc='[kN]'
 ELU03.setsToDispBeamIntForc=[beamLines]
 ELU03.listBeamIntForc=['N','Qy','Mz']
-ELU03.viewName="XYZPos"
+ELU03.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU03.compElLoad='transComponent'
-ELU03.hCamFct=1
+
 
 ELU04= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU04',loadCaseDescr='SIA 664 Crane LM1 B',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Crane_2',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU04.unitsScaleLoads=1e-3
@@ -322,9 +318,9 @@ ELU04.unitsMom='[m.kN]'
 ELU04.unitsForc='[kN]'
 ELU04.setsToDispBeamIntForc=[beamLines]
 ELU04.listBeamIntForc=['N','Qy','Mz']
-ELU04.viewName="XYZPos"
+ELU04.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU04.compElLoad='transComponent'
-ELU04.hCamFct=1
+
 
 ELU05= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU05',loadCaseDescr='SIA 664 DET1 LM A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Det1_1',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU05.unitsScaleLoads=1e-3
@@ -337,9 +333,9 @@ ELU05.unitsMom='[m.kN]'
 ELU05.unitsForc='[kN]'
 ELU05.setsToDispBeamIntForc=[beamLines]
 ELU05.listBeamIntForc=['N','Qy','Mz']
-ELU05.viewName="XYZPos"
+ELU05.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU05.compElLoad='transComponent'
-ELU05.hCamFct=1
+
 
 ELU06= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU06',loadCaseDescr='SIA 664 DET1 LM A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Det1_2',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU06.unitsScaleLoads=1e-3
@@ -352,9 +348,9 @@ ELU06.unitsMom='[m.kN]'
 ELU06.unitsForc='[kN]'
 ELU06.setsToDispBeamIntForc=[beamLines]
 ELU06.listBeamIntForc=['N','Qy','Mz']
-ELU06.viewName="XYZPos"
+ELU06.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU06.compElLoad='transComponent'
-ELU06.hCamFct=1
+
 
 ELU07= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU07',loadCaseDescr='SIA 664 DET2 LM A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Det2_1',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU07.unitsScaleLoads=1e-3
@@ -367,9 +363,9 @@ ELU07.unitsMom='[m.kN]'
 ELU07.unitsForc='[kN]'
 ELU07.setsToDispBeamIntForc=[beamLines]
 ELU07.listBeamIntForc=['N','Qy','Mz']
-ELU07.viewName="XYZPos"
+ELU07.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU07.compElLoad='transComponent'
-ELU07.hCamFct=1
+
 
 ELU08= graphical_reports.RecordLoadCaseDisp(loadCaseName='ELU08',loadCaseDescr='SIA 664 DET2 LM A',loadCaseExpr='1.2*GselfWeight+1.2*GdeadLoad+1.1*liveLoad664Det2_2',setsToDispLoads=[],setsToDispDspRot=[],setsToDispIntForc=[])
 ELU08.unitsScaleLoads=1e-3
@@ -382,9 +378,9 @@ ELU08.unitsMom='[m.kN]'
 ELU08.unitsForc='[kN]'
 ELU08.setsToDispBeamIntForc=[beamLines]
 ELU08.listBeamIntForc=['N','Qy','Mz']
-ELU08.viewName="XYZPos"
+ELU08.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 ELU08.compElLoad='transComponent'
-ELU08.hCamFct=1
+
 
 A= graphical_reports.RecordLoadCaseDisp(loadCaseName='A',loadCaseDescr='Earthquake load',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.0*eQuake',setsToDispLoads=[],setsToDispDspRot=[shells],setsToDispIntForc=[])
 A.unitsScaleLoads=1e-3
@@ -397,8 +393,8 @@ A.unitsMom='[m.kN]'
 A.unitsForc='[kN]'
 A.setsToDispBeamIntForc=[beamLines]
 A.listBeamIntForc=['N','Qy','Mz']
-A.viewName="XYZPos"
+A.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 A.compElLoad='transComponent'
-A.hCamFct=1
+
 
 

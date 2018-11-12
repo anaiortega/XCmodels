@@ -327,6 +327,6 @@ lcs=qg.QuickGraphics(FEcase)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa                                                   '         
 xcTotalSet.elSet.name=''
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1.5e-3,unitDescription=': Axial internal forces [kN] ',viewName="XYZPos",hCamFct=1,fileName=None,defFScale=40.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1.5e-3,unitDescription=': Axial internal forces [kN] ', vtk_graphic_base.CameraParameters('XYZPos',1),fileName=None,defFScale=40.0)
 quit()
 
