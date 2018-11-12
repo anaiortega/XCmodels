@@ -35,6 +35,7 @@ resultComb(mainBeam,"ELU01")
 #resultComb(mainBeam,"ELU02")
 #resultComb(mainBeam,"ELU03")
 
+quit()
 import vtk
 from postprocess.xcVtk import vtk_grafico_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
@@ -45,11 +46,11 @@ defGrid= vtk_grafico_base.RecordDefGrid()
 defGrid.nmbSet= "total"
 
 #diagram= ifd.InternalForceDiagram(0.1,1e-3,[setMainBeam],"Mz")
-#diagram= epd.ElementPropertyDiagram(1,1,[setMainBeam],"chiLT")
+diagram= epd.ElementPropertyDiagram(1,1,[setMainBeam],"chiLT")
 #diagram= epd.ElementPropertyDiagram(scaleFactor=10,fUnitConv=1,sets=[setMainBeam],propertyName="FCTNCP")
 #diagram= epd.ElementPropertyDiagram(-0.02,1e-3,[setMainBeam],"Mz-")
 #diagram= epd.ElementPropertyDiagram(-0.02,1e-3,[setMainBeam],"Mz+")
-diagram= epd.ElementPropertyDiagram(10,1,[setMainBeam],"FCVCP")
+#diagram= epd.ElementPropertyDiagram(10,1,[setMainBeam],"FCVCP")
 #diagram= epd.ElementPropertyDiagram(0.1,1e-3,[setMainBeam],"Vy+")
 #diagram= epd.ElementPropertyDiagram(0.1,1e-3,[setMainBeam],"Vy-")
 diagram.addDiagram()
