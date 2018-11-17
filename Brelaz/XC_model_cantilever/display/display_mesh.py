@@ -12,5 +12,5 @@ setToDisp=overallSet
 #setToDisp=shellsPcable
 #setToDisp=rest_Acc
 
-defDisplay.FEmeshGraphic(xcSets=[setToDisp],caption='',viewNm='XPos',defFScale=1.0)
+defDisplay.FEmeshGraphic(xcSets=[setToDisp],caption='',cameraParameters= vtk_graphic_base.CameraParameters('XPos'),defFScale=1.0)
 

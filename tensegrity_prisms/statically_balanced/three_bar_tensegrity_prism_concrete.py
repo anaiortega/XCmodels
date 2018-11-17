@@ -191,10 +191,10 @@ quit()
 # from postprocess.xcVtk.FE_model import vtk_FE_graphic
 # defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 # totalSet= prep.getSets.getSet('total')
-# defDisplay.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',viewNm='XYZPos')
-# defDisplay.FEmeshGraphic(xcSet=strutSet,caption= 'Struts',viewNm='XYZPos')
-# defDisplay.FEmeshGraphic(xcSet=diagSet,caption= 'Diagonal',viewNm='XYZPos')
-# defDisplay.FEmeshGraphic(xcSet=saddSet,caption= 'Saddle cables',viewNm='XYZPos')
+# defDisplay.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# defDisplay.FEmeshGraphic(xcSet=strutSet,caption= 'Struts',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# defDisplay.FEmeshGraphic(xcSet=diagSet,caption= 'Diagonal',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# defDisplay.FEmeshGraphic(xcSet=saddSet,caption= 'Saddle cables',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
 # quit()
 
 #Loads definition

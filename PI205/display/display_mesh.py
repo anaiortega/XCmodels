@@ -7,8 +7,8 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 #  partToDisplay: XC set of elements to be displayed
 #  caption:  text to write in the graphic
-#  viewNm:   name of the view to use
-#            predefined view names: 'XYZPos','XYZNeg','XNeg','XPos','YNeg','YPos',
+#  cameraParameters: camera parameters (position, orientation,...)
+#          predefined view names: 'XYZPos','XYZNeg','XNeg','XPos','YNeg','YPos',
 #            'ZNeg','ZPos'  (defaults to 'XYZPos')
 #  defFScale: factor to apply to current displacement of nodes so that the
 #             display position of each node equals to the initial position plus
@@ -17,5 +17,5 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 setToDisp=overallSet
-defDisplay.FEmeshGraphic(xcSets=[setToDisp],caption='',viewNm='XYZPos',defFScale=1.0)
+defDisplay.FEmeshGraphic(xcSets=[setToDisp],caption='',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'),defFScale=1.0)
 

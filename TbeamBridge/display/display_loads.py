@@ -21,27 +21,27 @@ import vtk
     #                   (=load multiplied by element area) and False if we 
     #                   are going to depict the value of the uniform load 
     #                   per unit area (defaults to False)
-    #   viewNm:         name of the view  that contains the renderer (possible
+    #    viewDef:        camera parameters (position, orientation,...)
     #                   options: "XYZPos", "XPos", "XNeg","YPos", "YNeg",
     #                   "ZPos", "ZNeg") (defaults to "XYZPos")
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
  
-model.displayLoad(setToDisplay=None,loadCaseNm='GselfWeight',unitsScale=1e-3,vectorScale=0.1, multByElemArea=False,viewNm="XYZPos",caption= 'G1: Self weigth. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='GdeadLoad',unitsScale=1e-3,vectorScale=0.1, multByElemArea=False,viewNm="XYZPos",caption= 'G2: Dead load. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='GearthPress',unitsScale=1e-3,vectorScale=0.025, multByElemArea=False,viewNm="XYZPos",caption= 'G3: Earth pressure. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='GselfWeight',unitsScale=1e-3,vectorScale=0.1, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'G1: Self weigth. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='GdeadLoad',unitsScale=1e-3,vectorScale=0.1, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'G2: Dead load. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='GearthPress',unitsScale=1e-3,vectorScale=0.025, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'G3: Earth pressure. [Units: m, kN]')
 
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1a',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q1a: Traffic loads configuration 1a. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1b',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q1b: Traffic loads configuration 1b. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2a',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q2a: Traffic loads configuration 2a. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2b',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q2b: Traffic loads configuration 2b. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1a',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q1a: Traffic loads configuration 1a. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1b',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q1b: Traffic loads configuration 1b. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2a',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q2a: Traffic loads configuration 2a. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2b',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q2b: Traffic loads configuration 2b. [Units: m, kN]')
 
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafExcept',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'QExcept: Exceptional transport. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafExcept',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'QExcept: Exceptional transport. [Units: m, kN]')
 
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1aPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q1a: Point Traffic loads configuration 1a. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1bPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q1b: Point Traffic loads configuration 1b. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2aPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q2a: Point Traffic loads configuration 2a. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2bPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewNm="XYZPos",caption= 'Q2b: Point Traffic loads configuration 2b. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1aPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q1a: Point Traffic loads configuration 1a. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1bPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q1b: Point Traffic loads configuration 1b. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2aPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q2a: Point Traffic loads configuration 2a. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2bPoint',unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Q2b: Point Traffic loads configuration 2b. [Units: m, kN]')
 
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1unif',unitsScale=1e-3,vectorScale=0.5, multByElemArea=False,viewNm="XYZPos",caption= 'QU1: Uniform traffic loads configuration 1. [Units: m, kN]')
-model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2unif',unitsScale=1e-3,vectorScale=0.5, multByElemArea=False,viewNm="XYZPos",caption= 'QU2: Uniform traffic loads configuration 2. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit1unif',unitsScale=1e-3,vectorScale=0.5, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'QU1: Uniform traffic loads configuration 1. [Units: m, kN]')
+model.displayLoad(setToDisplay=None,loadCaseNm='QtrafSit2unif',unitsScale=1e-3,vectorScale=0.5, multByElemArea=False,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'QU2: Uniform traffic loads configuration 2. [Units: m, kN]')
