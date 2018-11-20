@@ -16,7 +16,7 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 #Checking material for limit state.
 limitStateLabel= lsd.shearResistance.label
 lsd.shearResistance.controller= SIA262_limit_state_checking.ShearController(limitStateLabel)
-meanFCs= lsd.shearResistance.check(sections,sectionNamesForEveryElement)
+lsd.shearResistance.check(sections,sectionNamesForEveryElement)
 
 
 

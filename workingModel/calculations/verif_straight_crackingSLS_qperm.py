@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from postprocess.config import output_config as oc
 from solution import predefined_solutions
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
@@ -7,7 +8,9 @@ from materials.ehe import EHE_limit_state_checking as lschck
 
 execfile("../model_gen.py") #FE model generation
 
-setCalc=decks  #set of elements for which to perform the checking
+# variables that control the output of the checking (setCalc,
+# appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
+outCfg=oc.verifOutVars(setCalc=decks,appendToResFile='Y',listFile='Y')
 
 #Reinforced concrete sections on each element.
 #reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()
@@ -17,7 +20,7 @@ reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcementTenStiff.pk
 limitStateLabel= lsd.freqLoadsCrackControl.label
 lsd.freqLoadsCrackControl.controller= lschck.CrackStraightController(limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label)
 lsd.freqLoadsCrackControl.controller.analysisToPerform=predefined_solutions.simple_static_modified_newton
-meanFCs= lsd.quasiPermanentLoadsCrackControl.check(reinfConcreteSections,setCalc=setCalc)
+lsd.quasiPermanentLoadsCrackControl.check(reinfConcreteSections,outCfg)
 
 
 

@@ -16,6 +16,6 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 
 limitStateLabel= lsd.fatigueResistance.label
 lsd.fatigueResistance.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
-meanFCs= lsd.fatigueResistance.check(sections,sectionNamesForEveryElement)
+lsd.fatigueResistance.check(sections,sectionNamesForEveryElement)
 
 

@@ -35,7 +35,7 @@ resultComb(mainBeam,"ELU01")
 #resultComb(mainBeam,"ELU02")
 #resultComb(mainBeam,"ELU03")
 
-quit()
+
 import vtk
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic

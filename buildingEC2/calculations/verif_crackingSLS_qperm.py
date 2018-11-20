@@ -17,5 +17,5 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 limitStress= 350e6 #XXX 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
 lsd.quasiPermanentLoadsCrackControl.controller= cc.CrackControlSIA262PlanB(limitStateLabel,limitStress)
-meanFCs= lsd.quasiPermanentLoadsCrackControl.check(sections,sectionNamesForEveryElement)
+lsd.quasiPermanentLoadsCrackControl.check(sections,sectionNamesForEveryElement)
 

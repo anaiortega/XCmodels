@@ -18,7 +18,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.normalStressesResistance.label
 lsd.normalStressesResistance.controller= SIA262_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
-meanFCs= lsd.normalStressesResistance.check(reinfConcreteSections)
+lsd.normalStressesResistance.check(reinfConcreteSections)
 
 
 

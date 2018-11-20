@@ -22,7 +22,7 @@ reinfConcreteSections=RC_material_distribution.loadRCMaterialDistribution()
 limitStateLabel= lsd.freqLoadsCrackControl.label
 lsd.freqLoadsCrackControl.controller= EC2_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
 lsd.freqLoadsCrackControl.controller.analysisToPerform=predefined_solutions.simple_static_modified_newton
-meanFCs= lsd.freqLoadsCrackControl.check(reinfConcreteSections)
+lsd.freqLoadsCrackControl.check(reinfConcreteSections)
 
 
 

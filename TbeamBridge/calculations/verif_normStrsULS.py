@@ -19,7 +19,7 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 
 limitStateLabel= lsd.normalStressesResistance.label
 lsd.normalStressesResistance.controller= ns.BiaxialBendingNormalStressController(limitStateLabel)
-meanFCs= lsd.normalStressesResistance.check(sections,sectionNamesForEveryElement)
+lsd.normalStressesResistance.check(sections,sectionNamesForEveryElement)
 
 
 

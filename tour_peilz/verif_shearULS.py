@@ -14,7 +14,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 #Checking material for limit state.
 limitStateLabel= lsd.shearResistance.label
 lsd.shearResistance.controller= SIA262_limit_state_checking.ShearController(limitStateLabel)
-meanFCs= lsd.shearResistance.check(reinfConcreteSections)
+lsd.shearResistance.check(reinfConcreteSections)
 
 
 

@@ -16,6 +16,6 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.fatigueResistance.label
 lsd.fatigueResistance.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
-meanFCs= lsd.fatigueResistance.check(reinfConcreteSections)
+lsd.fatigueResistance.check(reinfConcreteSections)
 
 

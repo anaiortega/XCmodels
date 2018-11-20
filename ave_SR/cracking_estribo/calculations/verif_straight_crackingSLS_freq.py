@@ -15,7 +15,7 @@ reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcementTenStiff.pk
 limitStateLabel= lsd.freqLoadsCrackControl.label
 lsd.freqLoadsCrackControl.controller= lschck.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
 lsd.freqLoadsCrackControl.controller.analysisToPerform=predefined_solutions.simple_static_modified_newton
-meanFCs= lsd.freqLoadsCrackControl.check(reinfConcreteSections)
+lsd.freqLoadsCrackControl.check(reinfConcreteSections)
 
 
 

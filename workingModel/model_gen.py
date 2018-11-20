@@ -20,8 +20,8 @@ from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
 
 # Default configuration of environment variables.
-#home= '/home/ana/projects/XCmodels/'
-home= '/home/luis/Documents/XCmodels/'
+home= '/home/ana/projects/XCmodels/'
+
 fullProjPath= home + 'workingModel/'
 execfile(fullProjPath+'env_config.py')
 
