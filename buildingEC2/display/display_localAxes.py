@@ -13,7 +13,7 @@ import vtk
     #                   (defaults to 'total')
     #   vectorScale:    factor to apply to the vectors length in the 
     #                   representation (defaults to 1).
-    #   viewNm:         name of the view  that contains the renderer (possible
+    #   viewDef:        camera parameters (position, orientation,...)
     #                   options: "XYZPos","XYZNeg", "XPos", "XNeg","YPos","YNeg"
     #                   "ZPos", "ZNeg") (defaults to "XYZPos")
 

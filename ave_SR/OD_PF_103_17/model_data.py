@@ -17,8 +17,8 @@ from actions import loads
 from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
-from postprocess.config import colors
-from postprocess.config import sp_captions as cpt
+from postprocess.config import default_config
+#from postprocess.config import sp_captions as cpt
 
 
 # AVE San Rafael-Cuarto de la Jara

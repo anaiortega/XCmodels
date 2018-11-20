@@ -13,14 +13,14 @@ import vtk
     #                   (defaults to 'total')
     #   vectorScale:    factor to apply to the vectors length in the 
     #                   representation (defaults to 1).
-    #   viewNm:         name of the view  that contains the renderer (possible
+    #   viewDef:        camera parameters (position, orientation,...)
     #                   options: "XYZPos", "XPos", "XNeg","YPos", "YNeg",
     #                   "ZPos", "ZNeg") (defaults to "XYZPos")
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
 
 stDisp=colsSet  #set to display
-model.displayLocalAxes(setToDisplay=stDisp.elSet,vectorScale=0.3,viewNm="XYZPos",caption= stDisp.genDescr.capitalize() + ', '+ capTexts['LocalAxes'])
+model.displayLocalAxes(setToDisplay=stDisp.elSet,vectorScale=0.3,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= stDisp.genDescr.capitalize() + ', '+ capTexts['LocalAxes'])
 
 
 
