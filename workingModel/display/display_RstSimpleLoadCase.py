@@ -10,6 +10,7 @@ execfile('../loadStateData.py')
 #or redefined lately) to be displayed:
 loadCasesToDisplay=[G1,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11]
 #loadCasesToDisplay=[LS1,LS2]
+loadCasesToDisplay=[G1]
 #End data
 
 for lc in loadCasesToDisplay:

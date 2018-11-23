@@ -6,7 +6,7 @@ execfile('./captionTexts.py')
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-    # displayLocalAxes: vector field display of the element local axes.
+    # display_local_axes: vector field display of the element local axes.
     # Parameters:
     #   setToDisplay:   set of elements to be displayed
     #                   (defaults to 'total')

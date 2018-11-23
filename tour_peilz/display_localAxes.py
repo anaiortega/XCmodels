@@ -8,7 +8,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import local_axes_vector_field as lavf
 import vtk
 
-def displayLocalAxes(setToDisplay=None,vectorScale=1.0,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= '',fileName=None):
+def display_local_axes(setToDisplay=None,vectorScale=1.0,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= '',fileName=None):
     '''vector field display of the loads applied to the chosen set of elements in the load case passed as parameter
     
     :param setToDisplay:   set of elements to be displayed (defaults to total set)
@@ -27,7 +27,7 @@ def displayLocalAxes(setToDisplay=None,vectorScale=1.0,viewDef= vtk_graphic_base
     defDisplay.displayScene(caption,fileName)
     return defDisplay
 
-displayLocalAxes(setToDisplay=shell_elements,vectorScale=0.3,viewDef=  vtk_graphic_base.CameraParameters('XYZPos',2.0),caption= shell_elements.genDescr.capitalize() + ', '+ capTexts['LocalAxes'],fileName=None)
-#displayLocalAxes(setToDisplay=beamsSet,vectorScale=0.3,vtk_graphic_base.CameraParameters('XYZPos'),caption=deckSet.genDescr.capitalize() + ', '+ capTexts['LocalAxes'],fileName=None)
+display_local_axes(setToDisplay=shell_elements,vectorScale=0.3,viewDef=  vtk_graphic_base.CameraParameters('XYZPos',2.0),caption= shell_elements.genDescr.capitalize() + ', '+ capTexts['LocalAxes'],fileName=None)
+#display_local_axes(setToDisplay=beamsSet,vectorScale=0.3,vtk_graphic_base.CameraParameters('XYZPos'),caption=deckSet.genDescr.capitalize() + ', '+ capTexts['LocalAxes'],fileName=None)
 
 

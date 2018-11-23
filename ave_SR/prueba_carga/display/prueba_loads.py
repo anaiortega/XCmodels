@@ -16,7 +16,7 @@ loadCasesToDisplay=[G1,G3,Q1,Q2]
 #End data
 
 for lc in loadCasesToDisplay:
-        qg.displayLoad(preprocessor=prep,setToDisplay=overallSet,loadCaseNm=lc.name,unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,vtk_graphic_base.CameraParameters('XYZPos'),caption='',fileName=None,defFScale=1.0)
+        qg.display_load(preprocessor=prep,setToDisplay=overallSet,loadCaseNm=lc.name,unitsScale=1e-3,vectorScale=0.05, multByElemArea=False,vtk_graphic_base.CameraParameters('XYZPos'),caption='',fileName=None,defFScale=1.0)
 
 
 

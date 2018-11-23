@@ -60,7 +60,7 @@ reinfSteel=EHE_materials.B500S
 # concrete=SIA262_materials.c30_37
 # reinfSteel=SIA262_materials.B500B
 
-eSize= 0.2     #length of elements
+eSize= 0.35     #length of elements
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
