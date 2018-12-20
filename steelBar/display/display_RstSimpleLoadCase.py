@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 import os
-from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 
 execfile('../model_gen.py')
-execfile('../load_state_data.py')
+execfile('../loadStateData.py')
 
-#ordered list of load cases (from those defined in ../load_state_data.py
+#ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:
-loadCasesToDisplay=[G1,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11]
-#loadCasesToDisplay=[LS1,LS2]
-loadCasesToDisplay=[G1]
+loadCasesToDisplay=[Q1]
 #End data
 
 for lc in loadCasesToDisplay:
@@ -37,7 +34,7 @@ for lc in loadCasesToDisplay:
                 fcUn=lc.unitsScaleForc
                 unDesc=lc.unitsForc
 
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,unitDescription=unDesc,viewDef= lc.cameraParameters,fileName=None,defFScale=1)
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,unitDescription=unDesc,viewName=lc.viewName,hCamFct=lc.hCamFct,fileName=None,defFScale=1)
     #Internal forces displays on sets of «beam» elements
     for st in lc.setsToDispBeamIntForc:
         for arg in lc.listBeamIntForc:
@@ -53,6 +50,7 @@ for lc in loadCasesToDisplay:
                 else:
                   scaleFact=lc.scaleDispBeamIntForc[1]
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
+
 
 
             

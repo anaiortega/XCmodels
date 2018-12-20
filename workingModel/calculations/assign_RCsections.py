@@ -9,9 +9,9 @@ from postprocess import element_section_map
 execfile("../model_gen.py") #FE model generation
 
 #RC-sections definition file.
-execfile("../sectionsDef.py")
+execfile("../RC_sections_def.py")
 
-#list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'sectionsDef.py') that we want to process in order to run different limit-state checkings.
+#list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'RC_sections_def.py') that we want to process in order to run different limit-state checkings.
 lstOfSectRecords=[deckRCSects,footRCSects,wallRCSects,beamXRCsect,beamYRCsect,columnZRCsect]
 
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
