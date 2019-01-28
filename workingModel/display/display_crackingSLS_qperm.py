@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from postprocess.xcVtk import vtk_graphic_base
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
 from postprocess.xcVtk import vtk_graphic_base

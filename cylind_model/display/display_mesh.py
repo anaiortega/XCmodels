@@ -15,5 +15,6 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-setsTodisp=[decklv1,decklv2,foot,wall,columnZconcr,columnZsteel,beamY,beamXconcr,beamXsteel]
+setsTodisp=[overallSet]
+setsTodisp=[flatwall,cylwall,flatdeck,cyldeck,deck2]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.02,scaleConstr=0.30)
