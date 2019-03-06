@@ -420,24 +420,6 @@ PPvoladzCent=loads.UniformLoadOnSurfaces(name= 'PPvoladzCent',xcSet=voladzCent,l
 PPlosRP=loads.UniformLoadOnSurfaces(name= 'PPlosRP',xcSet=losRP,loadVector=xc.Vector([0,0,-qPPlos,0,0,0]),refSystem='Global')
 PPlosAlig=loads.UniformLoadOnSurfaces(name= 'PPlosAlig',xcSet=losAlig,loadVector=xc.Vector([0,0,-qPPlosAlig,0,0,0]),refSystem='Global')
 
-# Earth pressure applied to shell or beam elements
-#     Attributes:
-#     name:       name identifying the load
-#     xcSet:      set that contains the elements to be loaded
-#     EarthPressureModel: instance of the class EarthPressureModel, with 
-#                 the following attributes:
-#                   K:Coefficient of pressure
-#                   zGround:global Z coordinate of ground level
-#                   gammaSoil: weight density of soil 
-#                   zWater: global Z coordinate of groundwater level 
-#                   (if zGroundwater<minimum z of model => there is no groundwater)
-#                   gammaWater: weight density of water
-#     if EarthPressureModel==None no earth thrust is considered
-#     vDir: unit xc vector defining pressures direction
-'''
-soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=0.75, gammaWater=densWater*grav)
-earthPressLoadWall= loads.EarthPressLoad(name= 'earthPressLoadWall', xcSet=wall,soilData=soil01, vDir=xc.Vector([0,1,0]))
-'''
 
 #Uniform load on beams
 # syntax: UniformLoadOnBeams(name, xcSet, loadVector,refSystem)

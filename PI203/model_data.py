@@ -397,7 +397,7 @@ trafExceptTransp=loads.NodalLoad(name='trafExceptTransp',lstNod=sets.get_lstNod_
 #                   gammaWater: weight density of water
 #     vDir: unit xc vector defining pressures direction
 
-soil01=ep.EarthPressureModel(K=KearthPress,zGround=zList[lastZpos]+asphaltTh, gammaSoil=densSoil*grav, zWater=-10.0, gammaWater=densWater*grav)
+soil01=ep.EarthPressureModel(zGround=zList[lastZpos]+asphaltTh,zBottomSoils=[-10],KSoils=[KearthPress], gammaSoils=[densSoil*grav], zWater=-10.0, gammaWater=densWater*grav)
 leftWall=leftDownWall+leftUpWall
 rightWall=rightDownWall+rightUpWall
 earthPressLoadleftWall= loads.EarthPressLoad(name= 'earthPressLoadleftWall',xcSet=leftWall, soilData=soil01 ,vDir=xc.Vector([1,0,0]))

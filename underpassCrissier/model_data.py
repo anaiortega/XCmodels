@@ -402,7 +402,7 @@ trafBrakingSit2=loads.NodalLoad(name='trafBrakingSit2',lstNod=sets.get_lstNod_fr
 #                   gammaWater: weight density of water
 #     vDir: unit xc vector defining pressures direction
 
-soil01=ep.EarthPressureModel(K=KearthPress,zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=-10.0, gammaWater=densWater*grav)
+soil01=ep.EarthPressureModel(zGround=zList[lastZpos],zBottomSoils=[-10],KSoils=[KearthPress], gammaSoils=[densSoil*grav], zWater=-10.0, gammaWater=densWater*grav)
 
 earthPressLoadleftWall= loads.EarthPressLoad(name= 'earthPressLoadleftWall', xcSet=leftWall, soilData=soil01,vDir=xc.Vector([1,0,0]))
 earthPressLoadrightWall= loads.EarthPressLoad(name= 'earthPressLoadrightWall',xcSet=rightWall, soilData=soil01, vDir=xc.Vector([-1,0,0]))

@@ -23,11 +23,11 @@ from solution import predefined_solutions
 
 #Geometry
 span=20      #span of the beam [m]
-hBeam=1.6295 #height of the cross-section [m]
-wBeam=0.2596 #width of the cross-section [m]
+hBeam=1.6295 #height of the cross-section [m]. Parallel to local z-axis 
+wBeam=0.2596 #width of the cross-section [m]. Parallel to local y-axis
 Abeam=hBeam*wBeam   #cross-section area of the beam[m2]
-Iybeam=1/12.*wBeam*hBeam**3 #moment of inertia of the beam cross-section [m4]
-Izbeam=1/12.*hBeam*wBeam**3 #moment of inertia of the beam cross-section [m4]
+Iybeam=1/12.*hBeam*wBeam**3 #moment of inertia of the beam cross-section [m4]
+Izbeam=1/12.*wBeam*hBeam**3 #moment of inertia of the beam cross-section [m4]
 
 Abeam=0.423  #cross-section area of the beam[m2]
 Ibeam=9.36e-2 #moment of inertia of the beam cross-section [m4]
@@ -230,11 +230,11 @@ analOk= analisis.analyze(1)
 
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 lcs=QGrph.QuickGraphics(FEcase)
-lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 1: prestressing of tendon 1',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz01.png',defFScale=2e2)
+lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 1: prestressing of tendon 1',viewDef= vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz01.png',defFScale=2e2)
 
-lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 1: prestressing of tendon 1',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz01.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 1: prestressing of tendon 1',viewDef= vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz01.png',defFScale=1)
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 1: prestressing of tendon 1', vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t1_N01.png',defFScale=1)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,scaleFactor=1e-2,unitDescription='tendon 1 [kN]. Phase 1: prestressing of tendon 1', viewDef= vtk_graphic_base.CameraParameters('XYZNeg',1),fileName='twoTendons_t1_N01.png',defFScale=1)
 
 # Phase 2: self-weight
 #Add uniform load on beam elems to current load pattern

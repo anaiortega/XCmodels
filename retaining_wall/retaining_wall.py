@@ -91,10 +91,10 @@ wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,
 #  Dead load. Earth pressure.
 Ka= backFillSoilModel.Ka()
 zGroundBackFill= 0.0 #Back fill
-backFillPressureModel=  earth_pressure.EarthPressureModel(K= Ka, zGround= zGroundBackFill, gammaSoil= gSoil, zWater= -1e3, gammaWater= 1000*gravity)
+backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10],KSoils= [Ka],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 wall.createBackFillPressures(backFillPressureModel, Delta= backFillDelta)
 zGroundFrontFill= zGroundBackFill-wall.stemHeight+frontFillDepth #Front fill
-frontFillPressureModel=  earth_pressure.EarthPressureModel(K= Ka, zGround= zGroundFrontFill, gammaSoil= gSoil, zWater= -1e3, gammaWater= 1000*gravity)
+frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFrontFill, zBottomSoils=[-10],KSoils= [Ka], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 wall.createFrontFillPressures(frontFillPressureModel)
 
 #Live load. Crowd loading.

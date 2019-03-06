@@ -386,7 +386,7 @@ murd_z1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,lastYpos,
 # empuje del terreno
 zGroundZ1=zList[lastZpos]+deckTh/2.0
 
-soilZ1=ep.EarthPressureModel(K=K0, zGround=zGroundZ1, gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
+soilZ1=ep.EarthPressureModel(zGround=zGroundZ1, zBottomSoils=[-10], KSoils=[K0], gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
 
 ep_muri_z1= loads.EarthPressLoad(name= 'ep_muri_z1', xcSet=muri_z1_set,soilData=soilZ1, vDir=xc.Vector([0,1,0]))
 

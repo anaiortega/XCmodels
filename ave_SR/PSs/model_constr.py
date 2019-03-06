@@ -445,10 +445,6 @@ PPlosAlig=loads.UniformLoadOnSurfaces(name= 'PPlosAlig',xcSet=losAlig,loadVector
 #                   gammaWater: weight density of water
 #     if EarthPressureModel==None no earth thrust is considered
 #     vDir: unit xc vector defining pressures direction
-'''
-soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=0.75, gammaWater=densWater*grav)
-earthPressLoadWall= loads.EarthPressLoad(name= 'earthPressLoadWall', xcSet=wall,soilData=soil01, vDir=xc.Vector([0,1,0]))
-'''
 
 #Uniform load on beams
 # syntax: UniformLoadOnBeams(name, xcSet, loadVector,refSystem)

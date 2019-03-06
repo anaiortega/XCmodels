@@ -324,12 +324,12 @@ unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv2,l
 #     if EarthPressureModel==None no earth thrust is considered
 #     vDir: unit xc vector defining pressures direction
 
-soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos]-3, gammaSoil=densSoil*grav, zWater=0, gammaWater=densWater*grav)
+soil01=ep.EarthPressureModel( zGround=zList[lastZpos]-3, zBottomSoils=[-10],KSoils=[KearthPress],gammaSoils=[densSoil*grav], zWater=0, gammaWater=densWater*grav)
 earthPressLoadWall= loads.EarthPressLoad(name= 'earthPressLoadWall', xcSet=wall,soilData=soil01, vDir=xc.Vector([0,1,0]))
 
 earthPressLoadColumn= loads.EarthPressLoad(name= 'earthPressLoadColumn', xcSet=columnZconcr,soilData=soil01, vDir=xc.Vector([0,1,0]))
 
-soil02=ep.EarthPressureModel(K=0.001, zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=0.05, gammaWater=densWater*grav)
+soil02=ep.EarthPressureModel(zGround=zList[lastZpos],zBottomSoils=[-10],KSoils=[0.001],  gammaSoils=[densSoil*grav], zWater=0.05, gammaWater=densWater*grav)
 stripL01=ep.StripLoadOnBackfill(qLoad=2e5, zLoad=zList[lastZpos],distWall=1.5, stripWidth=1.2)
 earthPColumnStrL= loads.EarthPressLoad(name= 'earthPColumnStrL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnStrL.stripLoads=[stripL01]
