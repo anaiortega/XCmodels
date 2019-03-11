@@ -187,6 +187,7 @@ print 'delta_L_strut=',deltL_strut
 
 from postprocess import utils_display
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
+from postprocess.xcVtk import vtk_graphic_base
 xcTotalSet=utils_display.setToDisplay(elSet=preprocessor.getSets.getSet('total'),genDescr='',sectDescr=[])
 
 lcs=QGrph.QuickGraphics(FEcase)
@@ -198,7 +199,7 @@ lcs=QGrph.QuickGraphics(FEcase)
 lcs.loadCaseName='Prestressing stress= 420 Mpa                                                   '
 xcTotalSet.elSet.name=''
 
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1e-3,unitDescription=': Axial forces (kN)', vtk_graphic_base.CameraParameters('XYPos',1),fileName='val_quad01.jpg',defFScale=25.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1,unitDescription=': Axial forces (kN)',  viewDef=vtk_graphic_base.CameraParameters('ZPos',1),fileName='val_quad01.jpg',defFScale=25.0)
 
 
 

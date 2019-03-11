@@ -321,12 +321,13 @@ q_sadd=t_sadd/l_sadd
 
 from postprocess import utils_display
 from postprocess.xcVtk.FE_model import quick_graphics as qg
+from postprocess.xcVtk import vtk_graphic_base
 xcTotalSet=utils_display.setToDisplay(elSet=prep.getSets.getSet('total'),genDescr='',sectDescr=[])
 lcs=qg.QuickGraphics(FEcase)
 # lcs.displayDispRot(itemToDisp='uZ',defFScale=1e2)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa                                                   '         
 xcTotalSet.elSet.name=''
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1.5e-3,unitDescription=': Axial internal forces [kN] ', vtk_graphic_base.CameraParameters('XYZPos',1),fileName=None,defFScale=40.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1,unitDescription=': Axial internal forces [kN] ',  viewDef=vtk_graphic_base.CameraParameters('XYZPos',1),fileName=None,defFScale=40.0)
 quit()
 
