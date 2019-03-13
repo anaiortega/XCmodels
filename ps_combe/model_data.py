@@ -379,7 +379,7 @@ lane1Axis= laneAxisLines[0]
 lane1Sg= lane1Axis.getSegment(2)
 lane1OriginTrsvSlope= transverseSlopes[1]
 lane1OriginLongSlope= lane1Sg.getVDir().normalizado()
-lane1Origin= lane1Sg.getOrigen()-1.1*(0.65+0.16+1.2)/2.0*lane1OriginLongSlope
+lane1Origin= lane1Sg.getFromPoint()-1.1*(0.65+0.16+1.2)/2.0*lane1OriginLongSlope
 loadPositions= [(-0.6,1.0),(0.6,1.0),(-0.6,-1.0),(0.6,-1.0)]
 load3DPositions= list()
 for p in loadPositions:
@@ -399,7 +399,7 @@ lane2Axis= laneAxisLines[1]
 lane2Sg= lane2Axis.getSegment(2)
 lane2OriginTrsvSlope= (transverseSlopes[1]+transverseSlopes[2])*0.5
 lane2OriginLongSlope= lane2Sg.getVDir().normalizado()
-lane2Origin= lane2Sg.getOrigen()-1.1*(0.65+0.16+1.2)/2.0*lane2OriginLongSlope
+lane2Origin= lane2Sg.getFromPoint()-1.1*(0.65+0.16+1.2)/2.0*lane2OriginLongSlope
 load3DPositions= list()
 for p in loadPositions:
     p3D= lane2Origin+p[1]*lane2OriginTrsvSlope+p[0]*lane2OriginLongSlope

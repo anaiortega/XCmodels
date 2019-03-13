@@ -15,29 +15,29 @@ slabsThickness= 0.30
 
 numberOfRebarsByLayer= 1/0.15
 
-deckAsTraction= SIA262_limit_state_checking.AsMinTraction(concrete,'B',rebarSpacing,deckThickness)
+deckAsTraction= SIA262_limit_state_checking.MinReinfAreaUnderTension(concrete,'B',rebarSpacing,deckThickness)
 deckTractionBarDiameter= 16e-3
 deckTractionBarsArea= math.pi*(deckTractionBarDiameter/2.0)**2*2*numberOfRebarsByLayer
-deckAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,deckThickness)
+deckAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,deckThickness)
 deckFlexionBarDiameter= 16e-3
 deckFlexionBarsArea= math.pi*(deckFlexionBarDiameter/2.0)**2*numberOfRebarsByLayer
-deckAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,deckThickness)
+deckAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,deckThickness)
 
-wallsAsTraction= SIA262_limit_state_checking.AsMinTraction(concrete,'B',rebarSpacing,wallsThickness)
+wallsAsTraction= SIA262_limit_state_checking.MinReinfAreaUnderTension(concrete,'B',rebarSpacing,wallsThickness)
 wallsTractionBarDiameter= 14e-3
 wallsTractionBarsArea= math.pi*(wallsTractionBarDiameter/2.0)**2*2*numberOfRebarsByLayer
-wallsAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,wallsThickness)
+wallsAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,wallsThickness)
 wallsFlexionBarDiameter= 14e-3
 wallsFlexionBarsArea= math.pi*(wallsFlexionBarDiameter/2.0)**2*numberOfRebarsByLayer
-wallsAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,wallsThickness)
+wallsAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,wallsThickness)
 
-slabsAsTraction= SIA262_limit_state_checking.AsMinTraction(concrete,'B',rebarSpacing,slabsThickness)
+slabsAsTraction= SIA262_limit_state_checking.MinReinfAreaUnderTension(concrete,'B',rebarSpacing,slabsThickness)
 slabsTractionBarDiameter= 14e-3
 slabsTractionBarsArea= math.pi*(slabsTractionBarDiameter/2.0)**2*2*numberOfRebarsByLayer
-slabsAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,slabsThickness)
+slabsAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,slabsThickness)
 slabsFlexionBarDiameter= 12e-3
 slabsFlexionBarsArea= math.pi*(slabsFlexionBarDiameter/2.0)**2*numberOfRebarsByLayer
-slabsAsFlexion= SIA262_limit_state_checking.AsMinFlexion(concrete,concreteCover,'C',rebarSpacing,slabsThickness)
+slabsAsFlexion= SIA262_limit_state_checking.MinReinfAreaUnderFlexion(concrete,concreteCover,'C',rebarSpacing,slabsThickness)
 
 
 print 'Slabs minimum reinforcement:'
