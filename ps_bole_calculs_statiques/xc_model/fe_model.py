@@ -11,6 +11,7 @@ from model.sets import sets_mng as sUtils
 from actions import load_cases as lcm
 from materials.sia262 import SIA262_materials
 from actions import combinations as cc
+from model.geometry import geom_utils
 
 deck= xc.FEProblem()
 preprocessor= deck.getPreprocessor
@@ -45,7 +46,7 @@ nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
-seedElemHandler.defaultMaterial= "sccDeck"
+seedElemHandler.defaultMaterial= matDeck.name #"sccDeck"
 seedElemHandler.defaultTransformation= "lin"
 elem= seedElemHandler.newElement("ElasticBeam2d",xc.ID([0,0]))
 
@@ -79,11 +80,7 @@ path= [ptA,ptB,ptC,ptD,ptE,ptF,ptG,ptH]
 
 elementLength= 0.20
 lines= preprocessor.getMultiBlockTopology.getLines
-bridgeSectionLines= []
-for points in zip(path, path[1:]):
-    newLine= lines.newLine(points[0].tag,points[1].tag)
-    newLine.setElemSize(elementLength)
-    bridgeSectionLines.append(newLine)
+bridgeSectionLines= geom_utils.lines_on_path(preprocessor, path, elementLength)
 
 parapetLines= [bridgeSectionLines[0],bridgeSectionLines[-1]]
 deckLines= bridgeSectionLines[1:-1]
