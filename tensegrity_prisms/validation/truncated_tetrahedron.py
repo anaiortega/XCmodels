@@ -121,6 +121,7 @@ diag13.area= diagArea
 
 # Displaying of the mesh
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
+from postprocess.xcVtk import vtk_graphic_base
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 totalSet= prep.getSets.getSet('total')
 defDisplay.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))

@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
 #import os
-import xc_base
-import geom
-import xc
+#import xc_base
+#import geom
+#import xc
 from materials.sections.fiber_section import defSimpleRCSection as rcs
 
-
+# **Concrete sections
 #instances of rcs.RecordRCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections

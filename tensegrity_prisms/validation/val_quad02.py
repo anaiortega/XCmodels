@@ -177,6 +177,7 @@ print 'delta_length_el6= ',length_el6-l*math.sqrt(2)
 
 from postprocess import utils_display
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
+from postprocess.xcVtk import vtk_graphic_base
 xcTotalSet=utils_display.setToDisplay(elSet=preprocessor.getSets.getSet('total'),genDescr='',sectDescr=[])
 
 lcs=QGrph.QuickGraphics(FEcase)
@@ -186,7 +187,7 @@ lcs=QGrph.QuickGraphics(FEcase)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa,  Load : Fx,node4= 21 kN                           '
 xcTotalSet.elSet.name=''
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1e-3,unitDescription=': Axial internal forces [kN] ', vtk_graphic_base.CameraParameters('XYPos',1),fileName='val_quad02.jpg',defFScale=40.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1,unitDescription=': Axial internal forces [kN] ',  viewDef=vtk_graphic_base.CameraParameters('ZPos',1),fileName='val_quad02.jpg',defFScale=40.0)
 
 
 

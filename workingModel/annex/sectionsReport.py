@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 execfile("../model_gen.py") #FE model generation
 
-sectDataInputFile='../sectionsDef.py'  #script that carries out the section definition
+sectDataInputFile='../RC_sections_def.py'  #script that carries out the section definition
 execfile(sectDataInputFile)
 report_graphics_outDir='text/graphics/sections/'
 

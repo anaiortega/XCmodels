@@ -357,7 +357,7 @@ for s in segments:
 cLC= loadCaseManager.setCurrentLoadCase('earthPressure')
 K0= backFillSoilModel.K0Jaky()
 zGroundBackFill= 10.23 #Back fill
-backFillPressureModel=  earth_pressure.EarthPressureModel(K= K0, zGround= zGroundBackFill, gammaSoil= gSoil, zWater= -1e3, gammaWater= 1000*gravity)
+backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10], KSoils= [K0], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 
 modelCentroid= lateral_elements.getNodes.getCentroid(0.0)
 for e in lateral_elements.getElements:

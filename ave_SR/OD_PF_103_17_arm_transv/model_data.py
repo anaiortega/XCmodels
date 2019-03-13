@@ -668,14 +668,14 @@ zGroundZ3=zList[lastZpos]+deckTh/2.0+Hrelli+Hbali
 zGroundZ4=zList[lastZpos]+deckTh/2.0+Hrelld+Hbald
 zGroundZ4_desbalastado=zList[lastZpos]+deckTh/2.0+Hrelld
 
-soilZ1_1=ep.EarthPressureModel(K=K0, zGround=zGroundZ1_1, gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
-soilZ1_2=ep.EarthPressureModel(K=K0, zGround=zGroundZ1_2, gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
-soilZ1_3=ep.EarthPressureModel(K=K0, zGround=zGroundZ1_3, gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
+soilZ1_1=ep.EarthPressureModel(zGround=zGroundZ1_1, zBottomSoils=[-10], KSoils=[K0], gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
+soilZ1_2=ep.EarthPressureModel(zGround=zGroundZ1_2,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
+soilZ1_3=ep.EarthPressureModel(zGround=zGroundZ1_3,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
 
-soilZ2=ep.EarthPressureModel(K=K0, zGround=zGroundZ2, gammaSoil=densrell*grav, zWater=0, gammaWater=0)
-soilZ3=ep.EarthPressureModel(K=K0, zGround=zGroundZ3, gammaSoil=densrell*grav, zWater=-10, gammaWater=grav)
-soilZ4=ep.EarthPressureModel(K=K0, zGround=zGroundZ4, gammaSoil=densrell*grav, zWater=-10, gammaWater=0)
-soilZ4_desbal=ep.EarthPressureModel(K=K0, zGround=zGroundZ4_desbalastado, gammaSoil=densrell*grav, zWater=-10, gammaWater=grav)
+soilZ2=ep.EarthPressureModel(zGround=zGroundZ2,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=0, gammaWater=0)
+soilZ3=ep.EarthPressureModel(zGround=zGroundZ3,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10, gammaWater=grav)
+soilZ4=ep.EarthPressureModel(zGround=zGroundZ4,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10, gammaWater=0)
+soilZ4_desbal=ep.EarthPressureModel(zGround=zGroundZ4_desbalastado,  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10, gammaWater=grav)
 
 ep_muri_z1_1= loads.EarthPressLoad(name= 'ep_muri_z1_1', xcSet=muri_z1_1_set,soilData=soilZ1_1, vDir=xc.Vector([0,1,0]))
 ep_muri_z1_2= loads.EarthPressLoad(name= 'ep_muri_z1_2', xcSet=muri_z1_2_set,soilData=soilZ1_2, vDir=xc.Vector([0,1,0]))
@@ -742,7 +742,7 @@ qb_descarr_2d=loads.EarthPressLoad(name= 'qb_descarr_2d', xcSet=qb_descarr_2d_se
 qb_descarr_2d.stripLoads=[strip_descarr2]
 
 #Empuje del terreno en situación de construcción
-soilConstr=ep.EarthPressureModel(K=K0, zGround=zList[-1], gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
+soilConstr=ep.EarthPressureModel(zGround=zList[-1],  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
 ep_construct_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,pyhast1,0),(lastXpos,pyhast1,lastZpos))],nameSet='ep_construct_set')
 ep_construct= loads.EarthPressLoad(name= 'ep_construct', xcSet=ep_construct_set,soilData=soilConstr, vDir=xc.Vector([0,1,0]))
 #cargas lineales vehículo en construcción

@@ -18,6 +18,7 @@ from actions.earth_pressure import earth_pressure as ep
 from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
+from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
 home= '/home/ana/projects/XCmodels/'
@@ -143,18 +144,22 @@ gridGeom.generatePoints()
 # extractIncludedIranges(stepJ,stepK): subranges indexes J,K=constant (default
 #                                      stpes= 1)
 # idem for J and K ranges
-beamX_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedIranges(stepJ=1,stepK=1)
+beamXconcr_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedIranges(stepJ=2,stepK=1)
+beamXsteel_rg=[gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))]
 beamY_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedJranges(stepI=2,stepK=1)
-columnZ_rg=gm.IJKRange((0,1,0),(lastXpos,lastYpos,lastZpos)).extractIncludedKranges(stepI=2,stepJ=2)+[gm.IJKRange((1,lastYpos,0),(1,lastYpos,1))]
+columnZconcr_rg=gm.IJKRange((0,1,0),(lastXpos,1,lastZpos)).extractIncludedKranges(stepI=2)
+columnZsteel_rg=gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos)).extractIncludedJKranges(step=2)+[gm.IJKRange((1,lastYpos,0),(1,lastYpos,1))]
 decklv1_rg=gm.IJKRange((0,1,1),(lastXpos,lastYpos,lastZpos)).extractIncludedIJranges(step=2)
 decklv2_rg=gm.IJKRange((0,lastYpos-1,lastZpos),(1,lastYpos,lastZpos))
 wall_rg=gm.IJKRange((0,1,0),(lastXpos,1,1))
 #foot_rg=[gm.IJKRange((0,0,0),(lastXpos,2,0))]
 foot_rg=[gut.def_rg_cooLim(XYZLists=(xList,yList,zList),Xcoo=(0,LbeamX),Ycoo=(-Wfoot/2.,Wfoot/2.),Zcoo=(0,0))]
 #Lines generation
-beamX=gridGeom.genLinMultiRegion(lstIJKRange=beamX_rg,nameSet='beamX')
+beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,nameSet='beamXconcr')
+beamXsteel=gridGeom.genLinMultiRegion(lstIJKRange=beamXsteel_rg,nameSet='beamXsteel')
 beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
-columnZ=gridGeom.genLinMultiRegion(lstIJKRange=columnZ_rg,nameSet='columnZ')
+columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
+columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
 #Surfaces generation
 decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
 decklv2=gridGeom.genSurfOneRegion(ijkRange=decklv2_rg,nameSet='decklv2')
@@ -168,16 +173,20 @@ foot.description='Foundation'
 foot.color=cfg.colors['orange01']
 wall.description='Wall'
 wall.color=cfg.colors['green01']
-beamX.description='Beams in X direction'
-beamX.color=cfg.colors['blue03']
+beamXconcr.description='Beams in X direction'
+beamXconcr.color=cfg.colors['blue03']
 beamY.description='Beams in Y direction'
 beamY.color=cfg.colors['green03']
-columnZ.description='Columns'
-columnZ.color=cfg.colors['red03']
+columnZconcr.description='Concrete columns'
+columnZconcr.color=cfg.colors['red03']
+columnZsteel.description='Steel columns'
+columnZsteel.color=cfg.colors['blue02']
 
 
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
+S235JR= EC3_materials.S235JR
+S235JR.gammaM= 1.00
 
 # Isotropic elastic section-material appropiate for plate and shell analysis
 deck_mat=tm.DeckMaterialData(name='deck_mat',thickness= deckTh,material=concrProp)
@@ -205,22 +214,34 @@ geomSectColumnZ=sectpr.RectangularSection(name='geomSectColumnZ',b=wcolumnZ,h=hc
   #   material:     instance of a class that defines the elastic modulus,
   #                 shear modulus and mass density of the material
 
-beamX_mat= tm.BeamMaterialData(name= 'beamX_mat', section=geomSectBeamX, material=concrProp)
-beamX_mat.setupElasticShear3DSection(preprocessor=prep)
+beamXconcr_mat= tm.BeamMaterialData(name= 'beamXconcr_mat', section=geomSectBeamX, material=concrProp)
+beamXconcr_mat.setupElasticShear3DSection(preprocessor=prep)
 beamY_mat= tm.BeamMaterialData(name= 'beamY_mat', section=geomSectBeamY, material=concrProp)
 beamY_mat.setupElasticShear3DSection(preprocessor=prep)
-columnZ_mat= tm.BeamMaterialData(name= 'columnZ_mat', section=geomSectColumnZ, material=concrProp)
-columnZ_mat.setupElasticShear3DSection(preprocessor=prep)
+columnZconcr_mat= tm.BeamMaterialData(name= 'columnZconcr_mat', section=geomSectColumnZ, material=concrProp)
+columnZconcr_mat.setupElasticShear3DSection(preprocessor=prep)
+
+# Steel material-section appropiate for 3D beam analysis, including shear
+  # deformations.
+  # Attributes:
+  #   steel:         steel material (
+  #   name: name of the standard steel profile. Types: IPEShape, HEShape,
+  #         UPNShape, AUShape, CHSShape
+  #      (defined in materials.sections.structural_shapes.arcelor_metric_shapes)
+columnZsteel_mat= EC3_materials.HEShape(steel=S235JR,name='HE_200_A')
+columnZsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
+beamXsteel_mat= EC3_materials.IPEShape(steel=S235JR,name='IPE_A_300')
+beamXsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
 
 #                         ***FE model - MESH***
 # IMPORTANT: it's convenient to generate the mesh of surfaces before meshing
 # the lines, otherwise, sets of shells can take also beam elements touched by
 # them
 
-beamX_mesh=fem.LinSetToMesh(linSet=beamX,matSect=beamX_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
+beamXconcr_mesh=fem.LinSetToMesh(linSet=beamXconcr,matSect=beamXconcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 beamY_mesh=fem.LinSetToMesh(linSet=beamY,matSect=beamY_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
-columnZ_mesh=fem.LinSetToMesh(linSet=columnZ,matSect=columnZ_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
+columnZconcr_mesh=fem.LinSetToMesh(linSet=columnZconcr,matSect=columnZconcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
 decklv1_mesh=fem.SurfSetToMesh(surfSet=decklv1,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
 decklv1_mesh.generateMesh(prep)     #mesh the set of surfaces
 decklv2_mesh=fem.SurfSetToMesh(surfSet=decklv2,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
@@ -229,8 +250,11 @@ wall_mesh=fem.SurfSetToMesh(surfSet=wall,matSect=wall_mat,elemSize=eSize,elemTyp
 wall_mesh.generateMesh(prep) 
 foot_mesh=fem.SurfSetToMesh(surfSet=foot,matSect=foot_mat,elemSize=eSize,elemType='ShellMITC4')
 foot_mesh.generateMesh(prep)
+#Steel elements: local Z-axis corresponds to weak axis of the steel shape
+beamXsteel_mesh=fem.LinSetToMesh(linSet=beamXsteel,matSect=beamXsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,-1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([-1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
 
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh])     #mesh these sets
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,beamY_mesh,columnZconcr_mesh,columnZsteel_mesh])     #mesh these sets
 
 
 #                       ***BOUNDARY CONDITIONS***
@@ -255,15 +279,14 @@ n_col2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX,LbeamY,0))
 modelSpace.fixNode('000_FFF',n_col2.tag)
 n_col3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX/2.,LbeamY,0))
 modelSpace.fixNode('FF0_000',n_col3.tag)
-n_deck2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX/2.,Wfoot/2.,LcolumnZ))
-modelSpace.fixNode('FFF_000',n_deck2.tag)
+
 
 #                       ***ACTIONS***
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh,deck_mesh,wall_mesh,foot_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh,decklv1_mesh,decklv2_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamXconcr_mesh,beamY_mesh,columnZconcr_mesh,deck_mesh,wall_mesh,foot_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamXconcr_mesh,beamY_mesh,columnZconcr_mesh,decklv1_mesh,decklv2_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 # Point load acting on one or several nodes
 #     name:       name identifying the load
@@ -301,22 +324,22 @@ unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv2,l
 #     if EarthPressureModel==None no earth thrust is considered
 #     vDir: unit xc vector defining pressures direction
 
-soil01=ep.EarthPressureModel(K=KearthPress, zGround=zList[lastZpos]-3, gammaSoil=densSoil*grav, zWater=0, gammaWater=densWater*grav)
+soil01=ep.EarthPressureModel( zGround=zList[lastZpos]-3, zBottomSoils=[-10],KSoils=[KearthPress],gammaSoils=[densSoil*grav], zWater=0, gammaWater=densWater*grav)
 earthPressLoadWall= loads.EarthPressLoad(name= 'earthPressLoadWall', xcSet=wall,soilData=soil01, vDir=xc.Vector([0,1,0]))
 
-earthPressLoadColumn= loads.EarthPressLoad(name= 'earthPressLoadColumn', xcSet=columnZ,soilData=soil01, vDir=xc.Vector([0,1,0]))
+earthPressLoadColumn= loads.EarthPressLoad(name= 'earthPressLoadColumn', xcSet=columnZconcr,soilData=soil01, vDir=xc.Vector([0,1,0]))
 
-soil02=ep.EarthPressureModel(K=0.001, zGround=zList[lastZpos], gammaSoil=densSoil*grav, zWater=0.05, gammaWater=densWater*grav)
+soil02=ep.EarthPressureModel(zGround=zList[lastZpos],zBottomSoils=[-10],KSoils=[0.001],  gammaSoils=[densSoil*grav], zWater=0.05, gammaWater=densWater*grav)
 stripL01=ep.StripLoadOnBackfill(qLoad=2e5, zLoad=zList[lastZpos],distWall=1.5, stripWidth=1.2)
-earthPColumnStrL= loads.EarthPressLoad(name= 'earthPColumnStrL', xcSet=columnZ,soilData=None, vDir=xc.Vector([0,1,0]))
+earthPColumnStrL= loads.EarthPressLoad(name= 'earthPColumnStrL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnStrL.stripLoads=[stripL01]
 
 lineL01=ep.LineVerticalLoadOnBackfill(qLoad=1e5, zLoad=zList[lastZpos],distWall=1.0)
-earthPColumnLinL= loads.EarthPressLoad(name= 'earthPColumnLinL', xcSet=columnZ,soilData=None, vDir=xc.Vector([0,1,0]))
+earthPColumnLinL= loads.EarthPressLoad(name= 'earthPColumnLinL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnLinL.lineLoads=[lineL01]
 
 hrzL01=ep.HorizontalLoadOnBackfill(soilIntFi=30, qLoad=2e5, zLoad=zList[lastZpos],distWall=1,widthLoadArea=0.5,lengthLoadArea=1.5,horDistrAngle=45)
-earthPColumnHrzL=loads.EarthPressLoad(name= 'earthPColumnHrzL', xcSet=columnZ,soilData=None, vDir=xc.Vector([0,1,0]))
+earthPColumnHrzL=loads.EarthPressLoad(name= 'earthPColumnHrzL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnHrzL.horzLoads=[hrzL01]
 
 #Uniform load on beams
@@ -495,11 +518,15 @@ decks.description='Decks'
 decks.color=cfg.colors['purple01']
 allShells=decklv1+decklv2+foot+wall
 allShells.description='Shell elements'
-allBeams=beamX+beamY+columnZ
+allBeams=beamXconcr+beamXsteel+beamY+columnZconcr+columnZsteel
 allBeams.description='Beams+columns'
-overallSet=beamX+beamY+columnZ+wall+foot+decklv1+decklv2
+overallSet=beamXconcr+beamXsteel+beamY+columnZconcr+columnZsteel+wall+foot+decklv1+decklv2
 overallSet.description='overall set'
 overallSet.color=cfg.colors['purple01']
+beamX=beamXconcr+beamXsteel
+beamX.description='beams X'
+columnZ=columnZconcr+columnZsteel
+columnZ.description='columns'
 
 #sets for displaying some results
 pBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=0,Lx=LbeamX,Ly=LbeamY-1.0)

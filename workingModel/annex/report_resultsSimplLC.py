@@ -2,10 +2,10 @@
 #from postprocess.reports import graphical_reports
 
 execfile("../model_gen.py") #FE model generation
-execfile('../loadStateData.py')
+execfile('../load_state_data.py')
 
 
-#ordered list of load cases (from those defined in ../loadStateData.py
+#ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
 loadCasesToDisplay=[G1]
 

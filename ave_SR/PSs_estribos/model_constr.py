@@ -143,7 +143,7 @@ rell_zap=loads.UniformLoadOnSurfaces(name= 'rell_zap',xcSet=zapTrasdos,loadVecto
 SCep_zap=loads.UniformLoadOnSurfaces(name= 'rell_zap',xcSet=zapTrasdos,loadVector= xc.Vector([0,0,-qunifTerr]))
 
 # empuje del terreno
-soil=ep.EarthPressureModel(K=K0, zGround=zGround, gammaSoil=densrell*grav, zWater=-10.0, gammaWater=grav)
+soil=ep.EarthPressureModel( zGround=zGround,zBottomSoils=[-10],KSoils=[K0], gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
 qunifTerr=ep.StripLoadOnBackfill(qLoad=qunifTerr, zLoad=zGround,distWall=0, stripWidth=10)
 
 ep_aleti= loads.EarthPressLoad(name= 'ep_aleti', xcSet=aleti,soilData=soil, vDir=xc.Vector([-1,0,0]))
