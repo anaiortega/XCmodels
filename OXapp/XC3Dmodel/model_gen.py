@@ -5,7 +5,7 @@ import xc_base
 import geom
 import xc
 import math
-from model import predefined_spaces
+from model import predefined_spaces as psp
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
 from model.boundary_cond import spring_bound_cond as sprbc
@@ -21,40 +21,13 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/'
+home= '/home/ana/projects/XCmodels/OXapp/'
 
-fullProjPath= home + 'workingModel/'
+fullProjPath= home + 'XC3Dmodel/'
 execfile(fullProjPath+'env_config.py')
+execfile(fullProjPath+'data.py')
 
 #Auxiliary data
- #Geometry
-LbeamX=5
-LbeamY=6
-LcolumnZ=6
-Wfoot=2.0
-hbeamX=0.5
-hbeamY=0.3
-hcolumnZ=0.40
-wbeamX=0.35
-wbeamY=0.5
-wcolumnZ=0.40
-deckTh=0.20
-wallTh=0.5
-footTh=0.7
-
- #Actions
-qdeck1=1e3  #N/m2
-qdeck2=2e3   #N/m2
-Qbeam=3e3  #N/m
-qunifBeam=5e3
-qLinDeck2=30 #N/m
-Qwheel=5e3  #N
-firad=math.radians(31)  #internal friction angle (radians)                   
-KearthPress=(1-math.sin(firad))/(1+math.sin(firad))     #Active coefficient of p
-densSoil=800       #mass density of the soil (kg/m3)
-densWater=1000      #mass density of the water (kg/m3)
-
-
 #Materials
 concrete=EHE_materials.HA30
 reinfSteel=EHE_materials.B500S
@@ -71,18 +44,10 @@ nodes= prep.getNodeHandler
 elements= prep.getElementHandler
 elements.dimElem= 3
 # Problem type
-modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
+modelSpace= psp.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
 
-# coordinates in global X,Y,Z axes for the grid generation
-xList=[0,LbeamX/2.0,LbeamX]
-yList=[-Wfoot/2.,0,Wfoot/2.,LbeamY]
-zList=[0,LcolumnZ/2.0,LcolumnZ]
-#auxiliary data
-lastXpos=len(xList)-1
-lastYpos=len(yList)-1
-lastZpos=len(zList)-1
 
 # grid model definition
 gridGeom= gm.GridModel(prep,xList,yList,zList)
@@ -144,64 +109,311 @@ gridGeom.generatePoints()
 # extractIncludedIranges(stepJ,stepK): subranges indexes J,K=constant (default
 #                                      stpes= 1)
 # idem for J and K ranges
-beamXconcr_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedIranges(stepJ=2,stepK=1)
-beamXsteel_rg=[gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))]
-beamY_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedJranges(stepI=2,stepK=1)
-columnZconcr_rg=gm.IJKRange((0,1,0),(lastXpos,1,lastZpos)).extractIncludedKranges(stepI=2)
-columnZsteel_rg=gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos)).extractIncludedJKranges(step=2)+[gm.IJKRange((1,lastYpos,0),(1,lastYpos,1))]
-decklv1_rg=gm.IJKRange((0,1,1),(lastXpos,lastYpos,lastZpos)).extractIncludedIJranges(step=2)
-decklv2_rg=gm.IJKRange((0,lastYpos-1,lastZpos),(1,lastYpos,lastZpos))
-wall_rg=gm.IJKRange((0,1,0),(lastXpos,1,1))
-#foot_rg=[gm.IJKRange((0,0,0),(lastXpos,2,0))]
-foot_rg=[gut.def_rg_cooLim(XYZLists=(xList,yList,zList),Xcoo=(0,LbeamX),Ycoo=(-Wfoot/2.,Wfoot/2.),Zcoo=(0,0))]
+
+#  Columns
+k1=zList.index(0)
+k2=zList.index(zCol)
+
+colA_rg=[]
+i=xList.index(xCols[0])
+for y in yCols:
+    j=yList.index(y)
+    colA_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colB_rg=[]
+i=xList.index(xCols[1])
+for y in yCols:
+    j=yList.index(y)
+    colB_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colC_rg=[]
+i=xList.index(xCols[2])
+for y in yCols:
+    j=yList.index(y)
+    colC_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colD_rg=[]
+i=xList.index(xCols[3])
+for y in yCols:
+    j=yList.index(y)
+    colD_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colG_rg=[]
+i=xList.index(xCols[4])
+for y in yCols:
+    j=yList.index(y)
+    colG_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colF_rg=[]
+i=xList.index(xCols[5])
+for y in yCols:
+    j=yList.index(y)
+    colF_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+
+#Beams
+beamA_rg=[]
+i=xList.index(xCols[0])
+k=zList.index(zBeamHigh)
+beamA_rg.append(gm.IJKRange((i,0,k),(i,yList.index(yCols[0]-gap/2.0),k)))
+for j in range(len(yCols)-1):
+    beamA_rg.append(gm.IJKRange((i,yList.index(yCols[j]+gap/2.),k),(i,yList.index(yCols[j+1]-gap/2.0),k)))
+beamA_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamB_rg=[]
+i=xList.index(xCols[1])
+k=zList.index(zBeamHigh)
+for j in range(1,len(yCols)-1):
+    beamB_rg.append(gm.IJKRange((i,yList.index(yCols[j]+gap/2.),k),(i,yList.index(yCols[j+1]-gap/2.0),k)))
+beamB_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamC_rg=[]
+i=xList.index(xCols[2])
+k=zList.index(zBeamHigh)
+beamC_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamD_rg=[]
+i=xList.index(xCols[3])
+k=zList.index(zBeamHigh)
+beamD_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamG_rg=[]
+i=xList.index(xCols[4])
+k=zList.index(zBeamHigh)
+beamG_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamF_rg=[]
+i=xList.index(xCols[5])
+k=zList.index(zBeamHigh)
+beamF_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beam1_rg=[]
+j=yList.index(yCols[0])
+k=zList.index(zBeamHigh)
+for i in range(1,len(xCols)-1):
+    beam1_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam1_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam2H_rg=[]
+j=yList.index(yCols[1])
+k=zList.index(zBeamHigh)
+i=1
+beam2H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam2H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam2H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam2L_rg=[]
+j=yList.index(yCols[1])
+k=zList.index(zBeamHigh)
+i=2
+beam2L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam3H_rg=[]
+j=yList.index(yCols[2])
+k=zList.index(zBeamHigh)
+i=1
+beam3H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam3H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam3H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam3L_rg=[]
+j=yList.index(yCols[2])
+k=zList.index(zBeamHigh)
+i=2
+beam3L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam4H_rg=[]
+j=yList.index(yCols[3])
+k=zList.index(zBeamHigh)
+i=1
+beam4H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam4H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam4H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam4L_rg=[]
+j=yList.index(yCols[3])
+k=zList.index(zBeamHigh)
+i=2
+beam4L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam5H_rg=[]
+j=yList.index(yCols[4])
+k=zList.index(zBeamHigh)
+i=1
+beam5H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam5H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam5H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam5L_rg=[]
+j=yList.index(yCols[4])
+k=zList.index(zBeamHigh)
+i=2
+beam5L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+
+# Precast slabs
+
+slabW1_rg=[]
+j1=0
+j2=yList.index(yCols[0]-gap/2.)
+k=zList.index(zHlwHigh)
+slabW1_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
+
+slab12_rg=[]
+j1=yList.index(yCols[0]+gap/2.)
+j2=yList.index(yCols[1]-gap/2.)
+k=zList.index(zHlwHigh)
+slab12_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
+slab12_rg.append(gm.IJKRange((xList.index(xRamp[0]),j1,k),(xList.index(xCols[0]-gap/2.),j2,k)))
+
+slab23_rg=[]
+j1=yList.index(yCols[1]+gap/2.)
+j2=yList.index(yCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slab23_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab34_rg=[]
+j1=yList.index(yCols[2]+gap/2.)
+j2=yList.index(yStair1[0])
+k=zList.index(zHlwHigh)
+slab34_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+j1=yList.index(yStair1[0])
+j2=yList.index(yCols[3]-gap/2.)
+slab34_rg.append(gm.IJKRange((xList.index(xCols[0]),j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab45_rg=[]
+j1=yList.index(yCols[3]+gap/2.)
+j2=yList.index(yCols[4]-gap/2.)
+k=zList.index(zHlwHigh)
+slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab5W_rg=[]
+j1=yList.index(yCols[4]-gap/2.)
+j2=yList.index(yFac[-1])
+k=zList.index(zHlwHigh)
+slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slabBC_rg=[]
+i1=xList.index(xStair2Elev[0])
+i2=xList.index(xCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slabBC_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[0]),k)))
+i1=xList.index(xCols[1]+gap/2.)
+i2=xList.index(xCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slabBC_rg.append(gm.IJKRange((i1,yList.index(yCols[0]),k),(i2,yList.index(yFac[2]),k)))
+
+slabCD_H_rg=[]
+i1=xList.index(xCols[2]+gap/2.0)
+i2=xList.index(xCols[3]-gap/2.)
+k=zList.index(zHlwHigh)
+slabCD_H_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]),k)))
+slabCD_L_rg=[]
+k=zList.index(zHlwLow)
+slabCD_L_rg.append(gm.IJKRange((i1,yList.index(yCols[-1]),k),(i2,lastYpos,k)))
+
+slabDG_rg=[]
+i1=xList.index(xCols[3]+gap/2.)
+i2=xList.index(xCols[4]-gap/2.)
+k=zList.index(zHlwHigh)
+slabDG_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabGF_rg=[]
+i1=xList.index(xCols[4]+gap/2.)
+i2=xList.index(xCols[-1]-gap/2.)
+k=zList.index(zHlwHigh)
+slabGF_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabFW_rg=[]
+i1=xList.index(xCols[-1]+gap/2.)
+i2=xList.index(xFac[3])
+k=zList.index(zHlwHigh)
+slabFW_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabsF_L_rg=[]
+i1=xList.index(xFac[3])
+i2=lastXpos
+k=zList.index(zHlwLow)
+slabsF_L_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+
+slabs5_L_rg=[]
+j1=yList.index(yFac[2])
+j2=lastYpos
+k=zList.index(zHlwLow)
+slabs5_L_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[2]),j2,k)))
+slabs5_L_rg.append(gm.IJKRange((xList.index(xCols[3]),j1,k),(lastXpos,j2,k)))
+
+
 #Lines generation
-beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,nameSet='beamXconcr')
-beamXsteel=gridGeom.genLinMultiRegion(lstIJKRange=beamXsteel_rg,nameSet='beamXsteel')
-beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
-columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
-columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
+colA=gridGeom.genLinMultiRegion(lstIJKRange=colA_rg,nameSet='colA')
+colB=gridGeom.genLinMultiRegion(lstIJKRange=colB_rg,nameSet='colB')
+colC=gridGeom.genLinMultiRegion(lstIJKRange=colC_rg,nameSet='colC')
+colD=gridGeom.genLinMultiRegion(lstIJKRange=colD_rg,nameSet='colD')
+colG=gridGeom.genLinMultiRegion(lstIJKRange=colG_rg,nameSet='colG')
+colF=gridGeom.genLinMultiRegion(lstIJKRange=colF_rg,nameSet='colF')
+beamA=gridGeom.genLinMultiRegion(lstIJKRange=beamA_rg,nameSet='beamA')
+beamB=gridGeom.genLinMultiRegion(lstIJKRange=beamB_rg,nameSet='beamB')
+beamC=gridGeom.genLinMultiRegion(lstIJKRange=beamC_rg,nameSet='beamC')
+beamD=gridGeom.genLinMultiRegion(lstIJKRange=beamD_rg,nameSet='beamD')
+beamG=gridGeom.genLinMultiRegion(lstIJKRange=beamG_rg,nameSet='beamG')
+beamF=gridGeom.genLinMultiRegion(lstIJKRange=beamF_rg,nameSet='beamF')
+beam1=gridGeom.genLinMultiRegion(lstIJKRange=beam1_rg,nameSet='beam1')
+beam2H=gridGeom.genLinMultiRegion(lstIJKRange=beam2H_rg,nameSet='beam2H')
+beam2L=gridGeom.genLinMultiRegion(lstIJKRange=beam2L_rg,nameSet='beam2L')
+beam3H=gridGeom.genLinMultiRegion(lstIJKRange=beam3H_rg,nameSet='beam3H')
+beam3L=gridGeom.genLinMultiRegion(lstIJKRange=beam3L_rg,nameSet='beam3L')
+beam4H=gridGeom.genLinMultiRegion(lstIJKRange=beam4H_rg,nameSet='beam4H')
+beam4L=gridGeom.genLinMultiRegion(lstIJKRange=beam4L_rg,nameSet='beam4L')
+beam5H=gridGeom.genLinMultiRegion(lstIJKRange=beam5H_rg,nameSet='beam5H')
+beam5L=gridGeom.genLinMultiRegion(lstIJKRange=beam5L_rg,nameSet='beam5L')
+
+
 #Surfaces generation
-decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
-decklv2=gridGeom.genSurfOneRegion(ijkRange=decklv2_rg,nameSet='decklv2')
-wall=gridGeom.genSurfOneRegion(ijkRange=wall_rg,nameSet='wall')
-foot=gridGeom.genSurfMultiRegion(lstIJKRange=foot_rg,nameSet='foot')
-decklv1.description='Deck level 1'
-decklv1.color=cfg.colors['purple01']
-decklv2.description='Deck level 2'
-decklv2.color=cfg.colors['blue01']
-foot.description='Foundation'
-foot.color=cfg.colors['orange01']
-wall.description='Wall'
-wall.color=cfg.colors['green01']
-beamXconcr.description='Beams in X direction'
-beamXconcr.color=cfg.colors['blue03']
-beamY.description='Beams in Y direction'
-beamY.color=cfg.colors['green03']
-columnZconcr.description='Concrete columns'
-columnZconcr.color=cfg.colors['red03']
-columnZsteel.description='Steel columns'
-columnZsteel.color=cfg.colors['blue02']
+slabW1=gridGeom.genSurfMultiRegion(lstIJKRange=slabW1_rg,nameSet='slabW1')
+slab12=gridGeom.genSurfMultiRegion(lstIJKRange=slab12_rg,nameSet='slab12')
+slab23=gridGeom.genSurfMultiRegion(lstIJKRange=slab23_rg,nameSet='slab23')
+slab34=gridGeom.genSurfMultiRegion(lstIJKRange=slab34_rg,nameSet='slab34')
+slab45=gridGeom.genSurfMultiRegion(lstIJKRange=slab45_rg,nameSet='slab45')
+slab5W=gridGeom.genSurfMultiRegion(lstIJKRange=slab5W_rg,nameSet='slab5W')
+slabBC=gridGeom.genSurfMultiRegion(lstIJKRange=slabBC_rg,nameSet='slabBC')
+slabCD_H=gridGeom.genSurfMultiRegion(lstIJKRange=slabCD_H_rg,nameSet='slabCD_H')
+slabCD_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabCD_L_rg,nameSet='slabCD_L')
+slabDG=gridGeom.genSurfMultiRegion(lstIJKRange=slabDG_rg,nameSet='slabDG')
+slabGF=gridGeom.genSurfMultiRegion(lstIJKRange=slabGF_rg,nameSet='slabGF')
+slabFW=gridGeom.genSurfMultiRegion(lstIJKRange=slabFW_rg,nameSet='slabFW')
+
+slabsF_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabsF_L_rg,nameSet='slabsF_L')
+slabs5_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabs5_L_rg,nameSet='slabs5_L')
+
+columns=colA+colB+colC+colD+colG+colF
+columns.fillDownwards()
+columns.description='Columns'
+columns.color=cfg.colors['green01']
+beams=beamA+beamB+beamC+beamD+beamG+beamF+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L
+beams.fillDownwards()
+beams.description='Beams'
+slabs_H=slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabDG+slabGF+slabFW
+slabs_H.fillDownwards()
+slabs_H.description='Precast planks, top level'
+slabs_L=slabCD_L+slabsF_L+slabs5_L
+slabs_L.fillDownwards()
+slabs_L.description='Precast planks, down level'
+slabs=slabs_H+slabs_L
+
+
 
 
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
-S235JR= EC3_materials.S235JR
-S235JR.gammaM= 1.00
 
 # Isotropic elastic section-material appropiate for plate and shell analysis
-deck_mat=tm.DeckMaterialData(name='deck_mat',thickness= deckTh,material=concrProp)
-deck_mat.setupElasticSection(preprocessor=prep)   #creates the section-material
-wall_mat=tm.DeckMaterialData(name='wall_mat',thickness= wallTh,material=concrProp)
-wall_mat.setupElasticSection(preprocessor=prep)   #creates the section-material
-foot_mat=tm.DeckMaterialData(name='foot_mat',thickness= footTh,material=concrProp)
-foot_mat.setupElasticSection(preprocessor=prep)   #creates the section-material
+slabs_mat=tm.DeckMaterialData(name='slabs_mat',thickness= slabTh,material=concrProp)
+slabs_mat.setupElasticSection(preprocessor=prep)   #creates the section-material
 
 #Geometric sections
 #rectangular sections
 from materials.sections import section_properties as sectpr
-geomSectBeamX=sectpr.RectangularSection(name='geomSectBeamX',b=wbeamX,h=hbeamX)
-geomSectBeamY=sectpr.RectangularSection(name='geomSectBeamY',b=wbeamY,h=hbeamY)
-geomSectColumnZ=sectpr.RectangularSection(name='geomSectColumnZ',b=wcolumnZ,h=hcolumnZ)
+geomSectBeams=sectpr.RectangularSection(name='geomSectBeams',b=beamWidth,h=beamHeight)
+geomSectColumns=sectpr.RectangularSection(name='geomSectBeamY',b=colYdim,h=colXdim)
 
 # Elastic material-section appropiate for 3D beam analysis, including shear
   # deformations.
@@ -214,24 +426,11 @@ geomSectColumnZ=sectpr.RectangularSection(name='geomSectColumnZ',b=wcolumnZ,h=hc
   #   material:     instance of a class that defines the elastic modulus,
   #                 shear modulus and mass density of the material
 
-beamXconcr_mat= tm.BeamMaterialData(name= 'beamXconcr_mat', section=geomSectBeamX, material=concrProp)
-beamXconcr_mat.setupElasticShear3DSection(preprocessor=prep)
-beamY_mat= tm.BeamMaterialData(name= 'beamY_mat', section=geomSectBeamY, material=concrProp)
-beamY_mat.setupElasticShear3DSection(preprocessor=prep)
-columnZconcr_mat= tm.BeamMaterialData(name= 'columnZconcr_mat', section=geomSectColumnZ, material=concrProp)
-columnZconcr_mat.setupElasticShear3DSection(preprocessor=prep)
+beams_mat= tm.BeamMaterialData(name= 'beams_mat', section=geomSectBeams, material=concrProp)
+beams_mat.setupElasticShear3DSection(preprocessor=prep)
+columns_mat= tm.BeamMaterialData(name= 'columns_mat', section=geomSectColumns, material=concrProp)
+columns_mat.setupElasticShear3DSection(preprocessor=prep)
 
-# Steel material-section appropiate for 3D beam analysis, including shear
-  # deformations.
-  # Attributes:
-  #   steel:         steel material (
-  #   name: name of the standard steel profile. Types: IPEShape, HEShape,
-  #         UPNShape, AUShape, CHSShape
-  #      (defined in materials.sections.structural_shapes.arcelor_metric_shapes)
-columnZsteel_mat= EC3_materials.HEShape(steel=S235JR,name='HE_200_A')
-columnZsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
-beamXsteel_mat= EC3_materials.IPEShape(steel=S235JR,name='IPE_A_300')
-beamXsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
 
 #                         ***FE model - MESH***
 # IMPORTANT: it's convenient to generate the mesh of surfaces before meshing
@@ -239,24 +438,27 @@ beamXsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
 # them
 
 
-beamXconcr_mesh=fem.LinSetToMesh(linSet=beamXconcr,matSect=beamXconcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-beamY_mesh=fem.LinSetToMesh(linSet=beamY,matSect=beamY_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
-columnZconcr_mesh=fem.LinSetToMesh(linSet=columnZconcr,matSect=columnZconcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
-decklv1_mesh=fem.SurfSetToMesh(surfSet=decklv1,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
-decklv1_mesh.generateMesh(prep)     #mesh the set of surfaces
-decklv2_mesh=fem.SurfSetToMesh(surfSet=decklv2,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
-decklv2_mesh.generateMesh(prep)     #mesh the set of surfaces
-wall_mesh=fem.SurfSetToMesh(surfSet=wall,matSect=wall_mat,elemSize=eSize,elemType='ShellMITC4')
-wall_mesh.generateMesh(prep) 
-foot_mesh=fem.SurfSetToMesh(surfSet=foot,matSect=foot_mat,elemSize=eSize,elemType='ShellMITC4')
-foot_mesh.generateMesh(prep)
-#Steel elements: local Z-axis corresponds to weak axis of the steel shape
-beamXsteel_mesh=fem.LinSetToMesh(linSet=beamXsteel,matSect=beamXsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,-1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([-1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
+beams_mesh=fem.LinSetToMesh(linSet=beams,matSect=beams_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+columns_mesh=fem.LinSetToMesh(linSet=columns,matSect=columns_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',coordTransfType='linear')
+slabs_mesh=fem.SurfSetToMesh(surfSet=slabs,matSect=slabs_mat,elemSize=eSize,elemType='ShellMITC4')
+slabs_mesh.generateMesh(prep)     #mesh the set of surfaces
 
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,beamY_mesh,columnZconcr_mesh,columnZsteel_mesh])     #mesh these sets
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[beams_mesh,columns_mesh])
 
+column_sets=[colA,colB,colC,colD,colG,colF]
+for st in column_sets:
+    st.fillDownwards()
 
+beam2=beam2H+beam2L
+beam3=beam3H+beam3L
+beam4=beam4H+beam4L
+beam5=beam5H+beam5L
+beams_sets=[beamA,beamB,beamC+beamD+beamG+beamF+beam1,beam2,beam3,beam4,beam5]
+for st in beams_sets:
+    st.fillDownwards()
+slabs_sets=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabDG,slabGF,slabFW,slabCD_L,slabsF_L,slabs5_L]
+
+'''
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
@@ -264,6 +466,7 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,be
 #                 the contact plane (springs in X, Y directions)
 foot_wink=sprbc.ElasticFoundation(wModulus=20e7,cRoz=0.2)
 foot_wink.generateSprings(xcSet=foot)
+'''
 
 # Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...
 # Default values for Kx, Ky, Kz are 0, which means that no spring is
@@ -273,12 +476,81 @@ foot_wink.generateSprings(xcSet=foot)
 
 #fixed DOF (ux:'0FF_FFF', uy:'F0F_FFF', uz:'FF0_FFF',
 #           rx:'FFF_0FF', ry:'FFF_F0F', rz:'FFF_FF0')
-n_col1=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(0,LbeamY,0))
-modelSpace.fixNode('000_FFF',n_col1.tag)
-n_col2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX,LbeamY,0))
-modelSpace.fixNode('000_FFF',n_col2.tag)
-n_col3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX/2.,LbeamY,0))
-modelSpace.fixNode('FF0_000',n_col3.tag)
+# Base columns
+for x in xCols:
+    for y in yCols:
+        n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
+        modelSpace.fixNode('000_000',n.tag)
+# Simple support beams on walls
+z=zBeamHigh
+
+x=xCols[0]
+y=0
+n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,z))
+modelSpace.fixNode('000_FFF',n.tag)
+
+x=xList[-1]
+for y in yCols:
+    n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,z))
+    modelSpace.fixNode('000_FFF',n.tag)
+
+y=yList[-1]
+for x in xCols:
+    n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,z))
+    modelSpace.fixNode('000_FFF',n.tag)
+
+#Links between beams and columns
+y=yCols[0]
+z=zCol
+for x in xCols[2:6]:
+    for y in yCols[0:5]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x-gap/2.0,y,z))
+        nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x+gap/2.0,y,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+        
+for x in xCols[2:6]:
+    for y in yCols[4:5]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+
+for x in xCols[1:2]:
+    for y in yCols[0:5]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x-gap/2.0,y,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+
+for x in xCols[1:2]:
+    for y in yCols[1:2]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        
+for x in xCols[1:2]:
+    for y in yCols[2:5]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y-gap/2.0,z))
+        nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+        
+for x in xCols[0:1]:
+    for y in yCols[0:5]:
+        nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y-gap/2.0,z))
+        nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+
+# Simple support precast planks on walls
+#wallWest=sets.get_nodes_wire(setBusq=beams, lstPtsWire, tol=0.01)
+# Links beam1 to precast planks
+
+
+'''
+
 
 
 #                       ***ACTIONS***
@@ -536,7 +808,8 @@ columnZ.description='columns'
 pBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=0,Lx=LbeamX,Ly=LbeamY-1.0)
 
 allShellsRes=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=allShells,prismBase=pBase,prismAxis='Z',setName='allShellsRes')
- 
+''' 
+overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW+slabsF_L+slabs5_L
 
 
 

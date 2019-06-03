@@ -21,40 +21,13 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/'
+home= '/home/ana/projects/OXapp/'
 
-fullProjPath= home + 'workingModel/'
+fullProjPath= home + 'XC3Dmodel/'
 execfile(fullProjPath+'env_config.py')
+execfile(fullProjPath+'data.py')
 
 #Auxiliary data
- #Geometry
-LbeamX=5
-LbeamY=6
-LcolumnZ=6
-Wfoot=2.0
-hbeamX=0.5
-hbeamY=0.3
-hcolumnZ=0.40
-wbeamX=0.35
-wbeamY=0.5
-wcolumnZ=0.40
-deckTh=0.20
-wallTh=0.5
-footTh=0.7
-
- #Actions
-qdeck1=1e3  #N/m2
-qdeck2=2e3   #N/m2
-Qbeam=3e3  #N/m
-qunifBeam=5e3
-qLinDeck2=30 #N/m
-Qwheel=5e3  #N
-firad=math.radians(31)  #internal friction angle (radians)                   
-KearthPress=(1-math.sin(firad))/(1+math.sin(firad))     #Active coefficient of p
-densSoil=800       #mass density of the soil (kg/m3)
-densWater=1000      #mass density of the water (kg/m3)
-
-
 #Materials
 concrete=EHE_materials.HA30
 reinfSteel=EHE_materials.B500S
@@ -75,14 +48,6 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
 
-# coordinates in global X,Y,Z axes for the grid generation
-xList=[0,LbeamX/2.0,LbeamX]
-yList=[-Wfoot/2.,0,Wfoot/2.,LbeamY]
-zList=[0,LcolumnZ/2.0,LcolumnZ]
-#auxiliary data
-lastXpos=len(xList)-1
-lastYpos=len(yList)-1
-lastZpos=len(zList)-1
 
 # grid model definition
 gridGeom= gm.GridModel(prep,xList,yList,zList)
@@ -144,27 +109,274 @@ gridGeom.generatePoints()
 # extractIncludedIranges(stepJ,stepK): subranges indexes J,K=constant (default
 #                                      stpes= 1)
 # idem for J and K ranges
-beamXconcr_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedIranges(stepJ=2,stepK=1)
-beamXsteel_rg=[gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))]
-beamY_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedJranges(stepI=2,stepK=1)
-columnZconcr_rg=gm.IJKRange((0,1,0),(lastXpos,1,lastZpos)).extractIncludedKranges(stepI=2)
-columnZsteel_rg=gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos)).extractIncludedJKranges(step=2)+[gm.IJKRange((1,lastYpos,0),(1,lastYpos,1))]
-decklv1_rg=gm.IJKRange((0,1,1),(lastXpos,lastYpos,lastZpos)).extractIncludedIJranges(step=2)
-decklv2_rg=gm.IJKRange((0,lastYpos-1,lastZpos),(1,lastYpos,lastZpos))
-wall_rg=gm.IJKRange((0,1,0),(lastXpos,1,1))
-#foot_rg=[gm.IJKRange((0,0,0),(lastXpos,2,0))]
-foot_rg=[gut.def_rg_cooLim(XYZLists=(xList,yList,zList),Xcoo=(0,LbeamX),Ycoo=(-Wfoot/2.,Wfoot/2.),Zcoo=(0,0))]
+
+#  Columns
+k1=zList.index(0)
+k2=zList.index(zCol)
+
+colA_rg=[]
+i=xList.index(xCols[0])
+for y in yCols:
+    j=yList.index(y)
+    colA_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colB_rg=[]
+i=xList.index(xCols[1])
+for y in yCols:
+    j=yList.index(y)
+    colB_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colC_rg=[]
+i=xList.index(xCols[2])
+for y in yCols:
+    j=yList.index(y)
+    colC_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colD_rg=[]
+i=xList.index(xCols[3])
+for y in yCols:
+    j=yList.index(y)
+    colD_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colG_rg=[]
+i=xList.index(xCols[4])
+for y in yCols:
+    j=yList.index(y)
+    colG_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+colF_rg=[]
+i=xList.index(xCols[5])
+for y in yCols:
+    j=yList.index(y)
+    colF_rg.append(gm.IJKRange((i,j,k1),(i,j,k2)))
+
+#Beams
+beamA_rg=[]
+i=xList.index(xCols[0])
+k=zList.index(zHlwHigh)
+beamA_rg.append(gm.IJKRange((i,0,k),(i,yList.index(yCols[0]-gap/2.0),k)))
+for j in range(len(yCols)-1):
+    beamA_rg.append(gm.IJKRange((i,yList.index(yCols[j]+gap/2.),k),(i,yList.index(yCols[j+1]-gap/2.0),k)))
+beamA_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beamB_rg=[]
+i=xList.index(xCols[1])
+k=zList.index(zHlwHigh)
+for j in range(1,len(yCols)-1):
+    beamB_rg.append(gm.IJKRange((i,yList.index(yCols[j]+gap/2.),k),(i,yList.index(yCols[j+1]-gap/2.0),k)))
+beamB_rg.append(gm.IJKRange((i,yList.index(yCols[-1]+gap/2.),k),(i,lastYpos,k)))
+
+beam1_rg=[]
+j=yList.index(yCols[0])
+k=zList.index(zHlwHigh)
+for i in range(1,len(xCols)-1):
+    beam1_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam1_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam2H_rg=[]
+j=yList.index(yCols[1])
+k=zList.index(zHlwHigh)
+i=1
+beam2H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam2H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam2H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam2L_rg=[]
+j=yList.index(yCols[1])
+k=zList.index(zHlwLow)
+i=2
+beam2L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam3H_rg=[]
+j=yList.index(yCols[2])
+k=zList.index(zHlwHigh)
+i=1
+beam3H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam3H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam3H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam3L_rg=[]
+j=yList.index(yCols[2])
+k=zList.index(zHlwLow)
+i=2
+beam3L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam4H_rg=[]
+j=yList.index(yCols[3])
+k=zList.index(zHlwHigh)
+i=1
+beam4H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam4H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam4H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam4L_rg=[]
+j=yList.index(yCols[3])
+k=zList.index(zHlwLow)
+i=2
+beam4L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+beam5H_rg=[]
+j=yList.index(yCols[4])
+k=zList.index(zHlwHigh)
+i=1
+beam5H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+for i in range(3,len(xCols)-1):
+    beam5H_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+beam5H_rg.append(gm.IJKRange((xList.index(xCols[-1]+gap/2.),j,k),(lastXpos,j,k)))
+
+beam5L_rg=[]
+j=yList.index(yCols[4])
+k=zList.index(zHlwLow)
+i=2
+beam5L_rg.append(gm.IJKRange((xList.index(xCols[i]+gap/2.),j,k),(xList.index(xCols[i+1]-gap/2.0),j,k)))
+
+# Precast slabs
+
+slabW1_rg=[]
+j1=0
+j2=yList.index(yCols[0]-gap/2.)
+k=zList.index(zHlwHigh)
+slabW1_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
+
+slab12_rg=[]
+j1=yList.index(yCols[0]+gap/2.)
+j2=yList.index(yCols[1]-gap/2.)
+k=zList.index(zHlwHigh)
+slab12_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
+slab12_rg.append(gm.IJKRange((xList.index(xRamp[0]),j1,k),(xList.index(xCols[0]-gap/2.),j2,k)))
+
+slab23_rg=[]
+j1=yList.index(yCols[1]+gap/2.)
+j2=yList.index(yCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slab23_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab34_rg=[]
+j1=yList.index(yCols[2]+gap/2.)
+j2=yList.index(yStair1[0])
+k=zList.index(zHlwHigh)
+slab34_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+j1=yList.index(yStair1[0])
+j2=yList.index(yCols[3]-gap/2.)
+slab34_rg.append(gm.IJKRange((xList.index(xCols[0]),j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab45_rg=[]
+j1=yList.index(yCols[3]+gap/2.)
+j2=yList.index(yCols[4]-gap/2.)
+k=zList.index(zHlwHigh)
+slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slab5W_rg=[]
+j1=yList.index(yCols[4]-gap/2.)
+j2=yList.index(yFac[-1])
+k=zList.index(zHlwHigh)
+slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+
+slabBC_rg=[]
+i1=xList.index(xStair2Elev[0])
+i2=xList.index(xCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slabBC_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[0]),k)))
+i1=xList.index(xCols[1]+gap/2.)
+i2=xList.index(xCols[2]-gap/2.)
+k=zList.index(zHlwHigh)
+slabBC_rg.append(gm.IJKRange((i1,yList.index(yCols[0]),k),(i2,yList.index(yFac[2]),k)))
+
+slabCD_H_rg=[]
+i1=xList.index(xCols[2]+gap/2.0)
+i2=xList.index(xCols[3]-gap/2.)
+k=zList.index(zHlwHigh)
+slabCD_H_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]),k)))
+slabCD_L_rg=[]
+k=zList.index(zHlwLow)
+slabCD_L_rg.append(gm.IJKRange((i1,yList.index(yCols[-1]),k),(i2,lastYpos,k)))
+
+slabDG_rg=[]
+i1=xList.index(xCols[3]+gap/2.)
+i2=xList.index(xCols[4]-gap/2.)
+k=zList.index(zHlwHigh)
+slabDG_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabGF_rg=[]
+i1=xList.index(xCols[4]+gap/2.)
+i2=xList.index(xCols[-1]-gap/2.)
+k=zList.index(zHlwHigh)
+slabGF_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabFW_rg=[]
+i1=xList.index(xCols[-1]+gap/2.)
+i2=xList.index(xFac[3])
+k=zList.index(zHlwHigh)
+slabFW_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+slabsF_L_rg=[]
+i1=xList.index(xFac[3])
+i2=lastXpos
+k=zList.index(zHlwLow)
+slabsF_L_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+
+
+slabs5_L_rg=[]
+j1=yList.index(yFac[2])
+j2=lastYpos
+k=zList.index(zHlwLow)
+slabs5_L_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[2]),j2,k)))
+slabs5_L_rg.append(gm.IJKRange((xList.index(xCols[3]),j1,k),(lastXpos,j2,k)))
+
+
 #Lines generation
-beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,nameSet='beamXconcr')
-beamXsteel=gridGeom.genLinMultiRegion(lstIJKRange=beamXsteel_rg,nameSet='beamXsteel')
-beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
-columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
-columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
+colA=gridGeom.genLinMultiRegion(lstIJKRange=colA_rg,nameSet='colA')
+colB=gridGeom.genLinMultiRegion(lstIJKRange=colB_rg,nameSet='colB')
+colC=gridGeom.genLinMultiRegion(lstIJKRange=colC_rg,nameSet='colC')
+colD=gridGeom.genLinMultiRegion(lstIJKRange=colD_rg,nameSet='colD')
+colG=gridGeom.genLinMultiRegion(lstIJKRange=colG_rg,nameSet='colG')
+colF=gridGeom.genLinMultiRegion(lstIJKRange=colF_rg,nameSet='colF')
+beamA=gridGeom.genLinMultiRegion(lstIJKRange=beamA_rg,nameSet='beamA')
+beamB=gridGeom.genLinMultiRegion(lstIJKRange=beamB_rg,nameSet='beamB')
+beam1=gridGeom.genLinMultiRegion(lstIJKRange=beam1_rg,nameSet='beam1')
+beam2H=gridGeom.genLinMultiRegion(lstIJKRange=beam2H_rg,nameSet='beam2H')
+beam2L=gridGeom.genLinMultiRegion(lstIJKRange=beam2L_rg,nameSet='beam2L')
+beam3H=gridGeom.genLinMultiRegion(lstIJKRange=beam3H_rg,nameSet='beam3H')
+beam3L=gridGeom.genLinMultiRegion(lstIJKRange=beam3L_rg,nameSet='beam3L')
+beam4H=gridGeom.genLinMultiRegion(lstIJKRange=beam4H_rg,nameSet='beam4H')
+beam4L=gridGeom.genLinMultiRegion(lstIJKRange=beam4L_rg,nameSet='beam4L')
+beam5H=gridGeom.genLinMultiRegion(lstIJKRange=beam5H_rg,nameSet='beam5H')
+beam5L=gridGeom.genLinMultiRegion(lstIJKRange=beam5L_rg,nameSet='beam5L')
+
+
 #Surfaces generation
-decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
-decklv2=gridGeom.genSurfOneRegion(ijkRange=decklv2_rg,nameSet='decklv2')
-wall=gridGeom.genSurfOneRegion(ijkRange=wall_rg,nameSet='wall')
-foot=gridGeom.genSurfMultiRegion(lstIJKRange=foot_rg,nameSet='foot')
+slabW1=gridGeom.genSurfMultiRegion(lstIJKRange=slabW1_rg,nameSet='slabW1')
+slab12=gridGeom.genSurfMultiRegion(lstIJKRange=slab12_rg,nameSet='slab12')
+slab23=gridGeom.genSurfMultiRegion(lstIJKRange=slab23_rg,nameSet='slab23')
+slab34=gridGeom.genSurfMultiRegion(lstIJKRange=slab34_rg,nameSet='slab34')
+slab45=gridGeom.genSurfMultiRegion(lstIJKRange=slab45_rg,nameSet='slab45')
+slab5W=gridGeom.genSurfMultiRegion(lstIJKRange=slab5W_rg,nameSet='slab5W')
+slabBC=gridGeom.genSurfMultiRegion(lstIJKRange=slabBC_rg,nameSet='slabBC')
+slabCD_H=gridGeom.genSurfMultiRegion(lstIJKRange=slabCD_H_rg,nameSet='slabCD_H')
+slabCD_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabCD_L_rg,nameSet='slabCD_L')
+slabDG=gridGeom.genSurfMultiRegion(lstIJKRange=slabDG_rg,nameSet='slabDG')
+slabGF=gridGeom.genSurfMultiRegion(lstIJKRange=slabGF_rg,nameSet='slabGF')
+slabFW=gridGeom.genSurfMultiRegion(lstIJKRange=slabFW_rg,nameSet='slabFW')
+
+slabsF_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabsF_L_rg,nameSet='slabsF_L')
+slabs5_L=gridGeom.genSurfMultiRegion(lstIJKRange=slabs5_L_rg,nameSet='slabs5_L')
+
+columns=colA+colB+colC+colD+colG+colF
+columns.fillDownwards()
+columns.description='Columns'
+beams=beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L
+beams.fillDownwards()
+beams.description='Beams'
+slabs_H=slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabDG+slabGF+slabFW
+slabs_H.fillDownwards()
+slabs_H.description='Precast planks, top level'
+slabs_L=slabCD_L+slabsF_L+slabs5_L
+slabs_L.fillDownwards()
+slabs_L.description='Precast planks, down level'
+
+overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW+slabsF_L+slabs5_L
+overallSet.fillDownwards()
+slabsF_L.fillDownwards()
+
+''''
 decklv1.description='Deck level 1'
 decklv1.color=cfg.colors['purple01']
 decklv2.description='Deck level 2'
@@ -536,7 +748,7 @@ columnZ.description='columns'
 pBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=0,Lx=LbeamX,Ly=LbeamY-1.0)
 
 allShellsRes=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=allShells,prismBase=pBase,prismAxis='Z',setName='allShellsRes')
- 
+''' 
 
 
 
