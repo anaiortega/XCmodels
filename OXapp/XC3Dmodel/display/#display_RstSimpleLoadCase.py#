@@ -14,6 +14,7 @@ for lc in loadCasesToDisplay:
     lcs=QGrph.QuickGraphics(FEcase)
     #solve for load case
     lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:

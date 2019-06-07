@@ -74,7 +74,7 @@ Definition of record objects with these attributes:
 
 
 
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -82,14 +82,14 @@ G1.unitsScaleMom=1e-3
 G1.unitsMom='[m.kN]'
 G1.unitsScaleForc=1e-3
 G1.unitsForc='[kN]'
-G1.setsToDispBeamIntForc=[columnZ,beamX,beamY]
+G1.setsToDispBeamIntForc=[beams,columns]
 G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
 G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-G1.setsToDispBeamLoads=[beamY]
+G1.setsToDispBeamLoads=[]
 G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
 
-
+'''
 Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qdecks',loadCaseDescr='Q1: uniform load on the decks',loadCaseExpr='1.0*Qdecks',setsToDispLoads=[decks],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
@@ -280,3 +280,4 @@ Comb2.setsToDispBeamLoads=[allBeams]
 Comb2.compElLoad='transComponent'
 Comb2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Comb2.vectorScalePointLoads=0.05
+'''

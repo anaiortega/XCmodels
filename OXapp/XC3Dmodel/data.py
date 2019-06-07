@@ -45,8 +45,10 @@ xFac=[0,xCols[2],xCols[3],53.52]
 yFac=[0,10.975,44.77]   
 
 #Wall frames
-xWF=[9.412,10.190,11.114,41.606,42.377,43.308]
-yWF=[0,yCols[0],yCols[3],yFac[2]]
+xWF=[0,xCols[0],xCols[0]+3.5,10.2,10.2+1.6/2.,xCols[1],xCols[2],xCols[3],xFac[-1]-10.2-0.8,xFac[-1]-10.2,xFac[-1]-9.6,xFac[-1]-10.2+4.2,xFac[-1]]
+
+
+yWF=[0,yCols[0],yCols[0]+2,yCols[3]-4.5,yCols[3],yFac[-1]]
 
 
 gap=0.2

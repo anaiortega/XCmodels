@@ -286,10 +286,11 @@ k=zList.index(zHlwHigh)
 slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
 
 slab5W_rg=[]
-j1=yList.index(yCols[4]-gap/2.)
+j1=yList.index(yCols[4]+gap/2.)
 j2=yList.index(yFac[-1])
 k=zList.index(zHlwHigh)
-slab45_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[1]-gap/2.),j2,k)))
+slab5W_rg.append(gm.IJKRange((0,j1,k),(xList.index(xCols[2]-gap/2.),j2,k)))
+slab5W_rg.append(gm.IJKRange((xList.index(xCols[3]+gap/2.),j1,k),(xList.index(xFac[-1]),j2,k)))
 
 slabBC_rg=[]
 i1=xList.index(xStair2Elev[0])
@@ -299,34 +300,34 @@ slabBC_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[0]),k)))
 i1=xList.index(xCols[1]+gap/2.)
 i2=xList.index(xCols[2]-gap/2.)
 k=zList.index(zHlwHigh)
-slabBC_rg.append(gm.IJKRange((i1,yList.index(yCols[0]),k),(i2,yList.index(yFac[2]),k)))
+slabBC_rg.append(gm.IJKRange((i1,yList.index(yCols[0]),k),(i2,yList.index(yCols[-1]-gap/2.),k)))
 
 slabCD_H_rg=[]
 i1=xList.index(xCols[2]+gap/2.0)
 i2=xList.index(xCols[3]-gap/2.)
 k=zList.index(zHlwHigh)
-slabCD_H_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]),k)))
+slabCD_H_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[1]),k)))
 slabCD_L_rg=[]
 k=zList.index(zHlwLow)
-slabCD_L_rg.append(gm.IJKRange((i1,yList.index(yCols[-1]),k),(i2,lastYpos,k)))
+slabCD_L_rg.append(gm.IJKRange((i1,yList.index(yCols[0]),k),(i2,lastYpos,k)))
 
 slabDG_rg=[]
 i1=xList.index(xCols[3]+gap/2.)
 i2=xList.index(xCols[4]-gap/2.)
 k=zList.index(zHlwHigh)
-slabDG_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+slabDG_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]-gap/2.),k)))
 
 slabGF_rg=[]
 i1=xList.index(xCols[4]+gap/2.)
 i2=xList.index(xCols[-1]-gap/2.)
 k=zList.index(zHlwHigh)
-slabGF_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+slabGF_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]-gap/2.),k)))
 
 slabFW_rg=[]
 i1=xList.index(xCols[-1]+gap/2.)
 i2=xList.index(xFac[3])
 k=zList.index(zHlwHigh)
-slabFW_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yFac[2]),k)))
+slabFW_rg.append(gm.IJKRange((i1,0,k),(i2,yList.index(yCols[-1]-gap/2.),k)))
 
 slabsF_L_rg=[]
 i1=xList.index(xFac[3])
@@ -398,8 +399,8 @@ slabs_L=slabCD_L+slabsF_L+slabs5_L
 slabs_L.fillDownwards()
 slabs_L.description='Precast planks, down level'
 slabs=slabs_H+slabs_L
-
-
+slabs.fillDownwards()
+slabs.description='Precast planks'
 
 
 #                         *** MATERIALS *** 
@@ -453,10 +454,12 @@ beam2=beam2H+beam2L
 beam3=beam3H+beam3L
 beam4=beam4H+beam4L
 beam5=beam5H+beam5L
-beams_sets=[beamA,beamB,beamC+beamD+beamG+beamF+beam1,beam2,beam3,beam4,beam5]
+beams_sets=[beamA,beamB,beamC,beamD,beamG,beamF,beam1,beam2,beam3,beam4,beam5]
 for st in beams_sets:
     st.fillDownwards()
-slabs_sets=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabDG,slabGF,slabFW,slabCD_L,slabsF_L,slabs5_L]
+slabs_sets=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabCD_L,slabDG,slabGF,slabFW,slabCD_L,slabsF_L,slabs5_L]
+for st in slabs_sets:
+    st.fillDownwards()
 
 '''
 #                       ***BOUNDARY CONDITIONS***
@@ -500,7 +503,6 @@ for x in xCols:
     modelSpace.fixNode('000_FFF',n.tag)
 
 #Links between beams and columns
-y=yCols[0]
 z=zCol
 for x in xCols[2:6]:
     for y in yCols[0:5]:
@@ -509,24 +511,37 @@ for x in xCols[2:6]:
         nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x+gap/2.0,y,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_0FF',nBeam1.tag)
+        modelSpace.fixNode('FFF_0FF',nBeam2.tag)
         
 for x in xCols[2:6]:
     for y in yCols[4:5]:
         nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
         nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
 
 for x in xCols[1:2]:
     for y in yCols[0:5]:
         nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
-        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x-gap/2.0,y,z))
+        nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x+gap/2.0,y,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_0FF',nBeam1.tag)
 
 for x in xCols[1:2]:
     for y in yCols[1:2]:
         nCol=columns.getNodes.getNearestNode(geom.Pos3d(x,y,z))
         nBeam1=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
         
 for x in xCols[1:2]:
     for y in yCols[2:5]:
@@ -535,6 +550,10 @@ for x in xCols[1:2]:
         nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
         
 for x in xCols[0:1]:
     for y in yCols[0:5]:
@@ -543,16 +562,127 @@ for x in xCols[0:1]:
         nBeam2=beams.getNodes.getNearestNode(geom.Pos3d(x,y+gap/2.0,z))
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam1.tag)
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
+        #torsion
+        modelSpace.fixNode('FFF_FF0',nCol.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
+        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
 
 # Simple support precast planks on walls
-#wallWest=sets.get_nodes_wire(setBusq=beams, lstPtsWire, tol=0.01)
-# Links beam1 to precast planks
+#East
+stBusq=slabW1+slab12+slab23+slab34+slab45+slab5W
+z=zHlwHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+stBusq=slabs5_L
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,yFac[-1],z),geom.Pos3d(0,yList[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#North
+stBusq=slabBC+slabCD_H+slabDG+slabGF+slabFW
+y=0
+z=zHlwHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,y,z),geom.Pos3d(xFac[-1],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+stBusq=slabsF_L
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xFac[-1],y,z),geom.Pos3d(xList[-1],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#West
+stBusq=slabsF_L+slabs5_L
+x=xList[-1]
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yCols[-1],z),geom.Pos3d(x,yList[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#South
+stBusq=slabCD_L
+y=yList[-1]
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xCols[2],y,z),geom.Pos3d(xCols[3],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#Ramp
+stBusq=slabW1+slab12
+x=xRamp[0]
+z=zHlwHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
 
 
+# Links beams to precast planks
+stbeams=beam1+beam2+beam3+beam4+beam5
+stslabs=slabBC+slabCD_L+slabDG+slabGF+slabFW+slabsF_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+    
+stbeams=beam1
+stslabs=slabCD_H
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+
+stbeams=beamA+beamB
+stslabs=slabW1+slab12+slab23+slab34+slab45
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+    
+stbeams=beamA+beamB+beamC
+stslabs=slab5W+slabs5_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+
+    
+stbeams=beamD+beamG+beamF
+stslabs=slab5W+slabs5_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+
+
+# Support of slabCD_H on slabCD_L
+i1=xList.index(xCols[1]+gap/2.)
+i2=xList.index(xCols[2]-gap/2.)
+j1=yList.index(yCols[0])
+j2=yList.index(yFac[1])
+k=zList.index(zHlwHigh)
+st1=gridGeom.getSetSurfOneRegion(gm.IJKRange((i1,j1,k),(i2,j2,k)),'st1')
+nod_st1=st1.getNodes
+nod_st2=slabCD_L.getNodes
+for n in nod_st1:
+    n1=nod_st2.getNearestNode(n.getCurrentPos3d(0))
+    modelSpace.setFulcrumBetweenNodes(n.tag,n1.tag)
+
+execfile(fullProjPath+'lines_loads.py')
+    
 '''
-
-
-
 #                       ***ACTIONS***
 
 #Inertial load (density*acceleration) applied to the elements in a set
@@ -568,7 +698,7 @@ selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamXconcr_mesh,be
 
 nodPLoad=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=[geom.Pos3d(0,yList[lastYpos]/2.0,zList[lastZpos]),geom.Pos3d(xList[lastXpos],yList[lastYpos]/2.0,zList[lastZpos])])
 QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vector([0,0,-Qbeam,0,0,0]))
-
+'''
 # Uniform loads applied on shell elements
 #    name:       name identifying the load
 #    xcSet:     set that contains the surfaces
@@ -578,8 +708,8 @@ QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vecto
 #               'Local': element local coordinate system
 #               'Global': global coordinate system (defaults to 'Global)
 
-unifLoadDeck1= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck1',xcSet=decklv1,loadVector=xc.Vector([0,0,-qdeck1,0,0,0]),refSystem='Global')
-unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv2,loadVector=xc.Vector([0,0,-qdeck2,0,0,0]),refSystem='Global')
+selfWeightSlabs= loads.UniformLoadOnSurfaces(name= 'selfWeightSlabs',xcSet=slabs,loadVector=xc.Vector([0,0,-Whollowdeck,0,0,0]),refSystem='Global')
+'''
 
 # Earth pressure applied to shell or beam elements
 #     Attributes:
@@ -636,7 +766,7 @@ unifLoadBeamsY=loads.UniformLoadOnBeams(name='unifLoadBeamsY', xcSet=beamY, load
 #            nabla=espilon/thickness    
 
 #strGrad=loads.StrainLoadOnShells(name='strGrad', xcSet=deck,epsilon=0.001)
-
+'''
 # Uniform load applied to all the lines (not necessarily defined as lines
 # for latter generation of beam elements, they can be lines belonging to 
 # surfaces for example) found in the xcSet
@@ -646,8 +776,9 @@ unifLoadBeamsY=loads.UniformLoadOnBeams(name='unifLoadBeamsY', xcSet=beamY, load
 #     loadVector: xc.Vector with the six components of the load: 
 #                 xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
 
-unifLoadLinDeck2=loads.UniformLoadOnLines(name='unifLoadLinDeck2',xcSet=decklv2,loadVector=xc.Vector([0,qLinDeck2,0,0,0,0]))
+pp=loads.UniformLoadOnLines(name='pp',xcSet=lnL12,loadVector=xc.Vector([0,0,-5000,0,0,0]))
 
+'''
 # Point load distributed over the shell elements in xcSet whose 
 # centroids are inside the prism defined by the 2D polygon prismBase
 # and one global axis.
@@ -694,11 +825,12 @@ vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=sl
 
 
 #    ***LOAD CASES***
-
+'''
 GselfWeight=lcases.LoadCase(preprocessor=prep,name="GselfWeight",loadPType="default",timeSType="constant_ts")
 GselfWeight.create()
-GselfWeight.addLstLoads([selfWeight])
-
+#GselfWeight.addLstLoads([selfWeightSlabs])
+GselfWeight.addLstLoads([pp])
+'''
 Qdecks=lcases.LoadCase(preprocessor=prep,name="Qdecks")
 Qdecks.create()
 Qdecks.addLstLoads([unifLoadDeck1,unifLoadDeck2])
@@ -811,6 +943,30 @@ allShellsRes=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=allShells
 ''' 
 overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW+slabsF_L+slabs5_L
 
+preprocessor.getDomain.getMesh.getNumFreeNodes()
+'''
+for n in slabs.getNodes:
+    print n.getCurrentPos3d(0).z
+'''
+slabs.fillDownwards()
+slabs.description='Precast planks'
+columns.fillDownwards()
+columns.description='Columns'
+beams.fillDownwards()
+beams.description='Beams'
+slabs_H.fillDownwards()
+slabs_L.fillDownwards()
+
+column_sets=[colA,colB,colC,colD,colG,colF]
+for st in column_sets:
+    st.fillDownwards()
+
+beams_sets=[beamA,beamB,beamC,beamD,beamG,beamF,beam1,beam2,beam3,beam4,beam5]
+for st in beams_sets:
+    st.fillDownwards()
+slabs_sets=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabCD_L,slabDG,slabGF,slabFW,slabCD_L,slabsF_L,slabs5_L]
+for st in slabs_sets:
+    st.fillDownwards()
 
 
-
+#execfile(fullProjPath+'print_links_slabs_beams.py')

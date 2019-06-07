@@ -18,8 +18,8 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
 
-setToDisp=beamXsteel+columnZsteel
-qg.display_local_axes(prep=prep,setToDisplay=setToDisp,vectorScale=0.15,viewDef= vtk_graphic_base.CameraParameters('XYZPos',2.0),caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+setToDisp=slabs
+qg.display_local_axes(prep=prep,setToDisplay=setToDisp,vectorScale=0.5,viewDef= vtk_graphic_base.CameraParameters('XYZPos',1),caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
 
 

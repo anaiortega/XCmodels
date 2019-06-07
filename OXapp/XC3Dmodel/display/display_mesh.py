@@ -16,6 +16,9 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 setsTodisp=[beams,columns,slabs]
-beam1.fillDownwards()
-setsTodisp=[beams+columns]
+#setsTodisp=[beams+columns]
+#setsTodisp=[slab5W]
+setsTodisp=[slabs]
+#setsTodisp=[beams,columns]
+
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.80)
