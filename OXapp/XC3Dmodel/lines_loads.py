@@ -196,3 +196,31 @@ linL13_rg.append(gm.IJKRange((i,j1,k),(i,j2,k)))
 ptL13=gridGeom.getSetPntMultiRegion(linL13_rg,'ptL13')
 lnL13=sets.get_lines_on_points(ptL13,'lnL13')
 
+
+#Lines for wind loads
+lnL1W=lnL1+lnL2+lnL3+lnL4+lnL5+lnL6
+lnL2W=lnL9
+
+linL3W_rg=list()
+j1=yList.index(yWF[2])
+j2=yList.index(yWF[-1])
+i=xList.index(xWF[7]+gap/2.)
+linL3W_rg.append(gm.IJKRange((i,j1,k),(i,j2,k)))
+
+ptL3W=gridGeom.getSetPntMultiRegion(linL3W_rg,'ptL3W')
+lnL3W=sets.get_lines_on_points(ptL3W,'lnL3W')
+
+linL4W_rg=list()
+i=xList.index(xWF[6]-gap/2.)
+j1=yList.index(yWF[2])
+j2=yList.index(yWF[-1])
+linL4W_rg.append(gm.IJKRange((i,j1,k),(i,j2,k)))
+
+ptL4W=gridGeom.getSetPntMultiRegion(linL4W_rg,'ptL4W')
+lnL4W=sets.get_lines_on_points(ptL4W,'lnL4W')
+
+lnL5W=lnL12+lnL13
+
+#wind N-S
+lnL7W=lnL8
+lnL6W=lnL10+lnL11

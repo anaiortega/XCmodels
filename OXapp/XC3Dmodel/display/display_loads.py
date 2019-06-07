@@ -9,8 +9,9 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
-loadCasesToDisplay=[G1]
-#loadCasesToDisplay=[LS1,LS2]
+loadCasesToDisplay=[D,L,S,Lunif1fl,Lstag1fl]
+loadCasesToDisplay=[W_WE,W_NS]
+
 
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:

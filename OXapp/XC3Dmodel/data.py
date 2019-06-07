@@ -99,11 +99,11 @@ colYdim=0.3
 
 # precast slabs
 slabTh=0.20
-#Compressive deck layer
 
 
 #Weight hollowcore deck 30+5 [Pa]
-Whollowdeck=6440
+Whollowdeck=5.19e3
+'''
 #Dead load facades [N/ml]
 DLfac=7352+2035+4876
 #Dead load interior wall frames [N/ml]
@@ -118,13 +118,77 @@ LLwf=10538+42130
 SLfac=15801
 #Snow load interior wall frames [N/ml]
 SLwf=31603
-
+'''
 
 
 #unif. live load rooms[Pa]
 unifLLrooms=1915
-#unif. live load terrace [Pa]
+#unif. live load terrace [Pa] pedestrian
 unifLLterrace=4788
 
+#snow load [Pa]
+unifSL=2873
 
+#Linear loads from wood frames bearing on 1st floor
+#D: dead load (N)
+#L: live load (N)
+#S: snow load (N)
 
+D_lnL1=22.1e3
+L_lnL1=48840
+S_lnL1=29300
+
+D_lnL2=12.12e3
+L_lnL2=10770
+S_lnL2=6460
+
+D_lnL3=16.33e3
+L_lnL3=26810
+S_lnL3=16090
+
+D_lnL4=15.32e3
+L_lnL4=22980
+S_lnL4=13790
+
+D_lnL5=10.55e3
+L_lnL5=4790
+S_lnL5=2870
+
+D_lnL6=16.14e3
+L_lnL6=26090
+S_lnL6=15660
+
+D_lnL7=23.05e3
+L_lnL7=24420
+S_lnL7=14650
+
+D_lnL8=7.35e3
+
+D_lnL9=25.31e3
+L_lnL9=33040
+S_lnL9=19820
+
+D_lnL10=22.23e3
+L_lnL10=21310
+S_lnL10=12780
+
+D_lnL11=7.35e3
+
+D_lnL12=22.67e3
+L_lnL12=22980
+S_lnL12=13790
+
+D_lnL13=23.05e3
+L_lnL13=24420
+S_lnL13=14650
+
+#Wind W-E (Z direction)
+WWE_lnL1W=5.8e3
+WWE_lnL2W=27.1e3
+WWE_lnL3W=-23.5e3
+WWE_lnL4W=34.85e3
+WWE_lnL5W=-15.73e3
+#Wind N-S (Z direction)
+WNS_lnL1W=5.8e3
+WNS_lnL6W=18.74e3
+WNS_lnL7W=-17.5e3

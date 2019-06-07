@@ -74,6 +74,7 @@ Definition of record objects with these attributes:
 
 
 
+'''
 G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
@@ -90,194 +91,108 @@ G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
 
 '''
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qdecks',loadCaseDescr='Q1: uniform load on the decks',loadCaseExpr='1.0*Qdecks',setsToDispLoads=[decks],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q1.unitsScaleLoads=1e-3
-Q1.unitsScaleDispl=1e3
-Q1.unitsDispl='[mm]'
-Q1.unitsScaleMom=1e-3
-Q1.unitsMom='[m.kN]'
-Q1.unitsScaleForc=1e-3
-Q1.unitsForc='[kN]'
-Q1.setsToDispBeamIntForc=[]
-Q1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q1.setsToDispBeamLoads=[]
-Q1.vectorScalePointLoads=0.005
-Q1.compElLoad='transComponent'
-
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressWall',loadCaseDescr='Q2: earth pressure columns',loadCaseExpr='1.0*QearthPressWall',setsToDispLoads=[wall],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q2.unitsScaleLoads=1e-3
-Q2.unitsScaleDispl=1e3
-Q2.unitsDispl='[mm]'
-Q2.unitsScaleMom=1e-3
-Q2.unitsMom='[m.kN]'
-Q2.unitsScaleForc=1e-3
-Q2.unitsForc='[kN]'
-Q2.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q2.setsToDispBeamLoads=[overallSet]
-Q2.vectorScalePointLoads=0.005
-Q2.compElLoad='transComponent'
+D=graphical_reports.RecordLoadCaseDisp(loadCaseName='DeadL',loadCaseDescr='D: dead load',loadCaseExpr='1.0*DeadL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+D.unitsScaleLoads=1e-3
+D.unitsScaleDispl=1e3
+D.unitsDispl='[mm]'
+D.unitsScaleMom=1e-3
+D.unitsMom='[m.kN]'
+D.unitsScaleForc=1e-3
+D.unitsForc='[kN]'
+D.setsToDispBeamIntForc=[beams,columns]
+D.listBeamIntForc=['My','Mz','Qy','Qz','N']
+D.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+D.setsToDispBeamLoads=[]
+D.vectorScalePointLoads=0.005
+D.compElLoad='transComponent'
 
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressCols',loadCaseDescr='Q3: earth pressure columns',loadCaseExpr='1.0*QearthPressCols',setsToDispLoads=[overallSet],setsToDispDspRot=[decklv2],setsToDispIntForc=[])
-Q3.unitsScaleLoads=1e-3
-Q3.unitsScaleDispl=1e3
-Q3.unitsDispl='[mm]'
-Q3.unitsScaleMom=1e-3
-Q3.unitsMom='[m.kN]'
-Q3.unitsScaleForc=1e-3
-Q3.unitsForc='[kN]'
-Q3.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q3.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q3.setsToDispBeamLoads=[overallSet]
-Q3.vectorScalePointLoads=0.005
-Q3.compElLoad='transComponent'
+L=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL',loadCaseDescr='L: live load',loadCaseExpr='1.0*LiveL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+L.unitsScaleLoads=1e-3
+L.unitsScaleDispl=1e3
+L.unitsDispl='[mm]'
+L.unitsScaleMom=1e-3
+L.unitsMom='[m.kN]'
+L.unitsScaleForc=1e-3
+L.unitsForc='[kN]'
+L.setsToDispBeamIntForc=[beams,columns]
+L.listBeamIntForc=['My','Mz','Qy','Qz','N']
+L.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+L.setsToDispBeamLoads=[]
+L.vectorScalePointLoads=0.005
+L.compElLoad='transComponent'
 
-Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsStrL',loadCaseDescr='Q4: earth pressure columns strip load',loadCaseExpr='1.0*QearthPColsStrL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q4.unitsScaleLoads=1e-3
-Q4.unitsScaleDispl=1e3
-Q4.unitsDispl='[mm]'
-Q4.unitsScaleMom=1e-3
-Q4.unitsMom='[m.kN]'
-Q4.unitsScaleForc=1e-3
-Q4.unitsForc='[kN]'
-Q4.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q4.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q4.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q4.setsToDispBeamLoads=[overallSet]
-Q4.vectorScalePointLoads=0.005
-Q4.compElLoad='transComponent'
+S=graphical_reports.RecordLoadCaseDisp(loadCaseName='SnowL',loadCaseDescr='S: snow load',loadCaseExpr='1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+S.unitsScaleLoads=1e-3
+S.unitsScaleDispl=1e3
+S.unitsDispl='[mm]'
+S.unitsScaleMom=1e-3
+S.unitsMom='[m.kN]'
+S.unitsScaleForc=1e-3
+S.unitsForc='[kN]'
+S.setsToDispBeamIntForc=[beams,columns]
+S.listBeamIntForc=['My','Mz','Qy','Qz','N']
+S.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+S.setsToDispBeamLoads=[]
+S.vectorScalePointLoads=0.005
+S.compElLoad='transComponent'
 
-Q5=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsLinL',loadCaseDescr='Q5: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsLinL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q5.unitsScaleLoads=1e-3
-Q5.unitsScaleDispl=1e3
-Q5.unitsDispl='[mm]'
-Q5.unitsScaleMom=1e-3
-Q5.unitsMom='[m.kN]'
-Q5.unitsScaleForc=1e-3
-Q5.unitsForc='[kN]'
-Q5.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q5.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q5.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q5.setsToDispBeamLoads=[overallSet]
-Q5.vectorScalePointLoads=0.005
-Q5.compElLoad='transComponent'
+Lunif1fl=graphical_reports.RecordLoadCaseDisp(loadCaseName='Live_unif_1floor',loadCaseDescr='Lunif1fl: live uniform load on first floor',loadCaseExpr='1.0*Live_unif_1floor',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+Lunif1fl.unitsScaleLoads=1e-3
+Lunif1fl.unitsScaleDispl=1e3
+Lunif1fl.unitsDispl='[mm]'
+Lunif1fl.unitsScaleMom=1e-3
+Lunif1fl.unitsMom='[m.kN]'
+Lunif1fl.unitsScaleForc=1e-3
+Lunif1fl.unitsForc='[kN]'
+Lunif1fl.setsToDispBeamIntForc=[beams,columns]
+Lunif1fl.listBeamIntForc=['My','Mz','Qy','Qz','N']
+Lunif1fl.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+Lunif1fl.setsToDispBeamLoads=[]
+Lunif1fl.vectorScalePointLoads=0.005
+Lunif1fl.compElLoad='transComponent'
 
-Q6=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsHrzL',loadCaseDescr='Q6: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsHrzL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q6.unitsScaleLoads=1e-3
-Q6.unitsScaleDispl=1e3
-Q6.unitsDispl='[mm]'
-Q6.unitsScaleMom=1e-3
-Q6.unitsMom='[m.kN]'
-Q6.unitsScaleForc=1e-3
-Q6.unitsForc='[kN]'
-Q6.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q6.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q6.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q6.setsToDispBeamLoads=[overallSet]
-Q6.vectorScalePointLoads=0.005
-Q6.compElLoad='transComponent'
+Lstag1fl=graphical_reports.RecordLoadCaseDisp(loadCaseName='Live_stag_1floor',loadCaseDescr='Lstag1fl: live stagged pattern load on first floor',loadCaseExpr='1.0*Live_stag_1floor',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+Lstag1fl.unitsScaleLoads=1e-3
+Lstag1fl.unitsScaleDispl=1e3
+Lstag1fl.unitsDispl='[mm]'
+Lstag1fl.unitsScaleMom=1e-3
+Lstag1fl.unitsMom='[m.kN]'
+Lstag1fl.unitsScaleForc=1e-3
+Lstag1fl.unitsForc='[kN]'
+Lstag1fl.setsToDispBeamIntForc=[beams,columns]
+Lstag1fl.listBeamIntForc=['My','Mz','Qy','Qz','N']
+Lstag1fl.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+Lstag1fl.setsToDispBeamLoads=[]
+Lstag1fl.vectorScalePointLoads=0.005
+Lstag1fl.compElLoad='transComponent'
 
-Q7=graphical_reports.RecordLoadCaseDisp(loadCaseName='qunifBeams',loadCaseDescr='Q7: uniform load on beams',loadCaseExpr='1.0*qunifBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q7.unitsScaleLoads=1e-3
-Q7.unitsScaleDispl=1e3
-Q7.unitsDispl='[mm]'
-Q7.unitsScaleMom=1e-3
-Q7.unitsMom='[m.kN]'
-Q7.unitsScaleForc=1e-3
-Q7.unitsForc='[kN]'
-Q7.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q7.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q7.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q7.setsToDispBeamLoads=[overallSet]
-Q7.vectorScalePointLoads=0.005
-Q7.compElLoad='transComponent'
+W_WE=graphical_reports.RecordLoadCaseDisp(loadCaseName='Wind_WE',loadCaseDescr='W_WE: Wind West-East',loadCaseExpr='1.0*Wind_WE',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+W_WE.unitsScaleLoads=1e-3
+W_WE.unitsScaleDispl=1e3
+W_WE.unitsDispl='[mm]'
+W_WE.unitsScaleMom=1e-3
+W_WE.unitsMom='[m.kN]'
+W_WE.unitsScaleForc=1e-3
+W_WE.unitsForc='[kN]'
+W_WE.setsToDispBeamIntForc=[beams,columns]
+W_WE.listBeamIntForc=['My','Mz','Qy','Qz','N']
+W_WE.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+W_WE.setsToDispBeamLoads=[]
+W_WE.vectorScalePointLoads=0.005
+W_WE.compElLoad='transComponent'
 
-Q8=graphical_reports.RecordLoadCaseDisp(loadCaseName='qlinDeck',loadCaseDescr='Q8: linear load on deck level 2',loadCaseExpr='1.0*qlinDeck',setsToDispLoads=[decklv2],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q8.unitsScaleLoads=1e-3
-Q8.unitsScaleDispl=1e3
-Q8.unitsDispl='[mm]'
-Q8.unitsScaleMom=1e-3
-Q8.unitsMom='[m.kN]'
-Q8.unitsScaleForc=1e-3
-Q8.unitsForc='[kN]'
-Q8.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q8.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q8.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q8.vectorScalePointLoads=0.005
-
-Q9=graphical_reports.RecordLoadCaseDisp(loadCaseName='QpntBeams',loadCaseDescr='Q9: point loads on beams',loadCaseExpr='1.0*QpntBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q9.unitsScaleLoads=1e-3
-Q9.unitsScaleDispl=1e3
-Q9.unitsDispl='[mm]'
-Q9.unitsScaleMom=1e-3
-Q9.unitsMom='[m.kN]'
-Q9.unitsScaleForc=1e-3
-Q9.unitsForc='[kN]'
-Q9.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q9.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q9.setsToDispBeamLoads=[overallSet]
-Q9.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q9.vectorScalePointLoads=0.35
-
-Q10=graphical_reports.RecordLoadCaseDisp(loadCaseName='QwheelDeck1',loadCaseDescr='Q10: load of a wheel over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[decklv1],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q10.unitsScaleLoads=1e-3
-Q10.unitsScaleDispl=1e3
-Q10.unitsDispl='[mm]'
-Q10.unitsScaleMom=1e-3
-Q10.unitsMom='[m.kN]'
-Q10.unitsScaleForc=1e-3
-Q10.unitsForc='[kN]'
-Q10.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q10.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q10.setsToDispBeamLoads=[overallSet]
-Q10.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q10.vectorScalePointLoads=0.05
-
-Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
-Q11.unitsScaleLoads=1e-3
-Q11.unitsScaleDispl=1e3
-Q11.unitsDispl='[mm]'
-Q11.unitsScaleMom=1e-3
-Q11.unitsMom='[m.kN]'
-Q11.unitsScaleForc=1e-3
-Q11.unitsForc='[kN]'
-Q11.setsToDispBeamIntForc=[columnZ,beamX,beamY]
-Q11.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Q11.setsToDispBeamLoads=[overallSet]
-Q11.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Q11.vectorScalePointLoads=0.05
-
-Comb1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS1',loadCaseDescr='Comb1: combination 1 ',loadCaseExpr='1.0*LS1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
-Comb1.unitsScaleLoads=1e-3
-Comb1.unitsScaleDispl=1e3
-Comb1.unitsDispl='[mm]'
-Comb1.unitsScaleMom=1e-3
-Comb1.unitsMom='[m.kN]'
-Comb1.unitsScaleForc=1e-3
-Comb1.unitsForc='[kN]'
-Comb1.setsToDispBeamIntForc=[allBeams]
-Comb1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Comb1.setsToDispBeamLoads=[allBeams]
-Comb1.compElLoad='transComponent'
-Comb1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Comb1.vectorScalePointLoads=0.05
-
-Comb2=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS2',loadCaseDescr='Comb2: combination 2 ',loadCaseExpr='1.0*LS2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
-Comb2.unitsScaleLoads=1e-3
-Comb2.unitsScaleDispl=1e3
-Comb2.unitsDispl='[mm]'
-Comb2.unitsScaleMom=1e-3
-Comb2.unitsMom='[m.kN]'
-Comb2.unitsScaleForc=1e-3
-Comb2.unitsForc='[kN]'
-Comb2.setsToDispBeamIntForc=[allBeams]
-Comb2.listBeamIntForc=['My','Mz','Qy','Qz','N']
-Comb2.setsToDispBeamLoads=[allBeams]
-Comb2.compElLoad='transComponent'
-Comb2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-Comb2.vectorScalePointLoads=0.05
-'''
+W_NS=graphical_reports.RecordLoadCaseDisp(loadCaseName='Wind_NS',loadCaseDescr='W_NS: Wind North-South',loadCaseExpr='1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+W_NS.unitsScaleLoads=1e-3
+W_NS.unitsScaleDispl=1e3
+W_NS.unitsDispl='[mm]'
+W_NS.unitsScaleMom=1e-3
+W_NS.unitsMom='[m.kN]'
+W_NS.unitsScaleForc=1e-3
+W_NS.unitsForc='[kN]'
+W_NS.setsToDispBeamIntForc=[beams,columns]
+W_NS.listBeamIntForc=['My','Mz','Qy','Qz','N']
+W_NS.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
+W_NS.setsToDispBeamLoads=[]
+W_NS.vectorScalePointLoads=0.005
+W_NS.compElLoad='transComponent'
