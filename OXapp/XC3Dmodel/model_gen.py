@@ -56,51 +56,6 @@ gridGeom= gm.GridModel(prep,xList,yList,zList)
 # Points' generation
 gridGeom.generatePoints()
 
-#Displacements of the grid points in a range
-#syntax: movePointsRange(ijkRange,vDisp)
-#        ijkRange: range for the search
-#        vDisp: xc vector displacement
-# for i in range(1,len(xList)):
-#     r= gm.IJKRange((i,0,lastZpos),(i,lastYpos,lastZpos))
-#     gridGeom.movePointsRange(r,xc.Vector([0.0,0.0,-trSlope*xList[i]]))
-
-
-#Slope (in X direction, Y direction or both) the grid points in a range
-#syntax: slopePointsRange(ijkRange,slopeX,xZeroSlope,slopeY,yZeroSlope)
-#     ijkRange: range for the search.
-#     slopeX: slope in X direction, expressed as deltaZ/deltaX 
-#                       (defaults to 0 = no slope applied)
-#     xZeroSlope: coordinate X of the "rotation axis".
-#     slopeY: slope in Y direction, expressed as deltaZ/deltaY)
-#                       (defaults to 0 = no slope applied)
-#     yZeroSlope: coordinate Y of the "rotation axis".
-
-#Scale in X with origin xOrig (fixed axis: X=xOrig) to the points in a range
-#Only X coordinate of points is modified in the following way:
-#       x_scaled=xOrig+scale*(x_inic-xOrig)
-#syntax: scaleCoorXPointsRange(ijkRange,xOrig,scale)
-#     ijkRange: range for the search.
-#     xOrig: origin X to apply scale (point in axis X=xOrig)
-#            are not affected by the transformation 
-#     scale: scale to apply to X coordinate
-
-#Scale in Y with origin yOrig (fixed axis: Y=yOrig) to the points in a range
-#Only Y coordinate of points is modified in the following way:
-#       y_scaled=yOrig+scale*(y_inic-yOrig)
-#syntax: scaleCoorYPointsRange(ijkRange,yOrig,scale)
-#     ijkRange: range for the search.
-#     yOrig: origin Y to apply scale (point in axis Y=yOrig)
-#            are not affected by the transformation 
-#     scale: scale to apply to Y coordinate
-
-#Scale in Z with origin zOrig (fixed axis: Z=zOrig) to the points in a range
-#Only Z coordinate of points is modified in the following way:
-#       z_scaled=zOrig+scale*(z_inic-zOrig)
-#syntax: scaleCoorZPointsRange(ijkRange,zOrig,scale)
-#     ijkRange: range for the search.
-#     zOrig: origin Z to apply scale (point in axis Z=zOrig)
-#            are not affected by the transformation 
-#     scale: scale to apply to Z coordinate
 
 #Ranges for lines and surfaces
 # extractIncludedIJranges(step): subranges index K=constant (default step=1)
@@ -463,15 +418,8 @@ for st in slabs_sets:
 slabs_H.fillDownwards()
 slabs_L.fillDownwards()
 
-'''
+
 #                       ***BOUNDARY CONDITIONS***
-# Regions resting on springs (Winkler elastic foundation)
-#       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-foot_wink=sprbc.ElasticFoundation(wModulus=20e7,cRoz=0.2)
-foot_wink.generateSprings(xcSet=foot)
-'''
 
 # Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...
 # Default values for Kx, Ky, Kz are 0, which means that no spring is
@@ -486,6 +434,7 @@ for x in xCols:
     for y in yCols:
         n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
         modelSpace.fixNode('000_000',n.tag)
+
 # Simple support beams on walls
 z=zBeamHigh
 
@@ -575,88 +524,84 @@ stBusq=slabW1+slab12+slab23+slab34+slab45+slab5W
 z=zHlwHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 stBusq=slabs5_L
 z=zHlwLow
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,yFac[-1],z),geom.Pos3d(0,yList[-1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #North
 stBusq=slabBC+slabCD_H+slabDG+slabGF+slabFW
 y=0
 z=zHlwHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,y,z),geom.Pos3d(xFac[-1],y,z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 stBusq=slabsF_L
 z=zHlwLow
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xFac[-1],y,z),geom.Pos3d(xList[-1],y,z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #West
 stBusq=slabsF_L+slabs5_L
 x=xList[-1]
 z=zHlwLow
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yCols[-1],z),geom.Pos3d(x,yList[-1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #South
 stBusq=slabCD_L
 y=yList[-1]
 z=zHlwLow
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xCols[2],y,z),geom.Pos3d(xCols[3],y,z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #Ramp
 stBusq=slabW1+slab12
 x=xRamp[0]
 z=zHlwHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #Cantilever
 stBusq=slab5W
 x=xFac[-1]
 z=zHlwHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yCols[4],z),geom.Pos3d(x,yFac[-1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 
 
 # Links beams to precast planks
 gluedDOFs= [0,1,2]
-
+distances=[zHlwHigh-zBeamHigh,zBeamHigh-zHlwLow]
 stbeams=beam1+beam2+beam3+beam4+beam5
-stslabs=slabBC+slabCD_L+slabDG+slabGF+slabFW+slabsF_L
+stslabs=slabBC+slabCD_L+slabCD_H+slabDG+slabGF+slabFW+slabsF_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
 nod_stbeams=stbeams.getNodes
 nod_stslabs=stslabs.getNodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
-    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+    dist=n.getCurrentPos3d(0).distPos3d(n1.getCurrentPos3d(0))
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
     
-stbeams=beam1
-stslabs=slabCD_H
-stbeams.fillDownwards()
-stslabs.fillDownwards()
-nod_stbeams=stbeams.getNodes
-nod_stslabs=stslabs.getNodes
-for n in nod_stbeams:
-    n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
-    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
-
 stbeams=beamA+beamB
-stslabs=slabW1+slab12+slab23+slab34+slab45
+stslabs=slabW1+slab12+slab23+slab34+slab45+slab5W+slabs5_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
 nod_stbeams=stbeams.getNodes
 nod_stslabs=stslabs.getNodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
-    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+    dist=n.getCurrentPos3d(0).distPos3d(n1.getCurrentPos3d(0))
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
     
-stbeams=beamA+beamB+beamC
+stbeams=beamC
 stslabs=slab5W+slabs5_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
@@ -664,7 +609,10 @@ nod_stbeams=stbeams.getNodes
 nod_stslabs=stslabs.getNodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
-    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+    dist=n.getCurrentPos3d(0).distPos3d(n1.getCurrentPos3d(0))
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
 
     
 stbeams=beamD+beamG+beamF
@@ -675,7 +623,10 @@ nod_stbeams=stbeams.getNodes
 nod_stslabs=stslabs.getNodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getCurrentPos3d(0))
-    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+    dist=n.getCurrentPos3d(0).distPos3d(n1.getCurrentPos3d(0))
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
 
 # Support of slabCD_H on slabCD_L
 i1=xList.index(xCols[1]+gap/2.)
@@ -698,17 +649,6 @@ grav=9.81 #Gravity acceleration (m/s2)
 #selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamXconcr_mesh,beamY_mesh,columnZconcr_mesh,deck_mesh,wall_mesh,foot_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 selfWeightBeamCols=loads.InertialLoad(name='selfWeightBeamCols', lstMeshSets=[beams_mesh,columns_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
-    
-'''
-# Point load acting on one or several nodes
-#     name:       name identifying the load
-#     lstNod:     list of nodes  on which the load is applied
-#     loadVector: xc.Vector with the six components of the load: 
-#                 xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
-
-nodPLoad=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=[geom.Pos3d(0,yList[lastYpos]/2.0,zList[lastZpos]),geom.Pos3d(xList[lastXpos],yList[lastYpos]/2.0,zList[lastZpos])])
-QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vector([0,0,-Qbeam,0,0,0]))
-'''
 # Uniform loads applied on shell elements
 #    name:       name identifying the load
 #    xcSet:     set that contains the surfaces
@@ -746,28 +686,6 @@ stag2_rg=sptt.staggeredPatternType1(lIndX,lIndY,indZ)
 stag2Set=gridGeom.getSetSurfMultiRegion(stag2_rg,'stag2Set')
 stag2Set.fillDownwards()
 LLstag_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'LLstag_terrace_1floor',xcSet=stag2Set,loadVector=xc.Vector([0,0,-unifLLterrace,0,0,0]),refSystem='Global')
-'''
-
-
-#Uniform load on beams
-# syntax: UniformLoadOnBeams(name, xcSet, loadVector,refSystem)
-#    name:       name identifying the load
-#    xcSet:      set that contains the lines
-#    loadVector: xc.Vector with the six components of the load: 
-#                xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
-#    refSystem: reference system in which loadVector is defined:
-#               'Local': element local coordinate system
-#               'Global': global coordinate system (defaults to 'Global)
-unifLoadBeamsY=loads.UniformLoadOnBeams(name='unifLoadBeamsY', xcSet=beamY, loadVector=xc.Vector([0,0,-qunifBeam,0,0,0]),refSystem='Global')
-
-# Strain gradient on shell elements
-#     name:  name identifying the load
-#     xcSet: set that contains the surfaces
-#     nabla: strain gradient in the thickness of the elements:
-#            nabla=espilon/thickness    
-
-#strGrad=loads.StrainLoadOnShells(name='strGrad', xcSet=deck,epsilon=0.001)
-'''
 
 # Uniform load applied to all the lines (not necessarily defined as lines
 # for latter generation of beam elements, they can be lines belonging to 
@@ -838,64 +756,15 @@ WL_NS_lnL1W=loads.UniformLoadOnLines(name='WL_NS_lnL1W',xcSet=lnL1W,loadVector=x
 WL_NS_lnL6W=loads.UniformLoadOnLines(name='WL_NS_lnL6W',xcSet=lnL6W,loadVector=xc.Vector([0,0,WNS_lnL6W,0,0,0]))
 WL_NS_lnL7W=loads.UniformLoadOnLines(name='WL_NS_lnL7W',xcSet=lnL7W,loadVector=xc.Vector([0,0,WNS_lnL7W,0,0,0]))
 
-'''
-# Point load distributed over the shell elements in xcSet whose 
-# centroids are inside the prism defined by the 2D polygon prismBase
-# and one global axis.
-# syntax: PointLoadOverShellElems(name, xcSet, loadVector,prismBase,prismAxis,refSystem):
-#    name: name identifying the load
-#    xcSet: set that contains the shell elements
-#    loadVector: xc vector with the six components of the point load:
-#                   xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
-#    prismBase: 2D polygon that defines the n-sided base of the prism.
-#                   The vertices of the polygon are defined in global 
-#                   coordinates in the following way:
-#                      - for X-axis-prism: (y,z)
-#                      - for Y-axis-prism: (x,z)
-#                      - for Z-axis-prism: (x,y)
-#    prismAxis: axis of the prism (can be equal to 'X', 'Y', 'Z')
-#                   (defaults to 'Z')
-#    refSystem:  reference system in which loadVector is defined:
-#                   'Local': element local coordinate system
-#                   'Global': global coordinate system (defaults to 'Global')
-
-prBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=LbeamY/2.,Lx=0.5,Ly=1.0)
-wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadVector=xc.Vector([0,0,-Qwheel]),prismBase=prBase,prismAxis='Z',refSystem='Global')
-
-# ---------------------------------------------------------------
-
-# Point loads defined in the object lModel, distributed over the shell 
-# elements under the wheels affected by them.
-
-# syntax: VehicleDistrLoad(name,xcSet,loadModel, xCentr,yCentr,hDistr,slopeDistr)
-#      name: name identifying the load
-#      xcSet: set that contains the shell elements
-#      lModel: instance of the class LoadModel with the definition of
-#               vehicle of the load model.
-#      xCent: global coord. X where to place the centroid of the vehicle
-#      yCent: global coord. Y where  to place the centroid of the vehicle
-#      hDistr: height considered to distribute each point load with
-#               slope slopeDistr 
-#      slopeDistr: slope (H/V) through hDistr to distribute the load of 
-#               a wheel
-
-from actions.roadway_trafic import standard_load_models as slm
-from actions.roadway_trafic import load_model_base as lmb
-vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=slm.IAP_carril_virt3_fren, xCentr=LbeamX/2,yCentr=LbeamY/2.,hDistr=0.25,slopeDistr=1.0)
 
 
 #    ***LOAD CASES***
 
-GselfWeight=lcases.LoadCase(preprocessor=prep,name="GselfWeight",loadPType="default",timeSType="constant_ts")
-GselfWeight.create()
-#GselfWeight.addLstLoads([selfWeightSlabs])
-GselfWeight.addLstLoads([pp])
-'''
 #Dead load
 DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
 DeadL.create()
-#DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols])
-DeadL.addLstLoads([selfWeightSlabs])
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols])
+#DeadL.addLstLoads([selfWeightBeamCols])
 #live load (uniform on rooms)
 LiveL_ru=lcases.LoadCase(preprocessor=prep,name="LiveL_ru")
 LiveL_ru.create()
@@ -927,48 +796,11 @@ Wind_WE.addLstLoads([WL_WE_lnL1W,WL_WE_lnL2W,WL_WE_lnL3W,WL_WE_lnL4W,WL_WE_lnL5W
 Wind_NS=lcases.LoadCase(preprocessor=prep,name="Wind_NS")
 Wind_NS.create()
 Wind_NS.addLstLoads([WL_NS_lnL1W,WL_NS_lnL6W,WL_NS_lnL7W])
-'''
-#    ***LIMIT STATE COMBINATIONS***
-combContainer= cc.CombContainer()  #Container of load combinations
 
-# COMBINATIONS OF ACTIONS FOR SERVICEABILITY LIMIT STATES
-    # name:        name to identify the combination
-    # rare:        combination for a rare design situation
-    # freq:        combination for a frequent design situation
-    # qp:          combination for a quasi-permanent design situation
-    # earthquake:  combination for a seismic design situation
-#Characteristic combinations.
-combContainer.SLS.rare.add('ELSR01', '1.0*LS2')
-#Frequent combinations.
-combContainer.SLS.freq.add('ELSF01', '1.0*LS1')
-#Quasi permanent combinations.
-combContainer.SLS.qp.add('ELSQP01', '1.0*LS2')
-
-# COMBINATIONS OF ACTIONS FOR ULTIMATE LIMIT STATES
-    # name:        name to identify the combination
-    # perm:        combination for a persistent or transient design situation
-    # acc:         combination for a accidental design situation
-    # fatigue:     combination for a fatigue design situation
-    # earthquake:  combination for a seismic design situation
-#Persistent and transitory situations.
-combContainer.ULS.perm.add('ELU01', '1.2*LS1')
-combContainer.ULS.perm.add('ELU02', '1.0*LS2')
-
-#Fatigue.
-# Combinations' names must be:
-#        - ELUF0: unloaded structure (permanent loads)
-#        - ELUF1: fatigue load in position 1.
-combContainer.ULS.fatigue.add('ELUF0','1.00*GselfWeight+1.0*Qdecks')
-combContainer.ULS.fatigue.add('ELUF1','1.00*GselfWeight+1.0*QearthPressWall')
-
-decks=prep.getSets.defSet('decks')  #only this way we can recover this
-                         #set by calling it by its name with:
-                         #prep.getSets.getSet('decks') 
-''' 
 overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW+slabsF_L+slabs5_L
 
-preprocessor.getDomain.getMesh.getNumFreeNodes()
 '''
+preprocessor.getDomain.getMesh.getNumFreeNodes()
 for n in slabs.getNodes:
     print n.getCurrentPos3d(0).z
 '''
