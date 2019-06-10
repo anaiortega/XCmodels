@@ -62,12 +62,24 @@ for i in yCols:
     yGaps.append(i-gap/2.)
     yGaps.append(i+gap/2.)
 
+#Beam section
+beamWidth=0.609
+beamHeight=0.787
+
+#Column section
+colXdim=16*in2m
+colYdim=16*in2m
+
 #!!!!! Modify according to problem!!!
-zCol=3 #!!!!!
-zBeamLow=2.75
-zBeamHigh=3
-zHlwLow=(zCol+zBeamLow)/2.0
-zHlwHigh=zCol+0.15
+hHollowCore=12*in2m
+H1stFloor=10*ft2m+8*in2m
+deltaFloors=1*ft2m+2*in2m
+Hfound=3*ft2m+18*in2m
+zCol=Hfound+H1stFloor
+zBeamHigh=zCol-hHollowCore/2.
+#zBeamLow=zBeamHigh-deltaFloors
+zHlwHigh=zCol+hHollowCore/2.
+zHlwLow=zHlwHigh-deltaFloors
 
 # coordinates in global X,Y,Z axes for the grid generation
 xListaux=xCols+xWalls+xRamp+xStair2Elev+xFac+xWF+xGaps+xWalls
@@ -83,26 +95,27 @@ for i in yListaux:
         yList.append(i)
 yList.sort()
 
-zList=[0,zBeamLow,zHlwLow,zCol,zHlwHigh]
+zList=[0,zBeamHigh,zHlwLow,zCol,zHlwHigh]
+zList.sort()
 #auxiliary data
 lastXpos=len(xList)-1
 lastYpos=len(yList)-1
 lastZpos=len(zList)-1
 
-#Beam section
-beamWidth=0.4
-beamHeight=0.5
 
-#Column section
-colXdim=0.5
-colYdim=0.3
 
 # precast slabs
-slabTh=0.20
+slabTh=0.15
 
 
 #Weight hollowcore deck 30+5 [Pa]
+import math
+Width_hollo=1.219
+Area_hollo=Width_hollo*0.3048-4*math.pi*0.236**2/4.
 Whollowdeck=5.19e3
+W_hollo=25e3*Area_hollo
+W_compress=25e3*Width_hollo*0.05      #compression layer
+Whollowdeck=(W_hollo+W_compress)/Width_hollo
 '''
 #Dead load facades [N/ml]
 DLfac=7352+2035+4876

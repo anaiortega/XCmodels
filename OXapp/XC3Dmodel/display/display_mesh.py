@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 execfile("../model_gen.py") #FE model generation
-
+#execfile("../pp.py")
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 #  caption:  text to write in the graphic
@@ -15,10 +15,10 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-setsTodisp=[beams,columns,slabs]
+#setsTodisp=[beams,columns,slabs]
 #setsTodisp=[beams+columns]
 #setsTodisp=[slab5W]
-setsTodisp=[slabs]
+#setsTodisp=[slabs]
 #setsTodisp=[beams,columns]
-
+setsTodisp=[overallSet]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.80)
