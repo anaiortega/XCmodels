@@ -18,7 +18,8 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[beams,columns,slabs]
 #setsTodisp=[beams+columns]
 #setsTodisp=[slab5W]
+#setsTodisp=[stBusq]
 #setsTodisp=[slabs]
-#setsTodisp=[beams,columns]
-setsTodisp=[overallSet]
+setsTodisp=[beams,columns]
+#setsTodisp=[overallSet]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.80)

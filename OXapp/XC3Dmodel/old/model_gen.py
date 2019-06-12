@@ -502,11 +502,49 @@ for l in beams.getLines:
         modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamLastNode.tag,xc.ID(gluedDOFs)) #torsion
     
 # Simple support precast planks on walls
-for node in slabs.getNodes:
-    if nodeOnEdge(node):
-        modelSpace.fixNode('000_FFF',node.tag)
+# for node in slabs.getNodes:
+#     if nodeOnEdge(node):
+#         print 'here node: ', node.tag
+#         modelSpace.fixNode('000_FFF',node.tag)
 
 # AAAAAAAAAAAAAAA        
+#East
+stBusq=slabW1+slab12+slab23+slab34+slab45+slab5W
+z=zHlwHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+stBusq=slabs5_L
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,yFac[-1],z),geom.Pos3d(0,yList[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#North
+stBusq=slabBC+slabCD_H+slabDG+slabGF+slabFW
+y=0
+z=zHlwHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,y,z),geom.Pos3d(xFac[-1],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+stBusq=slabsF_L
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xFac[-1],y,z),geom.Pos3d(xList[-1],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#West
+stBusq=slabsF_L+slabs5_L
+x=xList[-1]
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yCols[-1],z),geom.Pos3d(x,yList[-1],z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
+#South
+stBusq=slabCD_L
+y=yList[-1]
+z=zHlwLow
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xCols[2],y,z),geom.Pos3d(xCols[3],y,z)])
+for n in nod:
+    modelSpace.fixNode('000_FFF',n.tag)
 #Ramp
 stBusq=slabW1+slab12
 x=xRamp[0]
@@ -525,16 +563,77 @@ for n in nod:
 
 
 # Links beams to precast planks
-for l in beams.getLines:
-    for beamNode in l.getNodes():
-        beamNodePos= beamNode.getInitialPos3d
-        slabNode= slabs.getNearestNode(beamNodePos)
-        slabNodePos= slabNode.getInitialPos3d
-        dist2XY= (slabNodePos.x-beamNodePos.x)**2+(slabNodePos.y-beamNodePos.y)**2
-        if(dist2XY<0.05):
-            modelSpace.setRigidBeamBetweenNodes(beamNode.tag,slabNode.tag)
+gluedDOFs= [0,1,2]
+distances=[zHlwHigh-zBeamHigh,zBeamHigh-zHlwLow]
+stbeams=beam1+beam2+beam3+beam4+beam5
+stslabs=slabBC+slabCD_L+slabCD_H+slabDG+slabGF+slabFW+slabsF_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
+    nPos= n.getInitialPos3d
+    n1Pos= n1.getInitialPos3d
+    dist2XY= (nPos.x-n1Pos.x)**2+(nPos.y-n1Pos.y)**2
+    #print 'dist2XY: ', dist2XY
+    if (dist2XY<0.1):
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
+    
+stbeams=beamA+beamB
+stslabs=slabW1+slab12+slab23+slab34+slab45+slab5W+slabs5_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
+    dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
+    
+stbeams=beamC
+stslabs=slab5W+slabs5_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
+    dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
 
-        
+    
+stbeams=beamD+beamG+beamF
+stslabs=slab5W+slabs5_L
+stbeams.fillDownwards()
+stslabs.fillDownwards()
+nod_stbeams=stbeams.getNodes
+nod_stslabs=stslabs.getNodes
+for n in nod_stbeams:
+    n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
+    dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
+    if dist in distances:
+        modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+#    modelSpace.fixNode('FF0_FFF',n1.tag)
+
+# Support of slabCD_H on slabCD_L
+i1=xList.index(xCols[1]+gap/2.)
+i2=xList.index(xCols[2]-gap/2.)
+j1=yList.index(yCols[0])
+j2=yList.index(yFac[1])
+k=zList.index(zHlwHigh)
+st1=gridGeom.getSetSurfOneRegion(gm.IJKRange((i1,j1,k),(i2,j2,k)),'st1')
+nod_st1=st1.getNodes
+nod_st2=slabCD_L.getNodes
+for n in nod_st1:
+    n1=nod_st2.getNearestNode(n.getInitialPos3d)
+    modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
+
 execfile(fullProjPath+'lines_loads.py')
 #                       ***ACTIONS***
 
