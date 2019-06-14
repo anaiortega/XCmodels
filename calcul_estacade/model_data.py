@@ -174,7 +174,7 @@ for l in totalLineSet:
 print 'number of columns: ', len(setColumns.getLines)
 # length= 0.0
 # for l in setColumns.getLines:
-#   length+= l.getLong()
+#   length+= l.getLength()
 # print 'length= ', length
 # exit()
   
@@ -233,7 +233,7 @@ print 'number of spring lines: ', len(springLines.getLines)
 length= 0.0
 springNodes= preprocessor.getSets.defSet("springLines")
 for l in springLines.getLines:
-  length+= l.getLong()
+  length+= l.getLength()
   for n in l.getNodes():
     springNodes.getNodes.append(n)
 

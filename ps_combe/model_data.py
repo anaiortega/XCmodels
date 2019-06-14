@@ -84,7 +84,7 @@ for s in pairedLines:
     tg= bl.getTang(0.0)
     trfName= bl.name+'_trf'
     trf= modelSpace.newLinearCrdTransf(trfName,tg)
-    #print bl.getLong(), dl.getLong()
+    #print bl.getLength(), dl.getLength()
     #print bl.nDiv, dl.nDiv
     for n1 in bl.getNodes():
         n2= dl.getNearestNode(n1.getInitialPos3d)
@@ -303,7 +303,7 @@ for e in deckSurfaces.getElements:
 for edge in edgeLines:
     nNodes= len(edge.getNodes())
     for n in edge.getNodes():
-        load= 4.87e3 *edge.getLong()/nNodes# N/mbarrier + parapet
+        load= 4.87e3 *edge.getLength()/nNodes# N/mbarrier + parapet
         cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-load,0,0,0]))
         #For modal analysis.
         tributaryMass= load/grav

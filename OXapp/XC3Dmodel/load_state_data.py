@@ -161,7 +161,7 @@ for lc in LC:
     
 ULS=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
 for lc in ULS:
-    lc.setsToDispDspRot=[overallSet]
+    lc.setsToDispDspRot=[beams] #[overallSet]
     lc.setsToDispIntForc=[]
     lc.unitsScaleLoads=1e-3
     lc.unitsScaleDispl=1e3
@@ -170,8 +170,8 @@ for lc in ULS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
-    lc.setsToDispBeamIntForc=[beams,columns]
-    lc.listBeamIntForc=['My','Mz','Qy','Qz']
+    lc.setsToDispBeamIntForc= [columns]#[beams,columns]
+    lc.listBeamIntForc= ['N'] #['My','Mz','Qy','Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
     lc.setsToDispBeamLoads=[]
     lc.vectorScalePointLoads=0.005

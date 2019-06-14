@@ -476,6 +476,7 @@ for l in beams.getLines:
             for nc in gluedDOFs:
                 modelSpace.constraints.newSPConstraint(node.tag,nc,0.0)
 
+attachedBeamLines= preprocessor.getSets.defSet("attachedBeamLines")
 #Links between beams and columns
 for l in beams.getLines:
     tangVector= l.getTang(0.0)
@@ -489,17 +490,25 @@ for l in beams.getLines:
     nCol= columns.getNodes.getNearestNode(beamFirstNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamFirstNodePos)
-    if(dist<2.0*gap):
-        fulcrumNode= modelSpace.setFulcrumBetweenNodes(nCol.tag,beamFirstNode.tag)
-        modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamFirstNode.tag,xc.ID(gluedDOFs)) #torsion
-    beamLastNode= l.firstNode
+    if(dist<1.1*gap):
+        print 'tag:', l.tag, ' first node: ', beamFirstNode.tag, ' column node: ', nCol.tag, ' dist: ', dist
+        attachedBeamLines.getLines.append(l)
+        modelSpace.constraints.newEqualDOF(nCol.tag,beamFirstNode.tag,xc.ID([0,1,2,3,4,5]))
+        #modelSpace.setRigidBeamBetweenNodes(nCol.tag,beamFirstNode.tag)
+        #fulcrumNode= modelSpace.setFulcrumBetweenNodes(nCol.tag,beamFirstNode.tag)
+        #modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamFirstNode.tag,xc.ID(gluedDOFs)) #torsion
+    beamLastNode= l.lastNode
     beamLastNodePos= beamLastNode.getInitialPos3d
     nCol= columns.getNodes.getNearestNode(beamLastNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamLastNodePos)
-    if(dist<2.0*gap):
-        fulcrumNode= modelSpace.setFulcrumBetweenNodes(nCol.tag,beamLastNode.tag)
-        modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamLastNode.tag,xc.ID(gluedDOFs)) #torsion
+    if(dist<1.1*gap):
+        print 'tag:', l.tag, ' last node: ', beamLastNode.tag, ' column node: ', nCol.tag, ' dist: ', dist
+        attachedBeamLines.getLines.append(l)
+        modelSpace.constraints.newEqualDOF(nCol.tag,beamLastNode.tag,xc.ID([0,1,2,3,4,5]))
+        #modelSpace.setRigidBeamBetweenNodes(nCol.tag,beamLastNode.tag)
+        #fulcrumNode= modelSpace.setFulcrumBetweenNodes(nCol.tag,beamLastNode.tag)
+        #modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamLastNode.tag,xc.ID(gluedDOFs)) #torsion
     
 # Simple support precast planks on walls
 for node in slabs.getNodes:

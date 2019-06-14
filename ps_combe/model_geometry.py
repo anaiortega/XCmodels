@@ -359,7 +359,7 @@ transverseSlopes= getTransverseSlopes()
 # for l in laneRegions:
 #     print l.getArea()
 # for e in edgeLines:
-#     print e.getLong()
+#     print e.getLength()
 
 xcTotalSet= preprocessor.getSets.getSet('total')
 
