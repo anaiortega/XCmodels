@@ -22,7 +22,7 @@ from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
 #home= '/home/luis/projects/XCmodels/OXapp/'
-home= '/home/ana/20190610_1416_XC3Dmode/'
+home= '/home/ana/projects/XCmodels/OXapp/embeddeb_beams/'
 
 fullProjPath= home + 'XC3Dmodel/'
 execfile(fullProjPath+'env_config.py')
@@ -953,4 +953,10 @@ for st in slabs_sets:
     st.fillDownwards()
 
 
+j=yList.index(yCols[0])
+k=zList.index(zBeamHigh)
+steel_beam_rg=gm.IJKRange((xList.index(xCols[1]+gap/2.),j,k),(xList.index(xCols[2]-gap/2.0),j,k))
+steel_beam=gridGeom.getSetLinOneRegion(steel_beam_rg,'steel_beam')
+
 #execfile(fullProjPath+'print_links_slabs_beams.py')
+
