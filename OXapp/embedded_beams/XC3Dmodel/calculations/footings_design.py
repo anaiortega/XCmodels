@@ -52,8 +52,13 @@ class ACIIsolatedFooting(object):
     def getServiceAxialForce(self):
         ''' Return the column to footing service axial force.'''
         retval= float(self.slsLoads[0][self.axialForceIndex])
+        combName= self.slsLoads[0][2]
         for l in self.slsLoads:
-            retval= max(retval,float(l[self.axialForceIndex]))
+            tmp= float(l[self.axialForceIndex])
+            if(retval<tmp):
+                retval= tmp
+                combName= l[2]
+        print('P= ', retval/1e3, ' combination: ', combName)
         return retval
 
     def getTwoWayVc(self):
@@ -109,11 +114,14 @@ for row in reader:
     elif(row[2].startswith('SLS')):
         slsLoadDict[row[0]].append(row)
 
+csvFile= open("footings_dimensions.csv", "w")
+writer = csv.writer(csvFile)
 
 for f in footings:
     f.ulsLoads= ulsLoadDict[f.id]
     f.slsLoads= slsLoadDict[f.id]
     f.q_allow= q_allow
-    print(f.computeApproximateFootingDepth())
-    print(f.computeB())
+    writer.writerow([f.id, f.computeApproximateFootingDepth(), f.computeB()])
+
+csvFile.close()
 

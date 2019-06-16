@@ -15,19 +15,13 @@ loadCases= ulsLoadCases+slsLoadCases
 
 #End data
 
-csvFile= open("column_reactions.csv", "w")
+csvFile= open("column_positions.csv", "w")
 writer = csv.writer(csvFile)
 
-for lc in loadCases:
-    lcs=QGrph.QuickGraphics(FEcase)
-    #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
-    #Reaction on column bases
-    nodes.calculateNodalReactions(False,1e-7)
-    for n in footingNodes:
-        reac= n.getReaction
-        row= [n.getProp('id'), n.tag, lc.loadCaseName, reac[0], reac[1], reac[2], reac[3], reac[4], reac[5]]
-        writer.writerow(row)
+for n in footingNodes:
+    pos= n.getInitialPos3d
+    row= [n.getProp('id'), n.tag, pos.x, pos.y, pos.z]
+    writer.writerow(row)
 
 csvFile.close()
 

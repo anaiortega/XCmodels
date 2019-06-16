@@ -141,16 +141,16 @@ ULS07_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS07_a',loadCaseDesc
 
 ULS07_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS07_b',loadCaseDescr='ULS07_b: 0.9*D + W_NS',loadCaseExpr='0.9*DeadL+1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-# Serviceability limit states
+# Serviceability limit states (design of footings)
 SLS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS01',loadCaseDescr='SLS01: 1.0*D',loadCaseExpr='1.0*DeadL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS02_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_a',loadCaseDescr='SLS02_a: 1.0*D + 1.0*Lru + Lpu + 1.0*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_ru+1.0*LiveL_pu+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS02_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_a',loadCaseDescr='SLS02_a: 1.0*D + 1.0*Lru + Lpu + 0.3*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_ru+1.0*LiveL_pu+0.3*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS02_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_b',loadCaseDescr='SLS02_b: 1.0*D + 1.0*Lrs + Lps + 1.0*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_rs+1.0*LiveL_ps+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS02_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_b',loadCaseDescr='SLS02_b: 1.0*D + 1.0*Lrs + Lps + 0.3*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_rs+1.0*LiveL_ps+0.3*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS03_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_a',loadCaseDescr='SLS03_a: 1.0*D + 1.0*S + 1.0*Lru + Lpu',loadCaseExpr='1.0*DeadL+1.0*LiveL_ru+1.0*LiveL_pu+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS03_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_a',loadCaseDescr='SLS03_a: 1.0*D + 1.0*S + 0.3*Lru + 0.3*Lpu',loadCaseExpr='1.0*DeadL+0.3*LiveL_ru+0.3*LiveL_pu+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS03_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_b',loadCaseDescr='SLS03_b: 1.0*D + 1.0*S + 1.0*Lrs + Lps',loadCaseExpr='1.0*DeadL+1.0*LiveL_rs+1.0*LiveL_ps+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS03_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_b',loadCaseDescr='SLS03_b: 1.0*D + 1.0*S + 0.3*Lrs + 0.3*Lps',loadCaseExpr='1.0*DeadL+0.3*LiveL_rs+0.3*LiveL_ps+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 SLS04_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_a',loadCaseDescr='SLS04_a: 1.0*D + W_WE + 1.0*Lru + Lpu',loadCaseExpr='1.0*DeadL+1.0*Wind_WE+1.0*LiveL_ru+1*LiveL_pu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
@@ -160,13 +160,9 @@ SLS04_c=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_c',loadCaseDesc
 
 SLS04_d=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_d',loadCaseDescr='SLS04_d: 1.0*D + W_NS + 1.0*Lrs + Lps',loadCaseExpr='1.0*DeadL+1.0*Wind_NS+1.0*LiveL_rs+1.0*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS05_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_a',loadCaseDescr='SLS05_a: 1.0*D + 1.0*Lru + Lpu + 1.0*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_ru+1*LiveL_pu+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS05_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_a',loadCaseDescr='SLS05_a: 1.0*D + W_WE',loadCaseExpr='1.0*DeadL+1.0*Wind_WE',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-SLS05_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_b',loadCaseDescr='SLS05_b: 1.0*D + 1.0*Lrs + Lps + 1.0*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_rs+1*LiveL_ps+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS06_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS06_a',loadCaseDescr='SLS06_a: 1.0*D + W_WE',loadCaseExpr='1.0*DeadL+1.0*Wind_WE',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS06_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS06_b',loadCaseDescr='SLS06_b: 1.0*D + W_NS',loadCaseExpr='1.0*DeadL+1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+SLS05_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_b',loadCaseDescr='SLS05_b: 1.0*D + W_NS',loadCaseExpr='1.0*DeadL+1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 
 LC=[D,Lru,Lrs,Lpu,Lps,S,W_WE,W_NS]
@@ -207,7 +203,7 @@ for lc in ULS:
     lc.compElLoad='transYComponent'
     lc.compElLoad='axialComponent'
 
-SLS=[SLS01,SLS02_a,SLS02_b,SLS03_a,SLS03_b,SLS04_a,SLS04_b,SLS05_a,SLS05_b,SLS06_a,SLS06_b]
+SLS=[SLS01,SLS02_a,SLS02_b,SLS03_a,SLS03_b,SLS04_a,SLS04_b,SLS05_a,SLS05_b]
 for lc in SLS:
     lc.setsToDispDspRot=[]#[overallSet]
     lc.setsToDispIntForc=[]
