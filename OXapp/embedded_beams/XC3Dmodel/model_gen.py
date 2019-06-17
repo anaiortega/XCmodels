@@ -21,10 +21,8 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-#home= '/home/luis/projects/XCmodels/OXapp/'
-#home= '/home/ana/20190610_1416_XC3Dmode/'
-home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
-#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
+home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
 
 
 fullProjPath= home + 'XC3Dmodel/'
@@ -937,10 +935,13 @@ for n in slabs.getNodes:
 '''
 slabs.fillDownwards()
 slabs.description='Precast planks'
+slabs.name='hollowcore'
 columns.fillDownwards()
+columns.name='columns'
 columns.description='Columns'
 beams.fillDownwards()
-beams.description='Beams'
+beams.description='1st floor beams'
+beams.name='beams'
 slabs_H.fillDownwards()
 slabs_L.fillDownwards()
 

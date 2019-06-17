@@ -1,16 +1,16 @@
 ft2m=0.3048
 in2m=0.0254
 # Columns, dimensions X direction
-dimWA=20*ft2m
+dimWA=20*ft2m+2*in2m
 dimAB=26*ft2m
-dimBC=20*ft2m+10*in2m
-dimCD=39*ft2m+4*in2m
-dimDG=25*ft2m+10*in2m
-dimGF=28*ft2m
-dimFW=23*ft2m
+dimBC=23*ft2m
+dimCD=35*ft2m
+dimDG=31*ft2m
+dimGF=25*ft2m
+dimFW=23*ft2m+2*in2m
 
 #Columns, dimensions Y direction
-dimW1=8.839
+dimW1=8.890
 dim12=8.306
 dim23=8.306
 dim34=8.306

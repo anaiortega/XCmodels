@@ -195,8 +195,8 @@ for lc in ULS:
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
     #lc.setsToDispBeamIntForc=[beams]
-    lc.setsToDispBeamIntForc=[steel_beam]
-    lc.listBeamIntForc=['My']#,'Qz']
+    lc.setsToDispBeamIntForc=[beams]
+    lc.listBeamIntForc=['My','Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
     lc.setsToDispBeamLoads=[]
     lc.vectorScalePointLoads=0.005
