@@ -5,7 +5,7 @@ from rough_calculations import ng_retaining_wall
 import xc_base
 import geom
 import xc
-from materials.sia262 import SIA262_materials
+from materials.aci import ACI_materials
 from materials import typical_materials
 from geotechnics import earth_pressure as ep
 from geotechnics import FrictionalCohesionalSoil as fcs
@@ -13,43 +13,42 @@ from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
 from rough_calculations import ng_rebar_def
+from materials.sia262 import SIA262_limit_state_checking
 
-#Géométrie
-b= 1.0
-stemTopWidth= 0.25
-
+INCH_2_METER= 0.0254
+FEET_2_METER= 0.3048
 cover= 55e-3
 
 #Materials
-concrete= SIA262_materials.c30_37
-steel= SIA262_materials.B500B
+concrete= ACI_materials.c3500
+reinfSteel= ACI_materials.A615G60
 execfile("./armatures_type.py")
 
 stemBottomWidth= 0.45#Coupe A
 footingThickness= 0.50
-sectionName= "A"
-wall= ng_retaining_wall.RetainingWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness, concrete, steel)
-wall.stemHeight= 4.1
-wall.bToe= 0.5
-wall.bHeel= 2.1
+sectionName= "WT1"
+wall= ng_retaining_wall.BasementWall(sectionName,cover,10*INCH_2_METER,10*INCH_2_METER,14*INCH_2_METER,concrete,reinfSteel)
+wall.stemHeight= 14.0*FEET_2_METER
+wall.bToe= 2.0*FEET_2_METER
+wall.bHeel= 2.0*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.reinforcement.setArmature(1,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(2,A14_15.getCopy('C'))
-wall.reinforcement.setArmature(3,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(4,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(6,A12_15.getCopy('C'))
-wall.reinforcement.setArmature(7,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(8,D1618_15.getCopy('B'))
-wall.reinforcement.setArmature(11,A14_15.getCopy('B'))
+wall.reinforcement.setArmature(1,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(2,A14_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(3,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(4,A10_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(6,A12_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(7,A10_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(8,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(11,A14_15.getCopy(SIA262_limit_state_checking.RebarController('B')))
 
 
-wallFEModel= wall.createFEProblem('Retaining wall A')
+wallFEModel= wall.createFEProblem('Basement wall '+sectionName)
 preprocessor= wallFEModel.getPreprocessor
 nodes= preprocessor.getNodeHandler
 
 #Soil
-kS= 40e6 #Module de réaction du sol (estimé).
+kS= 64.4285714286e6 #Module de réaction du sol (estimé).
 #print 'kS= ', kS/1e6
 kX= typical_materials.defElasticMaterial(preprocessor, "kX",kS/10.0)
 kY= typical_materials.defElasticMaterial(preprocessor, "kY",kS)
