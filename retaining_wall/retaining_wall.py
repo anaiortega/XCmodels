@@ -6,13 +6,14 @@ import xc_base
 import geom
 import xc
 from materials.sia262 import SIA262_materials
+from materials.sia262 import SIA262_limit_state_checking
+from materials.sections import rebar_family
 from materials import typical_materials
 from geotechnics import earth_pressure as ep
 from geotechnics import FrictionalCohesionalSoil as fcs
 from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
-from rough_calculations import ng_rebar_def
 
 #Géométrie
 b= 1.0
@@ -23,7 +24,35 @@ cover= 55e-3
 #Materials
 concrete= SIA262_materials.c30_37
 steel= SIA262_materials.B500B
-execfile("./armatures_type.py")
+#Armatures type
+A08_15= SIA262_limit_state_checking.SIARebarFamily(steel,8e-3,0.15,cover)
+A10_15= SIA262_limit_state_checking.SIARebarFamily(steel,10e-3,0.15,cover)
+A12_15= SIA262_limit_state_checking.SIARebarFamily(steel,12e-3,0.15,cover)
+A14_15= SIA262_limit_state_checking.SIARebarFamily(steel,14e-3,0.15,cover)
+A16_15= SIA262_limit_state_checking.SIARebarFamily(steel,16e-3,0.15,cover)
+A18_15= SIA262_limit_state_checking.SIARebarFamily(steel,18e-3,0.15,cover)
+A20_15= SIA262_limit_state_checking.SIARebarFamily(steel,20e-3,0.15,cover)
+A22_15= SIA262_limit_state_checking.SIARebarFamily(steel,22e-3,0.15,cover)
+A26_15= SIA262_limit_state_checking.SIARebarFamily(steel,26e-3,0.15,cover)
+
+A08_30= SIA262_limit_state_checking.SIARebarFamily(steel,8e-3,0.30,cover)
+A10_30= SIA262_limit_state_checking.SIARebarFamily(steel,10e-3,0.30,cover)
+A12_30= SIA262_limit_state_checking.SIARebarFamily(steel,12e-3,0.30,cover)
+A14_30= SIA262_limit_state_checking.SIARebarFamily(steel,14e-3,0.30,cover)
+A16_30= SIA262_limit_state_checking.SIARebarFamily(steel,16e-3,0.30,cover)
+A18_30= SIA262_limit_state_checking.SIARebarFamily(steel,18e-3,0.30,cover)
+A20_30= SIA262_limit_state_checking.SIARebarFamily(steel,20e-3,0.30,cover)
+A22_30= SIA262_limit_state_checking.SIARebarFamily(steel,22e-3,0.30,cover)
+A26_30= SIA262_limit_state_checking.SIARebarFamily(steel,26e-3,0.30,cover)
+
+D0810_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A08_30,A10_30)
+D1012_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A10_30,A12_30)
+D1214_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A12_30,A14_30)
+D1416_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A14_30,A16_30)
+D1618_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A16_30,A18_30)
+D1820_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A18_30,A20_30)
+D2022_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A20_30,A22_30)
+D2226_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A22_30,A26_30)
 
 stemBottomWidth= 0.45#Coupe A
 footingThickness= 0.50

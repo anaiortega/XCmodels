@@ -6,14 +6,13 @@ import xc_base
 import geom
 import xc
 from materials.aci import ACI_materials
+from materials.aci import ACI_limit_state_checking
 from materials import typical_materials
 from geotechnics import earth_pressure as ep
 from geotechnics import FrictionalCohesionalSoil as fcs
 from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
-from rough_calculations import ng_rebar_def
-from materials.sia262 import SIA262_limit_state_checking
 
 INCH_2_METER= 0.0254
 FEET_2_METER= 0.3048
@@ -33,14 +32,14 @@ wall.bToe= 2.0*FEET_2_METER
 wall.bHeel= 2.0*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.reinforcement.setArmature(1,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(2,A14_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(3,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(4,A10_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(6,A12_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(7,A10_15.getCopy(SIA262_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(8,D1618_15.getCopy(SIA262_limit_state_checking.RebarController('B')))
-wall.reinforcement.setArmature(11,A14_15.getCopy(SIA262_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(1,D1618_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(2,A14_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(3,D1618_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(6,A12_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(8,D1618_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(11,A14_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 
 
 wallFEModel= wall.createFEProblem('Basement wall '+sectionName)
