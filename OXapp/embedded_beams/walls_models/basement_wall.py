@@ -32,14 +32,14 @@ wall.bToe= 2.0*FEET_2_METER
 wall.bHeel= 2.0*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.reinforcement.setArmature(1,D1618_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(2,A14_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(3,D1618_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
 wall.reinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(6,A12_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
 wall.reinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.reinforcement.setArmature(8,D1618_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.reinforcement.setArmature(11,A14_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(11,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 
 
 wallFEModel= wall.createFEProblem('Basement wall '+sectionName)
