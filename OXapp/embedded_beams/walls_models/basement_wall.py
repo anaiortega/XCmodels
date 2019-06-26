@@ -5,9 +5,8 @@ from rough_calculations import ng_retaining_wall
 import xc_base
 import geom
 import xc
-from materials.sia262 import SIA262_materials
-from materials.sia262 import SIA262_limit_state_checking
-from materials.sections import rebar_family
+from materials.aci import ACI_materials
+from materials.aci import ACI_limit_state_checking
 from materials import typical_materials
 from geotechnics import earth_pressure as ep
 from geotechnics import FrictionalCohesionalSoil as fcs
@@ -15,70 +14,40 @@ from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
 
-#Géométrie
-b= 1.0
-stemTopWidth= 0.25
-
+INCH_2_METER= 0.0254
+FEET_2_METER= 0.3048
 cover= 55e-3
 
 #Materials
-concrete= SIA262_materials.c30_37
-steel= SIA262_materials.B500B
-#Armatures type
-A08_15= SIA262_limit_state_checking.SIARebarFamily(steel,8e-3,0.15,cover)
-A10_15= SIA262_limit_state_checking.SIARebarFamily(steel,10e-3,0.15,cover)
-A12_15= SIA262_limit_state_checking.SIARebarFamily(steel,12e-3,0.15,cover)
-A14_15= SIA262_limit_state_checking.SIARebarFamily(steel,14e-3,0.15,cover)
-A16_15= SIA262_limit_state_checking.SIARebarFamily(steel,16e-3,0.15,cover)
-A18_15= SIA262_limit_state_checking.SIARebarFamily(steel,18e-3,0.15,cover)
-A20_15= SIA262_limit_state_checking.SIARebarFamily(steel,20e-3,0.15,cover)
-A22_15= SIA262_limit_state_checking.SIARebarFamily(steel,22e-3,0.15,cover)
-A26_15= SIA262_limit_state_checking.SIARebarFamily(steel,26e-3,0.15,cover)
-
-A08_30= SIA262_limit_state_checking.SIARebarFamily(steel,8e-3,0.30,cover)
-A10_30= SIA262_limit_state_checking.SIARebarFamily(steel,10e-3,0.30,cover)
-A12_30= SIA262_limit_state_checking.SIARebarFamily(steel,12e-3,0.30,cover)
-A14_30= SIA262_limit_state_checking.SIARebarFamily(steel,14e-3,0.30,cover)
-A16_30= SIA262_limit_state_checking.SIARebarFamily(steel,16e-3,0.30,cover)
-A18_30= SIA262_limit_state_checking.SIARebarFamily(steel,18e-3,0.30,cover)
-A20_30= SIA262_limit_state_checking.SIARebarFamily(steel,20e-3,0.30,cover)
-A22_30= SIA262_limit_state_checking.SIARebarFamily(steel,22e-3,0.30,cover)
-A26_30= SIA262_limit_state_checking.SIARebarFamily(steel,26e-3,0.30,cover)
-
-D0810_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A08_30,A10_30)
-D1012_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A10_30,A12_30)
-D1214_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A12_30,A14_30)
-D1416_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A14_30,A16_30)
-D1618_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A16_30,A18_30)
-D1820_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A18_30,A20_30)
-D2022_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A20_30,A22_30)
-D2226_15= SIA262_limit_state_checking.SIADoubleRebarFamily(A22_30,A26_30)
+concrete= ACI_materials.c3500
+reinfSteel= ACI_materials.A615G60
+execfile("./armatures_type.py")
 
 stemBottomWidth= 0.45#Coupe A
 footingThickness= 0.50
-sectionName= "A"
-wall= ng_retaining_wall.RetainingWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness, concrete, steel)
-wall.stemHeight= 4.1
-wall.bToe= 0.5
-wall.bHeel= 2.1
+sectionName= "WT1"
+wall= ng_retaining_wall.BasementWall(sectionName,cover,10*INCH_2_METER,10*INCH_2_METER,14*INCH_2_METER,concrete,reinfSteel)
+wall.stemHeight= 14.0*FEET_2_METER
+wall.bToe= 2.0*FEET_2_METER
+wall.bHeel= 2.0*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.reinforcement.setArmature(1,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(2,A14_15.getCopy('C'))
-wall.reinforcement.setArmature(3,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(4,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(6,A12_15.getCopy('C'))
-wall.reinforcement.setArmature(7,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(8,D1618_15.getCopy('B'))
-wall.reinforcement.setArmature(11,A14_15.getCopy('B'))
+wall.reinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.reinforcement.setArmature(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.reinforcement.setArmature(11,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 
 
-wallFEModel= wall.createFEProblem('Retaining wall A')
+wallFEModel= wall.createFEProblem('Basement wall '+sectionName)
 preprocessor= wallFEModel.getPreprocessor
 nodes= preprocessor.getNodeHandler
 
 #Soil
-kS= 40e6 #Module de réaction du sol (estimé).
+kS= 64.4285714286e6 #Module de réaction du sol (estimé).
 #print 'kS= ', kS/1e6
 kX= typical_materials.defElasticMaterial(preprocessor, "kX",kS/10.0)
 kY= typical_materials.defElasticMaterial(preprocessor, "kY",kS)
@@ -204,3 +173,14 @@ combContainer.ULS.perm.add('SR15B', '0.8*selfWeight+0.8*deadLoad+1.45*railLoad')
 combContainer.ULS.perm.add('SRS2A', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1.0*derailmentLoad')
 combContainer.ULS.perm.add('SRS2B', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1.0*quakeLoad')
 combContainer.ULS.perm.add('SRS2C', '1.0*selfWeight+1.0*deadLoad+1.0*quakeLoad+1.0*derailmentLoad')
+
+def getLoadCasesForDisplaying():
+  retval=[]
+  for lcName in loadCaseNames:
+    lc= loadCaseManager.loadPatterns[lcName]
+    rlcd= gr.getRecordLoadCaseDispFromLoadPattern(lc)
+    rlcd.cameraParameters= cp
+    rlcd.setsToDispLoads=[totalSet]
+    rlcd.setsToDispBeamLoads=[totalSet]
+    retval.append(rlcd)
+  return retval

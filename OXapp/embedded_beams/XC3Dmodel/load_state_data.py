@@ -194,9 +194,8 @@ for lc in ULS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
-    #lc.setsToDispBeamIntForc=[beams]
-    # lc.setsToDispBeamIntForc=[beams]
-    # lc.listBeamIntForc=['My','Qz']
+#    lc.setsToDispBeamIntForc=[beams]
+#    lc.listBeamIntForc=['My','Qz']
     lc.setsToDispBeamIntForc=[columns]
     lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
@@ -216,10 +215,16 @@ for lc in SLS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
+
     # lc.setsToDispBeamIntForc=[beams]
     # lc.listBeamIntForc=['My','Qz']
     lc.setsToDispBeamIntForc=[columns]
     lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
+    lc.setsToDispBeamIntForc=[beams]
+    lc.listBeamIntForc=['My','Qz']
+#    lc.setsToDispBeamIntForc=[columns]
+#    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
+    lc.listBeamIntForc=['My']#,'Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
     lc.setsToDispBeamLoads=[]
     lc.vectorScalePointLoads=0.005
