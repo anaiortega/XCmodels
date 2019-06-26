@@ -13,14 +13,17 @@ loadCases=[D,L,S,W_WE,W_NS]
 
 #End data
 
-csvFileNorth= open("wall_North_reactions.csv", "w")
-writerNorth = csv.writer(csvFileNorth)
-csvFileSouth= open("wall_South_reactions.csv", "w")
-writerSouth = csv.writer(csvFileSouth)
-csvFileEast= open("wall_East_reactions.csv", "w")
-writerEast = csv.writer(csvFileEast)
-csvFileWest= open("wall_West_reactions.csv", "w")
-writerWest = csv.writer(csvFileWest)
+
+northReactions= dict()
+southReactions= dict()
+eastReactions= dict()
+westReactions= dict()
+
+for lc in loadCases:
+    northReactions[lc.loadCaseName]= 0.0
+    southReactions[lc.loadCaseName]= 0.0
+    eastReactions[lc.loadCaseName]= 0.0
+    westReactions[lc.loadCaseName]= 0.0
 
 for lc in loadCases:
     lcs=QGrph.QuickGraphics(FEcase)
@@ -30,25 +33,38 @@ for lc in loadCases:
     nodes.calculateNodalReactions(False,1e-7)
     for n in wallNorth:
         reac= n.getReaction
-        row= [n.tag, lc.loadCaseName, reac[2]]
-        writerNorth.writerow(row)
+        northReactions[lc.loadCaseName]+= reac[2]
     for n in wallSouth:
         reac= n.getReaction
-        row= [n.tag, lc.loadCaseName, reac[2]]
-        writerSouth.writerow(row)
+        southReactions[lc.loadCaseName]+= reac[2]
     for n in wallEast:
         reac= n.getReaction
-        row= [n.tag, lc.loadCaseName, reac[2]]
-        writerEast.writerow(row)
+        eastReactions[lc.loadCaseName]+= reac[2]
     for n in wallWest:
         reac= n.getReaction
-        row= [n.tag, lc.loadCaseName, reac[2]]
-        writerWest.writerow(row)
+        westReactions[lc.loadCaseName]+= reac[2]
 
-csvFileNorth.close()
-csvFileSouth.close()
-csvFileEast.close()
-csvFileWest.close()
+csvFile= open("wall_reactions.csv", "w")
+writer= csv.writer(csvFile)
+
+for key in northReactions:
+    reac= northReactions[key]
+    row= ['North', key, reac]
+    writer.writerow(row)
+for key in southReactions:
+    reac= southReactions[key]
+    row= ['South', key, reac]
+    writer.writerow(row)
+for key in eastReactions:
+    reac= eastReactions[key]
+    row= ['East', key, reac]
+    writer.writerow(row)
+for key in westReactions:
+    reac= westReactions[key]
+    row= ['West', key, reac]
+    writer.writerow(row)
+
+csvFile.close()
 
 
 
