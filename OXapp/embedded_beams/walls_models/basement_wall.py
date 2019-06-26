@@ -83,14 +83,14 @@ selfWeight= loadCaseManager.setCurrentLoadCase('selfWeight')
 gravity=9.81 #Acceleration of gravity (m/s2)
 wall.createSelfWeightLoads(rho= 2500,grav= gravity)
 
-#Dead load.
-#  Dead load. Earth self weight.
+# Dead load.
+# Dead load. Earth self weight.
 gSoil= backFillSoilModel.rho*gravity
 frontFillDepth= 1.0
 deadLoad= loadCaseManager.setCurrentLoadCase('deadLoad')
 wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,rho= backFillSoilModel.rho, grav= gravity)
 
-#  Dead load. Earth pressure.
+# Dead load. Earth pressure.
 K0= backFillSoilModel.K0Jaky()
 zGroundBackFill= 0.0 #Back fill
 backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10],KSoils= [K0],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
@@ -99,13 +99,35 @@ zGroundFrontFill= zGroundBackFill-wall.stemHeight+frontFillDepth #Front fill
 frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFrontFill, zBottomSoils=[-10],KSoils= [K0], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 wall.createFrontFillPressures(frontFillPressureModel)
 
+# Dead load from building.
+buildingDeadLoad= 4.6*1000.0*4.44822/FEET_2_METER
+print('buildingDeadLoad= ', buildingDeadLoad/1e3, ' kN/m')
+wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingDeadLoad,0.0]))
+
 #Live load. Traffic load.
 trafficLoad= loadCaseManager.setCurrentLoadCase('trafficLoad')
 trafficEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 11.97e3,zLoad= 0.0, distWall= 1.0, stripWidth= 10)
 wall.createPressuresFromLoadOnBackFill(trafficEarthPressure, Delta= backFillDelta)
 
+# Live load from the building.
+liveLoad= loadCaseManager.setCurrentLoadCase('liveLoad')
+buildingLiveLoad= 1.5*1000.0*4.44822/FEET_2_METER
+print('buildingLiveLoad= ', buildingLiveLoad/1e3, ' kN/m')
+wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingLiveLoad,0.0]))
 
-#Accidental actions. Quake
+# Snow load from the building.
+snowLoad= loadCaseManager.setCurrentLoadCase('snowLoad')
+buildingSnowLoad= 0.01*1000.0*4.44822/FEET_2_METER
+print('buildingSnowLoad= ', buildingSnowLoad/1e3, ' kN/m')
+wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingSnowLoad,0.0]))
+
+# Wind load from the building.
+windLoad= loadCaseManager.setCurrentLoadCase('windLoad')
+buildingWindLoad= 0.01*1000.0*4.44822/FEET_2_METER
+print('buildingWindLoad= ', buildingWindLoad/1e3, ' kN/m')
+wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingWindLoad,0.0]))
+
+# Accidental actions. Quake
 quakeLoad= loadCaseManager.setCurrentLoadCase('quakeLoad')
 kh=  0.03
 kv=  0.7*kh
