@@ -173,3 +173,14 @@ combContainer.ULS.perm.add('SR15B', '0.8*selfWeight+0.8*deadLoad+1.45*railLoad')
 combContainer.ULS.perm.add('SRS2A', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1.0*derailmentLoad')
 combContainer.ULS.perm.add('SRS2B', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1.0*quakeLoad')
 combContainer.ULS.perm.add('SRS2C', '1.0*selfWeight+1.0*deadLoad+1.0*quakeLoad+1.0*derailmentLoad')
+
+def getLoadCasesForDisplaying():
+  retval=[]
+  for lcName in loadCaseNames:
+    lc= loadCaseManager.loadPatterns[lcName]
+    rlcd= gr.getRecordLoadCaseDispFromLoadPattern(lc)
+    rlcd.cameraParameters= cp
+    rlcd.setsToDispLoads=[totalSet]
+    rlcd.setsToDispBeamLoads=[totalSet]
+    retval.append(rlcd)
+  return retval
