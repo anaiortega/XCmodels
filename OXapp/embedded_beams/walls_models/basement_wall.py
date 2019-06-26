@@ -65,6 +65,7 @@ backFillSoilModel= ep.RankineSoil(phi= math.radians(30),rho= soilDensity) #Chara
 #print('Ka= ', backFillSoilModel.K0Jaky())
 backFillDelta= 0.0 #2.0/3.0*backFillSoilModel.phi
 foundationSoilModel= fcs.FrictionalCohesionalSoil(phi= math.radians(30), c= 0.0, rho= soilDensity)
+sg_adm= 3000.0*47.880208 # Geothecnical exploration page 5
 
 #Mesh.
 wall.genMesh(nodes,[kX,kY])

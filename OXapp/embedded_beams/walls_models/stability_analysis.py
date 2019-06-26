@@ -16,7 +16,7 @@ print 'SLS results= ', sls_results.rotation, sls_results.rotationComb
 wall.setSLSInternalForcesEnvelope(sls_results.internalForces)
 
 #ULS stability analysis.
-sr= wall.performStabilityAnalysis(['SR102A', 'SR102B', 'SR103A', 'SR103B', 'SR103C', 'SR104A', 'SR104B', 'SR105A', 'SR105B'],foundationSoilModel)
+sr= wall.performStabilityAnalysis(['SR102A', 'SR102B', 'SR103A', 'SR103B', 'SR103C', 'SR104A', 'SR104B', 'SR105A', 'SR105B'],foundationSoilModel, sg_adm)
 
 #ULS strength analysis.
 uls_results= wall.performULSAnalysis(['SR102A', 'SR102B', 'SR103A', 'SR103B', 'SR103C', 'SR104A', 'SR104B', 'SR105A', 'SR105B'])
