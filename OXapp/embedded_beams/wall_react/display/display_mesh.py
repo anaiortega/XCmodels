@@ -20,8 +20,8 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[slab5W]
 #setsTodisp=[slabs]
 #setsTodisp=[beams,columns]
-setsTodisp=[overallSet]
-# sett=beams+columns
-# sett.color=cfg.colors['brown04']
-# setsTodisp=[sett]
-defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Precast beams and columns',nodeSize=0.5,scaleConstr=1.0)
+#setsTodisp=[overallSet]
+sett=beams+columns
+sett.color=cfg.colors['brown04']
+setsTodisp=[sett]
+defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Precast beams and columns',nodeSize=0.5,scaleConstr=0)

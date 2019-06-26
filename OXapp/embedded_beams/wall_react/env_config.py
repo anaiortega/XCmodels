@@ -2,7 +2,6 @@
 from postprocess.config import default_config
 
 #home= '/home/ana/projects/XCmodels/'
-#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
 home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
 
 # Default configuration of environment variables.

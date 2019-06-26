@@ -73,23 +73,6 @@ Definition of record objects with these attributes:
 
 
 
-
-'''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-G1.unitsScaleLoads=1e-3
-G1.unitsScaleDispl=1e3
-G1.unitsDispl='[mm]'
-G1.unitsScaleMom=1e-3
-G1.unitsMom='[m.kN]'
-G1.unitsScaleForc=1e-3
-G1.unitsForc='[kN]'
-G1.setsToDispBeamIntForc=[beams,columns]
-G1.listBeamIntForc=['My','Mz','Qy','Qz','N']
-G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-G1.setsToDispBeamLoads=[]
-G1.vectorScalePointLoads=0.005
-G1.compElLoad='transComponent'
-
 '''
 D=graphical_reports.RecordLoadCaseDisp(loadCaseName='DeadL',loadCaseDescr='D: dead load',loadCaseExpr='1.0*DeadL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
@@ -102,19 +85,17 @@ Lpu=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_pu',loadCaseDescr='
 
 Lps=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_ps',loadCaseDescr='L_ps: live load (staggered pattern on terraces)',loadCaseExpr='1.0*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-L=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL',loadCaseDescr='L: live load (uniform)',loadCaseExpr='1.0*LiveL_ru+1.0*Lpu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
 S=graphical_reports.RecordLoadCaseDisp(loadCaseName='SnowL',loadCaseDescr='S: snow load',loadCaseExpr='1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 
 W_WE=graphical_reports.RecordLoadCaseDisp(loadCaseName='Wind_WE',loadCaseDescr='W_WE: Wind West-East',loadCaseExpr='1.0*Wind_WE',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 W_NS=graphical_reports.RecordLoadCaseDisp(loadCaseName='Wind_NS',loadCaseDescr='W_NS: Wind North-South',loadCaseExpr='1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
+'''
 
 #Ultimate limit states
-ULS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS01',loadCaseDescr='ULS01: 1.4*D',loadCaseExpr='1.4*DeadL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
+ULS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS01',loadCaseDescr='ULS01: 1.4*D',loadCaseExpr='1.4*DeadL',setsToDispLoads=[beams],setsToDispDspRot=[beams],setsToDispIntForc=[beams])
+'''
 ULS02_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02_a',loadCaseDescr='ULS02_a: 1.2*D + 1.6*Lru + Lpu + 0.5*S',loadCaseExpr='1.2*DeadL+1.6*LiveL_ru+1.0*LiveL_pu+0.5*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 ULS02_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02_b',loadCaseDescr='ULS02_b: 1.2*D + 1.6*Lrs + Lps + 0.5*S',loadCaseExpr='1.2*DeadL+1.6*LiveL_rs+1.0*LiveL_ps+0.5*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
@@ -143,30 +124,6 @@ ULS07_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS07_a',loadCaseDesc
 
 ULS07_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS07_b',loadCaseDescr='ULS07_b: 0.9*D + W_NS',loadCaseExpr='0.9*DeadL+1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-# Serviceability limit states (design of footings)
-SLS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS01',loadCaseDescr='SLS01: 1.0*D',loadCaseExpr='1.0*DeadL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS02_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_a',loadCaseDescr='SLS02_a: 1.0*D + 1.0*Lru + Lpu + 0.3*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_ru+1.0*LiveL_pu+0.3*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS02_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS02_b',loadCaseDescr='SLS02_b: 1.0*D + 1.0*Lrs + Lps + 0.3*S',loadCaseExpr='1.0*DeadL+1.0*LiveL_rs+1.0*LiveL_ps+0.3*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS03_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_a',loadCaseDescr='SLS03_a: 1.0*D + 1.0*S + 0.3*Lru + 0.3*Lpu',loadCaseExpr='1.0*DeadL+0.3*LiveL_ru+0.3*LiveL_pu+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS03_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS03_b',loadCaseDescr='SLS03_b: 1.0*D + 1.0*S + 0.3*Lrs + 0.3*Lps',loadCaseExpr='1.0*DeadL+0.3*LiveL_rs+0.3*LiveL_ps+1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS04_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_a',loadCaseDescr='SLS04_a: 1.0*D + W_WE + 1.0*Lru + Lpu',loadCaseExpr='1.0*DeadL+1.0*Wind_WE+1.0*LiveL_ru+1*LiveL_pu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS04_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_b',loadCaseDescr='SLS04_b: 1.0*D + W_NS + 1.0*Lru + Lpu',loadCaseExpr='1.0*DeadL+1.0*Wind_NS+1.0*LiveL_ru+1*LiveL_pu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS04_c=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_c',loadCaseDescr='SLS04_c: 1.0*D + W_WE + 1.0*Lrs + Lps',loadCaseExpr='1.0*DeadL+1.0*Wind_WE+1.0*LiveL_rs+1*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS04_d=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS04_d',loadCaseDescr='SLS04_d: 1.0*D + W_NS + 1.0*Lrs + Lps',loadCaseExpr='1.0*DeadL+1.0*Wind_NS+1.0*LiveL_rs+1.0*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS05_a=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_a',loadCaseDescr='SLS05_a: 1.0*D + W_WE',loadCaseExpr='1.0*DeadL+1.0*Wind_WE',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-SLS05_b=graphical_reports.RecordLoadCaseDisp(loadCaseName='SLS05_b',loadCaseDescr='SLS05_b: 1.0*D + W_NS',loadCaseExpr='1.0*DeadL+1.0*Wind_NS',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
-
 LC=[D,Lru,Lrs,Lpu,Lps,S,W_WE,W_NS]
 for lc in LC:
     lc.unitsScaleLoads=1e-3
@@ -184,10 +141,12 @@ for lc in LC:
     lc.compElLoad='transComponent'
 
 #D.vectorScalePointLoads=1
-    
+
 ULS=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
+'''
+ULS=[ULS01]
 for lc in ULS:
-    lc.setsToDispDspRot=[]#[overallSet]
+    lc.setsToDispDspRot=[beams]
     lc.setsToDispIntForc=[]
     lc.unitsScaleLoads=1e-3
     lc.unitsScaleDispl=1e3
@@ -196,39 +155,9 @@ for lc in ULS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
-#    lc.setsToDispBeamIntForc=[beams]
-#    lc.listBeamIntForc=['My','Qz']
-    lc.setsToDispBeamIntForc=[columns]
-    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
+    lc.setsToDispBeamIntForc=[beams,columns]
+    lc.listBeamIntForc=['My','Mz','Qy','Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
     lc.setsToDispBeamLoads=[]
     lc.vectorScalePointLoads=0.005
     lc.compElLoad='transYComponent'
-    lc.compElLoad='axialComponent'
-
-SLS=[SLS01,SLS02_a,SLS02_b,SLS03_a,SLS03_b,SLS04_a,SLS04_b,SLS05_a,SLS05_b]
-for lc in SLS:
-    lc.setsToDispDspRot=[]#[overallSet]
-    lc.setsToDispIntForc=[]
-    lc.unitsScaleLoads=1e-3
-    lc.unitsScaleDispl=1e3
-    lc.unitsDispl='[mm]'
-    lc.unitsScaleMom=1e-3
-    lc.unitsMom='[m.kN]'
-    lc.unitsScaleForc=1e-3
-    lc.unitsForc='[kN]'
-
-    # lc.setsToDispBeamIntForc=[beams]
-    # lc.listBeamIntForc=['My','Qz']
-    lc.setsToDispBeamIntForc=[columns]
-    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
-    lc.setsToDispBeamIntForc=[beams]
-    lc.listBeamIntForc=['My','Qz']
-#    lc.setsToDispBeamIntForc=[columns]
-#    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
-    lc.listBeamIntForc=['My']#,'Qz']
-    lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-    lc.setsToDispBeamLoads=[]
-    lc.vectorScalePointLoads=0.005
-    lc.compElLoad='transYComponent'
-    lc.compElLoad='axialComponent'

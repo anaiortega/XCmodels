@@ -102,8 +102,6 @@ Lpu=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_pu',loadCaseDescr='
 
 Lps=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_ps',loadCaseDescr='L_ps: live load (staggered pattern on terraces)',loadCaseExpr='1.0*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-L=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL',loadCaseDescr='L: live load (uniform)',loadCaseExpr='1.0*LiveL_ru+1.0*Lpu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
-
 S=graphical_reports.RecordLoadCaseDisp(loadCaseName='SnowL',loadCaseDescr='S: snow load',loadCaseExpr='1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 
@@ -196,8 +194,9 @@ for lc in ULS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
-#    lc.setsToDispBeamIntForc=[beams]
-#    lc.listBeamIntForc=['My','Qz']
+    #lc.setsToDispBeamIntForc=[beams]
+    # lc.setsToDispBeamIntForc=[beams]
+    # lc.listBeamIntForc=['My','Qz']
     lc.setsToDispBeamIntForc=[columns]
     lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
@@ -217,16 +216,10 @@ for lc in SLS:
     lc.unitsMom='[m.kN]'
     lc.unitsScaleForc=1e-3
     lc.unitsForc='[kN]'
-
     # lc.setsToDispBeamIntForc=[beams]
     # lc.listBeamIntForc=['My','Qz']
     lc.setsToDispBeamIntForc=[columns]
     lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
-    lc.setsToDispBeamIntForc=[beams]
-    lc.listBeamIntForc=['My','Qz']
-#    lc.setsToDispBeamIntForc=[columns]
-#    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
-    lc.listBeamIntForc=['My']#,'Qz']
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
     lc.setsToDispBeamLoads=[]
     lc.vectorScalePointLoads=0.005
