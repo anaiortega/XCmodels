@@ -26,16 +26,16 @@ concrete= ACI_materials.c3500
 reinfSteel= ACI_materials.A615G60
 execfile("./armatures_type.py")
 
-wallHead= -(0.0*FEET_2_METER+1.0*INCH_2_METER)
+wallHead= -(3.0*FEET_2_METER+5.0*INCH_2_METER)
 topOfFoundation= -(11.0*FEET_2_METER+8*INCH_2_METER)
 stemBottomWidth= 10*INCH_2_METER
 stemTopWidth= stemBottomWidth
 footingThickness= 14*INCH_2_METER
-sectionName= "T3"
+sectionName= "T5"
 wall= ng_retaining_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 1.75*FEET_2_METER
-wall.bHeel= 1.75*FEET_2_METER
+wall.bToe= 1.5*FEET_2_METER
+wall.bHeel= 1.5*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
 wall.reinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))

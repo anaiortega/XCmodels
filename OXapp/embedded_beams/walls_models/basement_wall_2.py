@@ -34,8 +34,8 @@ footingThickness= 14*INCH_2_METER
 sectionName= "T2"
 wall= ng_retaining_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 1.25*FEET_2_METER
-wall.bHeel= 1.25*FEET_2_METER
+wall.bToe= 1.5*FEET_2_METER
+wall.bHeel= 1.5*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
 wall.reinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))

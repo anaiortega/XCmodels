@@ -1,7 +1,12 @@
 # -*- coding: utf-8 -*-
 
 
-execfile('basement_wall_2.py')
+#execfile('basement_wall_1.py')
+#execfile('basement_wall_2.py')
+#execfile('basement_wall_3.py')
+#execfile('basement_wall_4.py')
+#xecfile('basement_wall_5.py')
+execfile('basement_wall_6.py')
 
 from postprocess.reports import common_formats as fmt
 
