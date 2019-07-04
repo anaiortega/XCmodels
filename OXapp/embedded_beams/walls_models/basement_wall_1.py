@@ -26,16 +26,16 @@ concrete= ACI_materials.c3500
 reinfSteel= ACI_materials.A615G60
 execfile("./armatures_type.py")
 
-wallHead= -(0.0*FEET_2_METER+1.0*INCH_2_METER)
+wallHead= -(1.0*FEET_2_METER+4.0*INCH_2_METER)
 topOfFoundation= -(11.0*FEET_2_METER+8*INCH_2_METER)
 stemBottomWidth= 10*INCH_2_METER
 stemTopWidth= stemBottomWidth
 footingThickness= 14*INCH_2_METER
-sectionName= "T2a"
+sectionName= "T1"
 wall= ng_basement_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 2.0*FEET_2_METER
-wall.bHeel= 2.0*FEET_2_METER
+wall.bToe= 1.25*FEET_2_METER
+wall.bHeel= 1.25*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'B'
 wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
@@ -101,7 +101,7 @@ frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFront
 wall.createFrontFillPressures(frontFillPressureModel)
 
 # Dead load from building.
-buildingDeadLoad= 4.6*1000.0*4.44822/FEET_2_METER
+buildingDeadLoad= 31.54e3 #North
 print('buildingDeadLoad= ', buildingDeadLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingDeadLoad,0.0]))
 
@@ -112,19 +112,19 @@ wall.createPressuresFromLoadOnBackFill(trafficEarthPressure, Delta= backFillDelt
 
 # Live load from the building.
 liveLoad= loadCaseManager.setCurrentLoadCase('liveLoad')
-buildingLiveLoad= 1.5*1000.0*4.44822/FEET_2_METER
+buildingLiveLoad= 21.67e3 #North
 print('buildingLiveLoad= ', buildingLiveLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingLiveLoad,0.0]))
 
 # Snow load from the building.
 snowLoad= loadCaseManager.setCurrentLoadCase('snowLoad')
-buildingSnowLoad= 0.01*1000.0*4.44822/FEET_2_METER
+buildingSnowLoad= 10.06e3 #North
 print('buildingSnowLoad= ', buildingSnowLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingSnowLoad,0.0]))
 
 # Wind load from the building.
 windLoad= loadCaseManager.setCurrentLoadCase('windLoad')
-buildingWindLoad= 0.01*1000.0*4.44822/FEET_2_METER
+buildingWindLoad= 15.12e3 #North
 print('buildingWindLoad= ', buildingWindLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingWindLoad,0.0]))
 

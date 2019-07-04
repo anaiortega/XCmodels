@@ -102,7 +102,7 @@ Lpu=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_pu',loadCaseDescr='
 
 Lps=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL_ps',loadCaseDescr='L_ps: live load (staggered pattern on terraces)',loadCaseExpr='1.0*LiveL_ps',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
-L=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL',loadCaseDescr='L: live load (uniform)',loadCaseExpr='1.0*LiveL_ru+1.0*Lpu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
+L=graphical_reports.RecordLoadCaseDisp(loadCaseName='LiveL',loadCaseDescr='L: live load (uniform)',loadCaseExpr='1.0*LiveL_ru+1.0*LiveL_pu',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 
 S=graphical_reports.RecordLoadCaseDisp(loadCaseName='SnowL',loadCaseDescr='S: snow load',loadCaseExpr='1.0*SnowL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[slabs])
 

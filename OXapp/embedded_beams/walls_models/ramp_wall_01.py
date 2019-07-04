@@ -26,16 +26,16 @@ concrete= ACI_materials.c3500
 reinfSteel= ACI_materials.A615G60
 execfile("./armatures_type.py")
 
-wallHead= -(0.0*FEET_2_METER+1.0*INCH_2_METER)
-topOfFoundation= -(11.0*FEET_2_METER+8*INCH_2_METER)
-stemBottomWidth= 10*INCH_2_METER
+wallHead= 0.0
+topOfFoundation= -2.1-0.1778
+stemBottomWidth= 6*INCH_2_METER
 stemTopWidth= stemBottomWidth
 footingThickness= 14*INCH_2_METER
-sectionName= "T2a"
+sectionName= "RW1"
 wall= ng_basement_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 2.0*FEET_2_METER
-wall.bHeel= 2.0*FEET_2_METER
+wall.bToe= 1.25*FEET_2_METER
+wall.bHeel= 1.25*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'B'
 wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
@@ -86,56 +86,36 @@ wall.createSelfWeightLoads(rho= 2500,grav= gravity)
 
 # Dead load.
 # Dead load. Earth self weight.
-gSoil= backFillSoilModel.rho*gravity
-frontFillDepth= 1.0
-deadLoad= loadCaseManager.setCurrentLoadCase('deadLoad')
-wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,rho= backFillSoilModel.rho, grav= gravity)
+# gSoil= backFillSoilModel.rho*gravity
+# frontFillDepth= 1.0
+# deadLoad= loadCaseManager.setCurrentLoadCase('deadLoad')
+# wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,rho= backFillSoilModel.rho, grav= gravity)
 
-# Dead load. Earth pressure.
-K0= backFillSoilModel.K0Jaky()
-zGroundBackFill= 0.0 #Back fill
-backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10],KSoils= [K0],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
-wall.createBackFillPressures(backFillPressureModel, Delta= backFillDelta)
-zGroundFrontFill= zGroundBackFill-wall.stemHeight+frontFillDepth #Front fill
-frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFrontFill, zBottomSoils=[-10],KSoils= [K0], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
-wall.createFrontFillPressures(frontFillPressureModel)
+# # Dead load. Earth pressure.
+# K0= backFillSoilModel.K0Jaky()
+# zGroundBackFill= 0.0 #Back fill
+# backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10],KSoils= [K0],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
+# wall.createBackFillPressures(backFillPressureModel, Delta= backFillDelta)
+# zGroundFrontFill= zGroundBackFill-wall.stemHeight+frontFillDepth #Front fill
+# frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFrontFill, zBottomSoils=[-10],KSoils= [K0], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
+# wall.createFrontFillPressures(frontFillPressureModel)
 
-# Dead load from building.
-buildingDeadLoad= 4.6*1000.0*4.44822/FEET_2_METER
+# Dead load from ramp.
+buildingDeadLoad= 16.86e3 #South (two floors when phase 2 is finished).
 print('buildingDeadLoad= ', buildingDeadLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingDeadLoad,0.0]))
 
 #Live load. Traffic load.
-trafficLoad= loadCaseManager.setCurrentLoadCase('trafficLoad')
-trafficEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 11.97e3,zLoad= 0.0, distWall= 1.0, stripWidth= 10)
-wall.createPressuresFromLoadOnBackFill(trafficEarthPressure, Delta= backFillDelta)
+# trafficLoad= loadCaseManager.setCurrentLoadCase('trafficLoad')
+# trafficEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 11.97e3,zLoad= 0.0, distWall= 1.0, stripWidth= 10)
+# wall.createPressuresFromLoadOnBackFill(trafficEarthPressure, Delta= backFillDelta)
 
-# Live load from the building.
+# Live load from the ramp.
 liveLoad= loadCaseManager.setCurrentLoadCase('liveLoad')
-buildingLiveLoad= 1.5*1000.0*4.44822/FEET_2_METER
+buildingLiveLoad= 8.780e3 #South
 print('buildingLiveLoad= ', buildingLiveLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingLiveLoad,0.0]))
 
-# Snow load from the building.
-snowLoad= loadCaseManager.setCurrentLoadCase('snowLoad')
-buildingSnowLoad= 0.01*1000.0*4.44822/FEET_2_METER
-print('buildingSnowLoad= ', buildingSnowLoad/1e3, ' kN/m')
-wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingSnowLoad,0.0]))
-
-# Wind load from the building.
-windLoad= loadCaseManager.setCurrentLoadCase('windLoad')
-buildingWindLoad= 0.01*1000.0*4.44822/FEET_2_METER
-print('buildingWindLoad= ', buildingWindLoad/1e3, ' kN/m')
-wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingWindLoad,0.0]))
-
-# Accidental actions. Quake
-quakeLoad= loadCaseManager.setCurrentLoadCase('quakeLoad')
-kh=  0.03
-kv=  0.7*kh
-Aq= wall.getMononobeOkabeDryOverpressure(backFillSoilModel,kv,kh)
-#print('Aq= ',Aq)
-quakeEarthPressure= earth_pressure.UniformLoadOnStem(Aq)
-wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backFillDelta)
 
 #Load combinations
 execfile("./load_combinations.py")

@@ -31,18 +31,18 @@ topOfFoundation= -(11.0*FEET_2_METER+8*INCH_2_METER)
 stemBottomWidth= 10*INCH_2_METER
 stemTopWidth= stemBottomWidth
 footingThickness= 14*INCH_2_METER
-sectionName= "T2a"
+sectionName= "T3"
 wall= ng_basement_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 2.0*FEET_2_METER
-wall.bHeel= 2.0*FEET_2_METER
+wall.bToe= 1.5*FEET_2_METER
+wall.bHeel= 1.5*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'B'
 wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.stemReinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.footingReinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.stemReinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(5,A16_30.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setArmature(5,A19_30.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.stemReinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.footingReinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.footingReinforcement.setArmature(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
@@ -101,7 +101,7 @@ frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFront
 wall.createFrontFillPressures(frontFillPressureModel)
 
 # Dead load from building.
-buildingDeadLoad= 4.6*1000.0*4.44822/FEET_2_METER
+buildingDeadLoad= 31.54e3 #North
 print('buildingDeadLoad= ', buildingDeadLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingDeadLoad,0.0]))
 
@@ -112,19 +112,19 @@ wall.createPressuresFromLoadOnBackFill(trafficEarthPressure, Delta= backFillDelt
 
 # Live load from the building.
 liveLoad= loadCaseManager.setCurrentLoadCase('liveLoad')
-buildingLiveLoad= 1.5*1000.0*4.44822/FEET_2_METER
+buildingLiveLoad= 21.67e3 #North
 print('buildingLiveLoad= ', buildingLiveLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingLiveLoad,0.0]))
 
 # Snow load from the building.
 snowLoad= loadCaseManager.setCurrentLoadCase('snowLoad')
-buildingSnowLoad= 0.01*1000.0*4.44822/FEET_2_METER
+buildingSnowLoad= 10.06e3 #North
 print('buildingSnowLoad= ', buildingSnowLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingSnowLoad,0.0]))
 
 # Wind load from the building.
 windLoad= loadCaseManager.setCurrentLoadCase('windLoad')
-buildingWindLoad= 0.01*1000.0*4.44822/FEET_2_METER
+buildingWindLoad= 15.12e3 #North
 print('buildingWindLoad= ', buildingWindLoad/1e3, ' kN/m')
 wall.createLoadOnTopOfStem(xc.Vector([0.0,-buildingWindLoad,0.0]))
 
@@ -139,6 +139,39 @@ wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backFillDelta)
 
 #Load combinations
 execfile("./load_combinations.py")
+
+#Quasi-permanent situations.
+combContainer.SLS.qp.add('ELS00', '1.0*selfWeight+1.0*deadLoad+0.5*trafficLoad')
+
+# #Stability ultimate states. (type 1)
+# combContainer.ULS.perm.add('SR1A', '1.1*selfWeight+1.35*deadLoad+1.5*trafficLoad')
+# combContainer.ULS.perm.add('SR2', '1.1*selfWeight+1.35*deadLoad')
+# combContainer.ULS.perm.add('SR3A', '1.1*selfWeight+0.8*deadLoad+1.5*trafficLoad')
+# combContainer.ULS.perm.add('SR4', '1.1*selfWeight+0.8*deadLoad')
+# combContainer.ULS.perm.add('SR5A', '0.9*selfWeight+1.35*deadLoad+1.5*trafficLoad')
+# combContainer.ULS.perm.add('SR6', '0.9*selfWeight+1.35*deadLoad')
+# combContainer.ULS.perm.add('SR7A', '0.9*selfWeight+0.8*deadLoad+1.5*trafficLoad')
+# combContainer.ULS.perm.add('SRS1', '1.0*selfWeight+1.0*deadLoad+0.3*trafficLoad+1.0*quakeLoad')
+
+#Strenght ultimate states. (type 2).
+# 'selfWeight','deadLoad','trafficLoad','liveLoad','snowLoad','windLoad','quakeLoad']
+#Equation 16.1
+combContainer.ULS.perm.add('SR101', '1.4*selfWeight+1.4*deadLoad')
+#Equation 16.2
+combContainer.ULS.perm.add('SR102A', '1.2*selfWeight+1.2*deadLoad+1.6*trafficLoad+0.5*snowLoad')
+combContainer.ULS.perm.add('SR102B', '1.2*selfWeight+1.2*deadLoad+1.6*liveLoad+0.5*snowLoad')
+#Equation 16.3
+combContainer.ULS.perm.add('SR103A', '1.2*selfWeight+1.2*deadLoad+1.6*snowLoad+0.5*trafficLoad')
+combContainer.ULS.perm.add('SR103B', '1.2*selfWeight+1.2*deadLoad+1.6*snowLoad+0.5*liveLoad')
+combContainer.ULS.perm.add('SR103C', '1.2*selfWeight+1.2*deadLoad+1.6*snowLoad+0.5*windLoad')
+#Equation 16.4
+combContainer.ULS.perm.add('SR104A', '1.2*selfWeight+1.2*deadLoad+1.0*windLoad+0.5*trafficLoad+0.5*snowLoad')
+combContainer.ULS.perm.add('SR104B', '1.2*selfWeight+1.2*deadLoad+1.0*windLoad+0.5*liveLoad+0.5*snowLoad')
+#Equation 16.5
+combContainer.ULS.perm.add('SR105A', '1.2*selfWeight+1.2*deadLoad+0.5*trafficLoad+0.7*snowLoad')
+combContainer.ULS.perm.add('SR105B', '1.2*selfWeight+1.2*deadLoad+0.5*liveLoad+0.7*snowLoad')
+#Equation 16.6 -> doesn't apply
+#Equation 16.7 -> doesn't apply
 
 def getLoadCasesForDisplaying():
   retval=[]

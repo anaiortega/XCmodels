@@ -63,14 +63,14 @@ wall.bToe= 0.5
 wall.bHeel= 2.1
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.reinforcement.setArmature(1,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(2,A14_15.getCopy('C'))
-wall.reinforcement.setArmature(3,D1618_15.getCopy('C'))
-wall.reinforcement.setArmature(4,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(6,A12_15.getCopy('C'))
-wall.reinforcement.setArmature(7,A10_15.getCopy('C'))
-wall.reinforcement.setArmature(8,D1618_15.getCopy('B'))
-wall.reinforcement.setArmature(11,A14_15.getCopy('B'))
+wall.stemReinforcement.setArmature(1,D1618_15.getCopy('C'))
+wall.stemReinforcement.setArmature(2,A14_15.getCopy('C'))
+wall.stemReinforcement.setArmature(4,A10_15.getCopy('C'))
+wall.stemReinforcement.setArmature(6,A12_15.getCopy('C'))
+wall.stemReinforcement.setArmature(11,A14_15.getCopy('B'))
+wall.footingReinforcement.setArmature(3,D1618_15.getCopy('C'))
+wall.footingReinforcement.setArmature(7,A10_15.getCopy('C'))
+wall.footingReinforcement.setArmature(8,D1618_15.getCopy('B'))
 
 
 wallFEModel= wall.createFEProblem('Retaining wall A')

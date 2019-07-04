@@ -1,7 +1,14 @@
 # -*- coding: utf-8 -*-
 
 
-execfile('basement_wall.py')
+#execfile('basement_wall_1.py')
+#execfile('basement_wall_2.py')
+#execfile('basement_wall_3.py')
+#execfile('basement_wall_4.py')
+#execfile('basement_wall_4_phase2.py')
+#execfile('basement_wall_5.py')
+#execfile('basement_wall_6.py')
+execfile('ramp_wall_01.py')
 
 from postprocess.reports import common_formats as fmt
 
@@ -16,10 +23,10 @@ print 'SLS results= ', sls_results.rotation, sls_results.rotationComb
 wall.setSLSInternalForcesEnvelope(sls_results.internalForces)
 
 #ULS stability analysis.
-sr= wall.performStabilityAnalysis(['SR102A', 'SR102B', 'SR103A', 'SR103B', 'SR103C', 'SR104A', 'SR104B', 'SR105A', 'SR105B'],foundationSoilModel, sg_adm)
+sr= wall.performStabilityAnalysis(['EQ1608','EQ1609A', 'EQ1609B', 'EQ1610', 'EQ1611A', 'EQ1611B', 'EQ1612', 'EQ1613A', 'EQ1613B', 'EQ1615'],foundationSoilModel, sg_adm)
 
 #ULS strength analysis.
-uls_results= wall.performULSAnalysis(['SR102A', 'SR102B', 'SR103A', 'SR103B', 'SR103C', 'SR104A', 'SR104B', 'SR105A', 'SR105B'])
+uls_results= wall.performULSAnalysis(['EQ1601', 'EQ1602A', 'EQ1602B', 'EQ1603A', 'EQ1603B', 'EQ1603C', 'EQ1604A', 'EQ1604B', 'EQ1605A', 'EQ1605B'])
 wall.setULSInternalForcesEnvelope(uls_results.internalForces)
 
 pth= "./results/"

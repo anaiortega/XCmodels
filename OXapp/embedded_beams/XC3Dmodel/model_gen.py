@@ -21,8 +21,9 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+#home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
 #home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
 
 
 fullProjPath= home + 'XC3Dmodel/'
