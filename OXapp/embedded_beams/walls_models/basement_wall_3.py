@@ -34,17 +34,17 @@ footingThickness= 14*INCH_2_METER
 sectionName= "T3"
 wall= ng_basement_wall.BasementWall(sectionName,cover,stemBottomWidth,stemTopWidth,footingThickness,concrete,reinfSteel)
 wall.stemHeight= wallHead-topOfFoundation
-wall.bToe= 1.75*FEET_2_METER
-wall.bHeel= 1.75*FEET_2_METER
+wall.bToe= 1.5*FEET_2_METER
+wall.bHeel= 1.5*FEET_2_METER
 wall.beton= concrete
-wall.exigeanceFisuration= 'C'
-wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.stemReinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.footingReinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.stemReinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.stemReinforcement.setArmature(5,A16_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.stemReinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('C')))
-wall.footingReinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('C')))
+wall.exigeanceFisuration= 'B'
+wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.footingReinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setArmature(5,A19_30.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.footingReinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.footingReinforcement.setArmature(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 wall.stemReinforcement.setArmature(11,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 
@@ -138,7 +138,7 @@ quakeEarthPressure= earth_pressure.UniformLoadOnStem(Aq)
 wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backFillDelta)
 
 #Load combinations
-combContainer= combinations.CombContainer()
+execfile("./load_combinations.py")
 
 #Quasi-permanent situations.
 combContainer.SLS.qp.add('ELS00', '1.0*selfWeight+1.0*deadLoad+0.5*trafficLoad')
