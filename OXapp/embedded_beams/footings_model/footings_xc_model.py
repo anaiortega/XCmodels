@@ -125,14 +125,15 @@ kV= typical_materials.defElasticMaterial(prep, "kV",kS)
 kH= typical_materials.defElasticMaterial(prep, "kH",kS/10.0)
 xcTotalSet.computeTributaryAreas(False)
 # Springs on nodes.
-elasticBearingNodes= xcTotalSet.getNodes
+elasticBearingNodes= footingsSet.getNodes
 
 for n in elasticBearingNodes:
-  tA= n.getTributaryArea()
-  kV.E= kS*tA
-  kH.E= kS/10.0*tA
-  fixedNode, newElem= modelSpace.setBearing(n.tag,['kH','kH','kV'])
-  fixedNodes.append(fixedNode)
+    print(n)
+    tA= n.getTributaryArea()
+    kV.E= kS*tA
+    kH.E= kS/10.0*tA
+    fixedNode, newElem= modelSpace.setBearing(n.tag,['kH','kH','kV'])
+    fixedNodes.append(fixedNode)
 
   #Loads
 loadManager= prep.getLoadHandler
