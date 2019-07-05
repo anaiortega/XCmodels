@@ -22,11 +22,11 @@ from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
 #home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
+home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
 
 
-fullProjPath= home + 'C3Dmodel_updated_loads/'
+fullProjPath= home + 'XC3Dmodel_updated_loads/'
 execfile(fullProjPath+'env_config.py')
 execfile(fullProjPath+'data.py')
 
@@ -724,8 +724,8 @@ QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vecto
 selfWeightSlabs= loads.UniformLoadOnSurfaces(name= 'selfWeightSlabs',xcSet=slabs,loadVector=xc.Vector([0,0,-Whollowdeck,0,0,0]),refSystem='Global')
 
 LLunif_rooms_1floor=loads.UniformLoadOnSurfaces(name= 'LLunif_rooms_1floor',xcSet=slabs_H,loadVector=xc.Vector([0,0,-unifLLrooms,0,0,0]),refSystem='Global')
-LLunif_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'LLunif_rooms_1floor',xcSet=slabs_L,loadVector=xc.Vector([0,0,-unifLLterrace,0,0,0]),refSystem='Global')
-DLunif_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'LLunif_rooms_1floor',xcSet=slabs_L,loadVector=xc.Vector([0,0,-unifLLterrace,0,0,0]),refSystem='Global')
+LLunif_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'LLunif_terrace_1floor',xcSet=slabs_L,loadVector=xc.Vector([0,0,-unifLLterrace,0,0,0]),refSystem='Global')
+DLunif_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'DLunif_terrace_1floor',xcSet=slabs_L,loadVector=xc.Vector([0,0,-DLterrace,0,0,0]),refSystem='Global')
 
 SL_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'SL_terrace_1floor',xcSet=slabs_L,loadVector=xc.Vector([0,0,-unifSL,0,0,0]),refSystem='Global')
 
@@ -741,15 +741,22 @@ for y in yCols:
 lIndY=[0]+auxInd+[yList.index(yFac[-1])]+[lastYpos]
 indZ=zList.index(zBeamHigh)
 stag1_rg=sptt.staggeredPatternType1(lIndX,lIndY,indZ)
-stag1Set=gridGeom.getSetSurfMultiRegion(stag1_rg,'stag1Set')
-stag1Set.fillDownwards()
-LLstag_rooms_1floor=loads.UniformLoadOnSurfaces(name= 'LLstag_rooms_1floor',xcSet=stag1Set,loadVector=xc.Vector([0,0,-unifLLrooms,0,0,0]),refSystem='Global')
-
+stag1AuxSet=gridGeom.getSetSurfMultiRegion(stag1_rg,'stag1AuxSet')
 indZ=zList.index(zBeamHigh)
+
 stag2_rg=sptt.staggeredPatternType1(lIndX,lIndY,indZ)
-stag2Set=gridGeom.getSetSurfMultiRegion(stag2_rg,'stag2Set')
+stag2AuxSet=gridGeom.getSetSurfMultiRegion(stag2_rg,'stag2AuxSet')
+
+stag1Set=stag1AuxSet-slabs_L
+stag1Set.fillDownwards()
+
+LLstag_rooms_1floor=loads.UniformLoadOnSurfaces(name= 'LLstag_rooms_1floor',xcSet=stag1Set,loadVector=xc.Vector([0,0,-unifLLrooms,0,0,0]),refSystem='Global')
+#LLstag_rooms_1floor=loads.UniformLoadOnSurfaces(name= 'LLstag_rooms_1floor',xcSet=slabs_H,loadVector=xc.Vector([0,0,-unifLLrooms,0,0,0]),refSystem='Global')
+
+stag2Set=stag2AuxSet-slabs_H
 stag2Set.fillDownwards()
 LLstag_terrace_1floor=loads.UniformLoadOnSurfaces(name= 'LLstag_terrace_1floor',xcSet=stag2Set,loadVector=xc.Vector([0,0,-unifLLterrace,0,0,0]),refSystem='Global')
+
 '''
 
 
@@ -894,7 +901,7 @@ vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=sl
 #Dead load
 DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
 DeadL.create()
-DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols])
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor])
 
 #live load (uniform on rooms)
 LiveL_ru=lcases.LoadCase(preprocessor=prep,name="LiveL_ru")
