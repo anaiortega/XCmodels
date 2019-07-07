@@ -114,11 +114,7 @@ xcTotalSet= prep.getSets.getSet('total')
 
 # Constraints.
 fixedNodes= list()
-ME= 135.3e6 #ME2
-kSd= ME/0.3 #ME divided by the plate diameter.
-m= 5.0
-f= 1.4
-kS= kSd/m/f
+kS= 200*4.44822/(0.0254**3)#kSd/m/f
 print ('kS= ', kS/1e6)
 kV= typical_materials.defElasticMaterial(prep, "kV",kS)
 #kV= typical_materials.defElastNoTensMaterial(preprocessor, "kV",kS)
@@ -128,7 +124,6 @@ xcTotalSet.computeTributaryAreas(False)
 elasticBearingNodes= footingsSet.getNodes
 
 for n in elasticBearingNodes:
-    print(n)
     tA= n.getTributaryArea()
     kV.E= kS*tA
     kH.E= kS/10.0*tA
