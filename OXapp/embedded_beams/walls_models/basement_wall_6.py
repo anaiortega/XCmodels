@@ -38,15 +38,15 @@ wall.bToe= 1.25*FEET_2_METER
 wall.bHeel= 1.25*FEET_2_METER
 wall.beton= concrete
 wall.exigeanceFisuration= 'B'
-wall.stemReinforcement.setArmature(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.footingReinforcement.setArmature(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(5,A19_30.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.footingReinforcement.setArmature(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.footingReinforcement.setArmature(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
-wall.stemReinforcement.setArmature(11,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(1,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(2,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.footingReinforcement.setReinforcement(3,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(4,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(5,A19_30.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(6,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.footingReinforcement.setReinforcement(7,A10_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.footingReinforcement.setReinforcement(8,D1619_15.getCopy(ACI_limit_state_checking.RebarController('B')))
+wall.stemReinforcement.setReinforcement(11,A13_15.getCopy(ACI_limit_state_checking.RebarController('B')))
 
 
 wallFEModel= wall.createFEProblem('Basement wall '+sectionName)
