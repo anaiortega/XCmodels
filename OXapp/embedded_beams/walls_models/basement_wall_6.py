@@ -22,7 +22,7 @@ FEET_2_METER= 0.3048
 cover= 55e-3
 
 #Materials
-concrete= ACI_materials.c3500
+concrete= ACI_materials.c4000
 reinfSteel= ACI_materials.A615G60
 execfile("./armatures_type.py")
 
