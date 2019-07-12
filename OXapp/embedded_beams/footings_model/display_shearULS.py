@@ -22,7 +22,7 @@ execfile('./captionTexts.py')
 limitStateLabel= lsd.shearResistance.label
 
 #Possible arguments: 'CF', 'N', 'Vy', 'My', 'Mz', 'Vu'
-argument= 'CF'
+argument= 'Vu'
 setDisp= footingsSet 
 
 
