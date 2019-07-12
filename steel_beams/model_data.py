@@ -19,8 +19,8 @@ from actions import combinations as combs
 mainBeam= xc.FEProblem()
 mainBeam.title= 'Warehouse main beams'
 preprocessor= mainBeam.getPreprocessor   
-nodos= preprocessor.getNodeHandler
-modelSpace= predefined_spaces.StructuralMechanics3D(nodos)
+nodes= preprocessor.getNodeHandler
+modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
 
 #Materials
 S235JR= EC3_materials.S235JR
