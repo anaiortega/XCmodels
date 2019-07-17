@@ -8,7 +8,7 @@ from postprocess.xcVtk import vtk_graphic_base
 
 lc= gr.getRecordLoadCaseDispFromLoadPattern(cLC)
 lc.setsToDispDspRot=[infSet]#[overallSet]
-lc.setsToDispIntForc=[infSet]
+lc.setsToDispIntForc=[supSet]
 lc.unitsScaleLoads=1e-3
 lc.unitsScaleDispl=1e3
 lc.unitsDispl='[mm]'
