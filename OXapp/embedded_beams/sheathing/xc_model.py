@@ -119,7 +119,7 @@ for e in supSet.getElements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-W]))
 
 #We add the load case to domain.
-preprocessor.getLoadHandler.getLoadPatterns.addToDomain("liveLoad")
+preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
 
 # Solution
 # Linear static analysis.
@@ -138,3 +138,36 @@ DeltaLL= 12*L*span**4/1743.0/section.sectionProperties.EI()/2 #Two layers
 r= span/DeltaLL
 print('DeltaLL= ', DeltaLL*1e3, ' mm (L/'+str(r)+')')
 
+Ft= 2800*4.44822/0.3048/section.sectionProperties.A
+Fb= 370/structuralPanelGeom.Wzel()*4.44822*0.0254/0.3048
+Fv= 81*4.44822/0.0254/structuralPanelGeom.h
+
+sgMax= -1e6
+tauMax= -1e6
+for e in supSet.getElements:
+    e.getResistingForce()
+    m1= e.getM1
+    sg1= abs(m1/section.sectionProperties.I*structuralPanelGeom.h/2)
+    tau1= abs(e.getV1/section.sectionProperties.A)*structuralPanelGeom.shearConstant
+    sgMax= max(sgMax,sg1)
+    tauMax= max(tauMax,tau1)
+    m2= e.getM2
+    sg2= abs(m2/section.sectionProperties.I*structuralPanelGeom.h/2)
+    tau2= abs(e.getV2/section.sectionProperties.A)*structuralPanelGeom.shearConstant
+    sgMax= max(sgMax,sg2)
+    tauMax= max(tauMax,tau2)
+
+print('sgMax= ', sgMax/1e6,' MPa')
+print('Fb= ', Fb/1e6,' MPa')
+if(Fb>sgMax):
+    print('OK')
+else:
+    print('KO')
+#print('Ft= ', Ft/1e6,' MPa')
+print('Fv= ', Fv/1e6,' MPa')
+print('tauMax= ', tauMax/1e6,' MPa')
+if(Fv>tauMax):
+    print('OK')
+else:
+    print('KO')
+Cfire= mat.getFireDesignAdjustementFactor('Fb')
