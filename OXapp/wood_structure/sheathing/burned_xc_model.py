@@ -51,15 +51,11 @@ l11= lines.newLine(pt11.tag,pt12.tag)
 l12= lines.newLine(pt12.tag,pt13.tag)
 l13= lines.newLine(pt13.tag,pt14.tag)
 
-infSet= preprocessor.getSets.defSet("inf")
-infSet.getLines.append(l1)
-infSet.getLines.append(l2)
-infSet.getLines.append(l3)
-
 supSet= preprocessor.getSets.defSet("sup")
-supSet.getLines.append(l11)
-supSet.getLines.append(l12)
-supSet.getLines.append(l13)
+supSet.getLines.append(l1)
+supSet.getLines.append(l2)
+supSet.getLines.append(l3)
+
 
 
 # Mesh
@@ -73,8 +69,6 @@ seedElemHandler.defaultTransformation= "lin"
 elem= seedElemHandler.newElement("ElasticBeam2d",xc.ID([0,0]))
 
 xcTotalSet= preprocessor.getSets.getSet("total")
-mesh= infSet.genMesh(xc.meshDir.I)
-infSet.fillDownwards()
 mesh= supSet.genMesh(xc.meshDir.I)
 supSet.fillDownwards()
 
@@ -82,17 +76,6 @@ supSet.fillDownwards()
 for p in [pt1,pt2,pt3,pt4]:
     n= p.getNode()
     modelSpace.fixNode00F(n.tag)
-
-for n in supSet.getNodes:
-    pos= n.getInitialPos3d
-    nInf= infSet.getNearestNode(pos)
-    modelSpace.constraints.newEqualDOF(nInf.tag,n.tag,xc.ID([1]))
-
-for p in [pt12,pt13]:
-    n= p.getNode()
-    pos= n.getInitialPos3d
-    nInf= infSet.getNearestNode(pos)
-    modelSpace.constraints.newEqualDOF(nInf.tag,n.tag,xc.ID([0]))
 
 
 # Actions
@@ -126,21 +109,12 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
 analisis= predefined_solutions.simple_static_linear(sheathingBeam)
 result= analisis.analyze(1)
 
-uYMax= -1e6
-for n in infSet.getNodes:
-    uY= -n.getDisp[1]
-    uYMax= max(uY,uYMax)
-
-r= span/uYMax
-print('uYMax= ', uYMax*1e3, ' mm (L/'+str(r)+')')
-
-DeltaLL= 12*L*span**4/1743.0/section.sectionProperties.EI()/2 #Two layers
-r= span/DeltaLL
-print('DeltaLL= ', DeltaLL*1e3, ' mm (L/'+str(r)+')')
-
-Ft= 2800*4.44822/0.3048/section.sectionProperties.A
-Fb= 370/structuralPanelGeom.Wzel()*4.44822*0.0254/0.3048
-Fv= 81*4.44822/0.0254/structuralPanelGeom.h
+# Bending and shear strength (5-ply)
+CD= AWCNDS_materials.getLoadDurationFactor(0.5/365.25/24)
+print("Cd= ",CD)
+Ft= 3640*4.44822/0.3048/section.sectionProperties.A
+Fb= CD*444.0/structuralPanelGeom.Wzel()*4.44822*0.0254/0.3048
+Fv= CD*215*4.44822/0.3048/structuralPanelGeom.h
 
 sgMax= -1e6
 tauMax= -1e6
@@ -148,12 +122,12 @@ for e in supSet.getElements:
     e.getResistingForce()
     m1= e.getM1
     sg1= abs(m1/section.sectionProperties.I*structuralPanelGeom.h/2)
-    tau1= abs(e.getV1/section.sectionProperties.A)*structuralPanelGeom.shearConstant
+    tau1= abs(e.getV1/section.sectionProperties.A)
     sgMax= max(sgMax,sg1)
     tauMax= max(tauMax,tau1)
     m2= e.getM2
     sg2= abs(m2/section.sectionProperties.I*structuralPanelGeom.h/2)
-    tau2= abs(e.getV2/section.sectionProperties.A)*structuralPanelGeom.shearConstant
+    tau2= abs(e.getV2/section.sectionProperties.A)
     sgMax= max(sgMax,sg2)
     tauMax= max(tauMax,tau2)
 
@@ -170,4 +144,4 @@ if(Fv>tauMax):
     print('OK')
 else:
     print('KO')
-Cfire= mat.getFireDesignAdjustementFactor('Fb')
+
