@@ -10,7 +10,7 @@ layerNamesToImport= ['Mur.*']
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-dxfImport= DxfReader.DXFImport("test.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False, tolerance= .25)
+dxfImport= DxfReader.DXFImport("dxf_model.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False, tolerance= .25)
 
 #Block topology
 blocks= dxfImport.exportBlockTopology('test')
