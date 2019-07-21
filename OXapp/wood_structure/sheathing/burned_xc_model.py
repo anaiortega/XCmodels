@@ -24,7 +24,7 @@ modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 # Materials
 # Mechanical properties taken from:
 # http://www.pfsteco.com/techtips/pdf/tt_plywooddesigncapacities
-structuralPanelGeom= AWCNDS_materials.PlywoodPanels['19/32']
+structuralPanelGeom= AWCNDS_materials.PlywoodPanels['19/32']#['3/8']#
 plywood= typical_materials.MaterialData(name='Douglas-Fri Plywood',E=4.2e9,nu=0.2,rho=500)
 section= structuralPanelGeom.defElasticShearSection2d(preprocessor,plywood)
 
