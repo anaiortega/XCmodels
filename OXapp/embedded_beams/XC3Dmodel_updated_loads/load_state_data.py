@@ -222,7 +222,7 @@ for lc in SLS:
     # lc.listBeamIntForc=['My','Qz']
     lc.setsToDispBeamIntForc=[columns]
     lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
-    lc.setsToDispBeamIntForc=[beams]
+#    lc.setsToDispBeamIntForc=[beams]
     lc.listBeamIntForc=['My','Qz']
 #    lc.setsToDispBeamIntForc=[columns]
 #    lc.listBeamIntForc=['N','My','Mz','Qy','Qz']
