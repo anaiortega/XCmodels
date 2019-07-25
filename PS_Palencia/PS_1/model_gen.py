@@ -153,28 +153,28 @@ from actions.roadway_trafic import standard_load_models as slm
 selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=allmesh+[pilas_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 #Dead load case
-G2=slm.dead_LC(preprocessor=prep,lcName='G2',drivewaySet=calzada,qAsphalt=pav_sup,sidewalkSet=aceras,qSidewalk=qDeadAcera,barrierSet=barrera,qBarrier=qBarrera,deckEdgeSet=bordTabl,qDeckEdge=qAntivand)
+G2=slm.dead_LC(lcName='G2',drivewaySet=calzada,qAsphalt=pav_sup,sidewalkSet=aceras,qSidewalk=qDeadAcera,barrierSet=barrera,qBarrier=qBarrera,deckEdgeSet=bordTabl,qDeckEdge=qAntivand)
 #Rheological load cases
-G3=slm.thermal_rheological_LC(preprocessor=prep,lcName='G3',lst_Sets_DOF_Strain=[(tablero,1,eps_retracc)])
+G3=slm.thermal_rheological_LC(lcName='G3',lst_Sets_DOF_Strain=[(tablero,1,eps_retracc)])
 #Traffic load cases
-Q1a1=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1a1',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,sidewalkSet=acerDer)
-Q1a2=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1a2',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,sidewalkSet=acerDer)
-Q1b1=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1b1',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano1,sidewalkSet=aceras)
-Q1b2=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1b2',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano2,sidewalkSet=aceras)
-Q1c=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1c',deckSet=tablero,virtLane1Set=viaFictDer_cent,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq_cent,xyCentPL2=centVFi_vano2,sidewalkSet=aceras)
-Q1d=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1d',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano2,sidewalkSet=aceras)
-Q1e=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1e',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano1,sidewalkSet=aceras)
+Q1a1=slm.IAP_traffic_LC(lcName='Q1a1',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,sidewalkSet=acerDer)
+Q1a2=slm.IAP_traffic_LC(lcName='Q1a2',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,sidewalkSet=acerDer)
+Q1b1=slm.IAP_traffic_LC(lcName='Q1b1',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano1,sidewalkSet=aceras)
+Q1b2=slm.IAP_traffic_LC(lcName='Q1b2',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano2,sidewalkSet=aceras)
+Q1c=slm.IAP_traffic_LC(lcName='Q1c',deckSet=tablero,virtLane1Set=viaFictDer_cent,xyCentPL1=centVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq_cent,xyCentPL2=centVFi_vano2,sidewalkSet=aceras)
+Q1d=slm.IAP_traffic_LC(lcName='Q1d',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano2,sidewalkSet=aceras)
+Q1e=slm.IAP_traffic_LC(lcName='Q1e',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano1,sidewalkSet=aceras)
 
-Q1bFren=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1bFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano1,sidewalkSet=aceras)
-Q1dFren=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1dFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano2,sidewalkSet=aceras)
-Q1eFren=slm.IAP_traffic_LC(preprocessor=prep,lcName='Q1eFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano1,sidewalkSet=aceras)
+Q1bFren=slm.IAP_traffic_LC(lcName='Q1bFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=centVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=centVFi_vano1,sidewalkSet=aceras)
+Q1dFren=slm.IAP_traffic_LC(lcName='Q1dFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano2,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano2,sidewalkSet=aceras)
+Q1eFren=slm.IAP_traffic_LC(lcName='Q1eFren',deckSet=tablero,virtLane1Set=viaFictDer,xyCentPL1=extrVFd_vano1,hDistrPL=cantoLosa/2.,slopeDistrPL=1.0,vQbraking=vQfren,virtLane2Set=viaFictIzq,xyCentPL2=extrVFi_vano1,sidewalkSet=aceras)
 #Thermal load cases
 #Contraction
-Q31=slm.thermal_rheological_LC(preprocessor=prep,lcName='Q31',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_contr)])
-Q31neopr=slm.thermal_rheological_LC(preprocessor=prep,lcName='Q31neopr',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_contr_neopr)])
+Q31=slm.thermal_rheological_LC(lcName='Q31',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_contr)])
+Q31neopr=slm.thermal_rheological_LC(lcName='Q31neopr',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_contr_neopr)])
 #Expansion
-Q32=slm.thermal_rheological_LC(preprocessor=prep,lcName='Q32',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_dilat)])
-Q32neopr=slm.thermal_rheological_LC(preprocessor=prep,lcName='Q32neopr',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_dilat_neopr)])
+Q32=slm.thermal_rheological_LC(lcName='Q32',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_dilat)])
+Q32neopr=slm.thermal_rheological_LC(lcName='Q32neopr',lst_Sets_DOF_Strain=[(tablero,1,coefDilat*Tunif_dilat_neopr)])
 
 
 
