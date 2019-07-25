@@ -15,13 +15,13 @@ meshes= NeutralMeshDescription.loadMeshes(fName)
 # Problem type
 prueba= xc.FEProblem()
 preprocessor= prueba.getPreprocessor
-nodos= preprocessor.getNodeHandler
-modelSpace= predefined_spaces.StructuralMechanics3D(nodos)
+nodes= preprocessor.getNodeHandler
+modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
 
 for key in meshes:
   print "Loading mesh: ", key
   mesh= meshes[key]
   for nId in mesh.nodeCoords:
     coords= mesh.nodeCoords[nId].coords
-    nodos.newNodeIDXYZ(nId,coords[0],coords[1],coords[2])
+    nodes.newNodeIDXYZ(nId,coords[0],coords[1],coords[2])
 

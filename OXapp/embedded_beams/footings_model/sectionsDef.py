@@ -20,7 +20,8 @@ from postprocess import limit_state_data as lsd
 from postprocess import element_section_map
 
 
-concrete= ACI_materials.c3500
+concrete= ACI_materials.c3000
+concrete.gmmC= 1.0/0.75
 reinfSteel= ACI_materials.A615G60
 #Define available sections for the elements (spatial distribution of RC sections).
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()

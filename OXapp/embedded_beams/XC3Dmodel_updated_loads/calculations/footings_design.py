@@ -64,8 +64,8 @@ class ACIIsolatedFooting(object):
     def getTwoWayVc(self):
         ''' Return shear strength in concrete design for
             two-way shear.'''
-        fcklb_inch2= abs(self.concrete.fck*self.concrete.fromPascal) #Pa -> lb/inch2
-        return 4.0*self.lamb_da*math.sqrt(fcklb_inch2)*self.concrete.toPascal #lb/inch2 -> Pa
+        fcklb_inch2= abs(self.concrete.fck*aci.fromPascal) #Pa -> lb/inch2
+        return 4.0*self.lamb_da*math.sqrt(fcklb_inch2)*aci.toPascal #lb/inch2 -> Pa
     def hf_func(self, Pu, vc):
         ''' Returns the function to find the root for.'''
         tmp= Pu/self.phi/self.getTwoWayVc()

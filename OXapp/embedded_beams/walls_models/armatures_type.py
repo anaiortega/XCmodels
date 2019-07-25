@@ -1,4 +1,4 @@
-#Armatures type
+#Typical reinforcements
 A06_15= ACI_limit_state_checking.ACIRebarFamily(reinfSteel,'#2',0.15,cover)
 A10_15= ACI_limit_state_checking.ACIRebarFamily(reinfSteel,'#3',0.15,cover)
 A13_15= ACI_limit_state_checking.ACIRebarFamily(reinfSteel,'#4',0.15,cover)

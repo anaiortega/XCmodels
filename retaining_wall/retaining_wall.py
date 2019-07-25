@@ -24,7 +24,7 @@ cover= 55e-3
 #Materials
 concrete= SIA262_materials.c30_37
 steel= SIA262_materials.B500B
-#Armatures type
+#Typical reinforcement.
 A08_15= SIA262_limit_state_checking.SIARebarFamily(steel,8e-3,0.15,cover)
 A10_15= SIA262_limit_state_checking.SIARebarFamily(steel,10e-3,0.15,cover)
 A12_15= SIA262_limit_state_checking.SIARebarFamily(steel,12e-3,0.15,cover)
@@ -63,14 +63,14 @@ wall.bToe= 0.5
 wall.bHeel= 2.1
 wall.beton= concrete
 wall.exigeanceFisuration= 'C'
-wall.stemReinforcement.setArmature(1,D1618_15.getCopy('C'))
-wall.stemReinforcement.setArmature(2,A14_15.getCopy('C'))
-wall.stemReinforcement.setArmature(4,A10_15.getCopy('C'))
-wall.stemReinforcement.setArmature(6,A12_15.getCopy('C'))
-wall.stemReinforcement.setArmature(11,A14_15.getCopy('B'))
-wall.footingReinforcement.setArmature(3,D1618_15.getCopy('C'))
-wall.footingReinforcement.setArmature(7,A10_15.getCopy('C'))
-wall.footingReinforcement.setArmature(8,D1618_15.getCopy('B'))
+wall.stemReinforcement.setReinforcement(1,D1618_15.getCopy('C'))
+wall.stemReinforcement.setReinforcement(2,A14_15.getCopy('C'))
+wall.stemReinforcement.setReinforcement(4,A10_15.getCopy('C'))
+wall.stemReinforcement.setReinforcement(6,A12_15.getCopy('C'))
+wall.stemReinforcement.setReinforcement(11,A14_15.getCopy('B'))
+wall.footingReinforcement.setReinforcement(3,D1618_15.getCopy('C'))
+wall.footingReinforcement.setReinforcement(7,A10_15.getCopy('C'))
+wall.footingReinforcement.setReinforcement(8,D1618_15.getCopy('B'))
 
 
 wallFEModel= wall.createFEProblem('Retaining wall A')

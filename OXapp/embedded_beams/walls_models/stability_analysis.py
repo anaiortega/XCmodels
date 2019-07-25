@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
+import sys
 
-#execfile('basement_wall_1.py')
-#execfile('basement_wall_2.py')
-#execfile('basement_wall_3.py')
-#execfile('basement_wall_4.py')
-#execfile('basement_wall_4_phase2.py')
-#execfile('basement_wall_5.py')
-#execfile('basement_wall_6.py')
-execfile('ramp_wall_01.py')
+wallDefinition= sys.argv[1]
+
+print(wallDefinition)
+execfile(wallDefinition)
 
 from postprocess.reports import common_formats as fmt
 
