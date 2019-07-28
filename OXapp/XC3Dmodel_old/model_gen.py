@@ -24,7 +24,7 @@ from materials.ec3 import EC3_materials
 #home= '/home/luis/projects/XCmodels/OXapp/'
 home= '/home/ana/projects/XCmodels/OXapp/'
 
-fullProjPath= home + 'XC3Dmodel/'
+fullProjPath= home + 'XC3Dmodel_old/'
 execfile(fullProjPath+'env_config.py')
 execfile(fullProjPath+'data.py')
 
