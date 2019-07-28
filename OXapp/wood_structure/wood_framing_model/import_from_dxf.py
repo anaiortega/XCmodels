@@ -5,12 +5,15 @@ from __future__ import print_function
 from import_export import DxfReader
 from import_export import NeutralMeshDescription as nmd
 
-layerNamesToImport= ['Mur.*']
+#layerNamesToImport= ['3rd_floor_truss_II.*']
+layerNamesToImport= ['facade_wall.*']
 
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-dxfImport= DxfReader.DXFImport("dxf_model.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False, tolerance= .25)
+fileName= 'dxf_model_rev01.dxf'
+#fileName= 'pp.dxf'
+dxfImport= DxfReader.DXFImport(fileName, layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False, polylinesAsSurfaces= False, tolerance= .25)
 
 #Block topology
 blocks= dxfImport.exportBlockTopology('test')
