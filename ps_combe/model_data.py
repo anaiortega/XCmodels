@@ -319,7 +319,7 @@ lane1Axis= laneAxisLines[0]
 lane1Sg= lane1Axis.getSegment(2)
 lane1Center= lane1Sg.getCenterOfMass()
 lane1CenterTrsvSlope= (transverseSlopes[1]+transverseSlopes[2])*0.5
-lane1CenterLongSlope= lane1Sg.getVDir().normalizado()
+lane1CenterLongSlope= lane1Sg.getVDir().normalized()
 loadPositions= [(-0.6,1.0),(0.6,1.0),(-0.6,-1.0),(0.6,-1.0)]
 load3DPositions= list()
 for p in loadPositions:
@@ -339,7 +339,7 @@ lane2Axis= laneAxisLines[1]
 lane2Sg= lane2Axis.getSegment(2)
 lane2Center= lane2Sg.getCenterOfMass()
 lane2CenterTrsvSlope= (transverseSlopes[1]+transverseSlopes[2])*0.5
-lane2CenterLongSlope= lane2Sg.getVDir().normalizado()
+lane2CenterLongSlope= lane2Sg.getVDir().normalized()
 load3DPositions= list()
 for p in loadPositions:
     p3D= lane2Center+p[1]*lane2CenterTrsvSlope+p[0]*lane2CenterLongSlope
@@ -378,7 +378,7 @@ cLC= loadCaseManager.setCurrentLoadCase('liveLoad269_2')
 lane1Axis= laneAxisLines[0]
 lane1Sg= lane1Axis.getSegment(2)
 lane1OriginTrsvSlope= transverseSlopes[1]
-lane1OriginLongSlope= lane1Sg.getVDir().normalizado()
+lane1OriginLongSlope= lane1Sg.getVDir().normalized()
 lane1Origin= lane1Sg.getFromPoint()-1.1*(0.65+0.16+1.2)/2.0*lane1OriginLongSlope
 loadPositions= [(-0.6,1.0),(0.6,1.0),(-0.6,-1.0),(0.6,-1.0)]
 load3DPositions= list()
@@ -398,7 +398,7 @@ for n in lane1OriginNodLst:
 lane2Axis= laneAxisLines[1]
 lane2Sg= lane2Axis.getSegment(2)
 lane2OriginTrsvSlope= (transverseSlopes[1]+transverseSlopes[2])*0.5
-lane2OriginLongSlope= lane2Sg.getVDir().normalizado()
+lane2OriginLongSlope= lane2Sg.getVDir().normalized()
 lane2Origin= lane2Sg.getFromPoint()-1.1*(0.65+0.16+1.2)/2.0*lane2OriginLongSlope
 load3DPositions= list()
 for p in loadPositions:
