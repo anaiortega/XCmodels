@@ -12,7 +12,7 @@ def redondea(lista,decimales):
 #Auxiliary data
 dec=2 # número de posiciones decimales para redondear coordenadas
  #Geometry
-Lvanos=[11.50,16.10,11.50]
+Lvanos=[11.50,15.50,11.50,11.50]
 Ltablero=0
 for v in Lvanos:
     Ltablero+=v
@@ -68,7 +68,7 @@ xLosa=[xCartab[0][-1],xCartab[1][0]]
 xRiostrEstr=[[xVoladz[0][-1],xVoladz[1][0]],
              [xVoladz[0][-1],xVoladz[1][0]]]   #riostra estribo 1, riostra estribo 2
 #Pila
-xPil=[0]
+xPil=[-1.25,1.25]
 #Vias ficticeas
 xViasFict=[[0,round(anchoCalz/2.,dec)],
            [round(-anchoCalz/2.,dec),0]] #vía 1, vía 2, ...
@@ -82,16 +82,17 @@ yEstr=[0,Ltablero] #eje estribo 1, eje estribo 2
 yRiostrEstr=[[round(yEstr[0]-LriostrEstr/2.,dec),round(yEstr[0]+LriostrEstr/2.,dec)],
              [round(yEstr[1]-LriostrEstr/2.,dec),round(yEstr[1]+LriostrEstr/2.,dec)]]  #riostra estribo 1, riostra estribo 2
 #Pilas
-yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
+yPil=[Lvanos[0],Lvanos[0]+Lvanos[1],Lvanos[0]+Lvanos[1]+Lvanos[2]]
 #Riostra pilas
 yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
-            [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
+            [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)],
+            [round(yPil[2]-LriostrPil/2.,dec),round(yPil[2]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 yLosa
 #Zonas armado
 yArm=redondea([0.2*Lvanos[0],Lvanos[0]-0.3*Lvanos[0],Lvanos[0]+0.3*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 #   Coordenadas en Z
-zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
+zPil=[[-hTotPilas,0],[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
 zLosa=[0]
 
 #materials

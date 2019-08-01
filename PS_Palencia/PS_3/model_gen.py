@@ -20,7 +20,7 @@ from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #
 
-fullProjPath='/home/ana/projects/XCmodels/PS_Palencia/PS_1/'
+fullProjPath='/home/ana/projects/XCmodels/PS_Palencia/PS_3/'
 execfile(fullProjPath+'env_config.py')
 
 execfile(fullProjPath+'data.py')
