@@ -205,7 +205,7 @@ for part in modelLines:
     elem= seedElemHandler.newElement("ElasticBeam3d",xc.ID([0,0]))
     l.genMesh(xc.meshDir.I)
 
-print 'number of nodes= ', len(xcTotalSet.getNodes)
+print 'number of nodes= ', len(xcTotalSet.nodes)
 
 # Constraints
 fixedNodes= list()
@@ -234,19 +234,19 @@ length= 0.0
 springNodes= preprocessor.getSets.defSet("springLines")
 for l in springLines.getLines:
   length+= l.getLength()
-  for n in l.getNodes():
-    springNodes.getNodes.append(n)
+  for n in l.nodes:
+    springNodes.nodes.append(n)
 
-tributaryLength= length/len(springNodes.getNodes)
+tributaryLength= length/len(springNodes.nodes)
 
 print 'length= ', length
-print 'number of spring nodes= ', len(springNodes.getNodes)
+print 'number of spring nodes= ', len(springNodes.nodes)
 print 'tributaryLength= ', tributaryLength
 
 kV= typical_materials.defElasticMaterial(preprocessor, "kV",40e6)
 kH= typical_materials.defElasticMaterial(preprocessor, "kH",4e6)
 
-for n in springNodes.getNodes:
+for n in springNodes.nodes:
   #print "before k= ", kY.E
   kV.E= 40e6*tributaryLength
   kH.E= 4e6*tributaryLength
@@ -256,11 +256,11 @@ for n in springNodes.getNodes:
 #Shell elements.
 shellElements= preprocessor.getSets.defSet("shellElements")
 beamElements= preprocessor.getSets.defSet("beamElements")
-for e in xcTotalSet.getElements:
+for e in xcTotalSet.elements:
   if(e.type()=='XC::ShellMITC4'):
-    shellElements.getElements.append(e)
+    shellElements.elements.append(e)
   elif(e.type()=='XC::ElasticBeam3d'):
-    beamElements.getElements.append(e)
+    beamElements.elements.append(e)
 shellElements.fillDownwards()
 beamElements.fillDownwards()
 
@@ -279,29 +279,29 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 for part in modelParts:
   part.fillDownwards()
 
-#Self weight.
+## Self weight.
 cLC= loadCaseManager.setCurrentLoadCase('selfWeight')
 for part in modelSurfaces:
   weight= part.selfWeight
-  for e in part.getElements:
+  for e in part.elements:
     e.vector3dUniformLoadGlobal(weight)
 
 for part in modelLines:
   weight= part.selfWeight
-  for e in part.getElements:
+  for e in part.elements:
     e.vector3dUniformLoadGlobal(weight)
 
-#Dead load.
+## Dead load.
 cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
 for part in modelSurfaces:
   weight= part.deadLoad
-  for e in part.getElements:
+  for e in part.elements:
     e.vector3dUniformLoadGlobal(weight)
 
 for part in modelLines:
   if hasattr(part,'deadLoad'):
     weight= part.deadLoad
-    for e in part.getElements:
+    for e in part.elements:
       e.vector3dUniformLoadGlobal(weight)
 
 #Shrinkage.
@@ -309,7 +309,7 @@ cLC= loadCaseManager.setCurrentLoadCase('shrinkage')
 shrinkage= -4.6e-4
 for part in modelSurfaces:
   eleLoad= cLC.newElementalLoad("shell_strain_load")
-  eleLoad.elementTags= part.getElements.getTags()
+  eleLoad.elementTags= part.elements.getTags()
   eleLoad.setStrainComp(0,0,shrinkage) #(id of Gauss point, id of component, value)
   eleLoad.setStrainComp(0,1,shrinkage) 
   eleLoad.setStrainComp(1,0,shrinkage)
@@ -321,7 +321,7 @@ for part in modelSurfaces:
 
 for part in modelLines:
   eleLoad= cLC.newElementalLoad("beam_strain_load")
-  eleLoad.elementTags= part.getElements.getTags()
+  eleLoad.elementTags= part.elements.getTags()
   defPlane= xc.DeformationPlane(shrinkage)
   eleLoad.backEndDeformationPlane= defPlane
   eleLoad.frontEndDeformationPlane= defPlane
@@ -332,10 +332,10 @@ qk= -4e3
 for s in setDeck.getSurfaces:
   label= s.getProp('label')
   if(label=='deck04' or label=='deck06' or label=='deck07'):
-    for e in s.getElements():
+    for e in s.elements:
       e.vector3dUniformLoadGlobal(xc.Vector([-0.1*qk,0.0,qk]))
   else:
-    for e in s.getElements():
+    for e in s.elements:
       e.vector3dUniformLoadGlobal(xc.Vector([-0.05*qk,0.0,qk/2.0]))
       
 #Live load B.
@@ -353,7 +353,7 @@ cLC= loadCaseManager.setCurrentLoadCase('temperature')
 alphaAT= -20*10e-6
 for part in modelSurfaces:
   eleLoad= cLC.newElementalLoad("shell_strain_load")
-  eleLoad.elementTags= part.getElements.getTags()
+  eleLoad.elementTags= part.elements.getTags()
   eleLoad.setStrainComp(0,0,alphaAT) #(id of Gauss point, id of component, value)
   eleLoad.setStrainComp(0,1,alphaAT)
   eleLoad.setStrainComp(1,0,alphaAT)
@@ -365,7 +365,7 @@ for part in modelSurfaces:
 
 for part in modelLines:
   eleLoad= cLC.newElementalLoad("beam_strain_load")
-  eleLoad.elementTags= part.getElements.getTags()
+  eleLoad.elementTags= part.elements.getTags()
   defPlane= xc.DeformationPlane(alphaAT)
   eleLoad.backEndDeformationPlane= defPlane
   eleLoad.frontEndDeformationPlane= defPlane
@@ -374,14 +374,14 @@ for part in modelLines:
 cLC= loadCaseManager.setCurrentLoadCase('snowLoad')
 qkSnow= -0.72e3
 for s in setDeck.getSurfaces:
-  for e in s.getElements():
+  for e in s.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,qkSnow]))
 
 #Earthquake.
 cLC= loadCaseManager.setCurrentLoadCase('earthquake')
 for part in modelSurfaces:
   quake= part.quake
-  for e in part.getElements:
+  for e in part.elements:
     e.vector3dUniformLoadGlobal(quake)
 
 #Load combinations

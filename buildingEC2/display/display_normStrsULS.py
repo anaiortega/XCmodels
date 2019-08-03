@@ -23,7 +23,7 @@ argument= 'CF'
 
 
 # if("FCCP" in attributeName):
-#   extrapolate_elem_attr.flatten_attribute(xcSet.getElements,attributeName,1,2)
+#   extrapolate_elem_attr.flatten_attribute(xcSet.elements,attributeName,1,2)
 
 #Set of shell elements to display
 #setDisp= deckSet

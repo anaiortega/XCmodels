@@ -22,7 +22,7 @@ def resultComb(prb,nmbComb):
   preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
 
 # chiLT= 1.0 #Lateral-torsional buckling reduction factor
-# recorder= IPE450A.installULSControlRecorder("element_prop_recorder",setMainBeam.getElements,crossSectionClass,chiLT)
+# recorder= IPE450A.installULSControlRecorder("element_prop_recorder",setMainBeam.elements,crossSectionClass,chiLT)
 for l in ec3beams:
   l.installULSControlRecorder("element_prop_recorder",crossSectionClass)
 

@@ -86,12 +86,12 @@ for s in pairedLines:
     trf= modelSpace.newLinearCrdTransf(trfName,tg)
     #print bl.getLength(), dl.getLength()
     #print bl.nDiv, dl.nDiv
-    for n1 in bl.getNodes():
+    for n1 in bl.nodes:
         n2= dl.getNearestNode(n1.getInitialPos3d)
         #print n1.tag, n2.tag, n1.getInitialPos3d.distPos3d(n2.getInitialPos3d)
         elements.defaultTransformation= trf.getName()
         webElem= elements.newElement("ElasticBeam3d",xc.ID([n1.tag,n2.tag]))
-        webElements.getElements.append(webElem)
+        webElements.elements.append(webElem)
 webElements.fillDownwards()
 pierMesh= fem.SurfSetToMesh(surfSet= pierSurfaces,matSect=pierMat,elemSize=0.5,elemType='ShellMITC4')
 pierMesh.generateMesh(preprocessor) #do meshing
@@ -130,13 +130,13 @@ for l in abutmentLegLines.getLines:
         freeNode= n2
     fixedNode= nodes.duplicateNode(freeNode.tag)
     newElem= neop.setBearingBetweenNodes(modelSpace, fixedNode.tag, freeNode.tag,orientation)
-    abutmentBearingElements.getElements.append(newElem)
+    abutmentBearingElements.elements.append(newElem)
     abutmentFixedNodes.append(fixedNode)
 
 #Guide supports.
 MassongexBraceNodes= list()
 BexBraceNodes= list()
-for n in abutmentBraceLines.getNodes:
+for n in abutmentBraceLines.nodes:
     x= n.getInitialPos3d.y
     if(x<60): # Massongex abutment
         MassongexBraceNodes.append(n)
@@ -157,7 +157,7 @@ for n in MassongexBraceNodes:
 #print 'avgY= ', avgY, 'MassongexBraceCenterNode= ',MassongexBraceCenterNode.getInitialPos3d
 BexBraceNodes= list()
 BexBraceNodes= list()
-for n in abutmentBraceLines.getNodes:
+for n in abutmentBraceLines.nodes:
     x= n.getInitialPos3d.y
     if(x<60): # Bex abutment
         BexBraceNodes.append(n)
@@ -187,7 +187,7 @@ for pair in pairedPoints:
     n2= pair[1].getNode()
     orientation= pair[2]
     newElem= neop.putBetweenNodes(modelSpace, n1.tag, n2.tag,orientation)
-    pierBearingElements.getElements.append(newElem)
+    pierBearingElements.elements.append(newElem)
 pierBearingElements.fillDownwards()
 
 
@@ -196,13 +196,13 @@ foundationNodesPierMassongex= list()
 sz= len(bottomPointsPierMassongex)
 for i in range(0,sz-1):
     l= preprocessor.getMultiBlockTopology.getLineWithEndPoints(bottomPointsPierMassongex[i].tag,bottomPointsPierMassongex[i+1].tag)
-    for n in l.getNodes():
+    for n in l.nodes:
         foundationNodesPierMassongex.append(n)
 foundationNodesPierBex= list()
 sz= len(bottomPointsPierBex)
 for i in range(0,sz-1):
     l= preprocessor.getMultiBlockTopology.getLineWithEndPoints(bottomPointsPierBex[i].tag,bottomPointsPierBex[i+1].tag)
-    for n in l.getNodes():
+    for n in l.nodes:
         foundationNodesPierBex.append(n)
         
 for n in foundationNodesPierMassongex:
@@ -231,12 +231,12 @@ for n in abutmentFixedNodes:
 # Sets
 beams= preprocessor.getSets.defSet('beams')
 shells= preprocessor.getSets.defSet('shells')
-for e in xcTotalSet.getElements:
+for e in xcTotalSet.elements:
     className= e.type()
     if('Beam' in className):
-        beams.getElements.append(e)
+        beams.elements.append(e)
     elif('Shell' in className):
-        shells.getElements.append(e)
+        shells.elements.append(e)
 shells.fillDownwards()
 beams.fillDownwards()
 
@@ -254,7 +254,7 @@ grav= 9.81 #Gravity acceleration (m/s2)
 # Self weight.
 shells.computeTributaryAreas(False)
 cLC= loadCaseManager.setCurrentLoadCase('GselfWeight')
-for e in shells.getElements:
+for e in shells.elements:
     thickness= e.getPhysicalProperties.getVectorMaterials[0].h
     rho= e.getPhysicalProperties.getVectorMaterials[0].rho
     inertialMass= rho*thickness
@@ -270,7 +270,7 @@ for e in shells.getElements:
           n.setProp('tributaryMass',tributaryMass)
 
 beams.computeTributaryLengths(False)
-for e in beams.getElements:
+for e in beams.elements:
     area= e.sectionProperties.A
     inertialMass= 2500*area
     load=  grav*inertialMass
@@ -288,7 +288,7 @@ for e in beams.getElements:
 cLC= loadCaseManager.setCurrentLoadCase('GdeadLoad')
 deadLoad= 23.76e3 #N/m2
 deadLoadVector= xc.Vector([0.0, 0.0, -deadLoad])
-for e in deckSurfaces.getElements:
+for e in deckSurfaces.elements:
     e.vector3dUniformLoadGlobal(deadLoadVector)
     #For modal analysis.
     inertialMass= deadLoad/grav
@@ -301,8 +301,8 @@ for e in deckSurfaces.getElements:
             n.setProp('tributaryMass',tributaryMass)
 
 for edge in edgeLines:
-    nNodes= len(edge.getNodes())
-    for n in edge.getNodes():
+    nNodes= len(edge.nodes)
+    for n in edge.nodes:
         load= 4.87e3 *edge.getLength()/nNodes# N/mbarrier + parapet
         cLC.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-load,0,0,0]))
         #For modal analysis.
@@ -359,17 +359,17 @@ qk1Brake= qk1LongBrake+qk1TrsvBrake
 qk1Vector= geom.Vector3d(0.0,0.0,-qk1)+qk1Brake
 poly_lane1= laneRegions[0]
 lane1_elements= sets_mng.set_included_in_orthoPrism(preprocessor,setInit=deckSurfaces,prismBase=poly_lane1,prismAxis='Z',setName='lane1_elements')
-for e in lane1_elements.getElements:
+for e in lane1_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qk1Vector.x,qk1Vector.y,qk1Vector.z]))
 qk2= alpha_q*2.5e3 #N/m
 poly_lane2= laneRegions[1]
 lane2_elements= sets_mng.set_included_in_orthoPrism(preprocessor,setInit=deckSurfaces,prismBase=poly_lane2,prismAxis='Z',setName='lane2_elements')
-for e in lane2_elements.getElements:
+for e in lane2_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-qk2]))
 qk3= alpha_q*2.5e3 #N/m
 poly_lane3= laneRegions[2]
 lane3_elements= sets_mng.set_included_in_orthoPrism(preprocessor,setInit=deckSurfaces,prismBase=poly_lane3,prismAxis='Z',setName='lane3_elements')
-for e in lane3_elements.getElements:
+for e in lane3_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-qk3]))
 
 # SIA 269 load model 1 (shear control)
@@ -412,11 +412,11 @@ for n in lane2OriginNodLst:
 
 #Traffic uniform loads:
 qk1Vector= geom.Vector3d(0.0,0.0,-qk1)
-for e in lane1_elements.getElements:
+for e in lane1_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qk1Vector.x,qk1Vector.y,qk1Vector.z]))
-for e in lane2_elements.getElements:
+for e in lane2_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-qk2]))
-for e in lane3_elements.getElements:
+for e in lane3_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-qk3]))
 
 def putNodalLoads(vLoad):
@@ -464,10 +464,10 @@ vLoadDet22= putTruckAt(lane2Center,lane2CenterLongSlope,lane2CenterTrsvSlope,ofr
 qkDet2= 10e3 #N/m
 qkDet2Vector= geom.Vector3d(0.0,0.0,-qkDet2)
 lane1_det2_loaded_elements= sets_mng.set_not_included_in_orthoPrism(preprocessor,setInit=lane1_elements,prismBase=vLoadDet21.getVehicleBoundary() ,prismAxis='Z',setName='lane1_det2_loaded_elements')
-for e in lane1_det2_loaded_elements.getElements:
+for e in lane1_det2_loaded_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qkDet2Vector.x,qkDet2Vector.y,qkDet2Vector.z]))
 lane2_det2_loaded_elements= sets_mng.set_not_included_in_orthoPrism(preprocessor,setInit=lane2_elements,prismBase=vLoadDet22.getVehicleBoundary(),prismAxis='Z',setName='lane1_det2_loaded_elements')
-for e in lane2_det2_loaded_elements.getElements:
+for e in lane2_det2_loaded_elements.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qkDet2Vector.x,qkDet2Vector.y,qkDet2Vector.z]))
 
 # Shear control
@@ -475,10 +475,10 @@ cLC= loadCaseManager.setCurrentLoadCase('liveLoad664Det2_2')
 vLoadDet21Shear= putTruckAtOrigin(lane1Origin,lane1OriginLongSlope,lane1OriginTrsvSlope,ofrou664.Det21TruckLoadModel.getRotatedPi())
 vLoadDet22Shear= putTruckAtOrigin(lane2Origin,lane2OriginLongSlope,lane2OriginTrsvSlope,ofrou664.Det22TruckLoadModel.getRotatedPi())
 lane1_det2_loaded_elements_shear= sets_mng.set_not_included_in_orthoPrism(preprocessor,setInit=lane1_elements,prismBase=vLoadDet21Shear.getVehicleBoundary() ,prismAxis='Z',setName='lane1_det2_loaded_elements_shear')
-for e in lane1_det2_loaded_elements_shear.getElements:
+for e in lane1_det2_loaded_elements_shear.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qkDet2Vector.x,qkDet2Vector.y,qkDet2Vector.z]))
 lane2_det2_loaded_elements_shear= sets_mng.set_not_included_in_orthoPrism(preprocessor,setInit=lane2_elements,prismBase=vLoadDet22Shear.getVehicleBoundary(),prismAxis='Z',setName='lane1_det2_loaded_elements_shear')
-for e in lane2_det2_loaded_elements_shear.getElements:
+for e in lane2_det2_loaded_elements_shear.elements:
     e.vector3dUniformLoadGlobal(xc.Vector([qkDet2Vector.x,qkDet2Vector.y,qkDet2Vector.z]))
 
 
@@ -487,7 +487,7 @@ cLC= loadCaseManager.setCurrentLoadCase('temp_down')
 alphaAT= -20.0*10e-6
 
 eleLoad= cLC.newElementalLoad("shell_strain_load")
-eleLoad.elementTags= shells.getElements.getTags()
+eleLoad.elementTags= shells.elements.getTags()
 eleLoad.setStrainComp(0,0,alphaAT) #(id of Gauss point, id of component, value)
 eleLoad.setStrainComp(0,1,alphaAT)
 eleLoad.setStrainComp(1,0,alphaAT)
@@ -498,7 +498,7 @@ eleLoad.setStrainComp(3,0,alphaAT)
 eleLoad.setStrainComp(3,1,alphaAT)
 
 eleLoad= cLC.newElementalLoad("beam_strain_load")
-eleLoad.elementTags= beams.getElements.getTags()
+eleLoad.elementTags= beams.elements.getTags()
 defPlane= xc.DeformationPlane(alphaAT)
 eleLoad.backEndDeformationPlane= defPlane
 eleLoad.frontEndDeformationPlane= defPlane
@@ -507,7 +507,7 @@ cLC= loadCaseManager.setCurrentLoadCase('temp_up')
 alphaAT= 20.0*10e-6
 
 eleLoad= cLC.newElementalLoad("shell_strain_load")
-eleLoad.elementTags= shells.getElements.getTags()
+eleLoad.elementTags= shells.elements.getTags()
 eleLoad.setStrainComp(0,0,alphaAT) #(id of Gauss point, id of component, value)
 eleLoad.setStrainComp(0,1,alphaAT)
 eleLoad.setStrainComp(1,0,alphaAT)
@@ -518,7 +518,7 @@ eleLoad.setStrainComp(3,0,alphaAT)
 eleLoad.setStrainComp(3,1,alphaAT)
 
 eleLoad= cLC.newElementalLoad("beam_strain_load")
-eleLoad.elementTags= beams.getElements.getTags()
+eleLoad.elementTags= beams.elements.getTags()
 defPlane= xc.DeformationPlane(alphaAT)
 eleLoad.backEndDeformationPlane= defPlane
 eleLoad.frontEndDeformationPlane= defPlane

@@ -5,13 +5,13 @@ execfile("model_data.py")
 
 for part in modelSurfaces:
   weight= part.selfWeight
-  for e in part.getElements:
+  for e in part.elements:
     mats= e.getPhysicalProperties.getVectorMaterials #Materials at gauss points.
     for m in mats:
       m.rho= 0.0
   part.computeTributaryAreas(False)
   rhoPart= -part.selfWeight[2]/9.81
-  for nn in part.getNodes:
+  for nn in part.nodes:
     dM= rhoPart*nn.getTributaryArea()
     nn.setProp("deadMass",dM)
     nn.mass= xc.Matrix([[dM,0,0,0,0,0],
@@ -24,7 +24,7 @@ for part in modelSurfaces:
 for part in modelLines:
   part.computeTributaryLengths(False)
   rhoPart= -part.selfWeight[2]/9.81
-  for nn in part.getNodes:
+  for nn in part.nodes:
     dM= rhoPart*nn.getTributaryLength()
     nn.setProp("deadMass",dM)
     nn.mass= xc.Matrix([[dM,0,0,0,0,0],
@@ -35,7 +35,7 @@ for part in modelLines:
                            [0,0,0,0,0,1e-4]])
 
 #Check nodal masses.
-for n in xcTotalSet.getNodes:
+for n in xcTotalSet.nodes:
   norm= n.mass.Norm()
   if(norm<1e-4):
     n.mass= xc.Matrix([[1e-4,0,0,0,0,0],

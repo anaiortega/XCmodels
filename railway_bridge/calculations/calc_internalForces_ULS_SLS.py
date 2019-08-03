@@ -17,12 +17,12 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= FEcase.getPreprocessor
-reinfConcreteSectionDistribution.assign(elemSet=deck.getElements,setRCSects=deckRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=found.getElements,setRCSects=foundRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=wall.getElements,setRCSects=wallRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=beamX.getElements,setRCSects=beamXRCsect)
-reinfConcreteSectionDistribution.assign(elemSet=beamY.getElements,setRCSects=beamYRCsect)
-reinfConcreteSectionDistribution.assign(elemSet=columnZ.getElements,setRCSects=columnZRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=deck.elements,setRCSects=deckRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=found.elements,setRCSects=foundRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=wall.elements,setRCSects=wallRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=beamX.elements,setRCSects=beamXRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=beamY.elements,setRCSects=beamYRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=columnZ.elements,setRCSects=columnZRCsect)
 
 reinfConcreteSectionDistribution.dump()
 

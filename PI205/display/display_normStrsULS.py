@@ -28,6 +28,6 @@ argument= 'CF'
 setDisp= foundationSet 
 
 # if("FCCP" in attributeName):
-#   extrapolate_elem_attr.flatten_attribute(xcSet.getElements,attributeName,1,2)
+#   extrapolate_elem_attr.flatten_attribute(xcSet.elements,attributeName,1,2)
 
 gm.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,capTexts)

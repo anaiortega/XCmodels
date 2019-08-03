@@ -5,9 +5,9 @@ from postprocess import recorders
 
 #Assigns span value to allow deflection verification.
 span= 15.697
-for n in setTotal.getNodes:
+for n in setTotal.nodes:
   n.setProp('span',span)
-recorder= recorders.installNodeDisplacementRecorder("node_prop_recorder",setTotal.getNodes)
+recorder= recorders.installNodeDisplacementRecorder("node_prop_recorder",setTotal.nodes)
 
 def resultComb(prb,nmbComb):
   preprocessor.resetLoadCase()
@@ -25,7 +25,7 @@ resultComb(mainBeam,'ELS00')
 dispMax= -1
 combDispMax= ""
 fmax= 0
-for n in setTotal.getNodes:
+for n in setTotal.nodes:
   dm= n.getProp("dispMax")
   f= dm/n.getProp('span')
   n.setProp('f',f)

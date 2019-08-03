@@ -83,28 +83,28 @@ for l in constrainedLines:
 totalSet= prep.getSets.getSet('total')
 shells= totalSet
 deckSet= prep.getSets.defSet('deckSet')
-for e in deck.getElements():
-    deckSet.getElements.append(e)
+for e in deck.elements:
+    deckSet.elements.append(e)
 deckSet.fillDownwards()
 parapetBodySet= prep.getSets.defSet('parapetBodySet')
-for e in parapetBody.getElements():
-    parapetBodySet.getElements.append(e)
+for e in parapetBody.elements:
+    parapetBodySet.elements.append(e)
 parapetBodySet.fillDownwards()
 parapetHeadSet= prep.getSets.defSet('parapetHeadSet')
-for e in parapetHead.getElements():
-    parapetHeadSet.getElements.append(e)
+for e in parapetHead.elements:
+    parapetHeadSet.elements.append(e)
 parapetHeadSet.fillDownwards()
 impactOnHead= prep.getSets.defSet('impactOnHead')
 impactOnBody= prep.getSets.defSet('impactOnBody')
 
-for e in totalSet.getElements:
+for e in totalSet.elements:
     pos= e.getPosCentroid(True)
     if(pos.y<1.5):
         if(pos.z>1.5-0.4):
-            impactOnHead.getElements.append(e)
+            impactOnHead.elements.append(e)
         else:
             if((pos.z<(0.75+0.2)) and (pos.z>(0.75-0.2))):
-                impactOnBody.getElements.append(e)
+                impactOnBody.elements.append(e)
 
 impactOnHead.fillDownwards()
 impactOnBody.fillDownwards()

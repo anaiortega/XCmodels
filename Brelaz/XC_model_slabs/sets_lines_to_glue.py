@@ -87,12 +87,12 @@ for pair in lines2Glue:
 #    print 'lines ',lini,',',lini+1
     nodSet0= pair[0].getNodes
     for l in pair[0].getLines:
-        ln=l.getNodes()
+        ln=l.nodes
         for n in ln:
             nodSet0.append(n)
     nodSet1= pair[1].getNodes
     for l in pair[1].getLines:
-        ln=l.getNodes()
+        ln=l.nodes
         for n in ln:
             nodSet1.append(n)
     # print nodSet0, nodSet1
@@ -128,7 +128,7 @@ for pair in lines2Glue:
 #     for i in range(pair[0].getLines.size):
 #         line0= pair[0].getLines[i]
 #         line1= pair[1].getLines[i]
-#         for n0 in line0.getNodes():
+#         for n0 in line0.nodes:
 #             pos0= n0.getInitialPos3d #Position of first node.
 #             n1= line1.getNearestNode(pos0) #Second node.
 #             pos1= n1.getInitialPos3d

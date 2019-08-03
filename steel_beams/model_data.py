@@ -143,7 +143,7 @@ selfWeightLoad= grav*massIPE450
 selfWeightLoadVector= xc.Vector([0.0, 0.0,-selfWeightLoad])
 for key in lineDict:
   l= lineDict[key]
-  elems= l.getElements()
+  elems= l.elements
   for e in elems:
     e.vector3dUniformLoadGlobal(selfWeightLoadVector)
 
@@ -192,6 +192,6 @@ combContainer.ULS.perm.add('ELU03', '1.2*selfWeight+1.2*deadLoad+1.35*pvPanels+1
 setTotal= preprocessor.getSets.getSet("total")
 setMainBeam= preprocessor.getSets.defSet("main_beam")
 
-for e in setTotal.getElements:
+for e in setTotal.elements:
   if(e.getVtkCellType== vtk.VTK_LINE):
-    setMainBeam.getElements.append(e)
+    setMainBeam.elements.append(e)

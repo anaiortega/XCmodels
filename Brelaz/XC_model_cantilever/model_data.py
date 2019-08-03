@@ -93,8 +93,8 @@ lines2Glue= [(wl1a,wl1b),(wl2a,wl2b)]
 gluedDOFs= xc.ID([2]) #Degrees of freedom to "glue".
 
 for pair in lines2Glue:
-  nodSet0= pair[0].getNodes()
-  nodSet1= pair[1].getNodes()
+  nodSet0= pair[0].nodes
+  nodSet1= pair[1].nodes
   #print nodSet0, nodSet1
   for n0 in nodSet0:
     pos0= n0.getInitialPos3d #Position of first node.
@@ -111,12 +111,12 @@ shells= overallSet
 roadwayLimit= 0.95
 roadway= prep.getSets.defSet('roadway')
 sideway= prep.getSets.defSet('sideway')
-for e in overallSet.getElements:
+for e in overallSet.elements:
     pos= e.getPosCentroid(True)
     if(pos.x<roadwayLimit):
-      roadway.getElements.append(e)
+      roadway.elements.append(e)
     else:
-      sideway.getElements.append(e)
+      sideway.elements.append(e)
 
 #                       ***ACTIONS***
 unifPavRoad=2.35e3  # dead uniform load on the roadway [N/m2]

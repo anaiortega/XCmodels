@@ -15,11 +15,11 @@ execfile(modelDataInputFile)
 execfile(model_path+'sectionsDef.py')
 
 #Define section for each element (spatial distribution of RC sections).
-reinfConcreteSectionDistribution.assign(elemSet= setDeck.getElements, setRCSects= deckSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet= setDock.getElements, setRCSects= dockRCSect)
-reinfConcreteSectionDistribution.assign(elemSet= setParapet.getElements, setRCSects= parapetRCSect)
-reinfConcreteSectionDistribution.assign(elemSet= setColumns.getElements, setRCSects= columnRCSect)
-# reinfConcreteSectionDistribution.assign(elemSet= setTransverseReinforcements.getElements, setRCSects= transverseReinfRCSect)
+reinfConcreteSectionDistribution.assign(elemSet= setDeck.elements, setRCSects= deckSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet= setDock.elements, setRCSects= dockRCSect)
+reinfConcreteSectionDistribution.assign(elemSet= setParapet.elements, setRCSects= parapetRCSect)
+reinfConcreteSectionDistribution.assign(elemSet= setColumns.elements, setRCSects= columnRCSect)
+# reinfConcreteSectionDistribution.assign(elemSet= setTransverseReinforcements.elements, setRCSects= transverseReinfRCSect)
 
 
 reinfConcreteSectionDistribution.dump()

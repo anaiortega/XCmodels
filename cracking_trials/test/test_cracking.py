@@ -118,7 +118,7 @@ sections.append(beamRCsect)
 #Generation of the distribution of material extended to the elements of the
 #FE model, assigning to each element the section-group that corresponds to it
 elset=prep.getSets.getSet(beamRCsect.elemSetName)
-reinfConcreteSectionDistribution.assign(elemSet=elset.getElements,setRCSects=beamRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=elset.elements,setRCSects=beamRCsect)
 reinfConcreteSectionDistribution.dump()
 
 #Calculation of internal forces

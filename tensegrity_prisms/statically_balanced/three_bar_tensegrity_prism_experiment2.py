@@ -196,11 +196,11 @@ from solution import predefined_solutions
 analysis= predefined_solutions.simple_static_linear(test)
 result= analysis.analyze(1)
 
-# for e in diagSet.getElements:
+# for e in diagSet.elements:
 #     print e.tag
 #     e.getMaterial().prestress=sigmaPrestrDiagCable
 
-# for e in saddSet.getElements:
+# for e in saddSet.elements:
 #     print e.tag
 #     e.getMaterial().prestress=sigmaPrestrSaddCable
 

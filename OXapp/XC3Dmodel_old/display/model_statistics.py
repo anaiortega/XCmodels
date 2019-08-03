@@ -5,7 +5,7 @@ execfile('../model_gen.py') #FE model generation
 print 'number of points: ', preprocessor.getMultiBlockTopology.getPoints.size
 print 'number of column lines: ', columns.getLines.size
 print 'number of beam lines: ', beams.getLines.size
-print 'number of beam elements: ', beams.getElements.size
+print 'number of beam elements: ', beams.elements.size
 
 attachedBeamLines.fillDownwards()
 attachedBeamLines.description='attached beam lines'

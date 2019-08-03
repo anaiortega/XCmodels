@@ -83,7 +83,7 @@ nnodesBeam=91   #number of nodes to create the beam elements
 XdistNod=span/(nnodesBeam-1)
 for i in range(nnodesBeam):
     n=nodes.newNodeXYZ(i*XdistNod,0,0)
-    beamSet.getNodes.append(n)
+    beamSet.nodes.append(n)
 
 #Geometric sections
 from materials.sections import section_properties as sectpr
@@ -104,7 +104,7 @@ elements.defaultMaterial='beamMat'
 elements.defaultTag= 1
 for nn in range(1,nnodesBeam):
     elem= elements.newElement("ElasticBeam3d",xc.ID([nn,nn+1]))
-    beamSet.getElements.append(elem)
+    beamSet.elements.append(elem)
 
 #Boundary conditions
 modelSpace.fixNode000_FFF(1)
@@ -157,10 +157,10 @@ overallSet=preprocessor.getSets.getSet('total')
 
 # Connection between cable and beam
 # gluedDOFs= [0,1,2,3,4,5]
-# tendonSet_nod=tendonSet.getNodes
+# tendonSet_nod=tendonSet.nodes
 # for n in tendonSet_nod:
 #     print 'node',n.tag,'x=',n.getInitialPos3d.x
-#     nearElem=beamSet.getElements.getNearestElement(n.getCurrentPos3d(0.0))
+#     nearElem=beamSet.elements.getNearestElement(n.getCurrentPos3d(0.0))
 #     modelSpace.constraints.newGlueNodeToElement(n,nearElem,xc.ID(gluedDOFs))
 
 # Connection between tendon 1 and beam
@@ -223,7 +223,7 @@ analOk= analisis.analyze(1)
 tendon1Set.aliveElements()
 mesh.meltAliveNodes("block1") # Reactivate inactive nodes.
 loadVector=xc.Vector([0,0,-1])
-for e in beamSet.getElements:
+for e in beamSet.elements:
     e.vector3dUniformLoadGlobal(loadVector)
 
 analOk= analisis.analyze(1)
@@ -239,7 +239,7 @@ lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,sc
 # Phase 2: self-weight
 #Add uniform load on beam elems to current load pattern
 loadVector=xc.Vector([0,0,-Wsw])
-for e in beamSet.getElements:
+for e in beamSet.elements:
     e.vector3dUniformLoadGlobal(loadVector)
 analOk= analisis.analyze(1)
 
@@ -273,9 +273,9 @@ for nn in range(nnodesBeam):
 
 print 'loss_aprox=',rg_loss_avg*1e-6
 print 'delta=', delta
-for e in tendonSet.getElements:
+for e in tendonSet.elements:
     print (fpi-e.getN()/Aps)*1e-6
-for e in beamSet.getElements:
+for e in beamSet.elements:
     # print e.getN*1e-3
     print e.getMy1*1e-3
     # print e.getMz1*1e-6

@@ -187,8 +187,8 @@ shell_elements= preprocessor.getSets.defSet('shell_elements')
 for key in layerSets:
     layerSet= layerSets[key]
     for s in layerSet.getSurfaces:
-        for e in s.getElements():
-            shell_elements.getElements.append(e)
+        for e in s.elements:
+            shell_elements.elements.append(e)
 shell_elements.fillDownwards()
 shell_elements.genDescr= 'Model shell elements.'
         
@@ -196,29 +196,29 @@ shell_elements.genDescr= 'Model shell elements.'
 
 floor_elements= preprocessor.getSets.defSet('floor_elements')
 for s in floor_set.getSurfaces:
-    for e in s.getElements():
-        floor_elements.getElements.append(e)
+    for e in s.elements:
+        floor_elements.elements.append(e)
 floor_elements.fillDownwards()
 
 floor30_elements= preprocessor.getSets.defSet('floor30_elements')
 for s in floor30_set.getSurfaces:
-    for e in s.getElements():
-        floor30_elements.getElements.append(e)
+    for e in s.elements:
+        floor30_elements.elements.append(e)
 floor30_elements.fillDownwards()
 
 floor40_elements= preprocessor.getSets.defSet('floor40_elements')
 for s in floor40_set.getSurfaces:
-    for e in s.getElements():
-        floor40_elements.getElements.append(e)
+    for e in s.elements:
+        floor40_elements.elements.append(e)
 floor40_elements.fillDownwards()
 
 roof_elements= preprocessor.getSets.defSet('roof_elements')
 for s in roof_set.getSurfaces:
-    for e in s.getElements():
-        roof_elements.getElements.append(e)
+    for e in s.elements:
+        roof_elements.elements.append(e)
 roof_elements.fillDownwards()
 roof_centroids= []
-roof_bnd= roof_elements.getNodes.getBnd(0.0)
+roof_bnd= roof_elements.nodes.getBnd(0.0)
 roof_center= roof_bnd.getCenterOfMass()
 roof_centroids.append(roof_center+geom.Vector3d(-0.9,0,0))
 roof_centroids.append(roof_center+geom.Vector3d(+0.9,0,0))
@@ -226,39 +226,39 @@ roof_centroids.append(roof_center+geom.Vector3d(+0.9,0,0))
 
 sides_elements= preprocessor.getSets.defSet('sides_elements')
 for s in sides_set.getSurfaces:
-    for e in s.getElements():
-        sides_elements.getElements.append(e)
+    for e in s.elements:
+        sides_elements.elements.append(e)
 sides_elements.fillDownwards()
 
 sides30_elements= preprocessor.getSets.defSet('sides30_elements')
 for s in sides30_set.getSurfaces:
-    for e in s.getElements():
-        sides30_elements.getElements.append(e)
+    for e in s.elements:
+        sides30_elements.elements.append(e)
 sides30_elements.fillDownwards()
 
 sides40_elements= preprocessor.getSets.defSet('sides40_elements')
 for s in sides40_set.getSurfaces:
-    for e in s.getElements():
-        sides40_elements.getElements.append(e)
+    for e in s.elements:
+        sides40_elements.elements.append(e)
 sides40_elements.fillDownwards()
 
 bulkheads_elements= preprocessor.getSets.defSet('bulkheads_elements')
 for s in bulkheads_set.getSurfaces:
-    for e in s.getElements():
-        bulkheads_elements.getElements.append(e)
+    for e in s.elements:
+        bulkheads_elements.elements.append(e)
 bulkheads_elements.fillDownwards()
 
 
 bulkheads30_elements= preprocessor.getSets.defSet('bulkheads30_elements')
 for s in bulkheads_set.getSurfaces:
-    for e in s.getElements():
-        bulkheads30_elements.getElements.append(e)
+    for e in s.elements:
+        bulkheads30_elements.elements.append(e)
 bulkheads30_elements.fillDownwards()
 
 bulkheads40_elements= preprocessor.getSets.defSet('bulkheads40_elements')
 for s in bulkheads_set.getSurfaces:
-    for e in s.getElements():
-        bulkheads40_elements.getElements.append(e)
+    for e in s.elements:
+        bulkheads40_elements.elements.append(e)
 bulkheads40_elements.fillDownwards()
 
 lateral_elements= sides_elements+bulkheads_elements
@@ -268,15 +268,15 @@ lateral30_elements= lateral_elements-lateral40_elements
 side_a_set= layerSets['side_a']
 side_a_elements= preprocessor.getSets.defSet('side_a_elements')
 for s in side_a_set.getSurfaces:
-    for e in s.getElements():
-        side_a_elements.getElements.append(e)
+    for e in s.elements:
+        side_a_elements.elements.append(e)
 side_a_elements.fillDownwards()
 
 side_b_set= layerSets['side_b']
 side_b_elements= preprocessor.getSets.defSet('side_b_elements')
 for s in side_b_set.getSurfaces:
-    for e in s.getElements():
-        side_b_elements.getElements.append(e)
+    for e in s.elements:
+        side_b_elements.elements.append(e)
 side_b_elements.fillDownwards()
 
 # *** Constraints ***
@@ -289,7 +289,7 @@ segments= [(0,1), (1,2), (2,3), (3,0)]
 frame_nodes= []
 for s in segments:
     sI= geom.Segment3d(underpassFrame[s[0]],underpassFrame[s[1]])
-    for n in shell_elements.getNodes:
+    for n in shell_elements.nodes:
         pos= n.getInitialPos3d
         dist= sI.distPos3d(pos)
         if dist<0.1:
@@ -319,17 +319,17 @@ for key in layerSets:
     layerSet= layerSets[key]
     for s in layerSet.getSurfaces:
         weight= s.getProp('selfWeight')
-        for e in s.getElements():
+        for e in s.elements:
             e.vector3dUniformLoadGlobal(weight)
 
 #Dead load: pavement.
 cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
 deadLoadVector=xc.Vector([0.0,0.0,-0.11*24e3]) #Pavement load.
 for s in floor_set.getSurfaces:
-    for e in s.getElements():
+    for e in s.elements:
         e.vector3dUniformLoadGlobal(deadLoadVector)
 for s in roof_set.getSurfaces:
-    for e in s.getElements():
+    for e in s.elements:
         e.vector3dUniformLoadGlobal(deadLoadVector)
 
 #Dead load: passenger shelter dead load.
@@ -344,7 +344,7 @@ segments= [(0,1), (1,2), (2,3), (3,0)]
 for s in segments:
     sI= geom.Segment3d(passengerShelterCorners[s[0]],passengerShelterCorners[s[1]])
     sI_nodes= []
-    for n in roof_elements.getNodes:
+    for n in roof_elements.nodes:
         pos= n.getInitialPos3d
         dist= sI.distPos3d(pos)
         if dist<0.21:
@@ -359,8 +359,8 @@ K0= backFillSoilModel.K0Jaky()
 zGroundBackFill= 10.23 #Back fill
 backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10], KSoils= [K0], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 
-modelCentroid= lateral_elements.getNodes.getCentroid(0.0)
-for e in lateral_elements.getElements:
+modelCentroid= lateral_elements.nodes.getCentroid(0.0)
+for e in lateral_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     v= elemCentroid-modelCentroid
     localKVector= e.getCoordTransf.getG3Vector
@@ -381,13 +381,13 @@ uniformLoad= xc.Vector([0.0,0.0,-5.0e3])
 # for p in passengerShelterCorners:
 #     poly_shelter_load_perimeter.appendVertex(geom.Pos2d(p.x,p.y))
 # shelter_elements= sets.set_included_in_orthoPrism(preprocessor,setInit=roof_elements,prismBase= poly_shelter_load_perimeter,prismAxis='Z',setName='shelter_elements')
-for e in roof_elements.getElements:
+for e in roof_elements.elements:
     e.vector3dUniformLoadGlobal(uniformLoad) #SIA 261:2014 table 8
 for s in floor_set.getSurfaces:
-    for e in s.getElements():
+    for e in s.elements:
         e.vector3dUniformLoadGlobal(uniformLoad)
 pedestrianLoadOnPlatform= earth_pressure.LineVerticalLoadOnBackfill(qLoad= 25e3,zLoad= 10.23, distWall= 2.45/2.0)
-for e in side_a_elements.getElements:
+for e in side_a_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     localKVector= e.getCoordTransf.getG3Vector
     pressure= pedestrianLoadOnPlatform.getPressure(elemCentroid.z)*localKVector
@@ -404,7 +404,7 @@ for p in roof_centroids:
 #Live load: road traffic load.
 cLC= loadCaseManager.setCurrentLoadCase('roadTrafficLoad')
 roadTrafficLoadEarthPressure= earth_pressure.UniformLoadOnBackfill(K= K0,qLoad= 11.02e3)
-for e in side_b_elements.getElements:
+for e in side_b_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     localKVector= e.getCoordTransf.getG3Vector
     pressure= -roadTrafficLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
@@ -417,7 +417,7 @@ railLoad= loadCaseManager.setCurrentLoadCase('LM1')
 distRailCLWall= 4.5 #Distance from the center line of the rail track to the wall
 railLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 50e3,zLoad= 10.23-0.7, distWall= distRailCLWall, stripWidth= 3.0)
 
-for e in side_a_elements.getElements:
+for e in side_a_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     localKVector= e.getCoordTransf.getG3Vector
     pressure= railLoadEarthPressure.getPressure(elemCentroid.z)*localKVector
@@ -429,7 +429,7 @@ platformWidth= 2.5
 distDerailmentLoadWall= platformWidth+derailmentLoadStripWidth/2.0 #Distance from the center line of the derailment load to the wall
 derailmentLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 145e3/derailmentLoadStripWidth,zLoad= 10.23-0.4, distWall= distDerailmentLoadWall, stripWidth= derailmentLoadStripWidth)
 
-for e in side_a_elements.getElements:
+for e in side_a_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     if(elemCentroid.x>24.5 and elemCentroid.x<44.5):
         localKVector= e.getCoordTransf.getG3Vector
@@ -444,10 +444,10 @@ nosingLoadSurface= nosingLoadLength*3.0
 qNosingLoad= fNosingLoad/nosingLoadSurface
 horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(backFillSoilModel.phi,qLoad= qNosingLoad,zLoad= 10.23-0.7, distWall= distRailCLWall, widthLoadArea= 2.0)
 horizontalLoad.setup()
-centerNosingLoad= side_a_elements.getNodes.getCentroid(0.0)
+centerNosingLoad= side_a_elements.nodes.getCentroid(0.0)
 xMinNosingLoad= centerNosingLoad.x-nosingLoadLength/2.0
 xMaxNosingLoad= centerNosingLoad.x+nosingLoadLength/2.0
-for e in side_a_elements.getElements:
+for e in side_a_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     if(elemCentroid.x>xMinNosingLoad and elemCentroid.x<=xMaxNosingLoad):
         localKVector= e.getCoordTransf.getG3Vector
@@ -468,7 +468,7 @@ structureHeightB= zGroundBackFill-5.3593 #m height of the structure zone B.
 mononobeOkabeA= earth_pressure.MononobeOkabePressureDistribution(zGround= zGroundBackFill, gamma_soil= gSoil, H= structureHeightA, kv= 0.11/2.0, kh= 0.11, psi= math.radians(90), phi= backFillSoilModel.phi, delta_ad= 0.0, beta= 0.0, Kas= K0)
 mononobeOkabeB= earth_pressure.MononobeOkabePressureDistribution(zGround= zGroundBackFill, gamma_soil= gSoil, H= structureHeightB, kv= 0.11/2.0, kh= 0.11, psi= math.radians(90), phi= backFillSoilModel.phi, delta_ad= 0.0, beta= 0.0, Kas= K0)
 
-for e in lateral_elements.getElements:
+for e in lateral_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     v= elemCentroid-modelCentroid
     localKVector= e.getCoordTransf.getG3Vector

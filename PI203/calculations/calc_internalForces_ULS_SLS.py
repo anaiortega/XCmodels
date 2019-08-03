@@ -15,17 +15,17 @@ execfile(model_path+'sectionsDef.py')
 
 #Define section for each element (spatial distribution of RC sections).
 preprocessor= prep
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundExtSlab').getElements,setRCSects=FoundExtSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundIntSlab').getElements,setRCSects=FoundIntSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftUpWall').getElements,setRCSects=LeftUpWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftDownWall').getElements,setRCSects=LeftDownWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightUpWall').getElements,setRCSects=RightUpWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightDownWall').getElements,setRCSects=RightDownWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('midWall').getElements,setRCSects=MidWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('upDeckExtSlab').getElements,setRCSects=UpDeckExtSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('upDeckIntSlab').getElements,setRCSects=UpDeckIntSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('downDeckExtSlab').getElements,setRCSects=DownDeckExtSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('downDeckIntSlab').getElements,setRCSects=DownDeckIntSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundExtSlab').elements,setRCSects=FoundExtSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundIntSlab').elements,setRCSects=FoundIntSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftUpWall').elements,setRCSects=LeftUpWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftDownWall').elements,setRCSects=LeftDownWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightUpWall').elements,setRCSects=RightUpWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightDownWall').elements,setRCSects=RightDownWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('midWall').elements,setRCSects=MidWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('upDeckExtSlab').elements,setRCSects=UpDeckExtSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('upDeckIntSlab').elements,setRCSects=UpDeckIntSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('downDeckExtSlab').elements,setRCSects=DownDeckExtSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('downDeckIntSlab').elements,setRCSects=DownDeckIntSlabRCSect)
 
 reinfConcreteSectionDistribution.dump()
 
