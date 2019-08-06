@@ -11,8 +11,12 @@ viaFictDer.description='Vía ficticia derecha'
 x=xViasFict[1]
 viaFictIzq=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzq')
 viaFictIzq.description='Vía ficticia izquierda'
+x=xViasFict[2]
+viaFictResto=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictResto')
+viaFictResto.description='Resto vías ficticias'
+
 #calzada
-calzada=viaFictIzq+viaFictDer
+calzada=viaFictIzq+viaFictDer+viaFictResto
 calzada.description='Calzada'
 #aceras
 aceras=tablero-calzada
@@ -44,6 +48,8 @@ z=zLosa[0]
 viaFictDer_cent=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictDer_cent')
 x=xViasFict[1]
 viaFictIzq_cent=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzq_cent')
+x=xViasFict[2]
+viaFictResto_cent=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictResto_cent')
 
 #Coordinates for traffic point loads
 ycent_vano1=(yRiostrEstr[0][0]+yPil[0])/2.

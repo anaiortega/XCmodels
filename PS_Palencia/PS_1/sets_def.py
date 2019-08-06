@@ -79,3 +79,33 @@ bordTabl=sets.get_lines_on_points(setPoints=setPntBordTabl,setLinName='bordTabl'
 
 setPntBordizqTabl=gridTabl.getSetPntMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][0],y[-1],z))],setName='setPntBordizqTabl')
 bordizqTabl=sets.get_lines_on_points(setPoints=setPntBordizqTabl,setLinName='bordizqTabl',onlyIncluded=True)
+
+#Sets para armados losa [setZonaArm1,[setZonaArm2, ...]
+z=zLosa[0]
+x=[0,xLosa[-1]]
+sets_arm_losa=[]
+for j in range(1,len(yArm)):
+    sets_arm_losa.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmLos_Z'+str(j)))
+#Sets para armados cartabón derecho interno [setZonaArm1,[setZonaArm2, ...]
+x=[xCartab[-1][0],xCartab[-1][1]]
+sets_arm_cartInt=[]
+for j in range(1,len(yArm)):
+    sets_arm_cartInt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmCartInt_Z'+str(j)))
+#Sets para armados cartabón derecho externo [setZonaArm1,[setZonaArm2, ...]
+x=[xCartab[-1][1],xCartab[-1][-1]]
+sets_arm_cartExt=[]
+for j in range(1,len(yArm)):
+    sets_arm_cartExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmCartExt_Z'+str(j)))
+#Sets para armados voladizo derecho interno [setZonaArm1,[setZonaArm2, ...]
+x=[xVoladz[-1][0],xVoladz[-1][1]]
+sets_arm_volInt=[]
+for j in range(1,len(yArm)):
+    sets_arm_volInt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolInt_Z'+str(j)))
+#Sets para armados voladizo derecho externo [setZonaArm1,[setZonaArm2, ...]
+x=[xVoladz[-1][1],xVoladz[-1][-1]]
+sets_arm_volExt=[]
+for j in range(1,len(yArm)):
+    sets_arm_volExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolExt_Z'+str(j)))
+
+z=zLosa[0]
+setArmados=gridTabl.getSetSurfOneXYZRegion(xyzRange=(0,yArm[0],z),(xList[-1],yArm[-1],z)),nameSet='setArmados'

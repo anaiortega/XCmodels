@@ -52,7 +52,7 @@ bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
 xAceras=[[round(-anchoTot/2.,dec),round(-anchoCalz/2.,dec)],
          [round(anchoCalz/2.,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
 #Voladizos
-xVoladz=[[round(-anchoTot/2.,dec),round(-anchoTot/2.+anchoVoladz,dec)],
+xVoladz=[[round(-anchoTot/2.,dec),round(-anchoTot/2.+anchoVoladz,dec)], 
          [round(anchoTot/2.-anchoVoladz,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
 xVoladz[0].insert(1,round((xVoladz[0][0]+xVoladz[0][1])/2.,2)) #intermedio
 xVoladz[1].insert(1,round((xVoladz[1][0]+xVoladz[1][1])/2.,2)) #intermedio
@@ -88,8 +88,9 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
             [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 yLosa
-#Zonas armado
-yArm=redondea([0.2*Lvanos[0],Lvanos[0]-0.3*Lvanos[0],Lvanos[0]+0.3*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+#Zonas armado 
+yArm=redondea([0,0.1*Lvanos[0],0.2*Lvanos[0],Lvanos[0]-0.3*Lvanos[0],Lvanos[0]-0.2*Lvanos[0],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.15*Lvanos[1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
 zLosa=[0]

@@ -17,16 +17,16 @@ Ltablero=0
 for v in Lvanos:
     Ltablero+=v
 
-anchoCalz=6.0
-anchoTot=9.20
+anchoCalz=8.0
+anchoTot=11.20
 anchoAcera=(anchoTot-anchoCalz)/2.0   
 
 #  losa
 cantoLosa=0.9
-maxCantoVoladz=0.4 #canto máximo del voladizo
+maxCantoVoladz=0.45 #canto máximo del voladizo
 minCantoVoladz=0.20
-anchoVoladz=1.90
-anchoLosa=4.20
+anchoVoladz=2.30
+anchoLosa=5.40
 anchoCartab=0.60
 LriostrEstr=1.0
 LriostrPil=2  #longitud de riostra sobre pilas
@@ -35,7 +35,7 @@ cantoRiostrEstr=0.90
 #  Pilas
 #distEjPilas=4.00
 hTotPilas=10.0   #altura total
-diamPilas=1.0
+diamPilas=0.80
 lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
@@ -70,8 +70,9 @@ xRiostrEstr=[[xVoladz[0][-1],xVoladz[1][0]],
 #Pila
 xPil=[-1.25,1.25]
 #Vias ficticeas
-xViasFict=[[0,round(anchoCalz/2.,dec)],
-           [round(-anchoCalz/2.,dec),0]] #vía 1, vía 2, ...
+xViasFict=[redondea([1,anchoCalz/2.],dec),
+           redondea([-2,1],dec),
+           redondea([-anchoCalz/2.,-2],dec)] #vía 1, vía 2, ...
 
 xNeopr=[-distNeopr/2.,distNeopr/2.]
 

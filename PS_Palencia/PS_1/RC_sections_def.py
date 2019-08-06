@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 
 #import os
-import xc_base
-import geom
-import xc
+# import xc_base
+# import geom
+# import xc
 from materials.sections.fiber_section import defSimpleRCSection as rcs
 #from materials.ehe import EHE_materials
 from materials.ec2 import EC2_materials
 import math
 
-#Auxiliary data
-execfile('../basic_data.py')
+#Armaduras
+execfile('./arm_def.py')
 
 
 rnom=35 #recubrimiento nominal 
@@ -21,7 +21,90 @@ areaFi16= math.pi*(16*1e-3)**2/4.0
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
+#losa [losaZonaArm1,losaZonaArm2, ...]
+losaRCSects=[]
+for st in  sets_arm_losa:
+    losaRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='losa, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=cantoLosa,elemSetName=st.name))
+#cartabón derecho interno [CartIntZonaArm1,CartIntZonaArm2, ...]
+cartIntRCSects=[]
+for st in  sets_arm_cartInt:
+    cartIntRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartInt,elemSetName=st.name))
+#cartabón derecho externo [CartExtZonaArm1,CartExtZonaArm2, ...]
+cartExtRCSects=[]
+for st in  sets_arm_cartExt:
+    cartExtRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartExt,elemSetName=st.name))
+#voladizo derecho interno [VolIntZonaArm1,VolIntZonaArm2, ...]
+volIntRCSects=[]
+for st in  sets_arm_volInt:
+    volIntRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolInt,elemSetName=st.name))
+#voladizo derecho externo [VolExtZonaArm1,VolExtZonaArm2, ...]
+volExtRCSects=[]
+for st in  sets_arm_volExt:
+    volExtRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolExt,elemSetName=st.name))
 
+def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1,arm2,arm3,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10):
+    '''armaduras definidas para una zona de armado. Diámetros armadura y separación en mm.
+
+    nZona: nº zona armado
+    recNom: recubrimiento
+    arm1: losa, trasv inf. [diam,sep]
+    arm2: cartabón, trasv inf. [diam,sep]
+    arm3: losa, cercos [
+    arm4: voladizo, trasv inf. [diam,sep]
+    arm5: losa, trasv sup. [diam,sep]
+    arm6a: losa, long.inf. [diam,sep]
+    arm6b: losa, long.inf.(2ª capa) [diam,sep]. Si=None, no aplica
+    arm7: cartabón, long. inf. [diam,sep]
+    arm8: voladizo, long. inf. [diam,sep]
+    arm9a: losa, long. sup. [diam,sep]
+    arm9b: losa, long. sup.(2ª capa) [diam,sep]. Si=None, no aplica
+    arm10: voladizo, long. sup. [diam,sep]
+    '''
+    #armaduras losa
+    RCSet=losaRC[nZona-1]
+    RCSet.dir1PositvRebarRows=[rcs.rebLayer(arm5[0],arm5[1],rnom)] #transv. sup.
+    RCSet.dir1NegatvRebarRows=[rcs.rebLayer(arm1[0],arm1[1],rnom)] #transv. inf.
+    RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
+    if arm9b:
+        RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm9b[0],arm9b[1],rnom+arm5[0]+arm9a[0])] #long. sup. 2a. capa
+    RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm6a[0],arm6a[1],rnom+arm1[0])] #long. inf.
+    if arm9b:
+       RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm6b[0],arm6b[1],rnom+arm1[0]+arm6a[0])] #long. inf. 2a. capa
+    ####Faltan los cercos
+    #armaduras cartabón
+    RCSets=[cartIntRC[nZona-1],cartExtRC[nZona-1]]
+    for RCSet in RCSets:
+        RCSet.dir1PositvRebarRows=[rcs.rebLayer(arm5[0],arm5[1],rnom)] #transv. sup.
+        RCSet.dir1NegatvRebarRows=[rcs.rebLayer(arm2[0],arm2[1],rnom)] #transv. inf.
+        RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
+        if arm9b:
+            RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm9b[0],arm9b[1],rnom+arm5[0]+arm9a[0])] #long. sup. 2a. capa
+        RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm7[0],arm7[1],rnom+arm2[0])] #long. inf.
+    #armaduras voladizo
+    RCSets=[volIntRC[nZona-1],volExtRC[nZona-1]]
+    for RCSet in RCSets:
+        RCSet.dir1PositvRebarRows=[rcs.rebLayer(arm5[0],arm5[1],rnom)] #transv. sup.
+        RCSet.dir1NegatvRebarRows=[rcs.rebLayer(arm4[0],arm4[1],rnom)] #transv. inf.
+        RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm10[0],arm10[1],rnom+arm5[0])] #long. sup.
+        RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm8[0],arm8[1],rnom+arm4[0])] #long. inf.
+
+     
+#Armaduras zona 1
+armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[20,100],arm2=[12,200],arm3=[],arm4=[10,200],arm5=[20,200],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+    
+#Armaduras zona 2
+armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[20,100],arm2=[12,200],arm3=[],arm4=[10,200],arm5=[16,200],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+    
+#Armaduras zona 3
+armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,200],arm6a=[20,100],arm6b=[25,200],arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+    
+#Armaduras zona 4
+armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,100],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[20,100],arm9b=None,arm10=[16,200])
+    
+#Armaduras zona 5
+armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,100],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[20,100],arm9b=None,arm10=[16,200])
+    
+'''    
 losSupV2RCSects= rcs.RecordRCSlabBeamSection(name='losSupV2RCSects',sectionDescr='losa aligerada, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupV2')
 #D1: transversal rebars
 #D2: longitudinal rebars
@@ -183,3 +266,4 @@ riostrEstr1RCSects.dir2ShReinfZ=shear2
 
 
 
+'''
