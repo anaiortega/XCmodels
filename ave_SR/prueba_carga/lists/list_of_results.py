@@ -14,7 +14,7 @@ for lc in loadCasesToDisplay:
     lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
     
     listM2=list()
-    elCentral=dintelBcentral.getElements
+    elCentral=dintelBcentral.elements
     for e in elCentral:
         e.getResistingForce()
         listM2.append(e.getMeanInternalForce('m2'))

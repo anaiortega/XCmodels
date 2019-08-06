@@ -14,10 +14,10 @@ from import_export import NeutralLoadDescription as nld
 preprocessor= FEcase.getPreprocessor
 total= preprocessor.getSets.getSet("total")
 shellElements= preprocessor.getSets.defSet("shellElements")
-for e in total.getElements:
+for e in total.elements:
   dim= e.getDimension
   if(dim==2): #shell element
-    shellElements.getElements.append(e)
+    shellElements.elements.append(e)
 shellElements.fillDownwards()
 
 beton= me.MaterialRecord('béton','C35/45',1e-5,2500,EcDeck,cpoish,EcDeck/(2*(1+cpoish)),1e-3,0.0,0.0)

@@ -486,7 +486,7 @@ for l in beams.getLines:
             gluedDOFs.append(3+i)
     beamFirstNode= l.firstNode
     beamFirstNodePos= beamFirstNode.getInitialPos3d
-    nCol= columns.getNodes.getNearestNode(beamFirstNodePos)
+    nCol= columns.nodes.getNearestNode(beamFirstNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamFirstNodePos)
     if(dist<2.0*gap):
@@ -494,7 +494,7 @@ for l in beams.getLines:
         modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamFirstNode.tag,xc.ID(gluedDOFs)) #torsion
     beamLastNode= l.firstNode
     beamLastNodePos= beamLastNode.getInitialPos3d
-    nCol= columns.getNodes.getNearestNode(beamLastNodePos)
+    nCol= columns.nodes.getNearestNode(beamLastNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamLastNodePos)
     if(dist<2.0*gap):
@@ -502,7 +502,7 @@ for l in beams.getLines:
         modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamLastNode.tag,xc.ID(gluedDOFs)) #torsion
     
 # Simple support precast planks on walls
-# for node in slabs.getNodes:
+# for node in slabs.nodes:
 #     if nodeOnEdge(node):
 #         print 'here node: ', node.tag
 #         modelSpace.fixNode('000_FFF',node.tag)
@@ -569,8 +569,8 @@ stbeams=beam1+beam2+beam3+beam4+beam5
 stslabs=slabBC+slabCD_L+slabCD_H+slabDG+slabGF+slabFW+slabsF_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
-nod_stbeams=stbeams.getNodes
-nod_stslabs=stslabs.getNodes
+nod_stbeams=stbeams.nodes
+nod_stslabs=stslabs.nodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
     nPos= n.getInitialPos3d
@@ -585,8 +585,8 @@ stbeams=beamA+beamB
 stslabs=slabW1+slab12+slab23+slab34+slab45+slab5W+slabs5_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
-nod_stbeams=stbeams.getNodes
-nod_stslabs=stslabs.getNodes
+nod_stbeams=stbeams.nodes
+nod_stslabs=stslabs.nodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
     dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
@@ -598,8 +598,8 @@ stbeams=beamC
 stslabs=slab5W+slabs5_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
-nod_stbeams=stbeams.getNodes
-nod_stslabs=stslabs.getNodes
+nod_stbeams=stbeams.nodes
+nod_stslabs=stslabs.nodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
     dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
@@ -612,8 +612,8 @@ stbeams=beamD+beamG+beamF
 stslabs=slab5W+slabs5_L
 stbeams.fillDownwards()
 stslabs.fillDownwards()
-nod_stbeams=stbeams.getNodes
-nod_stslabs=stslabs.getNodes
+nod_stbeams=stbeams.nodes
+nod_stslabs=stslabs.nodes
 for n in nod_stbeams:
     n1=nod_stslabs.getNearestNode(n.getInitialPos3d)
     dist=n.getInitialPos3d.distPos3d(n1.getInitialPos3d)
@@ -628,8 +628,8 @@ j1=yList.index(yCols[0])
 j2=yList.index(yFac[1])
 k=zList.index(zHlwHigh)
 st1=gridGeom.getSetSurfOneRegion(gm.IJKRange((i1,j1,k),(i2,j2,k)),'st1')
-nod_st1=st1.getNodes
-nod_st2=slabCD_L.getNodes
+nod_st1=st1.nodes
+nod_st2=slabCD_L.nodes
 for n in nod_st1:
     n1=nod_st2.getNearestNode(n.getInitialPos3d)
     modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
@@ -794,7 +794,7 @@ overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+
 
 '''
 preprocessor.getDomain.getMesh.getNumFreeNodes()
-for n in slabs.getNodes:
+for n in slabs.nodes:
     print n.getInitialPos3d.z
 '''
 slabs.fillDownwards()

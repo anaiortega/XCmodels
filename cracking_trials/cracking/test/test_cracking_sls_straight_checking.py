@@ -127,7 +127,7 @@ sectContainer.append(beamRCsect)
 
 # Spatial distribution of reinforced concrete
 # sections (assign RC sections to elements).
-reinfConcreteSectionDistribution.assign(elemSet=totalSet.getElements,setRCSects=beamRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=beamRCsect)
 
 ####!!!!To erase
 e0=preprocessor.getElementHandler.getElement(0)
@@ -156,7 +156,7 @@ controller= limitStateData.controller
 meanCFs= -1.0
 phantomElements=phantomModel.build(intForcCombFileName,controller) #=> elements ZeroLengthSections, whose sections (reachable by means of method .getSection()) are fiber section models.
 combs= preprocessor.getLoadHandler.getLoadPatterns
-elements= [e for e in preprocessor.getSets.getSet("total").getElements]
+elements= [e for e in preprocessor.getSets.getSet("total").elements]
 #the elasticBeam3d are also in the model. We pop them from elements:
 elements.pop(0)
 elements.pop(0)

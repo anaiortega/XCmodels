@@ -15,12 +15,12 @@ execfile(model_path+'sectionsDef.py')
 
 #Define section for each element (spatial distribution of RC sections).
 preprocessor= prep
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundExtSlab').getElements,setRCSects=FoundExtSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundIntSlab').getElements,setRCSects=FoundIntSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftWall').getElements,setRCSects=LeftWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightWall').getElements,setRCSects=RightWallRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('deckExtSlab').getElements,setRCSects=DeckExtSlabRCSect)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('deckIntSlab').getElements,setRCSects=DeckIntSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundExtSlab').elements,setRCSects=FoundExtSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('foundIntSlab').elements,setRCSects=FoundIntSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('leftWall').elements,setRCSects=LeftWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('rightWall').elements,setRCSects=RightWallRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('deckExtSlab').elements,setRCSects=DeckExtSlabRCSect)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('deckIntSlab').elements,setRCSects=DeckIntSlabRCSect)
 
 reinfConcreteSectionDistribution.dump()
 

@@ -14,14 +14,14 @@ def resultComb(prb,nmbComb):
     solution= predefined_solutions.SolutionProcedure()
     analysis= solution.simpleStaticLinear(prb)
     result= analysis.analyze(1)
-    for e in abutmentBearingElements.getElements:
+    for e in abutmentBearingElements.elements:
         row=[nmbComb, 'abutment']
         row.append(e.tag)
         rf= e.getResistingForce()
         for i in range(0,6):
             row.append(rf[i])
         resistingForces.append(row)
-    for e in pierBearingElements.getElements:
+    for e in pierBearingElements.elements:
         row=[nmbComb, 'pier']
         row.append(e.tag)
         rf= e.getResistingForce()

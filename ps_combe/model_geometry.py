@@ -58,7 +58,7 @@ laneAxisLines=  [geom.Pos3d(-3.0, 0.0, beamDepth+deckDepth/2.0),
 
 #Massongex abutment.
 aMassongex= geom.Pos3d(45.795, 42.633, 0.0)
-vAMassongex= (geom.Pos3d(32.1000234984885, 40.5187002427488, 0.0)-geom.Pos3d(59.4899765015115, 44.7472997572513, 0.0)).normalizado()
+vAMassongex= (geom.Pos3d(32.1000234984885, 40.5187002427488, 0.0)-geom.Pos3d(59.4899765015115, 44.7472997572513, 0.0)).normalized()
 O= aMassongex+geom.Vector3d(0.0, 0.0, 16.498)
 VI= -4.5*vAMassongex+geom.Vector3d(0.0,0.0,16.332-O.z)
 VJ= geom.Vector3d(-vAMassongex.y,vAMassongex.x,0.0)
@@ -71,7 +71,7 @@ refMassongexAbutment= geom.Ref3d3d(O,VI,-VJ)
 
 #Massongex pier.
 pMassongex= geom.Pos3d(42.843, 55.293, 0.0) 
-vPMassongex= (geom.Pos3d(29.0916831682014, 53.5830496404986, 0.0)-geom.Pos3d(56.5943168317984, 57.0029503595014, 0.0)).normalizado()
+vPMassongex= (geom.Pos3d(29.0916831682014, 53.5830496404986, 0.0)-geom.Pos3d(56.5943168317984, 57.0029503595014, 0.0)).normalized()
 O= pMassongex+geom.Vector3d(0.0, 0.0, 16.751)
 VI= -4.5*vPMassongex+geom.Vector3d(0.0,0.0,16.597-O.z)
 VJ= geom.Vector3d(-vPMassongex.y,vPMassongex.x,0.0)
@@ -84,7 +84,7 @@ refMassongexPier= geom.Ref3d3d(O,VI,-VJ)
 
 #Bex pier.
 pBex= geom.Pos3d(38.9231965683346, 70.7225756927112, 0.0) 
-vPBex= -1.0*(geom.Pos3d(52.6567060878268, 72.5701040736782, 0.0)-geom.Pos3d(25.1896870488423, 68.8750473117442, 0.0)).normalizado()
+vPBex= -1.0*(geom.Pos3d(52.6567060878268, 72.5701040736782, 0.0)-geom.Pos3d(25.1896870488423, 68.8750473117442, 0.0)).normalized()
 O= pBex+geom.Vector3d(0.0, 0.0, 16.986)
 VI= -4.5*vPBex+geom.Vector3d(0.0,0.0,16.866-O.z)
 VJ= geom.Vector3d(-vPBex.y,vPBex.x,0.0)
@@ -96,7 +96,7 @@ refBexPier= geom.Ref3d3d(O,VI,-VJ)
 # print 'K= ',refBexPier.getK()
 
 aBex= geom.Pos3d(35.9086283257252, 81.9222972209748, 0.0) #Bex abutment.
-vABex= -1.0*(geom.Pos3d(49.7860089786179, 83.8917781158251, 0.0)-geom.Pos3d(22.335356708299, 80.077034442144, 0.0)).normalizado()
+vABex= -1.0*(geom.Pos3d(49.7860089786179, 83.8917781158251, 0.0)-geom.Pos3d(22.335356708299, 80.077034442144, 0.0)).normalized()
 O= aBex+geom.Vector3d(0.0, 0.0, 17.099)
 VI= -4.5*vABex+geom.Vector3d(0.0,0.0,17.008-O.z)
 VJ= geom.Vector3d(-vABex.y,vABex.x,0.0)
@@ -347,7 +347,7 @@ def getTransverseSlopes():
         pts= s['deckLines']
         ptA= pts[0].getPos
         ptB= pts[-1].getPos
-        retval.append((ptA-ptB).normalizado())
+        retval.append((ptA-ptB).normalized())
     return retval
 
 laneAxisLines= createLaneAxisLines()

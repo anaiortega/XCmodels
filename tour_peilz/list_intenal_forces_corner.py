@@ -10,11 +10,11 @@ hingeElements= {} #preprocessor.getSets.defSet('hingeElements')
 maximum= {}
 minimum= {}
 
-for e in floor_elements.getElements:
+for e in floor_elements.elements:
     elemCentroid= e.getPosCentroid(True)
     d= sg.distPos3d(elemCentroid)
     if(d<0.18):
-        #hingeElements.getElements.append(e)
+        #hingeElements.elements.append(e)
         hingeElements[e.tag]= e
         maximum[e.tag]= -1e15 #Maximum and minimum values.
         minimum[e.tag]= 1e15

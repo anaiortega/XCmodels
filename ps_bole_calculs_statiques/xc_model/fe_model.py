@@ -121,7 +121,7 @@ spandrelFixedNodes= []
 spandrelBearingElements= []
 spandrelSupported.fillDownwards()
 spandrelSupported.computeTributaryLengths(False)
-for n in spandrelSupported.getNodes:
+for n in spandrelSupported.nodes:
     lT= n.getTributaryLength()
     lngTot+= lT
     kYSpandrel.E= kSpandrel*lT
@@ -134,7 +134,7 @@ fillFixedNodes= []
 fillBearingElements= []
 fillSupported.fillDownwards()
 fillSupported.computeTributaryLengths(False)
-for n in fillSupported.getNodes:
+for n in fillSupported.nodes:
     lT= n.getTributaryLength()
     lngTot+= lT
     kYFill.E= kFill*lT
@@ -143,7 +143,7 @@ for n in fillSupported.getNodes:
     fillFixedNodes.append(idFixedNode)
     fillBearingElements.append(idElem)
 
-for n in setTotal.getNodes:
+for n in setTotal.nodes:
     if n.isFree:
         print n.tag, n.getInitialPos2d
 print 'number of free nodes: ', deck.getDomain.getMesh.getNumFreeNodes()
@@ -155,9 +155,9 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 # Self weight.
 cLC= loadCaseManager.setCurrentLoadCase('GselfWeight')
-for e in deckSet.getElements:
+for e in deckSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-deckUnitWeight]))
-for e in parapetSet.getElements:
+for e in parapetSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-parapetUnitWeight]))
     
 # Dead load
@@ -182,7 +182,7 @@ def getElementZone(element):
     if(retval==0): retval= None
     return retval
   
-for e in deckSet.getElements:
+for e in deckSet.elements:
     eZone= getElementZone(e)
     if(eZone):
         load= deadLoadsByZone[eZone-1]
@@ -211,7 +211,7 @@ for p in truckWheelPositions:
 # Pedestrian live load
 cLC= loadCaseManager.setCurrentLoadCase('pedestrianLiveLoad')
 pedestrianLoad= 4e3 #Crowded bridge: (4kN/m2).
-for e in deckSet.getElements:
+for e in deckSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-pedestrianLoad]))
 
 #Temperature increment.
@@ -219,7 +219,7 @@ cLC= loadCaseManager.setCurrentLoadCase('temp_up')
 alphaAT= 20.0*10e-6
 
 eleLoad= cLC.newElementalLoad("beam_strain_load")
-eleLoad.elementTags= bridgeSectionSet.getElements.getTags()
+eleLoad.elementTags= bridgeSectionSet.elements.getTags()
 defPlane= xc.DeformationPlane(alphaAT)
 eleLoad.backEndDeformationPlane= defPlane
 eleLoad.frontEndDeformationPlane= defPlane
@@ -229,7 +229,7 @@ eleLoad.frontEndDeformationPlane= defPlane
 cLC= loadCaseManager.setCurrentLoadCase('impactLoad')
 impactLoad= 300e3/0.4/(1.5+H-0.4) #Impact load 300kN on 0.4 square meters.
 affectedElements= []
-for e in parapetSet.getElements:
+for e in parapetSet.elements:
     c= e.getPosCentroid(True)
     if(c.x>2.5 and c.y>(H-0.4)):
         affectedElements.append(e)

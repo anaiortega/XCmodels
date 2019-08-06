@@ -134,7 +134,7 @@ lsd.LimitStateData.internal_forces_results_directory= '/tmp/'
 lsd.normalStressesResistance.saveAll(test,combContainer,totalSet)
 lsd.shearResistance.saveAll(test,combContainer,totalSet)
 
-reinfConcreteSectionDistribution.assign(elemSet=totalSet.getElements,setRCSects=beamRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=beamRCsect)
 
 # #Checking normal stresses.
 # limitStateLabel= lsd.normalStressesResistance.label

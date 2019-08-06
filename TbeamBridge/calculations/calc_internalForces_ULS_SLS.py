@@ -15,12 +15,12 @@ execfile(modelDataInputFile)
 #Define section names for each element.
 mapSectionsForEveryElement= ElementSectionMap.ShellElementSectionMap()
 preprocessor= model.getPreprocessor()
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('foundExtSlab').getElements,'foundExtSlab')
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('foundIntSlab').getElements,'foundIntSlab')
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('leftWall').getElements,'leftWall')
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('rightWall').getElements,'rightWall')
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('deckExtSlab').getElements,'deckExtSlab')
-mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('deckIntSlab').getElements,'deckIntSlab')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('foundExtSlab').elements,'foundExtSlab')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('foundIntSlab').elements,'foundIntSlab')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('leftWall').elements,'leftWall')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('rightWall').elements,'rightWall')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('deckExtSlab').elements,'deckExtSlab')
+mapSectionsForEveryElement.assign(preprocessor.getSets.getSet('deckIntSlab').elements,'deckIntSlab')
 
 mapSectionsForEveryElement.dump()
 

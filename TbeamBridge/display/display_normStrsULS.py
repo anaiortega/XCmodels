@@ -29,7 +29,7 @@ argument= 'CF'
 
 
 # if("FCCP" in attributeName):
-#   extrapolate_elem_attr.flatten_attribute(xcSet.getElements,attributeName,1,2)
+#   extrapolate_elem_attr.flatten_attribute(xcSet.elements,attributeName,1,2)
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 xcSet= deckSet
 attributeName= limitStateLabel + 'Sect1'   #Normal stresses limit state direction 1.

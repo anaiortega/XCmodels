@@ -469,7 +469,7 @@ def qLinYsobreMontera(prep,setBusq,hMont,angrepRad,x_coord,y_inic,y_fin,qLin,nam
     aux_set=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=setBusq,prismBase=pol,prismAxis='Z',setName='aux_set'+nameToLoad)
     if aux_set.getNumElements==0:
         print 'OJO!! no encuentro elementos para repartir la carga ', nameToLoad
-    areaSet=np.sum([e.getArea(False) for e in aux_set.getElements])
+    areaSet=np.sum([e.getArea(False) for e in aux_set.elements])
     return loads.UniformLoadOnSurfaces(name=nameToLoad,xcSet=aux_set,loadVector=xc.Vector([0,0,-qLin*Ly/areaSet,0,0,0]),refSystem='Global')
     
 def qPuntEjeReparto(prep,setBusq,hTot,angrepRad,x_punt,y_punt,lTrav,distTrav,Qpunt,nameToLoad):
@@ -480,7 +480,7 @@ def qPuntEjeReparto(prep,setBusq,hTot,angrepRad,x_punt,y_punt,lTrav,distTrav,Qpu
     aux_set=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=setBusq,prismBase=pol,prismAxis='Z',setName='aux_set'+nameToLoad)
     if aux_set.getNumElements==0:
         print 'OJO!! no encuentro elementos para repartir la carga ', nameToLoad
-    areaSet=np.sum([e.getArea(False) for e in aux_set.getElements])
+    areaSet=np.sum([e.getArea(False) for e in aux_set.elements])
     return loads.UniformLoadOnSurfaces(name=nameToLoad,xcSet=aux_set,loadVector=xc.Vector([0,0,-Qpunt/areaSet,0,0,0]),refSystem='Global')
 
 yCentAll=yList[pyhast1]+(yList[pyhast2]-yList[pyhast1])/2.0

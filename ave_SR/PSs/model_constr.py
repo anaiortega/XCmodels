@@ -819,7 +819,7 @@ overallSet.description='Estructura'
 overallSet.name='overallSet'
 overallSet.color=cfg.colors['purple01']
 '''
-nodesTot=total.getNodes
+nodesTot=total.nodes
 for n in nodesTot:
     if n.isFree:
         print 'node ',n.tag, ' is free'

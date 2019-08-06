@@ -2,12 +2,12 @@
 
 execfile("model_data.py")
 
-for e in shells.getElements:
+for e in shells.elements:
     mats= e.getPhysicalProperties.getVectorMaterials #Materials at gauss points.
     for m in mats:
       m.rho= 0.0
 
-for n in xcTotalSet.getNodes:
+for n in xcTotalSet.nodes:
     if(n.hasProp('tributaryMass')):
         dM= n.getProp('tributaryMass')
         if(dM>0.0):
@@ -71,7 +71,7 @@ qg.display_eigen_result(preprocessor,eigenMode=modeToDisplay, setToDisplay=xcTot
 
 import csv
 with open('earthquake_loads.csv','w') as csvfile:
-    nodes= xcTotalSet.getNodes
+    nodes= xcTotalSet.nodes
     data= [['nodeTag','Fx','Fy','Fz','Mx','My','Mz']]
     writer = csv.writer(csvfile)
     for n in nodes:

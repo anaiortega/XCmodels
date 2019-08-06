@@ -81,8 +81,8 @@ def proj2dPos(n,angle):
     np2d=n.getInitialPos2d
     return geom.Pos2d(np2d.x,np2d.y/math.cos(angle))
 
-nod_deck=deck.getNodes
-el_deck_lst=[e for e in deck.getElements]
+nod_deck=deck.nodes
+el_deck_lst=[e for e in deck.elements]
 
 nod_in_short_wall=[n for n in nod_deck if short_wall.In(proj2dPos(n,alpha),0)]
 nod_in_long_wall=[n for n in nod_deck if long_wall.In(proj2dPos(n,alpha),0)]

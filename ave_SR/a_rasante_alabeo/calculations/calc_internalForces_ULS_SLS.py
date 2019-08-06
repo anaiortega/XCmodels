@@ -21,13 +21,13 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= FEcase.getPreprocessor
-reinfConcreteSectionDistribution.assign(elemSet=dintExt.getElements,setRCSects=dintExtRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=dintCent.getElements,setRCSects=dintCentRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=losCimExt.getElements,setRCSects=losCimExtRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=losCimCent.getElements,setRCSects=losCimCentRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=hastIzq.getElements,setRCSects=hastIzqRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=hastDer.getElements,setRCSects=hastDerRCSects)
-#reinfConcreteSectionDistribution.assign(elemSet=muretes.getElements,setRCSects=muretesRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=dintExt.elements,setRCSects=dintExtRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=dintCent.elements,setRCSects=dintCentRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=losCimExt.elements,setRCSects=losCimExtRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=losCimCent.elements,setRCSects=losCimCentRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=hastIzq.elements,setRCSects=hastIzqRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=hastDer.elements,setRCSects=hastDerRCSects)
+#reinfConcreteSectionDistribution.assign(elemSet=muretes.elements,setRCSects=muretesRCsect)
 
 reinfConcreteSectionDistribution.dump()
 

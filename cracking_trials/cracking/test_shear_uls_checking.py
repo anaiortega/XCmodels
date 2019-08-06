@@ -120,7 +120,7 @@ sections.append(beamRCsect)
 
 # Spatial distribution of reinforced concrete
 # sections (assign RC sections to elements).
-reinfConcreteSectionDistribution.assign(elemSet=totalSet.getElements,setRCSects=beamRCsect)
+reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=beamRCsect)
 
 #Checking shear.
 lsd.shearResistance.controller= EHE_limit_state_checking.ShearController(limitStateLabel= lsd.shearResistance.label)

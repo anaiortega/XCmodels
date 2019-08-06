@@ -489,7 +489,7 @@ for l in beams.getLines:
             gluedDOFs.append(3+i)
     beamFirstNode= l.firstNode
     beamFirstNodePos= beamFirstNode.getInitialPos3d
-    nCol= columns.getNodes.getNearestNode(beamFirstNodePos)
+    nCol= columns.nodes.getNearestNode(beamFirstNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamFirstNodePos)
     if(dist<1.1*gap):
@@ -501,7 +501,7 @@ for l in beams.getLines:
         #modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamFirstNode.tag,xc.ID(gluedDOFs)) #torsion
     beamLastNode= l.lastNode
     beamLastNodePos= beamLastNode.getInitialPos3d
-    nCol= columns.getNodes.getNearestNode(beamLastNodePos)
+    nCol= columns.nodes.getNearestNode(beamLastNodePos)
     nColPos= nCol.getInitialPos3d
     dist= nColPos.distPos3d(beamLastNodePos)
     if(dist<1.1*gap):
@@ -513,7 +513,7 @@ for l in beams.getLines:
         #modelSpace.constraints.newEqualDOF(fulcrumNode.tag,beamLastNode.tag,xc.ID(gluedDOFs)) #torsion
     
 # Simple support precast planks on walls
-for node in slabs.getNodes:
+for node in slabs.nodes:
     if nodeOnEdge(node):
         modelSpace.fixNode('000_FFF',node.tag)
 
@@ -537,7 +537,7 @@ for n in nod:
 
 # Links beams to precast planks
 for l in beams.getLines:
-    for beamNode in l.getNodes():
+    for beamNode in l.nodes:
         beamNodePos= beamNode.getInitialPos3d
         slabNode= slabs.getNearestNode(beamNodePos)
         slabNodePos= slabNode.getInitialPos3d
@@ -706,7 +706,7 @@ overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+
 
 '''
 preprocessor.getDomain.getMesh.getNumFreeNodes()
-for n in slabs.getNodes:
+for n in slabs.nodes:
     print n.getInitialPos3d.z
 '''
 slabs.fillDownwards()

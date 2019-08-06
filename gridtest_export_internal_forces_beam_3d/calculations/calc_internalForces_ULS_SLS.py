@@ -17,7 +17,7 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= model.getPreprocessor()
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('beamSet').getElements,setRCSects=beamRCsects)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('beamSet').elements,setRCSects=beamRCsects)
 
 reinfConcreteSectionDistribution.dump()
 

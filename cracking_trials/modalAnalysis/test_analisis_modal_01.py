@@ -64,7 +64,7 @@ nod5= nodes.newNodeXY(0,4+3+3+3+3)
 nod5.mass= nodeMassMatrix
 nod5.setProp("gdlsCoartados",xc.ID([1,2]))
 setTotal= preprocessor.getSets.getSet("total")
-nodes= setTotal.getNodes
+nodes= setTotal.nodes
 for n in nodes:
   n.fix(n.getProp("gdlsCoartados"),xc.Vector([0,0,0]))
 

@@ -107,7 +107,7 @@ casos.currentTimeSeries= "ts"
 lpA= casos.newLoadPattern("default","A")
 lpB= casos.newLoadPattern("default","B")
 casos.currentLoadPattern= "A"
-elements= preprocessor.getSets.getSet("total").getElements
+elements= preprocessor.getSets.getSet("total").elements
 for e in elements:
   e.vector3dUniformLoadGlobal(fUnif)
 casos.currentLoadPattern= "B"
@@ -140,7 +140,7 @@ for secRec in lstOfSectRecords:
     sections.append(secRec)
 for secRec in lstOfSectRecords:
     elset=preprocessor.getSets.getSet(secRec.elemSetName)
-    reinfConcreteSectionDistribution.assign(elemSet=elset.getElements,setRCSects=secRec)
+    reinfConcreteSectionDistribution.assign(elemSet=elset.elements,setRCSects=secRec)
 reinfConcreteSectionDistribution.mapSectionsFileName='./mapSectionsReinforcementTenStiff.pkl'
 reinfConcreteSectionDistribution.dump()
 

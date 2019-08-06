@@ -15,7 +15,7 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= FEcase.getPreprocessor
-reinfConcreteSectionDistribution.assign(elemSet=shells.getElements,setRCSects=deckRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=shells.elements,setRCSects=deckRCSects)
 
 reinfConcreteSectionDistribution.dump()
 

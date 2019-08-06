@@ -32,6 +32,7 @@ thickness= structuralPanelGeom.h
 
 spanBendingStiffness= (32-1.5+0.25)*0.0254
 spanInternalForces= 32*0.0254
+#span= spanBendingStiffness
 span= spanInternalForces
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
 pt1= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,0.0,0.0))
@@ -42,6 +43,10 @@ pt11= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,thickness,0.0))
 pt12= pointHandler.newPntFromPos3d(geom.Pos3d(span,thickness,0.0))
 pt13= pointHandler.newPntFromPos3d(geom.Pos3d(2.0*span,thickness,0.0))
 pt14= pointHandler.newPntFromPos3d(geom.Pos3d(3.0*span,thickness,0.0))
+pt21= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,2*thickness,0.0))
+pt22= pointHandler.newPntFromPos3d(geom.Pos3d(span,2*thickness,0.0))
+pt23= pointHandler.newPntFromPos3d(geom.Pos3d(2.0*span,2*thickness,0.0))
+pt24= pointHandler.newPntFromPos3d(geom.Pos3d(3.0*span,2*thickness,0.0))
 
 lines= preprocessor.getMultiBlockTopology.getLines
 l1= lines.newLine(pt1.tag,pt2.tag)
@@ -50,16 +55,24 @@ l3= lines.newLine(pt3.tag,pt4.tag)
 l11= lines.newLine(pt11.tag,pt12.tag)
 l12= lines.newLine(pt12.tag,pt13.tag)
 l13= lines.newLine(pt13.tag,pt14.tag)
+l21= lines.newLine(pt21.tag,pt22.tag)
+l22= lines.newLine(pt22.tag,pt23.tag)
+l23= lines.newLine(pt23.tag,pt24.tag)
 
 infSet= preprocessor.getSets.defSet("inf")
 infSet.getLines.append(l1)
 infSet.getLines.append(l2)
 infSet.getLines.append(l3)
 
+midSet= preprocessor.getSets.defSet("mid")
+midSet.getLines.append(l11)
+midSet.getLines.append(l12)
+midSet.getLines.append(l13)
+
 supSet= preprocessor.getSets.defSet("sup")
-supSet.getLines.append(l11)
-supSet.getLines.append(l12)
-supSet.getLines.append(l13)
+supSet.getLines.append(l21)
+supSet.getLines.append(l22)
+supSet.getLines.append(l23)
 
 
 # Mesh
@@ -75,6 +88,8 @@ elem= seedElemHandler.newElement("ElasticBeam2d",xc.ID([0,0]))
 xcTotalSet= preprocessor.getSets.getSet("total")
 mesh= infSet.genMesh(xc.meshDir.I)
 infSet.fillDownwards()
+mesh= midSet.genMesh(xc.meshDir.I)
+midSet.fillDownwards()
 mesh= supSet.genMesh(xc.meshDir.I)
 supSet.fillDownwards()
 
@@ -83,16 +98,27 @@ for p in [pt1,pt2,pt3,pt4]:
     n= p.getNode()
     modelSpace.fixNode00F(n.tag)
 
-for n in supSet.getNodes:
+for n in midSet.nodes:
     pos= n.getInitialPos3d
     nInf= infSet.getNearestNode(pos)
     modelSpace.constraints.newEqualDOF(nInf.tag,n.tag,xc.ID([1]))
+
+for n in supSet.nodes:
+    pos= n.getInitialPos3d
+    nMid= midSet.getNearestNode(pos)
+    modelSpace.constraints.newEqualDOF(nMid.tag,n.tag,xc.ID([1]))
 
 for p in [pt12,pt13]:
     n= p.getNode()
     pos= n.getInitialPos3d
     nInf= infSet.getNearestNode(pos)
     modelSpace.constraints.newEqualDOF(nInf.tag,n.tag,xc.ID([0]))
+
+for p in [pt22,pt23]:
+    n= p.getNode()
+    pos= n.getInitialPos3d
+    nMid= midSet.getNearestNode(pos)
+    modelSpace.constraints.newEqualDOF(nMid.tag,n.tag,xc.ID([0]))
 
 
 # Actions
@@ -105,17 +131,17 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 # Dead load.
 cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
-for e in supSet.getElements:
+for e in supSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-D]))
 
 # Live load.
 cLC= loadCaseManager.setCurrentLoadCase('liveLoad')
-for e in supSet.getElements:
+for e in supSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-L]))
 
 # Total load.
 cLC= loadCaseManager.setCurrentLoadCase('totalLoad')
-for e in supSet.getElements:
+for e in supSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-W]))
 
 #We add the load case to domain.
@@ -127,14 +153,15 @@ analisis= predefined_solutions.simple_static_linear(sheathingBeam)
 result= analisis.analyze(1)
 
 uYMax= -1e6
-for n in infSet.getNodes:
+for n in infSet.nodes:
     uY= -n.getDisp[1]
     uYMax= max(uY,uYMax)
 
-r= span/uYMax
+r= spanInternalForces/uYMax
+print('thickness= ', thickness*1e3, ' mm')
 print('uYMax= ', uYMax*1e3, ' mm (L/'+str(r)+')')
 
-DeltaLL= 12*L*span**4/1743.0/section.sectionProperties.EI()/2 #Two layers
+DeltaLL= 12*L*span**4/1743.0/section.sectionProperties.EI()/3.0 #Three layers
 r= span/DeltaLL
 print('DeltaLL= ', DeltaLL*1e3, ' mm (L/'+str(r)+')')
 
@@ -147,7 +174,7 @@ Fv= CD*215*4.44822/0.3048/structuralPanelGeom.h
 
 sgMax= -1e6
 tauMax= -1e6
-for e in supSet.getElements:
+for e in supSet.elements:
     e.getResistingForce()
     m1= e.getM1
     sg1= abs(m1/section.sectionProperties.I*structuralPanelGeom.h/2)

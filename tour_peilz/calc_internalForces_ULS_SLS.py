@@ -10,11 +10,11 @@ lsd.LimitStateData.internal_forces_results_directory= './results/internalForces/
 execfile('sectionsDef.py')
 
 #Define section for each element (spatial distribution of RC sections).
-reinfConcreteSectionDistribution.assign(elemSet= floor30_elements.getElements, setRCSects= slab30RCSect)
-reinfConcreteSectionDistribution.assign(elemSet= floor40_elements.getElements, setRCSects= slab40RCSect)
-reinfConcreteSectionDistribution.assign(elemSet= lateral30_elements.getElements, setRCSects= wall30RCSect)
-reinfConcreteSectionDistribution.assign(elemSet= lateral40_elements.getElements, setRCSects= wall40RCSect)
-reinfConcreteSectionDistribution.assign(elemSet= roof_elements.getElements, setRCSects= deckRCSect)
+reinfConcreteSectionDistribution.assign(elemSet= floor30_elements.elements, setRCSects= slab30RCSect)
+reinfConcreteSectionDistribution.assign(elemSet= floor40_elements.elements, setRCSects= slab40RCSect)
+reinfConcreteSectionDistribution.assign(elemSet= lateral30_elements.elements, setRCSects= wall30RCSect)
+reinfConcreteSectionDistribution.assign(elemSet= lateral40_elements.elements, setRCSects= wall40RCSect)
+reinfConcreteSectionDistribution.assign(elemSet= roof_elements.elements, setRCSects= deckRCSect)
 
 reinfConcreteSectionDistribution.dump()
 

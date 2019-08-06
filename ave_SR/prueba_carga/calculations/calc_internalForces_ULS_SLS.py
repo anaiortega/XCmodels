@@ -17,7 +17,7 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= FEcase.getPreprocessor
-reinfConcreteSectionDistribution.assign(elemSet=dintel.getElements,setRCSects=dintelRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=dintel.elements,setRCSects=dintelRCSects)
 
 reinfConcreteSectionDistribution.dump()
 

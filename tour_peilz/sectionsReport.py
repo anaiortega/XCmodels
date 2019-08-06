@@ -90,7 +90,7 @@ for sect in sections.sections:
   # plotting of interaction diagrams
   diagNMy= sect1.defInteractionDiagramNMy(preprocessor)
   grFileName=report_graphics_outDir+sect1.sectionName+'NMy'
-  sect1_internalForces= getSectionInternalForces(xcTotalSet.getElements,sect1.sectionName)
+  sect1_internalForces= getSectionInternalForces(xcTotalSet.elements,sect1.sectionName)
   plotIntDiag(diag=diagNMy,internalForces= sect1_internalForces,title=sect1.sectionName+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   diagNMz= sect1.defInteractionDiagramNMz(preprocessor)
   grFileName=report_graphics_outDir+sect1.sectionName+'NMz'
@@ -105,7 +105,7 @@ for sect in sections.sections:
   # plotting of interaction diagrams
   diagNMy= sect2.defInteractionDiagramNMy(preprocessor)
   grFileName=report_graphics_outDir+sect2.sectionName+'NMy'
-  sect2_internalForces= getSectionInternalForces(xcTotalSet.getElements,sect2.sectionName)
+  sect2_internalForces= getSectionInternalForces(xcTotalSet.elements,sect2.sectionName)
   plotIntDiag(diag=diagNMy,internalForces= sect2_internalForces,title=sect2.sectionName+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   diagNMz= sect2.defInteractionDiagramNMz(preprocessor)
   grFileName=report_graphics_outDir+sect2.sectionName+'NMz'

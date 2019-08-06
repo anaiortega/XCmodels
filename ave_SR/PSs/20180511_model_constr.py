@@ -786,7 +786,7 @@ overallSet.description='Estructura'
 overallSet.color=colors.setColor['purple01']
 tablero.color=colors.setColor['purple01']
 '''
-nodesTot=total.getNodes
+nodesTot=total.nodes
 for n in nodesTot:
     if n.isFree:
         print 'node ',n.tag, ' is free'

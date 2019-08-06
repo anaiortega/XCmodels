@@ -17,7 +17,7 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= model.getPreprocessor()
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('cantlvSet').getElements,setRCSects=cantlvRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('cantlvSet').elements,setRCSects=cantlvRCSects)
 
 reinfConcreteSectionDistribution.dump()
 

@@ -52,7 +52,7 @@ def getReaction(preprocessor,nmbAction,nodeSet):
   print "  retval= ", retval/1e3, " kN"
   return retval
 
-nodeSet= setDeck.getNodes
+nodeSet= setDeck.nodes
 reactions= {}
 for lcName in loadCaseNames:
   reactions[lcName]= getReaction(preprocessor,lcName,nodeSet)

@@ -210,7 +210,7 @@ cabl_mat=typical_materials.defCableMaterial(prep, name="cabl_mat",E=Ecabl,prestr
 cabl_mesh=fem.LinSetToMesh(linSet=cables,matSect=cabl_mat,elemSize=eSize_cabl,vDirLAxZ=xc.Vector([0,0,1]),elemType='corot_truss',dimElemSpace=3)
 cabl_mesh.generateMesh(prep)    # mesh this set of lines
 
-for e in cables.getElements:
+for e in cables.elements:
     e.area=area_cable
 
 deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize_deck,elemType='ShellMITC4')
@@ -250,8 +250,8 @@ barrs.name='barrs'
 
 # Connection between cables and deck
 gluedDOFs= [0,1,2,3,4,5]
-deckElem=shells.getElements
-cablNod=cables.getNodes
+deckElem=shells.elements
+cablNod=cables.nodes
 for n in cablNod:
     nearElem=deckElem.getNearestElement(n.getCurrentPos3d(0.0))
     modelSpace.constraints.newGlueNodeToElement(n,nearElem,xc.ID(gluedDOFs))

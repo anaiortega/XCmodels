@@ -17,9 +17,9 @@ execfile("../sectionsDef.py")
 #Define section names for each element.
 
 preprocessor= model.getPreprocessor()
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('botColSet').getElements,setRCSects=botColRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('topColSet').getElements,setRCSects=topColRCSects)
-reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('curvColSet').getElements,setRCSects=curvColRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('botColSet').elements,setRCSects=botColRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('topColSet').elements,setRCSects=topColRCSects)
+reinfConcreteSectionDistribution.assign(elemSet=preprocessor.getSets.getSet('curvColSet').elements,setRCSects=curvColRCSects)
 
 reinfConcreteSectionDistribution.dump()
 
