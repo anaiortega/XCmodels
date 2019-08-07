@@ -54,7 +54,7 @@ lastYpos=len(yList)-1
 lastZpos=len(zList)-1
 
 unifLoad=1915  # live load (uniform) [Pa]
-concLoad=13340 #concentrated load [N]
+concLoad=13340 #concentrated load [N]  3000 pound
 
 
 '''

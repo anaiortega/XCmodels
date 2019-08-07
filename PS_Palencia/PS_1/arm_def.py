@@ -34,4 +34,24 @@ trInf_vol_L2=[10,200] #transversal inferior en voladizo vano 2
 
 #   Armadura longitudinal
 # Longitudinal superior losa y cartabón ((9a)) y ((9b))
-lnSup_loscart_L1=
+lnSup_loscart_L1=[16,200]   #longitudinal superior losa y cart. vano 1
+lnSup_base_loscart_Rpil=[20,100] #base longitudinal superior losa y cart. riostra pila
+lnSup_ref_loscart_Rpil=[20,100] #refuerzo longitudinal superior losa y cart. riostra pila
+lnSup_loscart_L2=[16,200] #longitudinal superior losa y cart. vano 2
+# Longitudinal inferior losa ((8a)) y ((8b))
+lnInf_base_los_L1=[20,100] #base longitudinal inferior losa vano 1
+lnInf_ref_los_L1=[25,200]  #refuerzo longitudinal inferior losa vano 1
+lnInf_base_los_L2=[25,100] #base longitudinal inferior losa vano 2
+lnInf_ref_los_L2=[16,100]  #refuerzo longitudinal inferior losa vano 2
+# Longitudinal inferior cartabón ((7))
+lnInf_cart=[16,200]        # longitudinal inferior cartabón
+# Longitudinal superior voladizo ((10))
+lnSup_vol_L1=[16,200]    #longitudinal superior voladizo vano 1
+lnSup_vol_020L2=[16,100] #longitudinal superior voladizo sobre pila a
+                         #0.20 x luz vano 2
+lnSup_vol_L2=[16,200]    #longitudinal superior voladizo vano 2
+# Longitudinal inferior voladizo ((4))
+lnInf_vol_L1=[10,200]    #longitudinal inferior voladizo vano 1
+lnInf_vol_Rpil=[12,200]  #longitudinal inferior sobre riostra pila
+lnInf_vol_L2=[10,200]    #longitudinal inferior voladizo vano 2
+

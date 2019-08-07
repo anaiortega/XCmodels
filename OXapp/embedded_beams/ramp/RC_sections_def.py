@@ -22,7 +22,7 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 #of a beam element
 
 rampRCSects= rcs.RecordRCSlabBeamSection(name='rampRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=rampTh,elemSetName=ramp.name)  
-#rampRCSects.dir1PositvRebarRows=[ACI_materials.n3s150r50]
-rampRCSects.dir1NegatvRebarRows=[ACI_materials.n3s150r45] #transv
-#rampRCSects.dir2PositvRebarRows=[rcs.rebLayer(16,250,35)]
-rampRCSects.dir2NegatvRebarRows=[ACI_materials.n3s150r50] #long
+rampRCSects.dir1PositvRebarRows=[ACI_materials.n3s300r50] #tranv. sup.
+rampRCSects.dir1NegatvRebarRows=[ACI_materials.n3s300r45] #transv. inf.
+rampRCSects.dir2PositvRebarRows=[ACI_materials.n3s300r50] #long. sup.
+rampRCSects.dir2NegatvRebarRows=[ACI_materials.n3s150r50] #long. inf.
