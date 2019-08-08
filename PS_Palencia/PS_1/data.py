@@ -89,7 +89,7 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 yLosa
 #Zonas armado 
-yArm=redondea([0,0.1*Lvanos[0],0.2*Lvanos[0],Lvanos[0]-0.3*Lvanos[0],Lvanos[0]-0.2*Lvanos[0],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.15*Lvanos[1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=redondea([0,0.1*Lvanos[0],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[0],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2

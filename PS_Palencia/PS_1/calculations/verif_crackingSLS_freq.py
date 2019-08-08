@@ -8,7 +8,7 @@ execfile("../model_gen.py") #FE model generation
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=beamX,appendToResFile='N',listFile='N')
+outCfg=oc.verifOutVars(setCalc=decks,appendToResFile='N',listFile='N')
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

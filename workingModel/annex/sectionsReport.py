@@ -7,6 +7,9 @@ execfile("../model_gen.py") #FE model generation
 
 sectDataInputFile='../RC_sections_def.py'  #script that carries out the section definition
 execfile(sectDataInputFile)
+
+sect2Disp=[deckRCSects,beamXRCsect] #reinforced concrete sections to display
+                                    #from those defined in sectDataInputFile
 report_graphics_outDir='text/graphics/sections/'
 
 reportDir='./text'     #directory where sections report will be placed
@@ -39,7 +42,9 @@ report.write('# \\begin{document}\n\n')
 
 scSteel=None
 scConcr=None
-for sect in sections.sections:
+#for sect in sections.sections:
+for sect in sect2Disp:
+  sect.creaTwoSections()
   sect1=sect.lstRCSects[0]
   sect2=sect.lstRCSects[1]
   sect1.defRCSimpleSection(preprocessor,'d')

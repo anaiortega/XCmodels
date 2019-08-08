@@ -10,12 +10,9 @@ from materials.ec2 import EC2_materials
 import math
 
 #Armaduras
-execfile('./arm_def.py')
-
+execfile('../arm_def.py')
 
 rnom=35 #recubrimiento nominal 
-
-areaFi16= math.pi*(16*1e-3)**2/4.0
 
 #instances of rcs.RecordRCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
@@ -68,7 +65,7 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
     if arm9b:
         RCSet.dir2PositvRebarRows=[rcs.rebLayer(arm9b[0],arm9b[1],rnom+arm5[0]+arm9a[0])] #long. sup. 2a. capa
     RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm6a[0],arm6a[1],rnom+arm1[0])] #long. inf.
-    if arm9b:
+    if arm6b:
        RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm6b[0],arm6b[1],rnom+arm1[0]+arm6a[0])] #long. inf. 2a. capa
     ####Faltan los cercos
     #armaduras cartabón
@@ -89,20 +86,95 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
         RCSet.dir2NegatvRebarRows=[rcs.rebLayer(arm8[0],arm8[1],rnom+arm4[0])] #long. inf.
 
      
-#Armaduras zona 1
-armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[20,100],arm2=[12,200],arm3=[],arm4=[10,200],arm5=[20,200],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+#Armaduras zona 1 (0.2*Lvano1)
+armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los_020L1,
+              arm2=trInf_cart_020L1,
+              arm3=[],
+              arm4=trInf_vol_L1,
+              arm5=trSup_020L1,
+              arm6a=lnInf_base_los_L1,
+              arm6b=None,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L1,
+              arm9a=lnSup_base_loscart_L1,
+              arm9b=None,
+              arm10=lnSup_vol_L1)
     
-#Armaduras zona 2
-armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[20,100],arm2=[12,200],arm3=[],arm4=[10,200],arm5=[16,200],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+#Armaduras zona 2 (vano 1 centro: 0.2*Lvano1 -> 0.2*Lvano2)
+armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los,
+              arm2=trInf_cart_L1cent,
+              arm3=[],
+              arm4=trInf_vol_L1,
+              arm5=trSup_L1cent,
+              arm6a=lnInf_base_los_L1,
+              arm6b=lnInf_ref_los_L1,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L1,
+              arm9a=lnSup_base_loscart_L1,
+              arm9b=None,
+              arm10=lnSup_vol_L1)
     
-#Armaduras zona 3
-armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,200],arm6a=[20,100],arm6b=[25,200],arm7=[16,200],arm8=[10,200],arm9a=[16,200],arm9b=None,arm10=[16,200])
+#Armaduras zona 3 (0.2*Lvano2 -> riostra pila)
+armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los,
+              arm2=trInf_cart_L1cent,
+              arm3=[],
+              arm4=trInf_vol_020L2,
+              arm5=trSup_020L2,
+              arm6a=lnInf_base_los_L1,
+              arm6b=None,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L1,
+              arm9a=lnSup_base_loscart_Rpil,
+              arm9b=None,
+              arm10=lnSup_vol_020L2)
     
-#Armaduras zona 4
-armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,100],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[20,100],arm9b=None,arm10=[16,200])
+#Armaduras zona 4 (riostra pila)
+armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los,
+              arm2=trInf_cart_Rpil,
+              arm3=[],
+              arm4=trInf_vol_020L2,
+              arm5=trSup_Rpil,
+              arm6a=lnInf_base_los_L2,
+              arm6b=None,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L2,
+              arm9a=lnSup_base_loscart_Rpil,
+              arm9b=lnSup_ref_loscart_Rpil,
+              arm10=lnSup_vol_020L2)
     
-#Armaduras zona 5
-armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,arm1=[16,200],arm2=[10,200],arm3=[],arm4=[10,200],arm5=[16,100],arm6a=[20,100],arm6b=None,arm7=[16,200],arm8=[10,200],arm9a=[20,100],arm9b=None,arm10=[16,200])
+#Armaduras zona 5 (riostra pila -> 0.2*Lvano2)
+armaduraZonas(nZona=5,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los,
+              arm2=trInf_cart_L2cent,
+              arm3=[],
+              arm4=trInf_vol_020L2,
+              arm5=trSup_020L2,
+              arm6a=lnInf_base_los_L2,
+              arm6b=None,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L2,
+              arm9a=lnSup_ref_loscart_Rpil,
+              arm9b=None,
+              arm10=lnSup_vol_020L2)
+    
+#Armaduras zona 6 (vano 2 centro: 0.2*Lvano2 -> 0.5*Lvano2)
+armaduraZonas(nZona=6,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
+              arm1=trInf_los,
+              arm2=trInf_cart_L2cent,
+              arm3=[],
+              arm4=trInf_vol_L2,
+              arm5=trSup_L2cent,
+              arm6a=lnInf_base_los_L2,
+              arm6b=lnInf_ref_los_L2,
+              arm7=lnInf_cart,
+              arm8=lnInf_vol_L2,
+              arm9a=lnSup_base_loscart_L2,
+              arm9b=None,
+              arm10=lnSup_vol_L2)
     
 '''    
 losSupV2RCSects= rcs.RecordRCSlabBeamSection(name='losSupV2RCSects',sectionDescr='losa aligerada, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupV2')

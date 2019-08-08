@@ -15,6 +15,7 @@ grWidth='120mm'   #width of the graphics for the tex file
 textfl=open(texReportFile,'w')  #tex file to be generated
 for lc in loadCasesToDisplay:
     lc.loadReports(FEcase=FEcase,pathGr=pathGrph,texFile=textfl,grWdt=cfg.grWidth)
+    
 
 textfl.close()
   

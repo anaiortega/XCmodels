@@ -108,4 +108,4 @@ for j in range(1,len(yArm)):
     sets_arm_volExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolExt_Z'+str(j)))
 
 z=zLosa[0]
-setArmados=gridTabl.getSetSurfOneXYZRegion(xyzRange=(0,yArm[0],z),(xList[-1],yArm[-1],z)),nameSet='setArmados'
+setArmados=gridTabl.getSetSurfOneXYZRegion(xyzRange=((0,yArm[0],z),(xList[-1],yArm[-1],z)),nameSet='setArmados')
