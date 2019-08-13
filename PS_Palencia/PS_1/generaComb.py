@@ -3,11 +3,17 @@
 import xc_base
 import loadCombinations
 from loadCombinationUtils import iap11
-
+'''
+##Nota:
+El coeficiente de simultaneidad fi0 de las cargas verticales debidas a vehículo pesado es fi0=0.75 mientras que el de sobrecarga uniforme es fi0=0.4.
+Ambas cargas están consideradas en el mismo load case y el programa aplica elcoeficiente 0.75.
+Para no penalizar las hipótesis en las que la sobrecarga de tráfico actúa como concomitante, en las hipotesis generadas se ha sustituido el coeficiente 1.35*0.75=1.01 por un coeficiente conjunto igual a 0.6 (ponderando las cargas de los carriles ficticios 1 y 2 actuando en el vano central)
+'''
 lcg= iap11.controlCombGenerator
 #print '*******', pond.permanentActions.gammaF.getGammaFELU.desfavorable
 
 G12=lcg.insert("IAP11","permanentes",loadCombinations.Action("G12","Peso propio + carga muerta"),"permanentes","permanentes")
+
 G3=lcg.insert("IAP11","permanentes_nc",loadCombinations.Action("G3","Reológicas"),"permanentes","permanentes_nc_Reol")
 
 Q1a1=lcg.insert("IAP11","variables",loadCombinations.Action("Q1a1","Tren cargas pos. A1"),"vehículos_pesados","variables_SCuso")

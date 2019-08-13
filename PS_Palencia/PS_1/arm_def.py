@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from __future__ import division
 
 #Definición armaduras tablero [diámetro,separación] en mm 
 #   ***Armadura transversal ***
@@ -61,3 +61,46 @@ lnSup_vol_L2=[16,200]    #longitudinal superior voladizo vano 2
 lnInf_vol_L1=[10,200]    #longitudinal inferior voladizo vano 1
 lnInf_vol_L2=[10,200]    #longitudinal inferior voladizo vano 2
 
+#  ***Refuerzo armadura transversal riostra pila***
+#((1P)) transversal inferior (losa)
+nfis=6
+separ=2*LriostrPil/nfis*1000 #[mm]
+trInf_ref_Rpil=[16,separ]  #transversal inferior (si None, no se considera)
+#((2P)) transversal superior (losa)
+nfis=16
+separ=2*LriostrPil/nfis*1000 #[mm] 
+trSup_ref_RPil=[25,separ] #transversal superior (si None, no se considera)
+#((3P)) transversal a medio canto (losa)
+trMid_ref_RPil=[16,20]  #transversal a medio canto
+
+#  ***Armadura de cortante ((3))***
+# cercos vano 1 (hasta riostra pila)
+nram=2*6   #nº de ramas en la sección transversal de la losa
+nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
+diam_cercos=10
+sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_L1=[diam_cercos,nramas_m,sep_long]
+# cercos riostra pila
+nram=2*6   #nº de ramas en la sección transversal de la losa
+nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
+diam_cercos=12
+sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_Rpil=[diam_cercos,nramas_m,sep_long]
+# cercos vano 2 (desde riostra pila)
+nram=2*6   #nº de ramas en la sección transversal de la losa
+nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
+diam_cercos=10
+sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_L2=[diam_cercos,nramas_m,sep_long]
+
+#Refuerzo armadura transversal riostra estribo
+#((1E)) refuerzo transversal inferior
+nfis=11
+separ=LriostrEstr/nfis*1000 #[mm] 
+trInf_ref_Restr=[20,separ]  #((1E)) transversal inferior
+#((2E)) refuerzo transversal superior
+nfis=6
+separ=LriostrEstr/nfis*1000 #[mm] 
+trSup_ref_Restr=[16,separ]  #((1E)) transversal superior
+#((3E)) refuerzo transversal medio canto
+trMid_ref_Restr=[16,200]  #((1E)) transversal medio canto

@@ -4,6 +4,8 @@ from __future__ import division
 import math
 from materials.ehe import EHE_materials
 
+home= '/home/ana/projects/XCmodels/PS_Palencia/PS_1/'
+
 def redondea(lista,decimales):
     retval=[]
     for i in lista:
@@ -29,7 +31,7 @@ anchoVoladz=1.90
 anchoLosa=4.20
 anchoCartab=0.60
 LriostrEstr=1.0
-LriostrPil=2  #longitud de riostra sobre pilas
+LriostrPil=2  #longitud de riostra sobre pilas (a cada lado del eje)
 cantoRiostrEstr=0.90
 
 #  Pilas
@@ -40,7 +42,7 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
 #Apoyos estribos
-distNeopr=4.4  #distancia entre neoprenos
+distNeopr=4.6  #distancia entre neoprenos
 numNeopr=2   #número de aparatos de apoyo
 xCoordNeopr=[-0.5*distNeopr,0.5*distNeopr]
 hNetoNeopr=32e-3 #espesor neto neopreno
@@ -89,7 +91,7 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 yLosa
 #Zonas armado 
-yArm=redondea([0,0.1*Lvanos[0],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[0],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
@@ -134,7 +136,8 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 #Retracción
-eps_retracc=-531e-6  #deformación por retracción #!!!!!REPASAR
+execfile(home+'retraccion.py')  #cálculo de la retracción
+eps_retracc=Epscs  #deformación por retracción #
 
 
 # espesores derivados

@@ -13,13 +13,14 @@ execfile("../model_gen.py") #FE model generation
 #reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcement.pkl'
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 stcalc=setArmados
+#stcalc=sets_arm_losa[1]
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=stcalc,appendToResFile='N',listFile='N',calcMeanCF='Y')
+outCfg=oc.verifOutVars(setCalc=stcalc,appendToResFile='N',listFile='N',calcMeanCF='N')
 
 limitState=lsd.normalStressesResistance
 limitState.controller= lscheck.BiaxialBendingNormalStressController(limitState.label)
-a=lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
+lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
 
 
 

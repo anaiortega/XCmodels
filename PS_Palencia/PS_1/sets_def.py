@@ -107,5 +107,22 @@ sets_arm_volExt=[]
 for j in range(1,len(yArm)):
     sets_arm_volExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolExt_Z'+str(j)))
 
+#set armado riostra estribo
 z=zLosa[0]
-setArmados=gridTabl.getSetSurfOneXYZRegion(xyzRange=((0,yArm[0],z),(xList[-1],yArm[-1],z)),nameSet='setArmados')
+x=[0,xList[-1]]
+y=yRiostrEstr[0]
+setArmREstr=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='setArmREstr')
+setArmREstr.description='Estribo 1'
+
+setArmLosa=sets_arm_losa[0]+sets_arm_losa[1]+sets_arm_losa[2]+sets_arm_losa[3]+sets_arm_losa[4]+sets_arm_losa[5]
+setArmLosa.name='setArmLosa'
+setArmLosa.description='Losa'
+setArmCart=sets_arm_cartInt[0]+sets_arm_cartInt[1]+sets_arm_cartInt[2]+sets_arm_cartInt[3]+sets_arm_cartInt[4]+sets_arm_cartInt[5]+sets_arm_cartExt[0]+sets_arm_cartExt[1]+sets_arm_cartExt[2]+sets_arm_cartExt[3]+sets_arm_cartExt[4]+sets_arm_cartExt[5]
+setArmCart.name='setArmCart'
+setArmCart.description='Cartabón'
+setArmVol=sets_arm_volInt[0]+sets_arm_volInt[1]+sets_arm_volInt[2]+sets_arm_volInt[3]+sets_arm_volInt[4]+sets_arm_volInt[5]+sets_arm_volExt[0]+sets_arm_volExt[1]+sets_arm_volExt[2]+sets_arm_volExt[3]+sets_arm_volExt[4]+sets_arm_volExt[5]
+setArmVol.name='setArmVol'
+setArmVol.description='Voladizo'
+setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr
+setArmados.name='setArmados'
+setArmados.description='Tabl.'
