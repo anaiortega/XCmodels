@@ -11,7 +11,9 @@ viaFictDer.description='Vía ficticia derecha'
 x=xViasFict[1]
 viaFictIzq=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzq')
 viaFictIzq.description='Vía ficticia izquierda'
-viaFictResto=None
+viaFictResto=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictResto')
+viaFictResto.description='Resto vías ficticias'
+
 #calzada
 calzada=viaFictIzq+viaFictDer
 calzada.description='Calzada'
@@ -45,7 +47,7 @@ z=zLosa[0]
 viaFictDer_vano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2')
 x=xViasFict[1]
 viaFictIzq_vano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2')
-viaFictResto_vano2=None
+viaFictResto_vano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictResto_vano2')
 
 #Coordinates for traffic point loads
 ycent_vano1=(yRiostrEstr[0][0]+yPil[0])/2.
@@ -82,9 +84,6 @@ bordTabl=sets.get_lines_on_points(setPoints=setPntBordTabl,setLinName='bordTabl'
 setPntBordizqTabl=gridTabl.getSetPntMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][0],y[-1],z))],setName='setPntBordizqTabl')
 bordizqTabl=sets.get_lines_on_points(setPoints=setPntBordizqTabl,setLinName='bordizqTabl',onlyIncluded=True)
 
-#Pilas
-# a barlovento:
-setPilBarlov=gridTabl.getSetLinOneXYZRegion
 #Sets para armados losa [setZonaArm1,[setZonaArm2, ...]
 z=zLosa[0]
 x=[0,xLosa[-1]]
@@ -118,10 +117,8 @@ x=[0,xList[-1]]
 y=yRiostrEstr[0]
 setArmREstr=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='setArmREstr')
 setArmREstr.description='Estribo 1'
-
 #Set armados pilas
-setArmPil=pilasBarlov
-#setArmPil.name='setArmPil'
+setArmPil=pilasBarlov+pilasSotav
 setArmPil.description='Pilas'
 
 setArmLosa=sets_arm_losa[0]+sets_arm_losa[1]+sets_arm_losa[2]+sets_arm_losa[3]+sets_arm_losa[4]+sets_arm_losa[5]
@@ -133,7 +130,7 @@ setArmCart.description='Cartabón'
 setArmVol=sets_arm_volInt[0]+sets_arm_volInt[1]+sets_arm_volInt[2]+sets_arm_volInt[3]+sets_arm_volInt[4]+sets_arm_volInt[5]+sets_arm_volExt[0]+sets_arm_volExt[1]+sets_arm_volExt[2]+sets_arm_volExt[3]+sets_arm_volExt[4]+sets_arm_volExt[5]
 setArmVol.name='setArmVol'
 setArmVol.description='Voladizo'
-setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr+setArmPil
+setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr
 setArmados.name='setArmados'
 setArmados.description='Tabl.'
 

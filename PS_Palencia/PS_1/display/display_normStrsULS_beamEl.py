@@ -10,12 +10,12 @@ execfile("../model_gen.py") #FE model generation
 execfile(cfg.verifNormStrFile)
 
 #  Config
-argument= 'chiLT'       #Possible arguments:
+argument= 'CF'       #Possible arguments:
                      #RC elem: 'CF', 'N', 'My', 'Mz'
                      #steel elem: 'CF', 'N', 'My', 'Mz','Ncrd','McRdy','McRdz',
                      #            'MvRdz','MbRdz','chiLT'
-setDispRes=beamXsteel+columnZsteel   #set of linear elements to display results
-setDisp=overallSet   #set of elements (any type) to be displayed
+setDispRes=setArmPil   #set of linear elements to display results
+setDisp=setArmPil   #set of elements (any type) to be displayed
 scaleFactor=1        #scale factor to apply to the auto-scales diagram (can be negative)
 fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 #  End config 

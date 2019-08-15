@@ -48,5 +48,5 @@ for lc in LSD:
 
 resLoadCases=[G1,G2,G3,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q33,Q34]
 resLoadCases_neopr=[G1,G2,G3,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q31neopr,Q32neopr,Q33,Q34]
-LSD_disp=[G1,G2,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q33,Q34]
+LSD_disp=[G1,G2,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22]
 

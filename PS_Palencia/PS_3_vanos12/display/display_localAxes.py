@@ -19,7 +19,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #                   None, in this case it returns a console output graphic.
 
 setToDisp=tablero
-qg.display_local_axes(prep=prep,setToDisplay=setToDisp,vectorScale=0.20,viewDef= vtk_graphic_base.CameraParameters('ZPos',1.0),caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+qg.display_local_axes(prep=prep,setToDisplay=setToDisp,vectorScale=0.20,viewDef= vtk_graphic_base.CameraParameters('XYZPos',1.0),caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
 
 

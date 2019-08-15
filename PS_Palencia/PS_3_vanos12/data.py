@@ -3,6 +3,7 @@ from __future__ import division
 
 import math
 from materials.ehe import EHE_materials
+home= '/home/ana/projects/XCmodels/PS_Palencia/PS_3/'
 
 def redondea(lista,decimales):
     retval=[]
@@ -40,7 +41,7 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
 #Apoyos estribos
-distNeopr=4.4  #distancia entre neoprenos
+distNeopr=4.2  #distancia entre neoprenos
 numNeopr=2   #número de aparatos de apoyo
 xCoordNeopr=[-0.5*distNeopr,0.5*distNeopr]
 hNetoNeopr=32e-3 #espesor neto neopreno
@@ -89,11 +90,13 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
             [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)],
             [round(yPil[2]-LriostrPil/2.,dec),round(yPil[2]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
-yLosa
+
 #Zonas armado
-yArm=redondea([0.2*Lvanos[0],Lvanos[0]-0.3*Lvanos[0],Lvanos[0]+0.3*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+
+
 #   Coordenadas en Z
-zPil=[[-hTotPilas,0],[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
+zPil=[[-hTotPilas,0],[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2,..
 zLosa=[0]
 
 #materials
@@ -114,14 +117,15 @@ qunifmax=9e3    #carga uniforme en vía virtual 1
 qunifmin=2.5e3    #carga uniforme en resto
 qunifacera=2.5e3    #carga uniforme en acera concomitante con cargas de tráfico
 
-Qfrenado=470.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
+Qfrenado=497.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
 vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
 #  viento
-qWpilas=2.56e3 #carga lineal viento sobre pilas [N/m]
+qWpilasBarlov=2.56e3 #carga lineal viento sobre pilas a barlovento [N/m]
 qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]
 qWTableroSCuso=6.7e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
-#coef_ocult=0.46
+coef_ocult=0.46
+qWpilasSotav=qWpilasBarlov*coef_ocult #carga lineal viento sobre pilas a sotavento [N/m]
 
 #Temperaturas
 Tunif_contr=-24  #Incremento uniforme temperatura contracción ºC
@@ -135,7 +139,7 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 #Retracción
-eps_retracc=-531e-6  #deformación por retracción #!!!!!REPASAR
+eps_retracc=-367e-6  #deformación por retracción #!!!!!REPASAR
 
 
 # espesores derivados
@@ -166,7 +170,7 @@ eSize= 0.4     #length of elements
 def flatten(l):
     return flatten(l[0]) + (flatten(l[1:]) if len(l) > 1 else []) if type(l) is list else [l]
 
-xList_aux=flatten(xAceras+xVoladz+xCartab+xLosa+xPil+xViasFict+xRiostrEstr)
+xList_aux=flatten(xAceras+xVoladz+xCartab+xLosa+xPil+xViasFict+xRiostrEstr+[0])
 xList=[]
 for i in xList_aux:
     if i not in xList:

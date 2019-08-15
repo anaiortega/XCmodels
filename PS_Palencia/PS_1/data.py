@@ -89,9 +89,9 @@ yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
 yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
             [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
-yLosa
+
 #Zonas armado 
-yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.22*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
@@ -119,11 +119,11 @@ Qfrenado=470.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
 vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
 #  viento
-qWpilas=2.56e3 #carga lineal viento sobre pilas [N/m]
+qWpilasBarlov=2.56e3 #carga lineal viento sobre pilas [N/m]
 qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]
 qWTableroSCuso=6.7e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
 #coef_ocult=0.46
-
+qWpilasSotav=0
 #Temperaturas
 Tunif_contr=-24  #Incremento uniforme temperatura contracción ºC
 Tunif_dilat=31   #Incremento uniforme temperatura dilatación ºC
