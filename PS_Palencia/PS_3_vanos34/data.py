@@ -12,7 +12,7 @@ def redondea(lista,decimales):
 #Auxiliary data
 dec=2 # número de posiciones decimales para redondear coordenadas
  #Geometry
-Lvanos=[11.50,15.50,11.50,11.50]
+Lvanos=[11.50,11.50,15.50,11.50]
 Ltablero=0
 for v in Lvanos:
     Ltablero+=v

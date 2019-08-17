@@ -24,4 +24,6 @@ setsTodisp=[setArmPil]
 setsTodisp=[aceras,viaFictDer,viaFictIzq]
 #setsTodisp=[calzada]
 #setsTodisp=[aceras,viaFictDer_vano2,viaFictIzq_vano2]
+setsTodisp=allsets
+setsTodisp=[murestr,zap]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)

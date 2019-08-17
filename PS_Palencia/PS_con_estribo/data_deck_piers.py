@@ -4,19 +4,11 @@ from __future__ import division
 import math
 from materials.ehe import EHE_materials
 
-def redondea(lista,decimales):
-    retval=[]
-    for i in lista:
-        retval.append(round(i,decimales))
-    return retval
-#Auxiliary data
-dec=2 # número de posiciones decimales para redondear coordenadas
- #Geometry
+ # Geometry
 Lvanos=[11.50,16.10,11.50]
 Ltablero=0
 for v in Lvanos:
     Ltablero+=v
-
 anchoCalz=6.0
 anchoTot=9.20
 anchoAcera=(anchoTot-anchoCalz)/2.0   
@@ -39,7 +31,7 @@ diamPilas=1.0
 lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
-#Apoyos estribos
+#Bearings abutments
 distNeopr=4.6  #distancia entre neoprenos
 numNeopr=2   #número de aparatos de apoyo
 xCoordNeopr=[-0.5*distNeopr,0.5*distNeopr]
@@ -47,60 +39,12 @@ hNetoNeopr=32e-3 #espesor neto neopreno
 aNeopr=0.25       #dimensión y (sentido longitudinal) del neopreno
 bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
 
-#     Coordenadas sección transversal
-#Aceras
-xAceras=[[round(-anchoTot/2.,dec),round(-anchoCalz/2.,dec)],
-         [round(anchoCalz/2.,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
-#Voladizos
-xVoladz=[[round(-anchoTot/2.,dec),round(-anchoTot/2.+anchoVoladz,dec)], 
-         [round(anchoTot/2.-anchoVoladz,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
-xVoladz[0].insert(1,round((xVoladz[0][0]+xVoladz[0][1])/2.,2)) #intermedio
-xVoladz[1].insert(1,round((xVoladz[1][0]+xVoladz[1][1])/2.,2)) #intermedio
-#Cartabones
-xCartab=[[round(xVoladz[0][-1],dec),round(xVoladz[0][-1]+anchoCartab,dec)],
-         [round(xVoladz[1][0]-anchoCartab,dec),round(xVoladz[1][0],dec)]] #iqda., drcha.
-xCartab[0].insert(1,round((xCartab[0][0]+xCartab[0][-1])/2.,2)) #intermedio
-xCartab[1].insert(1,round((xCartab[1][0]+xCartab[1][-1])/2.,2))#intermedio
-
-#Losa espesor constante
-xLosa=[xCartab[0][-1],xCartab[1][0]]
-#Riostras estribos
-xRiostrEstr=[[xVoladz[0][-1],xVoladz[1][0]],
-             [xVoladz[0][-1],xVoladz[1][0]]]   #riostra estribo 1, riostra estribo 2
-#Pila
-xPil=[0]
-#Vias ficticeas
-xViasFict=[[0,round(anchoCalz/2.,dec)],
-           [round(-anchoCalz/2.,dec),0]] #vía 1, vía 2, ...
-
-xNeopr=[-distNeopr/2.,distNeopr/2.]
-
-#   Coordenadas perfil longitudinal
-#Estribos
-yEstr=[0,Ltablero] #eje estribo 1, eje estribo 2
-#Riostra estribos
-yRiostrEstr=[[round(yEstr[0]-LriostrEstr/2.,dec),round(yEstr[0]+LriostrEstr/2.,dec)],
-             [round(yEstr[1]-LriostrEstr/2.,dec),round(yEstr[1]+LriostrEstr/2.,dec)]]  #riostra estribo 1, riostra estribo 2
-#Pilas
-yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
-#Riostra pilas
-yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
-            [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
-yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
-
-#Zonas armado 
-yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.22*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
-
-#   Coordenadas en Z
-zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
-zLosa=[0]
-
 #materials
 concrete=EHE_materials.HA30
 reinfSteel= EHE_materials.B500S
 Gneopr=1000e3  #módulo de cortante del material elastomérico
 
-# Cargas
+# Loads
 grav=9.81     #[m/s2]
 pav_inf=1150  #pavimento, valor inferior [N/m2]
 pav_sup=1725  #pavimento, valor superior [N/m2]
@@ -122,7 +66,7 @@ qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]
 qWTableroSCuso=6.7e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
 #coef_ocult=0.46
 qWpilasSotav=0
-#Temperaturas
+#Temperatures
 Tunif_contr=-24  #Incremento uniforme temperatura contracción ºC
 Tunif_dilat=31   #Incremento uniforme temperatura dilatación ºC
 Tfibrsup_cal=15  #Temperatura fibra superior más caliente (T fibra inf.=0ºC)
@@ -133,11 +77,65 @@ Tunif_contr_neopr=-24-15  #Incremento uniforme temperatura contracción ºC
 Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
-#Retracción
+# Shrinkage
 execfile(fullProjPath+'retraccion.py')  #cálculo de la retracción
 eps_retracc=Epscs  #deformación por retracción #
 
+#self weigth
+grav=9.81 #Gravity acceleration (m/s2)
+pespConcr=grav*concrete.density() #peso específico hormigón armado [N/m3]
 
+eSize= 0.4     #length of elements
+
+#Auxiliary data
+dec=2 # número de posiciones decimales para redondear coordenadas
+#     Coordenadas sección transversal
+#Aceras
+xAceras=[redondea([-anchoTot/2.,-anchoCalz/2.],dec),
+         redondea([anchoCalz/2.,anchoTot/2.],dec)] #iqda., drcha.
+#Voladizos
+xVoladz=[redondea([-anchoTot/2.,-anchoTot/2.+anchoVoladz],dec), 
+         redondea([anchoTot/2.-anchoVoladz,anchoTot/2.],dec)] #iqda., drcha.
+xVoladz[0].insert(1,round((xVoladz[0][0]+xVoladz[0][1])/2.,2)) #intermedio
+xVoladz[1].insert(1,round((xVoladz[1][0]+xVoladz[1][1])/2.,2)) #intermedio
+#Cartabones
+xCartab=[redondea([xVoladz[0][-1],xVoladz[0][-1]+anchoCartab],dec),
+         redondea([xVoladz[1][0]-anchoCartab,xVoladz[1][0]],dec)] #iqda., drcha.
+xCartab[0].insert(1,round((xCartab[0][0]+xCartab[0][-1])/2.,2)) #intermedio
+xCartab[1].insert(1,round((xCartab[1][0]+xCartab[1][-1])/2.,2))#intermedio
+
+#Losa espesor constante
+xLosa=[xCartab[0][-1],xCartab[1][0]]
+#Riostras estribos
+xRiostrEstr=[[xVoladz[0][-1],xVoladz[1][0]],
+             [xVoladz[0][-1],xVoladz[1][0]]]   #riostra estribo 1, riostra estribo 2
+#Pila
+xPil=[0]
+#Vias ficticeas
+xViasFict=[redondea([0,anchoCalz/2.],dec),
+           redondea([-anchoCalz/2.,0],dec)] #vía 1, vía 2, ...
+
+xNeopr=[-distNeopr/2.,distNeopr/2.]
+
+#   Coordenadas perfil longitudinal
+#Estribos
+yEstr=[0,Ltablero] #eje estribo 1, eje estribo 2
+#Riostra estribos
+yRiostrEstr=[redondea([yEstr[0]-LriostrEstr/2.,yEstr[0]+LriostrEstr/2.],dec),
+             redondea([yEstr[1]-LriostrEstr/2.,yEstr[1]+LriostrEstr/2.],dec)]  #riostra estribo 1, riostra estribo 2
+#Pilas
+yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
+#Riostra pilas
+yRiostrPil=[redondea([yPil[0]-LriostrPil/2.,yPil[0]+LriostrPil/2.],dec),
+            redondea([yPil[1]-LriostrPil/2.,yPil[1]+LriostrPil/2.],dec)]  #riostra pila 1, riostra pila 2
+yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
+
+#Zonas armado 
+yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.22*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],dec)
+
+#   Coordenadas en Z
+zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
+zLosa=[0]
 # espesores derivados
 #Voladizo externo
 e1=minCantoVoladz
@@ -155,13 +153,6 @@ eCartExt=(3*e1+e2)/4.
 e2=maxCantoVoladz
 e1=cantoLosa
 eCartInt=(3*e1+e2)/4.
-
-#peso propio
-grav=9.81 #Gravity acceleration (m/s2)
-pespConcr=grav*concrete.density() #peso específico hormigón armado [N/m3]
-
-eSize= 0.4     #length of elements
-
 # coordinates in global X,Y,Z axes for the grid generation
 def flatten(l):
     return flatten(l[0]) + (flatten(l[1:]) if len(l) > 1 else []) if type(l) is list else [l]
@@ -187,10 +178,5 @@ for i in zList_aux:
         zList.append(i)
 zList.sort()
 
-#auxiliary data
-lastXpos=len(xList)-1
-lastYpos=len(yList)-1
-lastZpos=len(zList)-1
-XYZlists=(xList,yList,zList)
 
 

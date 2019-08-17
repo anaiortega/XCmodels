@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+execfile("../env_config.py")
 execfile("../model_gen.py") #FE model generation
 execfile(path_loads_def+'load_state_data.py')
 

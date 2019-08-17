@@ -8,6 +8,7 @@ def listVector(v):
 results=dict()
 
 for lc in resLoadCases_neopr:
+    results[lc.loadCaseName]={}
     combs=preprocessor.getLoadHandler.getLoadCombinations
     lCase=combs.newLoadCombination('lc'+lc.loadCaseName,lc.loadCaseExpr)
     preprocessor.resetLoadCase()
@@ -18,8 +19,9 @@ for lc in resLoadCases_neopr:
     #Reactions
     nodes.calculateNodalReactions(False,1e-7)
     #Reacciones nodos arranque pilas y estribo 1
-    Rnpil=[listVector(n.getReaction) for n in constrNodesPilas]
-    R=n.getReaction
+    if len(constrNodesPilas)>0:
+        Rnpil=[listVector(n.getReaction) for n in constrNodesPilas]
+#    R=n.getReaction
     RnEstr1=[listVector(n.getReaction) for n in constrNodesE1]
     #Tensiones y deformaciones en neoprenos
     neopStrains=list()
@@ -30,20 +32,11 @@ for lc in resLoadCases_neopr:
         strain=[m.getStrain() for m in mat]
         neopStress.append(stress)
         neopStrains.append(strain)
-    results[lc.loadCaseName]={'Rpilas_n1':Rnpil[0],
-                              'Rpilas_n2':Rnpil[1],
-                              'Rpilas_n3':Rnpil[2],
-                              'Rpilas_n4':Rnpil[3],
-                              'Restr1_n1':RnEstr1[0],
-                              'Restr1_n2':RnEstr1[1],
-                              'Restr1_n3':RnEstr1[2],
-                              'Restr1_n4':RnEstr1[3],
-                              'neoprStress_e1': neopStress[0],
-                              'neoprStress_e2': neopStress[1],
-                              'neoprStress_e3': neopStress[2],
-                              'neoprStress_e4': neopStress[3],
-                              'neoprStrain_e1':neopStrains[0],
-                              'neoprStrain_e2':neopStrains[1],
-                              'neoprStrain_e3':neopStrains[2],
-                              'neoprStrain_e4':neopStrains[3]
-    }
+    for i in range(len(constrNodesE1)):
+        results[lc.loadCaseName]['Restr1_n'+str(i+1)]=RnEstr1[i]
+    for i in range(len(neopsE1)):
+        results[lc.loadCaseName]['neoprStress_e'+str(i+1)]=neopStress[i]
+        results[lc.loadCaseName]['neoprStrain_e'+str(i+1)]=neopStrains[i]
+    if len(constrNodesPilas)>0:
+        for i in range(len(constrNodesPilas)):
+            results[lc.loadCaseName]['Rpilas_n'+str(i+1)]=Rnpil[i]

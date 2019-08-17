@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
+execfile('../model_gen.py')
 execfile('../../PSs/loadStateData.py')
 
 #ordered list of load cases (from those defined in ../loadStateData.py
