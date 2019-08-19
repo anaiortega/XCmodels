@@ -3,6 +3,7 @@ from __future__ import division
 
 #Definición armaduras tablero [diámetro,separación] en mm 
 #   ***Armadura transversal ***
+rnom=35 #recubrimiento nominal 
 
 #Transversal superior (continua en losa, cartabón y voladizo) ((5))
 trSup_020L1=[20,200]   #transversal superior en la zona de estribo a 0.20 x luz

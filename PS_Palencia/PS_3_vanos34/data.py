@@ -4,11 +4,6 @@ from __future__ import division
 import math
 from materials.ehe import EHE_materials
 
-def redondea(lista,decimales):
-    retval=[]
-    for i in lista:
-        retval.append(round(i,decimales))
-    return retval
 #Auxiliary data
 dec=2 # número de posiciones decimales para redondear coordenadas
  #Geometry

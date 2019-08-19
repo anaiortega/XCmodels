@@ -26,7 +26,6 @@ execfile(fullProjPath+'env_config.py')
 execfile(fullProjPath+'data_deck_piers.py')
 if abutment.lower()[0]=='y':
     execfile(fullProjPath+'data_abutment.py')
-    execfile(fullProjPath+'derived_data_abutment.py')
 execfile(path_model_slab_bridge+'model_gen.py')
 
 if abutment.lower()[0]=='y':
@@ -42,7 +41,6 @@ execfile(path_loads_def+'loads_def.py')
 
 setsTablPilas=[riostrEstr1,riostrEstr2,losa,cartabInt,cartabExt,voladzInt,voladzExt,pilasBarlov]
 if abutment.lower()[0]=='y':
-    setsEstribo=[zap,murestr,aleti,aletd]
     allsets=setsTablPilas+setsEstribo
 else:
     allsets=setsTablPilas

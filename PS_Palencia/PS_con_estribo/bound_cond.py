@@ -31,7 +31,7 @@ if abutment.lower()[0]=='y':
         n1=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
         elem=neopr.putBetweenNodes(modelSpace,n1.tag,n2.tag)
         neopsE1.append(elem)
-        zneopEstr=zMuri+(x-xAletaI)*pteMurEstr
+        zneopEstr=zMurEstr
         n0=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yMurEstr,zneopEstr))
         modelSpace.setRigidBeamBetweenNodes(n1.tag,n0.tag)
 else:

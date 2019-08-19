@@ -21,6 +21,7 @@ setDisp= setArmLosa  #Set of shell elements to be displayed
 #setDisp= setArmCart  #Set of shell elements to be displayed
 #setDisp= setArmVol  #Set of shell elements to be displayed
 #setDisp= setArmREstr  #Set of shell elements to be displayed
+setDisp=murEstr
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 rgMinMax=None     #truncate values to be included in the range
                      #(if None -> don't truncate)
