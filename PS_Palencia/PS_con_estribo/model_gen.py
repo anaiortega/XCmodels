@@ -38,6 +38,8 @@ execfile(fullProjPath+'bound_cond.py')
         
 #                       ***ACTIONS***
 execfile(path_loads_def+'loads_def.py')                           
+if abutment.lower()[0]=='y':
+    execfile(path_loads_abutment+'loads_def.py')
 
 setsTablPilas=[riostrEstr1,riostrEstr2,losa,cartabInt,cartabExt,voladzInt,voladzExt,pilasBarlov]
 if abutment.lower()[0]=='y':

@@ -3,7 +3,6 @@ from __future__ import division
 from materials.ec2 import EC2_materials
 import math
 
-execfile("./data.py")
 area_deck=cantoLosa*anchoLosa+2*maxCantoVoladz*anchoCartab+(cantoLosa-maxCantoVoladz)*anchoCartab+(minCantoVoladz+maxCantoVoladz)*anchoVoladz
 perim_deck=anchoTot+2*minCantoVoladz+2*math.sqrt(anchoVoladz**2+(maxCantoVoladz-minCantoVoladz)**2)+2*math.sqrt(anchoCartab**2*(cantoLosa-maxCantoVoladz)**2)+anchoLosa
 #Data

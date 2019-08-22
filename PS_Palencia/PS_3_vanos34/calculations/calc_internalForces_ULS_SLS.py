@@ -9,7 +9,7 @@ execfile(path_loads_def+"loadComb.py")
 #Steel beams definition
 
 #Set of entities for which checking is going to be performed.
-setCalc=setArmados
+setCalc=setArmados+setArmadosEstr
 
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 

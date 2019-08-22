@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 
-execfile("../env_config.py")
 execfile("../model_gen.py") #FE model generation
-execfile(path_loads_def+'../load_state_data.py')
+execfile(path_loads_def+'load_state_data.py')
 
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
@@ -10,7 +9,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 #or redefined lately) to be displayed:
 loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[LS1,LS2]
-
+loadCasesToDisplay=[G1]
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #                       ***ACTIONS***
 from actions.roadway_trafic import standard_load_models as slm
 from actions.imposed_strain import imp_strain as imps

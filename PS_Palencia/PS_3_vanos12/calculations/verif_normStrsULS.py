@@ -12,7 +12,7 @@ execfile("../model_gen.py") #FE model generation
 #reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()
 #reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcement.pkl'
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
-stcalc=setArmados
+stcalc=setArmados+setArmadosEstr
 #stcalc=setArmVol
 #stcalc=setArmCart
 #stcalc=setArmLosa

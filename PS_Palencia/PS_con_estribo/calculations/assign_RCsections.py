@@ -6,6 +6,7 @@ from postprocess import element_section_map
 # Reinforced concrete material distribution over the elements of the FE model.
 # Concrete of type concrete01 with no tension branch
 
+execfile("../env_config.py") #FE model generation
 execfile("../model_gen.py") #FE model generation
 execfile("../arm_def.py") #FE model generation
 
@@ -17,11 +18,8 @@ if abutment.lower()[0]=='y':
 
 #list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'RC_sections_def.py') that we want to process in order to run different limit-state checkings.
 lstOfSectRecords=losaRCSects+cartIntRCSects+cartExtRCSects+volIntRCSects+volExtRCSects+[RestrRCSects]+[pilasRCSects]
-#+[zapEstrRCSects]+[murEstrZ1RCSects]+[murEstrZ2RCSects]+[murEstrZ3RCSects]+[aletIzqZ1RCSects]+[aletIzqZ2RCSects]+[aletIzqZ3RCSects]+[aletDerZ1RCSects]+[aletDerZ2RCSects]+[aletDerZ3RCSects]
-'''
 if abutment.lower()[0]=='y':
     lstOfSectRecords+=estriboRCSects
-'''
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
 

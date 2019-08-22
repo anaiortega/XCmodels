@@ -16,11 +16,12 @@ execfile(cfg.verifNormStrFile)
 argument= 'CF' #Possible arguments: 'CF', 'N', 'My','Mz'
 fUnitConv=1.0  #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 setDisp= setArmados  #Set of shell elements to be displayed
-#setDisp= setArmLosa  #Set of shell elements to be displayed
-#setDisp= sets_arm_losa[5]
+setDisp= setArmLosa  #Set of shell elements to be displayed
+#setDisp= sets_arm_losa[1]
 #setDisp= setArmCart  #Set of shell elements to be displayed
 #setDisp= setArmVol  #Set of shell elements to be displayed
-setDisp= setArmREstr  #Set of shell elements to be displayed
+#setDisp= setArmREstr  #Set of shell elements to be displayed
+setDisp=murEstr
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 rgMinMax=None     #truncate values to be included in the range
                      #(if None -> don't truncate)

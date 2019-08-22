@@ -7,13 +7,21 @@ from postprocess import element_section_map
 # Concrete of type concrete01 with no tension branch
 
 execfile("../model_gen.py") #FE model generation
+execfile("../arm_def.py") #FE model generation
 
 #RC-sections definition file.
 execfile(path_model_slab_bridge+"RC_sections_def.py")
+if abutment.lower()[0]=='y':
+    execfile('../arm_abutment_def.py')
+    execfile(path_model_abutment+'RC_sections_def.py')
 
 #list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'RC_sections_def.py') that we want to process in order to run different limit-state checkings.
 lstOfSectRecords=losaRCSects+cartIntRCSects+cartExtRCSects+volIntRCSects+volExtRCSects+[RestrRCSects]+[pilasRCSects]
-
+#+[zapEstrRCSects]+[murEstrZ1RCSects]+[murEstrZ2RCSects]+[murEstrZ3RCSects]+[aletIzqZ1RCSects]+[aletIzqZ2RCSects]+[aletIzqZ3RCSects]+[aletDerZ1RCSects]+[aletDerZ2RCSects]+[aletDerZ3RCSects]
+'''
+if abutment.lower()[0]=='y':
+    lstOfSectRecords+=estriboRCSects
+'''
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
 

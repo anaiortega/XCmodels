@@ -111,6 +111,8 @@ if LaletaDer>0:
 
 fem.multi_mesh(preprocessor=prep,lstMeshSets=lstSups)
 
+zapTrasdos_rg=gut.def_rg_cooLim(XYZListsAbut,Xzap,[Yzap[0],Ymurestr[0]],Zzap)
+zapTrasdos=gridGeomAbutment.getSetSurfOneRegion(ijkRange=zapTrasdos_rg, nameSet='zapTrasdos')
 
 
 #Sets for loading
@@ -122,7 +124,6 @@ if LaletaIzq>0:
 if LaletaDer>0:
     aletDer=aletdZ1+aletdZ2+aletdZ3
     setsEstribo+=[aletDer]
-
 
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)

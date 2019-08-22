@@ -11,17 +11,19 @@ hMurEstr=8.4  #altura del muro del estribo
 hMuret=1.35
 Lpunt=1.8+0.5*espMurEstr #puntera
 Lzap=7.4+0.5*espMurEstr #talón
-LaletaIzq=4  # longitud aleta izquierda
+LaletaIzq=4  # longitud aleta izquierda (=0 si no existe)
 pendCoronAletaIzq=2/3.9  #V:H pendiente de la coronación de la aleta izquierda
-LaletaDer=4  # longitud aleta derecha
+                         # =0 si horizontal
+LaletaDer=4  # longitud aleta derecha (=0 si no existe)
 pendCoronAletaDer=2/3.8  #V:H pendiente de la coronación de la aleta derecha
+                         # =0 si horizontal
 pendTrasdosAlet=1/12.  #H:V
 hBrutoNeopr=0.2  #Espesor bruto de neopreno
 excNeop=espMurEstr/2.+0.5 #excentricidad de los aparatos de apoyo respecto al plano medio del muro
 
 #ángulo que forman las aletas con el plano del muro del estribo
-angAletaIzq=20
-angAletaDer=-20
+angAletaIzq=20  #can be =0
+angAletaDer=-20 
 
 eSizeAbut= 0.45     #length of elements
 
@@ -35,6 +37,7 @@ Kbalasto=Krectang                  #coef. balasto (N/m3)
 # empuje del terreno
 fi_terr=30                            #ángulo de rozamiento interno
 K0=1-math.sin(math.radians(fi_terr))  #coeficiente de empuje al reposo
+Ksoil=K0
 densrell=2e3                  #densidad del relleno (kg/m3)
 zGround=0
 qunifTerr=10e3 #carga uniforme sobre el terreno [N/m2]
