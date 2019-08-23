@@ -4,7 +4,7 @@ tablero=riostrEstr1+riostrEstr2+losa+cartabInt+cartabExt+voladzInt+voladzExt
 tablero.description='Tablero'
 #Vías ficticias
 x=xViasFict[0]
-y=[0,yList[-1]]
+y=[0,yListTabl[-1]]
 z=zLosa[0]
 viaFictDer=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictDer')
 viaFictDer.description='Vía ficticia derecha'
@@ -17,7 +17,7 @@ calzada=viaFictIzq+viaFictDer
 calzada.description='Calzada'
 #aceras
 x=xAceras
-y=[0,yList[-1]]
+y=[0,yListTabl[-1]]
 z=zLosa[0]
 acerIzq=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0][0],y[0],z),(x[0][-1],y[-1],z)), nameSet='acerIzqIzq')
 acerIzq.description='Acera izquierda'
@@ -28,15 +28,15 @@ aceras.description='Aceras'
 
 #Tablero vano 1
 z=zLosa[0]
-tablVano1=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xList[0],yList[0],z),(xList[-1],yPil[0],z)),nameSet='tablVano1')
+tablVano1=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xListTabl[0],yListTabl[0],z),(xListTabl[-1],yPil[0],z)),nameSet='tablVano1')
 tablVano1.description='Tablero vano 1'
 #Tablero vano 2
 z=zLosa[0]
-tablVano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xList[0],yPil[0],z),(xList[-1],yPil[1],z)),nameSet='tablVano2')
+tablVano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xListTabl[0],yPil[0],z),(xListTabl[-1],yPil[1],z)),nameSet='tablVano2')
 tablVano2.description='Tablero vano 2'
 #Tablero vano 3
 z=zLosa[0]
-tablVano3=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xList[0],yPil[1],z),(xList[-1],yList[-1],z)),nameSet='tablVano3')
+tablVano3=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xListTabl[0],yPil[1],z),(xListTabl[-1],yListTabl[-1],z)),nameSet='tablVano3')
 tablVano3.description='Tablero vano 3'
 
 #Vías ficticias (vano 2)
@@ -115,7 +115,7 @@ for j in range(1,len(yArm)):
 
 #set armado riostra estribo
 z=zLosa[0]
-x=[0,xList[-1]]
+x=[0,xListTabl[-1]]
 y=yRiostrEstr[0]
 setArmREstr=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='setArmREstr')
 setArmREstr.description='Estribo 1'

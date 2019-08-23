@@ -157,26 +157,52 @@ eCartInt=(3*e1+e2)/4.
 def flatten(l):
     return flatten(l[0]) + (flatten(l[1:]) if len(l) > 1 else []) if type(l) is list else [l]
 
-xList_aux=flatten(xAceras+xVoladz+xCartab+xLosa+xPil+xViasFict+xRiostrEstr)
-xList=[]
-for i in xList_aux:
-    if i not in xList:
-        xList.append(i)
-xList.sort()
+#Deck grid model
+xListTabl_aux=flatten(xAceras+xVoladz+xCartab+xLosa+xPil+xViasFict+xRiostrEstr)
+xListTabl=[]
+for i in xListTabl_aux:
+    if i not in xListTabl:
+        xListTabl.append(i)
+xListTabl.sort()
 
-yList_aux=flatten(yEstr+yRiostrEstr+yRiostrPil+yPil+yArm)
-yList=[]
-for i in yList_aux:
-    if i not in yList:
-        yList.append(i)
-yList.sort()
+yListTabl_aux=flatten(yEstr+yRiostrEstr+yRiostrPil+yPil+yArm)
+yListTabl=[]
+for i in yListTabl_aux:
+    if i not in yListTabl:
+        yListTabl.append(i)
+yListTabl.sort()
 
-zList_aux=flatten(zPil+zLosa)
-zList=[]
-for i in zList_aux:
-    if i not in zList:
-        zList.append(i)
-zList.sort()
+zListTabl_aux=flatten(zLosa)
+zListTabl=[]
+for i in zListTabl_aux:
+    if i not in zListTabl:
+        zListTabl.append(i)
+zListTabl.sort()
+
+
+#Columns grid model
+xListPil_aux=flatten(xPil)
+xListPil=[]
+for i in xListPil_aux:
+    if i not in xListPil:
+        xListPil.append(i)
+xListPil.sort()
+
+yListPil_aux=flatten(yPil)
+yListPil=[]
+for i in yListPil_aux:
+    if i not in yListPil:
+        yListPil.append(i)
+yListPil.sort()
+
+zListPil_aux=flatten(zPil)
+zListPil=[]
+for i in zListPil_aux:
+    if i not in zListPil:
+        zListPil.append(i)
+zListPil.sort()
+
+
 
 
 

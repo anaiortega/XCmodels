@@ -10,12 +10,15 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
 
-# grid model definition (tablero y pilas)
-gridTabl= gm.GridModel(prep,xList,yList,zList)
+# grid model definition (tablero)
+gridTabl= gm.GridModel(prep,xListTabl,yListTabl,zListTabl)
+# grid model definition (pilas)
+gridPil= gm.GridModel(prep,xListPil,yListPil,zListPil)
 
 # Grid geometric entities definition (points, lines, surfaces)
 # Points' generation
 gridTabl.generatePoints()
+gridPil.generatePoints()
 
 #   Surfaces generation (tablero)
 #Riostra estribo 1
@@ -57,14 +60,14 @@ for j in range(len(y)):
     i=0
     xyzRang.append([(x[i],y[j],z[k][0]),(x[i],y[j],z[k][-1])])
 
-pilasBarlov=gridTabl.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasBarlov')
+pilasBarlov=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasBarlov')
 if len(x)>1:
     xyzRang=list()
     for j in range(len(y)):
         k=j
         for i in range(1,len(x)):
             xyzRang.append([(x[i],y[j],z[k][0]),(x[i],y[j],z[k][-1])])
-    pilasSotav=gridTabl.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasSotav')
+    pilasSotav=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasSotav')
 else:
     pilasSotav=None
 

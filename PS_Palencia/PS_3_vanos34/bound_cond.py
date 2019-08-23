@@ -6,14 +6,30 @@ neopsE1=list() #elements of abutment1 ordered from xmin to xmax.
                #each element has six materials that reproduce respectively
                #Kx, Ky,Kz, KthetaX,KthetaY,KthetaZ
 neopsE2=list() 
-# Empotramiento base pilas
 
+#Empotramiento pilas en tablero
 for indy in range(len(yPil)):
     for indx in range(len(xPil)):
+        j=gridPil.gridCoo[1].index(yPil[indy])
+        i=gridPil.gridCoo[0].index(xPil[indx])
+        k=gridPil.gridCoo[2].index(zPil[indy][-1])
+        pPil=gridPil.getPntGrid((i,j,k))
         j=gridTabl.gridCoo[1].index(yPil[indy])
         i=gridTabl.gridCoo[0].index(xPil[indx])
-        k=gridTabl.gridCoo[2].index(zPil[indy][0])
-        p=gridTabl.getPntGrid((i,j,k))
+        k=gridTabl.gridCoo[2].index(zPil[indy][-1])
+        pTabl=gridTabl.getPntGrid((i,j,k))
+        nPil=pPil.getNode()
+        nTabl=pTabl.getNode()
+        for gdl in range(6):
+            c=modelSpace.constraints.newEqualDOF(nPil.tag,nTabl.tag,xc.ID([gdl]))
+
+# Empotramiento base pilas
+for indy in range(len(yPil)):
+    for indx in range(len(xPil)):
+        j=gridPil.gridCoo[1].index(yPil[indy])
+        i=gridPil.gridCoo[0].index(xPil[indx])
+        k=gridPil.gridCoo[2].index(zPil[indy][0])
+        p=gridPil.getPntGrid((i,j,k))
         n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(p.getPos.x,p.getPos.y,p.getPos.z))
         modelSpace.fixNode('000_000',n.tag)
         constrNodesPilas.append(n)
