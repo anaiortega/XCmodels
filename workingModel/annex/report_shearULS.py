@@ -15,7 +15,7 @@ limitStateLabel= lsd.shearResistance.label
 
 # Ordered list of sets (defined in model_data.py as instances of
 # utils_display.setToDisplay) to be included in the report
-setsShEl=[deck]
+setsShEl=[decks]
 # Ordered list of arguments to be included in the report
 # Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
 argsShEl= ['CF','N', 'My', 'Mz','Vu'] 
@@ -24,12 +24,13 @@ argsShEl= ['CF','N', 'My', 'Mz','Vu']
 # The sets are defined in model_data.py as instances of
 # utils_display.setToDisplay and the possible views are: 'XYZPos','XNeg','XPos',
 # 'YNeg','YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
-setsBmElView=[[beamX,'XYZPos']]
+#setsBmElView=[[beamXconcr,'XYZPos']]
+setsBmElView=[]
 # Ordered list of lists [arguments, scale to represent the argument] to be
 # included in the report for beam elements
 # Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-argsBmElScale=[['CF',1],['My',1]]
-
+#argsBmElScale=[['CF',1],['My',1]]
+argsBmElScale=[]
 
 graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportShearGrPath,texReportFile=cfg.reportShearFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

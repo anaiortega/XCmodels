@@ -7,8 +7,9 @@ execfile('../load_state_data.py')
 
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
-loadCasesToDisplay=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
-
+loadCasesToDisplay=[G1,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11]
+#loadCasesToDisplay=[LS1,LS2]
+loadCasesToDisplay=[G1]
 #End data
 
 for lc in loadCasesToDisplay:
@@ -34,6 +35,7 @@ for lc in loadCasesToDisplay:
             else:
                 fcUn=lc.unitsScaleForc
                 unDesc=lc.unitsForc
+
             lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,unitDescription=unDesc,viewDef= lc.cameraParameters,fileName=None,defFScale=1)
     #Internal forces displays on sets of «beam» elements
     for st in lc.setsToDispBeamIntForc:
@@ -51,6 +53,5 @@ for lc in loadCasesToDisplay:
                   scaleFact=lc.scaleDispBeamIntForc[1]
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
 
-    
 
             

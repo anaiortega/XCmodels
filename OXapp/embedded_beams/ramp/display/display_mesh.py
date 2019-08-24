@@ -24,4 +24,6 @@ setsTodisp=[ramp]
 # sett=beams+columns
 # sett.color=cfg.colors['brown04']
 # setsTodisp=[sett]
-defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Ramp',nodeSize=0,scaleConstr=0.5)
+capt='Ramp, mesh'
+
+defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption=capt,nodeSize=0,scaleConstr=0.25)

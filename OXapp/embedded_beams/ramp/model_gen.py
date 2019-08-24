@@ -107,6 +107,7 @@ ramp_mat.setupElasticSection(preprocessor=prep)   #creates the section-material
 ramp_mesh=fem.SurfSetToMesh(surfSet=ramp,matSect=ramp_mat,elemSize=eSize,elemType='ShellMITC4')
 ramp_mesh.generateMesh(prep)     #mesh the set of surfaces
 
+ramp.fillDownwards()
 
 
 #                       ***BOUNDARY CONDITIONS***
@@ -210,3 +211,18 @@ LiveLconcSpan3=lcases.LoadCase(preprocessor=prep,name="LiveLconcSpan3",loadPType
 LiveLconcSpan3.create()
 LiveLconcSpan3.addLstLoads([QpuntSpan3])
 
+#    ***LIMIT STATE COMBINATIONS***
+combContainer= cc.CombContainer()  #Container of load combinations
+
+# COMBINATIONS OF ACTIONS FOR ULTIMATE LIMIT STATES
+    # name:        name to identify the combination
+    # perm:        combination for a persistent or transient design situation
+    # acc:         combination for a accidental design situation
+    # fatigue:     combination for a fatigue design situation
+    # earthquake:  combination for a seismic design situation
+#Persistent and transitory situations.
+combContainer.ULS.perm.add('ELU01', '1.4*DeadL')
+combContainer.ULS.perm.add('ELU02', '1.2*DeadL+1.6*LiveLunif')
+combContainer.ULS.perm.add('ELU03', '1.2*DeadL+1.6*LiveLconcSpan1')
+combContainer.ULS.perm.add('ELU04', '1.2*DeadL+1.6*LiveLconcSpan2')
+combContainer.ULS.perm.add('ELU05', '1.2*DeadL+1.6*LiveLconcSpan3')

@@ -11,18 +11,20 @@ viaFictDer.description='Vía ficticia derecha'
 x=xViasFict[1]
 viaFictIzq=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzq')
 viaFictIzq.description='Vía ficticia izquierda'
+viaFictResto=None
 #calzada
 calzada=viaFictIzq+viaFictDer
 calzada.description='Calzada'
 #aceras
-aceras=tablero-calzada
-aceras.description='Aceras'
-
-x=[xViasFict[0][-1],xList[-1]]
+x=xAceras
 y=[0,yList[-1]]
 z=zLosa[0]
-acerDer=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='acerDer')
+acerIzq=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0][0],y[0],z),(x[0][-1],y[-1],z)), nameSet='acerIzqIzq')
+acerIzq.description='Acera izquierda'
+acerDer=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[1][0],y[0],z),(x[1][-1],y[-1],z)), nameSet='acerDer')
 acerDer.description='Acera derecha'
+aceras=acerIzq+acerDer
+aceras.description='Aceras'
 
 #Tablero vano 1
 z=zLosa[0]
@@ -37,13 +39,14 @@ z=zLosa[0]
 tablVano3=gridTabl.getSetSurfOneXYZRegion(xyzRange=((xList[0],yPil[1],z),(xList[-1],yList[-1],z)),nameSet='tablVano3')
 tablVano3.description='Tablero vano 3'
 
-#Vías ficticias (vano central)
+#Vías ficticias (vano 2)
 x=xViasFict[0]
 y=yPil
 z=zLosa[0]
-viaFictDer_cent=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictDer_cent')
+viaFictDer_vano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2')
 x=xViasFict[1]
-viaFictIzq_cent=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzq_cent')
+viaFictIzq_vano2=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2')
+viaFictResto_vano2=None
 
 #Coordinates for traffic point loads
 ycent_vano1=(yRiostrEstr[0][0]+yPil[0])/2.
@@ -76,4 +79,62 @@ y=yEstr
 z=zLosa[0]
 setPntBordTabl=gridTabl.getSetPntMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][0],y[-1],z)),((x[1][-1],y[0],z),(x[1][-1],y[-1],z))],setName='setPntBordTabl')
 bordTabl=sets.get_lines_on_points(setPoints=setPntBordTabl,setLinName='bordTabl',onlyIncluded=True)
+
+setPntBordizqTabl=gridTabl.getSetPntMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][0],y[-1],z))],setName='setPntBordizqTabl')
+bordizqTabl=sets.get_lines_on_points(setPoints=setPntBordizqTabl,setLinName='bordizqTabl',onlyIncluded=True)
+
+#Pilas
+# a barlovento:
+setPilBarlov=gridTabl.getSetLinOneXYZRegion
+#Sets para armados losa [setZonaArm1,[setZonaArm2, ...]
+z=zLosa[0]
+x=[0,xLosa[-1]]
+sets_arm_losa=[]
+for j in range(1,len(yArm)):
+    sets_arm_losa.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmLos_Z'+str(j)))
+#Sets para armados cartabón derecho interno [setZonaArm1,[setZonaArm2, ...]
+x=[xCartab[-1][0],xCartab[-1][1]]
+sets_arm_cartInt=[]
+for j in range(1,len(yArm)):
+    sets_arm_cartInt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmCartInt_Z'+str(j)))
+#Sets para armados cartabón derecho externo [setZonaArm1,[setZonaArm2, ...]
+x=[xCartab[-1][1],xCartab[-1][-1]]
+sets_arm_cartExt=[]
+for j in range(1,len(yArm)):
+    sets_arm_cartExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmCartExt_Z'+str(j)))
+#Sets para armados voladizo derecho interno [setZonaArm1,[setZonaArm2, ...]
+x=[xVoladz[-1][0],xVoladz[-1][1]]
+sets_arm_volInt=[]
+for j in range(1,len(yArm)):
+    sets_arm_volInt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolInt_Z'+str(j)))
+#Sets para armados voladizo derecho externo [setZonaArm1,[setZonaArm2, ...]
+x=[xVoladz[-1][1],xVoladz[-1][-1]]
+sets_arm_volExt=[]
+for j in range(1,len(yArm)):
+    sets_arm_volExt.append(gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],yArm[j-1],z),(x[1],yArm[j],z)),nameSet='setArmVolExt_Z'+str(j)))
+
+#set armado riostra estribo
+z=zLosa[0]
+x=[0,xList[-1]]
+y=yRiostrEstr[0]
+setArmREstr=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='setArmREstr')
+setArmREstr.description='Estribo 1'
+
+#Set armados pilas
+setArmPil=pilasBarlov
+#setArmPil.name='setArmPil'
+setArmPil.description='Pilas'
+
+setArmLosa=sets_arm_losa[0]+sets_arm_losa[1]+sets_arm_losa[2]+sets_arm_losa[3]+sets_arm_losa[4]+sets_arm_losa[5]
+setArmLosa.name='setArmLosa'
+setArmLosa.description='Losa'
+setArmCart=sets_arm_cartInt[0]+sets_arm_cartInt[1]+sets_arm_cartInt[2]+sets_arm_cartInt[3]+sets_arm_cartInt[4]+sets_arm_cartInt[5]+sets_arm_cartExt[0]+sets_arm_cartExt[1]+sets_arm_cartExt[2]+sets_arm_cartExt[3]+sets_arm_cartExt[4]+sets_arm_cartExt[5]
+setArmCart.name='setArmCart'
+setArmCart.description='Cartabón'
+setArmVol=sets_arm_volInt[0]+sets_arm_volInt[1]+sets_arm_volInt[2]+sets_arm_volInt[3]+sets_arm_volInt[4]+sets_arm_volInt[5]+sets_arm_volExt[0]+sets_arm_volExt[1]+sets_arm_volExt[2]+sets_arm_volExt[3]+sets_arm_volExt[4]+sets_arm_volExt[5]
+setArmVol.name='setArmVol'
+setArmVol.description='Voladizo'
+setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr+setArmPil
+setArmados.name='setArmados'
+setArmados.description='Tabl.'
 

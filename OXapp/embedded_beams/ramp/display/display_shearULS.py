@@ -11,13 +11,14 @@ execfile(cfg.verifShearFile)
 
 
 #  Config
-argument= 'CF'       #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy',
+argument= 'Vy'       #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy',
                      #'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-setDisp= decks
-fUnitConv=1.0        #Set of shell elements to be displayed
+setDisp= ramp
+fUnitConv=1e-3        #Set of shell elements to be displayed
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-rgMinMax=(0,1.0)     #truncate values to be included in the range
+#rgMinMax=(0,1.0)     #truncate values to be included in the range
                      #(if None -> don't truncate)
+rgMinMax=None
 #  End config 
 
 

@@ -15,6 +15,13 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-setsTodisp=[tablVano1,tablVano3,viaFictIzq_cent,viaFictDer_cent,pilas]
-setsTodisp=[overallSet]
+#setsTodisp=[tablVano1,tablVano3,viaFictIzq_cent,viaFictDer_cent,pilas]
+setsTodisp=sets_arm_losa+sets_arm_cartInt+sets_arm_cartExt+sets_arm_volInt+sets_arm_volExt
+#setsTodisp=setArmados
+#setsTodisp=setArmREstr
+#setsTodisp=sets_arm_losa+[pilasBarlov]
+setsTodisp=[setArmPil]
+setsTodisp=[aceras,viaFictDer,viaFictIzq]
+#setsTodisp=[calzada]
+#setsTodisp=[aceras,viaFictDer_vano2,viaFictIzq_vano2]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)

@@ -24,7 +24,7 @@ anchoVoladz=1.90
 anchoLosa=4.20
 anchoCartab=0.60
 LriostrEstr=1.0
-LriostrPil=2  #longitud de riostra sobre pilas
+LriostrPil=2  #longitud de riostra sobre pilas (a cada lado del eje)
 cantoRiostrEstr=0.90
 
 #  Pilas
@@ -35,7 +35,7 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
 #Apoyos estribos
-distNeopr=4.4  #distancia entre neoprenos
+distNeopr=4.6  #distancia entre neoprenos
 numNeopr=2   #número de aparatos de apoyo
 xCoordNeopr=[-0.5*distNeopr,0.5*distNeopr]
 hNetoNeopr=32e-3 #espesor neto neopreno
@@ -47,7 +47,7 @@ bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
 xAceras=[[round(-anchoTot/2.,dec),round(-anchoCalz/2.,dec)],
          [round(anchoCalz/2.,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
 #Voladizos
-xVoladz=[[round(-anchoTot/2.,dec),round(-anchoTot/2.+anchoVoladz,dec)],
+xVoladz=[[round(-anchoTot/2.,dec),round(-anchoTot/2.+anchoVoladz,dec)], 
          [round(anchoTot/2.-anchoVoladz,dec),round(anchoTot/2.,dec)]] #iqda., drcha.
 xVoladz[0].insert(1,round((xVoladz[0][0]+xVoladz[0][1])/2.,2)) #intermedio
 xVoladz[1].insert(1,round((xVoladz[1][0]+xVoladz[1][1])/2.,2)) #intermedio
@@ -82,6 +82,10 @@ yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
 yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
             [round(yPil[1]-LriostrPil/2.,dec),round(yPil[1]+LriostrPil/2.,dec)]]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
+
+#Zonas armado 
+yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.22*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
 zLosa=[0]
@@ -108,11 +112,11 @@ Qfrenado=470.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
 vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
 #  viento
-qWpilas=2.56e3 #carga lineal viento sobre pilas [N/m]
+qWpilasBarlov=2.56e3 #carga lineal viento sobre pilas [N/m]
 qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]
 qWTableroSCuso=6.7e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
 #coef_ocult=0.46
-
+qWpilasSotav=0
 #Temperaturas
 Tunif_contr=-24  #Incremento uniforme temperatura contracción ºC
 Tunif_dilat=31   #Incremento uniforme temperatura dilatación ºC
@@ -125,7 +129,8 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 #Retracción
-eps_retracc=-531e-6  #deformación por retracción #!!!!!REPASAR
+execfile(fullProjPath+'retraccion.py')  #cálculo de la retracción
+eps_retracc=Epscs  #deformación por retracción #
 
 
 # espesores derivados
@@ -163,7 +168,7 @@ for i in xList_aux:
         xList.append(i)
 xList.sort()
 
-yList_aux=flatten(yEstr+yRiostrEstr+yRiostrPil+yPil)
+yList_aux=flatten(yEstr+yRiostrEstr+yRiostrPil+yPil+yArm)
 yList=[]
 for i in yList_aux:
     if i not in yList:
