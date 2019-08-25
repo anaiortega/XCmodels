@@ -68,6 +68,7 @@ pile_mat.setupElasticShear3DSection(preprocessor=prep)
 pile_mesh=fem.LinSetToMesh(linSet=pile,matSect=pile_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[pile_mesh])
 
+
 #                       ***BOUNDARY CONDITIONS***
 pileBC=sbc.PileFoundation(setPile=pile,pileDiam=fiPile,E=concrete.Ecm(),pileType='endBearing',pileBearingCapacity=bearCap,groundLevel=zGround,soilsProp=soils)
 pileBC.generateSpringsPile(alphaKh_x=1,alphaKh_y=0.5,alphaKv_z=1)
@@ -75,7 +76,7 @@ springs=pileBC.springs
 springSet=preprocessor.getSets.defSet('springSet')
 for e in springs:
     springSet.getElements.append(e)
-    print 'elem:', e.tag, ' Kx:',e.getMaterials()[0].E, ' Ky:',e.getMaterials()[1].E,' Kz:',e.getMaterials()[2].E
+    print 'elem:', e.tag, ' z:',e.getCooCentroid(True)[2], ' Kx:',e.getMaterials()[0].E, ' Ky:',e.getMaterials()[1].E,' Kz:',e.getMaterials()[2].E
 springSet.fillDownwards()
 allSets=pile+springSet
 
