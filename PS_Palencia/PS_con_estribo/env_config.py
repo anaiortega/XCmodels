@@ -2,6 +2,7 @@
 from postprocess.config import default_config
 
 abutment='Y' #if abutment is modelled 'Y'
+pile_found='Y'
 
 home= '/home/ana/projects/XCmodels/PS_Palencia/PS_con_estribo/'
 path_model_slab_bridge='/home/ana/projects/XCmodels/generic_bridges/model_slab_bridge/'

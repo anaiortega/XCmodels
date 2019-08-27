@@ -10,7 +10,7 @@ execfile(path_loads_def+"loadComb.py")
 
 #Set of entities for which checking is going to be performed.
 setCalc=setArmados+setArmadosEstr
-
+setCalc=struts
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 
 #Limit states to calculate internal forces for.

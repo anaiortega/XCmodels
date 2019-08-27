@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
+from postprocess.xcVtk.FE_model import vtk_FE_graphic
+
 
 execfile('../env_config.py')
 execfile('../model_gen.py')
@@ -9,10 +11,12 @@ execfile(path_loads_def+'load_state_data.py')
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
 loadCasesToDisplay=LSD_disp
-#loadCasesToDisplay=[Q31,Q32,Q33,Q34]
-loadCasesToDisplay=[G1]
+loadCasesToDisplay=[Q31,Q32,Q33,Q34]
+#loadCasesToDisplay=[G1]
 #End data
-
+for lc in loadCasesToDisplay:
+    lc.setsToDispBeamIntForc=[struts,ties]
+    lc.listBeamIntForc=['N']
 for lc in loadCasesToDisplay:
     lcs=QGrph.QuickGraphics(FEcase)
     #solve for load case
@@ -53,6 +57,8 @@ for lc in loadCasesToDisplay:
                 else:
                   scaleFact=lc.scaleDispBeamIntForc[1]
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
+    defDisplay= vtk_FE_graphic.RecordDefDisplayEF() 
+    found_wink.displayPressures(defDisplay,'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
 
 
             

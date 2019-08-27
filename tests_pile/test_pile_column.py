@@ -76,7 +76,7 @@ springs=pileBC.springs
 springSet=preprocessor.getSets.defSet('springSet')
 for e in springs:
     springSet.getElements.append(e)
-    print 'elem:', e.tag, ' z:',e.getCooCentroid(True)[2], ' Kx:',e.getMaterials()[0].E, ' Ky:',e.getMaterials()[1].E,' Kz:',e.getMaterials()[2].E
+    print 'elem:', e.tag, ' nodo1:',e.getNodes[0].tag, ' nodo2:',e.getNodes[1].tag, 'z:',e.getCooCentroid(True)[2], ' Kx:',e.getMaterials()[0].E, ' Ky:',e.getMaterials()[1].E,' Kz:',e.getMaterials()[2].E
 springSet.fillDownwards()
 allSets=pile+springSet
 
@@ -101,6 +101,7 @@ lp0.newNodalLoad(0,xc.Vector([0,0,-1e3,0,0,0]))
 
 #We add the load case to domain.
 lPatterns.addToDomain(lp0.name)
+lp0.gammaF=1
 
 # Solution
 analisis= predefined_solutions.simple_static_linear(FEcase)

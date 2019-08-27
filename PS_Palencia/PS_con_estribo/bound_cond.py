@@ -23,13 +23,14 @@ for indy in range(len(yPil)):
             modelSpace.constraints.newEqualDOF(nPil.tag,nTabl.tag,xc.ID([gdl]))
 
 # Empotramiento base pilas
-for indy in range(len(yPil)):
+#for indy in range(len(yPil)):  #25/08/2019 prueba pilotes
+for indy in range(1,len(yPil)):
     for indx in range(len(xPil)):
         j=gridPil.gridCoo[1].index(yPil[indy])
         i=gridPil.gridCoo[0].index(xPil[indx])
         k=gridPil.gridCoo[2].index(zPil[indy][0])
         p=gridPil.getPntGrid((i,j,k))
-        n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(p.getPos.x,p.getPos.y,p.getPos.z))
+        n=p.getNode()
         modelSpace.fixNode('000_000',n.tag)
         constrNodesPilas.append(n)
 

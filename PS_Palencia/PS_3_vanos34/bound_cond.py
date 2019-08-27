@@ -30,7 +30,7 @@ for indy in range(len(yPil)):
         i=gridPil.gridCoo[0].index(xPil[indx])
         k=gridPil.gridCoo[2].index(zPil[indy][0])
         p=gridPil.getPntGrid((i,j,k))
-        n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(p.getPos.x,p.getPos.y,p.getPos.z))
+        n=p.getNode()
         modelSpace.fixNode('000_000',n.tag)
         constrNodesPilas.append(n)
 

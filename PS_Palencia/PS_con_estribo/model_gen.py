@@ -33,6 +33,8 @@ if abutment.lower()[0]=='y':
 #Definition of sets
 execfile(fullProjPath+'sets_def.py')
 
+if pile_found.lower()[0]=='y':
+    execfile('../data_foundation.py')
 #                       ***BOUNDARY CONDITIONS***
 execfile(fullProjPath+'bound_cond.py')
         
