@@ -5,27 +5,28 @@ import math
 #Abutment geometry
 cantoZap=1.5
 espCoronAlet=0.4
-espMurEstr=1.35
+espMurEstr=1.40
 anchoEstr=9.20
-hMurEstr=8.4  #altura del muro del estribo 
+hMurEstr=9.  #altura del muro del estribo 
 hMuret=1.35
 Lpunt=1.8+0.5*espMurEstr #puntera
-Lzap=7.4+0.5*espMurEstr #talón
-LaletaIzq=4  # longitud aleta izquierda (=0 si no existe)
-pendCoronAletaIzq=2/3.9  #V:H pendiente de la coronación de la aleta izquierda
+Lzap=6.5+0.5*espMurEstr #talón
+LaletaIzq=3  # longitud aleta izquierda (=0 si no existe)
+pendCoronAletaIzq=2/3.  #V:H pendiente de la coronación de la aleta izquierda
                          # =0 si horizontal
-LaletaDer=4  # longitud aleta derecha (=0 si no existe)
-pendCoronAletaDer=2/3.8  #V:H pendiente de la coronación de la aleta derecha
+LaletaDer=3  # longitud aleta derecha (=0 si no existe)
+pendCoronAletaDer=2/3.  #V:H pendiente de la coronación de la aleta derecha
                          # =0 si horizontal
 pendTrasdosAlet=1/12.  #H:V
 hBrutoNeopr=0.2  #Espesor bruto de neopreno
 excNeop=espMurEstr/2.+0.5 #excentricidad de los aparatos de apoyo respecto al plano medio del muro
 
 #ángulo que forman las aletas con el plano del muro del estribo
-angAletaIzq=20  #can be =0
-angAletaDer=-20 
-
-eSizeAbut= 0.45     #length of elements
+#angAletaIzq=20  #can be =0
+#angAletaDer=-20 
+angAletaIzq=1  #can be =0
+angAletaDer=-1 
+eSizeAbut= 0.40     #length of elements
 
 #Loads
 # K30: roca blanda o alterada 100 kg/cm3 
@@ -96,9 +97,10 @@ zZ2mur=[zArm1,zArm2]
 zZ3mur=[zArm2,zMurEstr]
 zZ2alet=[zArm1,zArm2]
 zZ3alet=[zArm2,zAletas]
+
 # coordinates in global X,Y,Z axes for the grid generation
 #xinterm1=round((xViaFict1+xArranqVoladz)/2.,2)
-xListAbut_aux=Xmurestr+xNeopr+Xaleti+Xaletd+Xzap
+xListAbut_aux=Xmurestr+xNeopr+Xaleti+Xaletd+Xzap+[0]
 xListAbut=[]
 for i in xListAbut_aux:
     if i not in xListAbut:

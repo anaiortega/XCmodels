@@ -24,7 +24,7 @@ for indy in range(len(yPil)):
             modelSpace.constraints.newEqualDOF(nPil.tag,nTabl.tag,xc.ID([gdl]))
 
 # Empotramiento base pilas
-for indy in range(len(yPil)):
+for indy in range(1,len(yPil)):
     for indx in range(len(xPil)):
         j=gridPil.gridCoo[1].index(yPil[indy])
         i=gridPil.gridCoo[0].index(xPil[indx])

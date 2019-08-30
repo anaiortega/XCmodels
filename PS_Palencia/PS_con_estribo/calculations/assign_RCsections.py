@@ -32,7 +32,8 @@ for secRec in lstOfSectRecords:
 
 ########
 for sect in lstOfSectRecords:
-#    print 'section= ',sect.name,' thickness= ',sect.depth
+    print
+    print 'section= ',sect.name,' thickness= ',sect.depth
     print 'Aspos1= ', sect.getAspos(0),' Aspos2= ', sect.getAspos(1), ' Asneg1= ', sect.getAsneg(0),' Aspos2= ', sect.getAsneg(1)
     print 'AshearReinfY1=', sect.dir1ShReinfY.getAs(), ' AshearReinfY2=', sect.dir2ShReinfY.getAs(), ' AshearReinfZ1=', sect.dir1ShReinfZ.getAs(), ' AshearReinfZ2=', sect.dir2ShReinfZ.getAs()
     
@@ -40,7 +41,9 @@ for sect in lstOfSectRecords:
 #Generation of the distribution of material extended to the elements of the
 #FE model, assigning to each element the section-group that corresponds to it
 for secRec in lstOfSectRecords:
+    print 'section= ',secRec.name,
     elset=prep.getSets.getSet(secRec.elemSetName)
+    print 'n elem=',elset.getElements.size
     reinfConcreteSectionDistribution.assign(elemSet=elset.getElements,setRCSects=secRec)
 
 reinfConcreteSectionDistribution.dump()

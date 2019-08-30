@@ -36,6 +36,12 @@ Q34=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q34',loadCaseDescr='Q34: 
 
 LSD=[G1,G2,G3,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q31neopr,Q32neopr,Q33,Q34]
 
+if abutment.lower()[0]=='y':
+    G4=graphical_reports.RecordLoadCaseDisp(loadCaseName='G4',loadCaseDescr='G4: empuje del relleno sobre estribo',loadCaseExpr='1.0*G4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+    Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q4',loadCaseDescr='Q4: sobrecarga sobre relleno trasdós estribo',loadCaseExpr='1.0*Q4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+    LSD.insert(3,G4)
+    LSD.append(Q4)
+
 for lc in LSD:
     lc.unitsScaleLoads=1e-3
     lc.unitsScaleDispl=1e3
@@ -49,4 +55,12 @@ for lc in LSD:
 resLoadCases=[G1,G2,G3,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q33,Q34]
 resLoadCases_neopr=[G1,G2,G3,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22,Q31,Q32,Q31neopr,Q32neopr,Q33,Q34]
 LSD_disp=[G1,G2,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22]
+if abutment.lower()[0]=='y':
+    resLoadCases.insert(3,G4)
+    resLoadCases.append(Q4)
+    resLoadCases_neopr.insert(3,G4)
+    resLoadCases_neopr.append(Q4)
+    LSD_disp.insert(3,G4)
+    LSD_disp.append(Q4)
+    
 

@@ -137,3 +137,11 @@ setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr
 setArmados.name='setArmados'
 setArmados.description='Tabl.'
 
+if abutment.lower()[0]=='y':
+    setArmadosEstr=zapEstr+murEstrSet
+    if LaletaIzq>0:
+        setArmadosEstr+=aletIzqSet
+    if LaletaDer>0:
+        setArmadosEstr+=aletDerSet
+    setArmadosEstr.name='setArmadosEstr'
+    setArmadosEstr.description='Estribo'

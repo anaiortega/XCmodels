@@ -21,7 +21,7 @@ from materials.ehe import EHE_materials
 #
 
 fullProjPath='/home/ana/projects/XCmodels/PS_Palencia/PS_3_vanos34/'
-execfile(fullProjPath+'env_config.py')
+execfile(fullProjPath+'init_data.py')
 
 execfile(fullProjPath+'data_deck_piers.py')
 if abutment.lower()[0]=='y':

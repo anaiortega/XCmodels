@@ -4,9 +4,14 @@ from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.ehe import EHE_limit_state_checking as lschck  #Checking material for shear limit state according to EHE08
 #from materials.sia262 import SIA262_limit_state_checking as lschck  #Checking material for shear limit state according to SIA262
-from shutil import copyfile
-copyfile('../results/internalForces/intForce_ULS_normalStressesResistance.csv', '../results/internalForces/intForce_ULS_shearResistance.csv')
+
 execfile('../model_gen.py')
+#choose env_config file:
+execfile("../env_config_deck.py")
+execfile("../env_config_abutment.py")
+#
+from shutil import copyfile
+copyfile(cfg.intForcPath+'intForce_ULS_normalStressesResistance.csv', cfg.intForcPath+'intForce_ULS_shearResistance.csv')
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

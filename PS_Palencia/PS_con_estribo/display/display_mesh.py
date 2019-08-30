@@ -26,6 +26,8 @@ setsTodisp=[aceras,viaFictDer,viaFictIzq]
 #setsTodisp=[aceras,viaFictDer_vano2,viaFictIzq_vano2]
 setsTodisp=allsets
 #setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
-#setsTodisp=[setArmados+setArmadosEstr]
-setsTodisp=[setArmPil,struts,ties]
+setsTodisp=[setArmados+setArmadosEstr]
+#setsTodisp=[setArmPil,struts,ties]
+setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
+
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)

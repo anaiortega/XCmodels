@@ -139,10 +139,22 @@ setArmados.name='setArmados'
 setArmados.description='Tabl.'
 
 if abutment.lower()[0]=='y':
-    setArmadosEstr=zapEstr+murEstr
-    if LaletaIzq>0:
-        setArmadosEstr+=aletIzq
+    #zapata
+    x=[0,xExtrAletaD]
+    y=Yzap
+    z=Zzap
+    setArmZapEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), nameSet='setArmZapEstr')
+    #muro estribo
+    x=[0,xAletaD]
+    y=Ymurestr
+    z=[zZapata,zMurEstr]
+    setArmMurEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), nameSet='setArmMurEstr')
+    setArmadosEstr=setArmZapEstr+setArmMurEstr
+    # No se incluye la aleta izquierda en el set de armados al ser simétrica
+    # de la derecha
+    # if LaletaIzq>0:
+    #     setArmadosEstr+=aletIzqSet
     if LaletaDer>0:
-        setArmadosEstr+=aletDer
+        setArmadosEstr+=aletDerSet
     setArmadosEstr.name='setArmadosEstr'
     setArmadosEstr.description='Estribo'

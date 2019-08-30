@@ -35,9 +35,9 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #hInfPilas=hTotPilas/2.0   #altura zona armado inferior
     
 #Apoyos estribos
-distNeopr=4.2  #distancia entre neoprenos
-numNeopr=2   #número de aparatos de apoyo
-xCoordNeopr=[-0.5*distNeopr,0.5*distNeopr]
+distNeopr=2.8  #distancia entre neoprenos
+numNeopr=4   #número de aparatos de apoyo
+xCoordNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
 hNetoNeopr=32e-3 #espesor neto neopreno
 aNeopr=0.25       #dimensión y (sentido longitudinal) del neopreno
 bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
@@ -60,8 +60,8 @@ xCartab[1].insert(1,round((xCartab[1][0]+xCartab[1][-1])/2.,2))#intermedio
 #Losa espesor constante
 xLosa=[xCartab[0][-1],xCartab[1][0]]
 #Riostras estribos
-xRiostrEstr=[[xVoladz[0][-1],xVoladz[1][0]],
-             [xVoladz[0][-1],xVoladz[1][0]]]   #riostra estribo 1, riostra estribo 2
+xRiostrEstr=[[xVoladz[0][0],xVoladz[1][-1]],
+             [xVoladz[0][0],xVoladz[1][-1]]]   #riostra estribo 1, riostra estribo 2
 #Pila
 xPil=[-1.25,1.25]
 #Vias ficticeas
