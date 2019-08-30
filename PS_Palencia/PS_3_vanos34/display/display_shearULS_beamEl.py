@@ -6,6 +6,10 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 
 execfile("../model_gen.py") #FE model generation
+#choose env_config file:
+execfile("../env_config_deck.py")
+execfile("../env_config_abutment.py")
+#
 
 #Load properties to display:
 execfile(cfg.verifShearFile)

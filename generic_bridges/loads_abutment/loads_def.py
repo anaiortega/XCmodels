@@ -5,6 +5,7 @@ ep_murEstr= loads.EarthPressLoad(name= 'ep_murEstr', xcSet=murEstrSet,soilData=s
 rell_zap=loads.UniformLoadOnSurfaces(name= 'rell_zap',xcSet=zapTrasdos,loadVector= xc.Vector([0,0,-grav*densrell*(zGround-zZapata-cantoZap/2.)]))
 
 G4_lstLoads=[ep_murEstr,rell_zap]
+
 # empuje del terreno sobre aleta izquierda
 if LaletaIzq>0:
     pnt1=gridAbutment.getPntGrid((xListAbut.index(Xaleti[1]),yListAbut.index(Yaleti[1]),zListAbut.index(Zzap[0])))
@@ -25,11 +26,10 @@ if LaletaDer>0:
     ang=math.radians(angAletaDer)
     ep_aletDer= loads.EarthPressLoad(name= 'ep_aletDer', xcSet=aletDerSet,soilData=soil_aletDer, vDir=xc.Vector([-math.sin(ang),math.cos(ang),0]))
     G4_lstLoads.append(ep_aletDer)
-    
+
 
 G4=lcases.LoadCase(preprocessor=prep,name="G4",loadPType="default",timeSType="constant_ts")
 G4.create()
-G4_lstLoads=[ep_aletDer,ep_aletIzq]
 G4.addLstLoads(G4_lstLoads)
 
 #Sobrecarga sobre relleno trasdós

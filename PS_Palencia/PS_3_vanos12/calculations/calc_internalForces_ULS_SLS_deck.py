@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from postprocess import limit_state_data as lsd
-execfile("../env_config.py")
+execfile("../env_config_deck.py")
 execfile("../model_gen.py") #FE model generation
-execfile(path_loads_def+"loadComb.py")
+
+execfile(path_loads_def+"loadComb_deck.py")
+
 #Reinforced concrete sections on each element.
 #reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
@@ -10,7 +12,6 @@ execfile(path_loads_def+"loadComb.py")
 
 #Set of entities for which checking is going to be performed.
 setCalc=setArmados
-
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 
 #Limit states to calculate internal forces for.
@@ -24,7 +25,7 @@ limitStates= [lsd.normalStressesResistance, # Normal stresses resistance.
 #limitStates= [lsd.freqLoadsCrackControl]
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=None)
-  print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
+    ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=None)
+    print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

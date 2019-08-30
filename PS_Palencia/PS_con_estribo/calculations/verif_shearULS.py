@@ -8,7 +8,7 @@ from materials.ehe import EHE_limit_state_checking as lschck  #Checking material
 execfile('../model_gen.py')
 #choose env_config file:
 execfile("../env_config_deck.py")
-execfile("../env_config_abutment.py")
+#execfile("../env_config_abutment.py")
 #
 from shutil import copyfile
 copyfile(cfg.intForcPath+'intForce_ULS_normalStressesResistance.csv', cfg.intForcPath+'intForce_ULS_shearResistance.csv')

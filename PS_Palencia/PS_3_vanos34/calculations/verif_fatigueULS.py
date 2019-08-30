@@ -2,7 +2,11 @@
 from postprocess.config import output_config as oc
 from materials.sia262 import SIA262_limit_state_checking
 
-execfile('../env_config.py')
+execfile("../model_gen.py") #FE model generation
+#choose env_config file:
+execfile("../env_config_deck.py")
+execfile("../env_config_abutment.py")
+#
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']

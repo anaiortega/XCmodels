@@ -17,8 +17,8 @@ execfile(cfg.verifShearFile)
 #  Config
 argument= 'CF'       #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy',
                      #'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-setDisp= setArmLosa
-setDisp=sets_arm_losa[3]
+setDisp= setArmados
+#setDisp=sets_arm_losa[3]
 fUnitConv=1.0        #Set of shell elements to be displayed
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 rgMinMax=None     #truncate values to be included in the range

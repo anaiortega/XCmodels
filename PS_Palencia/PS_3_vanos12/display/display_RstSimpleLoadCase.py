@@ -4,7 +4,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 
-execfile('../env_config.py')
+#execfile('../env_config.py')
 execfile('../model_gen.py')
 execfile(path_loads_def+'load_state_data.py')
 

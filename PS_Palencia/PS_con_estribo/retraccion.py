@@ -9,7 +9,7 @@ perim_deck=anchoTot+2*minCantoVoladz+2*math.sqrt(anchoVoladz**2+(maxCantoVoladz-
 #Type of concrete used in the deck slab
 concrDeck=EC2_materials.EC2Concrete("C30/37",-30e6,1.5)
 concrDeck.cemType='N'   #class N cement
-RH=50                   #ambient relative humidity(%)
+RH=70                   #ambient relative humidity(%)
 
 #Shrinkage deformation at traffic openning
 t=10000     #age of the concrete t infinito

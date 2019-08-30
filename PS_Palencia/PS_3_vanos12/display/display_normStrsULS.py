@@ -7,6 +7,10 @@ from postprocess.xcVtk.FE_model import vtk_display_limit_state as dls
 
 #FE model generation
 execfile("../model_gen.py")
+#choose env_config file:
+#execfile("../env_config_deck.py")
+execfile("../env_config_abutment.py")
+#
 
 #Load properties to display:
 execfile(cfg.verifNormStrFile)
@@ -21,9 +25,11 @@ setDisp= setArmLosa  #Set of shell elements to be displayed
 #setDisp= setArmCart  #Set of shell elements to be displayed
 #setDisp= setArmVol  #Set of shell elements to be displayed
 #setDisp= setArmREstr  #Set of shell elements to be displayed
-setDisp=murEstr
+setDisp=setArmZapEstr
+#setDisp=setArmadosEstr
+setDisp=aletDerSet
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
-rgMinMax=None     #truncate values to be included in the range
+rgMinMax=[0,1]     #truncate values to be included in the range
                      #(if None -> don't truncate)
 #  End config 
 
