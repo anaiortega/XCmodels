@@ -3,7 +3,9 @@ from postprocess import limit_state_data as lsd
 execfile("../env_config_abutment.py")
 execfile("../model_gen.py") #FE model generation
 
-execfile(path_loads_def+"loadComb_deck_and_abutment.py")
+#Chose combination file (keyComb contains the determining combinations)
+execfile(path_loads_def+"keyComb_abutment.py")
+#execfile(path_loads_def+"loadComb_abutment.py")
 
 
 #Reinforced concrete sections on each element.

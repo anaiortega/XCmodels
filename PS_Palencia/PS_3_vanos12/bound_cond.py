@@ -38,16 +38,29 @@ for indy in range(1,len(yPil)):
 #Estribo 1
 yn=yEstr[0]
 zl=zLosa[0]
-for xn in xNeopr:
-    n2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yn,zl))
-    x,y=n2.getCoo[0],n2.getCoo[1]
-    n1=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
-    modelSpace.setRigidBeamBetweenNodes(n2.tag,n1.tag)
-    n0=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
-    modelSpace.fixNode('000_000',n0.tag)
-    constrNodesE1.append(n0)
-    elem=neopr.putBetweenNodes(modelSpace,n0.tag,n1.tag)
-    neopsE1.append(elem)
+if abutment.lower()[0]=='y':
+    for xn in xNeopr:
+        n3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yn,zl))
+        x,y=n3.getCoo[0],n3.getCoo[1]
+        n2=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
+        modelSpace.setRigidBeamBetweenNodes(n3.tag,n2.tag)
+        n1=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
+        elem=neopr.putBetweenNodes(modelSpace,n1.tag,n2.tag)
+        neopsE1.append(elem)
+        zneopEstr=zMurEstr
+        n0=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yMurEstr,zneopEstr))
+        modelSpace.setRigidBeamBetweenNodes(n1.tag,n0.tag)
+else:
+    for xn in xNeopr:
+        n2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yn,zl))
+        x,y=n2.getCoo[0],n2.getCoo[1]
+        n1=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
+        modelSpace.setRigidBeamBetweenNodes(n2.tag,n1.tag)
+        n0=nodes.newNodeXYZ(x,y,zl-cantoRiostrEstr/2.-hNetoNeopr/2.0)
+        modelSpace.fixNode('000_000',n0.tag)
+        constrNodesE1.append(n0)
+        elem=neopr.putBetweenNodes(modelSpace,n0.tag,n1.tag)
+        neopsE1.append(elem)
 
 #Estribo 2
 yn=yEstr[-1]

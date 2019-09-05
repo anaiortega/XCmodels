@@ -19,15 +19,16 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 setsTodisp=sets_arm_losa+sets_arm_cartInt+sets_arm_cartExt+sets_arm_volInt+sets_arm_volExt
 #setsTodisp=setArmados
 #setsTodisp=setArmREstr
-setsTodisp=sets_arm_losa+[pilasBarlov]
-setsTodisp=[setArmPil]
-setsTodisp=[aceras,viaFictDer,viaFictIzq]
+#setsTodisp=sets_arm_losa+[pilasBarlov]
+#setsTodisp=[setArmPil]
+#setsTodisp=[aceras,viaFictDer,viaFictIzq]
 #setsTodisp=[calzada]
 #setsTodisp=[aceras,viaFictDer_vano2,viaFictIzq_vano2]
-setsTodisp=allsets
+#setsTodisp=allsets
 #setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
-setsTodisp=[setArmados+setArmadosEstr]
+#setsTodisp=[setArmados+setArmadosEstr]
+#setsTodisp=[setArmados]
 #setsTodisp=[setArmPil,struts,ties]
-setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
-
+#setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
+#setsTodisp=[setArmZapEstr]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)

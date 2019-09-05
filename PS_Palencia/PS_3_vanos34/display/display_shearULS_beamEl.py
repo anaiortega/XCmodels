@@ -5,11 +5,11 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 
-execfile("../model_gen.py") #FE model generation
 #choose env_config file:
 execfile("../env_config_deck.py")
-execfile("../env_config_abutment.py")
+#execfile("../env_config_abutment.py")
 #
+execfile("../model_gen.py") #FE model generation
 
 #Load properties to display:
 execfile(cfg.verifShearFile)
@@ -19,8 +19,8 @@ argument= 'CF'      #Available arguments:
                     # RC elements:'CF', 'N', 'My', 'Mz', 'Mu',
                     #             'Vy', 'Vz', 'theta', 'Vcu', 'Vsu', 'CF'
                     # steel elements: 'CF', 'Vy'
-setDispRes=columnZsteel   #set of linear elements to display results
-setDisp=overallSet   #set of elements (any type) to be displayed
+setDispRes=setArmPil   #set of linear elements to display results
+setDisp=setArmPil   #set of elements (any type) to be displayed
 scaleFactor=1      #scale factor to apply to the auto-scales diagram (can be negative)
 fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 #  End config 

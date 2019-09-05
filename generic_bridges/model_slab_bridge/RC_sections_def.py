@@ -145,7 +145,7 @@ armaduraLosa(RCSet=RestrRCSects,recNom=rnom,
               arm1=trInf_los_020L1,
               arm2=trInf_cart_020L1,
               arm3=[],
-              arm4=trInf_vol_L1,
+              arm4=trInf_vol_020L1,
               arm5=trSup_020L1,
               arm6a=lnInf_base_los_L1,
               arm6b=None,
@@ -165,7 +165,7 @@ armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm1=trInf_los_020L1,
               arm2=trInf_cart_020L1,
               arm3=[],
-              arm4=trInf_vol_L1,
+              arm4=trInf_vol_020L1,
               arm5=trSup_020L1,
               arm6a=lnInf_base_los_L1,
               arm6b=None,
@@ -185,7 +185,7 @@ armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm1=trInf_los,
               arm2=trInf_cart_L1cent,
               arm3=[],
-              arm4=trInf_vol_L1,
+              arm4=trInf_vol_L1cent,
               arm5=trSup_L1cent,
               arm6a=lnInf_base_los_L1,
               arm6b=lnInf_ref_los_L1,
@@ -212,7 +212,7 @@ armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm7=lnInf_cart,
               arm8=lnInf_vol_L1,
               arm9a=lnSup_base_loscart_Rpil,
-              arm9b=None,
+              arm9b=lnSup_ref_loscart_020L2,
               arm10=lnSup_vol_020L2,
               arm1P=None,
               arm2P=None,
@@ -251,8 +251,8 @@ armaduraZonas(nZona=5,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm6b=None,
               arm7=lnInf_cart,
               arm8=lnInf_vol_L2,
-              arm9a=lnSup_ref_loscart_Rpil,
-              arm9b=None,
+              arm9a=lnSup_base_loscart_Rpil,
+              arm9b=lnSup_ref_loscart_020L2,
               arm10=lnSup_vol_020L2,
               arm1P=None,
               arm2P=None,
@@ -289,5 +289,8 @@ pilasRCSects.dir2NegatvRebarRows=[rcs.rebLayer(lnPil[0],lnPil[1],rnom)]
 
 pilasRCSects.dir1ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 pilasRCSects.dir2ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+
+pilasRCSects.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 

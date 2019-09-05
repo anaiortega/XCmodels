@@ -43,7 +43,7 @@ def gen_pile_found_1column_4piles(preprocessor,nodCol,distXpile,distYpile,Hpilec
     ties.getElements.append(tie4)
 
     # Constraints
-    #modelSpace.fixNode('FFF_000',nodCol.tag)
+    modelSpace.fixNode('FFF_000',nodCol.tag)
     modelSpace.fixNode('F00_000',nod1.tag)
     modelSpace.fixNode('0F0_000',nod2.tag)
     modelSpace.fixNode('F00_000',nod3.tag)
@@ -120,7 +120,8 @@ def gen_pile_found_2columns_3X2Ypiles(preprocessor,nodCols,distXpile,distYpile,H
     ties.getElements.append(tie7)
 
     # Constraints
-    #modelSpace.fixNode('FFF_000',nodCol.tag)
+    modelSpace.fixNode('FFF_000',nodCol1.tag)
+    modelSpace.fixNode('FFF_000',nodCol2.tag)
     modelSpace.fixNode('F00_000',nod1.tag)
     modelSpace.fixNode('FF0_000',nod2.tag)
     modelSpace.fixNode('0F0_000',nod3.tag)

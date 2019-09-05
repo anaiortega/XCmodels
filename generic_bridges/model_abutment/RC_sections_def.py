@@ -10,55 +10,88 @@
 
 
 zapEstrRCSects= rcs.RecordRCSlabBeamSection(name='zapEstrRCSects',sectionDescr='zapata',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoZap,elemSetName='zapEstr')
-#D1: longitudinal rebars
-#D2:  transversal rebars
+#D1: transversal rebars
+#D2:  longitudianl rebars
 #positiv: top face
 #negativ: bottom face
-zapEstrRCSects.dir1PositvRebarRows=[rcs.rebLayer(lnSup_zapEstr[0],lnSup_zapEstr[1],rnomZap)]
-zapEstrRCSects.dir2PositvRebarRows=[rcs.rebLayer(trSup_zapEstr[0],trSup_zapEstr[1],rnomZap+lnSup_zapEstr[0])]
-zapEstrRCSects.dir1NegatvRebarRows=[rcs.rebLayer(lnInf_zapEstr[0],lnInf_zapEstr[1],rnomZap)]
-zapEstrRCSects.dir2NegatvRebarRows=[rcs.rebLayer(trInf_zapEstr[0],trInf_zapEstr[1],rnomZap+lnInf_zapEstr[0])]
+#        transversal superior
+zapEstrRCSects.dir1PositvRebarRows=[rcs.rebLayer(trSup_zapEstr[0],trSup_zapEstr[1],rnomZap+lnSup_zapEstr[0][0])]
+#        longitudinal superior
+zapEstrRCSects.dir2PositvRebarRows=list() 
+for rLay in lnSup_zapEstr:
+    zapEstrRCSects.dir2PositvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomZap))
+#        transversal inferior
+zapEstrRCSects.dir1NegatvRebarRows=[rcs.rebLayer(trInf_zapEstr[0],trInf_zapEstr[1],rnomZap+lnInf_zapEstr[0][0])]
+#        longitudinal inferior
+zapEstrRCSects.dir2NegatvRebarRows=list()
+for rLay in lnInf_zapEstr:
+    zapEstrRCSects.dir2NegatvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomZap))
 
+#MURO ESTRIBO - ZONA 1
 murEstrZ1RCSects= rcs.RecordRCSlabBeamSection(name='murEstrZ1RCSects',sectionDescr='muro de estribo, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ1')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: exterior
 #negativ: interior
-murEstrZ1RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_murEstr[0][0],vertExt_murEstr[0][1],rnomMur)]
-    
-murEstrZ1RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[0][0],horzExt_murEstr[0][1],rnomMur+vertExt_murEstr[0][0])]
-murEstrZ1RCSects.dir1NegatvRebarRows=[rcs.rebLayer(vertInt_murEstr[0][0],vertInt_murEstr[0][1],rnomMur)]
-if len(vertInt_ref_murEstrZ1)>0:
-    murEstrZ1RCSects.dir1NegatvRebarRows.append(rcs.rebLayer(vertInt_ref_murEstrZ1[0],vertInt_ref_murEstrZ1[1],rnomMur+vertInt_murEstr[0][0]+horzInt_murEstr[0][0]))
-murEstrZ1RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[0][0],horzInt_murEstr[0][1],rnomMur+vertInt_murEstr[0][0])]
+#           zona 1
+#vertical exterior
+murEstrZ1RCSects.dir1PositvRebarRows=list()
+for rLay in vertExt_murEstr[0]:
+    murEstrZ1RCSects.dir1PositvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomZap))
+#horizontal exterior
+murEstrZ1RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[0][0],horzExt_murEstr[0][1],rnomMur+vertExt_murEstr[0][0][0])]
+#vertical interior
+murEstrZ1RCSects.dir1NegatvRebarRows=list()
+for rLay in vertInt_murEstr[0]:
+    murEstrZ1RCSects.dir1NegatvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomMur))
+#horizontal interior
+murEstrZ1RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[0][0],horzInt_murEstr[0][1],rnomMur+vertInt_murEstr[0][0][0])]
 
+#MURO ESTRIBO - ZONA 2
 murEstrZ2RCSects= rcs.RecordRCSlabBeamSection(name='murEstrZ2RCSects',sectionDescr='muro de estribo, zona Z2 ',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ2')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: exterior
 #negativ: interior
-murEstrZ2RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_murEstr[1][0],vertExt_murEstr[1][1],rnomMur)]
-murEstrZ2RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[1][0],horzExt_murEstr[1][1],rnomMur+vertExt_murEstr[1][0])]
-murEstrZ2RCSects.dir1NegatvRebarRows=[rcs.rebLayer(vertInt_murEstr[1][0],vertInt_murEstr[1][1],rnomMur)]
-murEstrZ2RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[1][0],horzInt_murEstr[1][1],rnomMur+vertInt_murEstr[1][0])]
+#vertical exterior
+murEstrZ2RCSects.dir1PositvRebarRows=list()
+for rLay in vertExt_murEstr[1]:
+    murEstrZ2RCSects.dir1PositvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomZap))
+#horizontal exterior
+murEstrZ2RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[1][0],horzExt_murEstr[1][1],rnomMur+vertExt_murEstr[1][0][0])]
+#vertical interior
+murEstrZ2RCSects.dir1NegatvRebarRows=list()
+for rLay in vertInt_murEstr[1]:
+    murEstrZ2RCSects.dir1NegatvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomMur))
+#horizontal interior
+murEstrZ2RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[1][0],horzInt_murEstr[1][1],rnomMur+vertInt_murEstr[1][0][0])]
                                                 
-
+#MURO ESTRIBO - ZONA 3
 murEstrZ3RCSects= rcs.RecordRCSlabBeamSection(name='murEstrZ3RCSects',sectionDescr='muro de estribo, zona Z3 ',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ3')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: exterior
 #negativ: interior
-murEstrZ3RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_murEstr[2][0],vertExt_murEstr[2][1],rnomMur)]
-murEstrZ3RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[2][0],horzExt_murEstr[2][1],rnomMur+vertExt_murEstr[2][0])]
-murEstrZ3RCSects.dir1NegatvRebarRows=[rcs.rebLayer(vertInt_murEstr[2][0],vertInt_murEstr[2][1],rnomMur)]
-murEstrZ3RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[2][0],horzInt_murEstr[2][1],rnomMur+vertInt_murEstr[2][0])]
-                
+#vertical exterior
+murEstrZ3RCSects.dir1PositvRebarRows=list()
+for rLay in vertExt_murEstr[2]:
+    murEstrZ3RCSects.dir1PositvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomZap))
+#horizontal exterior
+murEstrZ3RCSects.dir2PositvRebarRows=[rcs.rebLayer(horzExt_murEstr[2][0],horzExt_murEstr[2][1],rnomMur+vertExt_murEstr[2][0][0])]
+#vertical interior
+murEstrZ3RCSects.dir1NegatvRebarRows=list()
+for rLay in vertInt_murEstr[2]:
+    murEstrZ3RCSects.dir1NegatvRebarRows.append(rcs.rebLayer(rLay[0],rLay[1],rnomMur))
+
+#horizontal interior                
+murEstrZ3RCSects.dir2NegatvRebarRows=[rcs.rebLayer(horzInt_murEstr[2][0],horzInt_murEstr[2][1],rnomMur+vertInt_murEstr[2][0][0])]
+
 estriboRCSects=[zapEstrRCSects,murEstrZ1RCSects,murEstrZ2RCSects,murEstrZ3RCSects]
 
 if LaletaIzq>0:
     aletIzqZ1RCSects= rcs.RecordRCSlabBeamSection(name='aletIzqZ1RCSects',sectionDescr='aleta izquierda, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ1,elemSetName='aletiZ1')
-    #D1: horizontal rebars
-    #D2: vertical rebars
+    #D1: vertical rebars
+    #D2: horizontal rebars
     #positiv: exterior
     #negativ: interior
     aletIzqZ1RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_aletIzq[0][0],vertExt_aletIzq[0][1],rnomMur)]
@@ -69,8 +102,8 @@ if LaletaIzq>0:
         aletIzqZ1RCSects.dir1NegatvRebarRows.append(rcs.rebLayer(vertInt_ref_aletIzqZ1[0],vertInt_ref_aletIzqZ1[1],rnomMur+vertInt_aletIzq[0][0]+horzInt_aletIzq[0][0]))
                                                 
     aletIzqZ2RCSects= rcs.RecordRCSlabBeamSection(name='aletIzqZ2RCSects',sectionDescr='aleta izquierda, zona Z2',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ2,elemSetName='aletiZ2')
-    #D1: horizontal rebars
-    #D2: vertical rebars
+    #D1: vertical rebars
+    #D2: horizontal rebars
     #positiv: exterior
     #negativ: interior
     aletIzqZ2RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_aletIzq[1][0],vertExt_aletIzq[1][1],rnomMur)]
@@ -89,8 +122,8 @@ if LaletaIzq>0:
 if LaletaDer>0:
     aletDerZ1RCSects= rcs.RecordRCSlabBeamSection(name='aletDerZ1RCSects',sectionDescr='aleta derecha, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ1,elemSetName='aletdZ1')
                      
-    #D1: horizontal rebars
-    #D2: vertical rebars
+    #D1: vertical rebars
+    #D2: horizontal rebars
     #positiv: exterior
     #negativ: interior
     aletDerZ1RCSects.dir1PositvRebarRows=[rcs.rebLayer(vertExt_aletDer[0][0],vertExt_aletDer[0][1],rnomMur)]

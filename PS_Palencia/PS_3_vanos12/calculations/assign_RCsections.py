@@ -6,7 +6,6 @@ from postprocess import element_section_map
 # Reinforced concrete material distribution over the elements of the FE model.
 # Concrete of type concrete01 with no tension branch
 
-execfile("../env_config.py") #FE model generation
 execfile("../model_gen.py") #FE model generation
 execfile("../arm_def.py") #FE model generation
 
@@ -20,6 +19,7 @@ if abutment.lower()[0]=='y':
 lstOfSectRecords=losaRCSects+cartIntRCSects+cartExtRCSects+volIntRCSects+volExtRCSects+[RestrRCSects]+[pilasRCSects]
 if abutment.lower()[0]=='y':
     lstOfSectRecords+=estriboRCSects
+
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
 
@@ -41,9 +41,7 @@ for sect in lstOfSectRecords:
 #Generation of the distribution of material extended to the elements of the
 #FE model, assigning to each element the section-group that corresponds to it
 for secRec in lstOfSectRecords:
-    print 'section= ',secRec.name,
     elset=prep.getSets.getSet(secRec.elemSetName)
-    print 'n elem=',elset.getElements.size
     reinfConcreteSectionDistribution.assign(elemSet=elset.getElements,setRCSects=secRec)
 
 reinfConcreteSectionDistribution.dump()

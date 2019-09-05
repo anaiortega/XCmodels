@@ -37,7 +37,7 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 #Apoyos estribos
 distNeopr=2.8  #distancia entre neoprenos
 numNeopr=4   #número de aparatos de apoyo
-xCoordNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
+xNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
 hNetoNeopr=32e-3 #espesor neto neopreno
 aNeopr=0.25       #dimensión y (sentido longitudinal) del neopreno
 bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
@@ -69,8 +69,6 @@ xViasFict=[redondea([1,anchoCalz/2.],dec),
            redondea([-2,1],dec),
            redondea([-anchoCalz/2.,-2],dec)] #vía 1, vía 2, ...
 
-xNeopr=[-distNeopr/2.,distNeopr/2.]
-
 #   Coordenadas perfil longitudinal
 #Estribos
 yEstr=[0,Ltablero] #eje estribo 1, eje estribo 2
@@ -86,7 +84,7 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 
 #Zonas armado
-yArm=redondea([yRiostrEstr[0][1],0.2*Lvanos[0],Lvanos[0]-0.2*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.2*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=redondea([yRiostrEstr[0][1],0.3*Lvanos[0],Lvanos[0]-0.25*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 
 
 #   Coordenadas en Z

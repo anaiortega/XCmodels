@@ -138,6 +138,14 @@ setArmados=setArmLosa+setArmCart+setArmVol+setArmREstr+setArmPil
 setArmados.name='setArmados'
 setArmados.description='Tabl.'
 
+#Sets armados tablero zonas
+setArmZ1=sets_arm_losa[0]+sets_arm_cartInt[0]+sets_arm_cartExt[0]+sets_arm_volInt[0]+sets_arm_volExt[0]
+setArmZ2=sets_arm_losa[1]+sets_arm_cartInt[1]+sets_arm_cartExt[1]+sets_arm_volInt[1]+sets_arm_volExt[1]
+setArmZ3=sets_arm_losa[2]+sets_arm_cartInt[2]+sets_arm_cartExt[2]+sets_arm_volInt[2]+sets_arm_volExt[2]
+setArmZ4=sets_arm_losa[3]+sets_arm_cartInt[3]+sets_arm_cartExt[3]+sets_arm_volInt[3]+sets_arm_volExt[3]
+setArmZ5=sets_arm_losa[4]+sets_arm_cartInt[4]+sets_arm_cartExt[4]+sets_arm_volInt[4]+sets_arm_volExt[4]
+setArmZ6=sets_arm_losa[5]+sets_arm_cartInt[5]+sets_arm_cartExt[5]+sets_arm_volInt[5]+sets_arm_volExt[5]
+
 if abutment.lower()[0]=='y':
     #zapata
     x=[0,xExtrAletaD]

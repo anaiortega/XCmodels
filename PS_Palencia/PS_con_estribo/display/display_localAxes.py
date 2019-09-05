@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+#choose env_config file:
+#execfile("../env_config_deck.py")
+execfile("../env_config_abutment.py")
+#
 execfile("../model_gen.py") #FE model generation
 
 from postprocess.xcVtk import vtk_graphic_base
@@ -18,7 +22,9 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
 
-setToDisp=murEstrSet
+setToDisp=aletDerSet
+#setToDisp=setArmZapEstr
+#setToDisp=setArmMurEstr
 qg.display_local_axes(prep=prep,setToDisplay=setToDisp,vectorScale=0.20,viewDef= vtk_graphic_base.CameraParameters('XYZPos',1.0),caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
 

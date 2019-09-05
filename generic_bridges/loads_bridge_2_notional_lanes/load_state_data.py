@@ -60,7 +60,7 @@ if abutment.lower()[0]=='y':
     resLoadCases.append(Q4)
     resLoadCases_neopr.insert(3,G4)
     resLoadCases_neopr.append(Q4)
-    LSD_disp.insert(3,G4)
+    LSD_disp.insert(2,G4)
     LSD_disp.append(Q4)
     
 

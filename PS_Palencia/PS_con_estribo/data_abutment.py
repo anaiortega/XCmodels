@@ -3,9 +3,9 @@ from __future__ import division
 import math
 # Estribo con aletas  en prolongación o formando ángulo < 90º  
 #Abutment geometry
-cantoZap=1.5
+cantoZap=1.60
 espCoronAlet=0.4
-espMurEstr=1.40
+espMurEstr=1.70
 anchoEstr=9.20
 hMurEstr=9.  #altura del muro del estribo 
 hMuret=1.35
@@ -24,8 +24,8 @@ excNeop=espMurEstr/2.+0.5 #excentricidad de los aparatos de apoyo respecto al pl
 #ángulo que forman las aletas con el plano del muro del estribo
 #angAletaIzq=20  #can be =0
 #angAletaDer=-20 
-angAletaIzq=1  #can be =0
-angAletaDer=-1 
+angAletaIzq=0  #can be =0
+angAletaDer=-0 
 eSizeAbut= 0.40     #length of elements
 
 #Loads

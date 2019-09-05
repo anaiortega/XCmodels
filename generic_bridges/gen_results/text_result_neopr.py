@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 f.write('\\begin{center} \n')
 f.write('\\begin{longtable}{|l|c|rrrrrr|r|} \n')
 f.write('\\caption{Aparatos de apoyo. Deformaciones y tensiones.} \\label{defNeop}  \\\\ \n')

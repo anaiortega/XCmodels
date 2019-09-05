@@ -24,9 +24,9 @@ if LaletaIzq>0:
     if angAletaIzq <>0:
         r=gut.def_rg_cooLim(XYZListsAbut,(Xaleti[0],Xaleti[0]),(Ymurestr[0],Yzap[1]),(zListAbut[0],zListAbut[-1]))
         gridAbutment.rotPntsZAxis(ijkRange=r,angle=angAletaIzq,xyRotCent=[xAletaI,yMurEstr])
-        r=gut.def_rg_cooLim(XYZListsAbut,(Xaleti[0],Xaleti[0]),(Yzap[0],Yzap[0]),Zzap)
-        gridAbutment.movePointsRange(r,xc.Vector([math.tan(math.radians(angAletaIzq))*Lzap,0.0,0.0]))
-
+        scale=1-abs(math.tan(math.radians(angAletaIzq))*Lzap/Xzap[0])
+        r=gut.def_rg_cooLim(XYZListsAbut,(Xaleti[0],0),(Yzap[0],Yzap[0]),Zzap)
+        gridAbutment.scaleCoorXPointsRange(ijkRange=r,xOrig=0,scale=scale) 
 
 if LaletaDer>0:
     if pendCoronAletaDer>0:
@@ -36,9 +36,9 @@ if LaletaDer>0:
     if angAletaDer <>0:
         r=gut.def_rg_cooLim(XYZListsAbut,(Xaletd[1],Xaletd[1]),(Ymurestr[0],Yzap[1]),(zListAbut[0],zListAbut[-1]))
         gridAbutment.rotPntsZAxis(ijkRange=r,angle=angAletaDer,xyRotCent=[xAletaD,yMurEstr])
-        r=gut.def_rg_cooLim(XYZListsAbut,(Xaletd[1],Xaletd[1]),(Yzap[0],Yzap[0]),Zzap)
-        gridAbutment.movePointsRange(r,xc.Vector([math.tan(math.radians(angAletaDer))*Lzap,0.0,0.0]))
-
+        scale=1-abs(math.tan(math.radians(angAletaDer))*Lzap/Xzap[-1])
+        r=gut.def_rg_cooLim(XYZListsAbut,(0,Xaletd[-1]),(Yzap[0],Yzap[0]),Zzap)
+        gridAbutment.scaleCoorXPointsRange(ijkRange=r,xOrig=0,scale=scale) 
 
 
 #Ranges for lines and surfaces
@@ -122,16 +122,16 @@ murEstrSet=murestrZ1+murestrZ2+murestrZ3
 setsEstribo=[zapEstr,murEstrSet]
 if LaletaIzq>0:
     aletIzqSet=aletiZ1+aletiZ2+aletiZ3
+    aletIzqSet.name='aletIzqSet'
+    aletIzqSet.description='muro lateral izq.'
     setsEstribo+=[aletIzqSet]
 if LaletaDer>0:
     aletDerSet=aletdZ1+aletdZ2+aletdZ3
+    aletDerSet.name='aletDerSet'
+    aletDerSet.description='muro lateral der.'
     setsEstribo+=[aletDerSet]
 murEstrSet.name='murEstrSet'
 murEstrSet.description='Muro frontal estribo'
-aletIzqSet.name='aletIzqSet'
-aletIzqSet.description='muro lateral izq.'
-aletDerSet.name='aletDerSet'
-aletDerSet.description='muro lateral der.'
 
     
 #                       ***BOUNDARY CONDITIONS***

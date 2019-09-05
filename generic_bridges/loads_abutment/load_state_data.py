@@ -15,6 +15,3 @@ for lc in LSDabut:
     lc.unitsForc='[kN]'
     lc.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 
-resLoadCases+=LSDabut
-resLoadCases_neopr+=LSDabut
-LSD_disp+=LSDabut

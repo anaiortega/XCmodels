@@ -32,12 +32,16 @@ if abutment.lower()[0]=='y':
     execfile(path_model_abutment+'model_gen_abutment.py')
 #Definition of sets
 execfile(fullProjPath+'sets_def.py')
+if pile_found.lower()[0]=='y':
+    execfile('../data_foundation.py')
 
 #                       ***BOUNDARY CONDITIONS***
 execfile(fullProjPath+'bound_cond.py')
         
 #                       ***ACTIONS***
 execfile(path_loads_def+'loads_def.py')                           
+if abutment.lower()[0]=='y':
+    execfile(path_loads_abutment+'loads_def.py')
 
 setsTablPilas=[riostrEstr1,riostrEstr2,losa,cartabInt,cartabExt,voladzInt,voladzExt,pilasBarlov]
 if abutment.lower()[0]=='y':
@@ -47,9 +51,15 @@ else:
     
 if pilasSotav:
     allsets.append(pilasSotav)
+
+if pile_found.lower()[0]=='y':
+    allsets.append(struts)
+    allsets.append(ties)
+    
 for s in allsets:
     s.fillDownwards()
-    
+
+
 overallSet=prep.getSets.defSet('overallSet')
 sets.append_sets(overallSet,allsets)
 overallSet.description='overall set'

@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 
 execfile("../model_gen.py") #FE model generation
+
 execfile(path_loads_def+'load_state_data.py')
+
 if abutment.lower()[0]=='y':
     execfile(path_loads_abutment+'load_state_data.py')
 from postprocess.xcVtk.FE_model import quick_graphics as qg
