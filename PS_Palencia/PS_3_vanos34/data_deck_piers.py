@@ -38,9 +38,9 @@ lRectEqPila=round(math.pi**0.5*diamPilas/2.,3)
 distNeopr=2.8  #distancia entre neoprenos
 numNeopr=4   #número de aparatos de apoyo
 xNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
-hNetoNeopr=32e-3 #espesor neto neopreno
+hNetoNeopr=40e-3 #espesor neto neopreno
 aNeopr=0.25       #dimensión y (sentido longitudinal) del neopreno
-bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
+bNeopr=0.30       #dimensión x (sentido transversal) del neopreno
 
 #     Coordenadas sección transversal
 #Aceras
@@ -94,7 +94,7 @@ zLosa=[0]
 #materials
 concrete=EHE_materials.HA30
 reinfSteel= EHE_materials.B500S
-Gneopr=1000e3  #módulo de cortante del material elastomérico
+Gneopr=800e3  #módulo de cortante del material elastomérico
 
 # Cargas
 grav=9.81     #[m/s2]
