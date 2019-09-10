@@ -21,8 +21,8 @@ for lc in resLoadCases_neopr:
     print text
     for i in range(len(neopsE1)):
         defN=React[lc.loadCaseName]['neoprStrain_e'+str(i+1)]
-        tensN=(defN[2]/hNetoNeopr)*600 #sigmaz en MPa (E_neopreno=600MPa)
-        text+=' & N' + str(i+1)+' & '+ str(round(defN[0]*1e3,2)) + ' & '+ str(round(defN[1]*1e3,2)) + ' & '+ str(round(defN[2]*1e3,2)) + ' & ' + str(round(defN[3]*1e3,2))+ ' & ' + str(round(defN[4]*1e3,2))+ ' & ' + str(round(defN[5]*1e3,2)) + ' & '+ str(round(tensN,2)) + ' \\\\ \n'
+        tensN=(defN[2]/hNetoNeopr)*Eneopr #sigmaz en MPa (E_neopreno=600MPa)
+        text+=' & N' + str(i+1)+' & '+ str(round(defN[0]*1e3,2)) + ' & '+ str(round(defN[1]*1e3,2)) + ' & '+ str(round(defN[2]*1e3,2)) + ' & ' + str(round(defN[3]*1e3,2))+ ' & ' + str(round(defN[4]*1e3,2))+ ' & ' + str(round(defN[5]*1e3,2)) + ' & '+ str(round(tensN*1e-6,2)) + ' \\\\ \n'
         f.write(text)
         text=''
     f.write('\\hline \n ')

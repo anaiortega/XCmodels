@@ -95,6 +95,7 @@ zLosa=[0]
 concrete=EHE_materials.HA30
 reinfSteel= EHE_materials.B500S
 Gneopr=800e3  #módulo de cortante del material elastomérico
+Eneopr=600e6      #módulo elástico material elastomérico
 
 # Cargas
 grav=9.81     #[m/s2]
