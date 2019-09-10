@@ -16,11 +16,11 @@ copyfile(cfg.intForcPath+'intForce_ULS_normalStressesResistance.csv', cfg.intFor
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
-#stcalc=setArmados
+stcalc=setArmados
 #stcalc=setArmVol
 #stcalc=setArmCart
 #stcalc=setArmLosa
-stcalc=setArmPil
+#stcalc=setArmPil
 #stcalc=sets_arm_losa[3]
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']

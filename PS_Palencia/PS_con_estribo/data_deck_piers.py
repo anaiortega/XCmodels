@@ -59,7 +59,7 @@ qunifacera=2.5e3    #carga uniforme en acera concomitante con cargas de tráfico
 
 Qfrenado=470.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
-vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
+vQfren=[0,-Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
 #  viento
 qWpilasBarlov=2.56e3 #carga lineal viento sobre pilas [N/m]
 qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]

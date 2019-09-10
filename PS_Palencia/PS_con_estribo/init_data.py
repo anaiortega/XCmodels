@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+fullProjPath='/home/ana/projects/XCmodels/PS_Palencia/PS_con_estribo/'
+
 abutment='Y' #if abutment is modelled 'Y'
 pile_found='Y'
 

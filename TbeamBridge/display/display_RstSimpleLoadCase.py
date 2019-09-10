@@ -39,8 +39,7 @@ lc.displayIntForc(itemToDisp='Q1',setToDisplay=foundDeckSet,fConvUnits= 1e-3,uni
 lc.displayIntForc(itemToDisp='Q2',setToDisplay=foundDeckSet,fConvUnits= 1e-3,unitDescription= '[kN/m]')
 
 #display ground pressures
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-foundationElasticSupports.displayPressures(defDisplay,'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
+foundationElasticSupports.displayPressures('Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
 
 #display displacemets or rotations (IN LOCAL AXIS) 
 #available components: 'uX', 'uY', 'uZ', 'rotX', rotY', 'rotZ'
