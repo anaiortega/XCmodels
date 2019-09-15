@@ -44,11 +44,10 @@ RestrRCSects=rcs.RecordRCSlabBeamSection(name='RestrRCSects',sectionDescr='riost
 pilasRCSects=rcs.RecordRCSlabBeamSection(name='pilasRCSects',sectionDescr='pilas',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName=setArmPil.name)
 
 
-def armaduraLosa(RCSet,recNom,arm1,arm2,arm3,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,ref1Inf,ref2Sup,ref3Mid,cercosRef,cercos):
+def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,ref1Inf,ref2Sup,ref3Mid,cercosRef,cercos):
     '''armaduras losa o riostra estribo. Diámetros armadura y separación en mm.
     arm1: losa, trasv inf. [diam,sep]
     arm2: cartabón, trasv inf. [diam,sep]
-    arm3: losa, cercos [
     arm4: voladizo, trasv inf. [diam,sep]
     arm5: losa, trasv sup. [diam,sep]
     arm6a: losa, long.inf. [diam,sep]
@@ -84,26 +83,26 @@ def armaduraLosa(RCSet,recNom,arm1,arm2,arm3,arm4,arm5,arm6a,arm6b,arm7,arm8,arm
         RCSet.dir2PositvRebarRows.append(rcs.rebLayer(cercosRef[0],cercosRef[2],recNomTrSup)) #long. sup. 2a. capa
         RCSet.dir2NegatvRebarRows.append(rcs.rebLayer(cercosRef[0],cercosRef[2],rnom+arm1[0]+arm6a[0])) #long. inf. 2a. capa
     # armadura de cortante
-    areaCercos=math.pi*(cercos[0]*1e-3)**2/4.
-    nRamas=cercos[1]
-    separ=cercos[2]*1e-3
-    if cercosRef:
-        areaCercosRef=math.pi*(cercosRef[0]*1e-3)**2/4.
-        nRamasRef=cercosRef[1]
-        separRef=cercosRef[2]*1e-3
-        areaCercoEquiv=(nRamas*areaCercos/separ+nRamasRef*areaCercosRef/separRef)/nRamas*separ
-        areaCercos=areaCercoEquiv
-    RCSet.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-    RCSet.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+    if len(cercos)>0:
+        areaCercos=math.pi*(cercos[0]*1e-3)**2/4.
+        nRamas=cercos[1]
+        separ=cercos[2]*1e-3
+        if cercosRef:
+            areaCercosRef=math.pi*(cercosRef[0]*1e-3)**2/4.
+            nRamasRef=cercosRef[1]
+            separRef=cercosRef[2]*1e-3
+            areaCercoEquiv=(nRamas*areaCercos/separ+nRamasRef*areaCercosRef/separRef)/nRamas*separ
+            areaCercos=areaCercoEquiv
+        RCSet.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+        RCSet.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
      
-def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1,arm2,arm3,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos):
+def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos):
     '''armaduras definidas para una zona de armado. Diámetros armadura y separación en mm.
 
     nZona: nº zona armado
     recNom: recubrimiento
     arm1: losa, trasv inf. [diam,sep]
     arm2: cartabón, trasv inf. [diam,sep]
-    arm3: losa, cercos [
     arm4: voladizo, trasv inf. [diam,sep]
     arm5: losa, trasv sup. [diam,sep]
     arm6a: losa, long.inf. [diam,sep]
@@ -121,7 +120,7 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
     '''
     #armaduras losa
     RCSet=losaRC[nZona-1]
-    armaduraLosa(RCSet,recNom,arm1,arm2,arm3,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos)
+    armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos)
     #armaduras cartabón
     RCSets=[cartIntRC[nZona-1],cartExtRC[nZona-1]]
     for RCSet in RCSets:
@@ -144,7 +143,6 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
 armaduraLosa(RCSet=RestrRCSects,recNom=rnom,
               arm1=trInf_los_020L1,
               arm2=trInf_cart_020L1,
-              arm3=[],
               arm4=trInf_vol_020L1,
               arm5=trSup_020L1,
               arm6a=lnInf_base_los_L1,
@@ -158,13 +156,12 @@ armaduraLosa(RCSet=RestrRCSects,recNom=rnom,
               ref2Sup=trSup_ref_Restr,
               ref3Mid=trMid_ref_Restr,
               cercosRef=cercos_Ref,
-              cercos=cercos_L1)
+              cercos=cercos_020L1)
 
 #Armaduras zona 1 (0.2*Lvano1)
 armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los_020L1,
               arm2=trInf_cart_020L1,
-              arm3=[],
               arm4=trInf_vol_020L1,
               arm5=trSup_020L1,
               arm6a=lnInf_base_los_L1,
@@ -178,13 +175,12 @@ armaduraZonas(nZona=1,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm2P=None,
               arm3P=None,
               arm4P=None,
-              cercos=cercos_L1)
+              cercos=cercos_020L1)
     
 #Armaduras zona 2 (vano 1 centro: 0.2*Lvano1 -> 0.2*Lvano2)
 armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los,
               arm2=trInf_cart_L1cent,
-              arm3=[],
               arm4=trInf_vol_L1cent,
               arm5=trSup_L1cent,
               arm6a=lnInf_base_los_L1,
@@ -204,7 +200,6 @@ armaduraZonas(nZona=2,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
 armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los,
               arm2=trInf_cart_L1cent,
-              arm3=[],
               arm4=trInf_vol_020L2,
               arm5=trSup_020L2,
               arm6a=lnInf_base_los_L1,
@@ -218,13 +213,12 @@ armaduraZonas(nZona=3,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm2P=None,
               arm3P=None,
               arm4P=None,
-              cercos=cercos_L1)
+              cercos=cercos_020L2)
     
 #Armaduras zona 4 (riostra pila)
 armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los,
               arm2=trInf_cart_Rpil,
-              arm3=[],
               arm4=trInf_vol_020L2,
               arm5=trSup_Rpil,
               arm6a=lnInf_base_los_L2,
@@ -244,7 +238,6 @@ armaduraZonas(nZona=4,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
 armaduraZonas(nZona=5,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los,
               arm2=trInf_cart_L2cent,
-              arm3=[],
               arm4=trInf_vol_020L2,
               arm5=trSup_020L2,
               arm6a=lnInf_base_los_L2,
@@ -258,13 +251,12 @@ armaduraZonas(nZona=5,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
               arm2P=None,
               arm3P=None,
               arm4P=None,
-              cercos=cercos_L2)
+              cercos=cercos_020L2)
     
 #Armaduras zona 6 (vano 2 centro: 0.2*Lvano2 -> 0.5*Lvano2)
 armaduraZonas(nZona=6,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,cartExtRC=cartExtRCSects,volIntRC=volIntRCSects,volExtRC=volExtRCSects,
               arm1=trInf_los,
               arm2=trInf_cart_L2cent,
-              arm3=[],
               arm4=trInf_vol_L2,
               arm5=trSup_L2cent,
               arm6a=lnInf_base_los_L2,

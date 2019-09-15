@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 
+execfile("../model_gen.py") #FE model generation
+
 #choose env_config file:
 #execfile("../env_config_deck.py")
 execfile("../env_config_abutment.py")
 #
-execfile("../model_gen.py") #FE model generation
-
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 

@@ -5,11 +5,11 @@ from postprocess import RC_material_distribution
 from materials.ehe import EHE_limit_state_checking as lschck  #Checking material for shear limit state according to EHE08
 #from materials.sia262 import SIA262_limit_state_checking as lschck  #Checking material for shear limit state according to SIA262
 
+execfile('../model_gen.py')
+#
 #choose env_config file:
 execfile("../env_config_deck.py")
 #execfile("../env_config_abutment.py")
-#
-execfile('../model_gen.py')
 #
 from shutil import copyfile
 copyfile(cfg.intForcPath+'intForce_ULS_normalStressesResistance.csv', cfg.intForcPath+'intForce_ULS_shearResistance.csv')
@@ -22,6 +22,12 @@ stcalc=setArmados
 #stcalc=setArmLosa
 #stcalc=setArmPil
 #stcalc=sets_arm_losa[3]
+
+#stcalc=setArmadosEstr
+#stcalc=setArmMurEstr
+#stcalc=setArmZapEstr
+#stcalc=aletDerSet
+
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
 outCfg=oc.verifOutVars(setCalc=stcalc,appendToResFile='N',listFile='N')

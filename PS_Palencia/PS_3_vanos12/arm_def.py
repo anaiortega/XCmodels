@@ -78,29 +78,45 @@ separ=2/nfis*1000 #[mm]
 trSup_ref_RPil=[25,separ] #transversal superior (si None, no se considera)
 #((3P)) transversal a medio canto (losa)
 trMid_ref_RPil=[16,20]  #transversal a medio canto
-#((4P)) refurezo cercos (riostra pila)
+#((4P)) refuerzo cercos (riostra pila)
 nramas_m=2 #nº ramas por m en sección transversal
 diam_cercos=16
 sep_long=125 #separación entre cercos en dirección longitudinal
 cercos_Ref=[diam_cercos,nramas_m,sep_long]
 
-
 #  ***Armadura de cortante ((3))***
-# cercos vano 1 (hasta riostra pila)
-nram=2*6   #nº de ramas en la sección transversal de la losa
-nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
-diam_cercos=10
-sep_long=200 #separación entre cercos en dirección longitudinal
-cercos_L1=[diam_cercos,nramas_m,sep_long]
-# cercos riostra pila
-nram=2*6   #nº de ramas en la sección transversal de la losa
-nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
+#cercos en losa en zona estribo hasta 0.20 x luz vano 1
+nram=2*7   #nº de ramas en la sección transversal de la losa
+nramas_m=nram/anchoLosa #nº ramas por m en sección transversal
 diam_cercos=12
 sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_020L1=[diam_cercos,nramas_m,sep_long]
+
+# cercos vano 1 (desde 0.20L1 hasta 0.20*L2)
+nram=2*7   #nº de ramas en la sección transversal de la losa
+nramas_m=nram/anchoLosa #nº ramas por m en sección transversal
+diam_cercos=12
+sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_L1=[diam_cercos,nramas_m,sep_long]
+
+#cercos en losa en 0.20 x luz vano  (excepto riostra pila)
+nram=2*7   #nº de ramas en la sección transversal de la losa
+nramas_m=nram/anchoLosa #nº ramas por m en sección transversal
+diam_cercos=12
+sep_long=200 #separación entre cercos en dirección longitudinal
+cercos_020L2=[diam_cercos,nramas_m,sep_long]
+
+
+# cercos riostra pila
+nram=2*7   #nº de ramas en la sección transversal de la losa
+nramas_m=nram/anchoLosa #nº ramas por m en sección transversal
+diam_cercos=12
+sep_long=100 #separación entre cercos en dirección longitudinal
 cercos_Rpil=[diam_cercos,nramas_m,sep_long]
-# cercos vano 2 (desde riostra pila)
-nram=2*6   #nº de ramas en la sección transversal de la losa
-nramas_m=int(round(nram/anchoLosa,0)) #nº ramas por m en sección transversal
+
+# cercos vano 2 (desde 0.20*L2)
+nram=2*7   #nº de ramas en la sección transversal de la losa
+nramas_m=nram/anchoLosa #nº ramas por m en sección transversal
 diam_cercos=10
 sep_long=200 #separación entre cercos en dirección longitudinal
 cercos_L2=[diam_cercos,nramas_m,sep_long]

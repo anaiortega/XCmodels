@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # -*- coding: utf-8 -*-
-execfile("../env_config_deck.py")
 execfile("../model_gen.py") #FE model generation
+execfile("../env_config_deck.py")
 execfile(path_loads_def+"loadComb_deck.py")
 
 combs=combContainer.SLS.rare

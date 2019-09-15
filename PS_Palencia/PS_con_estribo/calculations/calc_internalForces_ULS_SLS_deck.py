@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 from postprocess import limit_state_data as lsd
-execfile("../env_config_deck.py")
 execfile("../model_gen.py") #FE model generation
+execfile("../env_config_deck.py")
 
 #Chose combination file (keyComb contains the determining combinations)
-#execfile(path_loads_def+"keyComb_deck.py")
-execfile(path_loads_def+"loadComb_deck.py")
+execfile(path_loads_def+"keyComb_deck.py")
+#execfile(path_loads_def+"loadComb_deck.py")
 
 #Reinforced concrete sections on each element.
 #reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
@@ -14,7 +14,8 @@ execfile(path_loads_def+"loadComb_deck.py")
 
 #Set of entities for which checking is going to be performed.
 #setCalc=setArmPil
-setCalc=setArmados
+#setCalc=setArmados
+setCalc=ties
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 
 #Limit states to calculate internal forces for.
