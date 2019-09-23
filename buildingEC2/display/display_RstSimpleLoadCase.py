@@ -12,9 +12,9 @@ loadCasesToDisplay=[ELUmaxMy,ELUmaxMz,ELUmaxVy,ELUmaxVz,ELUmaxN,ELUminMy,ELUminM
 #End data
 
 for lc in loadCasesToDisplay:
-    lcs=gm.QuickGraphics(model)
+    lcs=QGrph.LoadCaseResults(model,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    lcs.solve()
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:

@@ -13,9 +13,9 @@ loadCasesToDisplay=[G1,G2,G3,QA,QB,T,Snow,EQ]
 #End data
 
 for lc in loadCasesToDisplay:
-    lcs=qg.QuickGraphics(gilamontDock)
+    lcs=QGrph.LoadCaseResults(gilamontDock,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    lcs.solve()
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:

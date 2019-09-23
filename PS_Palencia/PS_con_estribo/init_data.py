@@ -13,8 +13,3 @@ if abutment.lower()[0]=='y':
 if pile_found.lower()[0]=='y':
      path_foundation='/home/ana/projects/XCmodels/generic_bridges/model_foundation/'
 
-def redondea(lista,decimales):
-    retval=[]
-    for i in lista:
-        retval.append(round(i,decimales))
-    return retval

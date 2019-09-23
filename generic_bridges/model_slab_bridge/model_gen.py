@@ -75,7 +75,7 @@ else:
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
 # Isotropic elastic section-material appropiate for plate and shell analysis
-riostrEstr_mat=tm.DeckMaterialData(name='riostrEstr_mat_mat',thickness= cantoRiostrEstr,material=concrProp)
+riostrEstr_mat=tm.DeckMaterialData(name='riostrEstr_mat',thickness= cantoRiostrEstr,material=concrProp)
 riostrEstr_mat.setupElasticSection(preprocessor=prep) 
 losa_mat=tm.DeckMaterialData(name='losa_mat',thickness= cantoLosa,material=concrProp)
 losa_mat.setupElasticSection(preprocessor=prep) 

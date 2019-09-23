@@ -5,7 +5,7 @@ while displaying loads or results associated to single load cases
 '''
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports
-from postprocess.xcVtk import vtk_graphic_base
+
 '''
 Definition of record objects with these attributes:
   loadCaseName:  name of the load case to be depicted

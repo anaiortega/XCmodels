@@ -1,0 +1,8 @@
+preprocessor.getElementHandler.getElement(6707).setProp("maxAxialForceSect1",AxialForceControlVars(idSection= "tiesSects1", combName= "ELU298", N= 942057.370544)) 
+preprocessor.getElementHandler.getElement(6707).setProp("maxAxialForceSect2",AxialForceControlVars(idSection= "tiesSects2", combName= "ELU298", N= 942057.370544)) 
+preprocessor.getElementHandler.getElement(6708).setProp("maxAxialForceSect1",AxialForceControlVars(idSection= "tiesSects1", combName= "ELU298", N= 1034595.78181)) 
+preprocessor.getElementHandler.getElement(6708).setProp("maxAxialForceSect2",AxialForceControlVars(idSection= "tiesSects2", combName= "ELU298", N= 1034595.78181)) 
+preprocessor.getElementHandler.getElement(6709).setProp("maxAxialForceSect1",AxialForceControlVars(idSection= "tiesSects1", combName= "ELU298", N= 1044741.5886)) 
+preprocessor.getElementHandler.getElement(6709).setProp("maxAxialForceSect2",AxialForceControlVars(idSection= "tiesSects2", combName= "ELU298", N= 1044741.5886)) 
+preprocessor.getElementHandler.getElement(6710).setProp("maxAxialForceSect1",AxialForceControlVars(idSection= "tiesSects1", combName= "ELU298", N= 952203.177332)) 
+preprocessor.getElementHandler.getElement(6710).setProp("maxAxialForceSect2",AxialForceControlVars(idSection= "tiesSects2", combName= "ELU298", N= 952203.177332)) 

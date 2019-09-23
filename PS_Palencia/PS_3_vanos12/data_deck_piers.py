@@ -2,6 +2,7 @@
 from __future__ import division
 
 import math
+from miscUtils import units_utils as uu
 from materials.ehe import EHE_materials
 
 #Auxiliary data
@@ -65,9 +66,9 @@ xRiostrEstr=[[xVoladz[0][0],xVoladz[1][-1]],
 #Pila
 xPil=[-1.25,1.25]
 #Vias ficticeas
-xViasFict=[redondea([1,anchoCalz/2.],dec),
-           redondea([-2,1],dec),
-           redondea([-anchoCalz/2.,-2],dec)] #vía 1, vía 2, ...
+xViasFict=[uu.roundLst([1,anchoCalz/2.],dec),
+           uu.roundLst([-2,1],dec),
+           uu.roundLst([-anchoCalz/2.,-2],dec)] #vía 1, vía 2, ...
 
 #   Coordenadas perfil longitudinal
 #Estribos
@@ -84,7 +85,7 @@ yRiostrPil=[[round(yPil[0]-LriostrPil/2.,dec),round(yPil[0]+LriostrPil/2.,dec)],
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 
 #Zonas armado
-yArm=redondea([yRiostrEstr[0][1],0.30*Lvanos[0],Lvanos[0]-0.25*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
+yArm=uu.roundLst([yRiostrEstr[0][1],0.30*Lvanos[0],Lvanos[0]-0.25*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],2)
 
 
 #   Coordenadas en Z

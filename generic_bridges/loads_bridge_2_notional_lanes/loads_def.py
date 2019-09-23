@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
+# Generate load cases for a bridge with two notional lanes.
+# The load cases generated are:
+# G1: self-weight
+# G2: dead load
+# G3: shrinkage and creep
+# Q1a1 to Q1e: traffic (see figure traffic_loads.pdf)
+# Q1bFren to Q1eFren: traffic + bracking
+# Q21 to Q22: wind
+# Q31, Q31neopr: contraction thermal load
+# Q32, Q32neopr: expansion thermal load
+# Q33, Q34: thermal gradient
 #                       ***ACTIONS***
 from actions.roadway_trafic import standard_load_models as slm
 from actions.imposed_strain import imp_strain as imps

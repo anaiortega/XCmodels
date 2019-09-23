@@ -12,7 +12,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 #or redefined lately) to be displayed:
 loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[LS1,LS2]
-loadCasesToDisplay=[G4,Q4]
+#loadCasesToDisplay=[G4,Q4]
 for lc in loadCasesToDisplay:
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads

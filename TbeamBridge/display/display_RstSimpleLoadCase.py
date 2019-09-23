@@ -5,6 +5,7 @@ from postprocess import element_section_map
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from miscUtils import LogMessages as lmsg
+from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 
 
 model_path="../"
@@ -15,14 +16,18 @@ lsd.LimitStateData.internal_forces_results_directory= '../'+internal_forces_resu
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
-lc=gm.QuickGraphics(model)
 #solve for load case
-#lc.solve(loadCaseName='GselfWeight',loadCaseExpr='1.0*GselfWeight') #solve for load case
-#lc.solve(loadCaseName='GearthPress',loadCaseExpr='1.0*GearthPress') #solve for load case
-#lc.solve(loadCaseName='QtrafSit1a',loadCaseExpr='1.0*QtrafSit1a')
-#lc.solve(loadCaseName='QtrafSit1b',loadCaseExpr='1.0*QtrafSit1b')
-#lc.solve(loadCaseName='QtrafSit2a',loadCaseExpr='1.0*QtrafSit2a')
-# lc.solve(loadCaseName='QtrafSit2b',loadCaseExpr='1.0*QtrafSit2b')
+#lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='GselfWeight',loadCaseExpr='1.0*GselfWeight') #solve for load case
+#lc.solve()
+#lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='GearthPress',loadCaseExpr='1.0*GearthPress') #solve for load case
+#lc.solve()
+#lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='QtrafSit1a',loadCaseExpr='1.0*QtrafSit1a')
+#lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='QtrafSit1b',loadCaseExpr='1.0*QtrafSit1b')
+#lc.solve()
+#lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='QtrafSit2a',loadCaseExpr='1.0*QtrafSit2a')
+#lc.solve()
+# lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='QtrafSit2b',loadCaseExpr='1.0*QtrafSit2b')
+#lc.solve()
 
 #display displacemets or rotations (global axes) 
 #available components: 'uX', 'uY', 'uZ', 'rotX', rotY', 'rotZ'

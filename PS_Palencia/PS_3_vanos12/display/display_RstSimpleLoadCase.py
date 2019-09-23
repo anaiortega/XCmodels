@@ -20,9 +20,9 @@ loadCasesToDisplay=LSD_disp
 #    lc.setsToDispBeamIntForc=[setArmPil]
 #    lc.listBeamIntForc=['N','Vy','Vz']
 for lc in loadCasesToDisplay:
-    lcs=QGrph.QuickGraphics(FEcase)
+    lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    lcs.solve()
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:

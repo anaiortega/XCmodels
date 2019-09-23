@@ -19,9 +19,9 @@ for lc in loadCasesToDisplay:
     lc.setsToDispBeamIntForc=[setArmPil]
     lc.listBeamIntForc=['N','Vy','Vz']
 for lc in loadCasesToDisplay:
-    lcs=QGrph.QuickGraphics(FEcase)
+    lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    lcs.solve()
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:
@@ -58,9 +58,9 @@ for lc in loadCasesToDisplay:
                 else:
                   scaleFact=lc.scaleDispBeamIntForc[1]
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
-    if abutment.lower()[0]=='y': 
-        defDisplay= vtk_FE_graphic.RecordDefDisplayEF() 
-        found_wink.displayPressures(defDisplay,lc.loadCaseName +'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
+    # if abutment.lower()[0]=='y': 
+    #     defDisplay= vtk_FE_graphic.RecordDefDisplayEF() 
+    #     found_wink.displayPressures(defDisplay,lc.loadCaseName +'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
 
 
             

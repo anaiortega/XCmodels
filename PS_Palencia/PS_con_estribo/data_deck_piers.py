@@ -2,6 +2,8 @@
 from __future__ import division
 
 import math
+import xc_base
+from miscUtils import units_utils as uu
 from materials.ehe import EHE_materials
 
  # Geometry
@@ -92,16 +94,16 @@ eSize= 0.4     #length of elements
 dec=2 # número de posiciones decimales para redondear coordenadas
 #     Coordenadas sección transversal
 #Aceras
-xAceras=[redondea([-anchoTot/2.,-anchoCalz/2.],dec),
-         redondea([anchoCalz/2.,anchoTot/2.],dec)] #iqda., drcha.
+xAceras=[uu.roundLst([-anchoTot/2.,-anchoCalz/2.],dec),
+         uu.roundLst([anchoCalz/2.,anchoTot/2.],dec)] #iqda., drcha.
 #Voladizos
-xVoladz=[redondea([-anchoTot/2.,-anchoTot/2.+anchoVoladz],dec), 
-         redondea([anchoTot/2.-anchoVoladz,anchoTot/2.],dec)] #iqda., drcha.
+xVoladz=[uu.roundLst([-anchoTot/2.,-anchoTot/2.+anchoVoladz],dec), 
+         uu.roundLst([anchoTot/2.-anchoVoladz,anchoTot/2.],dec)] #iqda., drcha.
 xVoladz[0].insert(1,round((xVoladz[0][0]+xVoladz[0][1])/2.,2)) #intermedio
 xVoladz[1].insert(1,round((xVoladz[1][0]+xVoladz[1][1])/2.,2)) #intermedio
 #Cartabones
-xCartab=[redondea([xVoladz[0][-1],xVoladz[0][-1]+anchoCartab],dec),
-         redondea([xVoladz[1][0]-anchoCartab,xVoladz[1][0]],dec)] #iqda., drcha.
+xCartab=[uu.roundLst([xVoladz[0][-1],xVoladz[0][-1]+anchoCartab],dec),
+         uu.roundLst([xVoladz[1][0]-anchoCartab,xVoladz[1][0]],dec)] #iqda., drcha.
 xCartab[0].insert(1,round((xCartab[0][0]+xCartab[0][-1])/2.,2)) #intermedio
 xCartab[1].insert(1,round((xCartab[1][0]+xCartab[1][-1])/2.,2))#intermedio
 
@@ -113,8 +115,8 @@ xRiostrEstr=[[xVoladz[0][0],xVoladz[1][-1]],
 #Pila
 xPil=[0]
 #Vias ficticeas
-xViasFict=[redondea([0,anchoCalz/2.],dec),
-           redondea([-anchoCalz/2.,0],dec)] #vía 1, vía 2, ...
+xViasFict=[uu.roundLst([0,anchoCalz/2.],dec),
+           uu.roundLst([-anchoCalz/2.,0],dec)] #vía 1, vía 2, ...
 
 xNeopr=[-distNeopr/2.,distNeopr/2.]
 
@@ -122,17 +124,17 @@ xNeopr=[-distNeopr/2.,distNeopr/2.]
 #Estribos
 yEstr=[0,Ltablero] #eje estribo 1, eje estribo 2
 #Riostra estribos
-yRiostrEstr=[redondea([yEstr[0]-LriostrEstr/2.,yEstr[0]+LriostrEstr/2.],dec),
-             redondea([yEstr[1]-LriostrEstr/2.,yEstr[1]+LriostrEstr/2.],dec)]  #riostra estribo 1, riostra estribo 2
+yRiostrEstr=[uu.roundLst([yEstr[0]-LriostrEstr/2.,yEstr[0]+LriostrEstr/2.],dec),
+             uu.roundLst([yEstr[1]-LriostrEstr/2.,yEstr[1]+LriostrEstr/2.],dec)]  #riostra estribo 1, riostra estribo 2
 #Pilas
 yPil=[Lvanos[0],Lvanos[0]+Lvanos[1]]
 #Riostra pilas
-yRiostrPil=[redondea([yPil[0]-LriostrPil/2.,yPil[0]+LriostrPil/2.],dec),
-            redondea([yPil[1]-LriostrPil/2.,yPil[1]+LriostrPil/2.],dec)]  #riostra pila 1, riostra pila 2
+yRiostrPil=[uu.roundLst([yPil[0]-LriostrPil/2.,yPil[0]+LriostrPil/2.],dec),
+            uu.roundLst([yPil[1]-LriostrPil/2.,yPil[1]+LriostrPil/2.],dec)]  #riostra pila 1, riostra pila 2
 yLosa=[yRiostrEstr[0][1],yRiostrEstr[-1][0]]
 
 #Zonas armado 
-yArm=redondea([yRiostrEstr[0][1],0.30*Lvanos[0],Lvanos[0]-0.25*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],dec)
+yArm=uu.roundLst([yRiostrEstr[0][1],0.30*Lvanos[0],Lvanos[0]-0.25*Lvanos[1],yRiostrPil[0][0],yRiostrPil[0][1],Lvanos[0]+0.22*Lvanos[1],Lvanos[0]+0.5*Lvanos[1]],dec)
 
 #   Coordenadas en Z
 zPil=[[-hTotPilas,0],[-hTotPilas,0]] # pila 1, pila 2
