@@ -10,6 +10,7 @@ from actions import loads
 from actions import load_cases as lcases
 
 home=('/home/ana/projects/XCmodels/OXapp/balcony/')
+#home=('/home/luis/Documents/XCmodels/OXapp/balcony/')
 execfile(home+'data.py')
 
 FEcase= xc.FEProblem()
