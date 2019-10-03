@@ -14,8 +14,8 @@ execfile(path_loads_def+"keyComb_deck.py")
 
 #Set of entities for which checking is going to be performed.
 #setCalc=setArmPil
-#setCalc=setArmados
-setCalc=ties
+setCalc=setArmados
+#setCalc=ties
 loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 
 #Limit states to calculate internal forces for.

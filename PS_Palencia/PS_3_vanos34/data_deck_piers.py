@@ -2,6 +2,7 @@
 from __future__ import division
 
 import math
+from miscUtils import units_utils as uu
 from materials.ehe import EHE_materials
 
 #Auxiliary data

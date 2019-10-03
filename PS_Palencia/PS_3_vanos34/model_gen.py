@@ -55,6 +55,7 @@ if pilasSotav:
 if pile_found.lower()[0]=='y':
     allsets.append(struts)
     allsets.append(ties)
+    allsets.append(piles)
     
 for s in allsets:
     s.fillDownwards()

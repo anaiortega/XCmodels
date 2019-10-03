@@ -13,7 +13,7 @@ execfile(path_loads_def+'load_state_data.py')
 loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[Q31,Q32,Q33,Q34]
 #loadCasesToDisplay=[G4]
-#loadCasesToDisplay=[G1]
+loadCasesToDisplay=[G1]
 #End data
 #for lc in loadCasesToDisplay:
 #    lc.setsToDispBeamIntForc=[struts,ties]

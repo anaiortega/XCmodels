@@ -16,7 +16,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[tablVano1,tablVano3,viaFictIzq_cent,viaFictDer_cent,pilas]
-setsTodisp=sets_arm_losa+sets_arm_cartInt+sets_arm_cartExt+sets_arm_volInt+sets_arm_volExt
+#setsTodisp=sets_arm_losa+sets_arm_cartInt+sets_arm_cartExt+sets_arm_volInt+sets_arm_volExt
 #setsTodisp=setArmados
 #setsTodisp=setArmREstr
 #setsTodisp=sets_arm_losa+[pilasBarlov]
@@ -31,4 +31,5 @@ setsTodisp=sets_arm_losa+sets_arm_cartInt+sets_arm_cartExt+sets_arm_volInt+sets_
 #setsTodisp=[setArmPil,struts,ties]
 #setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
 #setsTodisp=[setArmZapEstr]
+setsTodisp=setsTablPilas+setsEstribo+[pilasSotav,ties,struts,piles]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)
