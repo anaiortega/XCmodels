@@ -37,21 +37,6 @@ rlcd.cameraParameters.viewUpVc= [0,1,0]
 rlcd.cameraParameters.posCVc= [-100,100,100]
 rlcd.setsToDispEigenvectors=[xcTotalSet]
 
+preprocessor.getDomain.getMesh.normalizeEigenvectors(1)
 rlcd.displayEigenvectorsOnSets(eigenMode= 1)
-
-
-print 'eig1=', eig1
-threshold= 1e-2
-for n in xcTotalSet.nodes:
-    disp3d= n.getEigenvectorDisp3dComponents(1)
-    rot3d= n.getEigenvectorRot3dComponents(1)
-    modDisp3d= disp3d.getModulus()
-    if(modDisp3d>threshold):
-        p=n.getCurrentPos3d(1.0)
-        print 'disp', modDisp3d, [p.x,p.y,p.z],[disp3d.x,disp3d.y,disp3d.z]
-    modRot3d= rot3d.getModulus()
-    if(modRot3d>threshold):
-        p=n.getCurrentPos3d(1.0)
-        print 'rot', modDisp3d, [p.x,p.y,p.z],[rot3d.x,rot3d.y,rot3d.z]
-    
 
