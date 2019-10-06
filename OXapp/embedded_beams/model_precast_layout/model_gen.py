@@ -37,8 +37,7 @@ reinfSteel=EHE_materials.B500S
 # concrete=SIA262_materials.c30_37
 # reinfSteel=SIA262_materials.B500B
 
-eSize= 0.35     #length of elements
-
+eSize= 1.0 #0.35     #length of elements
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
 preprocessor=FEcase.getPreprocessor
@@ -1046,3 +1045,4 @@ steel_beam=gridGeom.getSetLinOneRegion(steel_beam_rg,'steel_beam')
 
 #execfile(fullProjPath+'print_links_slabs_beams.py')
 
+xcTotalSet= preprocessor.getSets.getSet('total')
