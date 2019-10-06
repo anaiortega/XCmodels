@@ -31,4 +31,5 @@ setsTodisp=sets_arm_losa+[pilasBarlov]
 #setsTodisp=[setArmPil,struts,ties]
 #setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
 #setsTodisp=[setArmZapEstr]
+setsTodisp=setsTablPilas+setsEstribo+[pilasSotav,ties,struts,piles]
 defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)

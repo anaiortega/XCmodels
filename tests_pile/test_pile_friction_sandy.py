@@ -17,7 +17,7 @@ from solution import predefined_solutions
 fiPile=1  #pile diameter [m]
 Emat=24e6    #elastic modulus of pile material [Pa]
 bearCap=22e3 #total bearing capacity of the pile [N]
-pType='endBearing' #type of pile
+pType='friction' #type of pile
 zGround=0  #ground elevation
 zGround=2  #ground elevation
 soils=[(-1.5,'sandy',1e6),(-5,'sandy',2e6),(-15,'sandy',10e6),(-100,'sandy',15e6)] #Properties of the sandy
@@ -70,7 +70,7 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[pile_mesh])
 
 
 #                       ***BOUNDARY CONDITIONS***
-pileBC=sbc.PileFoundation(setPile=pile,pileDiam=fiPile,E=concrete.Ecm(),pileType='endBearing',pileBearingCapacity=bearCap,groundLevel=zGround,soilsProp=soils)
+pileBC=sbc.PileFoundation(setPile=pile,pileDiam=fiPile,E=concrete.Ecm(),pileType=pType,pileBearingCapacity=bearCap,groundLevel=zGround,soilsProp=soils)
 pileBC.generateSpringsPile(alphaKh_x=1,alphaKh_y=0.5,alphaKv_z=1)
 springs=pileBC.springs
 springSet=preprocessor.getSets.defSet('springSet')
@@ -79,13 +79,14 @@ for e in springs:
     print 'elem:', e.tag, ' nodo1:',e.getNodes[0].tag, ' nodo2:',e.getNodes[1].tag, 'z:',e.getCooCentroid(True)[2], ' Kx:',e.getMaterials()[0].E, ' Ky:',e.getMaterials()[1].E,' Kz:',e.getMaterials()[2].E
 springSet.fillDownwards()
 allSets=pile+springSet
-
+'''
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 defDisplay.displayMesh(xcSets=allSets,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.10)
 '''
-modelSpace.fixNode000_000(0)
-'''
+modelSpace.fixNodeFFF_000(0)
+
+
 # Loads definition
 loadHandler= preprocessor.getLoadHandler
 lPatterns= loadHandler.getLoadPatterns
@@ -108,7 +109,7 @@ analisis= predefined_solutions.simple_static_linear(FEcase)
 result= analisis.analyze(1)
 
 nodes.calculateNodalReactions(True,1e-7)
-'''
+
 for n in pile.getNodes:
     print 'node:', n.tag, ' ux:', n.getDisp[0], ' uy:',n.getDisp[1], ' uy:',n.getDisp[2]
-'''
+

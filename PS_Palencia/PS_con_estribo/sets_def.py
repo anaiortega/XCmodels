@@ -166,3 +166,4 @@ if abutment.lower()[0]=='y':
         setArmadosEstr+=aletDerSet
     setArmadosEstr.name='setArmadosEstr'
     setArmadosEstr.description='Estribo'
+setsEstribo==[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]

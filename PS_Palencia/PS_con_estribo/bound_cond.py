@@ -21,7 +21,7 @@ for indy in range(len(yPil)):
         nTabl=pTabl.getNode()
         for gdl in range(6):
             modelSpace.constraints.newEqualDOF(nPil.tag,nTabl.tag,xc.ID([gdl]))
-
+'''
 # Empotramiento base pilas
 #for indy in range(len(yPil)):  #25/08/2019 prueba pilotes
 for indy in range(1,len(yPil)):
@@ -33,7 +33,7 @@ for indy in range(1,len(yPil)):
         n=p.getNode()
         modelSpace.fixNode('000_000',n.tag)
         constrNodesPilas.append(n)
-
+'''
 #Neoprenos estribos
 #Estribo 1
 yn=yEstr[0]

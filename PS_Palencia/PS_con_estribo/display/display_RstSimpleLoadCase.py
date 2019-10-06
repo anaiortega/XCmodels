@@ -12,12 +12,13 @@ execfile(path_loads_def+'load_state_data.py')
 #or redefined lately) to be displayed:
 loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[Q31,Q32,Q33,Q34]
-#loadCasesToDisplay=[G4]
+loadCasesToDisplay=[G1]
 #End data
 for lc in loadCasesToDisplay:
 #    lc.setsToDispBeamIntForc=[struts,ties]
-    lc.setsToDispBeamIntForc=[setArmPil]
-    lc.listBeamIntForc=['N','Vy','Vz']
+#    lc.setsToDispBeamIntForc=[setArmPil]+[struts,ties,piles]
+    lc.setsToDispIntForc=[setArmLosa]
+#    lc.listBeamIntForc=['N']
 for lc in loadCasesToDisplay:
     lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case

@@ -17,8 +17,8 @@ execfile("../env_config_deck.py")
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 #stcalc=setArmVol
 #stcalc=setArmCart
-#stcalc=setArmLosa
-stcalc=setArmPil
+stcalc=setArmLosa
+#stcalc=setArmPil
 #stcalc=setArmados
 
 #stcalc=setArmadosEstr

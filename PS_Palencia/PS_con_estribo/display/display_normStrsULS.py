@@ -20,10 +20,10 @@ argument= 'N' #Possible arguments: 'CF', 'N', 'My','Mz'
 fUnitConv=1e-3  #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 #setDisp= setArmados  #Set of shell elements to be displayed
 setDisp= setArmLosa  #Set of shell elements to be displayed
-setDisp= sets_arm_losa[2]
-setDisp= setArmCart  #Set of shell elements to be displayed
+#setDisp= sets_arm_losa[2]
+#setDisp= setArmCart  #Set of shell elements to be displayed
 #setDisp= sets_arm_cartInt[1]
-setDisp= sets_arm_volInt[3]
+#setDisp= sets_arm_volInt[3]
 #setDisp= setArmVol  #Set of shell elements to be displayed
 #setDisp= setArmREstr  #Set of shell elements to be displayed
 #setDisp=setArmadosEstr
