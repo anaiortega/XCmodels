@@ -1047,3 +1047,4 @@ steel_beam=gridGeom.getSetLinOneRegion(steel_beam_rg,'steel_beam')
 
 #execfile(fullProjPath+'print_links_slabs_beams.py')
 
+xcTotalSet= preprocessor.getSets.getSet('total')

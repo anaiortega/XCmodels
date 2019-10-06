@@ -14,7 +14,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=overallSet,appendToResFile='N',listFile='N',calcMeanCF='N')
+outCfg=oc.verifOutVars(setCalc=beam,appendToResFile='N',listFile='N',calcMeanCF='N')
 
 limitState=lsd.normalStressesResistance
 limitState.controller= lscheck.BiaxialBendingNormalStressController(limitState.label)

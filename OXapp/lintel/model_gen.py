@@ -49,6 +49,7 @@ columnConcr_mat.setupElasticShear3DSection(preprocessor=prep)
 #                         ***FE model - MESH***
 #deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
 #deck_mesh.generateMesh(prep)
+# vDirLAxZ parallel to width
 beamConcr_mesh=fem.LinSetToMesh(linSet=beam,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
 columnConcr_mesh=fem.LinSetToMesh(linSet=column,matSect=columnConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
