@@ -22,8 +22,8 @@ from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
 #home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
+#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
 
 
 fullProjPath= home + 'model_precast_layout/'
@@ -37,7 +37,8 @@ reinfSteel=EHE_materials.B500S
 # concrete=SIA262_materials.c30_37
 # reinfSteel=SIA262_materials.B500B
 
-eSize= 0.35     #length of elements
+#eSize= 0.35     #length of elements
+eSize= 1.00     #length of elements
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
