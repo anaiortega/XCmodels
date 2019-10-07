@@ -1,3 +1,4 @@
+
 ft2m=0.3048
 in2m=0.0254
 # Columns, dimensions X direction
@@ -41,15 +42,20 @@ xStair2Elev=[16.66]
 yStair2Elev=[8.875]
 
 #Facades
-xFac=[0,xCols[2],xCols[3],53.52]
+xFac=[0,round(xCols[2]-7*ft2m-9*in2m),2,xCols[3],53.52]
 yFac=[0,10.975,44.77]   
 
 #Wall frames
-xWF=[0,xCols[0],xCols[0]+3.5,10.2,10.2+1.6/2.,xCols[1],xCols[2],xCols[3],xFac[-1]-10.2-0.8,xFac[-1]-10.2,xFac[-1]-9.6,xFac[-1]-10.2+4.2,xFac[-1]]
+#xWF=[0,xCols[0],xCols[0]+3.5,10.2,10.2+1.6/2.,xCols[1],xCols[2],xCols[3],xFac[-1]-10.2-0.8,xFac[-1]-10.2,xFac[-1]-9.6,xFac[-1]-10.2+4.2,xFac[-1]]
+xWF=[0,xCols[0],xCols[0]+3.5,10.2,10.2+1.6/2.,xCols[1],xFac[1],xCols[3],xFac[-1]-10.2-0.8,xFac[-1]-10.2,xFac[-1]-9.6,xFac[-1]-10.2+4.2,xFac[-1]]
 
 
 yWF=[0,yCols[0],yCols[0]+2,yCols[3]-4.5,yCols[3],yFac[-1]]
 
+#Shear walls
+yQW=[round(40*ft2m+9*in2m,2)]
+yQW.append(round(yQW[0]+11.2*ft2m+18*in2m,2))
+yQW.append(round(yQW[0]+32*ft2m+18*in2m,2))
 
 gap=0.2
 
@@ -77,7 +83,7 @@ deltaFloors=1*ft2m+2*in2m
 #Hfound=3*ft2m+18*in2m
 #zCol=Hfound+H1stFloor
 zCol=14*ft2m-hHollowCore
-zBeamHigh=zCol-hHollowCore/2.
+zBeamHigh=round(zCol-hHollowCore/2.,2)
 #zBeamLow=zBeamHigh-deltaFloors
 zHlwHigh=zCol+hHollowCore/2.
 zHlwLow=zHlwHigh-deltaFloors
@@ -89,7 +95,7 @@ for i in xListaux:
     if i not in xList:
         xList.append(i)
 xList.sort()
-yListaux=yCols+yWalls+yRamp+yStair1+yStair2Elev+yFac+yWF+yGaps
+yListaux=yCols+yWalls+yRamp+yStair1+yStair2Elev+yFac+yWF+yGaps+yQW
 yList=[]
 for i in yListaux:
     if i not in yList:
@@ -149,53 +155,101 @@ unifSL=2873
 #L: live load (N)
 #S: snow load (N)
 
-D_lnL1=22.1e3
-L_lnL1=48840
-S_lnL1=29300
+D_lnL1=29.9e3
+L_lnL1=51.24e3
+S_lnL1=22.1e3
 
-D_lnL2=12.12e3
-L_lnL2=10770
-S_lnL2=6460
+D_lnL2=4.04e3
+L_lnL2=16.15e3
+S_lnL2=3.06e3
 
-D_lnL3=16.33e3
-L_lnL3=26810
-S_lnL3=16090
+D_lnL3=21.49e3
+L_lnL3=31.36e3
+S_lnL3=12.92e3
 
-D_lnL4=15.32e3
-L_lnL4=22980
-S_lnL4=13790
+D_lnL4=14.88e3
+L_lnL4=22.86e3
+S_lnL4=10.05e3
 
 D_lnL5=10.55e3
 L_lnL5=4790
 S_lnL5=2870
 
-D_lnL6=16.14e3
-L_lnL6=26090
-S_lnL6=15660
+D_lnL6=20.44e3
+L_lnL6=29.95e3
+S_lnL6=12.05e3
 
-D_lnL7=23.05e3
-L_lnL7=24420
-S_lnL7=14650
+D_lnL7=14.57e3
+L_lnL7=22.34e3
+S_lnL7=9.18e3
 
 D_lnL8=7.35e3
 
-D_lnL9=25.31e3
-L_lnL9=33040
-S_lnL9=19820
+D_lnL9=14.88e3
+L_lnL9=22.86e3
+S_lnL9=10.05e3
 
-D_lnL10=22.23e3
-L_lnL10=21310
-S_lnL10=12780
+D_lnL10=14.25e3
+L_lnL10=21.74e3
+S_lnL10=9.52e3
 
 D_lnL11=7.35e3
 
-D_lnL12=22.67e3
-L_lnL12=22980
-S_lnL12=13790
+D_lnL12=14.88e3
+L_lnL12=22.86e3
+S_lnL12=10.05e3
 
-D_lnL13=23.05e3
-L_lnL13=24420
-S_lnL13=14650
+D_lnL13=15.25e3
+L_lnL13=26.17e3
+S_lnL13=11.28e3
+
+D_lnN1B= 6.57E+03
+L_lnN1B= 5.25E+03
+S_lnN1B= 1.75E+03
+
+D_lnN1C= 6.57E+03
+L_lnN1C= 5.25E+03
+S_lnN1C= 1.75E+03
+
+D_lnE1A= 2.25E+03
+L_lnE1A= 5.25E+03
+S_lnE1A= 1.75E+03
+
+D_lnE1B= 6.57E+03
+L_lnE1B= 5.25E+03
+S_lnE1B= 1.75E+03
+
+D_lnEC1B= 6.57E+03
+L_lnEC1B= 5.25E+03
+S_lnEC1B= 1.75E+03
+
+D_lnEC1C= 6.57E+03
+L_lnEC1C= 5.25E+03
+S_lnEC1C= 1.75E+03
+
+D_lnW1A= 6.57E+03
+L_lnW1A= 5.25E+03
+S_lnW1A= 1.75E+03
+
+D_lnW1B= 6.57E+03
+L_lnW1B= 5.25E+03
+S_lnW1B= 1.75E+03
+
+D_lnW1C= 5.04E+03
+L_lnW1C= 5.25E+03
+S_lnW1C= 1.75E+03
+
+D_lnWC1A= 6.57E+03
+L_lnWC1A= 5.25E+03
+S_lnWC1A= 1.75E+03
+
+D_lnWC1B= 6.57E+03
+L_lnWC1B= 5.25E+03
+S_lnWC1B= 1.75E+03
+
+D_lnWC1C= 6.57E+03
+L_lnWC1C= 5.25E+03
+S_lnWC1C= 1.75E+03
 
 #Wind W-E (Z direction)
 WWE_lnL1W=5.8e3

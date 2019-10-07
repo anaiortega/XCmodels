@@ -8,7 +8,7 @@ execfile('../load_state_data.py')
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
 loadCasesToDisplay=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
-loadCasesToDisplay=[D]
+loadCasesToDisplay=[ULS01]
 #End data
 
 for lc in loadCasesToDisplay:

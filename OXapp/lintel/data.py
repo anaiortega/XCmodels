@@ -17,8 +17,8 @@ spanSlab=20*ft2m
 #Geometry
 lBeam=round(25*ft2m,2)
 wallTh=round(10*in2m,2)
-wBeam=wallTh
-hBeam=1.5
+wBeam=2*wallTh
+hBeam=1
 lBearing=1
 wColumn=wallTh
 dimYColumn=lBearing
