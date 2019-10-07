@@ -785,16 +785,45 @@ grav=9.81 #Gravity acceleration (m/s2)
 selfWeightBeamCols=loads.InertialLoad(name='selfWeightBeamCols', lstMeshSets=[beams_mesh,columns_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 
-'''
+
 # Point load acting on one or several nodes
 #     name:       name identifying the load
 #     lstNod:     list of nodes  on which the load is applied
 #     loadVector: xc.Vector with the six components of the load: 
 #                 xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
+nodPL1=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL1_pos)
+nodPL2=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL2_pos)
+nodPL3=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL3_pos)
+nodPL4=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL4_pos)
+nodPL5=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL5_pos)
 
-nodPLoad=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=[geom.Pos3d(0,yList[lastYpos]/2.0,zList[lastZpos]),geom.Pos3d(xList[lastXpos],yList[lastYpos]/2.0,zList[lastZpos])])
-QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vector([0,0,-Qbeam,0,0,0]))
-'''
+DL_PL1=loads.NodalLoad(name='DL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-D_PL1,0,0,0]))
+LL_PL1=loads.NodalLoad(name='LL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-L_PL1,0,0,0]))
+SL_PL1=loads.NodalLoad(name='SL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-S_PL1,0,0,0]))
+WL_PL1=loads.NodalLoad(name='WL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,W_PL1,0,0,0]))
+
+DL_PL2=loads.NodalLoad(name='DL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-D_PL2,0,0,0]))
+LL_PL2=loads.NodalLoad(name='LL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-L_PL2,0,0,0]))
+SL_PL2=loads.NodalLoad(name='SL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-S_PL2,0,0,0]))
+WL_PL2=loads.NodalLoad(name='WL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,W_PL2,0,0,0]))
+
+DL_PL3=loads.NodalLoad(name='DL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-D_PL3,0,0,0]))
+LL_PL3=loads.NodalLoad(name='LL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-L_PL3,0,0,0]))
+SL_PL3=loads.NodalLoad(name='SL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-S_PL3,0,0,0]))
+WL_PL3=loads.NodalLoad(name='WL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,W_PL3,0,0,0]))
+
+DL_PL4=loads.NodalLoad(name='DL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-D_PL4,0,0,0]))
+LL_PL4=loads.NodalLoad(name='LL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-L_PL4,0,0,0]))
+SL_PL4=loads.NodalLoad(name='SL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-S_PL4,0,0,0]))
+WL_PL4=loads.NodalLoad(name='WL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,W_PL4,0,0,0]))
+
+DL_PL5=loads.NodalLoad(name='DL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-D_PL5,0,0,0]))
+LL_PL5=loads.NodalLoad(name='LL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-L_PL5,0,0,0]))
+SL_PL5=loads.NodalLoad(name='SL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-S_PL5,0,0,0]))
+WL_PL5=loads.NodalLoad(name='WL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,W_PL5,0,0,0]))
+
+
+
 # Uniform loads applied on shell elements
 #    name:       name identifying the load
 #    xcSet:     set that contains the surfaces
@@ -1062,13 +1091,15 @@ vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=sl
 #Dead load
 DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
 DeadL.create()
-DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A,DL_lnWC1B,DL_lnWC1C,DL_lnN1B,DL_lnN1C])
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A,DL_lnWC1B,DL_lnWC1C,DL_lnN1B,DL_lnN1C,
+                   DL_PL1,DL_PL2,DL_PL3,DL_PL4,DL_PL5])
 
 #live load (uniform on rooms)
 LiveL_ru=lcases.LoadCase(preprocessor=prep,name="LiveL_ru")
 LiveL_ru.create()
 LiveL_ru.addLstLoads([LL_lnL1,LL_lnL2,LL_lnL3,LL_lnL4,LL_lnL5,LL_lnL6,LL_lnL7,LL_lnL9,LL_lnL10,LL_lnL12,LL_lnL13,LLunif_rooms_1floor,
-LL_lnE1A,LL_lnE1B,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C])
+                      LL_lnE1A,LL_lnE1B,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C,
+LL_PL1,LL_PL2,LL_PL3,LL_PL4,LL_PL5])
 
 #live load (staggered pattern on rooms)
 LiveL_rs=lcases.LoadCase(preprocessor=prep,name="LiveL_rs")
@@ -1089,11 +1120,14 @@ LiveL_ps.addLstLoads([LLstag_terrace_1floor])
 SnowL=lcases.LoadCase(preprocessor=prep,name="SnowL")
 SnowL.create()
 SnowL.addLstLoads([SL_lnL1,SL_lnL2,SL_lnL3,SL_lnL4,SL_lnL5,SL_lnL6,SL_lnL7,SL_lnL9,SL_lnL10,SL_lnL12,SL_lnL13,SL_terrace_1floor,
-SL_lnE1A,SL_lnE1B,SL_lnEC1B,SL_lnEC1C,SL_lnW1A,SL_lnW1B,SL_lnW1C,SL_lnWC1A,SL_lnWC1B,SL_lnWC1C,SL_lnN1B,SL_lnN1C])
+                   SL_lnE1A,SL_lnE1B,SL_lnEC1B,SL_lnEC1C,SL_lnW1A,SL_lnW1B,SL_lnW1C,SL_lnWC1A,SL_lnWC1B,SL_lnWC1C,SL_lnN1B,SL_lnN1C,
+SL_PL1,SL_PL2,SL_PL3,SL_PL4,SL_PL5])
 
 Wind_WE=lcases.LoadCase(preprocessor=prep,name="Wind_WE")
 Wind_WE.create()
-Wind_WE.addLstLoads([WL_lnL2,WL_lnL5,WL_lnL6,WL_lnL8,WL_lnL10,WL_lnL11,WL_lnE1A,WL_lnE1B,WL_lnEC1B,WL_lnEC1C,WL_lnW1A,WL_lnW1B,WL_lnW1C,WL_lnWC1A,WL_lnWC1B,WL_lnWC1C])
+Wind_WE.addLstLoads([WL_lnL2,WL_lnL5,WL_lnL6,WL_lnL8,WL_lnL10,WL_lnL11,WL_lnE1A,WL_lnE1B,WL_lnEC1B,WL_lnEC1C,WL_lnW1A,WL_lnW1B,WL_lnW1C,WL_lnWC1A,WL_lnWC1B,WL_lnWC1C,
+WL_PL1,WL_PL2,WL_PL3,WL_PL4,WL_PL5])
+
 
 
 Wind_NS=lcases.LoadCase(preprocessor=prep,name="Wind_NS")
