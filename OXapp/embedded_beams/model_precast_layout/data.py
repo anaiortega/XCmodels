@@ -261,3 +261,36 @@ WWE_lnL5W=-15.73e3
 WNS_lnL1W=5.8e3
 WNS_lnL6W=18.74e3
 WNS_lnL7W=-17.5e3
+
+#Point loads
+D_PL1=138.51e3
+L_PL1=190.65e3
+S_PL1=99.40e3
+W_PL1=8.08e3
+
+D_PL2=154.49e3
+L_PL2=237.34e3
+S_PL2=104.34e3
+W_PL2=65.93e3
+
+D_PL3=46.35e3
+L_PL3=71.20e3
+S_PL3=31.30e3
+W_PL3=19.78e3
+
+D_PL4=51.74e3
+L_PL4=78.93e3
+S_PL4=34.56e3
+W_PL4=21.82e3
+
+D_PL5=50.90e3
+L_PL5=62.27e3
+S_PL5=40.87e3
+W_PL5=17.37e3
+
+# Coordenadas cargas puntuales
+PL1_pos=[geom.Pos3d(xFac[1],yCols[0],zBeamHigh)]
+PL2_pos=[geom.Pos3d(xFac[1],yCols[1],zBeamHigh)]
+PL3_pos=[geom.Pos3d(xFac[1],yCols[2],zBeamHigh)]
+PL4_pos=[geom.Pos3d(xCols[2],0,zBeamHigh),geom.Pos3d(xCols[2]+23*ft2m+10*in2m,0,zBeamHigh)]
+PL5_pos=[geom.Pos3d(xCols[1],yCols[0],zBeamHigh)]
