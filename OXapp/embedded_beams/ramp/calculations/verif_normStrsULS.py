@@ -19,7 +19,7 @@ outCfg=oc.verifOutVars(setCalc=ramp,appendToResFile='N',listFile='N',calcMeanCF=
 
 limitStateLabel= lsd.normalStressesResistance.label
 lsd.normalStressesResistance.controller= ACI_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
-lsd.normalStressesResistance.check(reinfConcreteSections)
+lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
 
 
 

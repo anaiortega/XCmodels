@@ -18,13 +18,25 @@ reinfSteel= ACI_materials.A615G60
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
-
+nSup=2
+fiSup=15.875
+nInf=3
+fiInf=22.225
+nRef=2
+fiRef=25.4
+nLat=2
+fiLat=12.7
 
 beamCentRCsect=rcs.RecordRCSlabBeamSection(name='beamCentRCsect',sectionDescr='beam elements',concrType=concrete, reinfSteelType=reinfSteel,width=wBeam,depth=hBeam,elemSetName=beamCent.name)
-beamCentRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(6,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,28.65,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(6,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,28.65,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+
+beamCentRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(nSup,fiSup,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(nInf,fiInf,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+if nRef>0:
+    beamCentRCsect.dir1NegatvRebarRows.append(rcs.rebLayerByNumFi_mm(nRef,fiRef,100,35,wBeam*1e3))
+beamCentRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(nSup,fiSup,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(nInf,fiInf,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+if nRef>0:
+    beamCentRCsect.dir2NegatvRebarRows.append(rcs.rebLayerByNumFi_mm(nRef,fiRef,100,35,wBeam*1e3))
 
 fiCercosCent=6.35
 sepCercosCent=8*in2m
@@ -32,10 +44,10 @@ beamCentRCsect.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShRei
 beamCentRCsect.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=2,areaShReinfBranch= math.pi*(fiCercosCent*1e-3)**2/4.,shReinfSpacing=sepCercosCent,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 beamExtrRCsect=rcs.RecordRCSlabBeamSection(name='beamExtrRCsect',sectionDescr='beam elements',concrType=concrete, reinfSteelType=reinfSteel,width=wBeam,depth=hBeam,elemSetName=beamExtr.name)
-beamExtrRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(5,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamExtrRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamExtrRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(5,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamExtrRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+beamExtrRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(nSup,fiSup,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+beamExtrRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(nInf,fiInf,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+beamExtrRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(nSup,fiSup,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
+beamExtrRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(nInf,fiInf,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(nLat,fiLat,hBeam/3.*1e3,35,wBeam*1e3)]
 
 fiCercosExtr=9.525
 sepCercosExtr=8*in2m
@@ -44,10 +56,10 @@ beamExtrRCsect.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShRei
 
 columnRCsect=rcs.RecordRCSlabBeamSection(name='columnRCsect',sectionDescr='column',concrType=concrete, reinfSteelType=reinfSteel,width=wColumn,depth=dimYColumn,elemSetName=column.name)
 
-columnRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(2,15.875,35,35,wColumn*1e3)]
-columnRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(2,15.875,35,35,wColumn*1e3)]
-columnRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(2,15.875,35,35,wColumn*1e3)]
-columnRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(2,15.875,35,35,wColumn*1e3)]
+columnRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(2,12.7,35,35,wColumn*1e3)]
+columnRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(2,12.7,35,35,wColumn*1e3)]
+columnRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(2,12.7,35,35,wColumn*1e3)]
+columnRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(2,12.7,35,35,wColumn*1e3)]
 
 
 

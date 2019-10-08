@@ -16,7 +16,7 @@ sectAreaSlab=(distHollows*hSlab-math.pi*Rhollow**2)*1/distHollows  #section area
 spanSlab=20*ft2m
 
 #Geometry
-lBeam=round(25*ft2m,2)
+lBeam=round(22*ft2m,2)
 wallTh=round(10*in2m,2)
 wBeam=2*wallTh
 hBeam=1

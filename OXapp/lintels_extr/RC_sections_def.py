@@ -21,10 +21,10 @@ reinfSteel= ACI_materials.A615G60
 
 
 beamCentRCsect=rcs.RecordRCSlabBeamSection(name='beamCentRCsect',sectionDescr='beam elements',concrType=concrete, reinfSteelType=reinfSteel,width=wBeam,depth=hBeam,elemSetName=beamCent.name)
-beamCentRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(6,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,28.65,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(6,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
-beamCentRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,28.65,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir1PositvRebarRows=[rcs.rebLayerByNumFi_mm(5,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir1NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,25.4,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir2PositvRebarRows=[rcs.rebLayerByNumFi_mm(5,22.225,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
+beamCentRCsect.dir2NegatvRebarRows=[rcs.rebLayerByNumFi_mm(5,25.4,35,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(5,25.4,100,35,wBeam*1e3),rcs.rebLayerByNumFi_mm(2,22.225,hBeam/3.*1e3,35,wBeam*1e3)]
 
 fiCercosCent=6.35
 sepCercosCent=8*in2m

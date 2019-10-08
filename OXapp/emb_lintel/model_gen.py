@@ -52,8 +52,8 @@ columnConcr_mat.setupElasticShear3DSection(preprocessor=prep)
 #deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
 #deck_mesh.generateMesh(prep)
 # vDirLAxZ parallel to width
-beamCent_mesh=fem.LinSetToMesh(linSet=beamCent,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-beamExtr_mesh=fem.LinSetToMesh(linSet=beamExtr,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+beamCent_mesh=fem.LinSetToMesh(linSet=beamCent,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+beamExtr_mesh=fem.LinSetToMesh(linSet=beamExtr,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
 columnConcr_mesh=fem.LinSetToMesh(linSet=column,matSect=columnConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamCent_mesh,beamExtr_mesh,columnConcr_mesh])

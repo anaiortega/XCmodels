@@ -693,8 +693,8 @@ for n in nod:
 stBusq=slabW1+slab12
 x=xRamp[0]
 z=zBeamHigh
-nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
-for n in nod:
+nodRamp=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
+for n in nodRamp:
 #    modelSpace.fixNode('FF0_FFF',n.tag)
     modelSpace.fixNode('000_FFF',n.tag)
 #    
