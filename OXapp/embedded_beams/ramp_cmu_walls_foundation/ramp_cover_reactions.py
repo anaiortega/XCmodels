@@ -72,7 +72,68 @@ mesh= xcTotalSet.genMesh(xc.meshDir.I)
 modelSpace.fixNode00F(p0.getNode().tag)
 modelSpace.fixNode00F(p3.getNode().tag)
 
-# Actions
+# Loads
+loadManager= preprocessor.getLoadHandler
+loadCases= loadManager.getLoadPatterns
+## Load modulation.
+ts= loadCases.newTimeSeries("constant_ts","ts")
+loadCases.currentTimeSeries= "ts"
+
+## Load case definition
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['load']
+loadCaseNames= ['deadLoad','liveLoad','snowLoad','windLoad']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
+
+## Dead load.
+cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
+pfsToN_m2= 0.04788026e3
+deadLoad= 4914+20.0*pfsToN_m2
+for e in xcTotalSet.elements:
+    e.vector2dUniformLoadGlobal(xc.Vector([0.0,-deadLoad]))
+p1.getNode().newLoad(xc.Vector([0.0,-13.02e3,0.0])) 
+p2.getNode().newLoad(xc.Vector([0.0,-13.02e3,0.0]))
+
+## Live load.
+cLC= loadCaseManager.setCurrentLoadCase('liveLoad')
+liveLoad= 40.0*pfsToN_m2
+for e in xcTotalSet.elements:
+    e.vector2dUniformLoadGlobal(xc.Vector([0.0,-liveLoad]))
+p1.getNode().newLoad(xc.Vector([0.0,-18.12e3,0.0]))
+p2.getNode().newLoad(xc.Vector([0.0,-18.12e3,0.0])) 
+
+## Snow load.
+cLC= loadCaseManager.setCurrentLoadCase('snowLoad')
+p1.getNode().newLoad(xc.Vector([0.0,-12.92e3,0.0])) 
+p2.getNode().newLoad(xc.Vector([0.0,-12.92e3,0.0]))
+
+## Wind load.
+cLC= loadCaseManager.setCurrentLoadCase('windLoad')
+p1.getNode().newLoad(xc.Vector([0.0,8.17e3,0.0])) 
+p2.getNode().newLoad(xc.Vector([0.0,8.17e3,0.0]))
+
+#Load combinations
+combContainer= combs.CombContainer()
+
+#Quasi-permanent situations.
+combContainer.SLS.qp.add('ELS08', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage')
+#Frequent
+combContainer.SLS.freq.add('ELS09A', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage+0.4*liveLoadA')
+combContainer.SLS.freq.add('ELS09B', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage+0.4*liveLoadB')
+#Rare
+combContainer.SLS.rare.add('ELS10A', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage+1.0*liveLoadA+0.6*temperature')
+combContainer.SLS.rare.add('ELS10B', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage+1.0*liveLoadB+0.6*temperature')
+
+#Permanent and transitory situations.
+combContainer.ULS.perm.add('ELU2A', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+1.5*liveLoadA')
+combContainer.ULS.perm.add('ELU2B', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+1.5*liveLoadB')
+combContainer.ULS.perm.add('ELU3A', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+1.5*liveLoadA+0.6*temperature')
+combContainer.ULS.perm.add('ELU3B', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+1.5*liveLoadB+0.6*temperature')
+combContainer.ULS.perm.add('ELU4A', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+0.4*liveLoadA+0.6*temperature+1.5*snowLoad')
+combContainer.ULS.perm.add('ELU4B', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+0.4*liveLoadB+0.6*temperature+1.5*snowLoad')
+combContainer.ULS.perm.add('ELU5A', '1.35*selfWeight+1.35*deadLoad+1.5*shrinkage+0.4*liveLoadA+0.6*temperature')
+combContainer.ULS.perm.add('ELU5B', '1.35*selfWeight+1.35*deadLoad+1.5*shrinkage+0.4*liveLoadB+0.6*temperature')
+combContainer.ULS.perm.add('ELU6A', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+0.4*liveLoadA+1.5*temperature')
+combContainer.ULS.perm.add('ELU6B', '1.35*selfWeight+1.35*deadLoad+1.0*shrinkage+0.4*liveLoadB+1.5*temperature')
+
+#Accidental
+combContainer.ULS.acc.add('A', '1.0*selfWeight+1.0*deadLoad+1.0*shrinkage+1.0*earthquake')    
