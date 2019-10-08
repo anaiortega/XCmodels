@@ -71,3 +71,8 @@ mesh= xcTotalSet.genMesh(xc.meshDir.I)
 # Constraints
 modelSpace.fixNode00F(p0.getNode().tag)
 modelSpace.fixNode00F(p3.getNode().tag)
+
+# Actions
+loadCaseManager= lcm.LoadCaseManager(preprocessor)
+loadCaseNames= ['load']
+loadCaseManager.defineSimpleLoadCases(loadCaseNames)
