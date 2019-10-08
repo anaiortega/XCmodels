@@ -19,9 +19,9 @@ csvFile= open("column_reactions.csv", "w")
 writer = csv.writer(csvFile)
 
 for lc in loadCases:
-    lcs=QGrph.QuickGraphics(FEcase)
+    lcs=QGrph.LoadCaseResults(FEcase,loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
     #solve for load case
-    lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
+    lcs.solve()
     #Reaction on column bases
     nodes.calculateNodalReactions(False,1e-7)
     for n in footingNodes:
