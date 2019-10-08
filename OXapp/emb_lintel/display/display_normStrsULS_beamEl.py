@@ -16,6 +16,7 @@ argument= 'CF'       #Possible arguments:
                      #            'MvRdz','MbRdz','chiLT'
 setDisp=overallSet   #set of elements (any type) to be displayed
 setDispRes=beam
+#setDispRes=column
 scaleFactor=1        #scale factor to apply to the auto-scales diagram (can be negative)
 fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 #  End config 
