@@ -19,7 +19,7 @@ from actions import combinations as combs
 
 # Problem type
 precastPlanks= xc.FEProblem()
-precastPlanks.title= 'Precast planks on ramp cover'
+precastPlanks.title= 'Precast planks on ramp cover with alcove'
 preprocessor= precastPlanks.getPreprocessor   
 nodes= preprocessor.getNodeHandler
 
@@ -40,23 +40,29 @@ inch2m= 0.0254
 ## Points.
 d1= 9*foot2m+2*inch2m
 d2= 15*foot2m+3*inch2m-d1
-span= 6.20683636363636
+span1= 6.20683636363636
+span1= 6.20683636363636
+span2= 5*0.3048
 
 print('d1= ', d1, ' m')
 print('d2= ', d2, ' m')
-print('span= ', span, ' m')
+print('span1= ', span1, ' m')
+print('span2= ', span2, ' m')
 
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
 p0= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,0.0,0.0))
 p1= pointHandler.newPntFromPos3d(geom.Pos3d(d1,0.0,0.0))
 p2= pointHandler.newPntFromPos3d(geom.Pos3d(d1+d2,0.0,0.0))
-p3= pointHandler.newPntFromPos3d(geom.Pos3d(span,0.0,0.0))
+p3a= pointHandler.newPntFromPos3d(geom.Pos3d(span1,0.0,0.0))
+p3b= pointHandler.newPntFromPos3d(geom.Pos3d(span1,0.0,0.0))
+p4= pointHandler.newPntFromPos3d(geom.Pos3d(span1+span2,0.0,0.0))
 
 ## Lines
 lineHandler= preprocessor.getMultiBlockTopology.getLines
 l1= lineHandler.newLine(p0.tag,p1.tag)
 l2= lineHandler.newLine(p1.tag,p2.tag)
-l2= lineHandler.newLine(p2.tag,p3.tag)
+l3= lineHandler.newLine(p2.tag,p3a.tag)
+l4= lineHandler.newLine(p3b.tag,p4.tag)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
@@ -73,7 +79,9 @@ mesh= xcTotalSet.genMesh(xc.meshDir.I)
 
 # Constraints
 modelSpace.fixNode00F(p0.getNode().tag)
-modelSpace.fixNode00F(p3.getNode().tag)
+modelSpace.fixNode00F(p3a.getNode().tag)
+modelSpace.fixNode00F(p3b.getNode().tag)
+modelSpace.fixNode00F(p4.getNode().tag)
 
 # Loads
 loadManager= preprocessor.getLoadHandler
