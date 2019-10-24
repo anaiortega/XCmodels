@@ -12,7 +12,7 @@ execfile("../model_gen.py") #FE model generation
 execfile("../RC_sections_def.py")
 
 #list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'RC_sections_def.py') that we want to process in order to run different limit-state checkings.
-lstOfSectRecords=[beamCentRCsect,beamExtrRCsect,columnRCsect]
+lstOfSectRecords=[beamRCsect,columnRCsect]
 
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container

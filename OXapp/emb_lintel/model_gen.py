@@ -11,7 +11,7 @@ from actions import loads
 from actions import load_cases as lcases
 from materials.ehe import EHE_materials
 
-home=('/home/ana/projects/XCmodels/OXapp/lintel/')
+home=('/home/ana/projects/XCmodels/OXapp/emb_lintel/')
 execfile(home+'data.py')
 execfile(home+'env_config.py')
 

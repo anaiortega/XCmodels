@@ -19,8 +19,8 @@ Emat=24e6    #elastic modulus of pile material [Pa]
 bearCap=22e3 #total bearing capacity of the pile [N]
 pType='endBearing' #type of pile
 zGround=0  #ground elevation
-soils=[(-1.5,'clay',1e6),(-5,'clay',2e6),(-15,'clay',10e6),(-100,'clay',15e6)] #Properties of the clay
-# soils [(zBottom,type, s), ...]  where 'zBottom' is the global Z coordinate
+soils=[[-1.5,'clay',1e6],[-5,'clay',2e6],[-15,'clay',10e6],[-100,'clay',15e6]] #Properties of the clay
+# soils [[zBottom,type, s], ...]  where 'zBottom' is the global Z coordinate
 #           of the bottom level of the soil and 'su' [Pa/m] is the shear  
 #           strength of the saturated cohesive soil.
 eSize= 1     #length of elements

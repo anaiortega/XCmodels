@@ -11,7 +11,7 @@ from actions import loads
 from actions import load_cases as lcases
 from materials.ehe import EHE_materials
 
-home=('/home/ana/projects/XCmodels/OXapp/lintels_extr/')
+home=('/home/ana/projects/XCmodels/OXapp/lintel_12_span/')
 execfile(home+'data.py')
 execfile(home+'env_config.py')
 
@@ -52,13 +52,14 @@ columnConcr_mat.setupElasticShear3DSection(preprocessor=prep)
 #deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize,elemType='ShellMITC4')
 #deck_mesh.generateMesh(prep)
 # vDirLAxZ parallel to width
-beamCent_mesh=fem.LinSetToMesh(linSet=beamCent,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-beamExtr_mesh=fem.LinSetToMesh(linSet=beamExtr,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+beamCent_mesh=fem.LinSetToMesh(linSet=beamCent,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+beamExtr_mesh=fem.LinSetToMesh(linSet=beamExtr,matSect=beamConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,0,1]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
 columnConcr_mesh=fem.LinSetToMesh(linSet=column,matSect=columnConcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamCent_mesh,beamExtr_mesh,columnConcr_mesh])
 
 beam=beamCent+beamExtr
+beam.fillDownwards()
 
 #Boundary conditions
 
@@ -92,15 +93,14 @@ modelSpace.constraints.newEqualDOF(n1.tag,n2.tag,xc.ID([2]))
 grav=9.81
 selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamCent_mesh,beamExtr_mesh,columnConcr_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 selfW_wall=(wallHeight-hBeam)*concrete.density()*grav*wallTh
-Dwall=loads.UniformLoadOnBeams(name='Dwall', xcSet=beam, loadVector=xc.Vector([0,0,-selfW_wall,0,0,0]),refSystem='Global')
+Dwall=loads.UniformLoadOnBeams(name='Dwall', xcSet=beam, loadVector=xc.Vector([0,0,-selfW_wall-lin_deadL,0,0,0]),refSystem='Global')
 selfW_hollow=sectAreaSlab*concrete.density()*grav*spanSlab/2.
 Dhollow=loads.UniformLoadOnBeams(name='Dhollow', xcSet=beam, loadVector=xc.Vector([0,0,-selfW_hollow,0,0,0]),refSystem='Global')
 fill_slab=deadL*spanSlab/2.
 Dslab=loads.UniformLoadOnBeams(name='Dslab', xcSet=beam, loadVector=xc.Vector([0,0,-fill_slab,0,0,0]),refSystem='Global')
 live_slab=liveL*spanSlab/2.
-live=loads.UniformLoadOnBeams(name='live', xcSet=beam, loadVector=xc.Vector([0,0,-live_slab,0,0,0]),refSystem='Global')
-snow_slab=snowL*spanSlab/2.
-snow=loads.UniformLoadOnBeams(name='snow', xcSet=beam, loadVector=xc.Vector([0,0,-snow_slab,0,0,0]),refSystem='Global')
+live=loads.UniformLoadOnBeams(name='live', xcSet=beam, loadVector=xc.Vector([0,0,-live_slab-lin_liveL,0,0,0]),refSystem='Global')
+snow=loads.UniformLoadOnBeams(name='snow', xcSet=beam, loadVector=xc.Vector([0,0,-lin_snowL,0,0,0]),refSystem='Global')
 
 #    ***LOAD CASES***
 DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL",loadPType="default",timeSType="constant_ts")

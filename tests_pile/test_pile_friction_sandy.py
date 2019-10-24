@@ -20,8 +20,8 @@ bearCap=22e3 #total bearing capacity of the pile [N]
 pType='friction' #type of pile
 zGround=0  #ground elevation
 zGround=2  #ground elevation
-soils=[(-1.5,'sandy',1e6),(-5,'sandy',2e6),(-15,'sandy',10e6),(-100,'sandy',15e6)] #Properties of the sandy
-# soils [(zBottom,type, nh), ...]  where 'zBottom' is the global Z coordinate
+soils=[[-1.5,'sandy',1e6],[-5,'sandy',2e6],[-15,'sandy',10e6],[-100,'sandy',15e6]] #Properties of the sandy
+# soils [[zBottom,type, nh], ...]  where 'zBottom' is the global Z coordinate
 #           of the bottom level of the soil and 'nh' [Pa/m] is the coefficient 
 #           corresponding to the compactness of the sandy soil.
 eSize= 1     #length of elements

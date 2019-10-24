@@ -13,21 +13,21 @@ Rhollow=(2+25/32.)*in2m
 distHollows=(7+3/8.)*in2m
 sectAreaSlab=(distHollows*hSlab-math.pi*Rhollow**2)*1/distHollows  #section area 1m slab
 
-spanSlab=20*ft2m
+spanSlab=23*ft2m+2*in2m
 
 #Geometry
-lBeam=round(25*ft2m,2)
+lBeam=round(3*ft2m,2)
 wallTh=round(10*in2m,2)
-wBeam=2*wallTh
-hBeam=1
+wBeam=wallTh
+hBeam=10*in2m
 lBearing=0.3
 wColumn=wallTh
 dimYColumn=lBearing
-wallHeight=6*ft2m
+wallHeight=3*ft2m
 
 yBeamEnd=round(0.5*lBeam+lBearing/2.,2)
 yBeamCent=0.6*yBeamEnd
-zBeam=8*ft2m+hBeam/2.
+zBeam=3*ft2m+hBeam/2.
 zColumn=zBeam-0.01
 #Loads
 deadL=110*pound2N/(ft2m)**2   #dead load (
