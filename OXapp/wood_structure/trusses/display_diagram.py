@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
-#execfile('./xc_model.py')
-execfile('./trusses_11_56.py')
+import sys
+arg1= str(sys.argv[1])
+execfile(arg1)
 
 #Graphic output
-from postprocess.xcVtk import vtk_graphic_base
 from postprocess.reports import graphical_reports as gr
 
 loadCaseToDisplay= gr.getRecordLoadCaseDispFromLoadPattern(lp0)
 loadCaseToDisplay.unitsForc='[kN]'
 loadCaseToDisplay.unitsMom='[kN.m]'
 loadCaseToDisplay.setToDisplay= xcTotalSet
-loadCaseToDisplay.cameraParameters= vtk_graphic_base.CameraParameters('Custom')
-loadCaseToDisplay.cameraParameters.viewUpVc= [0,0,1]
-loadCaseToDisplay.cameraParameters.posCVc= [0,-100,0]
+loadCaseToDisplay.cameraParameters= modelSpace.cameraParameters
 
  
 #Define the diagram to display:
