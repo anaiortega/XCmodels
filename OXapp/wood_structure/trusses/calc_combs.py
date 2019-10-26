@@ -33,13 +33,13 @@ def writeResults(combName, floor, trusses):
 
 def resultComb(prb,nmbComb):
     preprocessor.resetLoadCase()
-    preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+    preprocessor.getLoadHandler.addToDomain(nmbComb)
     #Solución
     solution= predefined_solutions.SolutionProcedure()
     analysis= solution.simpleStaticLinear(prb)
     result= analysis.analyze(1)
     reportResults(nmbComb)
-    preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+    preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 
 combContainer.dumpCombinations(preprocessor)
