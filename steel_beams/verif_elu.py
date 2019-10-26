@@ -11,7 +11,7 @@ for key in lineDict:
 
 def resultComb(prb,nmbComb):
   preprocessor.resetLoadCase()
-  preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+  preprocessor.getLoadHandler.addToDomain(nmbComb)
   #Solución
   solution= predefined_solutions.SolutionProcedure()
   analysis= solution.simpleStaticLinear(prb)
@@ -19,7 +19,7 @@ def resultComb(prb,nmbComb):
   for l in ec3beams:
     l.updateLateralBucklingReductionFactor(crossSectionClass)
   result= analysis.analyze(1) #Update resistant values 
-  preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+  preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 # chiLT= 1.0 #Lateral-torsional buckling reduction factor
 # recorder= IPE450A.installULSControlRecorder("element_prop_recorder",setMainBeam.elements,crossSectionClass,chiLT)

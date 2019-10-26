@@ -267,7 +267,7 @@ combContainer.ULS.perm.add('AT202','1.35*GselfWeight+1.35*GdeadLoad+1.0*truckLiv
 
 
 #We add the load case to domain.
-# preprocessor.getLoadHandler.getLoadPatterns.addToDomain("temp_up")
+# preprocessor.getLoadHandler.addToDomain("temp_up")
 
 
 # Solution

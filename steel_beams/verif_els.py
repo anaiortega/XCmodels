@@ -11,12 +11,12 @@ recorder= recorders.installNodeDisplacementRecorder("node_prop_recorder",setTota
 
 def resultComb(prb,nmbComb):
   preprocessor.resetLoadCase()
-  preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+  preprocessor.getLoadHandler.addToDomain(nmbComb)
   #Solución
   solution= predefined_solutions.SolutionProcedure()
   analysis= solution.simpleStaticLinear(prb)
   result= analysis.analyze(1)
-  preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+  preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 combContainer.dumpCombinations(preprocessor)
 resultComb(mainBeam,'ELS00')

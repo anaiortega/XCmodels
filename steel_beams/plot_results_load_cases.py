@@ -9,12 +9,12 @@ from postprocess.xcVtk import vtk_internal_force_diagram as ifd
 def resultAction(prb,nmbAction):
   ''' Triggers the analysis of the structure.'''
   prb.getPreprocessor.resetLoadCase()
-  prb.getPreprocessor.getLoadHandler.getLoadPatterns.addToDomain(nmbAction)
+  prb.getPreprocessor.getLoadHandler.addToDomain(nmbAction)
   #Solución
   solution= predefined_solutions.SolutionProcedure()
   analysis= solution.simpleStaticLinear(prb)
   result= analysis.analyze(1)
-  prb.getPreprocessor.getLoadHandler.getLoadPatterns.removeFromDomain(nmbAction)
+  prb.getPreprocessor.getLoadHandler.removeFromDomain(nmbAction)
 
 setBeams= preprocessor.getSets.getSet("total")
 
