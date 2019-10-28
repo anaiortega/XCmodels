@@ -2,7 +2,7 @@
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
-from postprocess.xcVtk import load_vector_field as lvf
+from postprocess.xcVtk.fields import load_vector_field as lvf
 
 execfile('model_data.py')
 execfile('loadStateData.py')

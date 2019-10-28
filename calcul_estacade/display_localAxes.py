@@ -5,7 +5,7 @@ execfile('./captionTexts.py')
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
-from postprocess.xcVtk import local_axes_vector_field as lavf
+from postprocess.xcVtk.fields import local_axes_vector_field as lavf
 import vtk
 
 def display_local_axes(setToDisplay=None,vectorScale=1.0,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= '',fileName=None):
