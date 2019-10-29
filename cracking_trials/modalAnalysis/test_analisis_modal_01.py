@@ -129,7 +129,9 @@ factoresDistribucion= analysis.getDistributionFactors()
 
 #Displaying
 from postprocess.xcVtk.FE_model import quick_graphics as qg
-qg.display_eigen_result(preprocessor,eigenMode=2, setToDisplay=setTotal,unitsScale=1.0,equLoadVctScale=0.0001,vtk_graphic_base.CameraParameters('XYZPos'),caption= '',fileName=None,defFScale=1.0)
+lcs= qg.LoadCaseResults(feProblem)
+lcs.outputStyle.equivalentLoadVectorsScaleFactor= 0.0001
+lcs.displayEigenResult(eigenMode=2, setToDisplay=setTotal,caption= '',fileName=None,defFScale=1.0)
 
 quit()
 
