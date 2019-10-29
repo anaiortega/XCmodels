@@ -20,10 +20,4 @@ for lc in loadCasesToDisplay:
     #Displacements and rotations displays
     for st in lc.setsToDispDspRot:
         for arg in lc.listDspRot:
-            if arg[0]=='u':
-                fcUn=lc.unitsScaleDispl
-                unDesc=lc.unitsDispl
-            else:
-                fcUn=1.0
-                unDesc=''
-            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,fileName='figures/uz_Q1.jpg',defFScale=1)
+            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fileName='figures/uz_Q1.jpg',defFScale=1)

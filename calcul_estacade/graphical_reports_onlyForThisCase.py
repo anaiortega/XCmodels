@@ -162,8 +162,8 @@ class RecordLoadCaseDisp(object):
                 fcUn=1.0
                 unDesc=''
             grfname=pathGr+self.loadCaseName+st.name+arg
-            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.jpg')
-            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.eps')
+            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,viewDef=self.cameraParameters,fileName=grfname+'.jpg')
+            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,viewDef=self.cameraParameters,fileName=grfname+'.eps')
             capt=self.loadCaseDescr + '. ' + st.name.capitalize() + ', ' + capStdTexts[arg] + ' ' + unDesc
             insertGrInTex(texFile=texFile,grFileNm=grfname,grWdt=grWdt,capText=capt)
     #Internal forces displays on sets of «shell» elements
@@ -176,8 +176,8 @@ class RecordLoadCaseDisp(object):
                 fcUn=self.unitsScaleForc
                 unDesc=self.unitsForc
             grfname=pathGr+self.loadCaseName+st.name+arg
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.jpg')
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.eps')
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.jpg')
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,viewDef=self.cameraParameters,fileName=grfname+'.eps')
             capt=self.loadCaseDescr + '. ' + st.name.capitalize() + ', ' + capStdTexts[arg] + ' ' + unDesc
             insertGrInTex(texFile=texFile,grFileNm=grfname,grWdt=grWdt,capText=capt)
     #Internal forces displays on sets of «beam» elements
@@ -195,8 +195,8 @@ class RecordLoadCaseDisp(object):
                 else:
                   scaleFact=self.scaleDispBeamIntForc[1]
             grfname=pathGr+self.loadCaseName+st.name+arg
-            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef=self.cameraParametersBeams,fileName=grfname+'.jpg')
-            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef=self.cameraParametersBeams,fileName=grfname+'.eps')
+            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,viewDef=self.cameraParametersBeams,fileName=grfname+'.jpg')
+            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,viewDef=self.cameraParametersBeams,fileName=grfname+'.eps')
             capt=self.loadCaseDescr + '. ' + st.name.capitalize() + ', ' + capStdTexts[arg] + ' ' + unDesc
             insertGrInTex(texFile=texFile,grFileNm=grfname,grWdt=grWdt,capText=capt)
     texFile.write('\\clearpage\n')
