@@ -15,8 +15,9 @@ loadCasesToDisplay=[G1,Q1,A1]
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispBeamLoads:
-        lcs=gm.QuickGraphics(model)
         capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
-        lcs.dispLoadCaseBeamEl(loadCaseName=lc.loadCaseName,setToDisplay=st.elSet,fUnitConv=lc.unitsScaleLoads,elLoadComp=lc.compElLoad,elLoadScaleF=lc.vectorScaleLoads,nodLoadScaleF=lc.vectorScalePointLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None)
+        lcs.displayLoads(setToDisplay=st.elSet,elLoadComp=lc.compElLoad,caption= capt,fileName=None)
 

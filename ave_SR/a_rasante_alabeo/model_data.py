@@ -733,7 +733,7 @@ for n in nudCarr4:
 '''
 f=open("results/resAlabeo.tex","w")
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
-lcs=QGrph.QuickGraphics(FEcase)
+lcs=QGrph.LoadCaseResults(FEcase)
 
 lcname='Q1a'
 lcs.solve(loadCaseName='Q1a',loadCaseExpr='1*Q1a')

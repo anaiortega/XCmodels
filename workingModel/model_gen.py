@@ -21,7 +21,8 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/'
+#home= '/home/ana/projects/XCmodels/'
+home= '/home/luis/Documents/XCmodels/'
 
 fullProjPath= home + 'workingModel/'
 execfile(fullProjPath+'env_config.py')

@@ -9,7 +9,7 @@ execfile('../loadStateData.py')
 loadCasesToDisplay=[Q1,Q2,Q3,PrueCarga,Qtren1via,Qtren2vias]
 #loadCasesToDisplay=[PrueCarga,Qtren]
 for lc in loadCasesToDisplay:
-    lcs=QGrph.QuickGraphics(FEcase)
+    lcs=QGrph.LoadCaseResults(FEcase)
     #solve for load case
     lcs.solve(loadCaseName=lc.loadCaseName,loadCaseExpr=lc.loadCaseExpr)
     

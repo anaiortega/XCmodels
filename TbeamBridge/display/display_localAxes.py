@@ -5,7 +5,7 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 import vtk
 
-    # display_local_axes: vector field display of the element local axes.
+    # lcs.displayLocalAxes: vector field display of the element local axes.
     # Parameters:
     #   setToDisplay:   set of elements to be displayed
     #                   (defaults to 'total')
@@ -17,7 +17,9 @@ import vtk
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
  
-model.display_local_axes(setToDisplay=deckSet,vectorScale=0.3,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Deck slab, local axes')
-model.display_local_axes(setToDisplay=beamSet,vectorScale=0.3,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= 'Beams, local axes')
+lcs= qg.LoadCaseResults(FEcase)
+lcs.displayLocalAxes(setToDisplay=deckSet,caption= 'Deck slab, local axes')
+lcs= qg.LoadCaseResults(FEcase)
+lcs.displayLocalAxes(setToDisplay=beamSet,caption= 'Beams, local axes')
 
 

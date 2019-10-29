@@ -190,7 +190,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 from postprocess.xcVtk import vtk_graphic_base
 xcTotalSet=utils_display.setToDisplay(elSet=preprocessor.getSets.getSet('total'),genDescr='',sectDescr=[])
 
-lcs=QGrph.QuickGraphics(FEcase)
+lcs=QGrph.LoadCaseResults(FEcase)
 #lcs.displayDispRot(itemToDisp='uX',setToDisplay=xcTotalSet.elSet,fConvUnits=1000,unitDescription='mm', vtk_graphic_base.CameraParameters('XYZPos',1),fileName=None,defFScale=0.0)
 
 # lcs.displayDispRot(itemToDisp='uZ',defFScale=1e2)

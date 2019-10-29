@@ -6,7 +6,7 @@ execfile('../captionTexts.py')
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-    # display_local_axes: vector field display of the element local axes.
+    # lcs.displayLocalAxes: vector field display of the element local axes.
     # Parameters:
     #   setToDisplay:   set of elements to be displayed
     #                   (defaults to 'total')
@@ -21,7 +21,8 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 setToDisplay=dintelBcentral
 setToDisplay=otro
-qg.display_local_axes(prep=prep,setToDisplay=setToDisplay,vectorScale=0.15,viewDef= vtk_graphic_base.CameraParameters('ZPos',2.0),caption= capTexts['LocalAxes'],fileName=None,defFScale=0.0)
-#qg.display_local_axes(prep=prep,setToDisplay=columnZ,vectorScale=0.15,vtk_graphic_base.CameraParameters('XYZPos'),caption=capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+lcs= qg.LoadCaseResults(FEcase)
+lcs.displayLocalAxes(setToDisplay=setToDisplay,caption= capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+#lcs.displayLocalAxes(setToDisplay=columnZ,caption=capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
 

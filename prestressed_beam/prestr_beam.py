@@ -229,7 +229,7 @@ for e in beamSet.elements:
 analOk= analisis.analyze(1)
 
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
-lcs=QGrph.QuickGraphics(FEcase)
+lcs=QGrph.LoadCaseResults(FEcase)
 lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 1: prestressing of tendon 1',viewDef= vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz01.png',defFScale=2e2)
 
 lcs.displayIntForcDiag(itemToDisp='Mz',setToDisplay=beamSet,fConvUnits=1e-3,scaleFactor=-2e-2,unitDescription='beam [kNm]. Phase 1: prestressing of tendon 1',viewDef= vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsMz01.png',defFScale=1)

@@ -13,10 +13,12 @@ loadCasesToDisplay=[Q664Det1B_point]#[G1,G2,Q269A_point,Q269A_unif,Q269B_point,Q
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', '  + lc.unitsLoads
-        qg.display_load(preprocessor,setToDisplay=st,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None,defFScale=1.0)
+        lcs.displayLoadVectors(setToDisplay=st,caption= capt,fileName=None,defFScale=1.0)
 
 
 

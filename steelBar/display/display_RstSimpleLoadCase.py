@@ -23,7 +23,7 @@ for lc in loadCasesToDisplay:
             else:
                 fcUn=1.0
                 unDesc=''
-            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,viewDef= lc.cameraParameters,fileName=None,defFScale=1)
+            lcs.displayDispRot(itemToDisp=arg,setToDisplay=st,fConvUnits=fcUn,unitDescription=unDesc,fileName=None,defFScale=1)
     #Internal forces displays on sets of «shell» elements
     for st in lc.setsToDispIntForc:
         for arg in lc.listIntForc:
@@ -49,7 +49,7 @@ for lc in loadCasesToDisplay:
                   scaleFact=lc.scaleDispBeamIntForc[0]
                 else:
                   scaleFact=lc.scaleDispBeamIntForc[1]
-            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
+            lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDescBeams,fileName=None,defFScale=1)
 
 
 

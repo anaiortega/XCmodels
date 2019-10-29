@@ -13,9 +13,11 @@ loadCasesToDisplay=[G1,G2,G3,Q1ayb,Q1a,Q1b,Q2ayb,Q2a,Q2b]
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispLoads:
         capt=lc.loadCaseDescr + ', ' + st.description + ', '  + lc.unitsLoads
-        qg.display_load(preprocessor=prep,setToDisplay=overallSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None,defFScale=1.0)
+        lcs.displayLoadVectors(setToDisplay=overallSet,loadCaseNm=lc.loadCaseName,caption= capt,fileName=None,defFScale=1.0)
 
 
 

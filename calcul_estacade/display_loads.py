@@ -16,10 +16,12 @@ loadCasesToDisplay=[QA,QB]
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', ' + lc.unitsLoads
-#        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt)
+#        model.displayLoad(setToDisplay=st.elSet,loadCaseNm=lc.loadCaseName,caption= capt)
         defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
         defDisplay.setupGrid(st)
         vField=lvf.LoadVectorField(lc.loadCaseName,lc.unitsScaleLoads,lc.vectorScaleLoads)

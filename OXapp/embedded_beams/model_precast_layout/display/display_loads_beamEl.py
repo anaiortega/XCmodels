@@ -9,14 +9,16 @@ execfile('../load_state_data.py')
 #available components: 'axialComponent', 'transComponent', 'transYComponent',
 #                      'transZComponent'
 
-loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7]
+loadCasesToDisplay=[D,Lru,Lrs,Lpu,Lps,S,W_WE,W_NS]
+#loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7]
 #loadCasesToDisplay=[LS1,LS2]
 #loadCasesToDisplay=[Q9]
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispBeamLoads:
-        lcs=qg.QuickGraphics(FEcase)
         capt=lc.loadCaseDescr + ', ' + st.description + ', '  + lc.unitsLoads
-        lcs.dispLoadCaseBeamEl(loadCaseName=lc.loadCaseName,setToDisplay=st,fUnitConv=lc.unitsScaleLoads,elLoadComp=lc.compElLoad,elLoadScaleF=lc.vectorScaleLoads,nodLoadScaleF=lc.vectorScalePointLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None)
+        lcs.displayLoads(elLoadComp=lc.compElLoad,setToDisplay=st,caption= capt,fileName=None)
 

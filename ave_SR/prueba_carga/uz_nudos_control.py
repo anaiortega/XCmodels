@@ -8,7 +8,7 @@ execfile('./loadStateData.py')
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:
 
-lcs=QGrph.QuickGraphics(FEcase)
+lcs=QGrph.LoadCaseResults(FEcase)
 lcs.solve(loadCaseName=Q1.loadCaseName,loadCaseExpr=Q1.loadCaseExpr)
 
 import geom

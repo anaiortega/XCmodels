@@ -149,7 +149,7 @@ class RecordLoadCaseDisp(object):
     :param capStdTexts:dictionary with the standard captions
     '''
 #    lcs=GridModel.QuickGraphics(gridmodl)   #26/03/2017
-    lcs=qg.QuickGraphics(FEcase)
+    lcs=qg.LoadCaseResults(FEcase)
     #solve for load case
     lcs.solve(loadCaseName=self.loadCaseName,loadCaseExpr=self.loadCaseExpr)
     #Displacements and rotations displays
