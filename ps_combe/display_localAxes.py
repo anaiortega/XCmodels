@@ -24,7 +24,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 setToDisp= pierBearingElements
 #setToDisp= xcTotalSet
 #setToDisp= beamLinesType4+beamLinesType5+beamLinesType6
-lcs= qg.LoadCaseResults(FEcase)
-lcs.displayLocalAxes(preprocessor,setToDisplay=setToDisp,caption=capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+lcs= qg.LoadCaseResults(model)
+lcs.displayLocalAxes(setToDisplay=setToDisp,caption=capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
 

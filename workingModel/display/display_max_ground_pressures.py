@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 # -*- coding: utf-8 -*-
+from miscUtils import LogMessages as lmsg
+
+lmsg.warning('Implementation pending. Do not use.')
+quit()
+
 execfile("../env_config_deck.py")
 execfile("../model_gen.py") #FE model generation
 execfile(path_loads_def+"loadComb_deck.py")

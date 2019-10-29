@@ -13,7 +13,7 @@ loadCasesToDisplay=[Q664Det1B_point]#[G1,G2,Q269A_point,Q269A_unif,Q269B_point,Q
 #End data
 
 for lc in loadCasesToDisplay:
-    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs= qg.LoadCaseResults(model, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
     lcs.solve()
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads

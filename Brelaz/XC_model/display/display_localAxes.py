@@ -19,7 +19,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
 
-#lcs.displayLocalAxes(preprocessor=prep,setToDisplay=shells,caption= capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+#lcs.displayLocalAxes(setToDisplay=shells,caption= capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 lcs= qg.LoadCaseResults(FEcase)
 lcs.displayLocalAxes(setToDisplay=deck,caption=capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
