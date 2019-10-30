@@ -21,8 +21,8 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-#home= '/home/ana/projects/XCmodels/'
-home= '/home/luis/Documents/XCmodels/'
+home= '/home/ana/projects/XCmodels/'
+#home= '/home/luis/Documents/XCmodels/'
 
 fullProjPath= home + 'workingModel/'
 execfile(fullProjPath+'env_config.py')
@@ -75,7 +75,7 @@ elements.dimElem= 3
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
-OutUnits=modelSpace.getDefaultOuputUnits()
+#OutUnits=modelSpace.getDefaultOuputUnits()
 
 # coordinates in global X,Y,Z axes for the grid generation
 xList=[0,LbeamX/2.0,LbeamX]
