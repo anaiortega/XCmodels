@@ -17,7 +17,8 @@ from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
 
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_wall/'
+#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_wall/'
+home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/ramp_wall/'
 execfile(home+'data.py')
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
@@ -104,10 +105,9 @@ wallSets=[wallBasement,wallFirstFloor]
 
 pntBase=gridGeom.getSetPntXYZRange(xyzRange=((xHall,0,foundElev),(xWestWall,LwallBasement,foundElev)),setName='pntBase')
 lnBase=sets.get_lines_on_points(setPoints=pntBase, setLinName='lnBase', onlyIncluded=True)
-#out.displayBlocks(lnBase)
-lnBase.fillDownwards()
-for n in lnBase.getNodes:
-    modelSpace.fixNode('000_FFF',n.tag)
+for l in lnBase.lines:
+    for n in l.getNodes:
+        modelSpace.fixNode('000_FFF',n.tag)
 
 pntBwall=gridGeom.getSetPntXYZRange(xyzRange=((xHall,0,foundElev),(xWestWall,0,firstFloorElev)),setName='pntBwall')
 lnBwall=sets.get_lines_on_points(setPoints=pntBwall, setLinName='lnBwall', onlyIncluded=True)
