@@ -20,9 +20,9 @@ scaleFactor=1        #scale factor to apply to the auto-scales diagram (can be n
 fUnitConv=1          #unit conversion factor (i.e N->kN => fUnitConv= 1e-3)
 #  End config 
 
-caption= cfg.capTexts[lsd.normalStressesResistance.label] + ', ' + cfg.capTexts[argument] + '. '#+ setsDispRes[0].description.capitalize() + ', ' 
+#caption= cfg.capTexts[lsd.normalStressesResistance.label] + ', ' + cfg.capTexts[argument] 
 
-qg.display_beam_result(attributeName=lsd.normalStressesResistance.label,itemToDisp=argument,beamSetDispRes=setDispRes,setToDisplay=setDisp,fConvUnits=fUnitConv,scaleFactor=1.0,caption=caption,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),fileName=None,defFScale=0.0)
+qg.display_beam_result(attributeName=lsd.normalStressesResistance.label,itemToDisp=argument,beamSetDispRes=setDispRes,setToDisplay=setDisp,fConvUnits=fUnitConv,scaleFactor=1.0,caption='',viewDef= vtk_graphic_base.CameraParameters('XYZPos'),fileName=None,defFScale=0.0)
 
 
 

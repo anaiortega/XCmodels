@@ -1,16 +1,24 @@
 # -*- coding: utf-8 -*-
 import os
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
+from postprocess.xcVtk.FE_model import vtk_FE_graphic
+
 
 execfile('../model_gen.py')
-execfile('../load_state_data.py')
 
-slabs.fillDownwards()
+execfile(path_loads_def+'load_state_data.py')
+
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
-loadCasesToDisplay=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
-loadCasesToDisplay=[ULS01]
+loadCasesToDisplay=LSD_disp
+#loadCasesToDisplay=[Q31,Q32,Q33,Q34]
+loadCasesToDisplay=[G1]
 #End data
+for lc in loadCasesToDisplay:
+#    lc.setsToDispBeamIntForc=[struts,ties]
+#    lc.setsToDispBeamIntForc=[setArmPil]+[struts,ties,piles]
+    lc.setsToDispIntForc=[setArmLosa]
+#    lc.listBeamIntForc=['N']
 for lc in loadCasesToDisplay:
     lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
@@ -50,7 +58,9 @@ for lc in loadCasesToDisplay:
                 else:
                   scaleFact=lc.scaleDispBeamIntForc[1]
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fConvUnits= fcUn,scaleFactor=scaleFact,unitDescription=unDesc,viewDef= lc.cameraParametersBeams,fileName=None,defFScale=1)
+    # if abutment.lower()[0]=='y': 
+    #     defDisplay= vtk_FE_graphic.RecordDefDisplayEF() 
+    #     found_wink.displayPressures(defDisplay,lc.loadCaseName +'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
 
-    
 
             

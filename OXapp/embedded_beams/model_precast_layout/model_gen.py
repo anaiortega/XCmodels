@@ -647,7 +647,8 @@ stBusq=slabW1+slab12+slab23+slab34+slab45
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+#    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('0F0_FFF',n.tag)
 '''    
 stBusq=slabs5_L
 z=zBeamHigh
@@ -661,7 +662,8 @@ y=0
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,y,z),geom.Pos3d(xFac[-1],y,z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+#    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('F00_FFF',n.tag)
 '''
 stBusq=slabsF_L
 z=zBeamHigh
@@ -687,7 +689,8 @@ y=yList[-1]
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xCols[2],y,z),geom.Pos3d(xCols[3],y,z)])
 for n in nod:
-    modelSpace.fixNode('FF0_FFF',n.tag)
+#    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('F00_FFF',n.tag)
 
 #Ramp
 stBusq=slabW1+slab12

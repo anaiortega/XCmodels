@@ -133,6 +133,7 @@ Q3.setsToDispBeamIntForc=[columnZ,beamX,beamY]
 Q3.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q3.setsToDispBeamLoads=[overallSet]
+Q3.setsToDispBeamLoads=[decks]
 Q3.vectorScalePointLoads=0.005
 Q3.compElLoad='transComponent'
 

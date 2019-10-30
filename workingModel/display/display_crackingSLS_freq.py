@@ -12,7 +12,7 @@ execfile(cfg.verifCrackFreqFile)
 
 
 #  Config
-argument= 'wk'    #Possible arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
+argument= 'CF'    #Possible arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'
 fUnitConv=1e3     #unit conversion factor (i.e m->mm => fUnitConv= 1e3)
 setDisp= wall     #Set of shell elements to be displayed
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
