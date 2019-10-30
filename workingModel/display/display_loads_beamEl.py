@@ -13,6 +13,8 @@ loadCasesToDisplay=[Q3,Q4,Q5,Q6,Q7]
 #loadCasesToDisplay=[LS1,LS2]
 #loadCasesToDisplay=[Q9]
 #End data
+#loadCasesToDisplay=[G1,Q1,Q2,Q8,Q10,Q11]
+#loadCasesToDisplay=[Q3]
 
 for lc in loadCasesToDisplay:
     lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)

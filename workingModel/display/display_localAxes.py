@@ -19,8 +19,10 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #                   None, in this case it returns a console output graphic.
 
 setToDisp=beamXsteel+columnZsteel
+
 lcs= qg.LoadCaseResults(FEcase)
 lcs.displayLocalAxes(setToDisplay=setToDisp,caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
+
 
 
 

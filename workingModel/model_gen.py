@@ -75,6 +75,7 @@ elements.dimElem= 3
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
+OutUnits=modelSpace.getDefaultOuputUnits()
 
 # coordinates in global X,Y,Z axes for the grid generation
 xList=[0,LbeamX/2.0,LbeamX]
@@ -161,6 +162,7 @@ beamXsteel=gridGeom.genLinMultiRegion(lstIJKRange=beamXsteel_rg,nameSet='beamXst
 beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
 columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
 columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
+#modelSpace.displayBlocks()
 #Surfaces generation
 decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
 decklv2=gridGeom.genSurfOneRegion(ijkRange=decklv2_rg,nameSet='decklv2')
@@ -183,7 +185,10 @@ columnZconcr.color=cfg.colors['red03']
 columnZsteel.description='Steel columns'
 columnZsteel.color=cfg.colors['blue02']
 
-
+beams=beamXconcr+beamY
+beams.description='Beams'
+beams.fillDownwards()
+#modelSpace.displayBlocks()
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
 S235JR= EC3_materials.S235JR
@@ -251,12 +256,15 @@ wall_mesh=fem.SurfSetToMesh(surfSet=wall,matSect=wall_mat,elemSize=eSize,elemTyp
 wall_mesh.generateMesh(prep) 
 foot_mesh=fem.SurfSetToMesh(surfSet=foot,matSect=foot_mat,elemSize=eSize,elemType='ShellMITC4')
 foot_mesh.generateMesh(prep)
+#modelSpace.displayFEMesh()
 #Steel elements: local Z-axis corresponds to weak axis of the steel shape
 beamXsteel_mesh=fem.LinSetToMesh(linSet=beamXsteel,matSect=beamXsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,-1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([-1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
 
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,beamY_mesh,columnZconcr_mesh,columnZsteel_mesh])     #mesh these sets
 
+#modelSpace.displayLocalAxes()
+#modelSpace.displayStrongWeakAxis(setToDisplay=beams)
 
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
@@ -280,7 +288,7 @@ n_col2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX,LbeamY,0))
 modelSpace.fixNode('000_FFF',n_col2.tag)
 n_col3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX/2.,LbeamY,0))
 modelSpace.fixNode('FF0_000',n_col3.tag)
-
+#modelSpace.displayFEMesh()
 
 #                       ***ACTIONS***
 
@@ -400,7 +408,6 @@ unifLoadLinDeck2=loads.UniformLoadOnLines(name='unifLoadLinDeck2',xcSet=decklv2,
 prBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=LbeamY/2.,Lx=0.5,Ly=1.0)
 wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadVector=xc.Vector([0,0,-Qwheel]),prismBase=prBase,prismAxis='Z',refSystem='Global')
 
-# ---------------------------------------------------------------
 
 # Point loads defined in the object lModel, distributed over the shell 
 # elements under the wheels affected by them.
@@ -480,7 +487,18 @@ LS1.addLstLoads([selfWeight,unifLoadDeck1,unifLoadDeck2,earthPressLoadWall,earth
 LS2=lcases.LoadCase(preprocessor=prep,name="LS2",loadPType="default",timeSType="constant_ts")
 LS2.create()
 LS2.addLstLoads([selfWeight,earthPColumnHrzL,unifLoadBeamsY,QpuntBeams,unifLoadLinDeck2,wheelDeck1])
-    
+
+from postprocess.xcVtk.FE_model import quick_graphics as QGrph
+LC1=QGrph.LoadCaseResults(FEcase,loadCaseName= 'LC1',loadCaseExpr= '1*GselfWeight')
+LC1.solve()
+'''
+modelSpace.displayUx()
+modelSpace.displayUy()
+modelSpace.displayUz()
+modelSpace.displayRotX()
+modelSpace.displayRotY()
+modelSpace.displayRotZ()
+'''
 #    ***LIMIT STATE COMBINATIONS***
 combContainer= cc.CombContainer()  #Container of load combinations
 

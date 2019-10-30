@@ -11,7 +11,7 @@ execfile("../steel_beams_def.py")
 setCalc=beamXsteel+columnZsteel
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=setCalc,appendToResFile='N',listFile='N',calcMeanCF='Y')
+outCfg=oc.verifOutVars(setCalc=setCalc,appendToResFile='Y',listFile='N',calcMeanCF='Y')
 
 limitState=lsd.shearResistance
 limitState.controller= EC3lscheck.ShearController(limitState.label)

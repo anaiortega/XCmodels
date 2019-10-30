@@ -27,3 +27,4 @@ lcs.displayBeamResult(attributeName=lsd.normalStressesResistance.label, itemToDi
 
 
 
+

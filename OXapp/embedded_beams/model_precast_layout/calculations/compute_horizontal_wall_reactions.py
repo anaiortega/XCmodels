@@ -23,28 +23,24 @@ for lc in loadCases:
     northReactions[lc.loadCaseName]= 0.0
     southReactions[lc.loadCaseName]= 0.0
     eastReactions[lc.loadCaseName]= 0.0
-    westReactions[lc.loadCaseName]= 0.0
 
 for lc in loadCases:
-    lcs=QGrph.LoadCaseResults(FEcase)
+    lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
     lcs.solve()
     #Reaction on column bases
     nodes.calculateNodalReactions(False,1e-7)
     for n in wallNorth:
         reac= n.getReaction
-        northReactions[lc.loadCaseName]+= reac[2]
+        northReactions[lc.loadCaseName]+= reac[1]
     for n in wallSouth:
         reac= n.getReaction
-        southReactions[lc.loadCaseName]+= reac[2]
+        southReactions[lc.loadCaseName]+= reac[1]
     for n in wallEast:
         reac= n.getReaction
-        eastReactions[lc.loadCaseName]+= reac[2]
-    for n in wallWest:
-        reac= n.getReaction
-        westReactions[lc.loadCaseName]+= reac[2]
+        eastReactions[lc.loadCaseName]+= reac[0]
 
-csvFile= open("wall_reactions.csv", "w")
+csvFile= open("wall_horizontal_reactions.csv", "w")
 writer= csv.writer(csvFile)
 
 for key in northReactions:
@@ -58,10 +54,6 @@ for key in southReactions:
 for key in eastReactions:
     reac= eastReactions[key]
     row= ['East', key, reac]
-    writer.writerow(row)
-for key in westReactions:
-    reac= westReactions[key]
-    row= ['West', key, reac]
     writer.writerow(row)
 
 csvFile.close()
