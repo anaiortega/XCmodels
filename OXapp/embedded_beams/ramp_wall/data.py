@@ -41,3 +41,19 @@ yList.sort()
 
 zList=[foundElev,firstFloorElev,secondFloorElev]
 zList.sort()
+
+#Loads
+# earth pressure
+firad=math.radians(30)  #internal friction angle (radians)
+KearthPress=1-math.sin(firad)
+densSoil=1000       #mass density of the soil (kg/m3)
+
+Dead_WE2F=(31.71+4.91)*1e3  #dead load West & East walls 2 floor [N/m]
+Live_WE2F=(24.71+8.32)*1e3
+Snow_WE2F=13.38*1e3
+Wind_WE2F=-8.46*1e3
+
+Dead_E1F=42.85*1e3  #dead load East wall 1 floor [N/m]
+Live_E1F=10.77*1e3
+Snow_E1F=-0.08*1e3
+Wind_E1F=-0.5*1e3
