@@ -5,7 +5,7 @@ import datetime
 import vtk
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
-from postprocess.xcVtk import control_var_diagram as cvd
+from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 import os
 from postprocess.control_vars import *
 

@@ -20,13 +20,8 @@ rgMinMax=(0,1.0)     #truncate values to be included in the range
                      #(if None -> don't truncate)
 #  End config 
 
-for e in setDisp.getElements:
-    print('element type: ', e.type)
+dls.displayFieldDirs1and2(limitStateLabel=lsd.shearResistance.label,argument=argument,elementSet=setDisp,component=None,fUnitConv=fUnitConv,captionTexts=cfg.capTexts, fileName=None, defFScale=0.0,viewDef= cameraParameters,rgMinMax=rgMinMax)
 
-dls.displayFieldDirs1and2(limitStateLabel=lsd.shearResistance.label,argument=argument,elementSet=setDisp,component=None,fUnitConv=fUnitConv,fileName=None,captionTexts=cfg.capTexts,defFScale=0.0,viewDef= cameraParameters,rgMinMax=rgMinMax)
-
-for e in setDisp.getElements:
-    print('element type: ', e.type)
 
 
 

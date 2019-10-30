@@ -111,7 +111,7 @@ saddCableMat=typical_materials.defCableMaterial(preprocessor=prep,name='saddCabl
 # from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 # defDisplay= vtk_CAD_graphic.RecordDefDisplayCAD()
 # totalSet= prep.getSets.getSet('total')
-# defDisplay.displayBlocks(xcSet=totalSet,fName= None,caption= 'Model grid')
+# defDisplay.displayBlocks(setToDisplay=totalSet,caption= 'Model grid')
 
 # Seed element for struts
 seedElemHandler= prep.getElementHandler.seedElemHandler

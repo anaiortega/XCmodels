@@ -99,7 +99,7 @@ allSets=pile+springSet
 '''
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
-defDisplay.displayMesh(xcSets=allSets,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.10)
+defDisplay.displayMesh(xcSets=allSets,caption='Mesh',nodeSize=0.5,scaleConstr=0.10)
 '''
 pTop=gridGeom.getPntXYZ((0,0,0))
 nTop=pTop.getNode()

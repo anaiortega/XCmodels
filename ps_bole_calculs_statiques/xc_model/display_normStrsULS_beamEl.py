@@ -6,7 +6,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 from postprocess.control_vars import *
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
-from postprocess.xcVtk import control_var_diagram as cvd
+from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 from postprocess import limit_state_data as lsd
 
 model_path="./"

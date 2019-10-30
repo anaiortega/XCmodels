@@ -13,7 +13,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk.FE_model import Fields
 from postprocess import utils_display
 from model.grid_based_oldStyle_deprecated import GridModel
-from postprocess.xcVtk import control_var_diagram as cvd
+from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 class RecordLoadCaseDisp(object):
@@ -233,14 +233,14 @@ def checksReports(limitStateLabel,setsShEl,argsShEl,capTexts,pathGr,texReportFil
             field= Fields.getScalarFieldFromControlVar(attributeName,arg,st,None,1.0)
             capt=capTexts[limitStateLabel] + ', ' + capTexts[arg] + '. '+ st.name.capitalize() + ', ' + st.sectDescr[0]
             grFileNm=pathGr+st.name+arg+'Sect1'
-            field.display(defDisplay=dfDisp,caption=capt,fName=grFileNm+'.jpg')
+            field.display(defDisplay=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
             insertGrInTex(texFile=report,grFileNm=grFileNm,grWdt=grWdt,capText=capt)
 
             attributeName= limitStateLabel + 'Sect2'
             field= Fields.getScalarFieldFromControlVar(attributeName,arg,st,None,1.0)
             capt=capTexts[limitStateLabel] + ', ' + capTexts[arg] + '. '+ st.name.capitalize() + ', ' + st.sectDescr[1]
             grFileNm=pathGr+st.name+arg+'Sect2'
-            field.display(defDisplay=dfDisp,caption=capt,fName=grFileNm+'.jpg')
+            field.display(defDisplay=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
             insertGrInTex(texFile=report,grFileNm=grFileNm,grWdt=grWdt,capText=capt)
     for stV in setsBmElView:
         for argS in argsBmElScale:
@@ -252,7 +252,7 @@ def checksReports(limitStateLabel,setsShEl,argsShEl,capTexts,pathGr,texReportFil
             dfDisp.appendDiagram(diagram)
             capt= capTexts[limitStateLabel] + ', ' + capTexts[argS[0]] + '. '+ stV[0].genDescr.capitalize() + ', ' + stV[0].sectDescr[0]
             grFileNm=pathGr+stV[0].elSet.name+argS[0]
-            dfDisp.displayScene(caption=capt,fName=grFileNm+'.jpg')
+            dfDisp.displayScene(caption=capt, fileName=grFileNm+'.jpg')
             insertGrInTex(texFile=report,grFileNm=grFileNm,grWdt=grWdt,capText=capt)
     report.close()
     return

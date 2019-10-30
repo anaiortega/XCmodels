@@ -18,7 +18,7 @@ for l in attachedBeamLines.getLines:
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 defDisplay= vtk_CAD_graphic.RecordDefDisplayCAD()
 setToDisplay= attachedBeamLines+columns #beams+columns # columns # beams, slabs_H, slabs_L, stag2Set
-defDisplay.displayBlocks(xcSet= setToDisplay,fName= None,caption= 'Model grid')
+defDisplay.displayBlocks(setToDisplay= setToDisplay,caption= 'Model grid')
 
 
 

@@ -9,8 +9,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #             display position of each node equals to the initial position plus
 #             its displacement multiplied by this factor. (Defaults to 0.0,
 #             i.e. display of initial/undeformed shape)
-#  fName:     name of the graphic file to create (defaults to None -> screen
-#             window).
+
 #  nodeSize:  size of the points that represent nodes (defaults to 0.01)
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
@@ -32,4 +31,4 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[zapEstr,murestrZ1,murestrZ2,murestrZ3,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
 #setsTodisp=[setArmZapEstr]
 setsTodisp=setsTablPilas+setsEstribo+[pilasSotav,ties,struts,piles]
-defDisplay.displayMesh(xcSets=setsTodisp,fName= None,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)
+defDisplay.displayMesh(xcSets=setsTodisp,caption='Mesh',nodeSize=0.5,scaleConstr=0.30)
