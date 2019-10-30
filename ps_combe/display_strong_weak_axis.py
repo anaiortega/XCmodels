@@ -6,7 +6,7 @@ execfile('./captionTexts.py')
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-    # display_local_axes: vector field display of the element local axes.
+    # lcs.displayLocalAxes: vector field display of the element local axes.
     # Parameters:
     #   setToDisplay:   set of elements to be displayed
     #                   (defaults to 'total')
@@ -25,6 +25,6 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 setToDisp= corbelLines
 #setToDisp= xcTotalSet
 #setToDisp= beamLinesType4+beamLinesType5+beamLinesType6
-qg.displayStrongWeakAxis(preprocessor,setToDisplay=setToDisp,vectorScale=1,vtk_graphic_base.CameraParameters('XYZPos'),caption=capTexts['StrongWeakAxis'],fileName=None,defFScale=0.0)
+qg.displayStrongWeakAxis(preprocessor,setToDisplay=setToDisp,caption=capTexts['StrongWeakAxis'],fileName=None,defFScale=0.0)
 
 

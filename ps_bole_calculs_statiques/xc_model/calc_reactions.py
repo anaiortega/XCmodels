@@ -8,7 +8,7 @@ from postprocess import get_reactions as gr
 def resultComb(prb,nmbComb):
   preprocessor= prb.getPreprocessor   
   preprocessor.resetLoadCase()
-  preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+  preprocessor.getLoadHandler.addToDomain(nmbComb)
   #Solución
   solution= predefined_solutions.SolutionProcedure()
   analysis= solution.simpleStaticLinear(prb)
@@ -25,7 +25,7 @@ def resultComb(prb,nmbComb):
     reac= fillForces[key]
     print "Support ", key , nmbComb, reac*1e-3, " (kN)"
     #print "M= ", tmp[2]/1e3
-  preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+  preprocessor.getLoadHandler.removeFromDomain(nmbComb)
   return spandrelReactions, fillReactions
 
 

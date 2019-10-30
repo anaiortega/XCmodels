@@ -21,7 +21,7 @@ nmbComb="ELU00"
 
 
 preprocessor.resetLoadCase()
-preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+preprocessor.getLoadHandler.addToDomain(nmbComb)
 #Solución
 solution= predefined_solutions.SolutionProcedure()
 analysis= solution.simpleStaticLinear(prb)
@@ -33,6 +33,6 @@ l.getLateralBucklingReductionFactor(1)
 for l in ec3beams:
     l.updateLateralBucklingReductionFactor(crossSectionClass)
 result= analysis.analyze(1) #Update resistant values 
-#  preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+#  preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 

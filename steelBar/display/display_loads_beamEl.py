@@ -12,8 +12,9 @@ loadCasesToDisplay=[Q1]
 #End data
 
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispBeamLoads:
-        lcs=qg.QuickGraphics(FEcase)
         capt=lc.loadCaseDescr + ', ' + st.description + ', '  + lc.unitsLoads
-        lcs.dispLoadCaseBeamEl(loadCaseName=lc.loadCaseName,setToDisplay=st,fUnitConv=lc.unitsScaleLoads,elLoadComp=lc.compElLoad,elLoadScaleF=lc.vectorScaleLoads,nodLoadScaleF=lc.vectorScalePointLoads,viewName=lc.viewName,hCamFct=lc.hCamFct,caption= capt,fileName=None)
+        lcs.displayLoads(setToDisplay=st,elLoadComp=lc.compElLoad,caption= capt,fileName=None)
 

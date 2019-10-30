@@ -9,7 +9,7 @@ resistingForces= list()
 def resultComb(prb,nmbComb):
     preprocessor= prb.getPreprocessor   
     preprocessor.resetLoadCase()
-    preprocessor.getLoadHandler.getLoadCombinations.addToDomain(nmbComb)
+    preprocessor.getLoadHandler.addToDomain(nmbComb)
     #Solución
     solution= predefined_solutions.SolutionProcedure()
     analysis= solution.simpleStaticLinear(prb)
@@ -28,7 +28,7 @@ def resultComb(prb,nmbComb):
         for i in range(0,6):
             row.append(rf[i])
         resistingForces.append(row)
-    preprocessor.getLoadHandler.getLoadCombinations.removeFromDomain(nmbComb)
+    preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 
 

@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from postprocess.config import output_config as oc
 from materials.sia262 import SIA262_limit_state_checking
+from miscUtils import LogMessages as lmsg
 
 execfile('../env_config.py')
 
+lmsg.warning('Implementation pending. Do not use.')
+quit()
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
 outCfg=oc.verifOutVars(setCalc=beamX,appendToResFile='N',listFile='N')

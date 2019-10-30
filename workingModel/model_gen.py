@@ -21,7 +21,8 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/'
+#home= '/home/ana/projects/XCmodels/'
+home= '/home/luis/Documents/XCmodels/'
 
 fullProjPath= home + 'workingModel/'
 execfile(fullProjPath+'env_config.py')
@@ -407,7 +408,6 @@ unifLoadLinDeck2=loads.UniformLoadOnLines(name='unifLoadLinDeck2',xcSet=decklv2,
 prBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=LbeamY/2.,Lx=0.5,Ly=1.0)
 wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadVector=xc.Vector([0,0,-Qwheel]),prismBase=prBase,prismAxis='Z',refSystem='Global')
 
-# ---------------------------------------------------------------
 
 # Point loads defined in the object lModel, distributed over the shell 
 # elements under the wheels affected by them.

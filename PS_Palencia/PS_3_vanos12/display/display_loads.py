@@ -15,11 +15,13 @@ loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[G4,Q4]
 setToDisp=overallSet
 for lc in loadCasesToDisplay:
+    lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
+    lcs.solve()
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', '  + lc.unitsLoads
         st=overallSet
-        qg.display_load(preprocessor=prep,setToDisplay=setToDisp,loadCaseNm=lc.loadCaseName,unitsScale=lc.unitsScaleLoads,vectorScale=lc.vectorScaleLoads, multByElemArea=lc.multByElemAreaLoads,viewDef= lc.cameraParameters,caption= capt,fileName=None,defFScale=1.0)
+        lcs.displayLoadVectors(setToDisplay=setToDisp,loadCaseNm=lc.loadCaseName,caption= capt,fileName=None,defFScale=1.0)
 
 
 

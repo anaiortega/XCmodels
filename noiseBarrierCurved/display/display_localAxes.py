@@ -7,7 +7,7 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 import vtk
 
-    # display_local_axes: vector field display of the element local axes.
+    # lcs.displayLocalAxes: vector field display of the element local axes.
     # Parameters:
     #   setToDisplay:   set of elements to be displayed
     #                   (defaults to 'total')
@@ -20,7 +20,8 @@ import vtk
     #                   None, in this case it returns a console output graphic.
 
 stDisp=colsSet  #set to display
-model.display_local_axes(setToDisplay=stDisp.elSet,vectorScale=0.3,viewDef= vtk_graphic_base.CameraParameters('XYZPos'),caption= stDisp.genDescr.capitalize() + ', '+ capTexts['LocalAxes'])
+lcs= qg.LoadCaseResults(FEcase)
+lcs.displayLocalAxes(setToDisplay=stDisp.elSet,caption= stDisp.genDescr.capitalize() + ', '+ capTexts['LocalAxes'])
 
 
 

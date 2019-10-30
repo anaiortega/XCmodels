@@ -306,7 +306,7 @@ from postprocess import utils_display
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 from postprocess.xcVtk import vtk_graphic_base
 xcTotalSet=utils_display.setToDisplay(elSet=prep.getSets.getSet('total'),genDescr='',sectDescr=[])
-lcs=qg.QuickGraphics(FEcase)
+lcs=qg.LoadCaseResults(FEcase)
 # lcs.displayDispRot(itemToDisp='uZ',defFScale=1e2)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa  , Loads: Fz,n4=Fz,n5=Fz,n6= -21 kN        '         

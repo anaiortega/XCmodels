@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 execfile("model_data.py")
+from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 for e in shells.elements:
     mats= e.getPhysicalProperties.getVectorMaterials #Materials at gauss points.
@@ -66,8 +67,9 @@ print "totalMass: ",totalMass
 #associated with mode
 modeToDisplay= 1
 figureCaption= 'Mode '+str(modeToDisplay)+' deformed shape and equivalent static loads.'
-from postprocess.xcVtk.FE_model import quick_graphics as qg
-qg.display_eigen_result(preprocessor,eigenMode=modeToDisplay, setToDisplay=xcTotalSet, defShapeScale=2.0,equLoadVctScale=1.5,accelMode=ah[modeToDisplay-1],unitsScale=1e-3,vtk_graphic_base.CameraParameters('XYZPos'),caption= figureCaption,fileName=None)
+lcs= qg.LoadCaseResults(model)
+lcs.outputStyle.equivalentLoadVectorsScaleFactor= 1.5
+lcs.displayEigenResult(eigenMode=modeToDisplay, setToDisplay=xcTotalSet,accelMode=ah[modeToDisplay-1],caption= figureCaption,fileName=None, defFScale= 2.0)
 
 import csv
 with open('earthquake_loads.csv','w') as csvfile:

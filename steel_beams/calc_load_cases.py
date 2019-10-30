@@ -5,12 +5,12 @@
 execfile('model_data.py')
 def resultAction(prb,nmbAction):
   prb.getPreprocessor.resetLoadCase()
-  prb.getPreprocessor.getLoadHandler.getLoadPatterns.addToDomain(nmbAction)
+  prb.getPreprocessor.getLoadHandler.addToDomain(nmbAction)
   #Solución
   solution= predefined_solutions.SolutionProcedure()
   analysis= solution.simpleStaticLinear(prb)
   result= analysis.analyze(1)
-  prb.getPreprocessor.getLoadHandler.getLoadPatterns.removeFromDomain(nmbAction)
+  prb.getPreprocessor.getLoadHandler.removeFromDomain(nmbAction)
 
 from postprocess import get_reactions as gr
  

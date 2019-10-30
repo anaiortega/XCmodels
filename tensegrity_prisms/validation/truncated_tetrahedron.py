@@ -323,7 +323,7 @@ print "deltaL_saddBot2", deltaL_saddBot2
 print "deltaL_saddBot3", deltaL_saddBot3
 
 from postprocess.xcVtk.FE_model import quick_graphics as qg
-lcs=qg.QuickGraphics(FEcase)
+lcs=qg.LoadCaseResults(FEcase)
 lcs.displayDispRot(itemToDisp='uZ')
 quit()
 
