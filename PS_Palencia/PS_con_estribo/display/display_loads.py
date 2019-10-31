@@ -13,7 +13,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 loadCasesToDisplay=LSD_disp
 #loadCasesToDisplay=[LS1,LS2]
 #loadCasesToDisplay=[G4,Q4]
-loadCasesToDisplay=[G1]
+
 for lc in loadCasesToDisplay:
     lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
     lcs.solve()
