@@ -22,8 +22,8 @@ from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
 #home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
+home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
 
 
 fullProjPath= home + 'model_precast_layout/'
@@ -641,14 +641,30 @@ for x in xCols[0:1]:
 
 
 # Simple support precast planks on walls
-#East
+
+#East (boundary conditions)
 #stBusq=slabW1+slab12+slab23+slab34+slab45+slab5W
 stBusq=slabW1+slab12+slab23+slab34+slab45
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
 for n in nod:
-#    modelSpace.fixNode('FF0_FFF',n.tag)
     modelSpace.fixNode('0F0_FFF',n.tag)
+    
+#North-wall-ramp (boundary conditions)
+stBusq=slabW1
+z=zBeamHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(xCols[0],0,z)])
+for n in nod:
+    modelSpace.fixNode('0F0_FFF',n.tag)
+
+#Ramp (boundary conditions)
+stBusq=slabW1+slab12
+x=xRamp[0]
+z=zBeamHigh
+nodRamp=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
+for n in nodRamp:
+    modelSpace.fixNode('000_FFF',n.tag)
+
 '''    
 stBusq=slabs5_L
 z=zBeamHigh
@@ -692,14 +708,6 @@ for n in nod:
 #    modelSpace.fixNode('FF0_FFF',n.tag)
     modelSpace.fixNode('F00_FFF',n.tag)
 
-#Ramp
-stBusq=slabW1+slab12
-x=xRamp[0]
-z=zBeamHigh
-nodRamp=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
-for n in nodRamp:
-#    modelSpace.fixNode('FF0_FFF',n.tag)
-    modelSpace.fixNode('000_FFF',n.tag)
 #    
 #Cantilever
 '''
@@ -1096,6 +1104,7 @@ DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
 DeadL.create()
 DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A,DL_lnWC1B,DL_lnWC1C,DL_lnN1B,DL_lnN1C,
                    DL_PL1,DL_PL2,DL_PL3,DL_PL4,DL_PL5])
+# *****Añadir empuje tierras muro *******
 
 #live load (uniform on rooms)
 LiveL_ru=lcases.LoadCase(preprocessor=prep,name="LiveL_ru")
