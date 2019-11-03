@@ -2,7 +2,7 @@
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
 from postprocess.xcVtk import vtk_graphic_base
-from postprocess.xcVtk.FE_model import vtk_display_limit_state as dls
+from postprocess import output_handler
 from postprocess import RC_material_distribution
 
 
@@ -33,7 +33,9 @@ argument= 'CF'
 
 
 setDisp= elementsWithSection
-dls.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,capTexts)#,vtk_graphic_base.CameraParameters('-X+Y+Z'),defFScale=0.0)
+oh= output_handler.OutputHandler(modelSpace)
+oh.outputStyle.cameraParameters= cameraParameters
+oh.displayFieldDirs1and2(limitStateLabel,argument,setToDisplay=setDisp,component=None, fileName= None)#,vtk_graphic_base.CameraParameters('-X+Y+Z'),defFScale=0.0)
 
 
 
