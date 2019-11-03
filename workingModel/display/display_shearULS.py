@@ -17,7 +17,7 @@ setDisp= decks
 
 rgMinMax=(0,1.0)     #truncate values to be included in the range
                      #(if None -> don't truncate)
-#  End config 
+#  End config
 oh= output_handler.OutputHandler(modelSpace)
 oh.displayFieldDirs1and2(limitStateLabel=lsd.shearResistance.label,argument=argument,setToDisplay= setDisp,component=None,fileName=None, defFScale=0.0,rgMinMax=rgMinMax)
 

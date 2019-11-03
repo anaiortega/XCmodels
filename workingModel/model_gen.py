@@ -19,13 +19,14 @@ from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
 from materials.ec3 import EC3_materials
+from postprocess.config import default_config
 
 # Default configuration of environment variables.
 #home= '/home/ana/projects/XCmodels/'
-home= '/home/luis/Documents/XCmodels/'
+#home= '/home/luis/Documents/XCmodels/'
 
-fullProjPath= home + 'workingModel/'
-execfile(fullProjPath+'env_config.py')
+fullProjPath= default_config.findWorkingDirectory()
+execfile(fullProjPath+'/env_config.py')
 
 #Auxiliary data
  #Geometry
@@ -73,6 +74,7 @@ elements= prep.getElementHandler
 elements.dimElem= 3
 # Problem type
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
+
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
 
