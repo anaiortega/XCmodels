@@ -22,13 +22,6 @@ workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'data.py')
 execfile(workingDirectory+'env_config.py')
 
-<<<<<<< HEAD:OXapp/embedded_beams/ramp_RCwalls/model_gen.py
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_RCwalls/'
-#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/ramp_RCwalls/'
-execfile(home+'data.py')
-execfile(home+'env_config.py')
-=======
->>>>>>> ae53260366952c7f92e6efe0b26de2ac3b581a12:OXapp/embedded_beams/ramp_wall/model_gen.py
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
 preprocessor=FEcase.getPreprocessor
@@ -49,11 +42,9 @@ gridGeom.generatePoints()
 
 #lines
 beamXsteel=gridGeom.genLinMultiXYZRegion([((xHall,yCantilv,secondFloorElev),(xWestWall,yCantilv,secondFloorElev))],'beamXsteel')
-beamsYsteel=gridGeom.genLinMultiXYZRegion([
-    ((xHall,yCantilv,secondFloorElev),(xHall,0,secondFloorElev)),
-    ((xEastWall,yCantilv,secondFloorElev),(xEastWall,yHall,secondFloorElev)),
-    ((xWestWall,yCantilv,secondFloorElev),(xWestWall,0,secondFloorElev))
-     ],'beamsYsteel')
+WbeamYsteel=gridGeom.genLinMultiXYZRegion([((xWestWall,yCantilv,secondFloorElev),(xWestWall,0,secondFloorElev)),'WbeamYsteel'])
+CbeamYsteel=gridGeom.genLinMultiXYZRegion([((xHall,yCantilv,secondFloorElev),(xHall,0,secondFloorElev)),'CbeamYsteel'])
+EbeamYsteel=gridGeom.genLinMultiXYZRegion([((xEastWall,yCantilv,secondFloorElev),(xEastWall,yHall,secondFloorElev))],'EbeamYsteel')
 columnZsteel=gridGeom.genLinMultiXYZRegion([
      ((xEastWall,0,firstFloorElev),(xEastWall,0,secondFloorElev)),
      ],'columnZsteel')
@@ -88,7 +79,7 @@ concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=
 
 beamXsteel_mat= ASTMmat.WShape(steel=strSteel,name='W16X40')
 beamXsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
-beamsYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W16X40')
+beamsYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W21X50')
 beamsYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
 columnZsteel_mat= ASTMmat.HSSShape(steel=strSteel,name='HSS22X22X3/4')
 columnZsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
@@ -102,7 +93,9 @@ wallFirstFloor_mat.setupElasticSection(preprocessor=prep)   #creates the section
 #Mesh
 #Steel elements: local Z-axis corresponds to weak axis of the steel shape
 beamXsteel_mesh=fem.LinSetToMesh(linSet=beamXsteel,matSect=beamXsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-beamsYsteel_mesh=fem.LinSetToMesh(linSet=beamsYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+WbeamYsteel_mesh=fem.LinSetToMesh(linSet=WbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+CbeamYsteel_mesh=fem.LinSetToMesh(linSet=CbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+EbeamYsteel_mesh=fem.LinSetToMesh(linSet=EbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
 EastBasementWall_mesh=fem.SurfSetToMesh(surfSet=EastBasementWall,matSect=wallBasement_mat,elemSize=eSize,elemType='ShellMITC4')
@@ -116,10 +109,11 @@ East1FloorWall_mesh.generateMesh(prep)
 South1FloorWall_mesh.generateMesh(prep)
 WestBasementWall_mesh.generateMesh(prep)
 West1FloorWall_mesh.generateMesh(prep)
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXsteel_mesh,beamsYsteel_mesh,columnZsteel_mesh])     #mesh these sets
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXsteel_mesh,WbeamYsteel_mesh,CbeamYsteel_mesh,EbeamYsteel_mesh,columnZsteel_mesh])     #mesh these sets
 
-beamSets=[beamXsteel,beamsYsteel,columnZsteel]
+beamSets=[beamXsteel,WbeamYsteel,CbeamYsteel,EbeamYsteel,columnZsteel]
 wallSets=[EastBasementWall,East1FloorWall,South1FloorWall,WestBasementWall,West1FloorWall]
+beamsYsteel=WbeamYsteel+CbeamYsteel+EbeamYsteel
 #out.displayFEMesh(setsToDisplay=beamSets+wallSets)
 #out.displayLocalAxes()
 
@@ -186,10 +180,12 @@ earthPressEastwall=loads.EarthPressLoad(name= 'earthPressEastwall', xcSet=EastBa
 earthPressWestwall=loads.EarthPressLoad(name= 'earthPressWestwall', xcSet=WestBasementWall,soilData=soil_ramp, vDir=xc.Vector([1,0,0]))
 
 #Uniform load on beams
+#Beam North facade
 DeadSB=loads.UniformLoadOnBeams(name='DeadSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Dead_stbeam,0,0,0]),refSystem='Global')
 LiveSB=loads.UniformLoadOnBeams(name='LiveSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Live_stbeam,0,0,0]),refSystem='Global')
 SnowSB=loads.UniformLoadOnBeams(name='SnowSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Snow_stbeam,0,0,0]),refSystem='Global')
 WindSB=loads.UniformLoadOnBeams(name='WindSB', xcSet=beamXsteel, loadVector=xc.Vector([0,Wind_stbeam,0,0,0,0]),refSystem='Global')
+
 
 
 EarthPress=lcases.LoadCase(preprocessor=prep,name="EarthPress",loadPType="default",timeSType="constant_ts")

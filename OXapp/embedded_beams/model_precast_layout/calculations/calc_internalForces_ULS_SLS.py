@@ -6,7 +6,7 @@ execfile("../model_gen.py") #FE model generation
 #reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 #Steel beams definition
-execfile("../steel_beams_def.py")
+#execfile("../steel_beams_def.py")
 
 #Set of entities for which checking is going to be performed.
 setCalc= overallSet
@@ -24,7 +24,7 @@ lsd.fatigueResistance # Fatigue resistance.
 #limitStates= [lsd.freqLoadsCrackControl]
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=[col01a,col01b,col02a,col02b,col03,beam01])
+  ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=[])
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

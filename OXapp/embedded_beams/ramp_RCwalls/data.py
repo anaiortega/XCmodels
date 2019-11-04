@@ -63,7 +63,21 @@ Live_E1F=10.77*1e3
 Snow_E1F=-0.08*1e3
 Wind_E1F=-0.5*1e3
 
-Dead_stbeam=14.25e3  #dead load steel beam [N/m]
+Dead_stbeam=14.25e3  #dead load steel beam North facade [N/m]
 Live_stbeam=21.74e3
 Snow_stbeam=9.52e3
 Wind_stbeam=6.01e3
+
+Dead_Wcant=30.78e3  #dead load steel cantilever (West side)
+Live_Wcant=23.78e3
+Snow_Wcant=10.35e3
+
+Dead_Ccant=44.65e3  #dead load steel cantilever (Central)
+Live_Ccant=39.04e3
+Snow_Ccant=15.49e3
+
+ratio=(xEastWall-xHall)/(xWestWall-xEastWall)
+
+Dead_Ecant=ratio*Dead_Wcant  #dead load steel cantilever (East side)
+Live_Ecant=ratio*Live_Wcant  
+Snow_Ecant=ratio*Snow_Wcant  
