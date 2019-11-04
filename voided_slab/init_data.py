@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-fullProjPath='/home/ana/projects/XCmodels/voided_slab/'
+workingDirectory= default_config.findWorkingDirectory()+'/'
 
 abutment='N' #if abutment is modelled 'Y'
 pile_found='N'
 
+print('we need to get rid of this kind of local setup.')
 path_model_slab_bridge='/home/ana/projects/XCmodels/generic_bridges/model_slab_bridge/'
 path_loads_def='/home/ana/projects/XCmodels/generic_bridges/loads_bridge_2_notional_lanes/'
 path_gen_results='/home/ana/projects/XCmodels/generic_bridges/gen_results/'

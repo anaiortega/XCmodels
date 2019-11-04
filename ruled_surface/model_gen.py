@@ -21,10 +21,10 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/'
+from postprocess.config import default_config
 
-fullProjPath= home + 'cylind_model/'
-execfile(fullProjPath+'env_config.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
 
 #Data
 Lx=8     

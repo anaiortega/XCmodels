@@ -19,16 +19,12 @@ from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
 from materials.ec3 import EC3_materials
+from postprocess.config import default_config
 
 # Default configuration of environment variables.
-#home= home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
-#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/'
-
-
-fullProjPath= home + 'model_precast_layout/'
-execfile(fullProjPath+'env_config.py')
-execfile(fullProjPath+'data.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
+execfile(workingDirectory+'data.py')
 
 #Auxiliary data
 #Materials
@@ -786,7 +782,7 @@ for n in nod_st1:
     n1=nod_st2.getNearestNode(n.getCurrentPos3d(0))
     modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
 '''
-execfile(fullProjPath+'lines_loads.py')
+execfile(workingDirectory+'lines_loads.py')
 
 #                       ***ACTIONS***
 
@@ -1184,6 +1180,6 @@ k=zList.index(zBeamHigh)
 steel_beam_rg=gm.IJKRange((xList.index(xCols[1]+gap/2.),j,k),(xList.index(xCols[2]-gap/2.0),j,k))
 steel_beam=gridGeom.getSetLinOneRegion(steel_beam_rg,'steel_beam')
 
-#execfile(fullProjPath+'print_links_slabs_beams.py')
+#execfile(workingDirectory+'print_links_slabs_beams.py')
 
 xcTotalSet= preprocessor.getSets.getSet('total')

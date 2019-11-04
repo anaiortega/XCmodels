@@ -6,8 +6,8 @@ import geom
 import xc
 import math
 
-fullProjPath='/home/ana/projects/XCmodels/ave_SR/PS_101_3_estribo1/'
-execfile(fullProjPath+'env_config.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
 
 execfile('../basic_data.py')
 execfile('../basic_geom.py')

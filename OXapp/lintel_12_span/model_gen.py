@@ -10,10 +10,12 @@ from materials import typical_materials as tm
 from actions import loads
 from actions import load_cases as lcases
 from materials.ehe import EHE_materials
+from postprocess.config import default_config
 
-home=('/home/ana/projects/XCmodels/OXapp/lintel_12_span/')
-execfile(home+'data.py')
-execfile(home+'env_config.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'data.py')
+execfile(workingDirectory+'/env_config.py')
+
 
 FEcase= xc.FEProblem()
 preprocessor=FEcase.getPreprocessor

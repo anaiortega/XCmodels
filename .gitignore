@@ -151,5 +151,7 @@ sympy-plots-for-*.tex/
 
 #specific files
 
+## libreoffice lock files
+.~lock*
 
 

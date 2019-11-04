@@ -22,5 +22,7 @@ argument= 'getMaxSteelStress'
 #argument= 'crackControlVarsNeg.steelStress'
 
 setDisp= shellElements
-gm.displayFieldDirs1and2(limitStateLabel,argument,setDisp,None,1.0,None,capTexts)
+oh= output_handler.OutputHandler(modelSpace)
+oh.outputStyle.cameraParameters= cameraParameters
+oh.displayFieldDirs1and2(limitStateLabel,argument,setToDisplay=setDisp,component=None, fileName= None)
 
