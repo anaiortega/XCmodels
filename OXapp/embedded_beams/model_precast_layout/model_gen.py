@@ -507,7 +507,11 @@ foot_wink.generateSprings(xcSet=foot)
 #fixed DOF (ux:'0FF_FFF', uy:'F0F_FFF', uz:'FF0_FFF',
 #           rx:'FFF_0FF', ry:'FFF_F0F', rz:'FFF_FF0')
 # Base columns
-for x in xCols:
+for x in xCols[0:1]:
+    for y in yCols[1:5]:
+        n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
+        modelSpace.fixNode('000_000',n.tag)
+for x in xCols[1:6]:
     for y in yCols:
         n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
         modelSpace.fixNode('000_000',n.tag)
@@ -620,7 +624,7 @@ for x in xCols[0:1]:
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
         #torsion
         modelSpace.fixNode('FFF_FF0',nCol.tag)
-#        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
+##        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
         modelSpace.fixNode('FFF_F0F',nBeam2.tag)
 #BC8
 for x in xCols[0:1]:
@@ -633,7 +637,7 @@ for x in xCols[0:1]:
         #torsion
         modelSpace.fixNode('FFF_FF0',nCol.tag)
         modelSpace.fixNode('FFF_F0F',nBeam1.tag)
-#        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
+##        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
 
 
 # Simple support precast planks on walls
