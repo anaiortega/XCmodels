@@ -20,23 +20,23 @@ from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #
 
-fullProjPath='/home/ana/projects/XCmodels/PS_Palencia/PS_con_estribo/'
-execfile(fullProjPath+'init_data.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'init_data.py')
 
-execfile(fullProjPath+'data_deck_piers.py')
+execfile(workingDirectory+'data_deck_piers.py')
 if abutment.lower()[0]=='y':
-    execfile(fullProjPath+'data_abutment.py')
+    execfile(workingDirectory+'data_abutment.py')
 execfile(path_model_slab_bridge+'model_gen.py')
 
 if abutment.lower()[0]=='y':
     execfile(path_model_abutment+'model_gen_abutment.py')
 #Definition of sets
-execfile(fullProjPath+'sets_def.py')
+execfile(workingDirectory+'sets_def.py')
 
 if pile_found.lower()[0]=='y':
     execfile('../data_foundation.py')
 #                       ***BOUNDARY CONDITIONS***
-execfile(fullProjPath+'bound_cond.py')
+execfile(workingDirectory+'bound_cond.py')
         
 #                       ***ACTIONS***
 execfile(path_loads_def+'loads_def.py')                           

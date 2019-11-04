@@ -21,12 +21,12 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-#home= '/home/luis/projects/XCmodels/OXapp/'
-home= '/home/luis/Documents/XCmodels/OXapp/'
 
-fullProjPath= home + 'XC3Dmodel/'
-execfile(fullProjPath+'env_config.py')
-execfile(fullProjPath+'data.py')
+from postprocess.config import default_config
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
+execfile(workingDirectory+'data.py')
 
 #Auxiliary data
 #Materials
@@ -634,7 +634,7 @@ for n in nod_st1:
     n1=nod_st2.getNearestNode(n.getInitialPos3d)
     modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
 
-execfile(fullProjPath+'lines_loads.py')
+execfile(workingDirectory+'lines_loads.py')
 #                       ***ACTIONS***
 
 #Inertial load (density*acceleration) applied to the elements in a set
@@ -818,4 +818,4 @@ for st in slabs_sets:
     st.fillDownwards()
 
 
-#execfile(fullProjPath+'print_links_slabs_beams.py')
+#execfile(workingDirectory+'print_links_slabs_beams.py')

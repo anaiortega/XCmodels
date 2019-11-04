@@ -16,11 +16,12 @@ from actions import loads
 from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
+from postprocess.config import default_config
 
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_wall/'
-#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/ramp_wall/'
-execfile(home+'data.py')
-execfile(home+'env_config.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'data.py')
+execfile(workingDirectory+'env_config.py')
+
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
 preprocessor=FEcase.getPreprocessor

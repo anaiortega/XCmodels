@@ -22,11 +22,11 @@ from materials.ec3 import EC3_materials
 from postprocess.config import default_config
 
 # Default configuration of environment variables.
-#home= '/home/ana/projects/XCmodels/'
-#home= '/home/luis/Documents/XCmodels/'
 
-fullProjPath= default_config.findWorkingDirectory()
-execfile(fullProjPath+'/env_config.py')
+
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'/env_config.py')
 
 #Auxiliary data
  #Geometry

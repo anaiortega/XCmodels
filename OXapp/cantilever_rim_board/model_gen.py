@@ -8,9 +8,10 @@ from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
 from actions import load_cases as lcases
+from postprocess.config import default_config
 
-home=('/home/ana/projects/XCmodels/OXapp/cantilever_rim_board/')
-execfile(home+'data.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'data.py')
 
 FEcase= xc.FEProblem()
 preprocessor=FEcase.getPreprocessor

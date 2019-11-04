@@ -21,13 +21,13 @@ from materials.ehe import EHE_materials
 from materials.ec3 import EC3_materials
 
 # Default configuration of environment variables.
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp/'
-#home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/'
+from postprocess.config import default_config
 
 
-fullProjPath= home
-execfile(fullProjPath+'env_config.py')
-execfile(fullProjPath+'data.py')
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
+execfile(workingDirectory+'data.py')
 
 #Auxiliary data
 #Materials
