@@ -18,7 +18,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
     #   fileName:       full name of the graphic file to generate. Defaults to 
     #                   None, in this case it returns a console output graphic.
 
-setToDisp=columns
+setToDisp= rampNeighboursPlanksSet #columns
 lcs= qg.LoadCaseResults(FEcase)
 lcs.displayLocalAxes(setToDisplay=setToDisp,caption= cfg.capTexts['LocalAxes'],fileName=None,defFScale=0.0)
 
