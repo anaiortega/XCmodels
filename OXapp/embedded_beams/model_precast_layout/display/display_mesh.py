@@ -21,11 +21,12 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[beams,columns]
 #setsTodisp=[columns]
 #setsTodisp=[slabs,beams,columns]
-setsTodisp=[slabs]
+#setsTodisp=[slabs]
 #setsTodisp=[slabs5_L]
 # sett=beams+columns
 # sett.color=cfg.colors['brown04']
 # setsTodisp=[sett]
 #setsTodisp=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabCD_L,slabDG,slabGF,slabFW]
 #setsTodisp=[slabsBC_L,slabCD_L,slabsF_L]
+setsTodisp=[rampNeighboursPlanksSet]
 defDisplay.displayMesh(xcSets=setsTodisp,caption='Precast beams and columns',nodeSize=0.5,scaleConstr=1.0)

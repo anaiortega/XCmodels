@@ -357,3 +357,4 @@ j2=yList.index(yWF[1])
 linN1C_rg.append(gm.IJKRange((i,j1,k),(i,j2,k)))
 ptN1C=gridGeom.getSetPntMultiRegion(linN1C_rg,'ptN1C')
 lnN1C=sets.get_lines_on_points(ptN1C,'lnN1C')
+
