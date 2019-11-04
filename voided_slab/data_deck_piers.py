@@ -7,7 +7,7 @@ from miscUtils import units_utils as uu
 from materials.ehe import EHE_materials
 
  # Geometry
-Lvanos=[11.50,16.10,11.50]
+Lvanos=[14.0,17.20,14.0]
 Ltablero=0
 for v in Lvanos:
     Ltablero+=v
@@ -16,15 +16,21 @@ anchoTot=9.20
 anchoAcera=(anchoTot-anchoCalz)/2.0   
 
 #  losa
-cantoLosa=0.9
-maxCantoVoladz=0.4 #canto máximo del voladizo
+cantoLosa=1.0
+maxCantoVoladz=0.5 #canto máximo del voladizo
 minCantoVoladz=0.20
-anchoVoladz=1.90
-anchoLosa=4.20
-anchoCartab=0.60
+anchoVoladz=2.50
+anchoLosa=3.40
+anchoCartab=0.40
 LriostrEstr=1.0
 LriostrPil=2  #longitud de riostra sobre pilas (a cada lado del eje)
-cantoRiostrEstr=0.90
+#cantoRiostrEstr=0.90
+nAlveol=3   #nº alveolos
+fiAlveol=0.7     #diámetro alveolos
+distAlveol=1.10  #distancia entre alveolos
+posAlveol=cantoLosa  #posición del centro del alveolo respecto a la cara
+                     #superior del tablero
+LeqAlveol=math.sqrt
 
 #  Pilas
 #distEjPilas=4.00

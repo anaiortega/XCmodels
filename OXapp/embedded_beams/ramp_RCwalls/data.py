@@ -31,7 +31,8 @@ from materials.aci import ACI_materials as ACImat
 concrete=ACImat.c4000
 reinfSteel=ACImat.A615G60
 from materials.astm import ASTM_materials as ASTMmat
-A992=ASTMmat.A992
+strSteel=ASTMmat.A36
+strSteel.gammaM= 1.00
 # coordinates in global X,Y,Z axes for the grid generation
 
 xList=[xHall,xEastWall,xWestWall]
@@ -57,9 +58,12 @@ Snow_WE2F=13.38*1e3
 Wind_WE2F=-8.46*1e3  #vertical
 WindH_E2F=1.7*1e3  #horizontal
 
-
 Dead_E1F=42.85*1e3  #dead load East wall 1 floor [N/m]
 Live_E1F=10.77*1e3
 Snow_E1F=-0.08*1e3
 Wind_E1F=-0.5*1e3
 
+Dead_stbeam=14.25e3  #dead load steel beam [N/m]
+Live_stbeam=21.74e3
+Snow_stbeam=9.52e3
+Wind_stbeam=6.01e3

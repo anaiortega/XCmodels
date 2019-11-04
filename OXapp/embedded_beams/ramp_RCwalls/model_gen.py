@@ -17,8 +17,8 @@ from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
 
-home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_wall/'
-#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/ramp_wall/'
+home= '/home/ana/projects/XCmodels/OXapp/embedded_beams/ramp_RCwalls/'
+#home= '/home/luis/Documents/XCmodels/OXapp/embedded_beams/ramp_RCwalls/'
 execfile(home+'data.py')
 execfile(home+'env_config.py')
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
@@ -78,12 +78,12 @@ West1FloorWall=gridGeom.genSurfMultiXYZRegion(
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
 # Steel material-section
 
-beamXsteel_mat= ASTMmat.WShape(steel=A992,name='W16X40')
-beamXsteel_mat.defElasticShearSection3d(preprocessor,A992)
-beamsYsteel_mat= ASTMmat.WShape(steel=A992,name='W16X40')
-beamsYsteel_mat.defElasticShearSection3d(preprocessor,A992)
-columnZsteel_mat= ASTMmat.HSSShape(steel=A992,name='HSS22X22X3/4')
-columnZsteel_mat.defElasticShearSection3d(preprocessor,A992)
+beamXsteel_mat= ASTMmat.WShape(steel=strSteel,name='W16X40')
+beamXsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
+beamsYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W16X40')
+beamsYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
+columnZsteel_mat= ASTMmat.HSSShape(steel=strSteel,name='HSS22X22X3/4')
+columnZsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
 
 # Isotropic elastic section-material appropiate for plate and shell analysis
 wallBasement_mat=tm.DeckMaterialData(name='wallBasement_mat',thickness= wallThBasement,material=concrProp)
@@ -119,6 +119,10 @@ walls=EastBasementWall+East1FloorWall+South1FloorWall+WestBasementWall+West1Floo
 overallSet=beamSets+wallSets
 #                       ***BOUNDARY CONDITIONS***
 
+#Column
+p=gridGeom.getPntXYZ((xEastWall,0,firstFloorElev))
+modelSpace.fixNode('000_FFF',p.getNode().tag)
+#
 pntBase=gridGeom.getSetPntXYZRange(xyzRange=((xHall,0,foundElev),(xWestWall,LwallBasement,foundElev)),setName='pntBase')
 lnBase=sets.get_lines_on_points(setPoints=pntBase, setLinName='lnBase', onlyIncluded=True)
 for l in lnBase.lines:
@@ -173,6 +177,13 @@ soil_ramp=ep.EarthPressureSlopedWall(Ksoil=KearthPress, gammaSoil=grav*densSoil,
 earthPressEastwall=loads.EarthPressLoad(name= 'earthPressEastwall', xcSet=EastBasementWall,soilData=soil_ramp, vDir=xc.Vector([-1,0,0]))
 earthPressWestwall=loads.EarthPressLoad(name= 'earthPressWestwall', xcSet=WestBasementWall,soilData=soil_ramp, vDir=xc.Vector([1,0,0]))
 
+#Uniform load on beams
+DeadSB=loads.UniformLoadOnBeams(name='DeadSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Dead_stbeam,0,0,0]),refSystem='Global')
+LiveSB=loads.UniformLoadOnBeams(name='LiveSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Live_stbeam,0,0,0]),refSystem='Global')
+SnowSB=loads.UniformLoadOnBeams(name='SnowSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Snow_stbeam,0,0,0]),refSystem='Global')
+WindSB=loads.UniformLoadOnBeams(name='WindSB', xcSet=beamXsteel, loadVector=xc.Vector([0,Wind_stbeam,0,0,0,0]),refSystem='Global')
+
+
 EarthPress=lcases.LoadCase(preprocessor=prep,name="EarthPress",loadPType="default",timeSType="constant_ts")
 EarthPress.create()
 EarthPress.addLstLoads([earthPressEastwall,earthPressWestwall])
@@ -215,28 +226,23 @@ Earth1F=loads.UniformLoadOnLines(name='Earth1F',xcSet=lnE1F,loadVector=xc.Vector
 
 Dead_LC=lcases.LoadCase(preprocessor=prep,name="Dead_LC",loadPType="default",timeSType="constant_ts")
 Dead_LC.create()
-Dead_LC.addLstLoads([selfWeight,Dead2F,Dead1F,Earth1F,earthPressEastwall,earthPressWestwall])
-#modelSpace.addLoadCaseToDomain("Dead_LC")
-#out.displayLoadVectors()
-#modelSpace.removeLoadCaseFromDomain("Dead_LC")
+Dead_LC.addLstLoads([selfWeight,Dead2F,Dead1F,Earth1F,earthPressEastwall,earthPressWestwall,DeadSB])
 '''
-EarthP_LC=lcases.LoadCase(preprocessor=prep,name="EarthP_LC",loadPType="default",timeSType="constant_ts")
-EarthP_LC.create()
-EarthP_LC.addLstLoads([Earth1F,earthPressEastwall,earthPressWestwall])
-modelSpace.addLoadCaseToDomain("EarthP_LC")
+modelSpace.addLoadCaseToDomain("Dead_LC")
 out.displayLoadVectors()
-modelSpace.removeLoadCaseFromDomain("EarthP_LC")
+modelSpace.removeLoadCaseFromDomain("Dead_LC")
 '''
+
 Live_LC=lcases.LoadCase(preprocessor=prep,name="Live_LC",loadPType="default",timeSType="constant_ts")
 Live_LC.create()
-Live_LC.addLstLoads([Live2F,Live1F])
+Live_LC.addLstLoads([Live2F,Live1F,LiveSB])
 #modelSpace.addLoadCaseToDomain("Live_LC")
 #out.displayLoadVectors()
 #modelSpace.removeLoadCaseFromDomain("Live_LC")
 
 Snow_LC=lcases.LoadCase(preprocessor=prep,name="Snow_LC",loadPType="default",timeSType="constant_ts")
 Snow_LC.create()
-Snow_LC.addLstLoads([Snow2F,Snow1F])
+Snow_LC.addLstLoads([Snow2F,Snow1F,SnowSB])
 #modelSpace.addLoadCaseToDomain("Snow_LC")
 #out.displayLoadVectors()
 #modelSpace.removeLoadCaseFromDomain("Snow_LC")
@@ -244,9 +250,10 @@ Snow_LC.addLstLoads([Snow2F,Snow1F])
 
 Wind_LC=lcases.LoadCase(preprocessor=prep,name="Wind_LC",loadPType="default",timeSType="constant_ts")
 Wind_LC.create()
-Wind_LC.addLstLoads([Wind2F,Wind1F,HWind2F])
+Wind_LC.addLstLoads([Wind2F,Wind1F,HWind2F,WindSB])
 #modelSpace.addLoadCaseToDomain("Wind_LC")
 #out.displayLoadVectors()
+#out.displayLoads(setToDisplay=beamXsteel,elLoadComp='transZComponent')
 #modelSpace.removeLoadCaseFromDomain("Wind_LC")
 
 #    ***LIMIT STATE COMBINATIONS***
