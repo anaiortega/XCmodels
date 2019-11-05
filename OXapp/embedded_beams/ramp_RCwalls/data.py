@@ -15,7 +15,7 @@ yHall=round(5.5*ft2m,2)
 xHall=round(-5.0*ft2m,2)
 distXwalls=19*ft2m
 
-yCantilv=round(-6.0*ft2m,2)
+yCantilv=round(-(2.0*ft2m+11*in2m),2)
 foundElev=round(-14*ft2m,2)
 rampStartElev=round(-(2*ft2m+6*in2m),2)
 rampEndElev=round(-(12*ft2m+8*in2m),2)
@@ -63,10 +63,9 @@ Live_E1F=10.77*1e3
 Snow_E1F=-0.08*1e3
 Wind_E1F=-0.5*1e3
 
-Dead_stbeam=14.25e3  #dead load steel beam North facade [N/m]
-Live_stbeam=21.74e3
-Snow_stbeam=9.52e3
-Wind_stbeam=6.01e3
+Dead_stbeam=7.35e3  #dead load steel beam North facade [N/m]
+Live_stbeam=2*2.33e3
+Snow_stbeam=1.75e3
 
 Dead_Wcant=30.78e3  #dead load steel cantilever (West side)
 Live_Wcant=23.78e3

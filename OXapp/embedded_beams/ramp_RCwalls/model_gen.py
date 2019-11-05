@@ -42,9 +42,9 @@ gridGeom.generatePoints()
 
 #lines
 beamXsteel=gridGeom.genLinMultiXYZRegion([((xHall,yCantilv,secondFloorElev),(xWestWall,yCantilv,secondFloorElev))],'beamXsteel')
-WbeamYsteel=gridGeom.genLinMultiXYZRegion([((xWestWall,yCantilv,secondFloorElev),(xWestWall,0,secondFloorElev)),'WbeamYsteel'])
-CbeamYsteel=gridGeom.genLinMultiXYZRegion([((xHall,yCantilv,secondFloorElev),(xHall,0,secondFloorElev)),'CbeamYsteel'])
-EbeamYsteel=gridGeom.genLinMultiXYZRegion([((xEastWall,yCantilv,secondFloorElev),(xEastWall,yHall,secondFloorElev))],'EbeamYsteel')
+WbeamYsteel=gridGeom.genLinMultiXYZRegion([((xWestWall,yCantilv,secondFloorElev),(xWestWall,0,secondFloorElev))],'WbeamYsteel')
+EbeamYsteel=gridGeom.genLinMultiXYZRegion([((xHall,yCantilv,secondFloorElev),(xHall,0,secondFloorElev))],'EbeamYsteel')
+CbeamYsteel=gridGeom.genLinMultiXYZRegion([((xEastWall,yCantilv,secondFloorElev),(xEastWall,yHall,secondFloorElev))],'CbeamYsteel')
 columnZsteel=gridGeom.genLinMultiXYZRegion([
      ((xEastWall,0,firstFloorElev),(xEastWall,0,secondFloorElev)),
      ],'columnZsteel')
@@ -77,11 +77,15 @@ West1FloorWall=gridGeom.genSurfMultiXYZRegion(
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
 # Steel material-section
 
-beamXsteel_mat= ASTMmat.WShape(steel=strSteel,name='W16X40')
+beamXsteel_mat= ASTMmat.WShape(steel=strSteel,name='W14X30')
 beamXsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
-beamsYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W21X50')
-beamsYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
-columnZsteel_mat= ASTMmat.HSSShape(steel=strSteel,name='HSS22X22X3/4')
+WbeamYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W14X30')
+WbeamYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
+CbeamYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W14X53')
+CbeamYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
+EbeamYsteel_mat= ASTMmat.WShape(steel=strSteel,name='W14X30')
+EbeamYsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
+columnZsteel_mat= ASTMmat.HSSShape(steel=strSteel,name='HSS5X5X1/2')
 columnZsteel_mat.defElasticShearSection3d(preprocessor,strSteel)
 
 # Isotropic elastic section-material appropiate for plate and shell analysis
@@ -93,9 +97,9 @@ wallFirstFloor_mat.setupElasticSection(preprocessor=prep)   #creates the section
 #Mesh
 #Steel elements: local Z-axis corresponds to weak axis of the steel shape
 beamXsteel_mesh=fem.LinSetToMesh(linSet=beamXsteel,matSect=beamXsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-WbeamYsteel_mesh=fem.LinSetToMesh(linSet=WbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-CbeamYsteel_mesh=fem.LinSetToMesh(linSet=CbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
-EbeamYsteel_mesh=fem.LinSetToMesh(linSet=EbeamYsteel,matSect=beamsYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+WbeamYsteel_mesh=fem.LinSetToMesh(linSet=WbeamYsteel,matSect=WbeamYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+CbeamYsteel_mesh=fem.LinSetToMesh(linSet=CbeamYsteel,matSect=CbeamYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+EbeamYsteel_mesh=fem.LinSetToMesh(linSet=EbeamYsteel,matSect=EbeamYsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 
 EastBasementWall_mesh=fem.SurfSetToMesh(surfSet=EastBasementWall,matSect=wallBasement_mat,elemSize=eSize,elemType='ShellMITC4')
@@ -116,7 +120,7 @@ wallSets=[EastBasementWall,East1FloorWall,South1FloorWall,WestBasementWall,West1
 beamsYsteel=WbeamYsteel+CbeamYsteel+EbeamYsteel
 #out.displayFEMesh(setsToDisplay=beamSets+wallSets)
 #out.displayLocalAxes()
-
+beams=beamXsteel+WbeamYsteel+CbeamYsteel+EbeamYsteel
 walls=EastBasementWall+East1FloorWall+South1FloorWall+WestBasementWall+West1FloorWall
 overallSet=beamSets+wallSets
 #                       ***BOUNDARY CONDITIONS***
@@ -184,7 +188,18 @@ earthPressWestwall=loads.EarthPressLoad(name= 'earthPressWestwall', xcSet=WestBa
 DeadSB=loads.UniformLoadOnBeams(name='DeadSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Dead_stbeam,0,0,0]),refSystem='Global')
 LiveSB=loads.UniformLoadOnBeams(name='LiveSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Live_stbeam,0,0,0]),refSystem='Global')
 SnowSB=loads.UniformLoadOnBeams(name='SnowSB', xcSet=beamXsteel, loadVector=xc.Vector([0,0,-Snow_stbeam,0,0,0]),refSystem='Global')
-WindSB=loads.UniformLoadOnBeams(name='WindSB', xcSet=beamXsteel, loadVector=xc.Vector([0,Wind_stbeam,0,0,0,0]),refSystem='Global')
+#Cantilever-beam West
+DeadCW=loads.UniformLoadOnBeams(name='DeadCW',xcSet=WbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Wcant,0,0,0]),refSystem='Global')
+LiveCW=loads.UniformLoadOnBeams(name='LiveCW',xcSet=WbeamYsteel,loadVector=xc.Vector([0,0,-Live_Wcant,0,0,0]),refSystem='Global')
+SnowCW=loads.UniformLoadOnBeams(name='SnowCW',xcSet=WbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Wcant,0,0,0]),refSystem='Global')
+#Cantilever-beam Center
+DeadCC=loads.UniformLoadOnBeams(name='DeadCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Ccant,0,0,0]),refSystem='Global')
+LiveCC=loads.UniformLoadOnBeams(name='LiveCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Live_Ccant,0,0,0]),refSystem='Global')
+SnowCC=loads.UniformLoadOnBeams(name='SnowCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Ccant,0,0,0]),refSystem='Global')
+#Cantilever-beam East
+DeadCE=loads.UniformLoadOnBeams(name='DeadCE',xcSet=EbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Ecant,0,0,0]),refSystem='Global')
+LiveCE=loads.UniformLoadOnBeams(name='LiveCE',xcSet=EbeamYsteel,loadVector=xc.Vector([0,0,-Live_Ecant,0,0,0]),refSystem='Global')
+SnowCE=loads.UniformLoadOnBeams(name='SnowCE',xcSet=EbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Ecant,0,0,0]),refSystem='Global')
 
 
 
@@ -230,7 +245,7 @@ Earth1F=loads.UniformLoadOnLines(name='Earth1F',xcSet=lnE1F,loadVector=xc.Vector
 
 Dead_LC=lcases.LoadCase(preprocessor=prep,name="Dead_LC",loadPType="default",timeSType="constant_ts")
 Dead_LC.create()
-Dead_LC.addLstLoads([selfWeight,Dead2F,Dead1F,Earth1F,earthPressEastwall,earthPressWestwall,DeadSB])
+Dead_LC.addLstLoads([selfWeight,Dead2F,Dead1F,Earth1F,earthPressEastwall,earthPressWestwall,DeadSB,DeadCW,DeadCC,DeadCE])
 '''
 modelSpace.addLoadCaseToDomain("Dead_LC")
 out.displayLoadVectors()
@@ -239,14 +254,14 @@ modelSpace.removeLoadCaseFromDomain("Dead_LC")
 
 Live_LC=lcases.LoadCase(preprocessor=prep,name="Live_LC",loadPType="default",timeSType="constant_ts")
 Live_LC.create()
-Live_LC.addLstLoads([Live2F,Live1F,LiveSB])
+Live_LC.addLstLoads([Live2F,Live1F,LiveSB,LiveCW,LiveCC,LiveCE])
 #modelSpace.addLoadCaseToDomain("Live_LC")
 #out.displayLoadVectors()
 #modelSpace.removeLoadCaseFromDomain("Live_LC")
 
 Snow_LC=lcases.LoadCase(preprocessor=prep,name="Snow_LC",loadPType="default",timeSType="constant_ts")
 Snow_LC.create()
-Snow_LC.addLstLoads([Snow2F,Snow1F,SnowSB])
+Snow_LC.addLstLoads([Snow2F,Snow1F,SnowSB,SnowCW,SnowCC,SnowCE])
 #modelSpace.addLoadCaseToDomain("Snow_LC")
 #out.displayLoadVectors()
 #modelSpace.removeLoadCaseFromDomain("Snow_LC")
@@ -254,7 +269,7 @@ Snow_LC.addLstLoads([Snow2F,Snow1F,SnowSB])
 
 Wind_LC=lcases.LoadCase(preprocessor=prep,name="Wind_LC",loadPType="default",timeSType="constant_ts")
 Wind_LC.create()
-Wind_LC.addLstLoads([Wind2F,Wind1F,HWind2F,WindSB])
+Wind_LC.addLstLoads([Wind2F,Wind1F,HWind2F])
 #modelSpace.addLoadCaseToDomain("Wind_LC")
 #out.displayLoadVectors()
 #out.displayLoads(setToDisplay=beamXsteel,elLoadComp='transZComponent')
@@ -269,7 +284,7 @@ combContainer.ULS.perm.add('ELU03', '1.2*Dead_LC+1.6*Snow_LC+0.5*Wind_LC')
 combContainer.ULS.perm.add('ELU04', '1.2*Dead_LC+1.0*Live_LC+1.0*Wind_LC')
 combContainer.ULS.perm.add('ELU05', '0.9*Dead_LC+1.0*Wind_LC')
 
-
+'''
 from solution import predefined_solutions
 modelSpace.removeAllLoadPatternsFromDomain()
 modelSpace.addLoadCaseToDomain('Dead_LC')
@@ -280,4 +295,5 @@ out.displayIntForcDiag('My',beamXsteel)
 out.displayIntForcDiag('Mz',beamXsteel)
 out.displayIntForcDiag('My',beamsYsteel)
 out.displayIntForcDiag('Mz',beamsYsteel)
+'''
 

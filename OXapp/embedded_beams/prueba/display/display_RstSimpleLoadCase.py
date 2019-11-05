@@ -5,13 +5,12 @@ from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 execfile('../model_gen.py')
 execfile('../load_state_data.py')
 
+slabs.fillDownwards()
 #ordered list of load cases (from those defined in ../load_state_data.py
 #or redefined lately) to be displayed:
-#loadCasesToDisplay=[G1,Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8,Q9,Q10,Q11]
-#loadCasesToDisplay=[LS1,LS2]
-loadCasesToDisplay=[ULS02]
+loadCasesToDisplay=[ULS01,ULS02_a,ULS02_b,ULS03_a,ULS03_b,ULS04_a,ULS04_b,ULS05_a,ULS05_b,ULS05_c,ULS05_d,ULS06_a,ULS06_b,ULS07_a,ULS07_b]
+loadCasesToDisplay=[ULS01]
 #End data
-
 for lc in loadCasesToDisplay:
     lcs=QGrph.LoadCaseResults(FEcase,lc.loadCaseName,lc.loadCaseExpr)
     #solve for load case
@@ -29,5 +28,6 @@ for lc in loadCasesToDisplay:
         for arg in lc.listBeamIntForc:
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fileName=None,defFScale=1)
 
+    
 
             

@@ -19,9 +19,13 @@ from model.geometry import geom_utils as gut
 from materials.ehe import EHE_materials
 #from materials.sia262 import SIA262_materials
 from materials.ec3 import EC3_materials
-from postprocess.config import default_config
 
 # Default configuration of environment variables.
+
+from postprocess.config import default_config
+
+
+
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')
 execfile(workingDirectory+'data.py')
@@ -266,7 +270,7 @@ j1=yList.index(yCols[0]+gap/2.)
 j2=yList.index(yCols[1]-gap/2.)
 k=zList.index(zBeamHigh)
 slab12_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
-
+slab12_rg.append(gm.IJKRange((xList.index(xRamp[0]),j1,k),(xList.index(xCols[0]-gap/2.),j2,k)))
 
 slab23_rg=[]
 j1=yList.index(yCols[1]+gap/2.)
@@ -507,11 +511,7 @@ foot_wink.generateSprings(xcSet=foot)
 #fixed DOF (ux:'0FF_FFF', uy:'F0F_FFF', uz:'FF0_FFF',
 #           rx:'FFF_0FF', ry:'FFF_F0F', rz:'FFF_FF0')
 # Base columns
-for x in xCols[0:1]:
-    for y in yCols[1:5]:
-        n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
-        modelSpace.fixNode('000_000',n.tag)
-for x in xCols[1:6]:
+for x in xCols:
     for y in yCols:
         n=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(x,y,0))
         modelSpace.fixNode('000_000',n.tag)
@@ -624,7 +624,7 @@ for x in xCols[0:1]:
         modelSpace.setFulcrumBetweenNodes(nCol.tag,nBeam2.tag)
         #torsion
         modelSpace.fixNode('FFF_FF0',nCol.tag)
-##        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
+#        modelSpace.fixNode('FFF_F0F',nBeam1.tag)
         modelSpace.fixNode('FFF_F0F',nBeam2.tag)
 #BC8
 for x in xCols[0:1]:
@@ -637,40 +637,17 @@ for x in xCols[0:1]:
         #torsion
         modelSpace.fixNode('FFF_FF0',nCol.tag)
         modelSpace.fixNode('FFF_F0F',nBeam1.tag)
-##        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
+#        modelSpace.fixNode('FFF_F0F',nBeam2.tag)
 
 
 # Simple support precast planks on walls
-
-#East (boundary conditions)
+#East
 #stBusq=slabW1+slab12+slab23+slab34+slab45+slab5W
 stBusq=slabW1+slab12+slab23+slab34+slab45
 z=zBeamHigh
-eastNodes=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
-eastNodes_ymin= 1e6
-eastNodes_ymax= -1e6
-for n in eastNodes:
-    modelSpace.fixNode('F00_FFF',n.tag)
-    yNode= n.getInitialPos3d.y
-    eastNodes_ymin= min(yNode,eastNodes_ymin)
-    eastNodes_ymax= max(yNode,eastNodes_ymax)
-eastNodesLength= eastNodes_ymax-eastNodes_ymin
-    
-#North-wall-ramp (boundary conditions)
-stBusq=slabW1
-z=zBeamHigh
-nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(xCols[0],0,z)])
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,0,z),geom.Pos3d(0,yFac[-1],z)])
 for n in nod:
-    modelSpace.fixNode('000_FFF',n.tag)
-
-#Ramp (boundary conditions)
-stBusq=slabW1+slab12
-x=xRamp[0]
-z=zBeamHigh
-nodRamp=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
-for n in nodRamp:
-    modelSpace.fixNode('F00_FFF',n.tag)
-
+    modelSpace.fixNode('FF0_FFF',n.tag)
 '''    
 stBusq=slabs5_L
 z=zBeamHigh
@@ -684,8 +661,7 @@ y=0
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(0,y,z),geom.Pos3d(xFac[-1],y,z)])
 for n in nod:
-#    modelSpace.fixNode('FF0_FFF',n.tag)
-    modelSpace.fixNode('F00_FFF',n.tag)
+    modelSpace.fixNode('FF0_FFF',n.tag)
 '''
 stBusq=slabsF_L
 z=zBeamHigh
@@ -711,9 +687,16 @@ y=yList[-1]
 z=zBeamHigh
 nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(xCols[2],y,z),geom.Pos3d(xCols[3],y,z)])
 for n in nod:
-#    modelSpace.fixNode('FF0_FFF',n.tag)
-    modelSpace.fixNode('F00_FFF',n.tag)
+    modelSpace.fixNode('FF0_FFF',n.tag)
 
+#Ramp
+stBusq=slabW1+slab12
+x=xRamp[0]
+z=zBeamHigh
+nod=sets.get_nodes_wire(setBusq=stBusq,lstPtsWire=[geom.Pos3d(x,yList[0],z),geom.Pos3d(x,yCols[1],z)])
+for n in nod:
+#    modelSpace.fixNode('FF0_FFF',n.tag)
+    modelSpace.fixNode('000_FFF',n.tag)
 #    
 #Cantilever
 '''
@@ -793,7 +776,6 @@ for n in nod_st1:
     modelSpace.constraints.newEqualDOF(n.tag,n1.tag,xc.ID(gluedDOFs))
 '''
 execfile(workingDirectory+'lines_loads.py')
-
 #                       ***ACTIONS***
 
 #Inertial load (density*acceleration) applied to the elements in a set
@@ -802,45 +784,16 @@ grav=9.81 #Gravity acceleration (m/s2)
 selfWeightBeamCols=loads.InertialLoad(name='selfWeightBeamCols', lstMeshSets=[beams_mesh,columns_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 
-
+'''
 # Point load acting on one or several nodes
 #     name:       name identifying the load
 #     lstNod:     list of nodes  on which the load is applied
 #     loadVector: xc.Vector with the six components of the load: 
 #                 xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
-nodPL1=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL1_pos)
-nodPL2=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL2_pos)
-nodPL3=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL3_pos)
-nodPL4=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL4_pos)
-nodPL5=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=PL5_pos)
 
-DL_PL1=loads.NodalLoad(name='DL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-D_PL1,0,0,0]))
-LL_PL1=loads.NodalLoad(name='LL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-L_PL1,0,0,0]))
-SL_PL1=loads.NodalLoad(name='SL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,-S_PL1,0,0,0]))
-WL_PL1=loads.NodalLoad(name='WL_PL1',lstNod=nodPL1,loadVector=xc.Vector([0,0,W_PL1,0,0,0]))
-
-DL_PL2=loads.NodalLoad(name='DL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-D_PL2,0,0,0]))
-LL_PL2=loads.NodalLoad(name='LL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-L_PL2,0,0,0]))
-SL_PL2=loads.NodalLoad(name='SL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,-S_PL2,0,0,0]))
-WL_PL2=loads.NodalLoad(name='WL_PL2',lstNod=nodPL2,loadVector=xc.Vector([0,0,W_PL2,0,0,0]))
-
-DL_PL3=loads.NodalLoad(name='DL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-D_PL3,0,0,0]))
-LL_PL3=loads.NodalLoad(name='LL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-L_PL3,0,0,0]))
-SL_PL3=loads.NodalLoad(name='SL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,-S_PL3,0,0,0]))
-WL_PL3=loads.NodalLoad(name='WL_PL3',lstNod=nodPL3,loadVector=xc.Vector([0,0,W_PL3,0,0,0]))
-
-DL_PL4=loads.NodalLoad(name='DL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-D_PL4,0,0,0]))
-LL_PL4=loads.NodalLoad(name='LL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-L_PL4,0,0,0]))
-SL_PL4=loads.NodalLoad(name='SL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,-S_PL4,0,0,0]))
-WL_PL4=loads.NodalLoad(name='WL_PL4',lstNod=nodPL4,loadVector=xc.Vector([0,0,W_PL4,0,0,0]))
-
-DL_PL5=loads.NodalLoad(name='DL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-D_PL5,0,0,0]))
-LL_PL5=loads.NodalLoad(name='LL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-L_PL5,0,0,0]))
-SL_PL5=loads.NodalLoad(name='SL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,-S_PL5,0,0,0]))
-WL_PL5=loads.NodalLoad(name='WL_PL5',lstNod=nodPL5,loadVector=xc.Vector([0,0,W_PL5,0,0,0]))
-
-
-
+nodPLoad=sets.get_lstNod_from_lst3DPos(preprocessor=prep,lst3DPos=[geom.Pos3d(0,yList[lastYpos]/2.0,zList[lastZpos]),geom.Pos3d(xList[lastXpos],yList[lastYpos]/2.0,zList[lastZpos])])
+QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vector([0,0,-Qbeam,0,0,0]))
+'''
 # Uniform loads applied on shell elements
 #    name:       name identifying the load
 #    xcSet:     set that contains the surfaces
@@ -974,6 +927,9 @@ DL_lnE1B=loads.UniformLoadOnLines(name='DL_lnE1B',xcSet=lnE1B,loadVector=xc.Vect
 LL_lnE1B=loads.UniformLoadOnLines(name='LL_lnE1B',xcSet=lnE1B,loadVector=xc.Vector([0,0,-1*L_lnE1B,0,0,0]))
 SL_lnE1B=loads.UniformLoadOnLines(name='SL_lnE1B',xcSet=lnE1B,loadVector=xc.Vector([0,0,-1*S_lnE1B,0,0,0]))
 
+DL_lnE1C=loads.UniformLoadOnLines(name='DL_lnE1C',xcSet=lnE1C,loadVector=xc.Vector([0,0,-1*D_lnE1C,0,0,0]))
+LL_lnE1C=loads.UniformLoadOnLines(name='LL_lnE1C',xcSet=lnE1C,loadVector=xc.Vector([0,0,-1*L_lnE1C,0,0,0]))
+SL_lnE1C=loads.UniformLoadOnLines(name='SL_lnE1C',xcSet=lnE1C,loadVector=xc.Vector([0,0,-1*S_lnE1C,0,0,0]))
 
 DL_lnEC1B=loads.UniformLoadOnLines(name='DL_lnEC1B',xcSet=lnEC1B,loadVector=xc.Vector([0,0,-1*D_lnEC1B,0,0,0]))
 LL_lnEC1B=loads.UniformLoadOnLines(name='LL_lnEC1B',xcSet=lnEC1B,loadVector=xc.Vector([0,0,-1*L_lnEC1B,0,0,0]))
@@ -1028,31 +984,34 @@ WL_NS_lnL1W=loads.UniformLoadOnLines(name='WL_NS_lnL1W',xcSet=lnL1W,loadVector=x
 WL_NS_lnL6W=loads.UniformLoadOnLines(name='WL_NS_lnL6W',xcSet=lnL6W,loadVector=xc.Vector([0,0,WNS_lnL6W,0,0,0]))
 WL_NS_lnL7W=loads.UniformLoadOnLines(name='WL_NS_lnL7W',xcSet=lnL7W,loadVector=xc.Vector([0,0,WNS_lnL7W,0,0,0]))
 '''
-WL_lnL1=loads.UniformLoadOnLines(name='WL_lnL1',xcSet=lnL1,loadVector=xc.Vector([0.00E+00,16.92E+03,-5.73E+03,0,0,0]))
-WL_lnL2=loads.UniformLoadOnLines(name='WL_lnL2',xcSet=lnL2,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL3=loads.UniformLoadOnLines(name='WL_lnL3',xcSet=lnL3,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL4=loads.UniformLoadOnLines(name='WL_lnL4',xcSet=lnL4,loadVector=xc.Vector([0,12.29E+03,-4.77E+03,0,0,0]))
-WL_lnL5=loads.UniformLoadOnLines(name='WL_lnL5',xcSet=lnL5,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL6=loads.UniformLoadOnLines(name='WL_lnL6',xcSet=lnL6,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL7=loads.UniformLoadOnLines(name='WL_lnL7',xcSet=lnL7,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL8=loads.UniformLoadOnLines(name='WL_lnL8',xcSet=lnL8,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL9=loads.UniformLoadOnLines(name='WL_lnL9',xcSet=lnL9,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL10=loads.UniformLoadOnLines(name='WL_lnL10',xcSet=lnL10,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL11=loads.UniformLoadOnLines(name='WL_lnL11',xcSet=lnL11,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL12=loads.UniformLoadOnLines(name='WL_lnL12',xcSet=lnL12,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnL13=loads.UniformLoadOnLines(name='WL_lnL13',xcSet=lnL13,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnN1B=loads.UniformLoadOnLines(name='WL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0.00E+00,3.03E+03,-1.11E+03,0,0,0]))
-WL_lnN1C=loads.UniformLoadOnLines(name='WL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0.00E+00,6.47E+03,-2.37E+03,0,0,0]))
-WL_lnE1A=loads.UniformLoadOnLines(name='WL_lnE1A',xcSet=lnE1A,loadVector=xc.Vector([19.17E+03,0.00E+00,-10.68E+03,0,0,0]))
-WL_lnE1B=loads.UniformLoadOnLines(name='WL_lnE1B',xcSet=lnE1B,loadVector=xc.Vector([880.00E+00,0.00E+00,-0.00E+00,0,0,0]))
-WL_lnEC1B=loads.UniformLoadOnLines(name='WL_lnEC1B',xcSet=lnEC1B,loadVector=xc.Vector([1.35E+03,0.00E+00,-507.61E+00,0,0,0]))
-WL_lnEC1C=loads.UniformLoadOnLines(name='WL_lnEC1C',xcSet=lnEC1C,loadVector=xc.Vector([16.77E+03,0.00E+00,-6.30E+03,0,0,0]))
-WL_lnW1A=loads.UniformLoadOnLines(name='WL_lnW1A',xcSet=lnW1A,loadVector=xc.Vector([1.40E+03,0.00E+00,-4.85E+03,0,0,0]))
-WL_lnW1B=loads.UniformLoadOnLines(name='WL_lnW1B',xcSet=lnW1B,loadVector=xc.Vector([95.58E+00,0.00E+00,-330.16E+00,0,0,0]))
-WL_lnW1C=loads.UniformLoadOnLines(name='WL_lnW1C',xcSet=lnW1C,loadVector=xc.Vector([1.57E+03,0.00E+00,-5.43E+03,0,0,0]))
-WL_lnWC1A=loads.UniformLoadOnLines(name='WL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([8.59E+03,0.00E+00,-3.23E+03,0,0,0]))
-WL_lnWC1B=loads.UniformLoadOnLines(name='WL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([1.35E+03,0.00E+00,-507.61E+00,0,0,0]))
-WL_lnWC1C=loads.UniformLoadOnLines(name='WL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([16.77E+03,0.00E+00,-6.30E+03,0,0,0]))
+WL_lnL1=loads.uniformloadonlines(name='WL_lnL1',xcSet=lnL1,loadVector=xc.Vector([0.00E+00,16.92E+03,-5.73E+03,0,0,0]))
+WL_lnL2=loads.uniformloadonlines(name='WL_lnL2',xcSet=lnL2,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL3=loads.uniformloadonlines(name='WL_lnL3',xcSet=lnL3,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL4=loads.uniformloadonlines(name='WL_lnL4',xcSet=lnL4,loadVector=xc.Vector([12.29E+03,0.00E+00,-4.77E+03,0,0,0]))
+WL_lnL5=loads.uniformloadonlines(name='WL_lnL5',xcSet=lnL5,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL6=loads.uniformloadonlines(name='WL_lnL6',xcSet=lnL6,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL7=loads.uniformloadonlines(name='WL_lnL7',xcSet=lnL7,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL8=loads.uniformloadonlines(name='WL_lnL8',xcSet=lnL8,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL9=loads.uniformloadonlines(name='WL_lnL9',xcSet=lnL9,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL10=loads.uniformloadonlines(name='WL_lnL10',xcSet=lnL10,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL11=loads.uniformloadonlines(name='WL_lnL11',xcSet=lnL11,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL12=loads.uniformloadonlines(name='WL_lnL12',xcSet=lnL12,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL13=loads.uniformloadonlines(name='WL_lnL13',xcSet=lnL13,loadVector=xc.Vector([0.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnN1B=loads.uniformloadonlines(name='WL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0.00E+00,3.03E+03,-1.11E+03,0,0,0]))
+WL_lnN1C=loads.uniformloadonlines(name='WL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0.00E+00,6.47E+03,-2.37E+03,0,0,0]))
+WL_lnN1D=loads.uniformloadonlines(name='WL_lnN1D',xcSet=lnN1D,loadVector=xc.Vector([0.00E+00,12.51E+03,-4.86E+03,0,0,0]))
+WL_lnE1A=loads.uniformloadonlines(name='WL_lnE1A',xcSet=lnE1A,loadVector=xc.Vector([19.17E+03,0.00E+00,-10.68E+03,0,0,0]))
+WL_lnE1B=loads.uniformloadonlines(name='WL_lnE1B',xcSet=lnE1B,loadVector=xc.Vector([880.00E+00,0.00E+00,-0.00E+00,0,0,0]))
+WL_lnL15=loads.uniformloadonlines(name='WL_lnL15',xcSet=lnL15,loadVector=xc.Vector([14.47E+03,0.00E+00,-8.13E+03,0,0,0]))
+WL_lnEC1A=loads.uniformloadonlines(name='WL_lnEC1A',xcSet=lnEC1A,loadVector=xc.Vector([16.23E+03,0.00E+00,-11.51E+03,0,0,0]))
+WL_lnEC1B=loads.uniformloadonlines(name='WL_lnEC1B',xcSet=lnEC1B,loadVector=xc.Vector([1.35E+03,0.00E+00,-507.61E+00,0,0,0]))
+WL_lnEC1C=loads.uniformloadonlines(name='WL_lnEC1C',xcSet=lnEC1C,loadVector=xc.Vector([16.77E+03,0.00E+00,-6.30E+03,0,0,0]))
+WL_lnW1A=loads.uniformloadonlines(name='WL_lnW1A',xcSet=lnW1A,loadVector=xc.Vector([1.40E+03,0.00E+00,-4.85E+03,0,0,0]))
+WL_lnW1B=loads.uniformloadonlines(name='WL_lnW1B',xcSet=lnW1B,loadVector=xc.Vector([95.58E+00,0.00E+00,-330.16E+00,0,0,0]))
+WL_lnW1C=loads.uniformloadonlines(name='WL_lnW1C',xcSet=lnW1C,loadVector=xc.Vector([1.57E+03,0.00E+00,-5.43E+03,0,0,0]))
+WL_lnWC1A=loads.uniformloadonlines(name='WL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([8.59E+03,0.00E+00,-3.23E+03,0,0,0]))
+WL_lnWC1B=loads.uniformloadonlines(name='WL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([1.35E+03,0.00E+00,-507.61E+00,0,0,0]))
+WL_lnWC1C=loads.uniformloadonlines(name='WL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([16.77E+03,0.00E+00,-6.30E+03,0,0,0]))
 
 
 '''
@@ -1104,32 +1063,196 @@ vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=sl
 #    ***LOAD CASES***
 
 '''
-                  
 #Dead load
 DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
 DeadL.create()
-DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A,DL_lnWC1B,DL_lnWC1C,DL_lnN1B,DL_lnN1C,
-                   DL_PL1,DL_PL2,DL_PL3,DL_PL4,DL_PL5])
-# *****Añadir empuje tierras muro *******
-# Earth pressure load
-numNodes= len(eastNodes)
-earthPressureOnNode= 20.0e3*eastNodesLength/numNodes
-print('earthPressureOnNode= ', earthPressureOnNode/1e3,' kN')
-for n in eastNodes:
-    n.newLoad(xc.Vector([earthPressureOnNode,0.0,0.0,0.0,0.0,0.0]))
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnE1C,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A=loads.UniformLoadOnLines(name='DL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*D_lnWC1A,0,0,0]))
+LL_lnWC1A=loads.UniformLoadOnLines(name='LL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*L_lnWC1A,0,0,0]))
+SL_lnWC1A=loads.UniformLoadOnLines(name='SL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*S_lnWC1A,0,0,0]))
+
+DL_lnWC1B=loads.UniformLoadOnLines(name='DL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*D_lnWC1B,0,0,0]))
+LL_lnWC1B=loads.UniformLoadOnLines(name='LL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*L_lnWC1B,0,0,0]))
+SL_lnWC1B=loads.UniformLoadOnLines(name='SL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*S_lnWC1B,0,0,0]))
+
+DL_lnWC1C=loads.UniformLoadOnLines(name='DL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*D_lnWC1C,0,0,0]))
+LL_lnWC1C=loads.UniformLoadOnLines(name='LL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*L_lnWC1C,0,0,0]))
+SL_lnWC1C=loads.UniformLoadOnLines(name='SL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*S_lnWC1C,0,0,0]))
+
+DL_lnN1B=loads.UniformLoadOnLines(name='DL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*D_lnN1B,0,0,0]))
+LL_lnN1B=loads.UniformLoadOnLines(name='LL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*L_lnN1B,0,0,0]))
+SL_lnN1B=loads.UniformLoadOnLines(name='SL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*S_lnN1B,0,0,0]))
+
+DL_lnN1C=loads.UniformLoadOnLines(name='DL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*D_lnN1C,0,0,0]))
+LL_lnN1C=loads.UniformLoadOnLines(name='LL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*L_lnN1C,0,0,0]))
+SL_lnN1C=loads.UniformLoadOnLines(name='SL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*S_lnN1C,0,0,0]))
+
+''' OLD
+#Wind W-E
+WL_WE_lnL1W=loads.UniformLoadOnLines(name='WL_WE_lnL1W',xcSet=lnL1W,loadVector=xc.Vector([0,0,WWE_lnL1W,0,0,0]))
+WL_WE_lnL2W=loads.UniformLoadOnLines(name='WL_WE_lnL2W',xcSet=lnL2W,loadVector=xc.Vector([0,0,WWE_lnL2W,0,0,0]))
+WL_WE_lnL3W=loads.UniformLoadOnLines(name='WL_WE_lnL3W',xcSet=lnL3W,loadVector=xc.Vector([0,0,WWE_lnL3W,0,0,0]))
+WL_WE_lnL4W=loads.UniformLoadOnLines(name='WL_WE_lnL4W',xcSet=lnL4W,loadVector=xc.Vector([0,0,WWE_lnL4W,0,0,0]))
+WL_WE_lnL5W=loads.UniformLoadOnLines(name='WL_WE_lnL5W',xcSet=lnL5W,loadVector=xc.Vector([0,0,WWE_lnL5W,0,0,0]))
+
+#Wind N-S
+WL_NS_lnL1W=loads.UniformLoadOnLines(name='WL_NS_lnL1W',xcSet=lnL1W,loadVector=xc.Vector([0,0,WNS_lnL1W,0,0,0]))
+WL_NS_lnL6W=loads.UniformLoadOnLines(name='WL_NS_lnL6W',xcSet=lnL6W,loadVector=xc.Vector([0,0,WNS_lnL6W,0,0,0]))
+WL_NS_lnL7W=loads.UniformLoadOnLines(name='WL_NS_lnL7W',xcSet=lnL7W,loadVector=xc.Vector([0,0,WNS_lnL7W,0,0,0]))
+'''
+WL_lnL1=loads.UniformLoadOnLines(name='WL_lnL1',xcSet=lnL1,loadVector=xc.Vector([0,0,WWE_lnL1W,0,0,0]))
+
+'''
+# Point load distributed over the shell elements in xcSet whose 
+# centroids are inside the prism defined by the 2D polygon prismBase
+# and one global axis.
+# syntax: PointLoadOverShellElems(name, xcSet, loadVector,prismBase,prismAxis,refSystem):
+#    name: name identifying the load
+#    xcSet: set that contains the shell elements
+#    loadVector: xc vector with the six components of the point load:
+#                   xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
+#    prismBase: 2D polygon that defines the n-sided base of the prism.
+#                   The vertices of the polygon are defined in global 
+#                   coordinates in the following way:
+#                      - for X-axis-prism: (y,z)
+#                      - for Y-axis-prism: (x,z)
+#                      - for Z-axis-prism: (x,y)
+#    prismAxis: axis of the prism (can be equal to 'X', 'Y', 'Z')
+#                   (defaults to 'Z')
+#    refSystem:  reference system in which loadVector is defined:
+#                   'Local': element local coordinate system
+#                   'Global': global coordinate system (defaults to 'Global')
+
+prBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=LbeamY/2.,Lx=0.5,Ly=1.0)
+wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadVector=xc.Vector([0,0,-Qwheel]),prismBase=prBase,prismAxis='Z',refSystem='Global')
+
+# ---------------------------------------------------------------
+
+# Point loads defined in the object lModel, distributed over the shell 
+# elements under the wheels affected by them.
+
+# syntax: VehicleDistrLoad(name,xcSet,loadModel, xCentr,yCentr,hDistr,slopeDistr)
+#      name: name identifying the load
+#      xcSet: set that contains the shell elements
+#      lModel: instance of the class LoadModel with the definition of
+#               vehicle of the load model.
+#      xCent: global coord. X where to place the centroid of the vehicle
+#      yCent: global coord. Y where  to place the centroid of the vehicle
+#      hDistr: height considered to distribute each point load with
+#               slope slopeDistr 
+#      slopeDistr: slope (H/V) through hDistr to distribute the load of 
+#               a wheel
+
+from actions.roadway_trafic import standard_load_models as slm
+from actions.roadway_trafic import load_model_base as lmb
+vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=slm.IAP_carril_virt3_fren, xCentr=LbeamX/2,yCentr=LbeamY/2.,hDistr=0.25,slopeDistr=1.0)
+
+
+#    ***LOAD CASES***
+
+'''
+#Dead load
+DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
+DeadL.create()
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnE1C,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A=loads.UniformLoadOnLines(name='DL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*D_lnWC1A,0,0,0]))
+LL_lnWC1A=loads.UniformLoadOnLines(name='LL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*L_lnWC1A,0,0,0]))
+SL_lnWC1A=loads.UniformLoadOnLines(name='SL_lnWC1A',xcSet=lnWC1A,loadVector=xc.Vector([0,0,-1*S_lnWC1A,0,0,0]))
+
+DL_lnWC1B=loads.UniformLoadOnLines(name='DL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*D_lnWC1B,0,0,0]))
+LL_lnWC1B=loads.UniformLoadOnLines(name='LL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*L_lnWC1B,0,0,0]))
+SL_lnWC1B=loads.UniformLoadOnLines(name='SL_lnWC1B',xcSet=lnWC1B,loadVector=xc.Vector([0,0,-1*S_lnWC1B,0,0,0]))
+
+DL_lnWC1C=loads.UniformLoadOnLines(name='DL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*D_lnWC1C,0,0,0]))
+LL_lnWC1C=loads.UniformLoadOnLines(name='LL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*L_lnWC1C,0,0,0]))
+SL_lnWC1C=loads.UniformLoadOnLines(name='SL_lnWC1C',xcSet=lnWC1C,loadVector=xc.Vector([0,0,-1*S_lnWC1C,0,0,0]))
+
+DL_lnN1B=loads.UniformLoadOnLines(name='DL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*D_lnN1B,0,0,0]))
+LL_lnN1B=loads.UniformLoadOnLines(name='LL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*L_lnN1B,0,0,0]))
+SL_lnN1B=loads.UniformLoadOnLines(name='SL_lnN1B',xcSet=lnN1B,loadVector=xc.Vector([0,0,-1*S_lnN1B,0,0,0]))
+
+DL_lnN1C=loads.UniformLoadOnLines(name='DL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*D_lnN1C,0,0,0]))
+LL_lnN1C=loads.UniformLoadOnLines(name='LL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*L_lnN1C,0,0,0]))
+SL_lnN1C=loads.UniformLoadOnLines(name='SL_lnN1C',xcSet=lnN1C,loadVector=xc.Vector([0,0,-1*S_lnN1C,0,0,0]))
+
+''' OLD
+#Wind W-E
+WL_WE_lnL1W=loads.UniformLoadOnLines(name='WL_WE_lnL1W',xcSet=lnL1W,loadVector=xc.Vector([0,0,WWE_lnL1W,0,0,0]))
+WL_WE_lnL2W=loads.UniformLoadOnLines(name='WL_WE_lnL2W',xcSet=lnL2W,loadVector=xc.Vector([0,0,WWE_lnL2W,0,0,0]))
+WL_WE_lnL3W=loads.UniformLoadOnLines(name='WL_WE_lnL3W',xcSet=lnL3W,loadVector=xc.Vector([0,0,WWE_lnL3W,0,0,0]))
+WL_WE_lnL4W=loads.UniformLoadOnLines(name='WL_WE_lnL4W',xcSet=lnL4W,loadVector=xc.Vector([0,0,WWE_lnL4W,0,0,0]))
+WL_WE_lnL5W=loads.UniformLoadOnLines(name='WL_WE_lnL5W',xcSet=lnL5W,loadVector=xc.Vector([0,0,WWE_lnL5W,0,0,0]))
+
+#Wind N-S
+WL_NS_lnL1W=loads.UniformLoadOnLines(name='WL_NS_lnL1W',xcSet=lnL1W,loadVector=xc.Vector([0,0,WNS_lnL1W,0,0,0]))
+WL_NS_lnL6W=loads.UniformLoadOnLines(name='WL_NS_lnL6W',xcSet=lnL6W,loadVector=xc.Vector([0,0,WNS_lnL6W,0,0,0]))
+WL_NS_lnL7W=loads.UniformLoadOnLines(name='WL_NS_lnL7W',xcSet=lnL7W,loadVector=xc.Vector([0,0,WNS_lnL7W,0,0,0]))
+'''
+WL_lnL1=loads.UniformLoadOnLines(name='WL_lnL1',xcSet=lnL1,loadVector=xc.Vector([0,0,WWE_lnL1W,0,0,0]))
+
+'''
+# Point load distributed over the shell elements in xcSet whose 
+# centroids are inside the prism defined by the 2D polygon prismBase
+# and one global axis.
+# syntax: PointLoadOverShellElems(name, xcSet, loadVector,prismBase,prismAxis,refSystem):
+#    name: name identifying the load
+#    xcSet: set that contains the shell elements
+#    loadVector: xc vector with the six components of the point load:
+#                   xc.Vector([Fx,Fy,Fz,Mx,My,Mz]).
+#    prismBase: 2D polygon that defines the n-sided base of the prism.
+#                   The vertices of the polygon are defined in global 
+#                   coordinates in the following way:
+#                      - for X-axis-prism: (y,z)
+#                      - for Y-axis-prism: (x,z)
+#                      - for Z-axis-prism: (x,y)
+#    prismAxis: axis of the prism (can be equal to 'X', 'Y', 'Z')
+#                   (defaults to 'Z')
+#    refSystem:  reference system in which loadVector is defined:
+#                   'Local': element local coordinate system
+#                   'Global': global coordinate system (defaults to 'Global')
+
+prBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=LbeamY/2.,Lx=0.5,Ly=1.0)
+wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadVector=xc.Vector([0,0,-Qwheel]),prismBase=prBase,prismAxis='Z',refSystem='Global')
+
+# ---------------------------------------------------------------
+
+# Point loads defined in the object lModel, distributed over the shell 
+# elements under the wheels affected by them.
+
+# syntax: VehicleDistrLoad(name,xcSet,loadModel, xCentr,yCentr,hDistr,slopeDistr)
+#      name: name identifying the load
+#      xcSet: set that contains the shell elements
+#      lModel: instance of the class LoadModel with the definition of
+#               vehicle of the load model.
+#      xCent: global coord. X where to place the centroid of the vehicle
+#      yCent: global coord. Y where  to place the centroid of the vehicle
+#      hDistr: height considered to distribute each point load with
+#               slope slopeDistr 
+#      slopeDistr: slope (H/V) through hDistr to distribute the load of 
+#               a wheel
+
+from actions.roadway_trafic import standard_load_models as slm
+from actions.roadway_trafic import load_model_base as lmb
+vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=slm.IAP_carril_virt3_fren, xCentr=LbeamX/2,yCentr=LbeamY/2.,hDistr=0.25,slopeDistr=1.0)
+
+
+#    ***LOAD CASES***
+
+'''
+#Dead load
+DeadL=lcases.LoadCase(preprocessor=prep,name="DeadL")
+DeadL.create()
+DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_lnL8,DL_lnL9,DL_lnL10,DL_lnL11,DL_lnL12,DL_lnL13,selfWeightSlabs,selfWeightBeamCols,DLunif_terrace_1floor,DL_lnE1A,DL_lnE1B,DL_lnE1C,DL_lnEC1B,DL_lnEC1C,DL_lnW1A,DL_lnW1B,DL_lnW1C,DL_lnWC1A,DL_lnWC1B,DL_lnWC1C,DL_lnN1B,DL_lnN1C])
 
 #live load (uniform on rooms)
 LiveL_ru=lcases.LoadCase(preprocessor=prep,name="LiveL_ru")
 LiveL_ru.create()
 LiveL_ru.addLstLoads([LL_lnL1,LL_lnL2,LL_lnL3,LL_lnL4,LL_lnL5,LL_lnL6,LL_lnL7,LL_lnL9,LL_lnL10,LL_lnL12,LL_lnL13,LLunif_rooms_1floor,
-                      LL_lnE1A,LL_lnE1B,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C,
-LL_PL1,LL_PL2,LL_PL3,LL_PL4,LL_PL5])
+LL_lnE1A,LL_lnE1B,LL_lnE1C,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C])
 
 #live load (staggered pattern on rooms)
 LiveL_rs=lcases.LoadCase(preprocessor=prep,name="LiveL_rs")
 LiveL_rs.create()
 LiveL_rs.addLstLoads([LL_lnL1,LL_lnL2,LL_lnL3,LL_lnL4,LL_lnL5,LL_lnL6,LL_lnL7,LL_lnL9,LL_lnL10,LL_lnL12,LL_lnL13,LLstag_rooms_1floor,
-LL_lnE1A,LL_lnE1B,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C])
+LL_lnE1A,LL_lnE1B,LL_lnE1C,LL_lnEC1B,LL_lnEC1C,LL_lnW1A,LL_lnW1B,LL_lnW1C,LL_lnWC1A,LL_lnWC1B,LL_lnWC1C,LL_lnN1B,LL_lnN1C])
 
 #live load (uniform on patios)
 LiveL_pu=lcases.LoadCase(preprocessor=prep,name="LiveL_pu")
@@ -1144,19 +1267,15 @@ LiveL_ps.addLstLoads([LLstag_terrace_1floor])
 SnowL=lcases.LoadCase(preprocessor=prep,name="SnowL")
 SnowL.create()
 SnowL.addLstLoads([SL_lnL1,SL_lnL2,SL_lnL3,SL_lnL4,SL_lnL5,SL_lnL6,SL_lnL7,SL_lnL9,SL_lnL10,SL_lnL12,SL_lnL13,SL_terrace_1floor,
-                   SL_lnE1A,SL_lnE1B,SL_lnEC1B,SL_lnEC1C,SL_lnW1A,SL_lnW1B,SL_lnW1C,SL_lnWC1A,SL_lnWC1B,SL_lnWC1C,SL_lnN1B,SL_lnN1C,
-SL_PL1,SL_PL2,SL_PL3,SL_PL4,SL_PL5])
+SL_lnE1A,SL_lnE1B,SL_lnE1C,SL_lnEC1B,SL_lnEC1C,SL_lnW1A,SL_lnW1B,SL_lnW1C,SL_lnWC1A,SL_lnWC1B,SL_lnWC1C,SL_lnN1B,SL_lnN1C])
 
 Wind_WE=lcases.LoadCase(preprocessor=prep,name="Wind_WE")
 Wind_WE.create()
-Wind_WE.addLstLoads([WL_lnL2,WL_lnL5,WL_lnL6,WL_lnL8,WL_lnL10,WL_lnL11,WL_lnE1A,WL_lnE1B,WL_lnEC1B,WL_lnEC1C,WL_lnW1A,WL_lnW1B,WL_lnW1C,WL_lnWC1A,WL_lnWC1B,WL_lnWC1C,
-WL_PL1,WL_PL2,WL_PL3,WL_PL4,WL_PL5])
-
-
+Wind_WE.addLstLoads([WL_lnL2,WL_lnL4,WL_lnL5,WL_lnL6,WL_lnL8,WL_lnL10,WL_lnL11,WL_lnE1A,WL_lnE1B,WL_lnEC1B,WL_lnEC1C,WL_lnW1A,WL_lnW1B,WL_lnW1C])
 
 Wind_NS=lcases.LoadCase(preprocessor=prep,name="Wind_NS")
 Wind_NS.create()
-Wind_NS.addLstLoads([WL_lnL1,WL_lnL3,WL_lnL4,WL_lnL7,WL_lnL9,WL_lnL12,WL_lnN1B,WL_lnN1C])
+Wind_NS.addLstLoads([WL_lnL1,WL_lnL3,WL_lnL7,WL_lnL9,WL_lnL12,WL_lnN1B,WL_lnN1C,WL_lnN1D])
 
 #overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW+slabsF_L+slabs5_L
 overallSet=colA+colB+colC+colD+colG+colF+beamA+beamB+beam1+beam2H+beam2L+beam3H+beam3L+beam4H+beam4L+beam5H+beam5L+slabW1+slab12+slab23+slab34+slab45+slab5W+slabBC+slabCD_H+slabCD_L+slabDG+slabGF+slabFW
@@ -1199,11 +1318,3 @@ steel_beam=gridGeom.getSetLinOneRegion(steel_beam_rg,'steel_beam')
 #execfile(workingDirectory+'print_links_slabs_beams.py')
 
 xcTotalSet= preprocessor.getSets.getSet('total')
-
-rampNeighboursPlanksSet= preprocessor.getSets.defSet('rampNeighboursPlanksSet')
-for e in xcTotalSet.elements:
-    c= e.getPosCentroid(True)
-    if(c.x<30.0 and c.y<30.0):
-        rampNeighboursPlanksSet.elements.append(e)
-rampNeighboursPlanksSet.fillDownwards()
-

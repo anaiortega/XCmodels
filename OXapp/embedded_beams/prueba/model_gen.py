@@ -261,9 +261,10 @@ j2=yList.index(yCols[0]-gap/2.)
 k=zList.index(zBeamHigh)
 slabW1_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
 
+
 slab12_rg=[]
-j1=yList.index(yCols[0]+gap/2.)
-j2=yList.index(yCols[1]-gap/2.)
+j1=yList.index(yCols[0]-gap/2.)
+j2=yList.index(yCols[1]+gap/2.)
 k=zList.index(zBeamHigh)
 slab12_rg.append(gm.IJKRange((0,j1,k),(xList.index(xRamp[0]),j2,k)))
 

@@ -3,7 +3,7 @@ from postprocess.reports import graphical_reports
 
 ULS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS01',loadCaseDescr='ULS01',loadCaseExpr='1.4*Dead_LC',setsToDispLoads=[],setsToDispDspRot=beamSets,setsToDispIntForc=[])
 
-ULS02=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02',loadCaseDescr='ULS02',loadCaseExpr='1.2*Dead_LC+1.6*Live_LC+0.5*Snow_LC',setsToDispLoads=[],setsToDispDspRot=beamSets,setsToDispIntForc=[])
+ULS02=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02',loadCaseDescr='ULS02',loadCaseExpr='1.2*Dead_LC+1.6*Live_LC+0.5*Snow_LC',setsToDispLoads=[],setsToDispDspRot=[beams],setsToDispIntForc=[])
 
 ULS03=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS03',loadCaseDescr='ULS03',loadCaseExpr='1.2*Dead_LC+1.6*Snow_LC+0.5*Wind_LC',setsToDispLoads=[],setsToDispDspRot=beamSets,setsToDispIntForc=[])
 
@@ -14,6 +14,6 @@ ULS05=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS05',loadCaseDescr='U
 ULSs=[ULS01,ULS02,ULS03,ULS04,ULS05]
 
 for us in ULSs:
-    us.listDspRot=['uX','uY','uZ']
-    us.setsToDispBeamIntForc=beamSets
-    us.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
+    us.listDspRot=['uZ']
+    us.setsToDispBeamIntForc=[beamXsteel,WbeamYsteel,CbeamYsteel,EbeamYsteel]
+    us.listBeamIntForc=['Mz', 'Qy']
