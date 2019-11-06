@@ -1114,7 +1114,7 @@ DeadL.addLstLoads([DL_lnL1,DL_lnL2,DL_lnL3,DL_lnL4,DL_lnL5,DL_lnL6,DL_lnL7,DL_ln
 # *****Añadir empuje tierras muro *******
 # Earth pressure load
 numNodes= len(eastNodes)
-earthPressureOnNode= 20.0e3*eastNodesLength/numNodes
+earthPressureOnNode= 30.0e3*eastNodesLength/numNodes
 print('earthPressureOnNode= ', earthPressureOnNode/1e3,' kN')
 for n in eastNodes:
     n.newLoad(xc.Vector([earthPressureOnNode,0.0,0.0,0.0,0.0,0.0]))
