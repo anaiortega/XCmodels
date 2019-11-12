@@ -37,7 +37,7 @@ setsBmElView=[]
 argsBmElScale=[]
 
 texReportFile='res_PS101_estribo2/report_crackingSLS_freq.tex'  #laTex file where to include the graphics 
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

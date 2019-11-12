@@ -7,7 +7,7 @@ execfile("../model_gen.py") #data for FE model generation
 execfile("../env_config_deck.py")
 
 #Load properties to display:
-execfile(cfg.verifShearFile)
+execfile(cfg.projectDirTree.getVerifShearFile())
 
 
 
@@ -33,5 +33,5 @@ setsBmElView=[]
 #argsBmElScale=[['CF',1],['My',1]]
 argsBmElScale=[]
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportShearGrPath,texReportFile=cfg.reportShearFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportShearGrPath,texReportFile= cfg.reportShearFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

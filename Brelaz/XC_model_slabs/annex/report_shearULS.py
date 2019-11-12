@@ -13,7 +13,7 @@ preprocessor= FEcase.getPreprocessor
 execfile(projectDirs.getShearULSFileName())
 execfile('../captionTexts.py')
 
-pathGrph='text/graphics/shearULS/'   #directory to place the figures
+pathGrph= cfg.projectDirTree.getReportShearGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'
 
 limitStateLabel= lsd.shearResistance.label
@@ -38,8 +38,8 @@ argsBmElScale=[['CF',1],['My',1]]
 
 
 
-texReportFile='text/report_shearULS.tex'  #laTex file where to include the graphics 
-grWidth='120mm'   #width of the graphics for the tex file
+texReportFile= cfg.projectDirTree.getReportShearFile()  #laTex file where to include the graphics 
+cfg.grWidth='120mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

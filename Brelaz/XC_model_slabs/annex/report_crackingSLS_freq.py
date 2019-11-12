@@ -12,7 +12,7 @@ preprocessor= model.getPreprocessor()
 execfile(projectDirs.getCrackingSLSFreqFileName())
 execfile('../captionTexts.py')
 
-pathGrph='text/graphics/crackingSLS_freq/'   #directory to place the figures
+pathGrph= cfg.projectDirTree.getReportCrackFreqGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'
 
 limitStateLabel= lsd.freqLoadsCrackControl.label
@@ -36,8 +36,8 @@ setsBmElView=[[beamXSet,'XYZPos']]
 argsBmElScale=[['getCF',1],['getMaxSteelStress',1]]
 
 
-texReportFile='text/report_crackingSLS_freq.tex'  #laTex file where to include the graphics 
-grWidth='120mm'   #width of the graphics for the tex file
+texReportFile= cfg.projectDirTree.getReportCrackFreqFile()  #laTex file where to include the graphics 
+cfg.grWidth='120mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

@@ -23,9 +23,9 @@ setsBmElView=[[beamX,'XYZPos']]
 argsBmElScale=[['getCF',1],['getMaxSteelStress',1]]
 
 #Load properties to display:
-execfile(cfg.verifCrackQpermFile)
+execfile(cfg.projectDirTree.getVerifCrackQpermFile())
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
 
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportCrackQpermGrPath,texReportFile=cfg.reportCrackQpermFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportCrackQpermGrPath,texReportFile= cfg.reportCrackQpermFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

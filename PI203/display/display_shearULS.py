@@ -4,7 +4,7 @@ from postprocess.xcVtk import vtk_graphic_base
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
@@ -12,7 +12,7 @@ execfile(modelDataInputFile)
 
 #Load properties to display:
 preprocessor= model.getPreprocessor()
-fName= model_path+check_results_directory+'verifRsl_shearULS.py'
+fName=  cfg.projectDirTree.getVerifShearFile()
 execfile(fName)
 execfile('../captionTexts.py')
 

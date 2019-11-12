@@ -7,7 +7,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 execfile("../model_gen.py") #FE model generation
 
 #Load properties to display:
-execfile(cfg.verifNormStrFile)
+execfile(cfg.projectDirTree.getVerifNormStrFile())
 
 #  Config
 argument= 'CF'       #Possible arguments:

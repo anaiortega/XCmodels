@@ -10,12 +10,12 @@ execfile(sectDataInputFile)
 
 sect2Disp=[deckRCSects,beamXRCsect] #reinforced concrete sections to display
                                     #from those defined in sectDataInputFile
-report_graphics_outDir='text/graphics/sections/'
+report_graphics_outDir= cfg.projectDirTree.getReportSectionsGrPath()
 
 reportDir='./text'     #directory where sections report will be placed
 
 
-reportFileName='text/sectReport.tex'
+reportFileName= cfg.projectDirTree.getReportSectionsFile()
 
 report=open(reportFileName,'w')    #report latex file
 #Functions to represent the interaction diagrams

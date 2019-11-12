@@ -10,13 +10,13 @@ import re
 
 execfile('./xc_model_data.py') #data for FE model generation
 execfile('./sectionsDef.py') #script that carries out the section definition
-execfile('./results/verifications/verifRsl_normStrsULS.py')
-report_graphics_outDir='annex/graphics/sections/'
+execfile(cfg.projectDirTree.getVerifNormStrFile())
+report_graphics_outDir= cfg.projectDirTree.getReportSectionsGrPath()
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
-reportFileName='sectReport.tex'
+reportFileName= cfg.projectDirTree.getReportSectionsFile()
 
 report=open(reportFileName,'w')    #report latex file
 #Functions to represent the interaction diagrams

@@ -8,7 +8,7 @@ from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 #FE model generation
 execfile("../model_gen.py")
 
-execfile(cfg.verifCrackQpermFile)
+execfile(cfg.projectDirTree.getVerifCrackQpermFile())
 
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label

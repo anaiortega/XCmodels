@@ -15,7 +15,7 @@ loadCasesToDisplay=[G1]
 
 textfl=open(cfg.reportSimplLCFile,'w')  #tex file to be generated
 for lc in loadCasesToDisplay:
-    lc.simplLCReports(FEproblem=FEcase,pathGr=cfg.reportSimplLCGrPath,texFile=textfl,grWdt=cfg.grWidth,capStdTexts=cfg.capTexts)
+    lc.simplLCReports(FEproblem=FEcase,pathGr= cfg.reportSimplLCGrPath,texFile=textfl,grWdt= cfg.grWidth,capStdTexts= cfg.capTexts)
 
 textfl.close()
 

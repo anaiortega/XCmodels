@@ -116,7 +116,7 @@ sctFibers.setupFibers()
 
 # #report of the section material
 # sectParam=sectionReport.SectionInfo(preprocessor=preprocessor,sectName='example_7.3_EC2W',sectDescr='Test example 7.3 EC2 Worked examples. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
-# sectParam.writeReport(archTex='figures/sections/secEx73.tex', pathFigura='figures/sections/secEx73.eps')
+
 
 
 # Elements definition

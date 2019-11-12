@@ -7,7 +7,7 @@ execfile("../model_gen.py") #FE model generation
 execfile("../env_config_deck.py")
 
 #Load properties to display:
-execfile(cfg.verifNormStrFile)
+execfile(cfg.projectDirTree.getVerifNormStrFile())
 
 
 
@@ -35,5 +35,5 @@ setsBmElView=[]
 #argsBmElScale=[['CF',1],['My',1]]
 argsBmElScale=[]
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportNormStrGrPath,texReportFile=cfg.reportNormStrFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportNormStrGrPath,texReportFile= cfg.reportNormStrFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

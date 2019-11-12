@@ -11,7 +11,7 @@ execfile('xc_model_data.py') #data for FE model generation
 
 #Load properties to display:
 #preprocessor= FEcase.getPreprocessor
-execfile('results/verifications/verifRsl_shearULS.py')
+execfile(cfg.projectDirTree.getVerifShearFile())
 execfile('captionTexts.py')
 #Elements with an assigned section.
 reinfConcreteSectionDistribution= RC_material_distribution.loadRCMaterialDistribution()

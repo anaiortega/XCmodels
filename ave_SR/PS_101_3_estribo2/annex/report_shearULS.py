@@ -7,7 +7,7 @@ modelDataInputFile="../model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 #Load properties to display:
-fName= '../results/verifications/verifRsl_shearULS.py'
+fName= cfg.projectDirTree.getVerifShearFile()
 execfile(fName)
 execfile('../../PSs/captionTexts.py')
 
@@ -40,7 +40,7 @@ argsBmElScale=[]
 
 
 texReportFile='res_PS101_estribo2/report_shearULS.tex'  #laTex file where to include the graphics 
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

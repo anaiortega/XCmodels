@@ -6,12 +6,12 @@ import matplotlib.pyplot as plt
 import os
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 modelDataInputFile=model_path+'model_data.py' #data for FE model generation
 execfile(modelDataInputFile)
 sectDataInputFile=model_path+'sectionsDef.py'  #script that carries out the section definition
 execfile(sectDataInputFile)
-report_graphics_outDir=model_path+graphic_output_directory+'sections/'
+report_graphics_outDir= cfg.projectDirTree.getReportSectionsGrPath()
 
 print 'report_graphics_outDir ',report_graphics_outDir
 #reportDir='./sectionsReport'     #directory where sections report will be placed
@@ -19,7 +19,7 @@ print 'report_graphics_outDir ',report_graphics_outDir
 
 preprocessor= model.getPreprocessor()
 
-reportFileName='./sectReport.tex'
+reportFileName= cfg.projectDirTree.getReportSectionsFile()
 
 report=open(reportFileName,'w')    #report latex file
 #Functions to represent the interaction diagrams

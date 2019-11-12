@@ -12,7 +12,7 @@ preprocessor= model.getPreprocessor()
 execfile(projectDirs.getCrackingSLSQPermFileName())
 execfile('../captionTexts.py')
 
-pathGrph='text/graphics/crackingSLS_qperm/'   #directory to place the figures
+pathGrph= cfg.projectDirTree.getReportCrackQpermGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
@@ -24,8 +24,8 @@ setsShEl=[deckSet]
 # Ordered list of arguments to be included in the report
 # Possible arguments: 'getMaxSteelStress', 'getCF'
 argsShEl= ['getMaxSteelStress']
-texReportFile='text/report_crackingSLS_qperm.tex'  #laTex file where to include the graphics 
-grWidth='120mm'   #width of the graphics for the tex file
+texReportFile= cfg.projectDirTree.getReportCrackQpermFile()  #laTex file where to include the graphics 
+cfg.grWidth='120mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

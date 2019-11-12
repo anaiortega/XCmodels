@@ -11,7 +11,7 @@ execfile(modelDataInputFile)
 
 #Load properties to display:
 preprocessor= FEcase.getPreprocessor
-execfile('results/verifications/verifRsl_shearULS.py')
+execfile(cfg.projectDirTree.getVerifShearFile())
 execfile('captionTexts.py')
 
 

@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import os
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 modelDataInputFile=model_path+'model_data.py' #data for FE model generation
 execfile(modelDataInputFile)
 sectDataInputFile=model_path+'sectionsDef.py'  #script that carries out the section definition

@@ -13,7 +13,7 @@ execfile("../env_config_abutment.py")
 #
 
 #Load properties to display:
-execfile(cfg.verifCrackFreqFile)
+execfile(cfg.projectDirTree.getVerifCrackFreqFile())
 
 
 #  Config

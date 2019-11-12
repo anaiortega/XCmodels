@@ -13,7 +13,7 @@ execfile("../env_config_deck.py")
 
 resFile=cfg.intForcPath+'maxN.py'
 #Load properties to display:
-#execfile(cfg.verifNormStrFile)
+#execfile(cfg.projectDirTree.getVerifNormStrFile())
 execfile(resFile)
 
 #  Config

@@ -12,11 +12,11 @@ texReportFile='res_alabeo/report_resSimplLC.tex'  #laTex file where to include t
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:
 loadCasesToDisplay=[Q1a,Q1a1via,Q1a_alabTot,Q1a1via_alabTot]
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
 textfl=open(texReportFile,'w')  #tex file to be generated
 for lc in loadCasesToDisplay:
-    lc.simplLCReports(FEproblem=FEcase,pathGr=pathGrph,texFile=textfl,grWdt=grWidth,capStdTexts=cfg.capTexts)
+    lc.simplLCReports(FEproblem=FEcase,pathGr=pathGrph,texFile=textfl,grWdt= cfg.grWidth,capStdTexts= cfg.capTexts)
 
 textfl.close()
 

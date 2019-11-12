@@ -3,7 +3,6 @@
 import inspect
 import os
 import sys
-from misc import project_directories
 
 def get_script_dir(follow_symlinks=True):
     if getattr(sys, 'frozen', False): # py2exe, PyInstaller, cx_Freeze
@@ -14,4 +13,4 @@ def get_script_dir(follow_symlinks=True):
         path = os.path.realpath(path)
     return os.path.dirname(path)
 
-projectDirs= project_directories.ProjectDirectories(get_script_dir())
+projectDirs= cfg.projectDirTree

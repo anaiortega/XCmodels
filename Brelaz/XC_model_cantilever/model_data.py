@@ -12,7 +12,6 @@ from model.sets import sets_mng
 from actions import loads
 from actions import load_cases as lcases
 from actions import combinations as cc
-from misc import project_directories
 import os
 
 def get_script_dir(follow_symlinks=True):
@@ -24,7 +23,7 @@ def get_script_dir(follow_symlinks=True):
         path = os.path.realpath(path)
     return os.path.dirname(path)
 
-projectDirs= project_directories.ProjectDirectories(get_script_dir())
+projectDirs= cfg.projectDirTree
 
 cantileverWidth= 2.5
 cantileverLength= 2.65

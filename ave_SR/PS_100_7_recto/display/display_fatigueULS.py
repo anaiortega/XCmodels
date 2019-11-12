@@ -7,14 +7,14 @@ from postprocess import output_handler
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 
 #Load properties to display:
-fName= model_path+check_results_directory+'verifRsl_fatigueULS.py'
+fName= cfg.projectDirTree.getVerifFatigueFile()
 execfile(fName)
 
 

@@ -7,7 +7,7 @@ execfile("../model_gen.py") #FE model generation
 execfile("../env_config_abutment.py")
 
 #Load properties to display:
-execfile(cfg.verifCrackFreqFile)
+execfile(cfg.projectDirTree.getVerifCrackFreqFile())
 
 limitStateLabel= lsd.freqLoadsCrackControl.label
 
@@ -33,5 +33,5 @@ argsBmElScale=[['getCF',1],['getMaxSteelStress',1]]
 argsBmElScale=[]
 
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportCrackFreqGrPath,texReportFile=cfg.reportCrackFreqFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportCrackFreqGrPath,texReportFile= cfg.reportCrackFreqFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

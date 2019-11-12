@@ -4,15 +4,15 @@
 import os
 
 #Project directory structure
-execfile("../project_directories.py")
+execfile("../env_config.py")
 
 #RC sections definition.
 execfile("../sectionsDef.py")
 
 
 
-lsd.LimitStateData.internal_forces_results_directory= '../'+internal_forces_results_directory
-lsd.LimitStateData.check_results_directory= '../'+check_results_directory
+lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
+lsd.LimitStateData.check_results_directory= cfg.projectDirTree.verifPath
 
 #Information about element sections.
 sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()

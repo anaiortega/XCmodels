@@ -2,11 +2,11 @@
 import os
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
-loads_graphics_outDir=model_path+graphic_output_directory+'loads/'
+loads_graphics_outDir= cfg.projectDirTree.getReportLoadsGrPath()
 
 from postprocess.reports import graphLoadCase
 

@@ -7,7 +7,7 @@ execfile("../model_gen.py") #FE model generation
 execfile("../env_config_abutment.py")
 
 #Load properties to display:
-execfile(cfg.verifNormStrFile)
+execfile(cfg.projectDirTree.getVerifNormStrFile())
 
 
 
@@ -33,5 +33,5 @@ argsShEl= ['CF','N', 'My', 'Mz']
 # Possible arguments: 'CF', 'N', 'My', 'Mz'
 #argsBmElScale=[['CF',1],['My',1]]
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportNormStrGrPath,texReportFile=cfg.reportNormStrFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportNormStrGrPath,texReportFile= cfg.reportNormStrFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

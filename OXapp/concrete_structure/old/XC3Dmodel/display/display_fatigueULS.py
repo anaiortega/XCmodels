@@ -7,7 +7,7 @@ from postprocess import output_handler
 execfile("../model_gen.py") #FE model generation
 
 #Load properties to display:
-execfile(cfg.verifFatigueFile)
+execfile(cfg.projectDirTree.getVerifFatigueFile())
 
 
 

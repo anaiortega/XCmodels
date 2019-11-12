@@ -6,7 +6,7 @@ from postprocess.reports import graphical_reports
 execfile("../model_gen.py") #FE model generation
 
 #Load properties to display:
-execfile(cfg.verifNormStrFile)
+execfile(cfg.projectDirTree.getVerifNormStrFile())
 
 
 
@@ -32,5 +32,5 @@ setsBmElView=[[beamXconcr,'XYZPos']]
 # Possible arguments: 'CF', 'N', 'My', 'Mz'
 argsBmElScale=[['CF',1],['My',1]]
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportNormStrGrPath,texReportFile=cfg.reportNormStrFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportNormStrGrPath,texReportFile= cfg.reportNormStrFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

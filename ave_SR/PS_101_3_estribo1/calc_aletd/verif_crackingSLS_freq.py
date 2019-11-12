@@ -3,7 +3,7 @@
 import os
 
 #Project directory structure
-execfile("../project_directories.py")
+execfile("../env_config.py")
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution

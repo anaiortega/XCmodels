@@ -17,8 +17,8 @@ execfile(modelDataInputFile)
 
 
 #Load properties to display:
-#fName= model_path+'verifRsl_normStrsULS.py'
-fName= model_path+'verifRsl_shearULS.py'
+
+fName= cfg.projectDirTree.getVerifShearFile()
 execfile(fName)
 #execfile(model_path+'/captionTexts.py')
 

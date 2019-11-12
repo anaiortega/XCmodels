@@ -5,13 +5,13 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 #Load properties to display:
-fName= model_path+check_results_directory+'verifRsl_normStrsULS.py'
+fName= cfg.projectDirTree.getVerifNormStrFile()
 execfile(fName)
 
 
@@ -43,7 +43,7 @@ setsBmElView=[]
 #argsBmElScale=[['CF',1],['My',1]]
 argsBmElScale=[]
 texReportFile='res_a_rasante/report_normStrsULS.tex'  #laTex file where to include the graphics 
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

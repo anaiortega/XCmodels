@@ -12,11 +12,11 @@ texReportFile='res_PS100_recto/report_resSimplLC.tex'  #laTex file where to incl
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:
 loadCasesToDisplay=resLoadCases
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
 textfl=open(texReportFile,'w')  #tex file to be generated
 for lc in loadCasesToDisplay:
-    lc.simplLCReports(FEproblem=FEcase,pathGr=pathGrph,texFile=textfl,grWdt=grWidth,capStdTexts=cfg.capTexts)
+    lc.simplLCReports(FEproblem=FEcase,pathGr=pathGrph,texFile=textfl,grWdt= cfg.grWidth,capStdTexts= cfg.capTexts)
 
 textfl.close()
 

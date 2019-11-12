@@ -23,8 +23,8 @@ setsBmElView=[[beamX,'XYZPos']]
 argsBmElScale=[['Mu',1],['Mu',1]]
 
 #Load properties to display:
-execfile(cfg.verifFatigueFile)
+execfile(cfg.projectDirTree.getVerifFatigueFile())
 limitStateLabel= lsd.fatigueResistance.label
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=cfg.reportFatigueGrPath,texReportFile=cfg.reportFatigueFile,grWdt=cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportFatigueGrPath,texReportFile= cfg.reportFatigueFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

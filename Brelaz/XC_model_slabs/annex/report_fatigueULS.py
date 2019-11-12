@@ -11,7 +11,7 @@ preprocessor= model.getPreprocessor()
 execfile(projectDirs.getFatigueULSFileName())
 execfile('../captionTexts.py')
 
-pathGrph='text/graphics/fatigueStrsULS/'   #directory to place the figures
+pathGrph= cfg.projectDirTree.getReportFatigueGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'
 
 limitStateLabel= lsd.fatigueResistance.label
@@ -35,8 +35,8 @@ setsBmElView=[[beamXSet,'XYZPos']]
 argsBmElScale=[['Mu',1],['Mu',1]]
 
 
-texReportFile='text/report_fatigueStrsULS.tex'  #laTex file where to include the graphics 
-grWidth='100mm'   #width of the graphics for the tex file
+texReportFile= cfg.projectDirTree.getReportFatigueFile()  #laTex file where to include the graphics 
+cfg.grWidth='100mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=fatg_capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=fatg_capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

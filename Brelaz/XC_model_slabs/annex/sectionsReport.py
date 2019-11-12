@@ -14,7 +14,7 @@ reportDir='./text'     #directory where sections report will be placed
 
 preprocessor= model.getPreprocessor()
 
-reportFileName='./sectReport.tex'
+reportFileName= cfg.projectDirTree.getReportSectionsFile()
 
 report=open(reportFileName,'w')    #report latex file
 #Functions to represent the interaction diagrams

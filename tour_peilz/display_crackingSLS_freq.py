@@ -9,7 +9,7 @@ execfile('xc_model_data.py') #data for FE model generation
 
 
 #Load properties to display:
-execfile('./results/verifications/verifRsl_crackingSLS_freq.py')
+execfile(cfg.projectDirTree.getVerifCrackFreqFile())
 execfile('./captionTexts.py')
 #Elements with an assigned section.
 reinfConcreteSectionDistribution= RC_material_distribution.loadRCMaterialDistribution()

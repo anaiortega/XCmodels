@@ -311,5 +311,5 @@ utils_display.plotStressStrainFibSet(fiberSet=setsRCEl1.concrFibers.fSet,title='
 
 # #report of the section material
 # sectParam=sectionReport.SectionInfo(preprocessor=preprocessor,sectName='example_7.5_EC2W_0.3mm',sectDescr='Test example 7.5 EC2 Worked examples - $w_k \\approx 0.3 mm$. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
-# sectParam.writeReport(archTex='figures/sections/secEx75A.tex', pathFigura='figures/sections/secEx75A.eps')
+
 

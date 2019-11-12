@@ -5,13 +5,13 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 #Load properties to display:
-fName= model_path+check_results_directory+'verifRsl_shearULS.py'
+fName= cfg.projectDirTree.getVerifShearFile()
 execfile(fName)
 
 
@@ -44,7 +44,7 @@ argsBmElScale=[]
 
 
 texReportFile='res_OD_PF_103_17/report_shearULS.tex'  #laTex file where to include the graphics 
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

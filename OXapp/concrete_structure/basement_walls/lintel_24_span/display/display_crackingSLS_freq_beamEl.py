@@ -7,7 +7,7 @@ from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 execfile("../model_gen.py") #FE model generation
 
 #Load properties to display:
-execfile(cfg.verifCrackFreqFile)
+execfile(cfg.projectDirTree.getVerifCrackFreqFile())
 
 #  Config
 argument= 'wk'      #Available arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'

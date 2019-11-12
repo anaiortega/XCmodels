@@ -7,14 +7,14 @@ from postprocess import limit_state_data as lsd
 
 model_path="./"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"fe_model.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 
 #Load properties to display:
-fName= model_path+check_results_directory+'verifRsl_shearULS.py'
+fName=  cfg.projectDirTree.getVerifShearFile()
 execfile(fName)
 execfile(model_path+'/captionTexts.py')
 

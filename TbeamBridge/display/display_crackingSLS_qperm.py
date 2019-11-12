@@ -9,7 +9,7 @@ from postprocess.xcVtk.FE_model import Fields
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
@@ -17,7 +17,7 @@ execfile(modelDataInputFile)
 
 #Load properties to display:
 preprocessor= model.getPreprocessor()
-fName= model_path+check_results_directory+'verifRsl_crackingSLS_qperm.py'
+fName=  cfg.projectDirTree.getVerifCrackQpermFile()
 execfile(fName)
 
 #xcSet= deckSet

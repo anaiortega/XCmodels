@@ -12,11 +12,11 @@ texReportFile='res_alabeo/report_loads.tex'  #laTex file where to include the gr
 #or redefined lately) to be displayed:
 loadCasesToDisplay=[Q1a,Q1a1via,Q1a_alabTot,Q1a1via_alabTot]
 loadCasesToDisplay=[Q1a1via_alabTot]
-grWidth='110mm'   #width of the graphics for the tex file
+cfg.grWidth='110mm'   #width of the graphics for the tex file
 
 textfl=open(texReportFile,'w')  #tex file to be generated
 for lc in loadCasesToDisplay:
-    lc.loadReports(FEcase=FEcase,pathGr=pathGrph,texFile=textfl,grWdt=grWidth)
+    lc.loadReports(FEcase=FEcase,pathGr=pathGrph,texFile=textfl,grWdt= cfg.grWidth)
 
 textfl.close()
   

@@ -11,7 +11,7 @@ execfile("../env_config_deck.py")
 #execfile("../env_config_abutment.py")
 #
 #Load properties to display:
-execfile(cfg.verifNormStrFile)
+execfile(cfg.projectDirTree.getVerifNormStrFile())
 
 #  Config
 argument= 'CF'       #Possible arguments:

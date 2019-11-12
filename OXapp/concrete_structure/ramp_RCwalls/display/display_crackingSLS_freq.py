@@ -8,7 +8,7 @@ from postprocess import output_handler
 execfile("../model_gen.py")
 
 #Load properties to display:
-execfile(cfg.verifCrackFreqFile)
+execfile(cfg.projectDirTree.getVerifCrackFreqFile())
 
 
 #  Config

@@ -4,18 +4,18 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'project_directories.py')
+execfile(model_path+'env_config.py')
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 #Load properties to display:
 preprocessor= model.getPreprocessor()
-fName= model_path+check_results_directory+'verifRsl_normStrsULS.py'
+fName= cfg.projectDirTree.getVerifNormStrFile()
 execfile(fName)
 execfile('../captionTexts.py')
 
-pathGrph='text/graphics/normStrsULS/'   #directory to place the figures
+pathGrph= cfg.projectDirTree.getReportNormStrGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'
 
 limitStateLabel= lsd.normalStressesResistance.label
@@ -40,8 +40,8 @@ setsBmElView=[[beamXSet,'XYZPos']]
 # Possible arguments: 'CF', 'N', 'My', 'Mz'
 argsBmElScale=[['CF',1],['My',1]]
 
-texReportFile='text/report_normStrsULS.tex'  #laTex file where to include the graphics 
-grWidth='120mm'   #width of the graphics for the tex file
+texReportFile= cfg.projectDirTree.getReportNormStrFile()  #laTex file where to include the graphics 
+cfg.grWidth='120mm'   #width of the graphics for the tex file
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt=grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
+graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts=capTexts,pathGr=pathGrph,texReportFile=texReportFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 

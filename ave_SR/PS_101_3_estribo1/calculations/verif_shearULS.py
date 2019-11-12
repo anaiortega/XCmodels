@@ -5,7 +5,7 @@ import os
 os.system('cp ../results/internalForces/intForce_ULS_normalStressesResistance.csv ../results/internalForces/intForce_ULS_shearResistance.csv')
 
 #Project directory structure
-execfile("../../PSs/project_directories.py")
+execfile("../../PSs/env_config.py")
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
@@ -14,8 +14,8 @@ from postprocess import RC_material_distribution
 from materials.ehe import EHE_limit_state_checking
 from solution import predefined_solutions
 
-lsd.LimitStateData.internal_forces_results_directory= '../'+internal_forces_results_directory
-lsd.LimitStateData.check_results_directory= '../'+check_results_directory
+lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
+lsd.LimitStateData.check_results_directory= cfg.projectDirTree.verifPath
 
 
 #Reinforced concrete sections on each element.
