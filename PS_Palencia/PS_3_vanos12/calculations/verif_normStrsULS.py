@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from postprocess.config import output_config as oc
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 #from materials.ehe import EHE_limit_state_checking as lscheck  #Checking material for shear limit state according to EHE08
@@ -26,7 +25,7 @@ stcalc=setArmados
 #stcalc=setArmMurEstr
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=stcalc,appendToResFile='N',listFile='N',calcMeanCF='N')
+outCfg= lsd.VerifOutVars(setCalc=stcalc,appendToResFile='N',listFile='N',calcMeanCF='N')
 
 limitState=lsd.normalStressesResistance
 limitState.controller= lscheck.BiaxialBendingNormalStressController(limitState.label)

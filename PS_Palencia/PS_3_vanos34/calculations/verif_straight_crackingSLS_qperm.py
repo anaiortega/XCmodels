@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from postprocess.config import output_config as oc
 from solution import predefined_solutions
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
@@ -10,7 +9,7 @@ execfile("../model_gen.py") #FE model generation
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg=oc.verifOutVars(setCalc=decks,appendToResFile='Y',listFile='Y')
+outCfg= lsd.VerifOutVars(setCalc=decks,appendToResFile='Y',listFile='Y')
 
 #Reinforced concrete sections on each element.
 #reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()
