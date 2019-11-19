@@ -1,0 +1,1071 @@
+\begin{center} 
+\begin{longtable}{|l|p{20cm}|} 
+\caption{Combinaciones para comprobaciones en ELU.} \label{combELU}  \\ 
+\hline 
+ELU & Combinación de acciones \\ 
+\hline 
+\endfirsthead  
+\hline 
+ELU & Combinación de acciones \\ 
+\hline 
+\endhead  
+\hline \multicolumn{2}{|r|}{Continúa en la siguiente página} \\ \hline 
+ \endfoot 
+ \hline 
+ \endlastfoot  
+ ELU001 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas \\ 
+ELU002 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas \\ 
+ELU003 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas \\ 
+ELU004 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas \\ 
+ELU005 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas \\ 
+ELU006 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas \\ 
+ELU007 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas \\ 
+ELU008 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas \\ 
+ELU009 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU010 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU011 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU012 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU013 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU014 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU015 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU016 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU017 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU018 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU019 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU020 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU021 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU022 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU023 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU024 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU025 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU026 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU027 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU028 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU029 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU030 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU031 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU032 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU033 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU034 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU035 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU036 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU037 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU038 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU039 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU040 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU041 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU042 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU043 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU044 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU045 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU046 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU047 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU048 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU049 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU050 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU051 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU052 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU053 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU054 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU055 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU056 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU057 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU058 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU059 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU060 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Viento \\ 
+ELU061 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Viento con SC uso \\ 
+ELU062 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU063 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU064 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU065 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU066 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU067 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU068 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU069 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU070 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU071 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU072 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU073 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU074 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU075 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU076 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU077 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU078 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU079 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU080 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU081 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU082 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU083 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU084 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU085 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU086 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU087 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU088 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU089 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU090 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU091 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU092 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU093 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU094 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU095 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU096 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU097 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU098 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU099 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU100 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU101 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU102 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU103 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU104 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU105 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU106 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU107 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU108 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU109 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU110 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU111 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU112 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU113 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU114 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU115 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU116 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU117 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU118 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU119 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU120 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU121 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU122 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU123 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU124 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU125 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU126 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU127 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU128 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU129 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU130 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU131 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU132 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU133 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU134 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU135 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU136 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU137 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU138 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU139 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU140 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU141 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU142 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU143 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU144 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU145 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU146 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU147 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU148 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU149 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU150 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU151 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU152 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU153 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU154 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU155 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU156 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU157 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Viento \\ 
+ELU158 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Viento con SC uso \\ 
+ELU159 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU160 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU161 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU162 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU163 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU164 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU165 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU166 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU167 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU168 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU169 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU170 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU171 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU172 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU173 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU174 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU175 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU176 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU177 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU178 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU179 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU180 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU181 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU182 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU183 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU184 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU185 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU186 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU187 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU188 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU189 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU190 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU191 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU192 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU193 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU194 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU195 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU196 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU197 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU198 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU199 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU200 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU201 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU202 & 1.00*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU203 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU204 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU205 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU206 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU207 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU208 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU209 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU210 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU211 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU212 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU213 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU214 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU215 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU216 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU217 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU218 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU219 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU220 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU221 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU222 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU223 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU224 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU225 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU226 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU227 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU228 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU229 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU230 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU231 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU232 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU233 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU234 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU235 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU236 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU237 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU238 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU239 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU240 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU241 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU242 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU243 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU244 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU245 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU246 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU247 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU248 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU249 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU250 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU251 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU252 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU253 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU254 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Viento \\ 
+ELU255 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Viento con SC uso \\ 
+ELU256 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU257 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU258 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU259 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU260 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU261 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU262 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU263 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU264 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU265 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU266 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU267 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU268 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU269 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU270 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU271 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU272 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU273 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU274 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU275 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU276 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU277 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU278 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU279 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU280 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU281 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU282 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU283 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU284 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU285 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU286 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU287 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU288 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU289 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU290 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU291 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU292 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU293 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU294 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU295 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU296 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU297 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU298 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU299 & 1.00*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU300 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU301 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU302 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU303 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU304 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU305 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU306 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU307 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU308 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU309 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU310 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU311 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU312 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU313 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU314 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU315 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU316 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU317 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU318 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU319 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU320 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU321 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU322 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU323 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU324 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU325 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU326 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU327 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU328 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU329 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU330 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU331 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU332 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU333 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU334 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU335 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU336 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU337 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU338 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU339 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU340 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU341 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU342 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU343 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU344 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU345 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU346 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU347 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU348 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU349 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU350 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU351 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Viento \\ 
+ELU352 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Viento con SC uso \\ 
+ELU353 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU354 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU355 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU356 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU357 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU358 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU359 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU360 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU361 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU362 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU363 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU364 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU365 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU366 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU367 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU368 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU369 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU370 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU371 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU372 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU373 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU374 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU375 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU376 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU377 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU378 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU379 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU380 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU381 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU382 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU383 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU384 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU385 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU386 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU387 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU388 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU389 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU390 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU391 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU392 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU393 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU394 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU395 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU396 & 1.00*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU397 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU398 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU399 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU400 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU401 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU402 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU403 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU404 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU405 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU406 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU407 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU408 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU409 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU410 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU411 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU412 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU413 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU414 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU415 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU416 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU417 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU418 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU419 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU420 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU421 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU422 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU423 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU424 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU425 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU426 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU427 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU428 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU429 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU430 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU431 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU432 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU433 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU434 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU435 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU436 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU437 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU438 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU439 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU440 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU441 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU442 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU443 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU444 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU445 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU446 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU447 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU448 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Viento \\ 
+ELU449 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Viento con SC uso \\ 
+ELU450 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU451 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU452 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU453 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU454 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU455 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU456 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU457 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU458 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU459 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU460 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU461 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU462 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU463 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU464 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU465 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU466 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU467 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU468 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU469 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU470 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU471 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU472 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU473 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU474 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU475 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU476 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU477 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU478 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU479 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU480 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU481 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU482 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU483 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU484 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU485 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU486 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU487 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU488 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU489 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU490 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU491 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU492 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU493 & 1.35*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU494 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU495 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU496 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU497 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU498 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU499 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU500 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU501 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU502 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU503 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU504 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU505 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU506 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU507 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU508 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU509 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU510 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU511 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU512 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU513 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU514 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU515 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU516 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU517 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU518 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU519 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU520 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU521 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU522 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU523 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU524 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU525 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU526 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU527 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU528 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU529 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU530 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU531 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU532 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU533 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU534 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU535 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU536 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU537 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU538 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU539 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU540 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU541 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU542 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU543 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU544 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU545 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Viento \\ 
+ELU546 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Viento con SC uso \\ 
+ELU547 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU548 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU549 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU550 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU551 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU552 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU553 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU554 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU555 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU556 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU557 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU558 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU559 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU560 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU561 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU562 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU563 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU564 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU565 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU566 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU567 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU568 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU569 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU570 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU571 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU572 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU573 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU574 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU575 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU576 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU577 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU578 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU579 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU580 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU581 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU582 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU583 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU584 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU585 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU586 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU587 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU588 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU589 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU590 & 1.35*Peso propio + 1.00*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU591 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU592 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU593 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU594 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU595 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU596 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU597 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU598 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU599 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU600 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU601 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU602 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU603 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU604 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU605 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU606 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU607 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU608 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU609 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU610 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU611 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU612 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU613 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU614 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU615 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU616 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU617 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU618 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU619 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU620 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU621 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU622 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU623 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU624 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU625 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU626 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU627 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU628 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU629 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU630 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU631 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU632 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU633 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU634 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU635 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU636 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU637 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU638 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU639 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU640 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU641 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU642 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Viento \\ 
+ELU643 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Viento con SC uso \\ 
+ELU644 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU645 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU646 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU647 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU648 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU649 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU650 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU651 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU652 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU653 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU654 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU655 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU656 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU657 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU658 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU659 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU660 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU661 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU662 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU663 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU664 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU665 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU666 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU667 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU668 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU669 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU670 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU671 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU672 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU673 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU674 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU675 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU676 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU677 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU678 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU679 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU680 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU681 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU682 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU683 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU684 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU685 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU686 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU687 & 1.35*Peso propio + 1.35*Carga muerta + 1.00*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU688 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 \\ 
+ELU689 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU690 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU691 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU692 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU693 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A1 + 0.90*Viento con SC uso \\ 
+ELU694 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 \\ 
+ELU695 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU696 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU697 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU698 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU699 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. A2 + 0.90*Viento con SC uso \\ 
+ELU700 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 \\ 
+ELU701 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU702 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU703 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU704 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Temperatura uniforme, contracción \\ 
+ELU705 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + 0.90*Viento con SC uso \\ 
+ELU706 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 \\ 
+ELU707 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU708 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU709 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, dilatación \\ 
+ELU710 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Temperatura uniforme, contracción \\ 
+ELU711 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B2 + 0.90*Viento con SC uso \\ 
+ELU712 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C \\ 
+ELU713 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU714 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU715 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, dilatación \\ 
+ELU716 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Temperatura uniforme, contracción \\ 
+ELU717 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. C + 0.90*Viento con SC uso \\ 
+ELU718 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D \\ 
+ELU719 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU720 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU721 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, dilatación \\ 
+ELU722 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Temperatura uniforme, contracción \\ 
+ELU723 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + 0.90*Viento con SC uso \\ 
+ELU724 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E \\ 
+ELU725 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU726 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU727 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, dilatación \\ 
+ELU728 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Temperatura uniforme, contracción \\ 
+ELU729 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + 0.90*Viento con SC uso \\ 
+ELU730 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F \\ 
+ELU731 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más fría \\ 
+ELU732 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU733 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, dilatación \\ 
+ELU734 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Temperatura uniforme, contracción \\ 
+ELU735 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. F + 0.90*Viento con SC uso \\ 
+ELU736 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. B1 + frenado \\ 
+ELU737 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. D + frenado \\ 
+ELU738 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.35*Tren cargas pos. E + frenado \\ 
+ELU739 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Viento \\ 
+ELU740 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Viento con SC uso \\ 
+ELU741 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Viento con SC uso \\ 
+ELU742 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Viento con SC uso \\ 
+ELU743 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Viento con SC uso \\ 
+ELU744 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Viento con SC uso \\ 
+ELU745 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Viento con SC uso \\ 
+ELU746 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Viento con SC uso \\ 
+ELU747 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Viento con SC uso \\ 
+ELU748 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Viento con SC uso \\ 
+ELU749 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, contracción \\ 
+ELU750 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, contracción \\ 
+ELU751 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, contracción \\ 
+ELU752 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, contracción \\ 
+ELU753 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, contracción \\ 
+ELU754 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU755 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU756 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, contracción \\ 
+ELU757 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, contracción \\ 
+ELU758 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Temperatura uniforme, dilatación \\ 
+ELU759 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Temperatura uniforme, dilatación \\ 
+ELU760 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Temperatura uniforme, dilatación \\ 
+ELU761 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Temperatura uniforme, dilatación \\ 
+ELU762 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Temperatura uniforme, dilatación \\ 
+ELU763 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU764 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU765 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU766 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Temperatura uniforme, dilatación \\ 
+ELU767 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU768 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU769 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU770 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU771 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU772 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU773 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU774 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU775 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELU776 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU777 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. F + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU778 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. E + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU779 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. D + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU780 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. C + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU781 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU782 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. B1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU783 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A2 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELU784 & 1.35*Peso propio + 1.35*Carga muerta + 1.35*Reológicas + 1.01*Tren cargas pos. A1 + 1.50*Diferencia temperatura, fibra sup. más fría \\ 
+\end{longtable} 
+\end{center} 
+ 
+ 
+\begin{center} 
+\begin{longtable}{|l|p{20cm}|} 
+\caption{Combinaciones características (poco probables o raras) para comprobaciones en ELS.} \label{combELSR}  \\ 
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endfirsthead  
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endhead  
+\hline \multicolumn{2}{|r|}{Continúa en la siguiente página} \\ \hline 
+ \endfoot 
+ \hline 
+ \endlastfoot  
+ ELSR001 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 \\ 
+ELSR002 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR003 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR004 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR005 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 + 0.60*Temperatura uniforme, contracción \\ 
+ELSR006 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A1 + 0.60*Viento con SC uso \\ 
+ELSR007 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 \\ 
+ELSR008 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR009 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR010 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR011 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 + 0.60*Temperatura uniforme, contracción \\ 
+ELSR012 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. A2 + 0.60*Viento con SC uso \\ 
+ELSR013 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 \\ 
+ELSR014 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR015 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR016 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR017 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + 0.60*Temperatura uniforme, contracción \\ 
+ELSR018 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + 0.60*Viento con SC uso \\ 
+ELSR019 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 \\ 
+ELSR020 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR021 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR022 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR023 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 + 0.60*Temperatura uniforme, contracción \\ 
+ELSR024 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B2 + 0.60*Viento con SC uso \\ 
+ELSR025 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C \\ 
+ELSR026 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR027 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR028 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR029 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C + 0.60*Temperatura uniforme, contracción \\ 
+ELSR030 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. C + 0.60*Viento con SC uso \\ 
+ELSR031 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D \\ 
+ELSR032 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR033 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR034 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR035 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + 0.60*Temperatura uniforme, contracción \\ 
+ELSR036 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + 0.60*Viento con SC uso \\ 
+ELSR037 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E \\ 
+ELSR038 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR039 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR040 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR041 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + 0.60*Temperatura uniforme, contracción \\ 
+ELSR042 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + 0.60*Viento con SC uso \\ 
+ELSR043 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F \\ 
+ELSR044 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR045 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR046 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F + 0.60*Temperatura uniforme, dilatación \\ 
+ELSR047 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F + 0.60*Temperatura uniforme, contracción \\ 
+ELSR048 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. F + 0.60*Viento con SC uso \\ 
+ELSR049 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. B1 + frenado \\ 
+ELSR050 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. D + frenado \\ 
+ELSR051 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Tren cargas pos. E + frenado \\ 
+ELSR052 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Viento \\ 
+ELSR053 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Viento con SC uso \\ 
+ELSR054 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 1.00*Viento con SC uso \\ 
+ELSR055 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 1.00*Viento con SC uso \\ 
+ELSR056 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 1.00*Viento con SC uso \\ 
+ELSR057 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 1.00*Viento con SC uso \\ 
+ELSR058 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 1.00*Viento con SC uso \\ 
+ELSR059 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 1.00*Viento con SC uso \\ 
+ELSR060 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 1.00*Viento con SC uso \\ 
+ELSR061 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 1.00*Viento con SC uso \\ 
+ELSR062 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Temperatura uniforme, contracción \\ 
+ELSR063 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 1.00*Temperatura uniforme, contracción \\ 
+ELSR064 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 1.00*Temperatura uniforme, contracción \\ 
+ELSR065 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 1.00*Temperatura uniforme, contracción \\ 
+ELSR066 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 1.00*Temperatura uniforme, contracción \\ 
+ELSR067 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 1.00*Temperatura uniforme, contracción \\ 
+ELSR068 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 1.00*Temperatura uniforme, contracción \\ 
+ELSR069 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 1.00*Temperatura uniforme, contracción \\ 
+ELSR070 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 1.00*Temperatura uniforme, contracción \\ 
+ELSR071 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR072 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR073 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR074 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR075 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR076 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR077 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR078 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR079 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 1.00*Temperatura uniforme, dilatación \\ 
+ELSR080 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR081 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR082 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR083 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR084 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR085 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR086 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR087 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR088 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 1.00*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSR089 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR090 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR091 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR092 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR093 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR094 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR095 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR096 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+ELSR097 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 1.00*Diferencia temperatura, fibra sup. más fría \\ 
+\end{longtable} 
+\end{center} 
+ 
+ 
+\begin{center} 
+\begin{longtable}{|l|p{20cm}|} 
+\caption{Combinaciones frecuentes para comprobaciones en ELS.} \label{combELSF}  \\ 
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endfirsthead  
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endhead  
+\hline \multicolumn{2}{|r|}{Continúa en la siguiente página} \\ \hline 
+ \endfoot 
+ \hline 
+ \endlastfoot  
+ ELSF001 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 \\ 
+ELSF002 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF003 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF004 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF005 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.60*Temperatura uniforme, contracción \\ 
+ELSF006 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.20*Viento con SC uso \\ 
+ELSF007 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 \\ 
+ELSF008 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF009 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF010 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF011 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.60*Temperatura uniforme, contracción \\ 
+ELSF012 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.20*Viento con SC uso \\ 
+ELSF013 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 \\ 
+ELSF014 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF015 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF016 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF017 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.60*Temperatura uniforme, contracción \\ 
+ELSF018 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.20*Viento con SC uso \\ 
+ELSF019 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 \\ 
+ELSF020 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF021 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF022 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF023 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.60*Temperatura uniforme, contracción \\ 
+ELSF024 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.20*Viento con SC uso \\ 
+ELSF025 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C \\ 
+ELSF026 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF027 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF028 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF029 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.60*Temperatura uniforme, contracción \\ 
+ELSF030 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.20*Viento con SC uso \\ 
+ELSF031 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D \\ 
+ELSF032 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF033 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF034 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF035 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.60*Temperatura uniforme, contracción \\ 
+ELSF036 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.20*Viento con SC uso \\ 
+ELSF037 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E \\ 
+ELSF038 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF039 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF040 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF041 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.60*Temperatura uniforme, contracción \\ 
+ELSF042 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.20*Viento con SC uso \\ 
+ELSF043 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F \\ 
+ELSF044 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+ELSF045 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF046 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF047 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.60*Temperatura uniforme, contracción \\ 
+ELSF048 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.20*Viento con SC uso \\ 
+ELSF049 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + frenado \\ 
+ELSF050 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + frenado \\ 
+ELSF051 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + frenado \\ 
+ELSF052 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Viento \\ 
+ELSF053 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Viento con SC uso \\ 
+ELSF054 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.60*Viento con SC uso \\ 
+ELSF055 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.60*Viento con SC uso \\ 
+ELSF056 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.60*Viento con SC uso \\ 
+ELSF057 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.60*Viento con SC uso \\ 
+ELSF058 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.60*Viento con SC uso \\ 
+ELSF059 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.60*Viento con SC uso \\ 
+ELSF060 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.60*Viento con SC uso \\ 
+ELSF061 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.60*Viento con SC uso \\ 
+ELSF062 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Temperatura uniforme, contracción \\ 
+ELSF063 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Temperatura uniforme, dilatación \\ 
+ELSF064 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSF065 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+\end{longtable} 
+\end{center} 
+ 
+ 
+\begin{center} 
+\begin{longtable}{|l|p{20cm}|} 
+\caption{Combinaciones casi-permanentes para comprobaciones en ELS.} \label{combELSQP}  \\ 
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endfirsthead  
+\hline 
+ELS & Combinación de acciones \\ 
+\hline 
+\endhead  
+\hline \multicolumn{2}{|r|}{Continúa en la siguiente página} \\ \hline 
+ \endfoot 
+ \hline 
+ \endlastfoot  
+ ELSQP001 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 \\ 
+ELSQP002 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP003 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP004 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP005 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A1 + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP006 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 \\ 
+ELSQP007 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP008 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP009 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP010 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. A2 + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP011 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 \\ 
+ELSQP012 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP013 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP014 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP015 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP016 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 \\ 
+ELSQP017 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP018 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP019 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP020 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B2 + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP021 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C \\ 
+ELSQP022 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP023 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP024 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP025 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. C + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP026 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D \\ 
+ELSQP027 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP028 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP029 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP030 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP031 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E \\ 
+ELSQP032 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP033 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP034 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP035 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP036 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F \\ 
+ELSQP037 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.50*Diferencia temperatura, fibra sup. más fría \\ 
+ELSQP038 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.50*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP039 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.50*Temperatura uniforme, dilatación \\ 
+ELSQP040 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. F + 0.50*Temperatura uniforme, contracción \\ 
+ELSQP041 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. B1 + frenado \\ 
+ELSQP042 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. D + frenado \\ 
+ELSQP043 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.75*Tren cargas pos. E + frenado \\ 
+ELSQP044 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.20*Viento \\ 
+ELSQP045 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.20*Viento con SC uso \\ 
+ELSQP046 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Temperatura uniforme, contracción \\ 
+ELSQP047 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Temperatura uniforme, dilatación \\ 
+ELSQP048 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Diferencia temperatura, fibra sup. más caliente \\ 
+ELSQP049 & 1.00*Peso propio + 1.00*Carga muerta + 1.00*Reológicas + 0.60*Diferencia temperatura, fibra sup. más fría \\ 
+\end{longtable} 
+\end{center} 
+ 
+ 
