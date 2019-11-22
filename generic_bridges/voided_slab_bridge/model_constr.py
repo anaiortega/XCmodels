@@ -47,12 +47,12 @@ murAligV1_rg=rg_mur(YLosligVano1)
 murAligV2_rg=rg_mur(YLosligVano2)
 murAligV3_rg=rg_mur(YLosligVano3)
 
-xmurRiostr=[-xArranqVoladz]+xAlmasAlig+[xArranqVoladz]
+xmurRiostr=[xVoladz[0][-1]]+xAlmasAlig+[xVoladz[1][0]]
 murRP1_rg=rg_mur(YriostrPil1,Xmur=xmurRiostr)
 murRP2_rg=rg_mur(YriostrPil2,Xmur=xmurRiostr)
 
 
-xmurExtAlig=[-xArranqVoladz,xArranqVoladz]
+xmurExtAlig=[xVoladz[0][-1],xVoladz[1][0]]
 murExtAligV1_rg=rg_mur(YLosligVano1,Xmur=xmurExtAlig)
 murExtAligV2_rg=rg_mur(YLosligVano2,Xmur=xmurExtAlig)
 murExtAligV3_rg=rg_mur(YLosligVano3,Xmur=xmurExtAlig)
@@ -224,9 +224,14 @@ voladzExtrV3_mesh=fem.SurfSetToMesh(surfSet=voladzExtrV3,matSect=voladzExtr_mat,
 voladzExtrRP1_mesh=fem.SurfSetToMesh(surfSet=voladzExtrRP1,matSect=voladzExtr_mat,elemSize=eSize,elemType='ShellMITC4')
 voladzExtrRP2_mesh=fem.SurfSetToMesh(surfSet=voladzExtrRP2,matSect=voladzExtr_mat,elemSize=eSize,elemType='ShellMITC4')
 
-
 #fem.multi_mesh(preprocessor=prep,lstMeshSets=[pilasInf_mesh,pilasSup_mesh,losInf_mesh,losSup_mesh,murAlig_mesh,murExtAlig_mesh,voladzCent_mesh,voladzExtr_mesh,riostrEstr_mesh,riostrPil_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[pilasInf_mesh,pilasSup_mesh,riostrEstr1_mesh,riostrEstr2_mesh,losInfV1_mesh,losInfV2_mesh,losInfV3_mesh,losInfRP1_mesh,losInfRP2_mesh,losSupV1_mesh,losSupV2_mesh,losSupV3_mesh,losSupRP1_mesh,losSupRP2_mesh,murAligV1_mesh,murAligV2_mesh,murAligV3_mesh,murExtAligV1_mesh,murExtAligV2_mesh,murExtAligV3_mesh,murRP1_mesh,murRP2_mesh,diafRP1_mesh,diafRP2_mesh,voladzCentV1_mesh,voladzCentV2_mesh,voladzCentV3_mesh,voladzCentRP1_mesh,voladzCentRP2_mesh,voladzExtrV1_mesh,voladzExtrV2_mesh,voladzExtrV3_mesh,voladzExtrRP1_mesh,voladzExtrRP2_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[pilasInf_mesh,pilasSup_mesh,riostrEstr1_mesh,riostrEstr2_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[losInfV1_mesh,losInfV2_mesh,losInfV3_mesh,losInfRP1_mesh,losInfRP2_mesh,losSupV1_mesh,losSupV2_mesh,losSupV3_mesh,losSupRP1_mesh,losSupRP2_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[murAligV1_mesh,murAligV2_mesh,murAligV3_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[murExtAligV1_mesh,murExtAligV2_mesh,murExtAligV3_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[murRP1_mesh,murRP2_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[diafRP1_mesh,diafRP2_mesh])
+fem.multi_mesh(preprocessor=prep,lstMeshSets=[voladzCentV1_mesh,voladzCentV2_mesh,voladzCentV3_mesh,voladzCentRP1_mesh,voladzCentRP2_mesh,voladzExtrV1_mesh,voladzExtrV2_mesh,voladzExtrV3_mesh,voladzExtrRP1_mesh,voladzExtrRP2_mesh])
 
 losInf=losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP2
 losSup=losSupV1+losSupV2+losSupV3+losSupRP1+losSupRP2
@@ -262,17 +267,17 @@ riostrEstr.description='Riostras estribos'
 
 
 acerIzq_rg=list()
-acerIzq_rg.append(gm.IJKRange((0,0,zList.index(zArrVoladz)),(xList.index(-xBordeCalz),lastYpos,zList.index(zArrVoladz))))
+acerIzq_rg.append(gm.IJKRange((0,0,zList.index(zArrVoladz)),(xList.index(xCalzada[0]),lastYpos,zList.index(zArrVoladz))))
 acerIzq=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,nameSet='acerIzq')
 
 acerDer_rg=list()
-acerDer_rg.append(gm.IJKRange((xList.index(xBordeCalz),0,zList.index(zArrVoladz)),(lastXpos,lastYpos,zList.index(zArrVoladz))))
+acerDer_rg.append(gm.IJKRange((xList.index(xCalzada[-1]),0,zList.index(zArrVoladz)),(lastXpos,lastYpos,zList.index(zArrVoladz))))
 acerDer=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,nameSet='acerDer')
 
 aceras=acerIzq+acerDer
 aceras.name='aceras'
 
-calzada_rg=gm.IJKRange((xList.index(-xBordeCalz),0,zList.index(zArrVoladz)),(xList.index(xBordeCalz),lastYpos,zList.index(zLosSup))).extractIncludedIJranges()
+calzada_rg=gm.IJKRange((xList.index(xCalzada[0]),0,zList.index(zArrVoladz)),(xList.index(xCalzada[-1]),lastYpos,zList.index(zLosSup))).extractIncludedIJranges()
 calzada=gridGeom.getSetSurfMultiRegion(lstIJKRange=calzada_rg,nameSet='calzada')
 #Imposta
 auxSetPnt1=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((0,0,zList.index(zArrVoladz)),(0,lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt1')
@@ -281,13 +286,13 @@ auxSetPnt=auxSetPnt1+auxSetPnt2
 auxSetPnt.name='auxSetPnt'
 imposta=sets.get_lines_on_points(setPoints=auxSetPnt,setLinName='imposta',onlyIncluded=True)
 barrera_rg=list()
-auxSetPnt1=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(-xBordeCalz),0,zList.index(zArrVoladz)),(xList.index(-xBordeCalz),lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt1')
-auxSetPnt2=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(xBordeCalz),0,zList.index(zArrVoladz)),(xList.index(xBordeCalz),lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt2')
+auxSetPnt1=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(xCalzada[0]),0,zList.index(zArrVoladz)),(xList.index(xCalzada[0]),lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt1')
+auxSetPnt2=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(xCalzada[-1]),0,zList.index(zArrVoladz)),(xList.index(xCalzada[-1]),lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt2')
 auxSetPnt=auxSetPnt1+auxSetPnt2
 auxSetPnt.name='auxSetPnt'
 barrera=sets.get_lines_on_points(setPoints=auxSetPnt,setLinName='barrera',onlyIncluded=True)
 #línea arranque voladizo izquierdo (aplicación W)
-arrqVolPnt=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(-xArranqVoladz),0,zList.index(zArrVoladz)),(xList.index(-xArranqVoladz),lastYpos,zList.index(zArrVoladz))),setName='arrqVolPnt')
+arrqVolPnt=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((xList.index(xVoladz[0][-1]),0,zList.index(zArrVoladz)),(xList.index(xVoladz[0][-1]),lastYpos,zList.index(zArrVoladz))),setName='arrqVolPnt')
 arrqVol=sets.get_lines_on_points(setPoints=arrqVolPnt,setLinName='arrqVol',onlyIncluded=True)
 
 #    sets vías fictíceas, cargas uniformes tren de cargas (fr: concomitantes con frenado 0.4*q)
@@ -302,22 +307,35 @@ def traf_vias_fict(name,xmin,xmax,ymin,ymax,zmin,zmax,qmax=qunifmax,qmin=qunifmi
              )
     return retval
 
-viaExt_vano1_set,viaExt_vano1_qunifmax,viaExt_vano1_qunifmin,viaExt_vano1_qunifmax_fr,viaExt_vano1_qunifmin_fr=traf_vias_fict(name='viaExt_vano1',xmin=xViaFict1,xmax=xBordeCalz,ymin=0,ymax=yPil1,zmin=zArrVoladz,zmax=zLosSup)
+viaExt_vano1_set,viaExt_vano1_qunifmax,viaExt_vano1_qunifmin,viaExt_vano1_qunifmax_fr,viaExt_vano1_qunifmin_fr=traf_vias_fict(name='viaExt_vano1',xmin=xViaFict[0][0],xmax=xViaFict[0][-1],ymin=0,ymax=yPil1,zmin=zArrVoladz,zmax=zLosSup)
 
-viaExt_vano2_set,viaExt_vano2_qunifmax,viaExt_vano2_qunifmin,viaExt_vano2_qunifmax_fr,viaExt_vano2_qunifmin_fr=traf_vias_fict(name='viaExt_vano2',xmin=xViaFict1,xmax=xBordeCalz,ymin=yPil1,ymax=yPil2,zmin=zArrVoladz,zmax=zLosSup)
-viaExt_vano3_set,viaExt_vano3_qunifmax,viaExt_vano3_qunifmin,viaExt_vano3_qunifmax_fr,viaExt_vano3_qunifmin_fr=traf_vias_fict(name='viaExt_vano3',xmin=xViaFict1,xmax=xBordeCalz,ymin=yPil2,ymax=yEstr2,zmin=zArrVoladz,zmax=zLosSup)
+viaExt_vano2_set,viaExt_vano2_qunifmax,viaExt_vano2_qunifmin,viaExt_vano2_qunifmax_fr,viaExt_vano2_qunifmin_fr=traf_vias_fict(name='viaExt_vano2',xmin=xViaFict[0][0],xmax=xViaFict[0][-1],ymin=yPil1,ymax=yPil2,zmin=zArrVoladz,zmax=zLosSup)
 
-viaCent_vano1_set,viaCent_vano1_qunifmax,viaCent_vano1_qunifmin,viaCent_vano1_qunifmax_fr,viaCent_vano1_qunifmin_fr=traf_vias_fict(name='viaCent_vano1',xmin=xViaFict2,xmax=xViaFict1,ymin=0,ymax=yPil1,zmin=zLosSup,zmax=zLosSup)
-viaCent_vano2_set,viaCent_vano2_qunifmax,viaCent_vano2_qunifmin,viaCent_vano2_qunifmax_fr,viaCent_vano2_qunifmin_fr=traf_vias_fict(name='viaCent_vano2',xmin=xViaFict2,xmax=xViaFict1,ymin=yPil1,ymax=yPil2,zmin=zLosSup,zmax=zLosSup)
-viaCent_vano3_set,viaCent_vano3_qunifmax,viaCent_vano3_qunifmin,viaCent_vano3_qunifmax_fr,viaCent_vano3_qunifmin_fr=traf_vias_fict(name='viaCent_vano3',xmin=xViaFict2,xmax=xViaFict1,ymin=yPil2,ymax=yEstr2,zmin=zLosSup,zmax=zLosSup)
+viaExt_vano3_set,viaExt_vano3_qunifmax,viaExt_vano3_qunifmin,viaExt_vano3_qunifmax_fr,viaExt_vano3_qunifmin_fr=traf_vias_fict(name='viaExt_vano3',xmin=xViaFict[0][0],xmax=xViaFict[0][1],ymin=yPil2,ymax=yEstr2,zmin=zArrVoladz,zmax=zLosSup)
 
-viaInt_vano1_set,viaInt_vano1_qunifmax,viaInt_vano1_qunifmin,viaInt_vano1_qunifmax_fr,viaInt_vano1_qunifmin_fr=traf_vias_fict(name='viaInt_vano1',xmin=xViaFict3,xmax=xViaFict2,ymin=0,ymax=yPil1,zmin=zLosSup,zmax=zLosSup)
-viaInt_vano2_set,viaInt_vano2_qunifmax,viaInt_vano2_qunifmin,viaInt_vano2_qunifmax_fr,viaInt_vano2_qunifmin_fr=traf_vias_fict(name='viaInt_vano2',xmin=xViaFict3,xmax=xViaFict2,ymin=yPil1,ymax=yPil2,zmin=zLosSup,zmax=zLosSup)
-viaInt_vano3_set,viaInt_vano3_qunifmax,viaInt_vano3_qunifmin,viaInt_vano3_qunifmax_fr,viaInt_vano3_qunifmin_fr=traf_vias_fict(name='viaInt_vano3',xmin=xViaFict3,xmax=xViaFict2,ymin=yPil2,ymax=yEstr2,zmin=zLosSup,zmax=zLosSup)
 
-remnt_vano1_set,remnt_vano1_qunifmax,remnt_vano1_qunifmin,remnt_vano1_qunifmax_fr,remnt_vano1_qunifmin_fr=traf_vias_fict(name='remnt_vano1',xmin=-xBordeCalz,xmax=xViaFict3,ymin=0,ymax=yPil1,zmin=zArrVoladz,zmax=zLosSup)
-remnt_vano2_set,remnt_vano2_qunifmax,remnt_vano2_qunifmin,remnt_vano2_qunifmax_fr,remnt_vano2_qunifmin_fr=traf_vias_fict(name='remnt_vano2',xmin=-xBordeCalz,xmax=xViaFict3,ymin=yPil1,ymax=yPil2,zmin=zArrVoladz,zmax=zLosSup)
-remnt_vano3_set,remnt_vano3_qunifmax,remnt_vano3_qunifmin,remnt_vano3_qunifmax_fr,remnt_vano3_qunifmin_fr=traf_vias_fict(name='remnt_vano3',xmin=-xBordeCalz,xmax=xViaFict3,ymin=yPil2,ymax=yEstr2,zmin=zArrVoladz,zmax=zLosSup)
+
+viaCent_vano1_set,viaCent_vano1_qunifmax,viaCent_vano1_qunifmin,viaCent_vano1_qunifmax_fr,viaCent_vano1_qunifmin_fr=traf_vias_fict(name='viaCent_vano1',xmin=xViaFict[1][0],xmax=xViaFict[1][-1],ymin=0,ymax=yPil1,zmin=zLosSup,zmax=zLosSup)
+
+viaCent_vano2_set,viaCent_vano2_qunifmax,viaCent_vano2_qunifmin,viaCent_vano2_qunifmax_fr,viaCent_vano2_qunifmin_fr=traf_vias_fict(name='viaCent_vano2',xmin=xViaFict[1][0],xmax=xViaFict[1][-1],ymin=yPil1,ymax=yPil2,zmin=zLosSup,zmax=zLosSup)
+
+viaCent_vano3_set,viaCent_vano3_qunifmax,viaCent_vano3_qunifmin,viaCent_vano3_qunifmax_fr,viaCent_vano3_qunifmin_fr=traf_vias_fict(name='viaCent_vano3',xmin=xViaFict[1][0],xmax=xViaFict[1][-1],ymin=yPil2,ymax=yEstr2,zmin=zLosSup,zmax=zLosSup)
+
+
+
+viaInt_vano1_set,viaInt_vano1_qunifmax,viaInt_vano1_qunifmin,viaInt_vano1_qunifmax_fr,viaInt_vano1_qunifmin_fr=traf_vias_fict(name='viaInt_vano1',xmin=xViaFict[2][0],xmax=xViaFict[2][-1],ymin=0,ymax=yPil1,zmin=zLosSup,zmax=zLosSup)
+
+viaInt_vano2_set,viaInt_vano2_qunifmax,viaInt_vano2_qunifmin,viaInt_vano2_qunifmax_fr,viaInt_vano2_qunifmin_fr=traf_vias_fict(name='viaInt_vano2',xmin=xViaFict[2][0],xmax=xViaFict[2][-1],ymin=yPil1,ymax=yPil2,zmin=zLosSup,zmax=zLosSup)
+
+viaInt_vano3_set,viaInt_vano3_qunifmax,viaInt_vano3_qunifmin,viaInt_vano3_qunifmax_fr,viaInt_vano3_qunifmin_fr=traf_vias_fict(name='viaInt_vano3',xmin=xViaFict[2][0],xmax=xViaFict[2][-1],ymin=yPil2,ymax=yEstr2,zmin=zLosSup,zmax=zLosSup)
+
+
+
+remnt_vano1_set,remnt_vano1_qunifmax,remnt_vano1_qunifmin,remnt_vano1_qunifmax_fr,remnt_vano1_qunifmin_fr=traf_vias_fict(name='remnt_vano1',xmin=xViaFict[-1][0],xmax=xViaFict[-1][-1],ymin=0,ymax=yPil1,zmin=zArrVoladz,zmax=zLosSup)
+
+remnt_vano2_set,remnt_vano2_qunifmax,remnt_vano2_qunifmin,remnt_vano2_qunifmax_fr,remnt_vano2_qunifmin_fr=traf_vias_fict(name='remnt_vano2',xmin=xViaFict[-1][0],xmax=xViaFict[-1][-1],ymin=yPil1,ymax=yPil2,zmin=zArrVoladz,zmax=zLosSup)
+
+remnt_vano3_set,remnt_vano3_qunifmax,remnt_vano3_qunifmin,remnt_vano3_qunifmax_fr,remnt_vano3_qunifmin_fr=traf_vias_fict(name='remnt_vano3',xmin=xViaFict[-1][0],xmax=xViaFict[-1][-1],ymin=yPil2,ymax=yEstr2,zmin=zArrVoladz,zmax=zLosSup)
 
 viaExt=viaExt_vano1_set+viaExt_vano2_set+viaExt_vano3_set
 viaCent=viaCent_vano1_set+viaCent_vano2_set+viaCent_vano3_set
@@ -388,7 +406,7 @@ for xn in xCoordNeopr:
     
 constrNodes=constrNodesPilas+constrNodesE1+constrNodesE2
     
-    
+
 
 
 #                       ***ACTIONS***
@@ -550,9 +568,9 @@ WtableroSCuso=loads.UniformLoadOnLines(name='WtableroSCuso', xcSet=arrqVol, load
 #               a wheel
 
 #coordenadas auxiliares
-xCent_vext=(xViaFict1+xBordeVoladz)/2.
-xCent_vcent=(xViaFict1+xViaFict2)/2.
-xCent_vint=(xViaFict1+xViaFict3)/2.
+xCent_vext=(xViaFict[0][0]+xViaFict[0][-1])/2.
+xCent_vcent=(xViaFict[1][0]+xViaFict[1][-1])/2.
+xCent_vint=(xViaFict[2][0]+xViaFict[2][-1])/2.
 
 yCent_van1=yPil1/2.0
 yCent_van2=(yPil1+yPil2)/2.0

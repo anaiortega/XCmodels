@@ -21,4 +21,4 @@ for lc in loadCasesToDisplay:
     #Internal forces displays on sets of «shell» elements
     for st in lc.setsToDispIntForc:
         for arg in lc.listIntForc:
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,fileName=None,defFScale=1)
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fileName=None,defFScale=1)

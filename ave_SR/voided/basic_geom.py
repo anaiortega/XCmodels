@@ -2,6 +2,8 @@
 
 from model import predefined_spaces
 from model.geometry import grid_model as gm
+from postprocess import output_styles as outSty
+from postprocess import output_handler as outHndl
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS***
 FEcase= xc.FEProblem()
@@ -14,7 +16,11 @@ elements.dimElem= 3
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
+sty=outSty.OutputStyle()
+out=outHndl.OutputHandler(modelSpace,sty)
+cam=out.getCameraParameters()
 
+sty.language=('sp','UTF-8')
 # grid model definition
 gridGeom= gm.GridModel(prep,xList,yList,zList)
 

@@ -74,8 +74,8 @@ modelSpace.fixNode('F0F_000',n.tag)
 
 #Empotramiento base pilar
 p=gridGeom.getPntXYZ((0,yBeamEnd,0))
-n=p.getNode()
-modelSpace.fixNode('000_000',n.tag)
+nBasePil=p.getNode()
+modelSpace.fixNode('000_000',nBasePil.tag)
 
 #Apoyo viga en pilar
 p1=gridGeom.getPntXYZ((0,yBeamEnd,zBeam))

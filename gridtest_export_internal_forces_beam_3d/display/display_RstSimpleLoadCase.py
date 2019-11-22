@@ -21,6 +21,6 @@ for lc in loadCasesToDisplay:
     #Internal forces displays
     for st in lc.setsToDispIntForc:
         for arg in lc.listIntForc:
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st.elSet,unitDescription=unDesc)
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st.elSet)
 
 

@@ -11,6 +11,6 @@ import math
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')
 
-execfile('../basic_data.py')
-execfile('../basic_geom.py')
-execfile('../../../generic_bridges/voided_slab_bridge/model_constr.py')
+execfile(workingDirectory+'basic_data.py')
+execfile(workingDirectory+'basic_geom.py')
+execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/model_constr.py')

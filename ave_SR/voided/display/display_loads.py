@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
+from postprocess.config import default_config
 
-execfile('../model_data.py')
-execfile('../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'model_data.py')
+execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
 #execfile('../../generic_bridges/voided_slab_bridge/loadStateData.py')
-execfile('./loadStateData.py')
+execfile(workingDirectory+'loadStateData.py')
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg

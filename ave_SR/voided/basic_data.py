@@ -22,7 +22,7 @@ anchoTot=13.80
 anchoAcera=(anchoTot-anchoCalz)/2.0   
 
 #  losa
-distEjesAlig=1.10  #distancia entre ejes de aligeramientos
+distEjesAlig=2.10  #distancia entre ejes de aligeramientos
 diamAlig=0.8   #diámetro aligeramientos
 lRectEqAlig=round(math.pi**0.5*diamAlig/2.,3)
 numAlig=3      #número de aligeramientos
@@ -107,9 +107,16 @@ hDistrQ=espLosAlig/2.+0.05
 
 # Coord. x (transversal)
 xBordeCalz=round(anchoCalz/2.0,2)
-xViaFict1=round(xBordeCalz-3,2)
-xViaFict2=round(xViaFict1-3,2)
-xViaFict3=round(xViaFict2-3,2)
+#xViaFict1=round(xBordeCalz-3,2)
+#xViaFict2=round(xViaFict1-3,2)
+#xViaFict3=round(xViaFict2-3,2)
+
+xViaFict=[[round(xBordeCalz-3,2),round(anchoCalz/2.0,2)], 
+          [round(xBordeCalz-2*3,2),round(xBordeCalz-3,2)],
+          [round(xBordeCalz-3*3,2),round(xBordeCalz-2*3,2)],
+          [-xBordeCalz,round(xBordeCalz-2*3,2)]]
+          # vias ficticeas
+          # 1, 2 , 3 y remanente  (xmin,xmax) 
 
 xBordeVoladz=round(anchoTot/2.0,2)
 xMedVoladz=round(xBordeVoladz-anchVoladz/2.0,2)
@@ -160,13 +167,51 @@ qPPlos=pespConcr*ALos/(2*anchLosaAlig+2*ladoCartab) #[N/m2] a aplicar en cara su
 qPPlosAlig=pespConcr*ALosAlig/(2*anchLosaAlig+2*ladoCartab) #[N/m2] a aplicar en cara superior e inferior de losa aligeradda
 qlPPriostrEstr=pespConcr*AriostrEstr #[N/m]
 #
-eSize= 0.4     #length of elements
+eSize= 0.45     #length of elements
 
 # coordinates in global X,Y,Z axes for the grid generation
 #xinterm1=round((xViaFict1+xArranqVoladz)/2.,2)
+xCalzada=[-xBordeCalz,xBordeCalz]
+xVoladz=[[-xBordeVoladz,-xMedVoladz,-xArranqVoladz],
+         [xArranqVoladz,xMedVoladz,xBordeVoladz]]   #izq.,drcho.
 
-xListaux=[-xBordeVoladz,-xMedVoladz,-xBordeCalz,-xArranqVoladz,xViaFict3,-xPila,xViaFict2,0,xPila,xViaFict1,xArranqVoladz,xBordeCalz,xMedVoladz,xBordeVoladz]
-xList=xAlmasAlig
+
+def insert2DList(baseList,list2Insert,tolerance):
+    '''Iterates through the list of two lists list2Insert doing the following for each item:
+       - if its distance to the closest value in baseList is greater than tolerance, appends the item to baseList,
+       - otherwise, the item is replaced by its closest value in baseList  
+
+    '''
+    for i in range(len(list2Insert)):
+        for j in range(len(list2Insert[i])):
+            coor=list2Insert[i][j]
+            clVal=closest(baseList,coor)
+            if abs(coor-clVal)<=tolerance:
+                list2Insert[i][j]=clVal
+            else:
+                baseList.append(coor)
+
+def insert1DList(baseList,list2Insert,tolerance):
+    '''Iterates through the list list2Insert doing the following for each item:
+       - if its distance to the closest value in baseList is greater than tolerance, appends the item to baseList,
+       - otherwise, the item is replaced by its closest value in baseList  
+
+    '''
+    for i in range(len(list2Insert)):
+        coor=list2Insert[i]
+        clVal=closest(baseList,coor)
+        if abs(coor-clVal)<=tolerance:
+            list2Insert[i]=clVal
+        else:
+            baseList.append(coor)
+
+xList=[]
+xList+=xAlmasAlig
+insert2DList(xList,xVoladz,tol)
+insert1DList(xList,xCalzada,tol)
+insert2DList(xList,xViaFict,tol)
+xListaux=[-xPila,xPila]
+
 for coor in xListaux:
     clVal=closest(xList,coor)
     if coor-clVal <> 0:
@@ -187,11 +232,11 @@ lastZpos=len(zList)-1
 
 XYZLists=(xList,yList,zList)
 
-XvoladzExtrI=(-xBordeVoladz,-xMedVoladz)
-XvoladzExtrD=(xMedVoladz,xBordeVoladz)
-XvoladzCentI=(-xMedVoladz,-xArranqVoladz)
-XvoladzCentD=(xArranqVoladz,xMedVoladz)
-XLosa=(-xArranqVoladz,xArranqVoladz)
+XvoladzExtrI=(xVoladz[0][0],xVoladz[0][1])
+XvoladzExtrD=(xVoladz[1][1],xVoladz[1][-1])
+XvoladzCentI=(xVoladz[0][1],xVoladz[0][-1])
+XvoladzCentD=(xVoladz[1][0],xVoladz[1][1])
+XLosa=(xVoladz[0][-1],xVoladz[1][0])
 
 Yvano1=(0,yPil1)
 Yvano2=(yPil1,yPil2)

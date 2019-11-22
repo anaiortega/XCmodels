@@ -6,6 +6,7 @@ import xc_base
 import geom
 import xc
 import math
+from postprocess.config import default_config
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')

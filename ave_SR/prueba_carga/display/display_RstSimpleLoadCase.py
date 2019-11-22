@@ -25,7 +25,7 @@ for lc in loadCasesToDisplay:
         for arg in lc.listIntForc:
             
             fname='figures/'+lc.loadCaseName+'_M2.jpg'
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,unitDescription=unDesc,fileName=fname,defFScale=1)
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st,fileName=fname,defFScale=1)
     #Internal forces displays on sets of «beam» elements
     for st in lc.setsToDispBeamIntForc:
         for arg in lc.listBeamIntForc:
