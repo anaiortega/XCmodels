@@ -1,4 +1,4 @@
-execfile('../model_data.py')
+execfile('../model_gen.py')
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
 defDisplay= vtk_CAD_graphic.RecordDefDisplayCAD()

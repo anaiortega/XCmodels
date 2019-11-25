@@ -3,7 +3,7 @@
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-execfile('../model_data.py')
+execfile('../model_gen.py')
 execfile('../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
 execfile('../../generic_bridges/voided_slab_bridge/loadStateData.py')
 

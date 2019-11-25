@@ -33,7 +33,7 @@ anchVoladz=2.85
 anchLosaAlig=7.0
 ladoCartab=0.55
 
-espRiostrEstr=1.0
+cantoRiostrEstr=1.0
 
 LriostrPil=2  #longitud del macizado sobre pilas
 nDiafRP=3 #número de diafragmas a definir en la zona macizada sobre pilas
@@ -48,7 +48,7 @@ hInfPilas=hTotPilas/2.0   #altura zona armado inferior
 #Apoyos estribos
 distNeopr=3  #distancia entre neoprenos
 numNeopr=4   #número de aparatos de apoyo
-xCoordNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
+xNeopr=[-1.5*distNeopr,-0.5*distNeopr,0.5*distNeopr,1.5*distNeopr]
 hNetoNeopr=48e-3 #espesor neto neopreno
 aNeopr=0.25       #dimensión y (sentido longitudinal) del neopreno
 bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
@@ -57,6 +57,7 @@ bNeopr=0.40       #dimensión x (sentido transversal) del neopreno
 concrete=EHE_materials.HA30
 reinfSteel= EHE_materials.B500S
 Gneopr=1000e3  #módulo de cortante del material elastomérico
+Eneopr=600e6      #módulo elástico material elastomérico
 
 # Cargas
 grav=9.81     #[m/s2]
@@ -128,7 +129,7 @@ for i in range(numAlig):
 xAlmasAlig=uu.roundLst(xAlmasAlig,dec)
 
 xPila=round(distEjPilas/2.0,2)
-
+xPil=[-xPila,xPila]
 #espesor diafragmas riostra pila
 ValigRP=LriostrPil*numAlig*math.pi*diamAlig**2/4.
 LdiafRP=xAlmasAlig[-1]-xAlmasAlig[0]
@@ -142,6 +143,9 @@ yPil2=LvanosExtr+LvanoCent
 yminRiostrP2=yPil2-LriostrPil/2.0+espDiafRP/2.
 ymaxRiostrP2=yPil2+LriostrPil/2.0-espDiafRP/2.
 yEstr2=yPil2+LvanosExtr
+yEstr=[0,yEstr2] #eje estribo 1, eje estribo 2
+
+yPil=[yPil1,yPil2]
 
 #Coord. Z (vertical)
 zLosInf=round(espLosAlig/2.0,3)
@@ -150,7 +154,7 @@ zArrVoladz=round(cantoLosa-maxCantoVoladz/2.0,3)
 zInfPilas=-hTotPilas+hInfPilas  #arranque tramo superior 
 zInfPilAer=-hTotPilas+2  #aprox. 2 m enterrado
 
-
+zPil=[[-hTotPilas,zInfPilAer,zInfPilas,zLosInf],[-hTotPilas,zInfPilAer,zInfPilas,zLosInf]]  #Pila 1, pila 2
 #peso propio
 grav=9.81 #Gravity acceleration (m/s2)
 pespConcr=grav*concrete.density() #peso específico hormigón armado [N/m3]
@@ -160,7 +164,7 @@ AvolCent=(maxCantoVoladz+(maxCantoVoladz+minCantoVoladz)/2.0)/2.0*anchVoladz/2.0
 ALos=2*(maxCantoVoladz+cantoLosa)/2.*ladoCartab+anchLosaAlig*cantoLosa
 ALosAlig=ALos-numAlig*math.pi*diamAlig**2/4.
 Apilas=math.pi*diamPilas**2/4.
-AriostrEstr=cantoLosa*espRiostrEstr
+AriostrEstr=cantoLosa*cantoRiostrEstr
 qPPvolExt=pespConcr*AvolExt/(anchVoladz/2.)  #[N/m2]
 qPPvolCent=pespConcr*AvolCent/(anchVoladz/2.)  #[N/m2]
 qPPlos=pespConcr*ALos/(2*anchLosaAlig+2*ladoCartab) #[N/m2] a aplicar en cara superior e inferior de losa maciza sobre pilas
@@ -205,32 +209,30 @@ def insert1DList(baseList,list2Insert,tolerance):
         else:
             baseList.append(coor)
 
-xList=[]
-xList+=xAlmasAlig
-insert2DList(xList,xVoladz,tol)
-insert1DList(xList,xCalzada,tol)
-insert2DList(xList,xViaFict,tol)
-xListaux=[-xPila,xPila]
+xListTabl=[]
+xListTabl+=xAlmasAlig
+insert1DList(xListTabl,xPil,tol)
+insert2DList(xListTabl,xVoladz,tol)
+insert1DList(xListTabl,xCalzada,tol)
+insert2DList(xListTabl,xViaFict,tol)
+xListTabl.sort()
 
-for coor in xListaux:
-    clVal=closest(xList,coor)
-    if coor-clVal <> 0:
-        xList.append(coor)
-xList.sort()
-
-yList=[0,yminRiostrP1,yPil1,ymaxRiostrP1,yminRiostrP2,yPil2,ymaxRiostrP2,yEstr2]
+yListTabl=[]
+yListTabl+=yPil
+yListTabl+=yEstr
+yListTabl+=[yminRiostrP1,ymaxRiostrP1,yminRiostrP2,ymaxRiostrP2]
+yListTabl.sort()
 
 zinterm1=round(zLosInf+(zArrVoladz-zLosInf)/3.,3)
 zriostrEstr=round((zLosInf+zLosSup)/2.,3)
 
-zList=[-hTotPilas,zInfPilAer,zInfPilas,zLosInf,zinterm1,zriostrEstr,zArrVoladz,zLosSup]
+zListTabl=[zLosInf,zinterm1,zriostrEstr,zArrVoladz,zLosSup]
+zListTabl.sort()
+
 
 #auxiliary data
-lastXpos=len(xList)-1
-lastYpos=len(yList)-1
-lastZpos=len(zList)-1
 
-XYZLists=(xList,yList,zList)
+XYZListsTabl=(xListTabl,yListTabl,zListTabl)
 
 XvoladzExtrI=(xVoladz[0][0],xVoladz[0][1])
 XvoladzExtrD=(xVoladz[1][1],xVoladz[1][-1])
@@ -238,16 +240,29 @@ XvoladzCentI=(xVoladz[0][1],xVoladz[0][-1])
 XvoladzCentD=(xVoladz[1][0],xVoladz[1][1])
 XLosa=(xVoladz[0][-1],xVoladz[1][0])
 
-Yvano1=(0,yPil1)
-Yvano2=(yPil1,yPil2)
-Yvano3=(yPil2,yEstr2)
+Yvano1=(0,yPil[0])
+Yvano2=(yPil[0],yPil[1])
+Yvano3=(yPil[1],yEstr[-1])
 YLosligVano1=(0,yminRiostrP1)
 YLosligVano2=(ymaxRiostrP1,yminRiostrP2)
-YLosligVano3=(ymaxRiostrP2,yEstr2)
+YLosligVano3=(ymaxRiostrP2,yEstr[-1])
 YriostrPil1=(yminRiostrP1,ymaxRiostrP1)
 YriostrPil2=(yminRiostrP2,ymaxRiostrP2)
 
 ZmurAlig=(zLosInf,zLosSup)
 Zvoladz=(zArrVoladz,zArrVoladz)
 
+xListPil=[]
+xListPil+=xPil
+yListPil=[]
+yListPil+=yPil
 
+def flatten(l):
+    return flatten(l[0]) + (flatten(l[1:]) if len(l) > 1 else []) if type(l) is list else [l]
+
+zListPil_aux=flatten(zPil)
+zListPil=[]
+for i in zListPil_aux:
+    if i not in zListPil:
+        zListPil.append(i)
+zListPil.sort()

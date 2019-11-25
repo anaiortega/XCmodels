@@ -2,7 +2,7 @@
 from postprocess.config import default_config
 workingDirectory= default_config.findWorkingDirectory()+'/'
 
-execfile(workingDirectory+'model_data.py')
+execfile(workingDirectory+'model_gen.py')
 #execfile('../../../generic_bridges/voided_slab_bridge/captionTexts.py')
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
@@ -36,11 +36,13 @@ defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAli
 '''
 #defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Modelo de cálculo, detalles',nodeSize=0.020,scaleConstr=0.70)
 
-defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+#defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
 
 
 #defDisplay.displayMesh(xcSets=[murAligV1],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
 
 
 
-defDisplay.displayMesh(xcSets=[murAlig],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+#defDisplay.displayMesh(xcSets=[murAlig],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+#defDisplay.displayMesh(xcSets=[pilasBarlov,pilasSotav],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
+defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,ties,struts,piles],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)

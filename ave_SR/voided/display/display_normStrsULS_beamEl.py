@@ -9,7 +9,7 @@ model_path="../"
 #Project directory structure
 execfile(model_path+'env_config.py')
 
-modelDataInputFile=model_path+"model_data.py" #data for FE model generation
+modelDataInputFile=model_path+"model_gen.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 

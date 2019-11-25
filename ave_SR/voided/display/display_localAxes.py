@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
+execfile('../model_gen.py')
 execfile('../../generic_bridges/voided_slab_bridge/captionTexts.py')
 
 from postprocess.xcVtk import vtk_graphic_base

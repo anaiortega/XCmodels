@@ -21,12 +21,15 @@ out=outHndl.OutputHandler(modelSpace,sty)
 cam=out.getCameraParameters()
 
 sty.language=('sp','UTF-8')
-# grid model definition
-gridGeom= gm.GridModel(prep,xList,yList,zList)
+# grid model definition (tablero)
+gridTabl= gm.GridModel(prep,xListTabl,yListTabl,zListTabl)
+# grid model definition (pilas)
+gridPil= gm.GridModel(prep,xListPil,yListPil,zListPil)
 
 # Grid geometric entities definition (points, lines, surfaces)
 # Points' generation
-gridGeom.generatePoints()
+gridTabl.generatePoints()
+gridPil.generatePoints()
 
 #Displacements of the grid points in a range
 #syntax: movePointsRange(ijkRange,vDisp)
@@ -46,16 +49,16 @@ gridGeom.generatePoints()
 #            are not affected by the transformation 
 #     scale: scale to apply to X coordinate
 scaleX=(xArranqVoladz-xAlmasAlig[1]-ladoCartab)/(xArranqVoladz-xAlmasAlig[1])
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(-xArranqVoladz),0,zList.index(zLosInf)),(xList.index(-xAlmasAlig[1]),lastYpos,zList.index(zLosInf))),xOrig=-xAlmasAlig[1],scale=scaleX)
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(xAlmasAlig[1]),0,zList.index(zLosInf)),(xList.index(xArranqVoladz),lastYpos,zList.index(zLosInf))),xOrig=xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(-xArranqVoladz),0,zListTabl.index(zLosInf)),(xListTabl.index(-xAlmasAlig[1]),len(yListTabl)-1,zListTabl.index(zLosInf))),xOrig=-xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(xAlmasAlig[1]),0,zListTabl.index(zLosInf)),(xListTabl.index(xArranqVoladz),len(yListTabl)-1,zListTabl.index(zLosInf))),xOrig=xAlmasAlig[1],scale=scaleX)
 
 scaleX=(xArranqVoladz-xAlmasAlig[1]-2*ladoCartab/3.)/(xArranqVoladz-xAlmasAlig[1])
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(-xArranqVoladz),0,zList.index(zinterm1)),(xList.index(-xAlmasAlig[1]),lastYpos,zList.index(zinterm1))),xOrig=-xAlmasAlig[1],scale=scaleX)
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(xAlmasAlig[1]),0,zList.index(zinterm1)),(xList.index(xArranqVoladz),lastYpos,zList.index(zinterm1))),xOrig=xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(-xArranqVoladz),0,zListTabl.index(zinterm1)),(xListTabl.index(-xAlmasAlig[1]),len(yListTabl)-1,zListTabl.index(zinterm1))),xOrig=-xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(xAlmasAlig[1]),0,zListTabl.index(zinterm1)),(xListTabl.index(xArranqVoladz),len(yListTabl)-1,zListTabl.index(zinterm1))),xOrig=xAlmasAlig[1],scale=scaleX)
 
 scaleX=(xArranqVoladz-xAlmasAlig[1]-ladoCartab/3.)/(xArranqVoladz-xAlmasAlig[1])
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(-xArranqVoladz),0,zList.index(zriostrEstr)),(xList.index(-xAlmasAlig[1]),lastYpos,zList.index(zriostrEstr))),xOrig=-xAlmasAlig[1],scale=scaleX)
-gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(xAlmasAlig[1]),0,zList.index(zriostrEstr)),(xList.index(xArranqVoladz),lastYpos,zList.index(zriostrEstr))),xOrig=xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(-xArranqVoladz),0,zListTabl.index(zriostrEstr)),(xListTabl.index(-xAlmasAlig[1]),len(yListTabl)-1,zListTabl.index(zriostrEstr))),xOrig=-xAlmasAlig[1],scale=scaleX)
+gridTabl.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xListTabl.index(xAlmasAlig[1]),0,zListTabl.index(zriostrEstr)),(xListTabl.index(xArranqVoladz),len(yListTabl)-1,zListTabl.index(zriostrEstr))),xOrig=xAlmasAlig[1],scale=scaleX)
 
 
 
@@ -68,6 +71,6 @@ gridGeom.scaleCoorXPointsRange(ijkRange=gm.IJKRange((xList.index(xAlmasAlig[1]),
 #     slopeY: slope in Y direction, expressed as deltaZ/deltaY)
 #                       (defaults to 0 = no slope applied)
 #     yZeroSlope: coordinate Y of the "rotation axis".
-gridGeom.slopePointsRange(ijkRange=gm.IJKRange((xList.index(-xBordeVoladz),0,zList.index(zArrVoladz)),(xList.index(-xArranqVoladz),lastYpos,zList.index(zArrVoladz))),slopeX=-(maxCantoVoladz/2.-minCantoVoladz/2.)/anchVoladz,xZeroSlope=-xArranqVoladz)
+gridTabl.slopePointsRange(ijkRange=gm.IJKRange((xListTabl.index(-xBordeVoladz),0,zListTabl.index(zArrVoladz)),(xListTabl.index(-xArranqVoladz),len(yListTabl)-1,zListTabl.index(zArrVoladz))),slopeX=-(maxCantoVoladz/2.-minCantoVoladz/2.)/anchVoladz,xZeroSlope=-xArranqVoladz)
 
-gridGeom.slopePointsRange(ijkRange=gm.IJKRange((xList.index(xArranqVoladz),0,zList.index(zArrVoladz)),(xList.index(xBordeVoladz),lastYpos,zList.index(zArrVoladz))),slopeX=(maxCantoVoladz/2.-minCantoVoladz/2.)/anchVoladz,xZeroSlope=xArranqVoladz)
+gridTabl.slopePointsRange(ijkRange=gm.IJKRange((xListTabl.index(xArranqVoladz),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xBordeVoladz),len(yListTabl)-1,zListTabl.index(zArrVoladz))),slopeX=(maxCantoVoladz/2.-minCantoVoladz/2.)/anchVoladz,xZeroSlope=xArranqVoladz)

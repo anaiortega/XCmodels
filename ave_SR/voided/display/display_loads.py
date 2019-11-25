@@ -2,7 +2,7 @@
 from postprocess.config import default_config
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'model_data.py')
+execfile(workingDirectory+'model_gen.py')
 execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
 #execfile('../../generic_bridges/voided_slab_bridge/loadStateData.py')
 execfile(workingDirectory+'loadStateData.py')
