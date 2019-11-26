@@ -22,7 +22,7 @@ for lc in loadCasesToDisplay:
     #Internal forces displays on sets of «shell» elements
     for st in lc.setsToDispIntForc:
         for arg in lc.listIntForc:
-            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st.elSet,unitDescription=unDesc,fileName=None)
+            lcs.displayIntForc(itemToDisp=arg,setToDisplay=st.elSet,fileName=None)
     #Internal forces displays on sets of «beam» elements
     for st in lc.setsToDispBeamIntForc:
         for arg in lc.listBeamIntForc:

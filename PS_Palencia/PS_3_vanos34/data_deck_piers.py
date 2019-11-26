@@ -133,7 +133,7 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 #Retracción
-execfile(fullProjPath+'retraccion.py')  #cálculo de la retracción
+execfile(workingDirectory+'retraccion.py')  #cálculo de la retracción
 eps_retracc=Epscs  #deformación por retracción #
 
 # espesores derivados

@@ -123,6 +123,7 @@ beamsYsteel=WbeamYsteel+CbeamYsteel+EbeamYsteel
 beams=beamXsteel+WbeamYsteel+CbeamYsteel+EbeamYsteel
 walls=EastBasementWall+East1FloorWall+South1FloorWall+WestBasementWall+West1FloorWall
 overallSet=beamSets+wallSets
+cant_CbeamYsteel=gridGeom.getSetLinOneXYZRegion(((xEastWall,yCantilv,secondFloorElev),(xEastWall,yHall,secondFloorElev)),'cant_CbeamYsteel')
 #                       ***BOUNDARY CONDITIONS***
 
 #Column
@@ -193,9 +194,14 @@ DeadCW=loads.UniformLoadOnBeams(name='DeadCW',xcSet=WbeamYsteel,loadVector=xc.Ve
 LiveCW=loads.UniformLoadOnBeams(name='LiveCW',xcSet=WbeamYsteel,loadVector=xc.Vector([0,0,-Live_Wcant,0,0,0]),refSystem='Global')
 SnowCW=loads.UniformLoadOnBeams(name='SnowCW',xcSet=WbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Wcant,0,0,0]),refSystem='Global')
 #Cantilever-beam Center
+#all beam
 DeadCC=loads.UniformLoadOnBeams(name='DeadCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Ccant,0,0,0]),refSystem='Global')
 LiveCC=loads.UniformLoadOnBeams(name='LiveCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Live_Ccant,0,0,0]),refSystem='Global')
 SnowCC=loads.UniformLoadOnBeams(name='SnowCC',xcSet=CbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Ccant,0,0,0]),refSystem='Global')
+#only caltilevered
+DeadCCC=loads.UniformLoadOnBeams(name='DeadCCC',xcSet=cant_CbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Ccant,0,0,0]),refSystem='Global')
+LiveCCC=loads.UniformLoadOnBeams(name='LiveCCC',xcSet=cant_CbeamYsteel,loadVector=xc.Vector([0,0,-Live_Ccant,0,0,0]),refSystem='Global')
+SnowCCC=loads.UniformLoadOnBeams(name='SnowCCC',xcSet=cant_CbeamYsteel,loadVector=xc.Vector([0,0,-Snow_Ccant,0,0,0]),refSystem='Global')
 #Cantilever-beam East
 DeadCE=loads.UniformLoadOnBeams(name='DeadCE',xcSet=EbeamYsteel,loadVector=xc.Vector([0,0,-Dead_Ecant,0,0,0]),refSystem='Global')
 LiveCE=loads.UniformLoadOnBeams(name='LiveCE',xcSet=EbeamYsteel,loadVector=xc.Vector([0,0,-Live_Ecant,0,0,0]),refSystem='Global')
@@ -274,6 +280,32 @@ Wind_LC.addLstLoads([Wind2F,Wind1F,HWind2F])
 #out.displayLoadVectors()
 #out.displayLoads(setToDisplay=beamXsteel,elLoadComp='transZComponent')
 #modelSpace.removeLoadCaseFromDomain("Wind_LC")
+
+#only cantilever
+DeadC_LC=lcases.LoadCase(preprocessor=prep,name="DeadC_LC",loadPType="default",timeSType="constant_ts")
+DeadC_LC.create()
+DeadC_LC.addLstLoads([selfWeight,Dead2F,Dead1F,Earth1F,earthPressEastwall,earthPressWestwall,DeadSB,DeadCW,DeadCCC,DeadCE])
+'''
+modelSpace.addLoadCaseToDomain("DeadC_LC")
+out.displayLoadVectors()
+modelSpace.removeLoadCaseFromDomain("DeadC_LC")
+'''
+
+LiveC_LC=lcases.LoadCase(preprocessor=prep,name="LiveC_LC",loadPType="default",timeSType="constant_ts")
+LiveC_LC.create()
+LiveC_LC.addLstLoads([Live2F,Live1F,LiveSB,LiveCW,LiveCCC,LiveCE])
+#modelSpace.addLoadCaseToDomain("LiveC_LC")
+#out.displayLoadVectors()
+#modelSpace.removeLoadCaseFromDomain("LiveC_LC")
+
+SnowC_LC=lcases.LoadCase(preprocessor=prep,name="SnowC_LC",loadPType="default",timeSType="constant_ts")
+SnowC_LC.create()
+SnowC_LC.addLstLoads([Snow2F,Snow1F,SnowSB,SnowCW,SnowCCC,SnowCE])
+#modelSpace.addLoadCaseToDomain("SnowC_LC")
+#out.displayLoadVectors()
+#modelSpace.removeLoadCaseFromDomain("SnowC_LC")
+
+
 
 #    ***LIMIT STATE COMBINATIONS***
 combContainer= cc.CombContainer()  #Container of load combinations

@@ -34,6 +34,11 @@ for indy in range(1,len(yPil)):
         modelSpace.fixNode('000_000',n.tag)
         constrNodesPilas.append(n)
 '''
+# Elastomeric bearings.
+from materials import bridge_bearings as bb
+neopr=bb.ElastomericBearing(G=Gneopr,a=aNeopr,b=bNeopr,e=hNetoNeopr)
+neopr.defineMaterials(prep)
+
 #Neoprenos estribos
 #Estribo 1
 yn=yEstr[0]

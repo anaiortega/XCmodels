@@ -15,5 +15,7 @@ ULSs=[ULS01,ULS02,ULS03,ULS04,ULS05]
 
 for us in ULSs:
     us.listDspRot=['uZ']
-    us.setsToDispBeamIntForc=[beamXsteel,WbeamYsteel,CbeamYsteel,EbeamYsteel]
-    us.listBeamIntForc=['Mz', 'Qy']
+#    us.setsToDispBeamIntForc=[beamXsteel,WbeamYsteel,CbeamYsteel,EbeamYsteel]
+#    us.listBeamIntForc=['Mz', 'Qy']
+    us.setsToDispBeamIntForc=[columnZsteel]
+    us.listBeamIntForc=['My','Mz', 'Qy','Qz']

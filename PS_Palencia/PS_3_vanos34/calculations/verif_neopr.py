@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 #Reactions must be previously calculated
-execfile('../init_data.py')
+execfile('../env_config.py')
 execfile("../env_config_deck.py")
 execfile('../data_deck_piers.py')
-reacfile=fullProjPath+'results_deck/reactions/react.py'
+reacfile=workingDirectory+'results_deck/reactions/react.py'
 execfile(reacfile)
-resFile=fullProjPath+'results_deck/reactions/neopr_verif.tex'
+resFile=workingDirectory+'results_deck/reactions/neopr_verif.tex'
 f=open(resFile,"w")
 
 
