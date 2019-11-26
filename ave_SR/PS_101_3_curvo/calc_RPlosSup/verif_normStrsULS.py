@@ -5,13 +5,13 @@ import os
 
 #Project directory structure
 execfile('./directs.py')
+lsd.LimitStateData.envConfig= cfg
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 
-lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
-lsd.LimitStateData.check_results_directory= dir_checks
+lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.
 #reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()

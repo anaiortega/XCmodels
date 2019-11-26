@@ -2,6 +2,7 @@
 
 
 execfile('model_data.py')
+lsd.LimitStateData.envConfig= cfg
 from materials.ec3 import EC3Beam as ec3b
 
 crossSectionClass= 1

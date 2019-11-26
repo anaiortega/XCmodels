@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 #Reactions must be previously calculated
 execfile('../env_config.py')
+lsd.LimitStateData.envConfig= cfg
 execfile("../env_config_deck.py")
 execfile('../data_deck_piers.py')
 reacfile=workingDirectory+'results_deck/reactions/react.py'

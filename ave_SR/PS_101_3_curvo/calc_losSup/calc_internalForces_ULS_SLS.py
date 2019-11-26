@@ -5,12 +5,13 @@ from postprocess import RC_material_distribution
 
 execfile('./directs.py')
 
-lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
 #FE model generation
 execfile("../model_data.py")
 #Limit states
 execfile("../../PSs/loadComb.py")
 execfile("./setCalcDisp.py")
+lsd.LimitStateData.envConfig= cfg
+#lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

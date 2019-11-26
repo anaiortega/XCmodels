@@ -5,10 +5,10 @@ from solution import predefined_solutions
 
 
 execfile("model_data.py")
-lsd.LimitStateData.internal_forces_results_directory= './results/internalForces/'
 
 #RC sections definition.
 execfile("sectionsDef.py")
+lsd.LimitStateData.envConfig= cfg
 
 #Define section names for each element.
 

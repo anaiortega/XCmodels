@@ -6,13 +6,14 @@ from postprocess import limit_state_data as lsd
 model_path="../"
 #Project directory structure
 execfile(model_path+'env_config.py')
-lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
+lsd.LimitStateData.envConfig= cfg
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
 execfile(modelDataInputFile)
 
 #RC sections definition.
 execfile("../sectionsDef.py")
+lsd.LimitStateData.envConfig= cfg
 
 #Define section names for each element.
 

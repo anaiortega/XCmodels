@@ -6,7 +6,7 @@ from postprocess import RC_material_distribution
 
 #Project directory structure
 execfile('../../PSs/env_config.py')
-lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
+lsd.LimitStateData.envConfig= cfg
 #FE model generation
 execfile("../model_data.py")
 #Limit states

@@ -3,6 +3,7 @@ from postprocess import limit_state_data as lsd
 from materials.ec3 import EC3_limit_state_checking as EC3lscheck
 
 execfile("../model_gen.py") #FE model generation
+lsd.LimitStateData.envConfig= cfg
 
 #Steel beams definition
 execfile("../steel_beams_def.py")

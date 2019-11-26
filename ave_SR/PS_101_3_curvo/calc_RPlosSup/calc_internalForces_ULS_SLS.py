@@ -5,9 +5,9 @@ from postprocess import RC_material_distribution
 
 execfile('./directs.py')
 
-lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
 #FE model generation
 execfile("../model_data.py")
+lsd.LimitStateData.envConfig= cfg
 execfile("./setCalcDisp.py")
 #Limit states
 execfile("../../PSs/loadComb.py")

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 execfile('model_data.py')
+lsd.LimitStateData.envConfig= cfg
 from postprocess import recorders
 
 #Assigns span value to allow deflection verification.

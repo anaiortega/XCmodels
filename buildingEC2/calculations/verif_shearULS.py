@@ -7,8 +7,7 @@ execfile("../env_config.py")
 
 execfile("../sectionsDef.py")
 
-lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
-lsd.LimitStateData.check_results_directory= cfg.projectDirTree.verifPath
+lsd.LimitStateData.envConfig= cfg
 
 #Information about element sections.
 sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
