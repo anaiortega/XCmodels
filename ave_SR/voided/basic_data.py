@@ -26,14 +26,15 @@ distEjesAlig=2.10  #distancia entre ejes de aligeramientos
 diamAlig=0.8   #diámetro aligeramientos
 lRectEqAlig=round(math.pi**0.5*diamAlig/2.,3)
 numAlig=3      #número de aligeramientos
-cantoLosa=1.15
+cantoTabl=1.15
 maxCantoVoladz=0.5 #canto máximo del voladizo
 minCantoVoladz=0.20
 anchVoladz=2.85
 anchLosaAlig=7.0
 ladoCartab=0.55
 
-cantoRiostrEstr=1.0
+cantoRiostrEstr=cantoTabl
+LriosrEstr=1.0  #ancho riostra estribo (sentido longitudinal)
 
 LriostrPil=2  #longitud del macizado sobre pilas
 nDiafRP=3 #número de diafragmas a definir en la zona macizada sobre pilas
@@ -63,40 +64,46 @@ Eneopr=600e6      #módulo elástico material elastomérico
 grav=9.81     #[m/s2]
 pav_inf=1150  #pavimento, valor inferior [N/m2]
 pav_sup=1725  #pavimento, valor superior [N/m2]
-Lbarrera=8e3  #barrera rígida [N/m]
-Limposta=4e3  #imposta [N/m]
-Lacera=round(4e3/anchoAcera,0)  #acera [N/m2]
-Lantivand=1e3   #protección antivandálica [N/m]
+qBarrera=8e3  #barrera rígida [N/m]
+#Limposta=4e3  #imposta [N/m]
+qDeadAcera=round(4e3/anchoAcera,0)  #acera [N/m2]
+qAntivand=1e3   #protección antivandálica [N/m]
 
 qunifmax=9e3    #carga uniforme en vía virtual 1
 qunifmin=2.5e3    #carga uniforme en resto
 qunifacera=2.5e3    #carga uniforme en acera concomitante con cargas de tráfico
 
-Qfrenado=476e3 #carga total de frenado a aplicar en via fictícea 1 [N]
+Qfrenado=497.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
+vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado
 #  viento
-qWpilas=2.56e3 #carga lineal viento sobre pilas [N/m]
-qWTablero=8.05e3 #carga lineal viento sobre tablero [N/m]
-qWTableroSCuso=7.0e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
+qWpilasBarlov=2.56e3 #carga lineal viento sobre pilas a barlovento [N/m]
+qWTablero=7.73e3 #carga lineal viento sobre tablero [N/m]
+qWTableroSCuso=6.7e3 #carga lineal viento sobre tablero actuando con SC uso [N/m]
 coef_ocult=0.46
+qWpilasSotav=qWpilasBarlov*coef_ocult #carga lineal viento sobre pilas a sotavento [N/m]
 
 #Temperaturas
-Tunif_contr=-16  #Incremento uniforme temperatura contracción ºC
-Tunif_dilat=35   #Incremento uniforme temperatura dilatación ºC
+Tunif_contr=-24  #Incremento uniforme temperatura contracción ºC
+Tunif_dilat=31   #Incremento uniforme temperatura dilatación ºC
 Tfibrsup_cal=15  #Temperatura fibra superior más caliente (T fibra inf.=0ºC)
 Tfibrsup_fria=-8  #Temperatura fibra superior más fría (T fibra inf.=0ºC)
 coefDilat=1e-5    #coeficiente de dilatación térmica lineal del hormigón
 
-Tunif_contr_neopr=-16-15  #Incremento uniforme temperatura contracción ºC
-Tunif_dilat_neopr=35+15   #Incremento uniforme temperatura dilatación ºC
+Tunif_contr_neopr=-24-15  #Incremento uniforme temperatura contracción ºC
+Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 #Retracción
-eps_retracc=-531e-6  #deformación por reracción
+area_deck=1   #!!!Corregir
+perim_deck=1  #!!!Corregir
+execfile(workingDirectory+'retraccion.py')  #cálculo de la retracción
+eps_retracc=Epscs  #deformación por retracción #
+
 
 #Magnitudes derivadas
 # espesores
-espLosAlig=round((cantoLosa-lRectEqAlig)/2.,3)
+espLosAlig=round((cantoTabl-lRectEqAlig)/2.,3)
 espEntreAlig=round(distEjesAlig-lRectEqAlig,3)
 espExtAlig=2*espEntreAlig
 espVoladzMax=round((3*maxCantoVoladz+minCantoVoladz)/4.,3)
@@ -108,11 +115,11 @@ hDistrQ=espLosAlig/2.+0.05
 
 # Coord. x (transversal)
 xBordeCalz=round(anchoCalz/2.0,2)
-#xViaFict1=round(xBordeCalz-3,2)
-#xViaFict2=round(xViaFict1-3,2)
-#xViaFict3=round(xViaFict2-3,2)
+#xViasFict1=round(xBordeCalz-3,2)
+#xViasFict2=round(xViasFict1-3,2)
+#xViasFict3=round(xViasFict2-3,2)
 
-xViaFict=[[round(xBordeCalz-3,2),round(anchoCalz/2.0,2)], 
+xViasFict=[[round(xBordeCalz-3,2),round(anchoCalz/2.0,2)], 
           [round(xBordeCalz-2*3,2),round(xBordeCalz-3,2)],
           [round(xBordeCalz-3*3,2),round(xBordeCalz-2*3,2)],
           [-xBordeCalz,round(xBordeCalz-2*3,2)]]
@@ -133,7 +140,7 @@ xPil=[-xPila,xPila]
 #espesor diafragmas riostra pila
 ValigRP=LriostrPil*numAlig*math.pi*diamAlig**2/4.
 LdiafRP=xAlmasAlig[-1]-xAlmasAlig[0]
-espDiafRP=ValigRP/nDiafRP/LdiafRP/(cantoLosa-2*espLosAlig)
+espDiafRP=ValigRP/nDiafRP/LdiafRP/(cantoTabl-2*espLosAlig)
 
 #Coord. Y (longitudinal)
 yPil1=LvanosExtr
@@ -149,8 +156,8 @@ yPil=[yPil1,yPil2]
 
 #Coord. Z (vertical)
 zLosInf=round(espLosAlig/2.0,3)
-zLosSup=round(cantoLosa-espLosAlig/2.0,3)
-zArrVoladz=round(cantoLosa-maxCantoVoladz/2.0,3)
+zLosSup=round(cantoTabl-espLosAlig/2.0,3)
+zArrVoladz=round(cantoTabl-maxCantoVoladz/2.0,3)
 zInfPilas=-hTotPilas+hInfPilas  #arranque tramo superior 
 zInfPilAer=-hTotPilas+2  #aprox. 2 m enterrado
 
@@ -161,10 +168,10 @@ pespConcr=grav*concrete.density() #peso específico hormigón armado [N/m3]
 
 AvolExt=(minCantoVoladz+(maxCantoVoladz+minCantoVoladz)/2.0)/2.0*anchVoladz/2.0
 AvolCent=(maxCantoVoladz+(maxCantoVoladz+minCantoVoladz)/2.0)/2.0*anchVoladz/2.0
-ALos=2*(maxCantoVoladz+cantoLosa)/2.*ladoCartab+anchLosaAlig*cantoLosa
+ALos=2*(maxCantoVoladz+cantoTabl)/2.*ladoCartab+anchLosaAlig*cantoTabl
 ALosAlig=ALos-numAlig*math.pi*diamAlig**2/4.
 Apilas=math.pi*diamPilas**2/4.
-AriostrEstr=cantoLosa*cantoRiostrEstr
+AriostrEstr=cantoTabl*cantoRiostrEstr
 qPPvolExt=pespConcr*AvolExt/(anchVoladz/2.)  #[N/m2]
 qPPvolCent=pespConcr*AvolCent/(anchVoladz/2.)  #[N/m2]
 qPPlos=pespConcr*ALos/(2*anchLosaAlig+2*ladoCartab) #[N/m2] a aplicar en cara superior e inferior de losa maciza sobre pilas
@@ -214,7 +221,7 @@ xListTabl+=xAlmasAlig
 insert1DList(xListTabl,xPil,tol)
 insert2DList(xListTabl,xVoladz,tol)
 insert1DList(xListTabl,xCalzada,tol)
-insert2DList(xListTabl,xViaFict,tol)
+insert2DList(xListTabl,xViasFict,tol)
 xListTabl.sort()
 
 yListTabl=[]
