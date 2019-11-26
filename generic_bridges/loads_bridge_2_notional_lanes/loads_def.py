@@ -14,18 +14,15 @@
 from actions.roadway_trafic import standard_load_models as slm
 from actions.imposed_strain import imp_strain as imps
 #Peso propio
-setsSelfWeight=allmesh+[pilasBarlov_mesh]
-if pilasSotav:
-    setsSelfWeight.append(pilasSotav_mesh)
 if abutment.lower()[0]=='y':
-    setsSelfWeight+=[murestrZ1_mesh,murestrZ2_mesh,murestrZ3_mesh]
-    setsSelfWeight.append(zap_mesh)
+    allmesh+=[murestrZ1_mesh,murestrZ2_mesh,murestrZ3_mesh]
+    allmesh.append(zap_mesh)
     if LaletaIzq>0:
-        setsSelfWeight+=[aletiZ1_mesh,aletiZ2_mesh,aletiZ3_mesh]
+        allmesh+=[aletiZ1_mesh,aletiZ2_mesh,aletiZ3_mesh]
     if LaletaDer>0:
-        setsSelfWeight+=[aletdZ1_mesh,aletdZ2_mesh,aletdZ3_mesh]
+        allmesh+=[aletdZ1_mesh,aletdZ2_mesh,aletdZ3_mesh]
 
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=setsSelfWeight, vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=allmesh, vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 G1=lcases.LoadCase(preprocessor=prep,name="G1",loadPType="default",timeSType="constant_ts")
 G1.create()

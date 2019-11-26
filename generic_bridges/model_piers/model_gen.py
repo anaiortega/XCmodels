@@ -45,8 +45,10 @@ pilas_mat.setupElasticShear3DSection(preprocessor=prep)
 
 #                         ***FE model - MESH***
 pilasBarlov_mesh=fem.LinSetToMesh(linSet=pilasBarlov,matSect=pilas_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
+allmesh+=[pilasBarlov_mesh]
 if pilasSotav:
     pilasSotav_mesh=fem.LinSetToMesh(linSet=pilasSotav,matSect=pilas_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 pilasBarlov_mesh.generateMesh(prep)
 if pilasSotav:
     pilasSotav_mesh.generateMesh(prep)
+    allmesh+=[pilasSotav_mesh]

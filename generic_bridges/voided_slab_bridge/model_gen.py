@@ -199,15 +199,21 @@ voladzExtrV3_mesh=fem.SurfSetToMesh(surfSet=voladzExtrV3,matSect=voladzExtr_mat,
 voladzExtrRP1_mesh=fem.SurfSetToMesh(surfSet=voladzExtrRP1,matSect=voladzExtr_mat,elemSize=eSize,elemType='ShellMITC4')
 voladzExtrRP2_mesh=fem.SurfSetToMesh(surfSet=voladzExtrRP2,matSect=voladzExtr_mat,elemSize=eSize,elemType='ShellMITC4')
 
-#fem.multi_mesh(preprocessor=prep,lstMeshSets=[pilasInf_mesh,pilasSup_mesh,losInf_mesh,losSup_mesh,murAlig_mesh,murExtAlig_mesh,voladzCent_mesh,voladzExtr_mesh,riostrEstr_mesh,riostrPil_mesh])
-#fem.multi_mesh(preprocessor=prep,lstMeshSets=[pilasInf_mesh,pilasSup_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[riostrEstr1_mesh,riostrEstr2_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[losInfV1_mesh,losInfV2_mesh,losInfV3_mesh,losInfRP1_mesh,losInfRP2_mesh,losSupV1_mesh,losSupV2_mesh,losSupV3_mesh,losSupRP1_mesh,losSupRP2_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[murAligV1_mesh,murAligV2_mesh,murAligV3_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[murExtAligV1_mesh,murExtAligV2_mesh,murExtAligV3_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[murRP1_mesh,murRP2_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[diafRP1_mesh,diafRP2_mesh])
-fem.multi_mesh(preprocessor=prep,lstMeshSets=[voladzCentV1_mesh,voladzCentV2_mesh,voladzCentV3_mesh,voladzCentRP1_mesh,voladzCentRP2_mesh,voladzExtrV1_mesh,voladzExtrV2_mesh,voladzExtrV3_mesh,voladzExtrRP1_mesh,voladzExtrRP2_mesh])
+mesh_01=[riostrEstr1_mesh,riostrEstr2_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_01)
+mesh_02=[losInfV1_mesh,losInfV2_mesh,losInfV3_mesh,losInfRP1_mesh,losInfRP2_mesh,losSupV1_mesh,losSupV2_mesh,losSupV3_mesh,losSupRP1_mesh,losSupRP2_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_02)
+mesh_03=[murAligV1_mesh,murAligV2_mesh,murAligV3_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_03)
+mesh_04=[murExtAligV1_mesh,murExtAligV2_mesh,murExtAligV3_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_04)
+mesh_05=[murRP1_mesh,murRP2_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_05)
+mesh_06=[diafRP1_mesh,diafRP2_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_06)
+mesh_07=[voladzCentV1_mesh,voladzCentV2_mesh,voladzCentV3_mesh,voladzCentRP1_mesh,voladzCentRP2_mesh,voladzExtrV1_mesh,voladzExtrV2_mesh,voladzExtrV3_mesh,voladzExtrRP1_mesh,voladzExtrRP2_mesh]
+fem.multi_mesh(preprocessor=prep,lstMeshSets=mesh_07)
+allmesh=mesh_01+mesh_02+mesh_03+mesh_04+mesh_05+mesh_06+mesh_07
 
 losInf=losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP2
 losSup=losSupV1+losSupV2+losSupV3+losSupRP1+losSupRP2

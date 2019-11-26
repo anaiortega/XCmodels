@@ -65,11 +65,6 @@ voladzExt_mat=tm.DeckMaterialData(name='voladzExt_mat',thickness=eVolExt,materia
 voladzExt_mat.setupElasticSection(preprocessor=prep) 
 
 
-# Elastomeric bearings.
-from materials import bridge_bearings as bb
-neopr=bb.ElastomericBearing(G=Gneopr,a=aNeopr,b=bNeopr,e=hNetoNeopr)
-neopr.defineMaterials(prep)
-
 #                         ***FE model - MESH***
 # IMPORTANT: it's convenient to generate the mesh of surfaces before meshing
 # the lines, otherwise, sets of shells can take also beam elements touched by
