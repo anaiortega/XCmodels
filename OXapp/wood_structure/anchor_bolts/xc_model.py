@@ -71,7 +71,7 @@ boltSection= boltSectionGeom.defElasticShearSection3d(preprocessor, anchorBoltSt
 oh= output_handler.OutputHandler(modelSpace)
 
 # Mesh generation
-#nodes.newSeedNode()
+#
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
 seedElemHandler.defaultMaterial= concrete.name
 brick= seedElemHandler.newElement("Brick",xc.ID([0,0,0,0,0,0,0,0]))

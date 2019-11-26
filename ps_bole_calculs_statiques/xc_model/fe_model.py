@@ -42,7 +42,7 @@ kXFill= typical_materials.defElasticMaterial(preprocessor, "kXFill",kFill/10.0)
 
 #Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
+
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler

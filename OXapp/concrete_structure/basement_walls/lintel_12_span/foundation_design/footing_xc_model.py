@@ -100,7 +100,7 @@ oh= output_handler.OutputHandler(modelSpace)
 #oh.displayBlocks()
 
 # Mesh generation.
-nodes.newSeedNode()
+
 seedElemHandler= prep.getElementHandler.seedElemHandler
 
 seedElemHandler.defaultMaterial= footingSet.getProp('material').name
