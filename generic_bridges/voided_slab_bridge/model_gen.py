@@ -142,7 +142,7 @@ voladzExtr_mat.setupElasticSection(preprocessor=prep)   #creates the section-mat
 #Geometric sections
 #rectangular sections
 from materials.sections import section_properties as sectpr
-geomSectRiostrEstr=sectpr.RectangularSection(name='geomSectRiostrEstr',b=cantoRiostrEstr,h=cantoLosa)
+geomSectRiostrEstr=sectpr.RectangularSection(name='geomSectRiostrEstr',b=LriosrEstr,h=cantoRiostrEstr)
 # Elastic material-section appropiate for 3D beam analysis, including shear
   # deformations.
   # Attributes:
@@ -245,35 +245,7 @@ riostrEstr.name='riostrEstr'
 riostrEstr.description='Riostras estribos'
 
 
-acerIzq_rg=list()
-acerIzq_rg.append(gm.IJKRange((0,0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[0]),len(yListTabl)-1,zListTabl.index(zArrVoladz))))
-acerIzq=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,nameSet='acerIzq')
-
-acerDer_rg=list()
-acerDer_rg.append(gm.IJKRange((xListTabl.index(xCalzada[-1]),0,zListTabl.index(zArrVoladz)),(len(xListTabl)-1,len(yListTabl)-1,zListTabl.index(zArrVoladz))))
-acerDer=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,nameSet='acerDer')
-
-aceras=acerIzq+acerDer
-aceras.name='aceras'
-
-calzada_rg=gm.IJKRange((xListTabl.index(xCalzada[0]),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[-1]),len(yListTabl)-1,zListTabl.index(zLosSup))).extractIncludedIJranges()
-calzada=gridTabl.getSetSurfMultiRegion(lstIJKRange=calzada_rg,nameSet='calzada')
-#Imposta
-auxSetPnt1=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((0,0,zListTabl.index(zArrVoladz)),(0,len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt1')
-auxSetPnt2=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((len(xListTabl)-1,0,zListTabl.index(zArrVoladz)),(len(xListTabl)-1,len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt2')
-auxSetPnt=auxSetPnt1+auxSetPnt2
-auxSetPnt.name='auxSetPnt'
-imposta=sets.get_lines_on_points(setPoints=auxSetPnt,setLinName='imposta',onlyIncluded=True)
-barrera_rg=list()
-auxSetPnt1=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((xListTabl.index(xCalzada[0]),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[0]),len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt1')
-auxSetPnt2=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((xListTabl.index(xCalzada[-1]),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[-1]),len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt2')
-auxSetPnt=auxSetPnt1+auxSetPnt2
-auxSetPnt.name='auxSetPnt'
-barrera=sets.get_lines_on_points(setPoints=auxSetPnt,setLinName='barrera',onlyIncluded=True)
-#línea arranque voladizo izquierdo (aplicación W)
-arrqVolPnt=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((xListTabl.index(xVoladz[0][-1]),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xVoladz[0][-1]),len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='arrqVolPnt')
-arrqVol=sets.get_lines_on_points(setPoints=arrqVolPnt,setLinName='arrqVol',onlyIncluded=True)
-
+'''
 #    sets vías fictíceas, cargas uniformes tren de cargas (fr: concomitantes con frenado 0.4*q)
 def traf_vias_fict(name,xmin,xmax,ymin,ymax,zmin,zmax,qmax=qunifmax,qmin=qunifmin,preprocessor=prep):
     rg=gm.IJKRange((xListTabl.index(xmin),yListTabl.index(ymin),zListTabl.index(zmin)),(xListTabl.index(xmax),yListTabl.index(ymax),zListTabl.index(zmax))).extractIncludedIJranges()
@@ -318,95 +290,5 @@ remnt_vano3_set,remnt_vano3_qunifmax,remnt_vano3_qunifmin,remnt_vano3_qunifmax_f
 
 viaExt=viaExt_vano1_set+viaExt_vano2_set+viaExt_vano3_set
 viaCent=viaCent_vano1_set+viaCent_vano2_set+viaCent_vano3_set
-
-#                       ***BOUNDARY CONDITIONS***
-# Regions resting on springs (Winkler elastic foundation)
-#       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-#found_wink=sprbc.ElasticFoundation(wModulus=20e7,cRoz=0.2)
-#found_wink.generateSprings(xcSet=found)
-
-# Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...
-# Default values for Kx, Ky, Kz are 0, which means that no spring is
-# created in the corresponding direction
-#spring_roof=sprbc.SpringBC(name='spring_roof',modelSpace=modelSpace,Kx=1000,Ky=0,Kz=3000)
-#a=spring_roof.applyOnNodesIn3Dpos(lst3DPos=[geom.Pos3d(LbeamX/2.0,LbeamY/2.0,LcolumnZ/2.0)])
-'''***
-# Elastomeric bearings.
-from materials import bridge_bearings as bb
-neopr=bb.ElastomericBearing(G=Gneopr,a=aNeopr,b=bNeopr,e=hNetoNeopr)
-neopr.defineMaterials(prep)
-
-#estribo 1
-constrNodesE1=list()  #constrained nodes ordered from xmin to xmax
-neopsE1=list() #elements of abutment1 ordered from xmin to xmax.
-               #each element has six materials that reproduce respectively
-               #Kx, Ky,Kz, KthetaX,KthetaY,KthetaZ
-for xn in xCoordNeopr:
-    n2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,0,zriostrEstr))
-    x,y=n2.getCoo[0],n2.getCoo[1]
-    n1=nodes.newNodeXYZ(x,y,zLosInf-hNetoNeopr/2.0)
-    modelSpace.setRigidBeamBetweenNodes(n2.tag,n1.tag)
-    n0=nodes.newNodeXYZ(x,y,zLosInf-hNetoNeopr/2.0)
-    modelSpace.fixNode('000_000',n0.tag)
-    constrNodesE1.append(n0)
-    elem=neopr.putBetweenNodes(modelSpace,n0.tag,n1.tag)
-    neopsE1.append(elem)
-
-#estribo 2    
-constrNodesE2=list()  #constrained nodes ordered from xmin to xmax
-neopsE2=list() #elements of abutment1 ordered from xmin to xmax.
-               #each element has six materials that reproduce respectively
-               #Kx, Ky,Kz, KthetaX,KthetaY,KthetaZ
-for xn in xCoordNeopr:
-    n2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(xn,yEstr[-1],zriostrEstr))
-    x,y=n2.getCoo[0],n2.getCoo[1]
-    n1=nodes.newNodeXYZ(x,y,zLosInf-hNetoNeopr/2.0)
-    modelSpace.setRigidBeamBetweenNodes(n2.tag,n1.tag)
-    n0=nodes.newNodeXYZ(x,y,zLosInf-hNetoNeopr/2.0)
-    modelSpace.fixNode('000_000',n0.tag)
-    constrNodesE2.append(n0)
-    elem=neopr.putBetweenNodes(modelSpace,n0.tag,n1.tag)
-    neopsE2.append(elem)
-#constrNodes=constrNodesPilas+constrNodesE1+constrNodesE2
-constrNodes=constrNodesE1+constrNodesE2    
-***'''    
-
-losInf.description='Losa aligerada, cordón inferior'
-losInf.color=cfg.colors['purple03']
-losSup.description='Losa aligerada, cordón superior'
-losSup.color=cfg.colors['purple01']
-murAlig.description='Losa aligerada, nervios'
-murAlig.name='murAlig'
-murAlig.color=cfg.colors['orange02']
-murExtAlig.description='Losa aligerada, almas borde'
-murExtAlig.color=cfg.colors['yellow02']
-voladzCent.description='Voladizo, zona central'
-voladzCent.color=cfg.colors['brown01']
-voladzExtr.description='Voladizo, zona de borde'
-voladzExtr.color=cfg.colors['brown02']
-supTablero.description='Losa tablero, cordón superior y voladizos'
-supTablero.color=cfg.colors['yellow02']
-total=prep.getSets.getSet('total')
-tablero=losInf+losSup+murAlig+murExtAlig+murRP+diafRP
-tablero.name='Tablero'
-tablero.description='Tablero'
-tablero.color=cfg.colors['purple01']
-allLosas=losInf+losSup+voladzCent+voladzExtr
-allLosas.name='allLosas'
-allLosas.description='Losa tablero, cordones superior e inferior y voladizos'
-
-#overallSet=pilasInf+pilasSup+riostrEstr1+riostrEstr2+losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP2+losSupV1+losSupV2+losSupV3+losSupRP1+losSupRP2+murAligV1+murAligV2+murAligV3+murExtAligV1+murExtAligV2+murExtAligV3+murRP1+murRP2+diafRP1+diafRP2+voladzCentV1+voladzCentV2+voladzCentV3+voladzCentRP1+voladzCentRP2+voladzExtrV1+voladzExtrV2+voladzExtrV3+voladzExtrRP1+voladzExtrRP2
-overallSet=riostrEstr1+riostrEstr2+losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP2+losSupV1+losSupV2+losSupV3+losSupRP1+losSupRP2+murAligV1+murAligV2+murAligV3+murExtAligV1+murExtAligV2+murExtAligV3+murRP1+murRP2+diafRP1+diafRP2+voladzCentV1+voladzCentV2+voladzCentV3+voladzCentRP1+voladzCentRP2+voladzExtrV1+voladzExtrV2+voladzExtrV3+voladzExtrRP1+voladzExtrRP2
-overallSet.description='Estructura'
-overallSet.name='overallSet'
-overallSet.color=cfg.colors['purple01']
 '''
-nodesTot=total.nodes
-for n in nodesTot:
-    if n.isFree:
-        print 'node ',n.tag, ' is free'
-'''
-
 

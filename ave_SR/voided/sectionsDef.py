@@ -160,7 +160,7 @@ pilasSupRCSects.dir1ShReinfY=shear1
 pilasSupRCSects.dir2ShReinfY=shear1 
 
 
-riostrEstr1RCSects= rcs.RecordRCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='riostra estribo 1 ',concrType=concrete, reinfSteelType=reinfSteel,width=espRiostrEstr,depth=cantoLosa,elemSetName='riostrEstr1')
+riostrEstr1RCSects= rcs.RecordRCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='riostra estribo 1 ',concrType=concrete, reinfSteelType=reinfSteel,width=LriosrEstr,depth=cantoRiostrEstr,elemSetName='riostrEstr1')
 sep_mm=(cantoLosa*1e3-2*(rnom +16+25/2.))/6.
 capa5=rcs.rebLayer_mm(25,100,rnom +16)
 capa5.nRebars=9
