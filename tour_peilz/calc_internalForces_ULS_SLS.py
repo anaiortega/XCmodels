@@ -4,7 +4,7 @@ from postprocess import limit_state_data as lsd
 from model.sets import sets_mng as sUtils
 
 execfile("xc_model_data.py")
-lsd.LimitStateData.internal_forces_results_directory= './results/internalForces/'
+lsd.LimitStateData.envConfig= cfg
 
 #RC sections definition.
 execfile('sectionsDef.py')

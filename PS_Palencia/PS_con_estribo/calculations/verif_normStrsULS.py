@@ -5,6 +5,7 @@ from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking as lscheck
 
 execfile("../model_gen.py") #FE model generation
+lsd.LimitStateData.envConfig= cfg
 
 #choose env_config file:
 execfile("../env_config_deck.py")

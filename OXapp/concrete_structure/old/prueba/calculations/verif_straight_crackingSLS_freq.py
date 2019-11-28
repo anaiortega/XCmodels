@@ -6,6 +6,7 @@ from materials.ehe import EHE_limit_state_checking as lschck
 #from materials.ec2 import EC2_limit_state_checking
 
 execfile("../model_gen.py") #FE model generation
+lsd.LimitStateData.envConfig= cfg
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']

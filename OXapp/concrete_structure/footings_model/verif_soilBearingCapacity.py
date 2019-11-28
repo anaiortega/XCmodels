@@ -13,6 +13,7 @@ from postprocess import limit_state_data as lsd
 model_path="./"
 #Project directory structure
 execfile("env_config.py")
+lsd.LimitStateData.envConfig= cfg
 
 
 csvFile= open('column_reactions.csv')

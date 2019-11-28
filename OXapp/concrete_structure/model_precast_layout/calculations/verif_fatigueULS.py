@@ -2,6 +2,7 @@
 from materials.sia262 import SIA262_limit_state_checking
 
 execfile('../env_config.py')
+lsd.LimitStateData.envConfig= cfg
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']

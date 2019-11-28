@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from postprocess import limit_state_data as lsd
 execfile("../model_gen.py") #FE model generation
+lsd.LimitStateData.envConfig= cfg
 
 #Steel beams definition
 execfile("../steel_beams_def.py")

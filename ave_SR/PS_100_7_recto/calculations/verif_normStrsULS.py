@@ -11,8 +11,7 @@ from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 #from materials.ehe import EHE_limit_state_checking
 
-lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
-lsd.LimitStateData.check_results_directory= cfg.projectDirTree.verifPath
+lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

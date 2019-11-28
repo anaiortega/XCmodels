@@ -6,6 +6,7 @@ from materials.aci import ACI_limit_state_checking
 
 #Results directories
 execfile("../model_gen.py") #FE model generation
+lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.
 #reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()

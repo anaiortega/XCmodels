@@ -188,7 +188,7 @@ preprocessor.getMultiBlockTopology.getSurfaces.conciliaNDivs()
 #Mesh generation.
 nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
-nodes.newSeedNode()
+
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
 #seedElemHandler.defaultTag= 1
 
