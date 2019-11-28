@@ -18,7 +18,7 @@ reinfSteel= ACI_materials.A615G60
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
-nSup=2
+nSup=3
 fiSup=15.875
 nInf=3
 fiInf=22.225

@@ -51,6 +51,7 @@ Q1eFren=slm.IAP_traffic_LC(lcName='Q1eFren',deckSet=calzada,virtLane1Set=viaFict
 #Wind load cases
 Q21=slm.wind_LC(lcName='Q21',deckLineSet=bordizqTabl,vectWindDeck=[qWTablero,0],windwardPileSet=pilasBarlov,vectWindwardPile=[qWpilasBarlov,0],leewardPileSet=pilasSotav,vectLeewardPile=[qWpilasSotav,0])
 Q22=slm.wind_LC(lcName='Q22',deckLineSet=bordizqTabl,vectWindDeck=[qWTableroSCuso,0],windwardPileSet=pilasBarlov,vectWindwardPile=[qWpilasBarlov,0],leewardPileSet=pilasSotav,vectLeewardPile=[qWpilasSotav,0])
+'''
 #Thermal load cases
 #Contraction
 Q31=slm.thermal_rheological_LC(lcName='Q31',lstUnifThStrnData=[imps.unifThermalStrain(elemSet=tablero,DOF=1,alpha=coefDilat,temp=Tunif_contr)])
@@ -71,3 +72,4 @@ Q34=slm.gradient_thermal_LC(lcName='Q34',lstGradThStrnData=
      imps.gradThermalStrain(elemSet=cartabExt,elThick=eCartExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
      imps.gradThermalStrain(elemSet=voladzInt,elThick=eVolInt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
      imps.gradThermalStrain(elemSet=voladzExt,elThick=eVolExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0)])
+'''
