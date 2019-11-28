@@ -70,6 +70,33 @@ viaFictIzq.description='Vía ficticia izquierda'
 viaFictResto=viaFictRestoVol+viaFictRestoLos
 viaFictResto.description='Resto vías ficticias'
 
+#Vías ficticias (vano 2)
+# En el voladizo
+x=xViasFict[0]
+y=yPil
+z=zArrVoladz
+viaFictDer_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2_vol')
+x=xViasFict[1]
+viaFictIzq_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2_vol')
+x=xViasFict[2]
+viaFictResto_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictResto_vano2_vol')
+# En la losa
+x=xViasFict[0]
+y=yPil
+z=zLosSup
+viaFictDer_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2_los')
+x=xViasFict[1]
+viaFictIzq_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2_los')
+x=xViasFict[2]
+viaFictResto_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictResto_vano2_los')
+
+viaFictDer_vano2=viaFictDer_vano2_vol+viaFictDer_vano2_los
+viaFictIzq_vano2=viaFictIzq_vano2_vol+viaFictIzq_vano2_los
+viaFictResto_vano2=viaFictResto_vano2_vol+viaFictResto_vano2_los
+
+
+
+
 acerIzq_rg=list()
 acerIzq_rg.append(gm.IJKRange((0,0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[0]),len(yListTabl)-1,zListTabl.index(zArrVoladz))))
 acerIzq=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,nameSet='acerIzq')
@@ -129,3 +156,21 @@ overallSet=riostrEstr1+riostrEstr2+losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP
 overallSet.description='Estructura'
 overallSet.name='overallSet'
 overallSet.color=cfg.colors['purple01']
+
+#Coordinates for traffic point loads
+ycent_vano1=(yEstr[0]+yPil[0])/2.
+ycent_vano2=(yPil[0]+yPil[1])/2.
+yextr_vano1=yEstr[0]+0.5
+yextr_vano2=yPil[0]+0.5
+xcent_VFder=(xViasFict[0][0]+xViasFict[0][-1])/2.    #via ficticea derecha
+xcent_VFizq=(xViasFict[1][0]+xViasFict[1][-1])/2.    #via ficticea izquierda
+
+centVFd_vano1=[xcent_VFder,ycent_vano1]  #centro via ficticea derecha, vano 1
+centVFd_vano2=[xcent_VFder,ycent_vano2]  #centro via ficticea derecha, vano 2
+centVFi_vano1=[xcent_VFizq,ycent_vano1]  #centro via ficticea izqu., vano 1
+centVFi_vano2=[xcent_VFizq,ycent_vano2]  #centro via ficticea izqu., vano 2
+
+extrVFd_vano1=[xcent_VFder,yextr_vano1]  #extr via ficticea derecha, vano 1
+extrVFd_vano2=[xcent_VFder,yextr_vano2]  #extr via ficticea derecha, vano 2
+extrVFi_vano1=[xcent_VFizq,yextr_vano1]  #extr via ficticea izqu., vano 1
+extrVFi_vano2=[xcent_VFizq,yextr_vano2]  #extr via ficticea izqu., vano 2

@@ -46,4 +46,7 @@ defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAli
 #defDisplay.displayMesh(xcSets=[murAlig],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
 #defDisplay.displayMesh(xcSets=[pilasBarlov,pilasSotav],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
 #defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,ties,struts,piles],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
-defDisplay.displayMesh([losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2]+setsEstribo+[pilasInf,pilasSup,ties,struts,piles])
+#defDisplay.displayMesh([losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2]+setsEstribo+[pilasInf,pilasSup,ties,struts,piles])
+#defDisplay.displayMesh([viaFictDer,viaFictIzq,viaFictResto])
+#defDisplay.displayMesh([viaFictDer_vano2,viaFictIzq_vano2,viaFictResto_vano2])
+defDisplay.displayMesh([aceras])

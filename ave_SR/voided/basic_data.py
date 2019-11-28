@@ -110,6 +110,8 @@ espVoladzMax=round((3*maxCantoVoladz+minCantoVoladz)/4.,3)
 espVoladzMin=round((maxCantoVoladz+3*minCantoVoladz)/4.,3)
 espPuntMaz=distEjesAlig/2.
 
+cantoLosa=espLosAlig
+
 hDistrQ=espLosAlig/2.+0.05
 
 

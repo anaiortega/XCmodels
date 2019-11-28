@@ -27,4 +27,4 @@ if pile_found.lower()[0]=='y':
 #                       ***BOUNDARY CONDITIONS***
 execfile(workingDirectory+'bound_cond.py')
 #                       ***ACTIONS***
-execfile(path_loads_def+'loads_def.py')                           
+execfile(path_loads_def+'loads_def_voided.py')                           

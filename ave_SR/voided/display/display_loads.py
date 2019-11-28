@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
-from postprocess.config import default_config
-
-workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'model_gen.py')
-execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
+execfile('../model_gen.py')
+#execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
 #execfile('../../generic_bridges/voided_slab_bridge/loadStateData.py')
-execfile(workingDirectory+'loadStateData.py')
+execfile('../loadStateData.py')
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
@@ -13,7 +10,7 @@ from postprocess.xcVtk.FE_model import quick_graphics as qg
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:
 
-loadCasesToDisplay=resLoadCases
+loadCasesToDisplay=[G1,G2,Q1a1,Q1a2,Q1b1,Q1b2,Q1c,Q1d,Q1e,Q1bFren,Q1dFren,Q1eFren,Q21,Q22]
 
 #End data
 

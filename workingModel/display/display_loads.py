@@ -14,7 +14,6 @@ loadCasesToDisplay=[G1,Q1,Q2,Q8,Q10,Q11]
 
 for lc in loadCasesToDisplay:
     lcs= qg.LoadCaseResults(FEcase, loadCaseName=lc.loadCaseName, loadCaseExpr= lc.loadCaseExpr)
-    lcs.solve()
     for st in lc.setsToDispLoads:
 #        capt=lc.loadCaseDescr + ', ' + st.genDescr + ', '  + lc.unitsLoads
         capt=lc.loadCaseDescr + ', '  + lc.unitsLoads
