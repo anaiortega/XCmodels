@@ -249,7 +249,7 @@ cabl_mesh=fem.LinSetToMesh(linSet=cables,matSect=cabl_mat,elemSize=eSize_cabl,vD
 cabl_mesh.generateMesh(prep)    # mesh this set of lines
 
 for e in cables.elements:
-    e.area=area_cable
+    e.sectionArea= area_cable
 
 deck_mesh=fem.SurfSetToMesh(surfSet=deck,matSect=deck_mat,elemSize=eSize_deck,elemType='ShellMITC4')
 deck_mesh.generateMesh(prep)     #mesh the set of surfaces

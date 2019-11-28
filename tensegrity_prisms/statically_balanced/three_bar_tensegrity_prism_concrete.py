@@ -133,7 +133,7 @@ seedElemHandler.defaultTag= 1
 strutTruss= seedElemHandler.newElement("ElasticBeam3d",xc.ID([0,0]))
 #strutTruss= seedElemHandler.newElement("Spring",xc.ID([1,2]))
 #strutTruss= seedElemHandler.newElement("CorotTruss",xc.ID([1,2]))
-#strutTruss.area= strutArea
+#strutTruss.sectionArea= strutArea
 strutSet.genMesh(xc.meshDir.I)
 # Seed element for diagonal cables
 # seedElemHandler= prep.getElementHandler.seedElemHandler
@@ -142,7 +142,7 @@ strutSet.genMesh(xc.meshDir.I)
 # seedElemHandler.defaultTag= 1 
 # diagTruss= seedElemHandler.newElement("Spring",xc.ID([1,2]))
 #diagTruss= seedElemHandler.newElement("CorotTruss",xc.ID([1,2]))
-#diagTruss.area= diagArea
+#diagTruss.sectionArea= diagArea
 diagSet.genMesh(xc.meshDir.I)
 # Seed element for saddle cables
 # seedElemHandler= prep.getElementHandler.seedElemHandler
@@ -151,7 +151,7 @@ diagSet.genMesh(xc.meshDir.I)
 # seedElemHandler.defaultTag= 1 
 # saddTruss= seedElemHandler.newElement("Spring",xc.ID([1,2]))
 #saddTruss= seedElemHandler.newElement("CorotTruss",xc.ID([1,2]))
-#saddTruss.area= saddArea
+#saddTruss.sectionArea= saddArea
 saddSet.genMesh(xc.meshDir.I)
 
 

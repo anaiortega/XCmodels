@@ -48,18 +48,18 @@ elements.defaultMaterial= "cable"
 elements.defaultTag= 1 #First element number.
 elements.dimElem= 3
 ctruss1= elements.newElement("CorotTruss",xc.ID([1,2]))
-ctruss1.area= areaCable
+ctruss1.sectionArea= areaCable
 ctruss2= elements.newElement("CorotTruss",xc.ID([1,3]))
-ctruss2.area= areaCable
+ctruss2.sectionArea= areaCable
 ctruss3= elements.newElement("CorotTruss",xc.ID([2,4]))
-ctruss3.area= areaCable
+ctruss3.sectionArea= areaCable
 ctruss4= elements.newElement("CorotTruss",xc.ID([3,4]))
-ctruss4.area= areaCable
+ctruss4.sectionArea= areaCable
 elements.defaultMaterial= "strutMat"
 ctruss5= elements.newElement("CorotTruss",xc.ID([1,4]))
-ctruss5.area= areaStrut
+ctruss5.sectionArea= areaStrut
 ctruss6= elements.newElement("CorotTruss",xc.ID([2,3]))
-ctruss6.area= areaStrut
+ctruss6.sectionArea= areaStrut
 
 
 # Constraints

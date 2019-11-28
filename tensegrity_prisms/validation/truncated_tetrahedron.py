@@ -88,35 +88,35 @@ elements.defaultTag= 1
 elements.dimElem= 3
 
 diag1= elements.newElement("CorotTruss",xc.ID([1,2]))
-diag1.area= diagArea
+diag1.sectionArea= diagArea
 diag2= elements.newElement("CorotTruss",xc.ID([2,3]))
-diag2.area= diagArea
+diag2.sectionArea= diagArea
 diag3= elements.newElement("CorotTruss",xc.ID([1,3]))
-diag3.area= diagArea
+diag3.sectionArea= diagArea
 
 diag4= elements.newElement("CorotTruss",xc.ID([4,5]))
-diag4.area= diagArea
+diag4.sectionArea= diagArea
 diag5= elements.newElement("CorotTruss",xc.ID([5,6]))
-diag5.area= diagArea
+diag5.sectionArea= diagArea
 diag6= elements.newElement("CorotTruss",xc.ID([4,6]))
-diag6.area= diagArea
+diag6.sectionArea= diagArea
 
 diag7= elements.newElement("CorotTruss",xc.ID([7,8]))
-diag7.area= diagArea
+diag7.sectionArea= diagArea
 diag8= elements.newElement("CorotTruss",xc.ID([8,9]))
-diag8.area= diagArea
+diag8.sectionArea= diagArea
 diag9= elements.newElement("CorotTruss",xc.ID([7,9]))
-diag9.area= diagArea
+diag9.sectionArea= diagArea
 
 diag10= elements.newElement("CorotTruss",xc.ID([10,11]))
-diag10.area= diagArea
+diag10.sectionArea= diagArea
 diag11= elements.newElement("CorotTruss",xc.ID([11,12]))
-diag11.area= diagArea
+diag11.sectionArea= diagArea
 diag12= elements.newElement("CorotTruss",xc.ID([10,12]))
-diag12.area= diagArea
+diag12.sectionArea= diagArea
 
 diag13= elements.newElement("CorotTruss",xc.ID([1,7]))
-diag13.area= diagArea
+diag13.sectionArea= diagArea
 
 
 # Displaying of the mesh
@@ -140,7 +140,7 @@ seedElemHandler.defaultMaterial= "strutMat"
 seedElemHandler.dimElem= 3
 seedElemHandler.defaultTag= 1 
 strutTruss= seedElemHandler.newElement("CorotTruss",xc.ID([0,0]))
-strutTruss.area= strutArea
+strutTruss.sectionArea= strutArea
 strutSet.genMesh(xc.meshDir.I)
 # Seed element for diagonal cables
 seedElemHandler= prep.getElementHandler.seedElemHandler
@@ -148,7 +148,7 @@ seedElemHandler.defaultMaterial= "diagCableMat"
 seedElemHandler.dimElem= 3    # three-dimensional space 
 seedElemHandler.defaultTag= 1 
 diagTruss= seedElemHandler.newElement("CorotTruss",xc.ID([0,0]))
-diagTruss.area= diagArea
+diagTruss.sectionArea= diagArea
 diagSet.genMesh(xc.meshDir.I)
 # Seed element for saddle cables
 seedElemHandler= prep.getElementHandler.seedElemHandler
@@ -156,7 +156,7 @@ seedElemHandler.defaultMaterial= "saddCableMat"
 seedElemHandler.dimElem= 3
 seedElemHandler.defaultTag= 1 
 saddTruss= seedElemHandler.newElement("CorotTruss",xc.ID([0,0]))
-saddTruss.area= saddArea
+saddTruss.sectionArea= saddArea
 saddSet.genMesh(xc.meshDir.I)
 
 
