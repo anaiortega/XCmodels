@@ -44,7 +44,7 @@ elements.defaultMaterial= "cable"
 elements.defaultTag= 1 #First element number.
 elements.dimElem= 3
 ctruss1= elements.newElement("CorotTruss",xc.ID([1,2])) #newElement(elementType, nodes_IDs)
-ctruss1.area= area
+ctruss1.sectionArea= area
 
 # Constraints
 modelSpace.fixNode000(1)

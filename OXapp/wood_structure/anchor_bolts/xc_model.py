@@ -53,13 +53,13 @@ uGrid.nDivZ= int(uGrid.Lz/elem_size)
 # Materials definition
 
 ## Reinforced concrete
-concrete= typical_materials.defElasticIsotropic3d(preprocessor, "concrete3d",28.3e9,0.2,0.0)
+concrete= typical_materials.defElasticIsotropic3d(preprocessor, "concrete",28.3e9,0.2,0.0)
 
 ## Anchor bolt
 ### Anchor bolt steel
 anchorBoltSteel= steel_base.BasicSteel(E= 210e9,nu= 0.3, fy= 250e6, fu= 300e6, gammaM= 1.0)
 
-### Cross section properties (IPE-80)
+### Cross section properties
 diam= 0.25*inch2meter
 boltSectionGeom= section_properties.CircularSection(name= 'boltSectionGeom', Rext= diam/2.0)
 boltSection= boltSectionGeom.defElasticShearSection3d(preprocessor, anchorBoltSteel)

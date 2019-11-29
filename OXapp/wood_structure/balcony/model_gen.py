@@ -47,14 +47,14 @@ n1_1=pt1_1.getNode()
 n1_2=nodes.newNodeXYZ(0,0,heigth)
 modelSpace.fixNode('000_000',n1_2.tag)
 tie1=elements.newElement("Truss",xc.ID([n1_1.tag,n1_2.tag]))
-tie1.area=tieArea
+tie1.sectionArea= tieArea
 
 pt2_1=gridGeom.getPntXYZ((lenght,width,0))
 n2_1=pt2_1.getNode()
 n2_2=nodes.newNodeXYZ(lenght,0,heigth)
 modelSpace.fixNode('000_000',n2_2.tag)
 tie2=elements.newElement("Truss",xc.ID([n2_1.tag,n2_2.tag]))
-tie2.area=tieArea
+tie2.sectionArea= tieArea
 ties=prep.getSets.defSet('ties')
 ties.getElements.append(tie1)
 ties.getElements.append(tie2)
