@@ -88,16 +88,22 @@ def getNodesXLine(coord,tol=0.01):
 
 EastW_nod=getNodesYLine([xEW,[yNW,ySW]])
 WestW_nod=getNodesYLine([xWW,[yNW,ySW]])
-Ramp_nod=getNodesYLine([xGridA,[yNW,yRamp_1]])
-Ramp_nod+=getNodesYLine([xRamp_1,[yRamp_1,yRamp_2]])
-Ramp_nod+=getNodesYLine([xRamp_2,[yStair1,yRamp_2]])
-Stair1_nod=getNodesYLine([xStair1,[yNW,yStair1]])
-Stair2_nod=getNodesYLine([xGridA,[yStair2_1,yStair2_2]])
+Ramp_nod_E=getNodesYLine([xGridA,[yNW,yRamp_1]])
+Ramp_nod_E+=getNodesYLine([xRamp_1,[yRamp_1,yRamp_2]])
+Ramp_nod_W=getNodesYLine([xRamp_2,[yStair1,yRamp_2]])
+Stair1_nod_W=getNodesYLine([xStair1,[yNW,yStair1]])
+Stair2_nod_W=getNodesYLine([xGridA,[yStair2_1,yStair2_2]])
 
-nodX=EastW_nod+WestW_nod+Ramp_nod+Stair1_nod+Stair2_nod
 
-for n in nodX:
+nodY=EastW_nod+WestW_nod
+for n in nodY:
     modelSpace.fixNode000_FFF(n.tag)
+
+nodY=Ramp_nod_E+Ramp_nod_W+Stair1_nod_W+Stair2_nod_W
+
+for n in nodY:
+    modelSpace.fixNodeF00_FFF(n.tag)
+
 #out.displayFEMesh()
 
 NorthW_nod=getNodesXLine([[xEW,xWW],yNW])
@@ -108,9 +114,13 @@ Stair2_nod=getNodesXLine([[xEW,xGridA],yStair2_1])
 Stair2_nod+=getNodesXLine([[xEW,xGridA],yStair2_2])
 SouthW_nod=getNodesXLine([[xEW,xWW],ySW])
 
-nodY=NorthW_nod+Stair2_nod+SouthW_nod+Ramp_nod+Stair1_nod
-for n in nodY:
+nodX=NorthW_nod+SouthW_nod
+for n in nodX:
     modelSpace.fixNode000_FFF(n.tag)
+nodX=Stair2_nod+Ramp_nod+Stair1_nod
+
+for n in nodX:
+    modelSpace.fixNode0F0_FFF(n.tag)
 #out.displayFEMesh()
 
 def addLoadNodesXLine(shearWall,tol,direct):

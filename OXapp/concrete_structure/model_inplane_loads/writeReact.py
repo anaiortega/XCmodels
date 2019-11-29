@@ -10,8 +10,8 @@ def get_max_min_mean_react(lstNod,esize,Lwall):
         R=n.getReaction
         Rx=R[0]
         Ry=R[1]
-        totalRx+=Rx
-        totalRy+=Ry
+        totalRx+=abs(Rx)
+        totalRy+=abs(Ry)
         if Rx>maxRx:
             maxRx=Rx
         elif Rx<minRx:
@@ -43,6 +43,7 @@ def print_res(lcName,esize,EastW_L,WestW_L,NorthW_L,SouthW_L):
     print 'West wall',R_WestW
     print 'North wall', R_NorthW
     print 'South wall', R_SouthW
+
     
 esize=0.5
 EastW_L=ySW-yNW-(yStair2_2-yStair2_1)
