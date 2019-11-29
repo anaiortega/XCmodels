@@ -80,3 +80,4 @@ ratio=(xEastWall-xHall)/(xWestWall-xEastWall)
 Dead_Ecant=ratio*Dead_Wcant  #dead load steel cantilever (East side)
 Live_Ecant=ratio*Live_Wcant  
 Snow_Ecant=ratio*Snow_Wcant  
+
