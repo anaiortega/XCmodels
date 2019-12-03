@@ -12,7 +12,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg= lsd.VerifOutVars(setCalc=beamY,appendToResFile='N',listFile='N')
+outCfg= lsd.VerifOutVars(setCalc=colB1,appendToResFile='N',listFile='N')
 
 limitStateLabel= lsd.shearResistance.label
 lsd.shearResistance.controller= lschck.ShearController(limitStateLabel)

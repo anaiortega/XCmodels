@@ -13,7 +13,7 @@ execfile(cfg.projectDirTree.getVerifShearFile())
 #  Config
 argument= 'CF'       #Possible arguments: 'CF', 'N', 'My', 'Mz', 'Mu', 'Vy',
                      #'Vz', 'theta', 'Vcu', 'Vsu', 'Vu'
-setDisp= decks
+setDisp= colB1
 
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 rgMinMax=(0,1.0)     #truncate values to be included in the range

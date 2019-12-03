@@ -15,7 +15,7 @@ execfile(cfg.projectDirTree.getVerifNormStrFile())
 #  Config
 argument= 'CF' #Possible arguments: 'CF', 'N', 'My','Mz'
 
-setDisp= foot  #Set of shell elements to be displayed
+setDisp= colB1  #Set of shell elements to be displayed
 cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 rgMinMax=(0,1.0)     #truncate values to be included in the range
                      #(if None -> don't truncate)

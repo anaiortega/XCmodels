@@ -4,6 +4,7 @@
 #import xc_base
 #import geom
 #import xc
+import math
 from materials.sections.fiber_section import defSimpleRCSection as rcs
 
 # **Concrete sections
@@ -12,53 +13,21 @@ from materials.sections.fiber_section import defSimpleRCSection as rcs
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-deckRCSects= rcs.RecordRCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh,elemSetName=decks.name)  
-deckRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(12,150,35)]
-deckRCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,200,35)]
-deckRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(16,250,35)]
-deckRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(16,100,35)]
-import math
-areaFi8=math.pi*0.008**2/4.
-shear1=rcs.RecordShearReinforcement(familyName= "shear1",nShReinfBranches= 1.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.radians(30))
-shear2=rcs.RecordShearReinforcement(familyName= "shear2",nShReinfBranches= 1.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.radians(30))
-deckRCSects.dir1ShReinfY=shear1
-deckRCSects.dir2ShReinfY=shear2
+lCol=0.4
+colB1RCsect=rcs.RecordRCSlabBeamSection(name='colB1RCsect',sectionDescr='colB1',concrType=concrete, reinfSteelType=reinfSteel,width=lCol,depth=lCol,elemSetName=colB1.name)
+fi=15.875*1e-3
+layer=rcs.MainReinfLayer(rebarsDiam=fi,areaRebar=math.pi*fi**2/4.,nominalCover=0.03)
+layer.nRebars=3
 
+colB1RCsect.dir1PositvRebarRows=[layer]
+colB1RCsect.dir1NegatvRebarRows=[layer]
+colB1RCsect.dir2PositvRebarRows=[layer]
+colB1RCsect.dir2NegatvRebarRows=[layer]
 
-footRCSects= rcs.RecordRCSlabBeamSection(name='footRCSects',sectionDescr='footation',concrType=concrete, reinfSteelType=reinfSteel,depth=footTh,elemSetName=foot.name)
-#D1: transversal rebars
-#D2: longitudinal rebars
-footRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(12,150,35)]
-footRCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,150,35)]
-footRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(16,150,35)]
-footRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(16,150,35)]
-
-wallRCSects= rcs.RecordRCSlabBeamSection(name='wallRCSects',sectionDescr='wall of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh,elemSetName=wall.name)  
-wallRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(20,200,35)]
-wallRCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(25,150,35)]
-wallRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(16,150,35)]
-wallRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,150,35)]
-
-
-beamXRCsect=rcs.RecordRCSlabBeamSection(name='beamXRCsect',sectionDescr='beam elements in X direction',concrType=concrete, reinfSteelType=reinfSteel,width=wbeamX,depth=hbeamX,elemSetName=beamX.name)
-beamXRCsect.dir1PositvRebarRows=[rcs.rebLayer_mm(20,50,35)]
-beamXRCsect.dir1NegatvRebarRows=[rcs.rebLayer_mm(22,50,35)]
-beamXRCsect.dir2PositvRebarRows=[rcs.rebLayer_mm(20,50,35)]
-beamXRCsect.dir2NegatvRebarRows=[rcs.rebLayer_mm(22,50,35)]
-
-
-beamYRCsect=rcs.RecordRCSlabBeamSection(name='beamYRCsect',sectionDescr='beam elements in Y direction',concrType=concrete, reinfSteelType=reinfSteel,width=wbeamY,depth=hbeamY,elemSetName=beamY.name)
-beamYRCsect.dir1PositvRebarRows=[rcs.rebLayer_mm(20,150,35)]
-beamYRCsect.dir1NegatvRebarRows=[rcs.rebLayer_mm(22,150,35)]
-beamYRCsect.dir2PositvRebarRows=[rcs.rebLayer_mm(20,150,35)]
-beamYRCsect.dir2NegatvRebarRows=[rcs.rebLayer_mm(22,150,35)]
-
-
-columnZRCsect=rcs.RecordRCSlabBeamSection(name='columnZRCsect',sectionDescr='columnZ',concrType=concrete, reinfSteelType=reinfSteel,width=wcolumnZ,depth=hcolumnZ,elemSetName=columnZ.name)
-columnZRCsect.dir1PositvRebarRows=[rcs.rebLayer_mm(20,150,35)]
-columnZRCsect.dir1NegatvRebarRows=[rcs.rebLayer_mm(22,150,35)]
-columnZRCsect.dir2PositvRebarRows=[rcs.rebLayer_mm(20,150,35)]
-columnZRCsect.dir2NegatvRebarRows=[rcs.rebLayer_mm(22,150,35)]
+fiCercosExtr=9.525
+sepCercosExtr=8*in2m
+colB1RCsect.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=2,areaShReinfBranch= math.pi*(fiCercosExtr*1e-3)**2/4.,shReinfSpacing=sepCercosExtr,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+colB1RCsect.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=2,areaShReinfBranch= math.pi*(fiCercosExtr*1e-3)**2/4.,shReinfSpacing=sepCercosExtr,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 
 

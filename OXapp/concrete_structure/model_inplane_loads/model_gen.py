@@ -85,14 +85,14 @@ def getNodesXLine(coord,tol=0.01):
     nod=sets.get_nodes_wire(hollowcore,[pt1,pt2],tol)
     return nod
 
-
 EastW_nod=getNodesYLine([xEW,[yNW,ySW]])
 WestW_nod=getNodesYLine([xWW,[yNW,ySW]])
-Ramp_nod_E=getNodesYLine([xGridA,[yNW,yRamp_1]])
-Ramp_nod_E+=getNodesYLine([xRamp_1,[yRamp_1,yRamp_2]])
-Ramp_nod_W=getNodesYLine([xRamp_2,[yStair1,yRamp_2]])
-Stair1_nod_W=getNodesYLine([xStair1,[yNW,yStair1]])
-Stair2_nod_W=getNodesYLine([xGridA,[yStair2_1,yStair2_2]])
+gap=0.5
+Ramp_nod_E=getNodesYLine([xGridA,[yNW+gap,yRamp_1-gap]])
+Ramp_nod_E+=getNodesYLine([xRamp_1,[yRamp_1+gap,yRamp_2-gap]])
+Ramp_nod_W=getNodesYLine([xRamp_2,[yStair1+gap,yRamp_2-gap]])
+Stair1_nod_W=getNodesYLine([xStair1,[yNW+gap,yStair1-gap]])
+Stair2_nod_W=getNodesYLine([xGridA,[yStair2_1+gap,yStair2_2-gap]])
 
 
 nodY=EastW_nod+WestW_nod
@@ -107,21 +107,38 @@ for n in nodY:
 #out.displayFEMesh()
 
 NorthW_nod=getNodesXLine([[xEW,xWW],yNW])
-Ramp_nod=getNodesXLine([[xGridA,xRamp_1],yRamp_1])
-Ramp_nod+=getNodesXLine([[xRamp_1,xRamp_2],yRamp_2])
-Stair1_nod=getNodesXLine([[xRamp_2,xStair1],yStair1])
-Stair2_nod=getNodesXLine([[xEW,xGridA],yStair2_1])
-Stair2_nod+=getNodesXLine([[xEW,xGridA],yStair2_2])
 SouthW_nod=getNodesXLine([[xEW,xWW],ySW])
+
+Ramp_nod_N=getNodesXLine([[xGridA,xRamp_1],yRamp_1])
+Ramp_nod_S=getNodesXLine([[xRamp_1,xRamp_2],yRamp_2])
+Stair1_nod_S=getNodesXLine([[xRamp_2,xStair1],yStair1])
+Stair2_nod_N=getNodesXLine([[xEW,xGridA],yStair2_1])
+Stair2_nod_S=getNodesXLine([[xEW,xGridA],yStair2_2])
 
 nodX=NorthW_nod+SouthW_nod
 for n in nodX:
     modelSpace.fixNode000_FFF(n.tag)
-nodX=Stair2_nod+Ramp_nod+Stair1_nod
 
+nodX=Ramp_nod_N+Ramp_nod_S+Stair1_nod_S+Stair2_nod_N+Stair2_nod_S
 for n in nodX:
     modelSpace.fixNode0F0_FFF(n.tag)
 #out.displayFEMesh()
+
+EastW_L=ySW-yNW-(yStair2_2-yStair2_1)
+WestW_L=ySW-yNW
+NorthW_L=xWW-xEW-(xStair1-xGridA)
+SouthW_L=xWW-xEW
+bound_ret_walls=[[EastW_nod,EastW_L,'East retaining wall'],[WestW_nod,WestW_L,'West retaining wall'],[NorthW_nod,NorthW_L,'North retaining wall'],[SouthW_nod,SouthW_L,'South retaining wall']] #[node list, wall lenght,description]
+bound_ramp=[[Ramp_nod_E,yRamp_2-yRamp_1,'Ramp East wall'],
+            [Ramp_nod_W,yRamp_2-yStair1,'Ramp West wall'],
+            [Ramp_nod_N,xRamp_1-xGridA,'Ramp North wall'],
+            [Ramp_nod_S,xRamp_2-xRamp_1,'Ramp South wall']]
+bound_stair1=[[Stair1_nod_W,yStair1-yNW,'Stair 1 West wall'],
+              [Stair1_nod_S,xStair1-xRamp_2,'Stair 1 South wall']]
+bound_stair2=[[Stair2_nod_W,yStair2_2-yStair2_1,'Stair 2 West wall'],
+              [Stair2_nod_N,xGridA-xEW,'Stair 2 North wall'],
+              [Stair2_nod_S,xGridA-xEW,'Stair 2 South wall']]
+
 
 def addLoadNodesXLine(shearWall,tol,direct):
     '''direct: load direction: 1:+Y, -1:-Y'''
@@ -151,17 +168,34 @@ loadHand=preprocessor.getLoadHandler
 
 tol=0.3
 
+def meanReact(boundNodLst):
+    for bound in boundNodLst:
+        lstNodes=bound[0]
+        nNodes=len(lstNodes)
+        totalRx=0
+        totalRy=0
+        for n in lstNodes:
+            totalRx+=n.getReaction[0]
+            totalRy+=n.getReaction[1]
+        for n in lstNodes:
+            n.setReaction(xc.Vector([totalRx/nNodes,totalRy/nNodes,0,0,0,0]))
+
 #Wind East_West (lines X direction)
 Wind_EW=lcases.LoadCase(preprocessor=prep,name="Wind_EW",loadPType="default",timeSType="constant_ts")
 Wind_EW.create()
 for wall in ShearXwalls:
     addLoadNodesXLine(wall,tol,1)
-
 loadHand.addToDomain(Wind_EW.name)
 out.displayLoads()
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayReactions()
+preprocessor.getNodeHandler.calculateNodalReactions(True,1e-7)
+
+meanReact(bound_ramp)
+meanReact(bound_stair1)
+meanReact(bound_stair2)
+out.displayReactions(fileName='windEW.jpg')
+
 loadHand.removeFromDomain(Wind_EW.name)
 
 
@@ -175,7 +209,13 @@ loadHand.addToDomain(Wind_NS.name)
 out.displayLoads()
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayReactions()
+preprocessor.getNodeHandler.calculateNodalReactions(True,1e-7)
+
+meanReact(bound_ramp)
+meanReact(bound_stair1)
+meanReact(bound_stair2)
+out.displayReactions(fileName='windNS.jpg')
+
 loadHand.removeFromDomain(Wind_NS.name)
 
 
@@ -189,11 +229,17 @@ loadHand.addToDomain(Wind_WE.name)
 out.displayLoads()
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayReactions()
+preprocessor.getNodeHandler.calculateNodalReactions(True,1e-7)
+
+meanReact(bound_ramp)
+meanReact(bound_stair1)
+meanReact(bound_stair2)
+out.displayReactions(fileName='windWE.jpg')
+
 loadHand.removeFromDomain(Wind_WE.name)
 
 
-#Wind North_South (lines Y direction)
+#Wind South_North (lines Y direction)
 Wind_SN=lcases.LoadCase(preprocessor=prep,name="Wind_SN",loadPType="default",timeSType="constant_ts")
 Wind_SN.create()
 for wall in ShearYwalls:
@@ -203,6 +249,12 @@ loadHand.addToDomain(Wind_SN.name)
 out.displayLoads()
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayReactions()
+preprocessor.getNodeHandler.calculateNodalReactions(True,1e-7)
+
+meanReact(bound_ramp)
+meanReact(bound_stair1)
+meanReact(bound_stair2)
+out.displayReactions(fileName='windSN.jpg')
+
 loadHand.removeFromDomain(Wind_SN.name)
 
