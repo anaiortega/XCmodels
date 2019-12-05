@@ -26,11 +26,12 @@ __email__= "l.pereztato@gmail.com"
 inch2meter= 0.0254
 psi2Pa= 6894.76
 pci2Nm3= 271447.14116097
-pound2N= 4.44822
+pound2N= 4.4482216
+kip2N= pound2N*1000
 
 B= 24*inch2meter
 plank_thickness= 12*inch2meter
-elem_size= 2*inch2meter
+elem_size= 1.0*inch2meter
 
 # Problem type
 feProblem= xc.FEProblem()
@@ -86,6 +87,14 @@ brick= seedElemHandler.newElement("Brick",xc.ID([0,0,0,0,0,0,0,0]))
 numElem= uGrid.nDivX*uGrid.nDivY*uGrid.nDivZ
 uGrid.genMesh(xc.meshDir.I)
 
+setBricks= preprocessor.getSets.defSet('bricks')
+for e in uGrid.getElements:
+    center= e.getPosCentroid(False)
+    if((center.x<B/2.0) and (center.y<B/2.0)): 
+        setBricks.elements.append(e)
+
+setBricks.fillDownwards()
+
 ## Anchor bolt
 bottomCenter= geom.Pos3d(B/2.0,B/2.0,plank_thickness)
 topCenter= geom.Pos3d(B/2.0,B/2.0,0.0)
@@ -125,7 +134,12 @@ for i in range(1,len(anchorBoltNodes)):
     beam3d= elements.newElement("ElasticBeam3d",xc.ID([n0.tag,n1.tag]))
     anchorElements.append(beam3d)
     n0= n1
-    
+
+setBolt= preprocessor.getSets.defSet('bolt')
+for e in anchorElements:
+    setBolt.elements.append(e)
+setBolt.fillDownwards()
+
 # Constraints
 
 ## Classify nodes
@@ -151,7 +165,7 @@ for t in coupledNodes:
 ## Fix torsional DOF at bolt top.
 modelSpace.fixNode('FFF_FF0',boltTopNode.tag)
 
-oh.displayFEMesh()
+#oh.displayFEMesh()
 
 # Loads
 
@@ -163,12 +177,12 @@ lPatterns.currentTimeSeries= "ts"
 ## Load case definition
 lp0= lPatterns.newLoadPattern("default","0")
 
-F= 7200.0*pound2N
+F= 13.0*kip2N
 print('F= ', F/1e3, ' kN')
 lp0.newNodalLoad(boltTopNode.tag,xc.Vector([0,0,F,0,0,0]))
 
 lPatterns.addToDomain(lp0.name)
-oh.displayLoads()
+#oh.displayLoads()
 
 # Solution
 analisis= predefined_solutions.simple_static_linear(feProblem)
@@ -182,7 +196,12 @@ result= analisis.analyze(1)
 
     
 
-oh.displayReactions()
-oh.displayDispRot('uZ')
+#oh.displayReactions()
+oh.displayIntForcDiag('N',setToDisplay= setBolt)
+oh.displayDispRot('uZ')# , setToDisplay= setBricks)
 #oh.displayDispRot('uX', setToDisplay= test)
 #oh.displayIntForc('N1', setToDisplay= quads)
+oh.displayStresses('sigma_xx', setToDisplay= setBricks)
+oh.displayStresses('sigma_yy', setToDisplay= setBricks)
+oh.displayStresses('sigma_zz', setToDisplay= setBricks)
+oh.displayStrains('epsilon_zz', setToDisplay= setBricks)
