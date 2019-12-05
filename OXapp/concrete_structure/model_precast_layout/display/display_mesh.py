@@ -29,4 +29,5 @@ defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 #setsTodisp=[slabW1,slab12,slab23,slab34,slab45,slab5W,slabBC,slabCD_H,slabCD_L,slabDG,slabGF,slabFW]
 #setsTodisp=[slabsBC_L,slabCD_L,slabsF_L]
 setsTodisp=[rampNeighboursPlanksSet]
+setsTodisp=[colB1]
 defDisplay.displayMesh(xcSets=setsTodisp,caption='Precast beams and columns',nodeSize=0.5,scaleConstr=1.0)

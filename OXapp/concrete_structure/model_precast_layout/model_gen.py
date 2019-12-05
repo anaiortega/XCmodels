@@ -1207,3 +1207,4 @@ for e in xcTotalSet.elements:
         rampNeighboursPlanksSet.elements.append(e)
 rampNeighboursPlanksSet.fillDownwards()
 
+colB1=gridGeom.getSetLinOneXYZRegion(((xCols[1],yCols[0],0),(xCols[1],yCols[0],zCol)),'colB1')
