@@ -111,6 +111,8 @@ qunifmax=9e3    #carga uniforme en vía virtual 1
 qunifmin=2.5e3    #carga uniforme en resto
 qunifacera=2.5e3    #carga uniforme en acera concomitante con cargas de tráfico
 
+hDistrPL=cantoLosa/2.  #height of distribution of traffic point loads
+
 Qfrenado=497.7e3 #carga total de frenado a aplicar en via fictícea 1 [N]
 QCentrif=0  #carga uniforme debida a la fuerza centrífuga [N/m2]
 vQfren=[0,Qfrenado/3/Ltablero] #componentes X,y de la carga uniforme de frenado

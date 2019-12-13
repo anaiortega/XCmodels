@@ -2,6 +2,8 @@
 
 tablero=riostrEstr1+riostrEstr2+losa+cartabInt+cartabExt+voladzInt+voladzExt
 tablero.description='Tablero'
+RheoSetDirY=riostrEstr1+riostrEstr2+losa+cartabInt+cartabExt+voladzInt+voladzExt #set al que aplicar deformación por retracción en dirección Y (longitudinal de tablero)
+ThermalUnifSetDirY=riostrEstr1+riostrEstr2+losa+cartabInt+cartabExt+voladzInt+voladzExt #set al que aplicar deformación térmica uniforme en dirección Y (longitudinal de tablero)
 #Vías ficticias
 x=xViasFict[0]
 y=[0,yListTabl[-1]]
