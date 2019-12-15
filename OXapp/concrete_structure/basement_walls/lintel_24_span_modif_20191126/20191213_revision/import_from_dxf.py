@@ -11,7 +11,8 @@ def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
 fileName= 'lintel_model.dxf'
-dxfImport= DxfReader.DXFImport(fileName, layerNamesToImport,getRelativeCoo, importLines= True, polylinesAsSurfaces= True, threshold= 0.001, tolerance= .001)
+#fileName= 'pp.dxf'
+dxfImport= DxfReader.DXFImport(fileName, layerNamesToImport,getRelativeCoo, importLines= True, polylinesAsSurfaces= False, threshold= 0.001, tolerance= .001)
 
 #Block topology
 blocks= dxfImport.exportBlockTopology('test')
@@ -19,7 +20,7 @@ blocks= dxfImport.exportBlockTopology('test')
 fileName= 'xc_model_blocks'
 ieData= nmd.XCImportExportData()
 ieData.outputFileName= fileName
-ieData.problemName= 'test'
+ieData.problemName= 'FEcase'
 ieData.blockData= blocks
 
 ieData.writeToXCFile()
