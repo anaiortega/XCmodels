@@ -5,7 +5,7 @@ from __future__ import print_function
 from import_export import DxfReader
 from import_export import NeutralMeshDescription as nmd
 
-layerNamesToImport= ['concrete_cells','rebars_10','rebars_06','link_lines','rebar_segments_13','rebar_segments_16','rebar_segments_22']
+layerNamesToImport= ['concrete_cells','rebars_10','rebars_06','link_lines','rebar_segments_13','rebar_segments_16','rebar_segments_22', '000FFF_constraints', '00FFFF_constraints', '000000_constraints', 'horiz_loads']
 
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
