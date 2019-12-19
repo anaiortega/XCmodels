@@ -25,21 +25,21 @@ execfile('./xc_model_blocks.py')
 
 xcTotalSet= preprocessor.getSets.getSet('total')
 
-surfSet= preprocessor.getSets.defSet('surfSet')
+concreteSet= preprocessor.getSets.defSet('concreteSet')
 for s in xcTotalSet.getSurfaces:
-    surfSet.getSurfaces.append(s)
+    concreteSet.getSurfaces.append(s)
 
 rebarSets= dict()
 rebarSets[6]= preprocessor.getSets.defSet('rebars06')
 rebarSets[6].setProp('rebarArea',ACI_materials.num2Area)
 rebarSets[10]= preprocessor.getSets.defSet('rebars10')
-rebarSets[10].setProp('rebarArea',ACI_materials.num2Area)
+rebarSets[10].setProp('rebarArea',ACI_materials.num3Area)
 rebarSets[13]= preprocessor.getSets.defSet('rebars13')
 rebarSets[13].setProp('rebarArea',ACI_materials.num4Area)
 rebarSets[16]= preprocessor.getSets.defSet('rebars16')
 rebarSets[16].setProp('rebarArea',ACI_materials.num5Area)
 rebarSets[22]= preprocessor.getSets.defSet('rebars22')
-rebarSets[22].setProp('rebarArea',ACI_materials.num5Area)
+rebarSets[22].setProp('rebarArea',ACI_materials.num6Area)
 for l in xcTotalSet.getLines:
     if(l.hasProp('labels')):
         labels= l.getProp('labels')
@@ -120,8 +120,8 @@ seedElemHandler.defaultMaterial= shellMaterial.name
 seedElem= seedElemHandler.newElement('ShellMITC4', xc.ID([0,0,0,0]))
 
 preprocessor.getMultiBlockTopology.getSurfaces.conciliaNDivs()
-surfSet.genMesh(xc.meshDir.I)
-surfSet.fillDownwards()
+concreteSet.genMesh(xc.meshDir.I)
+concreteSet.fillDownwards()
 
 ## Reinforcement
 seedElemHandler.defaultMaterial= trussMaterial.name
@@ -183,7 +183,7 @@ for l in linkSet.getLines:
     if(not n2):
         print('line: ',l.tag, ' is not connected at its end.')
     
-    preprocessor.getBoundaryCondHandler.newRigidBeam(n1.tag,n2.tag)
+    preprocessor.getBoundaryCondHandler.newRigidBeam(n2.tag,n1.tag)
 
 # Loads
 
@@ -195,15 +195,15 @@ lPatterns.currentTimeSeries= "ts"  # Time series to use for the new load pattern
 ### Load pattern definition
 lp0 = lPatterns.newLoadPattern("default","0")  # New load pattern named 0
 
-## vertical loads
-deadL=110*pound2N/(ft2m)**2   #dead load (
-liveL=100*pound2N/(ft2m)**2    # live load (40 psf)
-snowL=42*pound2N/(ft2m)**2    # snow load (42 psf)
-verticalNodalLoad= (1.4*deadL+1.6*liveL)*L/len(precastFloorPoints)
-print(verticalNodalLoad/1e3)
-for p in precastFloorPoints:
-    n= p.getNode()
-    lp0.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-verticalNodalLoad,0.0,0.0,0.0]))
+# ## vertical loads
+# deadL=110*pound2N/(ft2m)**2   #dead load (
+# liveL=100*pound2N/(ft2m)**2    # live load (40 psf)
+# snowL=42*pound2N/(ft2m)**2    # snow load (42 psf)
+# verticalNodalLoad= (1.4*deadL+1.6*liveL)*L/len(precastFloorPoints)
+# print(verticalNodalLoad/1e3)
+# for p in precastFloorPoints:
+#     n= p.getNode()
+#     lp0.newNodalLoad(n.tag,xc.Vector([0.0,0.0,-verticalNodalLoad,0.0,0.0,0.0]))
 
 
 ## horizontal loads
@@ -220,9 +220,29 @@ for p in horizLoadedPoints:
 ## We add the load case to domain.
 lPatterns.addToDomain(lp0.getName())
 
+def softenConcrete():
+    vCompDisp= modelSpace.getIntForceComponentFromName('N1')
+    for e in concreteSet.elements:
+        e.getResistingForce()
+        physProp= e.getPhysicalProperties
+        N1= physProp.getMeanGeneralizedStressByName(vCompDisp)
+        for mat in physProp.getVectorMaterials:
+            if(N1>0):
+                mat.E/=10.0
+
 # *********Solution*********
 analysis = predefined_solutions.simple_static_linear(FEcase)
 result = analysis.analyze(1)
+# softenConcrete()
+# result = analysis.analyze(1)
+# softenConcrete()
+# result = analysis.analyze(1)
+# softenConcrete()
+# result = analysis.analyze(1)
+# softenConcrete()
+# result = analysis.analyze(1)
+# softenConcrete()
+# result = analysis.analyze(1)
 
 # Graphics
 
@@ -233,15 +253,16 @@ for key in rebarSets:
     
 #oh.displayBlocks()
 #oh.displayLocalAxes()
-oh.displayFEMesh()
+#oh.displayFEMesh()
 oh.displayLoads()
 
-oh.displayDispRot(itemToDisp='uY')
-oh.displayDispRot(itemToDisp='uZ')
-oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[22])
-oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[16])
-oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[13])
-oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[10])
-oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[06])
-#oh.displayReactions()
-#oh.displayIntForc('M2')
+#oh.displayDispRot(itemToDisp='uY')
+# oh.displayDispRot(itemToDisp='uZ')
+# oh.displayIntForc(itemToDisp= 'N1', setToDisplay= concreteSet)
+# oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[22])
+# oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[16])
+# oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[13])
+# oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[10])
+# oh.displayIntForcDiag(itemToDisp= 'N', setToDisplay= rebarSets[06])
+oh.displayReactions()
+#oh.displayIntForc('M2', setToDisplay= concreteSet)
