@@ -27,7 +27,7 @@ preprocessor= xcProblem.getPreprocessor
 nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
-# Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
+# Materials LSL 1.55E (page 10 of the PDF document from "SolidStart")
 header= AWCNDS_materials.LSL155Headers['5.25x14']
 section= header.defElasticShearSection2d(preprocessor)
 sectionGeometry= section_properties.RectangularSection("header",b=3.5*inchToMeter,h=16*inchToMeter)
