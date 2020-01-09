@@ -3,7 +3,7 @@ from postprocess.reports import graphical_reports
 
 ULS01=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS01',loadCaseDescr='ULS01',loadCaseExpr='1.4*Dead_LC',setsToDispLoads=[],setsToDispDspRot=beamSets,setsToDispIntForc=[])
 
-ULS02=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02',loadCaseDescr='ULS02',loadCaseExpr='1.2*Dead_LC+1.6*Live_LC+0.5*Snow_LC',setsToDispLoads=[],setsToDispDspRot=[beams],setsToDispIntForc=[])
+ULS02=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS02',loadCaseDescr='ULS02',loadCaseExpr='1.2*Dead_LC+1.6*Live_LC+0.5*Snow_LC',setsToDispLoads=[],setsToDispDspRot=[walls],setsToDispIntForc=[])
 
 ULS03=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS03',loadCaseDescr='ULS03',loadCaseExpr='1.2*Dead_LC+1.6*Snow_LC+0.5*Wind_LC',setsToDispLoads=[],setsToDispDspRot=beamSets,setsToDispIntForc=[])
 
