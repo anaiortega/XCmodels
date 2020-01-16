@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Verification test according to ACI 349.2 R-07.
 # Guide to the Concrete Capacity Design (CCD) Method—Embedment Design Examples
-# Example A1
+# Example A1. Single stud, tension only, no edge effects
 from __future__ import division
 from __future__ import print_function
 
@@ -25,7 +25,7 @@ Nd= 8*kip2N
 stud= ACI_limit_state_checking.AnchorBolt(ca1= 12*inch2meter,ca2= 12*inch2meter,ha= 18*inch2meter, concrete= ACI_materials.c4000, steel= ACI_materials.A108, diam= 0.5*inch2meter, hef= 4.60*inch2meter, cast_in= True)
 
 Nsa= stud.getNominalSteelStrength() # Nominal steel strength
-Nb= stud.getBasicConcreteBreakoutStrength() # Basic concrete breakout strength
+Nb= stud.getBasicConcreteBreakoutStrengthTension() # Basic concrete breakout strength
 Nb_ref= 1.52*math.pow(stud.hef/inch2meter,1.5)*ACI_materials.pound2Newton*1000
 ratio1= abs(Nsa-56.771429952e3)/56.771429952e3
 ratio2= abs(Nb-66.6138052976e3)/66.6138052976e3

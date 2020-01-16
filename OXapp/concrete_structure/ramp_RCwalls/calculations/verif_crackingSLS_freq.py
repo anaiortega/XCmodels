@@ -8,7 +8,7 @@ lsd.LimitStateData.envConfig= cfg
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']
-outCfg= lsd.VerifOutVars(setCalc=decks,appendToResFile='N',listFile='N')
+outCfg= lsd.VerifOutVars(setCalc=walls,appendToResFile='N',listFile='N')
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
