@@ -32,7 +32,10 @@ nodes= preprocessor.getNodeHandler
 steel= ASTM_materials.A572
 steel.gammaM= 1.00
 ## Profile geometry
-profile= ASTM_materials.CShape(steel,'C380X50.4')
+# profile= ASTM_materials.CShape(steel,'C380X50.4')
+# numberOfProfiles= 2 # 2 UPN profiles!!
+profile= ASTM_materials.WShape(steel,'W16X45')
+numberOfProfiles= 1 # 1 W profiles
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
 # Model geometry
@@ -50,7 +53,6 @@ l1.nDiv= 10
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
@@ -72,22 +74,22 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 ## Loads on nodes.
 centerSpacing= 24.0*inch2m # Distance between trusses
-uniformLoadD= 14.25e3/2.0
-uniformLoadL= 21.74e3/2.0
-uniformLoadS= 9.52e3/2.0
-uniformLoadW= -6.01e3/2.0
-uniformLoadMax= 37.7e3/2.0 # 2 UPN profiles!!
+uniformLoadD= 14.25e3/numberOfProfiles
+uniformLoadL= 21.74e3/numberOfProfiles
+uniformLoadS= 9.52e3/numberOfProfiles
+uniformLoadW= -6.01e3/numberOfProfiles
+uniformLoadMax= 37.7e3/numberOfProfiles
 uniformLoad= uniformLoadMax
 cLC= loadCaseManager.setCurrentLoadCase('load')
 beamLoad= xc.Vector([0.0,-uniformLoad])
 for e in xcTotalSet.elements:
   e.vector2dUniformLoadGlobal(beamLoad)
 
-#We add the load case to domain.
+# We add the load case to domain.
 preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
-# Linear static analysis.
+## Linear static analysis.
 analisis= predefined_solutions.simple_static_linear(halfSteelBeam)
 result= analisis.analyze(1)
 
@@ -111,7 +113,7 @@ Vmax= max(VMax,abs(VMin))
 Mmax= max(MMax,abs(MMin))
 eMidSpan1= xcTotalSet.getNearestElement(midPos1)
 
-print('Uniform load: ', 2*uniformLoad/1e3, ' kN/m')
+print('Uniform load: ', numberOfProfiles*uniformLoad/1e3, ' kN/m')
 print('Uniform load on each : ', uniformLoad/1e3, ' kN/m')
 ## Deflection
 ratio1= d1/span

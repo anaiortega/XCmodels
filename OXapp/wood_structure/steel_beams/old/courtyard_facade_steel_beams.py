@@ -33,9 +33,6 @@ steel= ASTM_materials.A572
 steel.gammaM= 1.00
 ## Profile geometry
 profile= ASTM_materials.CShape(steel,'C380X50.4')
-#profile= ASTM_materials.WShape(steel,'W16X26')
-numberOfBeams= 2 # 2 channel shaped profiles!!
-#numberOfBeams= 1 # 1 w profile
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
 # Model geometry
@@ -56,7 +53,7 @@ l2.nDiv= 10
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-#nodes.newSeedNode()
+nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
@@ -79,7 +76,7 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 ## Loads on nodes.
 centerSpacing= 24.0*inch2m # Distance between trusses
-uniformLoad= 39.57e3/numberOfBeams
+uniformLoad= 39.57e3/2.0 # 2 UPN profiles!!
 cLC= loadCaseManager.setCurrentLoadCase('load')
 beamLoad= xc.Vector([0.0,-uniformLoad])
 for e in xcTotalSet.elements:
