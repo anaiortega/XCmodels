@@ -22,11 +22,15 @@ from materials.ec3 import EC3_materials
 from postprocess.config import default_config
 
 # Default configuration of environment variables.
+from postprocess import output_styles as outSty
+from postprocess import output_handler as outHndl
 
 
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')
+sty=outSty.OutputStyle()
+out=outHndl.OutputHandler(modelSpace,sty)
 
 #Auxiliary data
  #Geometry
@@ -189,6 +193,7 @@ columnZsteel.color=cfg.colors['blue02']
 beams=beamXconcr+beamY
 beams.description='Beams'
 beams.fillDownwards()
+#out.displayBlocks()
 
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())
