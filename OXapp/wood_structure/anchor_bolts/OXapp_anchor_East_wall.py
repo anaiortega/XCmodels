@@ -19,7 +19,7 @@ N2lb=1/lb2N
 
 # Data
 Vua=1.6*5.3*kip2N  #applied factored external load using load factors from Appendix C of the Code.
-stud= ACI_limit_state_checking.AnchorBolt(ca1= 8*in2m,ca2= 18*in2m,ha= 10*in2m, concrete= ACI_materials.c4000, steel= ACI_materials.A108, diam= 0.625*in2m, hef= 4.0*in2m, cast_in= False)
+stud= ACI_limit_state_checking.AnchorBolt(ca1= 8*in2m,ca2= 18*in2m,ha= 14*in2m, concrete= ACI_materials.c4000, steel= ACI_materials.A108, diam= 0.625*in2m, hef= 4.0*in2m, cast_in= False)
 
 #Calculate the nominal strength of the anchor in shear
 Vsa=stud.getSteelStrengthShear()
