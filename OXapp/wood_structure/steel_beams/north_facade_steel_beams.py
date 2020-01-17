@@ -23,7 +23,7 @@ inch2m= 0.0254
 
 # Problem type
 halfSteelBeam= xc.FEProblem()
-halfSteelBeam.title= 'Steel beams at 2dn floor. North facade'
+halfSteelBeam.title= 'Steel beams at 2nd floor. North facade'
 preprocessor= halfSteelBeam.getPreprocessor
 nodes= preprocessor.getNodeHandler
 
