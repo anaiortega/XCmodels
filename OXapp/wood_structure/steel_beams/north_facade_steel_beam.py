@@ -36,7 +36,9 @@ steel.gammaM= 1.00
 ## Profile geometry
 # profile= ASTM_materials.CShape(steel,'C380X50.4')
 # numberOfProfiles= 2 # 2 UPN profiles!!
-profile= ASTM_materials.WShape(steel,'W16X57')
+# profile= ASTM_materials.WShape(steel,'W16X57')
+# numberOfProfiles= 1 # 1 W profiles
+profile= ASTM_materials.WShape(steel,'W12X87')
 numberOfProfiles= 1 # 1 W profiles
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
@@ -84,7 +86,9 @@ def defineLoad(loadCaseName, loadValue):
 
 ### Load values from "E_reactions.ods"    
 ### Dead load
-defineLoad('deadLoad',14.25e3/numberOfProfiles)
+selfWeight= numberOfProfiles*profile.getRho()*9.81
+#print(selfWeight/1e3,'kN/m')
+defineLoad('deadLoad',(selfWeight+14.25e3)/numberOfProfiles)
 ### Live load
 defineLoad('liveLoad',21.74e3/numberOfProfiles)
 ### Snow load
