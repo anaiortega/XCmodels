@@ -127,16 +127,7 @@ print('  cheking profile: ', profile.name)
 print('  L= ', span, 'm')
 
 print('  Serviceability limit states.')
-for comb in combContainer.SLS.qp:
-    preprocessor.resetLoadCase()
-    preprocessor.getLoadHandler.addToDomain(comb)
-    result= analysis.analyze(1)
-    d1= abs(n1.getDisp[1])
-    lim= deflectionLimits[comb]
-    if(d1<lim):
-        print('    '+comb, 'uy= ', d1*1e3, 'mm < ', lim*1e3, 'mm => OK')
-    else:
-        print('    '+comb, 'uy= ', d1*1e3, 'mm > ', lim*1e3, 'mm => KO')
+aisc_checking.sls_check(combContainer.SLS.qp, xcTotalSet, deflectionLimits, analysis)
 
 ## Check flexural and shear strength.
 print('  Ultimate limit states.')

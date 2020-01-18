@@ -32,7 +32,21 @@ def uls_check(profile, combinations, setToCheck, analysis):
         Phi_v= 1.0 # LRFD AISC Specification section G2.1a
         Vu= Phi_v*profile.getNominalShearStrengthWithoutTensionFieldAction()
         if(Vmax<Vu):
-            print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN < ',  Vu/1e3, 'kN => OK')
+            print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN < ',  Vu/1e3, 'kN F= ', Vmax/Vu, ' => OK')
         else:
-            print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN > ',  Vu/1e3, 'kN => KO')
+            print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN > ',  Vu/1e3, 'kN F= ', Vmax/Vu, ' => KO')
 
+def sls_check(combinations, setToCheck, deflectionLimits, analysis):
+    preprocessor= setToCheck.getPreprocessor
+    for comb in combinations:
+        preprocessor.resetLoadCase()
+        preprocessor.getLoadHandler.addToDomain(comb)
+        result= analysis.analyze(1)
+        uy= 0.0
+        lim= deflectionLimits[comb]
+        for n in setToCheck.nodes:
+            uy= max(abs(n.getDisp[1]), uy)
+        if(uy<lim):
+            print('    '+comb, 'uy= ', uy*1e3, 'mm < ', lim*1e3, 'mm F= ', uy/lim, ' => OK')
+        else:
+            print('    '+comb, 'uy= ', uy*1e3, 'mm > ', lim*1e3, 'mm F= ', uy/lim, ' => KO')

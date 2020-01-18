@@ -17,6 +17,7 @@ from materials.sections import structural_steel as steel
 from actions import load_cases as lcm
 from actions import combinations as combs
 from datetime import date
+import aisc_checking
 
 #Units
 foot2m= 0.3048
@@ -136,80 +137,14 @@ print('  cheking profile: ', profile.name)
 print('  L= ', span, 'm')
 
 print('  Serviceability limit states.')
-for comb in combContainer.SLS.qp:
-    preprocessor.resetLoadCase()
-    preprocessor.getLoadHandler.addToDomain(comb)
-    result= analysis.analyze(1)
-    uy= max(abs(n1.getDisp[1]), abs(n2.getDisp[1]))
-    lim= deflectionLimits[comb]
-    if(uy<lim):
-        print('    '+comb, 'uy= ', uy*1e3, 'mm < ', lim*1e3, 'mm => OK')
-    else:
-        print('    '+comb, 'uy= ', uy*1e3, 'mm > ', lim*1e3, 'mm => KO')
+aisc_checking.sls_check(combContainer.SLS.qp, xcTotalSet, deflectionLimits, analysis)
 
 ## Check flexural and shear strength.
 print('  Ultimate limit states.')
-for comb in combContainer.ULS.perm:
-    preprocessor.resetLoadCase()
-    preprocessor.getLoadHandler.addToDomain(comb)
-    result= analysis.analyze(1)
-    nodes.calculateNodalReactions(True,1e-7)
-    VMax= -1e23
-    VMin= -VMax
-    MMax= -1e23
-    MMin= -MMax
-    for e in xcTotalSet.elements:
-      VMax= max(VMax,max(e.getV1, e.getV2))
-      VMin= min(VMin,min(e.getV1, e.getV2))
-      MMax= max(MMax,max(e.getM1, e.getM2))
-      MMin= min(MMin,min(e.getM1, e.getM2))
-    Vmax= max(VMax,abs(VMin))
-    Mmax= max(MMax,abs(MMin))
-    Phi_b= 0.90 # LRFD
-    Mu= Phi_b*profile.getWz()*profile.steelType.fy
-    if(Mmax<Mu):
-        print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m < ',  Mu/1e3, 'kN m => OK')
-    else:
-        print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m > ',  Mu/1e3, 'kN m => KO')
-    Phi_v= 1.0 # LRFD AISC Specification section G2.1a
-    Vu= Phi_v*profile.getNominalShearStrengthWithoutTensionFieldAction()
-    if(Vmax<Vu):
-        print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN < ',  Vu/1e3, 'kN => OK')
-    else:
-        print('    '+comb, 'Vmax= ', Vmax/1e3, 'kN > ',  Vu/1e3, 'kN => KO')
+aisc_checking.uls_check(profile, combContainer.ULS.perm, xcTotalSet, analysis)
 
 quit()
 # Checking
-VMax= -1e23
-VMin= -VMax
-MMax= -1e23
-MMin= -MMax
-for e in xcTotalSet.elements:
-  VMax= max(VMax,max(e.getV1, e.getV2))
-  VMin= min(VMin,min(e.getV1, e.getV2))
-  MMax= max(MMax,max(e.getM1, e.getM2))
-  MMin= min(MMin,min(e.getM1, e.getM2))
-Vmax= max(VMax,abs(VMin))
-Mmax= max(MMax,abs(MMin))
-eMidSpan1= xcTotalSet.getNearestElement(midPos1)
-eMidSpan2= xcTotalSet.getNearestElement(midPos2)
-
-print('Uniform load: ', 2*uniformLoad/1e3, ' kN/m')
-print('Uniform load on each : ', uniformLoad/1e3, ' kN/m')
-## Deflection
-ratio1= d1/span
-print('dY= ',d1*1e3,' mm; ratio= L/', 1/ratio1, 'L= ', span, ' m')
-ratio2= d2/span
-print('dY= ',d2*1e3,' mm; ratio= L/', 1/ratio2)
-
-## Shear
-Vu= profile.steelType.fy/math.sqrt(3.0)*profile.get('Avy')/1.67
-print('Vmax= ', Vmax/1e3, ' kN Vu= ', Vu/1e3, ' kN; F= ',Vmax/Vu)
-
-## Bending
-Mu= profile.getWz()*profile.steelType.fy/1.67#250e6
-print('Mmax= ', Mmax/1e3, ' kN m Mu= ', Mu/1e3, ' kN m; F= ',Mmax/Mu)
-
 
 ## Reactions.
 R0= p0.getNode().getReaction[1]
