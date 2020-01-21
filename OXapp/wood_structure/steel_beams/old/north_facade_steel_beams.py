@@ -83,11 +83,11 @@ beamLoad= xc.Vector([0.0,-uniformLoad])
 for e in xcTotalSet.elements:
   e.vector2dUniformLoadGlobal(beamLoad)
 
-#We add the load case to domain.
+# We add the load case to domain.
 preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
-# Linear static analysis.
+## Linear static analysis.
 analisis= predefined_solutions.simple_static_linear(halfSteelBeam)
 result= analisis.analyze(1)
 

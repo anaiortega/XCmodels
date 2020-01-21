@@ -24,10 +24,11 @@ modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 # Materials
 # Mechanical properties taken from:
 # http://www.pfsteco.com/techtips/pdf/tt_plywooddesigncapacities
-structuralPanelGeom= AWCNDS_materials.PlywoodPanels['19/32']
-plywood= typical_materials.MaterialData(name='Douglas-Fri Plywood',E=4.2e9,nu=0.2,rho=500)
-section= structuralPanelGeom.defElasticShearSection2d(preprocessor,plywood)
-
+structuralPanel= AWCNDS_materials.OSBPanels['19/32']
+print('E= ',structuralPanel.getE(angle= 0.0)/1e9)
+panelMaterial= typical_materials.MaterialData(name='OSB_panel',E=4.2e9,nu=0.2,rho=500)
+section= structuralPanel.defElasticShearSection2d(preprocessor,panelMaterial)
+quit()
 thickness= structuralPanelGeom.h
 
 spanBendingStiffness= (32-1.5+0.25)*0.0254

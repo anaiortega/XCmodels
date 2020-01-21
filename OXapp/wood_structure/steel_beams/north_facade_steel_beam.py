@@ -25,8 +25,8 @@ inch2m= 0.0254
 
 # Problem type
 steelBeam= xc.FEProblem()
-steelBeam.title= 'Steel beams at 2dn floor. Courtyard facade.'
-preprocessor= steelBeam.getPreprocessor   
+steelBeam.title= 'Steel beams at 2nd floor. North facade'
+preprocessor= steelBeam.getPreprocessor
 nodes= preprocessor.getNodeHandler
 
 # Materials
@@ -35,27 +35,24 @@ steel= ASTM_materials.A572
 steel.gammaM= 1.00
 ## Profile geometry
 # profile= ASTM_materials.CShape(steel,'C380X50.4')
-# numberOfProfiles= 2 # 2 channel shaped profiles!!
-#profile= ASTM_materials.WShape(steel,'W16X57')
+# numberOfProfiles= 2 # 2 UPN profiles!!
+# profile= ASTM_materials.WShape(steel,'W16X57')
 profile= ASTM_materials.WShape(steel,'W12X87')
-numberOfProfiles= 1 # 1 w profile
+numberOfProfiles= 1 # 1 W profiles
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
 # Model geometry
 
 ## Points.
-span= 27*foot2m+3*inch2m
+span= 23.0*foot2m+(9.0+7/8.0)*inch2m
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
 p0= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,0.0,0.0))
 p1= pointHandler.newPntFromPos3d(geom.Pos3d(span,0.0,0.0))
-p2= pointHandler.newPntFromPos3d(geom.Pos3d(2*span,0.0,0.0))
 
 ## Lines
 lineHandler= preprocessor.getMultiBlockTopology.getLines
 l1= lineHandler.newLine(p0.tag,p1.tag)
 l1.nDiv= 10
-l2= lineHandler.newLine(p1.tag,p2.tag)
-l2.nDiv= 10
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
@@ -72,7 +69,6 @@ mesh= xcTotalSet.genMesh(xc.meshDir.I)
 # Constraints
 modelSpace.fixNode00F(p0.getNode().tag)
 modelSpace.fixNodeF0F(p1.getNode().tag)
-modelSpace.fixNodeF0F(p2.getNode().tag)
 
 # Actions
 
@@ -87,15 +83,16 @@ def defineLoad(loadCaseName, loadValue):
     for e in xcTotalSet.elements:
         e.vector2dUniformLoadGlobal(loadVector)
 
-### Load values from "CD_reactions.ods"    
+### Load values from "E_reactions.ods"    
 ### Dead load
-defineLoad('deadLoad',14.88e3/numberOfProfiles)
+selfWeight= numberOfProfiles*profile.getRho()*9.81
+defineLoad('deadLoad',(selfWeight+14.25e3)/numberOfProfiles)
 ### Live load
-defineLoad('liveLoad',22.86e3/numberOfProfiles)
+defineLoad('liveLoad',21.74e3/numberOfProfiles)
 ### Snow load
-defineLoad('snowLoad',10.05e3/numberOfProfiles)
+defineLoad('snowLoad',9.52e3/numberOfProfiles)
 ### Wind load
-defineLoad('windLoad',-6.35e3/numberOfProfiles)
+defineLoad('windLoad',-6.01e3/numberOfProfiles)
 
 ## Load combinations
 combContainer= combs.CombContainer()
@@ -120,18 +117,12 @@ analysis= predefined_solutions.simple_static_linear(steelBeam)
 
 # Checking
 ## Check deflection limit
-### Deflection limit values.
 deflectionLimits= dict()
 deflectionLimits['SLS01']= span/540.0
 deflectionLimits['SLS02']= span/240.0
 deflectionLimits['SLS03']= span/240.0
-### Nodes with maximum deflection (or almost).
 midSpan1= span/2
-midPos1= geom.Pos3d(midSpan1,0.0,0.0)
 n1= l1.getNearestNode(geom.Pos3d(midSpan1,0.0,0.0))
-midSpan2= 3*midSpan1
-midPos2= geom.Pos3d(midSpan2,0.0,0.0)
-n2= l2.getNearestNode(geom.Pos3d(midSpan2,0.0,0.0))
 
 print(date.today(), steelBeam.title)
 print('  cheking profile: ', profile.name, profile.getRho(), 'kg/m')
@@ -144,14 +135,4 @@ aisc_checking.sls_check(combContainer.SLS.qp, xcTotalSet, deflectionLimits, anal
 print('  Ultimate limit states.')
 aisc_checking.uls_check(profile, combContainer.ULS.perm, xcTotalSet, analysis)
 
-quit()
-# Checking
 
-## Reactions.
-R0= p0.getNode().getReaction[1]
-R1= p1.getNode().getReaction[1]
-R2= p2.getNode().getReaction[1]
-
-print('R0= ', R0/1e3,' kN')
-print('R1= ', R1/1e3,' kN')
-print('R2= ', R2/1e3,' kN')
