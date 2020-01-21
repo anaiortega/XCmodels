@@ -36,7 +36,8 @@ steel.gammaM= 1.00
 ## Profile geometry
 # profile= ASTM_materials.CShape(steel,'C380X50.4')
 # numberOfProfiles= 2 # 2 channel shaped profiles!!
-profile= ASTM_materials.WShape(steel,'W16X57')
+#profile= ASTM_materials.WShape(steel,'W16X57')
+profile= ASTM_materials.WShape(steel,'W12X87')
 numberOfProfiles= 1 # 1 w profile
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
@@ -133,7 +134,7 @@ midPos2= geom.Pos3d(midSpan2,0.0,0.0)
 n2= l2.getNearestNode(geom.Pos3d(midSpan2,0.0,0.0))
 
 print(date.today(), steelBeam.title)
-print('  cheking profile: ', profile.name)
+print('  cheking profile: ', profile.name, profile.getRho(), 'kg/m')
 print('  L= ', span, 'm')
 
 print('  Serviceability limit states.')

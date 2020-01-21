@@ -21,14 +21,14 @@ def uls_check(profile, combinations, setToCheck, analysis):
           VMin= min(VMin,min(e.getV1, e.getV2))
           MMax= max(MMax,max(e.getM1, e.getM2))
           MMin= min(MMin,min(e.getM1, e.getM2))
-        Vmax= max(VMax,abs(VMin))
-        Mmax= max(MMax,abs(MMin))
+        Vmax= max(abs(VMax),abs(VMin))
+        Mmax= max(abs(MMax),abs(MMin))
         Phi_b= 0.90 # LRFD
         Mu= Phi_b*profile.getWz()*profile.steelType.fy
         if(Mmax<Mu):
-            print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m < ',  Mu/1e3, 'kN m => OK')
+            print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m < ',  Mu/1e3, 'kN m F= ', Mmax/Mu, ' => OK')
         else:
-            print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m > ',  Mu/1e3, 'kN m => KO')
+            print('    '+comb, 'Mmax= ', Mmax/1e3, 'kN m > ',  Mu/1e3, 'kN m F= ', Mmax/Mu, ' => KO')
         Phi_v= 1.0 # LRFD AISC Specification section G2.1a
         Vu= Phi_v*profile.getNominalShearStrengthWithoutTensionFieldAction()
         if(Vmax<Vu):
