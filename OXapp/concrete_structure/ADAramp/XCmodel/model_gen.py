@@ -64,6 +64,10 @@ modelSpace.fixNode('000_FFF',n_anch2.tag)
 n_anch3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(0,2*spcAnch,zAnchor))
 modelSpace.fixNode('000_FFF',n_anch3.tag)
 
+n_bottom=sets.get_nodes_wire(support,[geom.Pos3d(0,0,0),geom.Pos3d(0,spcAnch*2,0)],tol=0.001)
+for n in n_bottom:
+    modelSpace.fixNode('0FF_FFF',n.tag)
+
 #out.displayFEMesh()
 
 #                       ***ACTIONS***
@@ -79,18 +83,41 @@ modelSpace.addLoadCaseToDomain("ULS01")
 #out.displayLoadVectors()
 modelSpace.removeLoadCaseFromDomain("ULS01")
 
-setOutput=gridGeom.getSetSurfOneRegion(gm.IJKRange((0,1,0),(1,2,1)),'setOutput')
+setOutVert=gridGeom.getSetSurfOneRegion(gm.IJKRange((0,1,0),(0,2,2)),'setOutVert')
+setOutVert.description='Vertical flange'
+setOutHor=gridGeom.getSetSurfOneRegion(gm.IJKRange((0,1,0),(1,2,0)),'setOutHor')
+setOutHor.description='Horizontal flange'
+
 #out.displayFEMesh(setOutput)
+#out.displayFEMesh()
+#out.displayFEMesh(setOutVert)
+#out.displayFEMesh(setOutHor)
 
 from solution import predefined_solutions
 modelSpace.removeAllLoadPatternsFromDomain()
 modelSpace.addLoadCaseToDomain('ULS01')
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayIntForc('N1',setOutput)
-quit()
-out.displayIntForc('M1',setOutput)
-out.displayIntForc('Q1',setOutput)
-out.displayIntForc('N2',setOutput)
-out.displayIntForc('M2',setOutput)
-out.displayIntForc('Q2',setOutput)
+out.displayDispRot('uZ')
+
+out.displayIntForc('N1',setOutVert)
+out.displayIntForc('M1',setOutVert)
+out.displayIntForc('Q1',setOutVert)
+out.displayIntForc('N2',setOutVert)
+out.displayIntForc('M2',setOutVert)
+out.displayIntForc('Q2',setOutVert)
+
+out.displayIntForc('N1',setOutHor)
+out.displayIntForc('M1',setOutHor)
+out.displayIntForc('Q1',setOutHor)
+out.displayIntForc('N2',setOutHor)
+out.displayIntForc('M2',setOutHor)
+out.displayIntForc('Q2',setOutHor)
+
+
+modelSpace.preprocessor.getNodeHandler.calculateNodalReactions(True,1e-7)
+Rx=n_anch2.getReaction[0]
+Ry=n_anch2.getReaction[1]
+Rz=n_anch2.getReaction[2]
+
+print ('Rx =', Rx, 'Rz= ', Rz)

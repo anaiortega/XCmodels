@@ -18,15 +18,16 @@ psf2Nsm=47.88   #pound per square feet to N per square meter
 plf2Nlm=lb2N/ft2m   #pound per linear feet to N per linear meter
 
 #Data
-spcAnch=3*ft2m #spacing between anchorages
+spcAnch=2*ft2m #spacing between anchorages
 #steel profile
-angleTh=3/8*in2m        #angle thickness L5*5*3/8
+angleTh=3/8*in2m        #angle thickness L5x3-1/2x3/8
+#angleTh=1/2*in2m        #angle thicknessL5x3-1/2x1/2
 angleHeight=3.5*in2m    #height of the L profile (in contact with wall)
 angleWidth=5*in2m       #width of the L profile (supporting the slab)
 zAnchor=(angleHeight-angleTh/2)-1.5*in2m  #z coordinate of the anchor
 
 #Geometry
-rampWidth=68*in2m
+rampWidth=4*ft2m+6*in2m
 rampThickness=6*in2m
 #Materials
 concrete= ACI_materials.c4000
@@ -42,7 +43,8 @@ snowLoad=42*psf2Nsm*rampWidth/2
 
 #Combination
 combLoad=1.2*(rampSelfWeight+deadLoad)+1.6*liveLoad+0.5*snowLoad #[N/m]
-
+# for live load, because the critical situation is when concrete is not cured
+# we suppose snow can be cummulated
 eSize=angleHeight/3
 #End data
 
