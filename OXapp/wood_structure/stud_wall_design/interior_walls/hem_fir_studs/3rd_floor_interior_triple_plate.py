@@ -20,9 +20,9 @@ from actions import load_cases as lcm
 from actions import combinations as combs
 
 # Problem type
-sheathingBeam= xc.FEProblem()
-sheathingBeam.title= 'Sheating design'
-preprocessor= sheathingBeam.getPreprocessor   
+doublePlate= xc.FEProblem()
+doublePlate.title= 'Sheating design'
+preprocessor= doublePlate.getPreprocessor   
 nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
@@ -171,7 +171,7 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(sheathingBeam)
+analisis= predefined_solutions.simple_static_linear(doublePlate)
 result= analisis.analyze(1)
 
 # Checking

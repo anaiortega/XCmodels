@@ -2,15 +2,23 @@
 from __future__ import division
 from __future__ import print_function
 
-def checkPlates(span, plateGeom, section, infSet, supSet, supportedNodes):
+OKGREEN= '\033[92m'
+WARNING= '\033[93m'
+FAIL= '\033[91m'
+ENDC = '\033[0m'
+
+def checkPlates(studSpacing, plateGeom, infSet, supSet, supportedNodes):
+    # Data
+    print('Wood material: ', plateGeom.wood.name,' grade:', plateGeom.wood.grade)
+    print('plate thickness= ', plateGeom.h*1e3, ' mm')
+    print('stud spacing= ', studSpacing, ' m\n')
     ## Bending stiffness
     uYMax= -1e6
     for n in infSet.nodes:
         uY= -n.getDisp[1]
         uYMax= max(uY,uYMax)
 
-    r= span/uYMax
-    print('thickness= ', plateGeom.h*1e3, ' mm')
+    r= studSpacing/uYMax
     print('**** uYMax= ', uYMax*1e3, ' mm (L/'+str(r)+')\n')
 
     ## Bending strength
@@ -18,10 +26,10 @@ def checkPlates(span, plateGeom, section, infSet, supSet, supportedNodes):
     for e in supSet.elements:
         e.getResistingForce()
         m1= e.getM1
-        sg1= abs(m1/section.sectionProperties.I*plateGeom.h/2)
+        sg1= abs(m1/plateGeom.xc_material.sectionProperties.I*plateGeom.h/2)
         sgMax= max(sgMax,sg1)
         m2= e.getM2
-        sg2= abs(m2/section.sectionProperties.I*plateGeom.h/2)
+        sg2= abs(m2/plateGeom.xc_material.sectionProperties.I*plateGeom.h/2)
         sgMax= max(sgMax,sg2)
 
     Fb_adj= plateGeom.getFbAdj()
@@ -31,17 +39,17 @@ def checkPlates(span, plateGeom, section, infSet, supSet, supportedNodes):
     if(Fb_adj>sgMax):
         print('**** CF= ', FbCF,'OK\n')
     else:
-        print('**** CF= ', FbCF,'KO\n')
+        print(FAIL+'**** CF= '+str(FbCF)+' KO\n'+ENDC)
 
     ## Shear strength
     tauMax= -1e6
     for e in supSet.elements:
         e.getResistingForce()
         v1= e.getV1
-        tau1= abs(v1/section.sectionProperties.A)
+        tau1= abs(v1/plateGeom.xc_material.sectionProperties.A)
         tauMax= max(tauMax,tau1)
         v2= e.getV2
-        tau2= abs(v2/section.sectionProperties.A)
+        tau2= abs(v2/plateGeom.xc_material.sectionProperties.A)
         tauMax= max(tauMax,tau2)
 
     Fv_adj= plateGeom.getFvAdj()
@@ -51,7 +59,7 @@ def checkPlates(span, plateGeom, section, infSet, supSet, supportedNodes):
     if(Fv_adj>tauMax):
         print('**** CF= ', FvCF,'OK\n')
     else:
-        print('**** CF= ', FvCF,'KO\n')
+        print(FAIL+'**** CF= '+str(FvCF)+' KO\n'+ENDC)
 
     ## Compression perpendicular to grain
 
@@ -70,4 +78,4 @@ def checkPlates(span, plateGeom, section, infSet, supSet, supportedNodes):
     if(Fc_perp>sgMax):
         print('**** CF= ', Fc_perpCF,'OK\n')
     else:
-        print('**** CF= ', Fc_perpCF,'KO\n')
+        print(FAIL+'**** CF= '+str(Fc_perpCF)+' KO\n'+ENDC)
