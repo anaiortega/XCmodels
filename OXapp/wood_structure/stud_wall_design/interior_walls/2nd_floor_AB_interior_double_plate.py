@@ -24,7 +24,7 @@ preprocessor= doublePlate.getPreprocessor
 nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
-studSpacing= 19.2*inchToMeter/2.0
+studSpacing= 12.2*inchToMeter
 trussSpacing= 12*inchToMeter
 
 # Materials
@@ -35,7 +35,7 @@ xc_material= wood.defXCMaterial()
 plateSection= mat.DimensionLumber(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToMeter, woodMaterial= wood)
 
 # Create model
-trussLoad= 10.28e3 # N
+trussLoad= 18.27e3 # N
 infSet, supSet, supportedNodes= plates_model.genMesh(modelSpace, plateSection, studSpacing, trussSpacing, trussLoad)
 
 # We add the load case to domain.

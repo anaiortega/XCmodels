@@ -58,7 +58,7 @@ Kbalasto=Kbalasto*1e5     #!!!!!borrar
 fi_terr=30                            #ángulo de rozamiento interno
 K0=1-math.sin(math.radians(fi_terr))  #coeficiente de empuje al reposo
 
-#  Materiales
+# Materials
 #*Auxiliary data
 '''
 fcmDeck=(30+8)*1e6                       #HA-30 strength  (Pa)

@@ -110,8 +110,8 @@ respT= typical_materials.defElasticMaterial(preprocessor, "respT",1e10) # Torsio
 respVy= typical_materials.defElasticMaterial(preprocessor, "respVy",1e6) # Shear response in y direction.
 respVz= typical_materials.defElasticMaterial(preprocessor, "respVz",1e3) # Shear response in y direction.
 
-materiales= preprocessor.getMaterialHandler
-sctFibers= materiales.newMaterial("fiberSectionShear3d","sctFibers")
+materialHandler= preprocessor.getMaterialHandler
+sctFibers= materialHandler.newMaterial("fiberSectionShear3d","sctFibers")
 fiberSectionRepr= sctFibers.getFiberSectionRepr()
 fiberSectionRepr.setGeomNamed("geomSectFibers")
 sctFibers.setupFibers()
