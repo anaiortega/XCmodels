@@ -2,55 +2,44 @@
 from __future__ import division
 from __future__ import print_function
 
+import math
 import xc_base
 import geom
 import xc
 from model import predefined_spaces
-from solution import predefined_solutions
 from materials.awc_nds import AWCNDS_materials as mat
 from materials.awc_nds import dimensional_lumber
-from materials import typical_materials
-from materials.sections import section_properties
 import plates_model
-import check
-
 
 inchToMeter= 0.0254
-psiToPa= 6894.76
 
-# Loads
-from actions import load_cases as lcm
-from actions import combinations as combs
-
-# Problem type
-doublePlate= xc.FEProblem()
-doublePlate.title= 'Sheating design'
-preprocessor= doublePlate.getPreprocessor   
-nodes= preprocessor.getNodeHandler
-modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-
-studSpacing= 19.2*inchToMeter/2.0
+title= '1st floor interior double plate.'
+studSpacing= 12*inchToMeter
 trussSpacing= 24*inchToMeter
-
 # Materials
-# Mechanical properties taken from:
+# Spruce-pine-fir No. 2 
 wood= dimensional_lumber.SprucePineFirWood(grade= 'no_2')
+#wood= dimensional_lumber.SprucePineFirWood(grade= 'stud')
 xc_material= wood.defXCMaterial()
 plateSection= mat.DimensionLumber(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToMeter, woodMaterial= wood)
 
-# Create model
-trussLoad= 13.56e3 # N/truss (two trusses here)
-infSet, supSet, supportedNodes= plates_model.genMesh(modelSpace, plateSection, studSpacing, trussSpacing, trussLoad)
+
+# Reduction in uniform live loads.
+AT= 3*7.0*15.0 # Tributary area
+KLL= 2 # Live load element factor (ASCE-7 Table 4-2)
+liveLoadReductionFactor= (0.25+4.57/math.sqrt(KLL*AT)) # ASCE-7 Eq. 4.7-1 (SI)
+liveLoadReductionFactor= max(0.4,liveLoadReductionFactor) # Two or more floors
+print('Live load reduction factor: ', liveLoadReductionFactor)
 
 
-#We add the load case to domain.
-preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
+# Actions
+## Load definition (values from truss_AB_reactions.ods)
+deadLoad= 13.10e3 # kN/truss
+liveLoad= liveLoadReductionFactor*19.12e3 # kN/truss
+snowLoad= 7.88e3 # kN/truss
+windLoad= -4.98e3 # kN/truss
 
-# Solution
-# Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(doublePlate)
-result= analisis.analyze(1)
+doublePlate= plates_model.DoublePlate(title, plateSection, studSpacing, trussSpacing, pointLoadFactor= 1.0/3.0);
 
-# Checking
-check.checkPlates(studSpacing, plateSection, infSet, supSet, supportedNodes)
+doublePlate.check(deadLoad, liveLoad, snowLoad, windLoad)
 

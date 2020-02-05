@@ -2,6 +2,7 @@
 from __future__ import division
 from __future__ import print_function
 
+import math
 import xc_base
 import geom
 import xc
@@ -15,18 +16,9 @@ import check
 
 
 inchToMeter= 0.0254
-psiToPa= 6894.76
-
-# Problem type
-doublePlate= xc.FEProblem()
-doublePlate.title= 'Sheating design'
-preprocessor= doublePlate.getPreprocessor   
-nodes= preprocessor.getNodeHandler
-modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-
-studSpacing= 12.2*inchToMeter
+title= '2nd floor AB interior double plate.'
+studSpacing= 12*inchToMeter
 trussSpacing= 12*inchToMeter
-
 # Materials
 # Spruce-pine-fir No. 2 
 wood= dimensional_lumber.SprucePineFirWood(grade= 'no_2')
@@ -34,24 +26,22 @@ wood= dimensional_lumber.SprucePineFirWood(grade= 'no_2')
 xc_material= wood.defXCMaterial()
 plateSection= mat.DimensionLumber(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToMeter, woodMaterial= wood)
 
-# Create model
-trussLoad= 18.27e3 # N
-infSet, supSet, supportedNodes= plates_model.genMesh(modelSpace, plateSection, studSpacing, trussSpacing, trussLoad)
 
-# We add the load case to domain.
-preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
+# Reduction in uniform live loads.
+AT= 2*10.0*10.0 # Tributary area
+KLL= 2 # Live load element factor (ASCE-7 Table 4-2)
+liveLoadReductionFactor= (0.25+4.57/math.sqrt(KLL*AT)) # ASCE-7 Eq. 4.7-1 (SI)
+liveLoadReductionFactor= max(0.4,liveLoadReductionFactor) # Two or more floors
+print('Live load reduction factor: ', liveLoadReductionFactor)
 
-# Solution
-# Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(doublePlate)
-result= analisis.analyze(1)
 
-# #########################################################
-# # Graphic stuff.
-# oh= output_handler.OutputHandler(modelSpace)
-# oh.displayFEMesh()
-# oh.displayLoads()
-# oh.displayDispRot(itemToDisp='uY')
+# Actions
+## Load definition (values from truss_AB_reactions.ods)
+deadLoad= 5.98e3 # kN/truss
+liveLoad= liveLoadReductionFactor*9.65e3 # kN/truss
+snowLoad= 6.74e3 # kN/truss
+windLoad= -4.26e3 # kN/truss
 
-# Checking
-check.checkPlates(studSpacing, plateSection, infSet, supSet, supportedNodes)
+doublePlate= plates_model.DoublePlate(title, plateSection, studSpacing, trussSpacing, pointLoadFactor= 1.0/2.0);
+
+doublePlate.check( deadLoad, liveLoad, snowLoad, windLoad)
