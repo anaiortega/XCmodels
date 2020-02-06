@@ -30,7 +30,6 @@ from postprocess import output_handler as outHndl
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')
 sty=outSty.OutputStyle()
-out=outHndl.OutputHandler(modelSpace,sty)
 
 #Auxiliary data
  #Geometry
@@ -78,9 +77,9 @@ elements= prep.getElementHandler
 elements.dimElem= 3
 # Problem type
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
-
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
+out=outHndl.OutputHandler(modelSpace,sty)
 
 # coordinates in global X,Y,Z axes for the grid generation
 xList=[0,LbeamX/2.0,LbeamX]
@@ -269,7 +268,7 @@ columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,
 
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,beamY_mesh,columnZconcr_mesh,columnZsteel_mesh])     #mesh these sets
 
-
+#out.displayFEMesh()
 
 
 #                       ***BOUNDARY CONDITIONS***
@@ -279,6 +278,7 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,be
 #                 the contact plane (springs in X, Y directions)
 foot_wink=sprbc.ElasticFoundation(wModulus=20e7,cRoz=0.2)
 foot_wink.generateSprings(xcSet=foot)
+#out.displayFEMesh()
 
 # Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...
 # Default values for Kx, Ky, Kz are 0, which means that no spring is
@@ -294,7 +294,7 @@ n_col2=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX,LbeamY,0))
 modelSpace.fixNode('000_FFF',n_col2.tag)
 n_col3=nodes.getDomain.getMesh.getNearestNode(geom.Pos3d(LbeamX/2.,LbeamY,0))
 modelSpace.fixNode('FF0_000',n_col3.tag)
-
+#out.displayFEMesh()
 
 #                       ***ACTIONS***
 
