@@ -237,7 +237,7 @@ combContainer.SLS.qp.add('EQ1611', '1.0*selfWeight+1.0*deadLoad+0.75*liveLoad+0.
 combContainer.SLS.qp.add('EQ1612', '1.0*selfWeight+1.0*deadLoad+0.6*windLoad')
 #### Equation 16-13
 combContainer.SLS.qp.add('EQ1613', '1.0*selfWeight+1.0*deadLoad+0.45*windLoad+0.75*liveLoad+0.75*snowLoad')
-#### Equation 16-14-> doesn' apply
+#### Equation 16-14-> doesn't apply
 #### Equation 16-15
 combContainer.SLS.qp.add('EQ1615', '0.6*selfWeight+0.6*deadLoad+0.6*windLoad')
 #### Equation 16-16 -> doesn't apply

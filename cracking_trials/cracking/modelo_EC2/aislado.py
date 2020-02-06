@@ -110,8 +110,8 @@ if nmbBarsTop > 0:
 #it is a generic section created to be assigned to the elements specified
 #its stress and strain state is neutral (if we ask this section for stress or strain
 #values the result is always 0)
-materiales= preprocessor.getMaterialHandler
-sctFibers= materiales.newMaterial("fiber_section_3d","sctFibers")
+materialHandler= preprocessor.getMaterialHandler
+sctFibers= materialHandler.newMaterial("fiber_section_3d","sctFibers")
 
 fiberSectionRepr= sctFibers.getFiberSectionRepr()
 fiberSectionRepr.setGeomNamed("geomSectFibers")

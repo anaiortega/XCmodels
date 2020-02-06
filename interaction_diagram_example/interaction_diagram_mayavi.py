@@ -23,7 +23,7 @@ areaFi16= 2.01e-4 # Área de las barras expresado en metros cuadrados.
 
 prueba= xc.FEProblem()
 preprocessor=  prueba.getPreprocessor
-# Definimos materiales
+# Material definition
 concr=EHE_materials.HA25
 concr.alfacc=0.85    #f_maxd= 0.85*fcd concrete fatigue factor (generalmente alfacc=1)
 concreteDiagram= concr.defDiagD(preprocessor)
@@ -51,8 +51,8 @@ reinforcementSup.barArea= areaFi16
 reinforcementSup.p1= geom.Pos2d(depth/2.0-cover,cover-width/2.0) # Top reinforcement.
 reinforcementSup.p2= geom.Pos2d(depth/2.0-cover,width/2.0-cover)
 
-materiales= preprocessor.getMaterialHandler
-secHA= materiales.newMaterial("fiber_section_3d","secHA")
+materialHandler= preprocessor.getMaterialHandler
+secHA= materialHandler.newMaterial("fiber_section_3d","secHA")
 fiberSectionRepr= secHA.getFiberSectionRepr()
 fiberSectionRepr.setGeomNamed("geomRCSection")
 secHA.setupFibers()
@@ -61,7 +61,7 @@ fibers= secHA.getFibers()
 param= xc.InteractionDiagramParameters()
 param.concreteTag= concr.matTagD
 param.reinforcementTag= reinfSteel.matTagD
-diagIntsecHA= materiales.calcInteractionDiagram("secHA",param)
+diagIntsecHA= materialHandler.calcInteractionDiagram("secHA",param)
 
 mayaviGraphic= mg.InteractionDiagram3DGraphic(diagIntsecHA)
 

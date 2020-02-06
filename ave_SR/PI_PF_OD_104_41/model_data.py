@@ -99,7 +99,7 @@ qlConstruct=23*1e3                    #carga lineal eje en vehículo en fase con
 fi_terr=30                            #ángulo de rozamiento interno
 K0=1-math.sin(math.radians(fi_terr))  #coeficiente de empuje al reposo
 
-#  Materiales
+# Materials
 #*Auxiliary data 
 fcmDeck=(30+8)*1e6                       #HA-30 strength  (MPa)
 EcDeck=8500*(fcmDeck/1e6)**(1/3.0)*1e6     # elastic modulus (MPa)
