@@ -40,13 +40,13 @@ print('wind load:', windStudPressure/1e3, ' kN/m')
 title= '1st floor interior stud.'
 # Actions
 ## Reduction in uniform live loads.
-AT= 3*7.0*15.0 # Tributary area
+AT= 3*6.0*12.0 # Tributary area
 KLL= 2 # Live load element factor (ASCE-7 Table 4-2)
 liveLoadReductionFactor= (0.25+4.57/math.sqrt(KLL*AT)) # ASCE-7 Eq. 4.7-1 (SI)
 liveLoadReductionFactor= max(0.4,liveLoadReductionFactor) # Two or more floors
 print('Live load reduction factor: ', liveLoadReductionFactor)
 
-## Load definition (values from truss_AB_reactions.ods)
+## Load definition (values from truss_CD_reactions.ods)
 deadLoad= xc.Vector([0.0,21.49e3]) # kN/m
 liveLoad= liveLoadReductionFactor*xc.Vector([0.0,31.36e3]) # kN/m
 snowLoad= xc.Vector([0.0,12.92e3]) # kN/m
