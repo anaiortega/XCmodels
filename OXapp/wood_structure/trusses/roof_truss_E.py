@@ -14,6 +14,11 @@ from solution import predefined_solutions
 from actions import load_cases
 from actions import combinations as combs
 
+from postprocess import output_styles as outSty
+from postprocess import output_handler as outHndl
+sty=outSty.OutputStyle()
+
+
 inchToMeter= 2.54/100.0
 feetToMeter= 0.3048
 psfTokNm2= 0.04788026
@@ -32,6 +37,7 @@ lowerChordDeadLoad= 5*centerSpacingTrusses*psfToNm2
 feProblem= xc.FEProblem()
 preprocessor= feProblem.getPreprocessor
 modelSpace= predefined_spaces.StructuralMechanics3D(preprocessor.getNodeHandler)
+out=outHndl.OutputHandler(modelSpace,sty)
 
 #########################################################
 # Material definition.
