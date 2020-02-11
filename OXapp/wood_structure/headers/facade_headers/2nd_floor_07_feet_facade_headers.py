@@ -10,6 +10,7 @@ from solution import predefined_solutions
 from materials.sections import section_properties
 from materials import typical_materials
 from materials.awc_nds import AWCNDS_materials
+from materials.awc_nds import structural_panels as sp
 
 
 # Loads
@@ -29,7 +30,8 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
-header= AWCNDS_materials.LSL155Headers['3.5x11-7/8']
+#header= sp.LSL155Headers['3.5x11-7/8']
+header= sp.LSL155Headers['5.25x9-1/2']
 section= header.defElasticShearSection2d(preprocessor)
 
 # Header geometry
@@ -46,7 +48,6 @@ l1= lineHandler.newLine(p0.tag,p1.tag)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
@@ -93,7 +94,7 @@ R1= p1.getNode().getReaction[1]
 Fc_perp= header.material.Fc_perp # Perpendicular to grain compression stress.
 Fc_studs= 800*psiToPa # Parallel to grain compression stress.
 bearingNecLength= R0/min(Fc_perp,Fc_studs)/header.b
-numberOfJakeStuds= bearingNecLength/(2*inchToMeter)
+numberOfJackStuds= bearingNecLength/(2*inchToMeter)
 
 print('*****',xcProblem.title,'******')
 print('Uniform load: ', 2.0*Vmax/headerSpan/1e3, ' kN/m')
@@ -117,4 +118,4 @@ print('dY= ',dMidSpan*1e3,' mm; ratio= L/', 1.0/ratio1)
 print('R0= ', R0/1e3, ' kN')
 print('R1= ', R1/1e3, ' kN')
 print('bearing lenght= ', bearingNecLength, ' m')
-print('number of jake studs= ', numberOfJakeStuds)
+print('number of jack studs= ', numberOfJackStuds)
