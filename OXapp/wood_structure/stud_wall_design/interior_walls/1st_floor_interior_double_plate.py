@@ -25,7 +25,7 @@ plateSection= mat.DimensionLumber(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToM
 
 
 # Reduction in uniform live loads.
-AT= 3*7.0*15.0 # Tributary area
+AT= 3*6.0*12.0 # Tributary area
 KLL= 2 # Live load element factor (ASCE-7 Table 4-2)
 liveLoadReductionFactor= (0.25+4.57/math.sqrt(KLL*AT)) # ASCE-7 Eq. 4.7-1 (SI)
 liveLoadReductionFactor= max(0.4,liveLoadReductionFactor) # Two or more floors
