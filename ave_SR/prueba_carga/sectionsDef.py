@@ -6,7 +6,7 @@ import xc_base
 import geom
 import xc
 # Macros
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 from postprocess import RC_material_distribution
 
 
@@ -28,12 +28,12 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 
 execfile('../generic_layers_aux.py')
 
-#instances of defSimpleRCSection.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-dintelRCSects= defSimpleRCSection.RecordRCSlabBeamSection(name='dintel',sectionDescr='dintel',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
+dintelRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='dintel',sectionDescr='dintel',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
 dintelRCSects.dir1PositvRebarRows=[fi16s150r60]  #long. sup.
 dintelRCSects.dir1NegatvRebarRows=[fi20s200r60]  #long. inf.
 dintelRCSects.dir2PositvRebarRows=[fi16s200r60]  #transv.sup

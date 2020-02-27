@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 import os
+from postprocess.config import default_config
 from postprocess import RC_material_distribution
 from postprocess import element_section_map
 
 # Reinforced concrete material distribution over the elements of the FE model.
 # Concrete of type concrete01 with no tension branch
 
-execfile("../model_gen.py") #FE model generation
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'model_gen.py') #FE model generation
 
 #RC-sections definition file.
-execfile("../RC_sections_def.py")
+execfile(workingDirectory+'RC_sections_def.py')
 
 #list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'RC_sections_def.py') that we want to process in order to run different limit-state checkings.
 lstOfSectRecords=[deckRCSects,footRCSects,wallRCSects,beamXRCsect,beamYRCsect,columnZRCsect]

@@ -21,7 +21,7 @@ from materials.sections import section_properties
 from actions import combinations as combs
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 import sys
 import logging
 
@@ -104,14 +104,14 @@ sections= reinfConcreteSectionDistribution.sectionDefinition #creates an RC sect
 barArea= 4e-4
 barDiameter= math.sqrt(barArea)/math.pi
 
-reinfLayer= defSimpleRCSection.MainReinfLayer(rebarsDiam= barDiameter,areaRebar= barArea,rebarsSpacing=0.075,width=0.25,nominalCover=0.050)
+reinfLayer= def_simple_RC_section.MainReinfLayer(rebarsDiam= barDiameter,areaRebar= barArea,rebarsSpacing=0.075,width=0.25,nominalCover=0.050)
 
-#instances of defSimpleRCSection.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 reinfSteel= EHE_materials.B500S
-beamRCsect= defSimpleRCSection.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
+beamRCsect= def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
 beamRCsect.lstRCSects[0].positvRebarRows=[reinfLayer]
 beamRCsect.lstRCSects[0].negatvRebarRows=[reinfLayer]
 beamRCsect.lstRCSects[1].positvRebarRows=[reinfLayer]

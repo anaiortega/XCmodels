@@ -13,9 +13,11 @@ area_n_6=284e-6
 area_n_7=387e-6
 area_n_8=509e-6
 
-Td=57060 #N.m
 
-hBeam=0.889
+
+Td=66e3 #N.m  20.3 kN/m * 0.889 m * 7.315 /2  
+
+hBeam=0.889   #35"
 wBeam=0.254
 
 A=hBeam*wBeam
@@ -43,8 +45,9 @@ else:
 
 #Obtaining Tu2
 #At=area_n_2
-At=area_n_4
-st=0.2032
+At=area_n_3  #Area of the reinforcements used as hoops or transverse reinforcement.
+st=0.2032 #Longitudinal spacing between hoops or bars in the transverse reinforcement (8")
+
 fytd=reinfSteel.fyd()
 
 Tu2=2*Ae*At/st*fytd*cotgTheta
@@ -68,6 +71,3 @@ else:
     print "Td > Tu3"
 
 
-Md=100.34e3 #N.m
-h=wBeam
-As=Md/0.8/h/fytd

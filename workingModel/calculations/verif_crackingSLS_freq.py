@@ -2,9 +2,15 @@
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking as lschck  #Checking material for cracking limit state according to SIA262
+from postprocess.config import default_config
 
-execfile("../model_gen.py") #FE model generation
-lsd.LimitStateData.envConfig= cfg
+# Verificacion of cracking SLS under frequent loads for reinf. concrete elements
+
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'model_gen.py') #FE model generation
+lsd.LimitStateData.envConfig= cfg #configuration defined in script
+                                  #env_config.py
 
 # variables that control the output of the checking (setCalc,
 # appendToResFile .py [defaults to 'N'], listFile .tex [defaults to 'N']

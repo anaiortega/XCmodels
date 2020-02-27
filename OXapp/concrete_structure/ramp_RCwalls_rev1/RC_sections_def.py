@@ -4,7 +4,7 @@
 #import xc_base
 #import geom
 #import xc
-from materials.sections.fiber_section import defSimpleRCSection as rcs
+from materials.sections.fiber_section import def_simple_RC_section as rcs
 in2mm=25.4
 #diameters
 fi_3=9.525 #diameter [mm] #3

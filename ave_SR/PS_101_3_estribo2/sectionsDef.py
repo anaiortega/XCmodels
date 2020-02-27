@@ -4,7 +4,7 @@
 import xc_base
 import geom
 import xc
-from materials.sections.fiber_section import defSimpleRCSection as rcs
+from materials.sections.fiber_section import def_simple_RC_section as rcs
 from materials.ehe import EHE_materials
 import math
 
@@ -14,7 +14,7 @@ execfile('../basic_data.py')
 rnom=35 #recubrimiento nominal (todos los elementos)
 
 
-#instances of defSimpleRCSection.RecordRCSlabBeamSection that define the
+#instances of def_simple_RC_section.RecordRCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element

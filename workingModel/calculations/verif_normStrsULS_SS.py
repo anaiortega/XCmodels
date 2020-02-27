@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 from postprocess import limit_state_data as lsd
 from materials.ec3 import EC3_limit_state_checking as EC3lscheck
+from postprocess.config import default_config
 
 #Verification of normal-stresses ULS for structural steel
-execfile("../model_gen.py") #FE model generation
-lsd.LimitStateData.envConfig= cfg
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'model_gen.py') #FE model generation
+lsd.LimitStateData.envConfig= cfg #configuration defined in script
+                                  #env_config.py
 
 #Steel beams definition
-execfile("../steel_beams_def.py")
+execfile(workingDirectory+'steel_beams_def.py')
 
 setCalc=beamXsteel+columnZsteel
 # variables that control the output of the checking (setCalc,
@@ -16,6 +20,6 @@ outCfg= lsd.VerifOutVars(setCalc=setCalc,appendToResFile='Y',listFile='N',calcMe
 
 limitState=lsd.normalStressesResistance
 limitState.controller= EC3lscheck.BiaxialBendingNormalStressController(limitState.label)
-a=limitState.runChecking(outCfg)
+mean=limitState.runChecking(outCfg)
 
 

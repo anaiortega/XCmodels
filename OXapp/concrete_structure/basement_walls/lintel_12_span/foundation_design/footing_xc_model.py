@@ -11,7 +11,7 @@ import xc
 from materials import typical_materials
 from materials.aci import ACI_materials
 from postprocess import RC_material_distribution
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 from materials.aci import ACI_limit_state_checking
 
 # Mesh definition
@@ -173,7 +173,7 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 id= '00'
 sName= id + '_sections'
 sDescr= id + ' footing sections.'
-rcSection= defSimpleRCSection.RecordRCSlabBeamSection(name=sName,sectionDescr=sDescr,concrType=concrete, reinfSteelType=reinfSteel,depth= thickness)
+rcSection= def_simple_RC_section.RecordRCSlabBeamSection(name=sName,sectionDescr=sDescr,concrType=concrete, reinfSteelType=reinfSteel,depth= thickness)
 
 rcSection.dir1PositvRebarRows=[ACI_materials.n2s300r50]
 rcSection.dir1NegatvRebarRows=[ACI_materials.n5s300r50]

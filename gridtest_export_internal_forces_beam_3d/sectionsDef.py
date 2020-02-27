@@ -6,7 +6,7 @@ import xc_base
 import geom
 import xc
 # Macros
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 from postprocess import limit_state_data as lsd
@@ -26,10 +26,10 @@ areaFi20= SIA262_materials.section_barres_courantes[20e-3]
 #Generic layers (rows of rebars). Other instance variables that we can define
 #for MainReinfLayers are coverLat and nRebars.If we define nRebars that
 #value overrides the rebarsSpacing
-fi10s200r44=defSimpleRCSection.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi16s200r44=defSimpleRCSection.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi20s200r44=defSimpleRCSection.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi8s200r44=defSimpleRCSection.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi10s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi16s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi20s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi8s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
 
 concrete= SIA262_materials.c30_37
 reinfSteel= SIA262_materials.SpecialII1956SIA161
@@ -39,7 +39,7 @@ reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistributio
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
 
-beamRCsects=defSimpleRCSection.RecordRCSlabBeamSection(name='beamRCsects',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
+beamRCsects=def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsects',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
 beamRCsects.dir1PositvRebarRows=[fi10s200r44]
 beamRCsects.dir1NegatvRebarRows=[fi16s200r44]
 beamRCsects.dir2PositvRebarRows=[fi10s200r44]

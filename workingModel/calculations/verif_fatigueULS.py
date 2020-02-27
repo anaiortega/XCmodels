@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from materials.sia262 import SIA262_limit_state_checking
 from miscUtils import LogMessages as lmsg
+from postprocess.config import default_config
 
-execfile('../env_config.py')
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
 lsd.LimitStateData.envConfig= cfg
 
 lmsg.warning('Implementation pending. Do not use.')

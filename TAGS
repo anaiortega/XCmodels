@@ -1,0 +1,152 @@
+
+ave_SR/mod_simp/sectionsDef.py,19
+def rebars(15,277
+
+generic_bridges/model_slab_bridge/RC_sections_def.py,53
+def armaduraLosa(47,2562
+def armaduraZonas(99,5811
+
+section_report/test_section_report01.py,190
+class Extrema(109,4639
+  def __init__(110,4662
+  def fromInteractionDiagram(115,4784
+  def __sub__(120,4937
+  def __add__(122,5070
+  def getRatios(124,5203
+  def printRatios(132,5441
+
+workingModel/RC_sections_def.py,0
+
+underpassCrissier/sectionsDef.py,0
+
+tour_peilz/sectionsDef.py,0
+
+test_export_internal_forces_beam_3d/test_export_internal_forces_beam_3d_02.py,0
+
+test_export_internal_forces_beam_3d/test_export_internal_forces_beam_3d_01.py,0
+
+test_export_internal_forces_beam_2d/test_export_internal_forces_beam_2d.py,0
+
+test_export_internal_forces_beam_2d/parallel_test_export_internal_forces_beam_2d.py,0
+
+railway_bridge/generic_layers_aux.py,0
+
+railway_bridge/sectionsDef.py,0
+
+ps_bole_calculs_statiques/xc_model/sectionsDef.py,0
+
+ps_bole_calculs_statiques/xc_model_impact/generic_layers_aux.py,0
+
+ps_bole_calculs_statiques/xc_model_impact/sectionsDef.py,0
+
+noiseBarrier_Aval/generic_layers_aux.py,0
+
+noiseBarrier_Aval/sectionsDef.py,0
+
+noiseBarrierCurved/generic_layers_aux.py,0
+
+noiseBarrierCurved/sectionsDef.py,0
+
+gridtest_export_internal_forces_beam_3d/generic_layers_aux.py,0
+
+gridtest_export_internal_forces_beam_3d/sectionsDef.py,0
+
+generic_bridges/voided_slab_bridge/generic_layers_aux.py,0
+
+fatigue/generic_layers_aux.py,0
+
+fatigue/sectionsDef.py,0
+
+cracking_trials/test/test_cracking.py,0
+
+cracking_trials/cracking/modelo_EC2/test_cracking_modelo_EC2.py,0
+
+cracking_trials/cracking/test/test_cracking_sls_straight_checking.py,0
+
+cracking_trials/cracking/test_shear_uls_checking.py,0
+
+calcul_estacade/sectionsDef.py,0
+
+ave_SR/OD_PF_103_17_arm_transv/generic_layers_aux.py,0
+
+ave_SR/OD_PF_103_17_arm_transv/sectionsDef.py,0
+
+ave_SR/a_rasante/generic_layers_aux.py,0
+
+ave_SR/a_rasante/sectionsDef.py,0
+
+ave_SR/PS_101_3_estribo1/sectionsDef.py,0
+
+ave_SR/PS_101_3_curvo/sectionsDef.py,0
+
+ave_SR/PS_101_3_estribo2/sectionsDef.py,0
+
+ave_SR/PI_PF_OD_104_41/generic_layers_aux.py,0
+
+ave_SR/PI_PF_OD_104_41/sectionsDef.py,0
+
+ave_SR/voided/sectionsDef.py,0
+
+ave_SR/cracking_estribo/sectionsDef.py,0
+
+ave_SR/prueba_carga/generic_layers_aux.py,0
+
+ave_SR/prueba_carga/sectionsDef.py,0
+
+ave_SR/PS_100_7_recto/sectionsDef.py,0
+
+ave_SR/PSs/generic_layers_aux.py,0
+
+ave_SR/OD_PF_103_17/generic_layers_aux.py,0
+
+ave_SR/OD_PF_103_17/sectionsDef.py,0
+
+TbeamBridge/sectionsDef.py,0
+
+PS_Palencia/PS_3_vanos34/sectionsDef.py,0
+
+PS_Palencia/PS_3_vanos12/sectionsDef.py,0
+
+PI205/sectionsDef.py,0
+
+PI203/sectionsDef.py,0
+
+OXapp/concrete_structure/ramp_RCwalls/RC_sections_def.py,0
+
+OXapp/concrete_structure/model_precast_layout/RC_sections_def.py,0
+
+OXapp/concrete_structure/basement_walls/lintel_3_span/RC_sections_def.py,0
+
+OXapp/concrete_structure/basement_walls/lintel_24_span_modif_20191126/RC_sections_def.py,0
+
+OXapp/concrete_structure/basement_walls/lintel_12_span/foundation_design/footing_xc_model.py,0
+
+OXapp/concrete_structure/basement_walls/lintel_12_span/RC_sections_def.py,0
+
+OXapp/concrete_structure/basement_walls/lintel_24_span/RC_sections_def.py,0
+
+OXapp/concrete_structure/ramp_RCwalls_rev1/RC_sections_def.py,0
+
+OXapp/concrete_structure/footings_model/sectionsDef.py,0
+
+OXapp/concrete_structure/old/prueba/RC_sections_def.py,0
+
+OXapp/concrete_structure/old/ramp/RC_sections_def.py,0
+
+OXapp/concrete_structure/old/XC3Dmodel_updated_loads/RC_sections_def.py,0
+
+OXapp/concrete_structure/old/XC3Dmodel/RC_sections_def.py,0
+
+OXapp/old/XC3Dmodel_old/RC_sections_def.py,0
+
+Brelaz/XC_model/generic_layers_aux.py,0
+
+Brelaz/XC_model/sectionsDef.py,0
+
+Brelaz/XC_model_slabs/generic_layers_aux.py,0
+
+Brelaz/XC_model_slabs/sectionsDef.py,0
+
+Brelaz/XC_model_cantilever/generic_layers_aux.py,0
+
+Brelaz/XC_model_cantilever/sectionsDef.py,0
