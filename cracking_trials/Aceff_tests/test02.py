@@ -11,7 +11,7 @@ from materials.ehe import EHE_materials
 from materials import concrete_base
 from materials import typical_materials
 from materials.sections.fiber_section import fiber_sets
-from materials.sections.fiber_section import sectionReport 
+from materials.sections.fiber_section import section_report 
 import matplotlib.pyplot as plt
 import numpy as np
 from materials.ec2 import EC2_limit_state_checking
@@ -148,7 +148,7 @@ sctFibers.setRespTByName("respT")
 scc3d_testing_bench.sectionModel(preprocessor, "sctFibers")
 
 # #report of the section material
-# sectParam=sectionReport.SectionInfo(preprocessor=preprocessor,sectName='example_7.3_EC2W',sectDescr='Test example 7.3 EC2 Worked examples. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
+# sectParam=section_report.SectionInfo(preprocessor=preprocessor,sectName='example_7.3_EC2W',sectDescr='Test example 7.3 EC2 Worked examples. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
 
 
 

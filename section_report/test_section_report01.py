@@ -11,7 +11,7 @@ from materials.ehe import EHE_materials
 import math
 from materials.sia262 import SIA262_materials
 from materials.sections.fiber_section import def_simple_RC_section
-from materials.sections.fiber_section import sectionReport as sr
+from materials.sections.fiber_section import section_report as sr
 from materials.sections.fiber_section import plotSectionGeometry as pg
 from postprocess.reports import graph_material as mg
 
