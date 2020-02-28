@@ -18,6 +18,7 @@ from actions import load_cases as lcm
 from actions import combinations as combs
 from datetime import date
 import aisc_checking
+from postprocess import output_handler
 
 #Units
 foot2m= 0.3048
@@ -143,8 +144,9 @@ aisc_checking.sls_check(combContainer.SLS.qp, xcTotalSet, deflectionLimits, anal
 ## Check flexural and shear strength.
 print('  Ultimate limit states.')
 aisc_checking.uls_check(profile, combContainer.ULS.perm, xcTotalSet, analysis)
+print('  ASD')
+aisc_checking.uls_check(profile, combContainer.SLS.qp, xcTotalSet, analysis)
 
-quit()
 # Checking
 
 ## Reactions.
@@ -155,3 +157,13 @@ R2= p2.getNode().getReaction[1]
 print('R0= ', R0/1e3,' kN')
 print('R1= ', R1/1e3,' kN')
 print('R2= ', R2/1e3,' kN')
+
+preprocessor.getLoadHandler.addToDomain('ULS02')#EQ1615')
+result= analisis.analyze(1)
+
+## Graphic stuff.
+oh= output_handler.OutputHandler(modelSpace)
+
+oh.displayFEMesh()
+oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+
