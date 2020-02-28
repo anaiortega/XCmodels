@@ -13,9 +13,11 @@ from materials.aci import ACI_materials
 from materials import typical_materials
 from materials.sections import section_properties
 from materials.awc_nds import AWCNDS_materials
+from materials.awc_nds import structural_panels
 from postprocess import output_handler
 from solution import predefined_solutions
 from actions import load_cases as lcm
+from actions import combinations as combs
 
 inchToMeter= 0.0254
 pound2N=4.45
@@ -85,11 +87,11 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
 
 ## LVL blind fascia: 1.55E (page 10 of the PDF document from "SolidStart")
 LVL= typical_materials.MaterialData(name='LVL',E=2.0e6*psiToPa,nu=0.2,rho=500)
-lvlBlindSectionGeometry= section_properties.RectangularSection("lvlBlind",b=1.75*inchToMeter,h=22*inchToMeter)
+lvlBlindSectionGeometry= section_properties.RectangularSection("lvlBlind",b=1.75*inchToMeter,h=24.0*inchToMeter)
 lvlBlindSection= lvlBlindSectionGeometry.defElasticShearSection3d(preprocessor,LVL)
 
 ## Materials LSL 1.55E (page 10 of the PDF document from "SolidStart")
-lslJackTrussSection= AWCNDS_materials.LSL155Headers['1.75x14'].defElasticShearSection3d(preprocessor)
+lslJackTrussSection= structural_panels.LSL155Headers['1.75x14'].defElasticShearSection3d(preprocessor)
 
 ## Girder material.
 lvlGirderSectionGeometry= section_properties.RectangularSection("lvlGirder", b=1.25*inchToMeter, h=19.09*inchToMeter)
@@ -223,7 +225,33 @@ for p in eastFacadeLoads.getPoints:
     n= p.getNode()
     n.newLoad(xc.Vector([0.0,0.0,-772.87*pound2N,0.0,0.0,0.0]))
 
-preprocessor.getLoadHandler.getLoadPatterns.addToDomain('snowLoad')
+# Load combination definition
+combContainer= combs.CombContainer()
+
+## Serviceability limit states.
+
+### Equation 16-8
+combContainer.SLS.qp.add('EQ1608', '1.0*deadLoad')
+### Equation 16-9
+combContainer.SLS.qp.add('EQ1609', '1.0*deadLoad+1.0*liveLoad')
+### Equation 16-10
+combContainer.SLS.qp.add('EQ1610', '1.0*deadLoad+1.0*snowLoad')
+### Equation 16-11
+combContainer.SLS.qp.add('EQ1611', '1.0*deadLoad+0.75*liveLoad+0.75*snowLoad')
+### Equation 16-12
+combContainer.SLS.qp.add('EQ1612', '1.0*deadLoad+0.6*windLoad')
+### Equation 16-13
+combContainer.SLS.qp.add('EQ1613', '1.0*deadLoad+0.45*windLoad+0.75*liveLoad+0.75*snowLoad')
+### Equation 16-14-> doesn't apply
+### Equation 16-15
+combContainer.SLS.qp.add('EQ1615', '0.6*deadLoad+0.6*windLoad')
+### Equation 16-16 -> doesn't apply
+### LIVE load only.
+combContainer.SLS.qp.add('LIVE', '1.0*liveLoad')
+
+combContainer.dumpCombinations(preprocessor)
+
+preprocessor.getLoadHandler.addToDomain('EQ1611')
 
 # Solution
 # Linear static analysis.
@@ -231,19 +259,24 @@ analisis= predefined_solutions.simple_static_linear(FEcase)
 result= analisis.analyze(1)
 
 
+
 # Graphics
 
 #oh.displayBlocks()
-oh.displayLocalAxes(setToDisplay= girderSet)
+#oh.displayLocalAxes(setToDisplay= girderSet)
+oh.displayLocalAxes(setToDisplay= lvlBlindFasciaSet)
+
 #oh.displayFEMesh()
 oh.displayLoads()#setToDisplay= lvlBlindFasciaSet)
 
 #oh.displayDispRot(itemToDisp='uY')
 oh.displayDispRot(itemToDisp='uZ')
-oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= jackTrussesSet)
-oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= jackTrussesSet)
-oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= girderSet)
-oh.displayReactions(setToDisplay= girderSet)
+# oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= jackTrussesSet)
+# oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= jackTrussesSet)
+# oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= girderSet)
+# oh.displayReactions(setToDisplay= girderSet)
+oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= regularTrussesSet+jackTrussesSet+girderSet)
+oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= lvlBlindFasciaSet)
 oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= girderSet)
 oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= regularTrussesSet)
 oh.displayReactions(setToDisplay= regularTrussesSet)

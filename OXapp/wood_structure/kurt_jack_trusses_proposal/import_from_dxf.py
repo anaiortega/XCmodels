@@ -10,7 +10,7 @@ layerNamesToImport= ['xc_*']
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-fileName= 'model.dxf'
+fileName= 'model2.dxf'
 dxfImport= DxfReader.DXFImport(fileName, layerNamesToImport,getRelativeCoo, importLines= True, polylinesAsSurfaces= False, threshold= 0.001, tolerance= .001)
 
 #Block topology
