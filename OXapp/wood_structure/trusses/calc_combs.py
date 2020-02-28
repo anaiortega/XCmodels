@@ -42,7 +42,6 @@ def resultComb(prb,nmbComb):
     preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 
-combContainer.dumpCombinations(preprocessor)
 for comb in ['EQ1608','EQ1609','EQ1610','EQ1611','EQ1612','EQ1613','EQ1615','LIVE']:
   resultComb(feProblem,comb)
 
