@@ -4,7 +4,7 @@
 #import xc_base
 #import geom
 #import xc
-from materials.sections.fiber_section import defSimpleRCSection as rcs
+from materials.sections.fiber_section import def_simple_RC_section as rcs
 from materials.aci import ACI_materials
 ft2m=0.3048
 in2m=0.0254

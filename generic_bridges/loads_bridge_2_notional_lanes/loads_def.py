@@ -11,7 +11,7 @@
 # Q32, Q32neopr: expansion thermal load
 # Q33, Q34: thermal gradient
 #                       ***ACTIONS***
-from actions.roadway_trafic import standard_load_models as slm
+from actions.roadway_trafic import IAP_load_models as slm
 from actions.imposed_strain import imp_strain as imps
 #Peso propio
 if abutment.lower()[0]=='y':

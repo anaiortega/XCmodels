@@ -21,7 +21,7 @@ from materials.ec2 import EC2_materials
 from materials import concrete_base
 from materials import typical_materials
 from materials.sections.fiber_section import fiber_sets
-from materials.sections.fiber_section import sectionReport 
+from materials.sections.fiber_section import section_report 
 import matplotlib.pyplot as plt
 import numpy as np
 from materials.ec2 import EC2_limit_state_checking
@@ -119,11 +119,11 @@ combs.newLoadCombination("CombA","1.00*A")
 combs.newLoadCombination("CombB","1.00*B")
 
 #Reinforced concrete sections
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 concrete=EC2_materials.C30
-mainBottReinf=defSimpleRCSection.MainReinfLayer(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
+mainBottReinf=def_simple_RC_section.MainReinfLayer(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
 mainBottReinf.nRebars=nmbBarsBott
-beamRCSect=defSimpleRCSection.RecordRCSlabBeamSection(name='beamRCSect',sectionDescr='beam',concrType=concrete, reinfSteelType=rfSteel,width=width,depth=depth,elemSetName='total') 
+beamRCSect=def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCSect',sectionDescr='beam',concrType=concrete, reinfSteelType=rfSteel,width=width,depth=depth,elemSetName='total') 
 beamRCSect.dir1NegatvRebarRows=mainBottReinf
 beamRCSect.dir2NegatvRebarRows=mainBottReinf
 

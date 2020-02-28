@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from materials.sections.fiber_section import sectionReport 
+from materials.sections.fiber_section import section_report 
 from postprocess.reports import graph_material 
 import matplotlib.pyplot as plt
 
@@ -63,7 +63,7 @@ for sect in sections.sections:
      report.write('\\newpage\n\n')
   #Section 1
   # plotting of section geometric and mechanical properties
-  sect1inf=sectionReport.SectionInfoHASimple(preprocessor,sect1)
+  sect1inf=section_report.SectionInfoHASimple(preprocessor,sect1)
   texFileName=report_graphics_outDir+sect1.sectionName+'.tex'
   epsFileName=report_graphics_outDir+sect1.sectionName+'.eps'
   sect1inf.writeReport(texFileName,epsFileName)
@@ -77,7 +77,7 @@ for sect in sections.sections:
   plotIntDiag(diag=diagNMz,title=sect1.sectionName+ ' N-Mz interaction diagram',xAxLab='Mz [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   #Section 2
   # plotting of section geometric and mechanical properties
-  sect2inf=sectionReport.SectionInfoHASimple(preprocessor,sect2)
+  sect2inf=section_report.SectionInfoHASimple(preprocessor,sect2)
   texFileName=report_graphics_outDir+sect2.sectionName+'.tex'
   epsFileName=report_graphics_outDir+sect2.sectionName+'.eps'
   sect2inf.writeReport(texFileName,epsFileName)

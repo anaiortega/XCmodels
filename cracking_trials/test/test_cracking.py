@@ -98,9 +98,9 @@ combContainer.SLS.freq.add('ELSF01', '1.0*lcase01')
 combContainer.SLS.freq.add('ELSF02', '1.0*lcase02')
 
 # Reinforced concrete sections
-from materials.sections.fiber_section import defSimpleRCSection
-beamRCsect=defSimpleRCSection.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSetName='beamSet')
-mainBottReinf=defSimpleRCSection.MainReinfLayer(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
+from materials.sections.fiber_section import def_simple_RC_section
+beamRCsect=def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSetName='beamSet')
+mainBottReinf=def_simple_RC_section.MainReinfLayer(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
 mainBottReinf.nRebars=nmbBarsBott
 beamRCsect.dir1NegatvRebarRows=[mainBottReinf]
 beamRCsect.dir2NegatvRebarRows=[mainBottReinf]

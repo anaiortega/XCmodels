@@ -9,7 +9,7 @@ import geom
 import xc
 # Macros
 #from materials.ehe import auxEHE
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 from materials.sections import section_properties
 from postprocess import RC_material_distribution
 
@@ -35,7 +35,7 @@ for row in reader:
     thickness= float(row[5])
     sName= id + '_sections'
     sDescr= id + ' footing sections.'
-    rcSects[id]= defSimpleRCSection.RecordRCSlabBeamSection(name=sName,sectionDescr=sDescr,concrType=concrete, reinfSteelType=reinfSteel,depth= thickness)
+    rcSects[id]= def_simple_RC_section.RecordRCSlabBeamSection(name=sName,sectionDescr=sDescr,concrType=concrete, reinfSteelType=reinfSteel,depth= thickness)
 csvFile.close()
 
 for key in ['A1','A2','B1','B2']:
@@ -86,7 +86,7 @@ for key in rcSects:
     rcS.creaTwoSections()
     sections.append(rcS)
     
-footingRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='footingRCSect',sectionDescr="footing.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.50)
+footingRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='footingRCSect',sectionDescr="footing.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.50)
 #[0]: longitudinal rebars
 #[1]: transversal rebars
 footingRCSect.dir1PositvRebarRows=[ACI_materials.n2s150r50]

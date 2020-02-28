@@ -5,7 +5,7 @@
 #import geom
 #import xc
 import math
-from materials.sections.fiber_section import defSimpleRCSection as rcs
+from materials.sections.fiber_section import def_simple_RC_section as rcs
 
 # **Concrete sections
 #instances of rcs.RecordRCSlabBeamSection that define the

@@ -7,7 +7,7 @@ import geom
 import xc
 # Macros
 #from materials.ehe import auxEHE
-from materials.sections.fiber_section import defSimpleRCSection
+from materials.sections.fiber_section import def_simple_RC_section
 from materials.sections import section_properties
 from postprocess import RC_material_distribution
 
@@ -40,32 +40,32 @@ reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistributio
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
 #Generic layers (rows of rebars)
-fi8s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi8s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
+fi8s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi8s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
 
-fi10s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing= 0.150,width=1.0,nominalCover=0.040)
-fi10s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
+fi10s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing= 0.150,width=1.0,nominalCover=0.040)
+fi10s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
 
-fi12s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi12s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
+fi12s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi12s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
-fi14s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi14s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
+fi14s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi14s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
-fi16s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi16s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
+fi16s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi16s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
-fi18s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=18e-3,areaRebar= areaFi18,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi18s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=18e-3,areaRebar= areaFi18,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
+fi18s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=18e-3,areaRebar= areaFi18,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi18s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=18e-3,areaRebar= areaFi18,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
-fi20s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi20s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
+fi20s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi20s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.150,width=1.0,nominalCover=0.050)
 
-fi26s150r40=defSimpleRCSection.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
-fi26s150r50=defSimpleRCSection.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
+fi26s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.040)
+fi26s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
 
-deckSlabRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+deckSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: longitudinal rebars
 #[1]: transversal rebars
 deckSlabRCSect.dir1PositvRebarRows=[fi14s150r50] #Ok
@@ -76,7 +76,7 @@ deckSlabRCSect.dir2NegatvRebarRows=[fi8s150r40] #Ok
 deckSlabRCSect.creaTwoSections() 
 sections.append(deckSlabRCSect)
 
-dockRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='dockRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+dockRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='dockRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 dockRCSect.dir1PositvRebarRows=[fi8s150r50] #Ok
@@ -87,7 +87,7 @@ dockRCSect.dir2NegatvRebarRows=[fi12s150r40] #Ok
 dockRCSect.creaTwoSections() 
 sections.append(dockRCSect)
 
-parapetRCSect= defSimpleRCSection.RecordRCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+parapetRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: longitudinal rebars
 #[1]: transversal rebars
 parapetRCSect.dir1PositvRebarRows=[fi8s150r40] #Ok
@@ -99,11 +99,11 @@ parapetRCSect.creaTwoSections()
 sections.append(parapetRCSect)
 
 
-columnRCSect=defSimpleRCSection.RecordRCSlabBeamSection(name='columnRCSect',sectionDescr='column',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
+columnRCSect=def_simple_RC_section.RecordRCSlabBeamSection(name='columnRCSect',sectionDescr='column',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
 mecCover= 35e-3
-layer1= defSimpleRCSection.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.1,width=0.2,nominalCover= mecCover)
+layer1= def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.1,width=0.2,nominalCover= mecCover)
 layer1.nRebars=2
-shear1=defSimpleRCSection.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 columnRCSect.dir1PositvRebarRows=[layer1] #Ok
 columnRCSect.dir1NegatvRebarRows=[layer1] #Ok
 columnRCSect.dir2PositvRebarRows=[layer1] #Ok
@@ -116,7 +116,7 @@ columnRCSect.dir2ShReinfZ=shear1 #Ok
 columnRCSect.creaTwoSections() 
 sections.append(columnRCSect)
 
-# transverseReinfRCSect=defSimpleRCSection.RecordRCSlabBeamSection(name='transverseReinfRCSect',sectionDescr='transverseReinf',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
+# transverseReinfRCSect=def_simple_RC_section.RecordRCSlabBeamSection(name='transverseReinfRCSect',sectionDescr='transverseReinf',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
 # transverseReinfRCSect.dir1PositvRebarRows=[fi20s150r40]
 # transverseReinfRCSect.dir1NegatvRebarRows=[fi20s150r40]
 # transverseReinfRCSect.dir2PositvRebarRows=[fi20s150r40]

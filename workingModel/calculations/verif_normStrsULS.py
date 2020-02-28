@@ -2,14 +2,16 @@
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking as lscheck
+from postprocess.config import default_config
 
-#Results directories
-execfile("../model_gen.py") #FE model generation
-lsd.LimitStateData.envConfig= cfg
+#Verification of normal-stresses ULS for reinf. concrete elements
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'model_gen.py') #FE model generation
+lsd.LimitStateData.envConfig= cfg  #configuration defined in script
+                                   #env_config.py
 
 #Reinforced concrete sections on each element.
-#reinfConcreteSections=RC_material_distribution.RCMaterialDistribution()
-#reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcement.pkl'
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 # variables that control the output of the checking (setCalc,
@@ -18,7 +20,7 @@ outCfg= lsd.VerifOutVars(setCalc=overallSet,appendToResFile='N',listFile='N',cal
 
 limitState=lsd.normalStressesResistance
 limitState.controller= lscheck.BiaxialBendingNormalStressController(limitState.label)
-a=lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
+mean=lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
 
 
 

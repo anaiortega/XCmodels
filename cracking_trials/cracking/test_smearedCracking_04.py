@@ -25,7 +25,7 @@ from materials.ec2 import EC2_materials
 from materials import concrete_base
 from materials import typical_materials
 from materials.sections.fiber_section import fiber_sets
-from materials.sections.fiber_section import sectionReport 
+from materials.sections.fiber_section import section_report 
 import matplotlib.pyplot as plt
 import numpy as np
 from materials.ec2 import EC2_limit_state_checking
@@ -326,7 +326,7 @@ quit()
 # pg.plotSectionGeometry(geomSectFibers,'./secEx74.eps')
 
 
-#sectInf=sectionReport.SectionInfo(preprocessor=preprocessor,section=sctFibers) #Obtains section parameters for report
+#sectInf=section_report.SectionInfo(preprocessor=preprocessor,section=sctFibers) #Obtains section parameters for report
 #sectInf.writeReport(archTex='./secEx74.tex', pathFigura='./secEx74.eps')
 
 # #plot cross-section strains and stresses 
@@ -341,6 +341,6 @@ from postprocess import utils_display
 utils_display.plotStressStrainFibSet(fiberSet=setsRCEl1.concrFibers.fSet,title='cross-section concrete fibers',fileName='problem.jpeg')
 
 # #report of the section material
-# sectParam=sectionReport.SectionInfo(preprocessor=preprocessor,sectName='example_7.5_EC2W_0.3mm',sectDescr='Test example 7.5 EC2 Worked examples - $w_k \\approx 0.3 mm$. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
+# sectParam=section_report.SectionInfo(preprocessor=preprocessor,sectName='example_7.5_EC2W_0.3mm',sectDescr='Test example 7.5 EC2 Worked examples - $w_k \\approx 0.3 mm$. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
 
 

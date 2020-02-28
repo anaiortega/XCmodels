@@ -10,8 +10,8 @@ import xc
 from materials.ehe import EHE_materials
 import math
 from materials.sia262 import SIA262_materials
-from materials.sections.fiber_section import defSimpleRCSection
-from materials.sections.fiber_section import sectionReport as sr
+from materials.sections.fiber_section import def_simple_RC_section
+from materials.sections.fiber_section import section_report as sr
 from materials.sections.fiber_section import plotSectionGeometry as pg
 from postprocess.reports import graph_material as mg
 
@@ -34,16 +34,16 @@ concrete.alfacc=0.85    #concrete fatigue factor (generalmente se toma alfacc=1)
 reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15
-sccData= defSimpleRCSection.RecordRCSimpleSection()
+sccData= def_simple_RC_section.RecordRCSimpleSection()
 sccData.sectionName= "sccData"
 sccData.sectionDescr= "Prueba."
 sccData.concrType= concrete
 sccData.h= 0.5
 sccData.b= 1.0
 sccData.reinfSteelType= reinfSteel
-negReb=defSimpleRCSection.MainReinfLayer(rebarsDiam=40e-3,areaRebar= areaFi40,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
+negReb=def_simple_RC_section.MainReinfLayer(rebarsDiam=40e-3,areaRebar= areaFi40,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
 sccData.negatvRebarRows=[negReb]
-posReb=defSimpleRCSection.MainReinfLayer(rebarsDiam=6e-3,areaRebar= areaFi6,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
+posReb=def_simple_RC_section.MainReinfLayer(rebarsDiam=6e-3,areaRebar= areaFi6,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
 sccData.positvRebarRows=[posReb]
 
 zinf= sccData.h/2.0

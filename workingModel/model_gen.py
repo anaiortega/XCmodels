@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
-
 import os
 import xc_base
 import geom
 import xc
 import math
+from materials.ehe import EHE_materials
+#from materials.sia262 import SIA262_materials
+from materials.ec3 import EC3_materials
 from model import predefined_spaces
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
@@ -16,9 +18,6 @@ from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
 from model.geometry import geom_utils as gut
-from materials.ehe import EHE_materials
-#from materials.sia262 import SIA262_materials
-from materials.ec3 import EC3_materials
 from postprocess.config import default_config
 
 # Default configuration of environment variables.
@@ -26,52 +25,16 @@ from postprocess import output_styles as outSty
 from postprocess import output_handler as outHndl
 
 
-
-workingDirectory= default_config.findWorkingDirectory()+'/'
+workingDirectory= default_config.findWorkingDirectory()+'/' #search env_config.py
 execfile(workingDirectory+'env_config.py')
-sty=outSty.OutputStyle()
+sty=outSty.OutputStyle() 
 
-#Auxiliary data
- #Geometry
-LbeamX=5
-LbeamY=6
-LcolumnZ=6
-Wfoot=2.0
-hbeamX=0.5
-hbeamY=0.3
-hcolumnZ=0.40
-wbeamX=0.35
-wbeamY=0.5
-wcolumnZ=0.40
-deckTh=0.20
-wallTh=0.5
-footTh=0.7
-
- #Actions
-qdeck1=1e3  #N/m2
-qdeck2=2e3   #N/m2
-Qbeam=3e3  #N/m
-qunifBeam=5e3
-qLinDeck2=30 #N/m
-Qwheel=5e3  #N
-firad=math.radians(31)  #internal friction angle (radians)                   
-KearthPress=(1-math.sin(firad))/(1+math.sin(firad))     #Active coefficient of p
-densSoil=800       #mass density of the soil (kg/m3)
-densWater=1000      #mass density of the water (kg/m3)
-
-
-#Materials
-concrete=EHE_materials.HA30
-reinfSteel=EHE_materials.B500S
-# concrete=SIA262_materials.c30_37
-# reinfSteel=SIA262_materials.B500B
-
-eSize= 0.35     #length of elements
+#Data
+execfile(workingDirectory+'data.py')
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()
-preprocessor=FEcase.getPreprocessor
-prep=preprocessor   #short name
+prep=FEcase.getPreprocessor
 nodes= prep.getNodeHandler
 elements= prep.getElementHandler
 elements.dimElem= 3
@@ -151,26 +114,25 @@ gridGeom.generatePoints()
 #                                      stpes= 1)
 # idem for J and K ranges
 beamXconcr_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedIranges(stepJ=2,stepK=1)
-beamXsteel_rg=[gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))]
 beamY_rg=gm.IJKRange((0,1,lastZpos),(lastXpos,lastYpos,lastZpos)).extractIncludedJranges(stepI=2,stepK=1)
 columnZconcr_rg=gm.IJKRange((0,1,0),(lastXpos,1,lastZpos)).extractIncludedKranges(stepI=2)
 columnZsteel_rg=gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos)).extractIncludedJKranges(step=2)+[gm.IJKRange((1,lastYpos,0),(1,lastYpos,1))]
 decklv1_rg=gm.IJKRange((0,1,1),(lastXpos,lastYpos,lastZpos)).extractIncludedIJranges(step=2)
-decklv2_rg=gm.IJKRange((0,lastYpos-1,lastZpos),(1,lastYpos,lastZpos))
-wall_rg=gm.IJKRange((0,1,0),(lastXpos,1,1))
-#foot_rg=[gm.IJKRange((0,0,0),(lastXpos,2,0))]
 foot_rg=[gut.def_rg_cooLim(XYZLists=(xList,yList,zList),Xcoo=(0,LbeamX),Ycoo=(-Wfoot/2.,Wfoot/2.),Zcoo=(0,0))]
+beamXsteel_rg=gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))
 #Lines generation
 beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,nameSet='beamXconcr')
-beamXsteel=gridGeom.genLinMultiRegion(lstIJKRange=beamXsteel_rg,nameSet='beamXsteel')
+beamXsteel=gridGeom.genLinOneRegion(ijkRange=beamXsteel_rg,nameSet='beamXsteel')
 beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
 columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
 columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
 
+#out.displayBlocks()
+
 #Surfaces generation
 decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
-decklv2=gridGeom.genSurfOneRegion(ijkRange=decklv2_rg,nameSet='decklv2')
-wall=gridGeom.genSurfOneRegion(ijkRange=wall_rg,nameSet='wall')
+decklv2=gridGeom.genSurfOneXYZRegion(xyzRange=((0,Wfoot/2.,LcolumnZ),(LbeamX/2.0,LbeamY,LcolumnZ)),nameSet='decklv2')
+wall=gridGeom.genSurfOneXYZRegion(xyzRange=((0,0,0),(LbeamX,0,LcolumnZ)),nameSet='wall')
 foot=gridGeom.genSurfMultiRegion(lstIJKRange=foot_rg,nameSet='foot')
 decklv1.description='Deck level 1'
 decklv1.color=cfg.colors['purple01']
@@ -240,15 +202,14 @@ columnZconcr_mat.setupElasticShear3DSection(preprocessor=prep)
   #         UPNShape, AUShape, CHSShape
   #      (defined in materials.sections.structural_shapes.arcelor_metric_shapes)
 columnZsteel_mat= EC3_materials.HEShape(steel=S235JR,name='HE_200_A')
-columnZsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
+columnZsteel_mat.defElasticShearSection3d(prep,S235JR)
 beamXsteel_mat= EC3_materials.IPEShape(steel=S235JR,name='IPE_A_300')
-beamXsteel_mat.defElasticShearSection3d(preprocessor,S235JR)
+beamXsteel_mat.defElasticShearSection3d(prep,S235JR)
 
 #                         ***FE model - MESH***
 # IMPORTANT: it's convenient to generate the mesh of surfaces before meshing
 # the lines, otherwise, sets of shells can take also beam elements touched by
 # them
-
 
 beamXconcr_mesh=fem.LinSetToMesh(linSet=beamXconcr,matSect=beamXconcr_mat,elemSize=eSize,vDirLAxZ=xc.Vector([0,1,0]),elemType='ElasticBeam3d',dimElemSpace=3,coordTransfType='linear')
 beamY_mesh=fem.LinSetToMesh(linSet=beamY,matSect=beamY_mat,elemSize=eSize,vDirLAxZ=xc.Vector([1,0,0]),elemType='ElasticBeam3d',coordTransfType='linear')
@@ -268,8 +229,11 @@ columnZsteel_mesh=fem.LinSetToMesh(linSet=columnZsteel,matSect=columnZsteel_mat,
 
 fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,beamY_mesh,columnZconcr_mesh,columnZsteel_mesh])     #mesh these sets
 
-#out.displayFEMesh()
-
+#out.displayFEMesh([beamXconcr,beamY,columnZconcr,decklv1,decklv2,wall,foot])
+#out.displayFEMesh([beamXconcr,beamXsteel])
+#out.displayFEMesh([columnZconcr,columnZsteel])
+#out.displayLocalAxes()
+#out.displayStrongWeakAxis(beams)
 
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
@@ -430,7 +394,7 @@ wheelDeck1=loads.PointLoadOverShellElems(name='wheelDeck1', xcSet=decklv1, loadV
 #      slopeDistr: slope (H/V) through hDistr to distribute the load of 
 #               a wheel
 
-from actions.roadway_trafic import standard_load_models as slm
+from actions.roadway_trafic import IAP_load_models as slm
 from actions.roadway_trafic import load_model_base as lmb
 vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=slm.IAP_carril_virt3_fren, xCentr=LbeamX/2,yCentr=LbeamY/2.,hDistr=0.25,slopeDistr=1.0)
 
@@ -440,6 +404,11 @@ vehicleDeck1=lmb.VehicleDistrLoad(name='vehicleDeck1',xcSet=decklv1,loadModel=sl
 GselfWeight=lcases.LoadCase(preprocessor=prep,name="GselfWeight",loadPType="default",timeSType="constant_ts")
 GselfWeight.create()
 GselfWeight.addLstLoads([selfWeight])
+'''
+modelSpace.addLoadCaseToDomain("GselfWeight")
+out.displayLoadVectors()
+modelSpace.removeLoadCaseFromDomain("GselfWeight")
+'''
 
 Qdecks=lcases.LoadCase(preprocessor=prep,name="Qdecks")
 Qdecks.create()
@@ -469,6 +438,11 @@ QearthPColsHrzL.addLstLoads([earthPColumnHrzL])
 qunifBeams=lcases.LoadCase(preprocessor=prep,name="qunifBeams",loadPType="default",timeSType="constant_ts")
 qunifBeams.create()
 qunifBeams.addLstLoads([unifLoadBeamsY])
+'''
+modelSpace.addLoadCaseToDomain("qunifBeams")
+out.displayLoads(beams)
+modelSpace.removeLoadCaseFromDomain("qunifBeams")
+'''
 
 QpntBeams=lcases.LoadCase(preprocessor=prep,name="QpntBeams",loadPType="default",timeSType="constant_ts")
 QpntBeams.create()
@@ -489,14 +463,33 @@ QvehicleDeck1.addLstLoads([vehicleDeck1])
 LS1=lcases.LoadCase(preprocessor=prep,name="LS1",loadPType="default",timeSType="constant_ts")
 LS1.create()
 LS1.addLstLoads([selfWeight,unifLoadDeck1,unifLoadDeck2,earthPressLoadWall,earthPressLoadColumn,earthPColumnStrL,earthPColumnLinL])
+'''
+modelSpace.addLoadCaseToDomain("LS1")
+out.displayLoadVectors()
+modelSpace.removeLoadCaseFromDomain("LS1")
+'''
 
 LS2=lcases.LoadCase(preprocessor=prep,name="LS2",loadPType="default",timeSType="constant_ts")
 LS2.create()
 LS2.addLstLoads([selfWeight,earthPColumnHrzL,unifLoadBeamsY,QpuntBeams,unifLoadLinDeck2,wheelDeck1])
 
+'''
+from solution import predefined_solutions
+modelSpace.removeAllLoadPatternsFromDomain()
+modelSpace.addLoadCaseToDomain('LS1')
+analysis= predefined_solutions.simple_static_linear(FEcase)
+result= analysis.analyze(1)
+out.displayDispRot('uZ')
+out.displayIntForcDiag('Mz',beamXsteel)
+out.displayIntForc('M1',decklv1)
+out.displayReactions()
+'''
+
+'''
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 LC1=QGrph.LoadCaseResults(FEcase,loadCaseName= 'LC1',loadCaseExpr= '1*GselfWeight')
 LC1.solve()
+'''
 
 #    ***LIMIT STATE COMBINATIONS***
 combContainer= cc.CombContainer()  #Container of load combinations
