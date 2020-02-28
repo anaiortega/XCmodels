@@ -152,8 +152,8 @@ lpD.newNodalLoad(1,xc.Vector([0,1e3,0,0,0,0])) #Horizontal force in the middle
 casos.addToDomain("C")
 
 # Solution
-analisis= predefined_solutions.simple_static_linear(test)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(test)
+result= analysis.analyze(1)
 
 elem1= elementos.getElement(1)
 elem1.getResistingForce()

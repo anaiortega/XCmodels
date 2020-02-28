@@ -159,7 +159,7 @@ print('R1= ', R1/1e3,' kN')
 print('R2= ', R2/1e3,' kN')
 
 preprocessor.getLoadHandler.addToDomain('ULS02')#EQ1615')
-result= analisis.analyze(1)
+result= analysis.analyze(1)
 
 ## Graphic stuff.
 oh= output_handler.OutputHandler(modelSpace)

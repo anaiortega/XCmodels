@@ -29,7 +29,7 @@ def resultComb(prb,nmbComb):
   return spandrelReactions, fillReactions
 
 
-analisis= predefined_solutions.simple_static_linear(deck)
+analysis= predefined_solutions.simple_static_linear(deck)
 
 
 combContainer.dumpCombinations(preprocessor)

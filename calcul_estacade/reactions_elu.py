@@ -32,7 +32,7 @@ def resultComb(prb,nmbComb):
   return reactions
 
 
-analisis= predefined_solutions.simple_static_linear(gilamontDock)
+analysis= predefined_solutions.simple_static_linear(gilamontDock)
 
 
 combContainer.dumpCombinations(preprocessor)

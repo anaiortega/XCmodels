@@ -202,8 +202,8 @@ xcTotalSet= preprocessor.getSets.getSet("total")
 preprocessor.getLoadHandler.addToDomain('EQ1611')
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(feProblem)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(feProblem)
+result= analysis.analyze(1)
 
 ## Graphic stuff.
 oh= output_handler.OutputHandler(modelSpace)

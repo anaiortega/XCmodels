@@ -25,7 +25,7 @@ def resultComb(prb,nmbComb):
   return reactions
 
 
-analisis= predefined_solutions.simple_static_linear(mainBeam)
+analysis= predefined_solutions.simple_static_linear(mainBeam)
 
 
 combContainer.dumpCombinations(preprocessor)

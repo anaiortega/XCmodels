@@ -204,12 +204,12 @@ result= analysis.analyze(1)
 #     print e.tag
 #     e.getMaterial().prestress=sigmaPrestrSaddCable
 
-# analisis= predefined_solutions.simple_static_linear(test)
-# result= analisis.analyze(1)
+# analysis= predefined_solutions.simple_static_linear(test)
+# result= analysis.analyze(1)
 
 #Newton Raphson
-# analisis= predefined_solutions.simple_newton_raphson(test)
-# result= analisis.analyze(10)
+# analysis= predefined_solutions.simple_newton_raphson(test)
+# result= analysis.analyze(10)
 
 # Nstep= 10  #  apply load in 10 steps
 # DInc= 1./Nstep 	#  first load increment

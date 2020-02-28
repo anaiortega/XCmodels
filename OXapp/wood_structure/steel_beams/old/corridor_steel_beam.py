@@ -91,8 +91,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(halfSteelBeam)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(halfSteelBeam)
+result= analysis.analyze(1)
 
 # Checking
 midSpan= span1+span2/2

@@ -1,133 +1,233 @@
 
-Brelaz/XC_model_slabs/annex/sectionsReport.py,24
-def plotIntDiag(22,622
+steel_beams/verif_elu.py,23
+def resultComb(13,244
 
-Brelaz/XC_model/annex/sectionsReport.py,24
-def plotIntDiag(26,832
+steel_beams/reactions_elu.py,23
+def resultComb(10,113
 
-OXapp/XC3Dmodel_old/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/XC3Dmodel/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/wall_react/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/model_precast_layout/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/XC3Dmodel_updated_loads/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/ramp/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-OXapp/embedded_beams/prueba/annex/sectionsReport.py,24
-def plotIntDiag(20,599
-
-PI203/annex/sectionsReport.py,24
-def plotIntDiag(26,822
-
-PI205/annex/sectionsReport.py,24
-def plotIntDiag(26,822
-
-PS_Palencia/PS_con_estribo/annex_deck/sectionsReport.py,24
-def plotIntDiag(24,850
-
-PS_Palencia/PS_con_estribo/annex_abutment/sectionsReport.py,24
-def plotIntDiag(24,854
-
-TbeamBridge/annex/sectionsReport.py,24
-def plotIntDiag(27,898
-
-ave_SR/OD_PF_103_17/annex/sectionsReport.py,24
-def plotIntDiag(24,793
-
-ave_SR/PSs/annex/sectionsReport.py,24
-def plotIntDiag(26,843
-
-ave_SR/PS_100_7_recto/annex/sectionsReport.py,24
-def plotIntDiag(22,734
-
-ave_SR/prueba_carga/annex/sectionsReport.py,24
-def plotIntDiag(24,793
-
-ave_SR/PI_PF_OD_104_41/annex/sectionsReport.py,24
-def plotIntDiag(24,796
-
-ave_SR/PS_101_3_estribo2/annex/sectionsReport.py,24
-def plotIntDiag(22,743
-
-ave_SR/PS_101_3_curvo/annex/sectionsReport.py,24
-def plotIntDiag(22,734
-
-ave_SR/PS_101_3_estribo1/annex/sectionsReport.py,24
-def plotIntDiag(22,743
-
-ave_SR/a_rasante/annex/sectionsReport.py,24
-def plotIntDiag(24,778
-
-ave_SR/OD_PF_103_17_arm_transv/annex/sectionsReport.py,24
-def plotIntDiag(24,787
-
-buildingEC2/annex/sectionsReport.py,24
-def plotIntDiag(26,832
-
-calcul_estacade/sectionsReport.py,24
-def plotIntDiag(24,818
+PI205/calculations/calc_load_cases.py,23
+def resultAction(7,98
 
 cracking_trials/Aceff_tests/test01.py,23
-def minCover(221,9460
+def minCover(221,9462
 
-gridtest_export_internal_forces_beam_3d/annex/sectionsReport.py,24
-def plotIntDiag(26,832
+calcul_estacade/load_cases_reactions.py,47
+def resultAction(7,79
+def getReaction(15,326
 
-noiseBarrierCurved/annex/sectionsReport.py,24
-def plotIntDiag(26,832
+calcul_estacade/reactions_elu.py,23
+def resultComb(17,256
 
-noiseBarrier_Aval/annex/sectionsReport.py,24
-def plotIntDiag(26,832
+OXapp/concrete_structure/ramp_RCwalls_rev1/verification.py,99
+def getMaxForces(3,28
+def getMaxForcesOrt(17,425
+def verifShear(31,825
+def verifBending(35,959
 
-railway_bridge/annex/sectionsReport.py,24
-def plotIntDiag(24,793
+OXapp/concrete_structure/ramp_RCwalls_rev1/verification_only_catilever_loaded.py,99
+def getMaxForces(3,28
+def getMaxForcesOrt(17,425
+def verifShear(31,825
+def verifBending(35,959
 
-section_report/test_section_report01.py,190
-class Extrema(109,4651
-  def __init__(110,4674
-  def fromInteractionDiagram(115,4796
-  def __sub__(120,4949
-  def __add__(122,5082
-  def getRatios(124,5215
-  def printRatios(132,5453
+OXapp/concrete_structure/ramp_RCwalls/verification.py,99
+def getMaxForces(3,28
+def getMaxForcesOrt(17,425
+def verifShear(31,825
+def verifBending(35,959
 
-tour_peilz/sectionsReport.py,62
-def plotIntDiag(24,865
-def getSectionInternalForces(36,1383
+OXapp/concrete_structure/ramp_RCwalls/verification_only_catilever_loaded.py,99
+def getMaxForces(3,28
+def getMaxForcesOrt(17,425
+def verifShear(31,825
+def verifBending(35,959
 
-underpassCrissier/annex/sectionsReport.py,24
-def plotIntDiag(26,822
+OXapp/wood_structure/steel_beams/courtyard_facade_steel_beams.py,24
+def defineLoad(85,2396
 
-workingModel/annex/sectionsReport.py,24
-def plotIntDiag(23,796
+OXapp/wood_structure/kurt_jack_trusses_proposal/xc_model.py,51
+def createMesh(111,4109
+def loadOnLines(153,5267
 
-cracking_trials/Aceff_tests/test03_decanto.py,0
+OXapp/wood_structure/trusses/2nd_floor_truss_AB.py,28
+def reportResults(236,8880
+
+PI203/calculations/calc_load_cases.py,23
+def resultAction(7,98
+
+buildingEC2/calculations/calc_load_cases.py,23
+def resultAction(7,98
+
+ps_combe/bearings_elu.py,22
+def resultComb(9,120
+
+TbeamBridge/calculations/calc_load_cases.py,23
+def resultAction(7,98
+
+ps_bole_calculs_statiques/xc_model/calc_reactions.py,21
+def resultComb(8,96
+
+ps_bole_calculs_statiques/xc_model/fe_model.py,29
+def getElementZone(174,6463
+
+underpassCrissier/calculations/calc_load_cases.py,23
+def resultAction(7,98
+
+tensegrity_prisms/statically_balanced/three_bar_tensegrity_prism_experiment2.py,0
+
+tensegrity_prisms/statically_balanced/three_bar_tensegrity_prism_experiment1.py,0
+
+tensegrity_prisms/statically_balanced/three_bar_tensegrity_prism_concrete.py,0
+
+tensegrity_prisms/statically_balanced/three_bar_tensegrity_prism.py,0
+
+test_export_internal_forces_beam_3d/test_export_internal_forces_beam_3d_01.py,0
+
+OXapp/wood_structure/anchor_bolts/xc_model.py,0
+
+OXapp/wood_structure/cantilevers/cantilevers_C2_C5.py,0
+
+OXapp/wood_structure/cantilevers/cantilevers_C7_C8_C9_C10.py,0
+
+OXapp/wood_structure/cantilevers/cantilever_C13.py,0
+
+OXapp/wood_structure/cantilevers/cantilever_C14.py,0
+
+OXapp/wood_structure/cantilevers/cantilevers_C1_C3_C4_C6.py,0
+
+OXapp/wood_structure/headers/facade_headers/2nd_floor_10_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/3rd_floor_10_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/1st_floor_10_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/short_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/1st_floor_07_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/2nd_floor_07_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/facade_headers/3rd_floor_07_feet_facade_headers.py,0
+
+OXapp/wood_structure/headers/lvl_headers_H304_to_H309.py,0
+
+OXapp/wood_structure/headers/lvl_header_H310.py,0
+
+OXapp/wood_structure/headers/3rd_floor_enclosed_balconies_headers.py,0
+
+OXapp/wood_structure/headers/old/lsl_header_3_5.py,0
+
+OXapp/wood_structure/headers/old/lsl_header_6_75.py,0
+
+OXapp/wood_structure/headers/lvl_header_H106.py,0
+
+OXapp/wood_structure/headers/lsl_header_4.py,0
+
+OXapp/wood_structure/headers/lvl_beam_21.py,0
+
+OXapp/wood_structure/stud_wall_design/facade_walls/hem_fir/3rd_floor_facade_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/facade_walls/hem_fir/1st_floor_facade_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/facade_walls/hem_fir/2nd_floor_facade_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/facade_walls/hem_fir/1st_floor_AB_facade_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/facade_walls/hem_fir/3rd_floor_AB_facade_triple_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/old/2nd_floor_AB_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/old/1st_floor_AB_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/old/3rd_floor_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/old/3rd_floor_AB_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/3rd_floor_AB_interior_triple_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/2nd_floor_AB_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/3rd_floor_interior_triple_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/1st_floor_AB_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/2nd_floor_interior_double_plate.py,0
+
+OXapp/wood_structure/stud_wall_design/interior_walls/hem_fir_studs/1st_floor_interior_double_plate.py,0
+
+OXapp/wood_structure/trusses/2nd_floor_truss_AB_cantilever.py,0
+
+OXapp/wood_structure/sheathing/xc_model.py,0
+
+OXapp/wood_structure/sheathing/deprecated_plywood_design/xc_model.py,0
+
+OXapp/wood_structure/sheathing/deprecated_plywood_design/burned_xc_model.py,0
+
+OXapp/wood_structure/sheathing/deprecated_plywood_design/roof_sheating.py,0
+
+OXapp/wood_structure/sheathing/burned_xc_model.py,0
+
+OXapp/wood_structure/sheathing/roof_sheating.py,0
+
+OXapp/wood_structure/steel_beams/ramp_facade_steel_beam.py,0
+
+OXapp/wood_structure/steel_beams/corridor_steel_beam.py,0
+
+OXapp/wood_structure/steel_beams/ramp_cantilever_01.py,0
+
+OXapp/wood_structure/steel_beams/old/north_facade_steel_beams.py,0
+
+OXapp/wood_structure/steel_beams/old/courtyard_facade_steel_beams.py,0
+
+OXapp/wood_structure/steel_beams/old/corridor_steel_beam.py,0
+
+OXapp/wood_structure/steel_beams/old/2nd_floor_steel_beams.py,0
+
+OXapp/wood_structure/steel_beams/old/corridor_steel_beam_old2.py,0
+
+OXapp/wood_structure/steel_beams/ramp_cantilever_02.py,0
+
+OXapp/concrete_structure/built_up_curb/eps_insulation_model.py,0
+
+OXapp/concrete_structure/built_up_curb/eps_insulation_model_3D.py,0
+
+OXapp/concrete_structure/holddown_anchors/holddown_anchor_model.py,0
 
 cracking_trials/Aceff_tests/test02.py,0
 
-cracking_trials/cracking/test_smearedCracking_04.py,0
+cracking_trials/Aceff_tests/test03_decanto.py,0
 
 cracking_trials/cracking/test_smearedCracking_04_concrete01.py,0
 
+cracking_trials/cracking/test_smearedCracking_04.py,0
+
+cracking_trials/cracking/test_smearedCracking_04c.py,0
+
+cracking_trials/cracking/fiber_section/test_fiber_section_shear3d_02.py,0
+
+cracking_trials/cracking/fiber_section/test_shear_01.py,0
+
+cracking_trials/cracking/fiber_section/test_fiber_section_12.py,0
+
+cracking_trials/cracking/test_shear_uls_checking.py,0
+
+cracking_trials/cracking/test_smearedCracking_04_pruebas.py,0
+
+cracking_trials/cracking/test_smearedCracking_04b.py,0
+
 cracking_trials/cracking/others/test_smearedCracking_04.py,0
-
-cracking_trials/cracking/others/test_smearedCracking_05.py,0
-
-cracking_trials/cracking/others/test_smearedCracking_03.py,0
 
 cracking_trials/cracking/others/test_smearedCracking_06.py,0
 
-cracking_trials/cracking/test_smearedCracking_04_pruebas.py,0
+cracking_trials/cracking/others/test_smearedCracking_01.py,0
+
+cracking_trials/cracking/others/test_smearedCracking_05.py,0
+
+cracking_trials/cracking/others/test_smearedCracking_02.py,0
+
+cracking_trials/cracking/others/test_smearedCracking_03.py,0
+
+cracking_trials/cracking/modelo_EC2/calc_fis.py,0
 
 cracking_trials/cracking/modelo_EC2/test_cracking_modelo_EC2.py,0
 
@@ -137,8 +237,18 @@ cracking_trials/cracking/modelo_EC2/test05_pruebas.py,0
 
 cracking_trials/cracking/modelo_EC2/cracking_modelo_EC2.py,0
 
-cracking_trials/cracking/test_smearedCracking_04c.py,0
-
-cracking_trials/cracking/test_smearedCracking_04b.py,0
+cracking_trials/cracking/test/test_cracking_sls_straight_checking.py,0
 
 cracking_trials/section_borrar/fiber_section_prop.py,0
+
+prestressed_beam/prestr_beam.py,0
+
+tests_pile/test_pile_endBearing_clay.py,0
+
+tests_pile/test_pile_friction_sandy.py,0
+
+tests_pile/test_pile_panioleta.py,0
+
+tests_pile/test_pile_endBearing_sandy.py,0
+
+steel_beams/verif_elu_step_by_step.py,0

@@ -191,8 +191,8 @@ for e in saddSet.elements:
     print e.tag
     e.getMaterial().prestress=sigmaPrestrSaddCable
 
-analisis= predefined_solutions.simple_static_linear(test)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(test)
+result= analysis.analyze(1)
 
 nodes.calculateNodalReactions(True,1e-6)
 
@@ -211,8 +211,8 @@ lcs.displayDispRot(itemToDisp='uX')
 quit()
 
 # #Newton Raphson
-# analisis= predefined_solutions.simple_newton_raphson(test)
-# result= analisis.analyze(10)
+# analysis= predefined_solutions.simple_newton_raphson(test)
+# result= analysis.analyze(10)
 
 print n1.getReaction
 print n4.getDisp

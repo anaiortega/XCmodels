@@ -255,8 +255,8 @@ preprocessor.getLoadHandler.addToDomain('EQ1611')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(FEcase)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(FEcase)
+result= analysis.analyze(1)
 
 
 

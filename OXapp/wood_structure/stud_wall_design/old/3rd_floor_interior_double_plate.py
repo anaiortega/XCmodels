@@ -144,8 +144,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain("totalLoad")
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(sheathingBeam)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(sheathingBeam)
+result= analysis.analyze(1)
 
 # Checking
 

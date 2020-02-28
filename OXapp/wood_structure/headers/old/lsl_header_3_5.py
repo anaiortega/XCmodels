@@ -79,8 +79,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(lslHeader)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(lslHeader)
+result= analysis.analyze(1)
 
 # Checking
 nodes.calculateNodalReactions(True,1e-7)

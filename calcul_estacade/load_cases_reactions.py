@@ -8,8 +8,8 @@ def resultAction(nmbAction):
   preprocessor.resetLoadCase()
   loadCases.addToDomain(nmbAction)
   #Solución
-  analisis= predefined_solutions.simple_static_linear(gilamontDock)
-  result= analisis.analyze(1)
+  analysis= predefined_solutions.simple_static_linear(gilamontDock)
+  result= analysis.analyze(1)
   loadCases.removeFromDomain(nmbAction)
 
 def getReaction(preprocessor,nmbAction,nodeSet):
