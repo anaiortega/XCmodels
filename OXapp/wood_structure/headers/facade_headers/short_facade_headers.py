@@ -92,7 +92,7 @@ R1= p1.getNode().getReaction[1]
 Fc_perp= header.material.Fc_perp # Perpendicular to grain compression stress.
 Fc_studs= 800*psiToPa # Parallel to grain compression stress.
 bearingNecLength= R0/min(Fc_perp,Fc_studs)/header.b
-numberOfJakeStuds= bearingNecLength/(2*inchToMeter)
+numberOfJackStuds= bearingNecLength/(2*inchToMeter)
 
 print('*****',xcProblem.title,'******')
 print('Uniform load: ', 2.0*Vmax/headerSpan/1e3, ' kN/m')
@@ -116,5 +116,5 @@ print('dY= ',dMidSpan*1e3,' mm; ratio= L/', 1.0/ratio1)
 print('R0= ', R0/1e3, ' kN')
 print('R1= ', R1/1e3, ' kN')
 print('bearing lenght= ', bearingNecLength, ' m')
-print('number of jake studs= ', numberOfJakeStuds)
+print('number of Jack studs= ', numberOfJackStuds)
 
