@@ -24,7 +24,7 @@ inchToMeter= 2.54/100.0
 
 # Geometry
 wallHeight= 11*footToMeter-22*inchToMeter
-studSpacing= 16.0*inchToMeter
+studSpacing= 0.5 # meter
 # Materials
 # Spruce-pine-fir No. 2 
 wood= dimensional_lumber.SprucePineFirWood(grade= 'stud')
@@ -37,20 +37,21 @@ windStudPressure= windWallPressure*studSpacing # N/m
 
 print('wind load:', windStudPressure/1e3, ' kN/m')
 
-title= '1st floor facade stud.'
+title= '1st floor interior stud.'
 # Actions
 ## Reduction in uniform live loads.
-AT= 3*10.0*5.0 # Tributary area
+AT= 3*6.0*12.0 # Tributary area
 KLL= 2 # Live load element factor (ASCE-7 Table 4-2)
 liveLoadReductionFactor= (0.25+4.57/math.sqrt(KLL*AT)) # ASCE-7 Eq. 4.7-1 (SI)
 liveLoadReductionFactor= max(0.4,liveLoadReductionFactor) # Two or more floors
+liveLoadReductionFactor= 1 # Not used
 print('Live load reduction factor: ', liveLoadReductionFactor)
 
-## Load definition (values from truss_AB_reactions.ods)
-deadLoad= xc.Vector([0.0,15.25e3]) # kN/m
-liveLoad= liveLoadReductionFactor*xc.Vector([0.0,26.17e3]) # kN/m
-snowLoad= xc.Vector([0.0,11.28e3]) # kN/m
-windLoad= xc.Vector([windStudPressure,-7.13e3]) # kN/m
+## Load definition (values from truss_CD_reactions.ods)
+deadLoad= xc.Vector([0.0,6.19e3]) # N/m
+liveLoad= liveLoadReductionFactor*xc.Vector([0.0,8.20e3]) # N/m
+snowLoad= xc.Vector([0.0,2.53e3]) # N/m
+windLoad= xc.Vector([windStudPressure,-1.60e3]) # N/m
 
 studObj= plates_model.Stud(title, studSection, studSpacing, wallHeight);
 studObj.printHeader()
