@@ -5,8 +5,8 @@ import dxfgrabber
 from scipy.spatial.distance import cdist
 import numpy as np
 import re
-from import_export import BlockTopologyEntities as bte
-from import_export import NeutralMeshDescription as nmd
+from import_export import block_topology_entities as bte
+from import_export import neutral_mesh_description as nmd
 
 
 dxf= dxfgrabber.readfile("3d_estacade_rev01.dxf")
