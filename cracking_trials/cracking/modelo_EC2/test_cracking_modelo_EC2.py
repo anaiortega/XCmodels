@@ -161,8 +161,8 @@ lp0.newNodalLoad(2,pointLoad)    #applies the point load on node 2
 casos.addToDomain("0")           #reads load pattern "0" and adds it to the domain
 
 # Solve
-analisis= predefined_solutions.simple_static_modified_newton(problem)
-analOk= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_modified_newton(problem)
+analOk= analysis.analyze(1)
 
 #printing results
 nodes= preprocessor.getNodeHandler

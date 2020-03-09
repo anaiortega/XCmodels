@@ -88,8 +88,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(prb)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(prb)
+result= analysis.analyze(1)
 
 # Checking
 print('*****',prb.title,'******')

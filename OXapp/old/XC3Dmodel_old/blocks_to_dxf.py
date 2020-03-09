@@ -1,5 +1,5 @@
 
-from import_export import BlockTopologyEntities as bte
+from import_export import block_topology_entities as bte
 
 execfile('model_gen.py') #FE model generation
 

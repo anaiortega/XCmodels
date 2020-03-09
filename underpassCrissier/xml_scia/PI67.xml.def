@@ -392,7 +392,7 @@
         </def_table>
     </def_container>
     <def_container clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" progid="DataAddLoad.EP_SurfaceForceFree.1">
-        <def_table clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="6b2f0cde-aecb-41d9-80e0-9570f86deee3" name="XML\default" progid="DataAddLoad.EP_SurfaceForceFree.1" size="12" type="vertical">
+        <def_table clsid="{3E5FFA16-D1A4-4589-AD5A-4A0FC555E8B8}" id="cf227220-3719-4116-9abc-40f958725d87" name="XML\default" progid="DataAddLoad.EP_SurfaceForceFree.1" size="12" type="vertical">
             <def_property id="{AACF96D6-D986-421C-9FF2-D0B696A6B1F6}" name="Load case" type="ref" x="0">
                 <def_ref id="{0908D21F-481F-11D4-AB84-00C06C452330}" progid="DataSetScia.EP_LoadCase.1" />
             </def_property>

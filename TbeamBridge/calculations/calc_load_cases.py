@@ -10,8 +10,8 @@ def resultAction(model,nmbAction):
   preprocessor.resetLoadCase()
   loadCases.addToDomain(nmbAction)
   #Solución
-  analisis= predefined_solutions.simple_static_linear(model.getFEProblem())
-  result= analisis.analyze(1)
+  analysis= predefined_solutions.simple_static_linear(model.getFEProblem())
+  result= analysis.analyze(1)
   loadCases.removeFromDomain(nmbAction)
 
 #List of load ids.

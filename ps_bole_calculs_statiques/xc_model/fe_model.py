@@ -273,8 +273,8 @@ combContainer.ULS.perm.add('AT202','1.35*GselfWeight+1.35*GdeadLoad+1.0*truckLiv
 # Solution
 
 # # Linear static analysis.
-# analisis= predefined_solutions.simple_static_linear(deck)
-# result= analisis.analyze(1)
+# analysis= predefined_solutions.simple_static_linear(deck)
+# result= analysis.analyze(1)
 
 # #Non linear static analysis
 # solution= predefined_solutions.SolutionProcedure()

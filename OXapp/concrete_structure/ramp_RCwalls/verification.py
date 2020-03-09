@@ -38,8 +38,8 @@ def verifBending(Mmax,fy,Wz):
 
 from solution import predefined_solutions
 modelSpace.addNewLoadCaseToDomain('ULS02', '1.2*Dead_LC+1.6*Live_LC+0.5*Snow_LC')
-analisis= predefined_solutions.simple_static_linear(FEcase)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(FEcase)
+result= analysis.analyze(1)
 nodes.calculateNodalReactions(True,1e-7)
 #
 fy=strSteel.fy

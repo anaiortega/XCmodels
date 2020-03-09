@@ -3,13 +3,13 @@ from __future__ import division
 
 execfile("model_data.py")
 
-from import_export.sciaXML.scia_loads import LoadContainer as lc
-from import_export.sciaXML import sXMLMesh as sxml
-from import_export.sciaXML import sXMLBlockTopology as sxmlBlocks
-from import_export import MeshEntities as me
-from import_export import BlockTopologyEntities as bte
-from import_export import NeutralMeshDescription as nmd
-from import_export import NeutralLoadDescription as nld
+from import_export.sciaXML.scia_loads import load_container as lc
+from import_export.sciaXML import sXML_mesh as sxml
+from import_export.sciaXML import sXML_block_topology as sxmlBlocks
+from import_export import mesh_entities as me
+from import_export import block_topology_entities as bte
+from import_export import neutral_mesh_description as nmd
+from import_export import neutral_mesh_description as nld
 
 preprocessor= FEcase.getPreprocessor
 total= preprocessor.getSets.getSet("total")

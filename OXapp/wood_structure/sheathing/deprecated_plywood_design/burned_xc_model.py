@@ -106,8 +106,8 @@ preprocessor.getLoadHandler.addToDomain("totalLoad")
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(sheathingBeam)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(sheathingBeam)
+result= analysis.analyze(1)
 
 # Bending and shear strength (5-ply)
 CD= AWCNDS_materials.getLoadDurationFactor(0.5/365.25/24)

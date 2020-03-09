@@ -50,7 +50,7 @@ print('Live load reduction factor: ', liveLoadReductionFactor)
 deadLoad= xc.Vector([0.0,15.25e3]) # kN/m
 liveLoad= liveLoadReductionFactor*xc.Vector([0.0,26.17e3]) # kN/m
 snowLoad= xc.Vector([0.0,11.28e3]) # kN/m
-windLoad= xc.Vector([windStudPressure,-7.13]) # kN/m
+windLoad= xc.Vector([windStudPressure,-7.13e3]) # kN/m
 
 studObj= plates_model.Stud(title, studSection, studSpacing, wallHeight);
 studObj.printHeader()

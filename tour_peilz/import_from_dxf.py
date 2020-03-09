@@ -3,9 +3,9 @@ from __future__ import division
 import math
 from scipy.spatial.distance import cdist
 import numpy as np
-from import_export import NeutralMeshDescription as nmd
 from miscUtils import log_messages as lmsg
-from import_export import DxfReader
+from import_export import neutral_mesh_description as nmd
+from miscUtils import log_messages as lmsg
 import re
 
 layerNamesToImport= ['floor.*','middle.*','bulkhead.*','roof.*','parapet.*','side.*']
@@ -13,8 +13,8 @@ layerNamesToImport= ['floor.*','middle.*','bulkhead.*','roof.*','parapet.*','sid
 def getRelativeCoo(pt):
   return [pt[0],pt[1],pt[2]] #No modification.
 
-dxfImport= DxfReader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False)
-#dxfImport= DxfReader.DXFImport("rr.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
+dxfImport= dxf_reader.DXFImport("rampe_quai_2.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1,importLines= False)
+#dxfImport= dxf_reader.DXFImport("rr.dxf",layerNamesToImport,getRelativeCoo, threshold= 0.1)
 
 print dxfImport.layersToImport
 '''

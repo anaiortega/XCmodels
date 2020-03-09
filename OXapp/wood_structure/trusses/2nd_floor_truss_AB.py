@@ -12,6 +12,8 @@ from materials.sections import section_properties
 from solution import predefined_solutions
 from actions import load_cases
 from actions import combinations as combs
+from postprocess import output_handler
+from postprocess.xcVtk import vtk_graphic_base
 
 inchToMeter= 2.54/100.0
 feetToMeter= 0.3048
@@ -193,9 +195,43 @@ combContainer.SLS.qp.add('EQ1615', '0.6*selfWeight+0.6*deadLoad+0.6*windLoad')
 #### Equation 16-16 -> doesn't apply
 #### LIVE load only.
 combContainer.SLS.qp.add('LIVE', '1.0*liveLoad')
+combContainer.dumpCombinations(preprocessor)
 
 xcTotalSet= preprocessor.getSets.getSet("total")
 
+preprocessor.getLoadHandler.addToDomain('EQ1611')
+# Solution
+# Linear static analysis.
+analysis= predefined_solutions.simple_static_linear(feProblem)
+result= analysis.analyze(1)
+
+## Graphic stuff.
+oh= output_handler.OutputHandler(modelSpace)
+
+oh.outputStyle.cameraParameters= vtk_graphic_base.CameraParameters('Custom')
+oh.outputStyle.cameraParameters.viewUpVc= [0,0,1]
+oh.outputStyle.cameraParameters.posCVc= [0,-100,0]
+
+#oh.displayBlocks()
+#oh.displayLocalAxes(setToDisplay= xcTotalSet)
+oh.displayLocalAxes(setToDisplay= xcTotalSet)
+
+#oh.displayFEMesh()
+oh.displayLoads(setToDisplay= xcTotalSet)
+
+#oh.displayDispRot(itemToDisp='uY')
+oh.displayDispRot(itemToDisp='uZ')
+# oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= xcTotalSet)
+# oh.displayReactions(setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+# oh.displayIntForcDiag(itemToDisp= 'Mz', setToDisplay= xcTotalSet)
+oh.displayReactions(setToDisplay= xcTotalSet)
+#oh.displayIntForcDiag(itemToDisp= 'Vy', setToDisplay= xcTotalSet)
+
+
 def reportResults(combName):
     writeResults(combName,'2nd floor',[trussA,trussB])
-    

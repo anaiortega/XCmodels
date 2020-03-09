@@ -46,7 +46,6 @@ l1.setElemSize(centerSpacing)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
@@ -79,8 +78,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(lslHeader)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(lslHeader)
+result= analysis.analyze(1)
 
 # Checking
 nodes.calculateNodalReactions(True,1e-7)

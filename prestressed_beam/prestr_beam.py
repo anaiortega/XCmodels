@@ -217,8 +217,8 @@ casos.addToDomain('0')
 
 # Phase 1: prestressing of tendon 1
 # Solution procedure
-analisis= predefined_solutions.simple_static_linear(FEcase)
-analOk= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(FEcase)
+analOk= analysis.analyze(1)
 
 tendon1Set.aliveElements()
 mesh.meltAliveNodes("block1") # Reactivate inactive nodes.
@@ -226,7 +226,7 @@ loadVector=xc.Vector([0,0,-1])
 for e in beamSet.elements:
     e.vector3dUniformLoadGlobal(loadVector)
 
-analOk= analisis.analyze(1)
+analOk= analysis.analyze(1)
 
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 lcs=QGrph.LoadCaseResults(FEcase)
@@ -241,7 +241,7 @@ lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,sc
 loadVector=xc.Vector([0,0,-Wsw])
 for e in beamSet.elements:
     e.vector3dUniformLoadGlobal(loadVector)
-analOk= analisis.analyze(1)
+analOk= analysis.analyze(1)
 
 
 
@@ -254,7 +254,7 @@ lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=tendon1Set,fConvUnits=1e-3,sc
 # Phase 3: revive tendon 2
 tendon2Set.aliveElements()
 mesh.meltAliveNodes("block2") # Reactivate inactive nodes.
-analOk= analisis.analyze(1)
+analOk= analysis.analyze(1)
 
 lcs.displayDispRot(itemToDisp='uZ',setToDisplay=beamSet,fConvUnits=1e3,unitDescription='beam [mm]. Phase 3: prestressing of tendon 2',vtk_graphic_base.CameraParameters("YNeg",1),fileName='twoTendonsUz03.png',defFScale=2e2)
 

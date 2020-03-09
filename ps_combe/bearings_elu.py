@@ -32,7 +32,7 @@ def resultComb(prb,nmbComb):
 
 
 
-analisis= predefined_solutions.simple_static_linear(model)
+analysis= predefined_solutions.simple_static_linear(model)
 
 
 combContainer.dumpCombinations(preprocessor)

@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+!# -*- coding: utf-8 -*-
 
 
 execfile('model_data.py')
@@ -13,7 +13,7 @@ for key in lineDict:
 for l in ec3beams:
   l.installULSControlRecorder("element_prop_recorder",crossSectionClass)
 
-analisis= predefined_solutions.simple_static_linear(mainBeam)
+analysis= predefined_solutions.simple_static_linear(mainBeam)
 
 
 combContainer.dumpCombinations(preprocessor)

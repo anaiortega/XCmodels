@@ -1,45 +1,0 @@
-
-tour_peilz/import_from_dxf.py,148
-def getRelativeCoo(13,360
-def getAverageOrientationFaces(41,1291
-def getAngle(55,1864
-def checkFacesOrientation(59,2050
-def printFaces(92,3536
-
-workingModel/calculations/verif_fatigueULS.py,0
-
-workingModel/display/display_max_ground_pressures.py,0
-
-tour_peilz/loadCombinations/load_combinations.py,0
-
-cracking_trials/cracking/fiber_section/test_shear_01.py,0
-
-cracking_trials/cracking/fiber_section/test_fiber_section_shear3d_02.py,0
-
-cracking_trials/cracking/fiber_section/test_fiber_section_12.py,0
-
-cracking_trials/cracking/others/test_smearedCracking_04.py,0
-
-cracking_trials/cracking/others/test_smearedCracking_01.py,0
-
-cracking_trials/cracking/others/test_smearedCracking_02.py,0
-
-cracking_trials/cracking/modelo_EC2/test05_pruebas.py,0
-
-cracking_trials/cracking/test_smearedCracking_04c.py,0
-
-cracking_trials/section_borrar/fiber_section_prop.py,0
-
-cracking_trials/modalAnalysis/test_analisis_modal_01.py,0
-
-TbeamBridge/display/display_RstSimpleLoadCase.py,0
-
-OXapp/concrete_structure/ramp_RCwalls/calculations/verif_fatigueULS.py,0
-
-OXapp/concrete_structure/ramp_RCwalls/display/display_max_ground_pressures.py,0
-
-OXapp/concrete_structure/ramp_RCwalls_rev1/calculations/verif_fatigueULS.py,0
-
-OXapp/concrete_structure/ramp_RCwalls_rev1/display/display_max_ground_pressures.py,0
-
-OXapp/concrete_structure/ramp_RCwalls_foundation/details/1st_floor/corbel_design.py,0

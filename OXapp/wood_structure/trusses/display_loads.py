@@ -2,12 +2,14 @@
 
 from postprocess.reports import graphical_reports as gr
 from postprocess.xcVtk import vtk_graphic_base
+import sys
 
+fileName= sys.argv[1]
 #execfile('./xc_model.py')
 #execfile('./trusses_11_56.py')
 #execfile('./trusses_10_15.py')
 #execfile('./roof_truss_AB.py')
-execfile('./lvl_cantilever.py')
+execfile(fileName)
 
 #available components: 'axialComponent', 'transComponent', 'transYComponent',
 #                      'transZComponent'

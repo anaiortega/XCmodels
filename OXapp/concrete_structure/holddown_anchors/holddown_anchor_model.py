@@ -185,8 +185,8 @@ lPatterns.addToDomain(lp0.name)
 #oh.displayLoads()
 
 # Solution
-analisis= predefined_solutions.simple_static_linear(feProblem)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(feProblem)
+result= analysis.analyze(1)
 
 # test= preprocessor.getSets.defSet('test')
 # for e in uGrid.getElements:

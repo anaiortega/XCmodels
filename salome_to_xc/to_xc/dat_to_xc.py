@@ -6,10 +6,10 @@ import xc_base
 import geom
 import xc
 
-from import_export import NeutralMeshDescription
+from import_export import neutral_mesh_description
 
 
-xcImportExportData= NeutralMeshDescription.XCImportExportData()
+xcImportExportData= neutral_mesh_description.XCImportExportData()
 xcImportExportData.mainDATFile= "MeshPGE.dat"
 #xcImportExportData.groupDATFiles= ["AppuiAigleCoteRive.dat", "AppuiAigleCoteTerr.dat", "AppuiAigleLatIntCT.dat", "AppuiAigleLatInt.dat", "AppuiLeysinCoteRive.dat", "AppuiLeysinCT.dat", "AppuiLeysinLatExtCA.dat", "AppuiLeysinLatExtCT.dat", "AppuiLeysinLatInt.dat", "Arc0.dat", "ArcPileAigle.dat", "ArcPileLeysin.dat", "Dalle.dat", "MurAigle.dat", "MurAigleLat.dat", "MurLeysin.dat", "Parapet.dat", "PileAigleCoteTerr.dat", "PileAigleLatIntCT.dat", "PileAigleLatInt.dat", "PileiLeysinLatInt.dat", "PileLeysinCoteTerr.dat", "PileLeysinLatExtCA.dat", "PileLeysinLatExtCT.dat", "PiloAigleCoteRive.dat", "PorteAFaux.dat", "SemelleAigle.dat", "SemelleLeysin.dat", "TympanExt.dat", "TympanInt.dat", "ArcAigle.dat", "ArcLeysin.dat", "DalleAigle.dat", "DalleLeysin.dat", "PileAigleBottom.dat", "PileAigleTop.dat", "PileLeysinBottom.dat", "PileLeysinTop.dat", "PileLeysinCoteRive.dat"]
 xcImportExportData.groupDATFiles= ["PileLeysinCoteRive.dat"]

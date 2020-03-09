@@ -27,7 +27,7 @@ def resultComb(prb,nmbComb):
 for l in ec3beams:
   l.installULSControlRecorder("element_prop_recorder",crossSectionClass)
 
-analisis= predefined_solutions.simple_static_linear(mainBeam)
+analysis= predefined_solutions.simple_static_linear(mainBeam)
 
 
 combContainer.dumpCombinations(preprocessor)

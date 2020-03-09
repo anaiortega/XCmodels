@@ -83,8 +83,8 @@ preprocessor.getLoadHandler.getLoadPatterns.addToDomain('load')
 
 # Solution
 # Linear static analysis.
-analisis= predefined_solutions.simple_static_linear(lvlBeam)
-result= analisis.analyze(1)
+analysis= predefined_solutions.simple_static_linear(lvlBeam)
+result= analysis.analyze(1)
 
 # Checking
 print('*****',lvlBeam.title,'******')
