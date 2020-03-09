@@ -4,7 +4,7 @@ import math
 from scipy.spatial.distance import cdist
 import numpy as np
 from import_export import NeutralMeshDescription as nmd
-from miscUtils import LogMessages as lmsg
+from miscUtils import log_messages as lmsg
 from import_export import DxfReader
 import re
 

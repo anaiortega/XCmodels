@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from materials.sia262 import SIA262_limit_state_checking
-from miscUtils import LogMessages as lmsg
+from miscUtils import log_messages as lmsg
 
 execfile('../env_config.py')
 lsd.LimitStateData.envConfig= cfg
