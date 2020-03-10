@@ -3,9 +3,9 @@ from __future__ import division
 import math
 from scipy.spatial.distance import cdist
 import numpy as np
-from miscUtils import log_messages as lmsg
+from misc_utils import log_messages as lmsg
 from import_export import neutral_mesh_description as nmd
-from miscUtils import log_messages as lmsg
+from misc_utils import log_messages as lmsg
 import re
 
 layerNamesToImport= ['floor.*','middle.*','bulkhead.*','roof.*','parapet.*','side.*']

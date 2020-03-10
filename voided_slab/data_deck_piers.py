@@ -3,7 +3,7 @@ from __future__ import division
 
 import math
 import xc_base
-from miscUtils import units_utils as uu
+from misc_utils import units_utils as uu
 from materials.ehe import EHE_materials
 
  # Geometry

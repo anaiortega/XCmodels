@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
-from miscUtils import units_utils as uu
+from misc_utils import units_utils as uu
 from postprocess.config import default_config
 
 import math

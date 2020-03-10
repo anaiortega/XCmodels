@@ -4,7 +4,7 @@ import xc_base
 import loadCombinations
 from loadCombinationUtils import sia260
 from loadCombinationUtils import utils
-from miscUtils import log_messages as lmsg
+from misc_utils import log_messages as lmsg
 
 lcg= sia260.controlCombGenerator
 

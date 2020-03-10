@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # -*- coding: utf-8 -*-
-from miscUtils import log_messages as lmsg
+from misc_utils import log_messages as lmsg
 
 lmsg.warning('Implementation pending. Do not use.')
 quit()
