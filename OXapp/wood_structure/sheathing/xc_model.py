@@ -8,6 +8,7 @@ import xc
 from model import predefined_spaces
 from solution import predefined_solutions
 from materials.awc_nds import AWCNDS_materials
+from materials.awc_nds import structural_panels
 from materials import typical_materials
 
 # Loads
@@ -22,9 +23,9 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials
-#structuralPanel= AWCNDS_materials.OSBPanels['5/8']
-structuralPanel= AWCNDS_materials.OSBPanels['19/32']
-#structuralPanel= AWCNDS_materials.OSBPanels['23/32']
+#structuralPanel= structural_panels.OSBPanels['5/8']
+structuralPanel= structural_panels.OSBPanels['19/32']
+#structuralPanel= structural_panels.OSBPanels['23/32']
 section= structuralPanel.defElasticShearSection2d(preprocessor, angle= 0.0)
 thickness= structuralPanel.h
 
