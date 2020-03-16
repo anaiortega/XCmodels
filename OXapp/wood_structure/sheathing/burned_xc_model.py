@@ -47,8 +47,6 @@ supSet.getLines.append(l1)
 supSet.getLines.append(l2)
 supSet.getLines.append(l3)
 
-
-
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 

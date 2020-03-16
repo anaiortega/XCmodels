@@ -8,11 +8,14 @@ import xc
 from model import predefined_spaces
 from solution import predefined_solutions
 from materials.awc_nds import AWCNDS_materials
+from materials.awc_nds import structural_panels
 from materials import typical_materials
 
 # Loads
 from actions import load_cases as lcm
 from actions import combinations as combs
+
+inch2meter= 0.0254
 
 # Problem type
 sheathingBeam= xc.FEProblem()
@@ -22,16 +25,13 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials
-# Mechanical properties taken from:
-# http://www.pfsteco.com/techtips/pdf/tt_plywooddesigncapacities
-structuralPanelGeom= AWCNDS_materials.PlywoodPanels['3/4']
-plywood= typical_materials.MaterialData(name='Douglas-Fri Plywood',E=4.2e9,nu=0.2,rho=500)
-section= structuralPanelGeom.defElasticShearSection2d(preprocessor,plywood)
+structuralPanel= structural_panels.OSBPanels['3/4']
+section= structuralPanel.defElasticShearSection2d(preprocessor, angle= 0.0)
+thickness= structuralPanel.h
 
-thickness= structuralPanelGeom.h
-
-spanBendingStiffness= (32-1.5+0.25)*0.0254
-spanInternalForces= 32*0.0254
+joistSpacing= 24.0*inch2meter
+spanBendingStiffness= joistSpacing+(-1.5+0.25)*inch2meter
+spanInternalForces= joistSpacing
 span= spanBendingStiffness
 #span= spanInternalForces
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
@@ -49,8 +49,6 @@ supSet= preprocessor.getSets.defSet("sup")
 supSet.getLines.append(l1)
 supSet.getLines.append(l2)
 supSet.getLines.append(l3)
-
-
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
@@ -72,11 +70,11 @@ for p in [pt1,pt2,pt3,pt4]:
     modelSpace.fixNode00F(n.tag)
 
 # Actions
-S= 42*47.88026 # Snow load N/m2
+L= 100*47.88026 # Live load N/m2
 D= 15*47.88026 # Dead load N/m2
-W= D+S
+W= D+L
 loadCaseManager= lcm.LoadCaseManager(preprocessor)
-loadCaseNames= ['deadLoad','snowLoad','totalLoad']
+loadCaseNames= ['deadLoad','liveLoad','totalLoad']
 loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 # Dead load.
@@ -84,10 +82,10 @@ cLC= loadCaseManager.setCurrentLoadCase('deadLoad')
 for e in supSet.elements:
     e.vector2dUniformLoadGlobal(xc.Vector([0.0,-D]))
 
-# Snow load.
-cLC= loadCaseManager.setCurrentLoadCase('snowLoad')
+# Live load.
+cLC= loadCaseManager.setCurrentLoadCase('liveLoad')
 for e in supSet.elements:
-    e.vector2dUniformLoadGlobal(xc.Vector([0.0,-S]))
+    e.vector2dUniformLoadGlobal(xc.Vector([0.0,-L]))
 
 # Total load.
 cLC= loadCaseManager.setCurrentLoadCase('totalLoad')
@@ -116,28 +114,31 @@ print('span= ', spanBendingStiffness, ' m')
 print('thickness= ', thickness*1e3, ' mm')
 print('uYMax= ', uYMax*1e3, ' mm (L/'+str(r)+')')
 
-DeltaSL= 12*S*span**4/1743.0/section.sectionProperties.EI()
-r= span/DeltaSL
-print('DeltaSL= ', DeltaSL*1e3, ' mm (L/'+str(r)+')')
+EI= section.sectionProperties.EI()
+print('EI= ', EI)
+print('span= ', span, ' m (', span/inch2meter, 'in)')
+#DeltaLL= 12*L*span**4/1743.0/EI/3.0 #Three layers
+DeltaLL= 12*L*span**4/1743.0/EI/2.0 #Two layers
+r= span/DeltaLL
+print('DeltaLL= ', DeltaLL*1e3, ' mm (L/'+str(r)+')')
 
 # Bending and shear strength (5-ply)
-CD= AWCNDS_materials.getLoadDurationFactor(0.5/365.25/24)
+CD= 1.0 # Duration factor.
 print("Cd= ",CD)
-Ft= 3640*4.44822/0.3048/section.sectionProperties.A
-Fb= CD*444.0/structuralPanelGeom.Wzel()*4.44822*0.0254/0.3048
-Fv= CD*215*4.44822/0.3048/structuralPanelGeom.h
+Fb= CD*structuralPanel.getFb(angle= 0.0)
+Fv= CD*structuralPanel.getFv()
 
 sgMax= -1e6
 tauMax= -1e6
 for e in supSet.elements:
     e.getResistingForce()
     m1= e.getM1
-    sg1= abs(m1/section.sectionProperties.I*structuralPanelGeom.h/2)
+    sg1= abs(m1/section.sectionProperties.I*structuralPanel.h/2)
     tau1= abs(e.getV1/section.sectionProperties.A)
     sgMax= max(sgMax,sg1)
     tauMax= max(tauMax,tau1)
     m2= e.getM2
-    sg2= abs(m2/section.sectionProperties.I*structuralPanelGeom.h/2)
+    sg2= abs(m2/section.sectionProperties.I*structuralPanel.h/2)
     tau2= abs(e.getV2/section.sectionProperties.A)
     sgMax= max(sgMax,sg2)
     tauMax= max(tauMax,tau2)

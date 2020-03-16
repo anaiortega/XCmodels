@@ -175,7 +175,7 @@ DeltaLL= 12*L*span**4/1743.0/EI/2.0 #Two layers
 r= span/DeltaLL
 print('DeltaLL= ', DeltaLL*1e3, ' mm (L/'+str(r)+')')
 
-# Bending and shear strength (5-ply)
+# Bending and shear strength
 CD= AWCNDS_materials.getLoadDurationFactor(0.5/365.25/24)
 print("Cd= ",CD)
 Fb= CD*structuralPanel.getFb(angle= 0.0)
