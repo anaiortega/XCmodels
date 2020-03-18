@@ -30,13 +30,16 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
-headerSection= structural_panels.LSL155HeaderSections['3.5x11-7/8']
+headerSection= structural_panels.LSL155HeaderSections['1.75x11-7/8']
+#headerSection= structural_panels.LSL155HeaderSections['3.5x11-7/8']
+#headerSection= structural_panels.LSL155HeaderSections['3.5x9-1/4']
 xcSection= headerSection.defElasticShearSection2d(preprocessor)
 
 # Header geometry
 headerSpan= 7.5*footToMeter
 header= AWCNDS_materials.BeamMember(unbracedLength= headerSpan, section= headerSection)
 CL= header.getBeamStabilityFactor(numberOfConcentratedLoads= 0, lateralSupport= False, cantilever= False)
+CL= 1.0 # See dropped header design guide from the Wood I-Joist Manufacturers Association.
 
 ## Key points
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
