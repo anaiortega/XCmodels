@@ -23,9 +23,9 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials
-#structuralPanel= structural_panels.OSBPanels['5/8']
-structuralPanel= structural_panels.OSBPanels['19/32']
-#structuralPanel= structural_panels.OSBPanels['23/32']
+#structuralPanel= structural_panels.OSBPanelSections['5/8']
+structuralPanel= structural_panels.OSBPanelSections['19/32']
+#structuralPanel= structural_panels.OSBPanelSections['23/32']
 section= structuralPanel.defElasticShearSection2d(preprocessor, angle= 0.0)
 thickness= structuralPanel.h
 
