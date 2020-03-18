@@ -28,7 +28,7 @@ studSpacing= 16.0*inchToMeter
 # Materials
 # Spruce-pine-fir No. 2 
 wood= dimensional_lumber.SprucePineFirWood(grade= 'stud')
-studSection= mat.DimensionLumber(name= '2x6',b= 1.5*inchToMeter, h= 5.5*inchToMeter, woodMaterial= wood)
+studSection= mat.DimensionLumberSection(name= '2x6',b= 1.5*inchToMeter, h= 5.5*inchToMeter, woodMaterial= wood)
 
 #Loads
 ## Wind loads

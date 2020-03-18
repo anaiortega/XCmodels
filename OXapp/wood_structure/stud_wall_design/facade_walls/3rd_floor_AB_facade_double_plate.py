@@ -21,7 +21,7 @@ trussSpacing= 24*inchToMeter
 wood= dimensional_lumber.SprucePineFirWood(grade= 'no_2')
 #wood= dimensional_lumber.SprucePineFirWood(grade= 'stud')
 xc_material= wood.defXCMaterial()
-plateSection= mat.DimensionLumber(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToMeter, woodMaterial= wood)
+plateSection= mat.DimensionLumberSection(name= '2x6',b= 5.5*inchToMeter, h= 1.5*inchToMeter, woodMaterial= wood)
 
 
 # # Reduction in uniform live loads.

@@ -166,7 +166,7 @@ def checkStuds(stud, N, M, loadDurationFactor, repetitiveMemberFactor):
     print('axial load:', N/1e3, ' kN', N/1e3*kNToPound, ' lb')
     print('bending moment:', M/1e3, ' kN m', M/1e3*kNmToPoundft, ' lb ft')
     print ('compression stress: ', fc/1e6, ' MPa', fc/mat.psi2Pa, ' psi')
-    print('unbraced lenght x:', stud.unbracedLengthB, ' m')
+    print('unbraced lenght x:', stud.getUnbracedLengthB(), ' m')
     print('unbraced lenght y:', stud.unbracedLengthH, ' m')
     print('Fc\'= ', Fc_adj/1e6,' MPa')
     print('Fb\'= ', Fb_adj/1e6,' MPa')
