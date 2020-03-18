@@ -28,7 +28,7 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 10 of the PDF document from "SolidStart")
-header= AWCNDS_materials.LSL155Headers['5.25x14']
+header= AWCNDS_materials.LSL155HeaderSections['5.25x14']
 section= header.defElasticShearSection2d(preprocessor)
 
 # Cantilever geometry
@@ -58,7 +58,6 @@ for p1 in points[1:]:
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler

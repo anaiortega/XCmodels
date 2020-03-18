@@ -54,7 +54,6 @@ l2.nDiv= 3
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler

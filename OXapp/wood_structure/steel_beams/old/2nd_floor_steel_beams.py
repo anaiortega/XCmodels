@@ -57,7 +57,6 @@ l1= lineHandler.newLine(p1.tag,p2.tag)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler

@@ -27,7 +27,7 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LVL 1.55E (page 10 of the PDF document from "SolidStart")
-header= AWCNDS_materials.LVLHeaders['3.5x9-1/4']
+header= AWCNDS_materials.LVLHeaderSections['3.5x9-1/4']
 section= header.defElasticShearSection2d(preprocessor)
 
 Cr= 1.0#1.15 # Repetitive member factor (AWC-NDS2018 supplement table 4F)
@@ -51,7 +51,6 @@ l1.setElemSize(centerSpacing)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler

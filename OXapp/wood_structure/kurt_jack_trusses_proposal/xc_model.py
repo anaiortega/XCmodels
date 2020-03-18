@@ -91,7 +91,7 @@ lvlBlindSectionGeometry= section_properties.RectangularSection("lvlBlind",b=1.75
 lvlBlindSection= lvlBlindSectionGeometry.defElasticShearSection3d(preprocessor,LVL)
 
 ## Materials LSL 1.55E (page 10 of the PDF document from "SolidStart")
-lslJackTrussSection= structural_panels.LSL155Headers['1.75x14'].defElasticShearSection3d(preprocessor)
+lslJackTrussSection= structural_panels.LSL155HeaderSections['1.75x14'].defElasticShearSection3d(preprocessor)
 
 ## Girder material.
 lvlGirderSectionGeometry= section_properties.RectangularSection("lvlGirder", b=1.25*inchToMeter, h=19.09*inchToMeter)

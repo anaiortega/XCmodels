@@ -30,7 +30,7 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
-header= structural_panels.LSL155Headers['3.5x14']
+header= structural_panels.LSL155HeaderSections['3.5x14']
 section= header.defElasticShearSection2d(preprocessor)
 
 # Header geometry
@@ -47,7 +47,6 @@ l1= lineHandler.newLine(p0.tag,p1.tag)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
