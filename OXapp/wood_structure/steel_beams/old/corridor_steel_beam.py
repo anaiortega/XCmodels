@@ -14,7 +14,6 @@ from materials import typical_materials
 from materials.astm import ASTM_materials
 
 from materials.sections import structural_steel as steel
-from materials.sections.structural_shapes import aisc_metric_shapes as shapes
 from actions import load_cases as lcm
 from actions import combinations as combs
 
@@ -34,7 +33,7 @@ steel= ASTM_materials.A36
 steel.gammaM= 1.00
 ## Profile geometry
 profile= ASTM_materials.WShape(steel,'W10X26')
-#profile= ASTM_materials.CShape(steel,'C250X30')
+#profile= ASTM_materials.CShape(steel,'C10X20')
 xcSection= profile.defElasticShearSection2d(preprocessor,steel)
 
 # Model geometry

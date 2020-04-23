@@ -14,7 +14,6 @@ from materials import typical_materials
 from materials.astm import ASTM_materials
 
 from materials.sections import structural_steel as steel
-from materials.sections.structural_shapes import aisc_metric_shapes as shapes
 from actions import load_cases as lcm
 from actions import combinations as combs
 
