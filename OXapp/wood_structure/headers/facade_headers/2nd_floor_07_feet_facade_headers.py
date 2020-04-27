@@ -30,8 +30,8 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
-#header= sp.LSL155Headers['3.5x11-7/8']
-header= sp.LSL155Headers['5.25x9-1/2']
+#header= sp.LSL155HeaderSections['3.5x11-7/8']
+header= sp.LSL155HeaderSections['5.25x9-1/2']
 section= header.defElasticShearSection2d(preprocessor)
 
 # Header geometry

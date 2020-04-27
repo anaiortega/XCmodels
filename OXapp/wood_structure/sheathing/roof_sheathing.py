@@ -8,6 +8,7 @@ import xc
 from model import predefined_spaces
 from solution import predefined_solutions
 from materials.awc_nds import AWCNDS_materials
+from materials.awc_nds import structural_panels
 from materials import typical_materials
 
 # Loads
@@ -24,16 +25,16 @@ modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 # Materials
 # Mechanical properties taken from:
 # http://www.pfsteco.com/techtips/pdf/tt_plywooddesigncapacities
-structuralPanelGeom= AWCNDS_materials.PlywoodPanels['3/4']
-plywood= typical_materials.MaterialData(name='Douglas-Fri Plywood',E=4.2e9,nu=0.2,rho=500)
-section= structuralPanelGeom.defElasticShearSection2d(preprocessor,plywood)
-
-thickness= structuralPanelGeom.h
+#structuralPanelGeom= structural_panels.PlywoodPanelSections['3/4']
+#plywood= typical_materials.MaterialData(name='Douglas-Fri Plywood',E=4.2e9,nu=0.2,rho=500)
+structuralPanel= structural_panels.OSBPanelSections['3/4']
+section= structuralPanel.defElasticShearSection2d(preprocessor, angle= 0.0)
+thickness= structuralPanel.h
 
 spanBendingStiffness= (32-1.5+0.25)*0.0254
 spanInternalForces= 32*0.0254
-span= spanBendingStiffness
-#span= spanInternalForces
+#span= spanBendingStiffness
+span= spanInternalForces
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
 pt1= pointHandler.newPntFromPos3d(geom.Pos3d(0.0,0.0,0.0))
 pt2= pointHandler.newPntFromPos3d(geom.Pos3d(span,0.0,0.0))
@@ -124,20 +125,20 @@ print('DeltaSL= ', DeltaSL*1e3, ' mm (L/'+str(r)+')')
 CD= AWCNDS_materials.getLoadDurationFactor(0.5/365.25/24)
 print("Cd= ",CD)
 Ft= 3640*4.44822/0.3048/section.sectionProperties.A
-Fb= CD*444.0/structuralPanelGeom.Wzel()*4.44822*0.0254/0.3048
-Fv= CD*215*4.44822/0.3048/structuralPanelGeom.h
+Fb= CD*444.0/structuralPanel.Wzel()*4.44822*0.0254/0.3048
+Fv= CD*215*4.44822/0.3048/structuralPanel.h
 
 sgMax= -1e6
 tauMax= -1e6
 for e in supSet.elements:
     e.getResistingForce()
     m1= e.getM1
-    sg1= abs(m1/section.sectionProperties.I*structuralPanelGeom.h/2)
+    sg1= abs(m1/section.sectionProperties.I*structuralPanel.h/2)
     tau1= abs(e.getV1/section.sectionProperties.A)
     sgMax= max(sgMax,sg1)
     tauMax= max(tauMax,tau1)
     m2= e.getM2
-    sg2= abs(m2/section.sectionProperties.I*structuralPanelGeom.h/2)
+    sg2= abs(m2/section.sectionProperties.I*structuralPanel.h/2)
     tau2= abs(e.getV2/section.sectionProperties.A)
     sgMax= max(sgMax,sg2)
     tauMax= max(tauMax,tau2)

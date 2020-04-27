@@ -33,7 +33,7 @@ trussSpacing= 24*inchToMeter
 # Mechanical properties taken from:
 # http://www.pfsteco.com/techtips/pdf/tt_plywooddesigncapacities
 lumber2x8Geom= section_properties.RectangularSection("lumber2x8Geom",b=7.5*inchToMeter,h=1.5*inchToMeter)
-plate= AWCNDS_materials.Member(studSpacing,studSpacing, lumber2x8Geom)
+plate= AWCNDS_materials.ColumnMember(studSpacing,studSpacing, lumber2x8Geom)
 E= 1200000*psiToPa
 E_adj= 440000*psiToPa
 Fb= 675*psiToPa

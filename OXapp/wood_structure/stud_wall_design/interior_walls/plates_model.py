@@ -153,7 +153,7 @@ class Stud(object):
         self.studSpacing= studSpacing
         self.wallHeight= wallHeight
         self.studHeight= self.wallHeight-3*2*mat.in2meter
-        self.stud= mat.Member(0.3,self.studHeight, studSection)
+        self.stud= mat.ColumnMember(0.3,self.studHeight, studSection)
         self.repetitiveMemberFactor= 1.15
     def printHeader(self):
         print('***** ', self.title ,' ******')

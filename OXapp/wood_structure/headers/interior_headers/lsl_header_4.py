@@ -29,7 +29,7 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 10 of the PDF document from "SolidStart")
-header= structural_panels.LSL155Headers['5.25x14']
+header= structural_panels.LSL155HeaderSections['5.25x14']
 section= header.defElasticShearSection2d(preprocessor)
 sectionGeometry= section_properties.RectangularSection("header",b=3.5*inchToMeter,h=16*inchToMeter)
 
@@ -90,7 +90,7 @@ eMidSpan= xcTotalSet.getNearestElement(geom.Pos3d(headerSpan/2.0,0.0,0.0))
 Mmax= max(abs(eMidSpan.getM1),abs(eMidSpan.getM2))
 R0= p0.getNode().getReaction[1]
 R1= p1.getNode().getReaction[1]
-Fc_perp= header.material.Fc_perp # Perpendicular to grain compression stress.
+Fc_perp= header.wood.Fc_perp # Perpendicular to grain compression stress.
 Fc_studs= 800*psiToPa # Parallel to grain compression stress.
 bearingNecLength= R0/min(Fc_perp,Fc_studs)/header.b
 numberOfJackStuds= bearingNecLength/(2*inchToMeter)

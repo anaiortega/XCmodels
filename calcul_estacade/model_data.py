@@ -62,19 +62,19 @@ rhoParapet= bParapet*dens
 shellParapet= typical_materials.defElasticMembranePlateSection(preprocessor,"shellParapet",EcParapet,nu,rhoParapet,bParapet)
 
 #Columns.
-cColumns= typical_materials.BasicElasticMaterial(Econcrete,nu) #Concrete elastic representation.
 rColumns= 0.25/2.0 # Column radius.
 aColumns= math.pi*rColumns**2 # Column area.
 rhoColumns= aColumns*dens # Mass per unit length.
+cColumns= typical_materials.BasicElasticMaterial(Econcrete,nu,rho= rhoColumns) #Concrete elastic representation.
 sccColumns= section_properties.CircularSection("sccColumns",rColumns)
 beamColumns= sccColumns.defElasticShearSection3d(preprocessor,cColumns)
 
 #Transverse reinforcement
-cTrsvReinf= typical_materials.BasicElasticMaterial(Econcrete,nu) #Concrete elastic representation.
 hTrsvReinf= 0.1 # Reinforcement height.
 bTrsvReinf= 0.25 # Reinforcement width.
 aTrsvReinf= hTrsvReinf*bTrsvReinf
 rhoTrsvReinf= aTrsvReinf*dens
+cTrsvReinf= typical_materials.BasicElasticMaterial(Econcrete,nu,rho= rhoTrsvReinf) #Concrete elastic representation.
 sccTrsvReinf= section_properties.RectangularSection("sccTrsvReinf",bTrsvReinf,hTrsvReinf)
 beamTrsvReinf= sccTrsvReinf.defElasticShearSection3d(preprocessor,cTrsvReinf)
 

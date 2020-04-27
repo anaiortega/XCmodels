@@ -26,7 +26,7 @@ studSpacing= 19.2*inchToMeter
 lumber2x8Geom= section_properties.RectangularSection("lumber2x8Geom",b=1.5*inchToMeter,h=7.5*inchToMeter)
 
 # Hem-fir stud NDS table 4A page 35.
-stud= AWCNDS_materials.Member(0.3,studHeight, lumber2x8Geom)
+stud= AWCNDS_materials.ColumnMember(0.3,studHeight, lumber2x8Geom)
 E_adj= 440000*psiToPa
 Fb= 675*psiToPa
 Fv= 150*psiToPa
@@ -71,7 +71,7 @@ print('bending moment due to wind:', Mwind/1e3, ' kN m', Mwind/1e3*kNmToPoundft,
 print('gravity wall load:', wallGLoad/1e3, ' kN/m')
 print('gravity stud load:', studGLoad/1e3, ' kN', studGLoad/1e3*kNToPound, ' lb')
 print ('compression stress: ', fc/1e6, ' MPa', fc/psiToPa, ' psi')
-print('unbraced lenght x:', stud.unbracedLengthB, ' m')
+print('unbraced lenght x:', stud.getUnbracedLengthB(), ' m')
 print('unbraced lenght y:', stud.unbracedLengthH, ' m')
 print('Fc\'= ', Fc_adj/1e6,' MPa')
 print('Fb\'= ', Fb_adj/1e6,' MPa')

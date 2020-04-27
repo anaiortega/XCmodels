@@ -26,7 +26,7 @@ studSpacing= 12.0*inchToMeter
 lumber2x4Geom= section_properties.RectangularSection("lumber2x4Geom",b=1.5*inchToMeter,h=3.5*inchToMeter)
 
 # Spruce-pine-fir stud NDS table 4A page 35.
-stud= AWCNDS_materials.Member(0.3,studHeight, lumber2x4Geom)
+stud= AWCNDS_materials.ColumnMember(0.3,studHeight, lumber2x4Geom)
 E_adj= 440000*psiToPa
 Fb= 675*psiToPa
 Fv= 135*psiToPa
@@ -74,7 +74,7 @@ print('total bending moment:', Mtotal/1e3, ' kN m', Mtotal/1e3*kNmToPoundft, ' l
 print('gravity wall load:', wallGLoad/1e3, ' kN/m')
 print('gravity stud load:', studGLoad/1e3, ' kN', studGLoad/1e3*kNToPound, ' lb')
 print ('compression stress: ', fc/1e6, ' MPa', fc/psiToPa, ' psi')
-print('unbraced lenght x:', stud.unbracedLengthB, ' m')
+print('unbraced lenght x:', stud.getUnbracedLengthB(), ' m')
 print('unbraced lenght y:', stud.unbracedLengthH, ' m')
 print('Fc\'= ', Fc_adj/1e6,' MPa')
 print('Fb\'= ', Fb_adj/1e6,' MPa')

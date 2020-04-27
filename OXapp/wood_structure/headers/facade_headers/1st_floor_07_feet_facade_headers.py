@@ -30,11 +30,13 @@ nodes= preprocessor.getNodeHandler
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
 
 # Materials LSL 1.55E (page 4 of the PDF document from "SolidStart")
-header= structural_panels.LSL155Headers['3.5x14']
-section= header.defElasticShearSection2d(preprocessor)
+headerSection= structural_panels.LSL155HeaderSections['3.5x14']
+xcSection= headerSection.defElasticShearSection2d(preprocessor)
 
 # Header geometry
 headerSpan= 7.5*footToMeter
+header= AWCNDS_materials.BeamMember(unbracedLength= headerSpan, section= headerSection)
+CL= header.getBeamStabilityFactor(numberOfConcentratedLoads= 0, lateralSupport= False, cantilever= False)
 
 ## Key points
 pointHandler= preprocessor.getMultiBlockTopology.getPoints
@@ -47,11 +49,10 @@ l1= lineHandler.newLine(p0.tag,p1.tag)
 
 # Mesh
 modelSpace= predefined_spaces.StructuralMechanics2D(nodes)
-nodes.newSeedNode()
 trfs= preprocessor.getTransfCooHandler
 lin= trfs.newLinearCrdTransf2d("lin")
 seedElemHandler= preprocessor.getElementHandler.seedElemHandler
-seedElemHandler.defaultMaterial= section.name
+seedElemHandler.defaultMaterial= xcSection.name
 seedElemHandler.defaultTransformation= "lin"
 elem= seedElemHandler.newElement("ElasticBeam2d",xc.ID([0,0]))
 
@@ -91,21 +92,22 @@ eMidSpan= xcTotalSet.getNearestElement(geom.Pos3d(headerSpan/2.0,0.0,0.0))
 Mmax= max(abs(eMidSpan.getM1),abs(eMidSpan.getM2))
 R0= p0.getNode().getReaction[1]
 R1= p1.getNode().getReaction[1]
-Fc_perp= header.material.Fc_perp # Perpendicular to grain compression stress.
+Fc_perp= headerSection.wood.Fc_perp # Perpendicular to grain compression stress.
 Fc_studs= 800*psiToPa # Parallel to grain compression stress.
-bearingNecLength= R0/min(Fc_perp,Fc_studs)/header.b
+bearingNecLength= R0/min(Fc_perp,Fc_studs)/headerSection.b
 numberOfJackStuds= bearingNecLength/(2*inchToMeter)
 
 print('*****',xcProblem.title,'******')
 print('Uniform load: ', 2.0*Vmax/headerSpan/1e3, ' kN/m')
-print('Header: ', header.sectionName)
+print('Header: ', headerSection.sectionName)
 
 ## Shear
-Vu= header.Vs
+Vu= headerSection.Vs
 print('Vmax= ', Vmax/1e3, ' kN Vu= ', Vu/1e3, ' kN; F= ',Vmax/Vu)
 
 ## Bending
-Mu= header.Ms
+Mu= CL*headerSection.Ms
+print('CL= ', CL)
 print('Mmax= ', Mmax/1e3, ' kN Mu= ', Mu/1e3, ' kN; F= ',Mmax/Mu)
 
 ## Deflection
