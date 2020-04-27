@@ -142,7 +142,7 @@ def gen_pile_cap_2columns_3X2Ypiles(preprocessor,nodCols,distXpile,distYpile,Hpi
     return struts,ties,topNodPiles
 
 
-def gen_piles(preprocessor,topNodPiles,pileLenght,pileMat,eSize,pileType,bearingCapPile,nameSetPiles,alphaK=[1,1,1]):
+def gen_piles(preprocessor,topNodPiles,pileLenght,pileMat,eSize,pileType,bearingCapPile,soils,nameSetPiles,alphaK=[1,1,1]):
     '''Generate piles that start in a pile-cap. Return the set of piles created.
 
     :param preprocessor: preprocessor
@@ -176,7 +176,7 @@ def gen_piles(preprocessor,topNodPiles,pileLenght,pileMat,eSize,pileType,bearing
         springs=pileBC.springs
         n1=p1.getNode()
         n0=p0.getNode()
-        modelSpace.fixNode('FFF_000',n0.tag)
+        modelSpace.fixNode('FF0_000',n0.tag)
         modelSpace.setRigidBeamBetweenNodes(n.tag,n1.tag)
         piles+=auxPileSet
         preprocessor.getSets.removeSet('auxPileSet')

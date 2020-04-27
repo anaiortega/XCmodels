@@ -114,6 +114,8 @@ hDistrPL=espLosAlig  #height of distribution of traffic point loads
 
 hDistrQ=espLosAlig/2.+0.05
 
+# Espesor de la losa a efecto de distribución de cargas puntuales de tráfico
+cantoLosa=espLosAlig
 
 # Coord. x (transversal)
 xBordeCalz=round(anchoCalz/2.0,2)

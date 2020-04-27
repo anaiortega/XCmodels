@@ -479,10 +479,8 @@ modelSpace.removeAllLoadPatternsFromDomain()
 modelSpace.addLoadCaseToDomain('LS1')
 analysis= predefined_solutions.simple_static_linear(FEcase)
 result= analysis.analyze(1)
-out.displayDispRot('uZ')
-out.displayIntForcDiag('Mz',beamXsteel)
-out.displayIntForc('M1',decklv1)
-out.displayReactions()
+out.displayDispRot('uZ',tablVano2)
+modelSpace.removeLoadCaseFromDomain("LS1")
 '''
 
 '''

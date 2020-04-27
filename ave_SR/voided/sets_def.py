@@ -151,6 +151,8 @@ allLosas=losInf+losSup+voladzCent+voladzExtr
 allLosas.name='allLosas'
 allLosas.description='Losa tablero, cordones superior e inferior y voladizos'
 
+ThermalUnifSetDirY=losInf+losSup+murAlig+murExtAlig #set al que aplicar deformación térmica uniforme en dirección Y (longitudinal de tablero)
+RheoSetDirY=losInf+losSup+murAlig+murExtAlig #set al que aplicar deformación por retracción en dirección Y
 
 overallSet=riostrEstr1+riostrEstr2+losInfV1+losInfV2+losInfV3+losInfRP1+losInfRP2+losSupV1+losSupV2+losSupV3+losSupRP1+losSupRP2+murAligV1+murAligV2+murAligV3+murExtAligV1+murExtAligV2+murExtAligV3+murRP1+murRP2+diafRP1+diafRP2+voladzCentV1+voladzCentV2+voladzCentV3+voladzCentRP1+voladzCentRP2+voladzExtrV1+voladzExtrV2+voladzExtrV3+voladzExtrRP1+voladzExtrRP2
 overallSet.description='Estructura'

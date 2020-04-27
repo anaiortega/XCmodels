@@ -48,7 +48,7 @@ nPil2=p.getNode()
 execfile(path_foundation+'pile_foundation.py')
 (struts1,ties1,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts1',nameSetTies='ties1')
 
-piles1=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles1')
+piles1=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,soils,nameSetPiles='piles1')
 
 #Pile-cap and piles column 2
 indy=1
@@ -68,7 +68,7 @@ nPil2=p.getNode()
 execfile(path_foundation+'pile_foundation.py')
 (struts2,ties2,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts2',nameSetTies='ties2')
 
-piles2=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles2')
+piles2=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,soils,nameSetPiles='piles2')
 
 #Pile-cap and piles column 3
 indy=2
@@ -88,7 +88,7 @@ nPil2=p.getNode()
 execfile(path_foundation+'pile_foundation.py')
 (struts3,ties3,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts3',nameSetTies='ties3')
 
-piles3=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles3')
+piles3=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,soils,nameSetPiles='piles3')
 
 # Sets
 ties=ties1+ties2+ties3

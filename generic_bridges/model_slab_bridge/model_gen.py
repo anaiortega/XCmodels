@@ -9,6 +9,8 @@ elements.dimElem= 3
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 # dimension of the space: nodes by three coordinates (x,y,z) and 
 # six DOF for each node (Ux,Uy,Uz,thetaX,thetaY,thetaZ)
+sty=outSty.OutputStyle() 
+out=outHndl.OutputHandler(modelSpace,sty)
 
 # grid model definition (tablero)
 gridTabl= gm.GridModel(prep,xListTabl,yListTabl,zListTabl)
