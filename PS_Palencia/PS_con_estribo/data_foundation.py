@@ -12,6 +12,7 @@ pileLenght=20   #pile length
 pileType='endBearing' #type of pile 'endBearing' or 'friction'
 soils=[(-1.5,'sandy',1e6),(-5,'sandy',2e6),(-15,'sandy',10e6),(-100,'sandy',15e6)] #Properties of the sandy
 # soils [(zBottom,type, nh), ...]  where 'zBottom' is the global Z coordinate
+# soils [(zBottom,type, nh), ...]  where 'zBottom' is the global Z coordinate
 #           of the bottom level of the soil and 'nh' [Pa/m] is the coefficient 
 #           corresponding to the compactness of the sandy soil.
 pileConcr=EHE_materials.HA25  #pile concrete
@@ -39,7 +40,7 @@ nPil=p.getNode()
 
 execfile(path_foundation+'pile_foundation.py')
 (struts1,ties1,topNodPiles)=gen_pile_cap_1column_4piles(preprocessor=prep,nodCol=nPil,distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts1',nameSetTies='ties1')
-piles1=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles1')
+piles1=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,soils,nameSetPiles='piles1')
 #Pile-cap and piles column 2
 indy=1
 indx=0
@@ -51,7 +52,7 @@ nPil=p.getNode()
 
 execfile(path_foundation+'pile_foundation.py')
 (struts2,ties2,topNodPiles)=gen_pile_cap_1column_4piles(preprocessor=prep,nodCol=nPil,distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts1',nameSetTies='ties1')
-piles2=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles1')
+piles2=gen_piles(preprocessor,topNodPiles,pileLenght,pile_mat,eSize,pileType,bearingCapPile,soils,nameSetPiles='piles1')
 
 # Sets
 ties=ties1+ties2

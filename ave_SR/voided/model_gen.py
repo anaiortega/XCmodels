@@ -7,6 +7,8 @@ import xc_base
 import geom
 import xc
 import math
+from postprocess import output_styles as outSty
+from postprocess import output_handler as outHndl
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
 execfile(workingDirectory+'env_config.py')
@@ -22,9 +24,10 @@ if abutment.lower()[0]=='y':
 #Definition of sets
 execfile(workingDirectory+'sets_def.py')
 if pile_found.lower()[0]=='y':
-    execfile('../data_foundation.py')
+    execfile(workingDirectory+'data_foundation.py')
 
 #                       ***BOUNDARY CONDITIONS***
 execfile(workingDirectory+'bound_cond.py')
 #                       ***ACTIONS***
-execfile(path_loads_def+'loads_def_voided.py')                           
+execfile(path_loads_def+'loads_def.py')                           
+execfile(path_loads_def+'loads_def_thermal_gradient_voided.py')                           

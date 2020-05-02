@@ -58,16 +58,3 @@ Q31neopr=slm.thermal_rheological_LC(lcName='Q31neopr',lstUnifThStrnData=[imps.un
 #Expansion
 Q32=slm.thermal_rheological_LC(lcName='Q32',lstUnifThStrnData=[imps.unifThermalStrain(elemSet=ThermalUnifSetDirY,DOF=1,alpha=coefDilat,temp=Tunif_dilat)])
 Q32neopr=slm.thermal_rheological_LC(lcName='Q32neopr',lstUnifThStrnData=[imps.unifThermalStrain(elemSet=ThermalUnifSetDirY,DOF=1,alpha=coefDilat,temp=Tunif_dilat_neopr)])
-#Thermal gradient load cases
-Q33=slm.gradient_thermal_LC(lcName='Q33',lstGradThStrnData=
-    [imps.gradThermalStrain(elemSet=losa,elThick=cantoLosa,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_fria,Tbottom=0),
-     imps.gradThermalStrain(elemSet=cartabInt,elThick=eCartInt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_fria,Tbottom=0),
-     imps.gradThermalStrain(elemSet=cartabExt,elThick=eCartExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_fria,Tbottom=0),
-     imps.gradThermalStrain(elemSet=voladzInt,elThick=eVolInt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_fria,Tbottom=0),
-     imps.gradThermalStrain(elemSet=voladzExt,elThick=eVolExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_fria,Tbottom=0)])
-Q34=slm.gradient_thermal_LC(lcName='Q34',lstGradThStrnData=
-    [imps.gradThermalStrain(elemSet=losa,elThick=cantoLosa,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
-     imps.gradThermalStrain(elemSet=cartabInt,elThick=eCartInt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
-     imps.gradThermalStrain(elemSet=cartabExt,elThick=eCartExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
-     imps.gradThermalStrain(elemSet=voladzInt,elThick=eVolInt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0),
-     imps.gradThermalStrain(elemSet=voladzExt,elThick=eVolExt,DOF=3,alpha=coefDilat,Ttop=Tfibrsup_cal,Tbottom=0)])

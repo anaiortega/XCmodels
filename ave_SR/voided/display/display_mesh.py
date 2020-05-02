@@ -19,34 +19,42 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
 
 
-#defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,voladzCent,voladzExtr],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,voladzCent],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[riostrEstr1,riostrEstr2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,voladzCent,voladzExtr],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,voladzCent],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[riostrEstr1,riostrEstr2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 
-#defDisplay.displayMesh(xcSets=[murRP1,murRP2,murAlig,murExtAlig,losInfV2,losInfRP1],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig,losSupV2,losSupRP1],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[murRP1,murRP2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[murAligV2,murExtAligV2,losInfV2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[murRP1,murRP2,murAlig,murExtAlig,losInfV2,losInfRP1],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 
-#defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Vista de mallado de nervios de aligeramientos y diafragmas sobre pilas',nodeSize=0.030,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Vista de mallado de nervios de aligeramientos y diafragmas sobre pilas',nodeSize=0.030,scaleConstr=0.70)
-'''
-defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2], fileName= 'PS_100_7_01.jpg',caption='PS 100.7. Modelo de cálculo, vista superior',nodeSize=0.030,scaleConstr=0.70)
-defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2], fileName= 'PS_100_7_02.jpg',caption='PS 100.7. Modelo de cálculo, vista inferior',nodeSize=0.030,scaleConstr=0.70)
-'''
-#defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Modelo de cálculo, detalles',nodeSize=0.020,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig,losSupV2,losSupRP1],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 
-#defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[murRP1,murRP2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 
+# defDisplay.displayMesh(xcSets=[murAligV2,murExtAligV2,losInfV2],caption='Mesh',nodeSize=0.030,scaleConstr=0.70)
 
-#defDisplay.displayMesh(xcSets=[murAligV1],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+# defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Vista de mallado de nervios de aligeramientos y diafragmas sobre pilas',nodeSize=0.030,scaleConstr=0.70)
 
+# defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Vista de mallado de nervios de aligeramientos y diafragmas sobre pilas',nodeSize=0.030,scaleConstr=0.70)
 
+# defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2], fileName= 'PS_100_7_01.jpg',caption='PS 100.7. Modelo de cálculo, vista superior',nodeSize=0.030,scaleConstr=0.70)
 
-#defDisplay.displayMesh(xcSets=[murAlig],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[pilasBarlov,pilasSotav],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
-#defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,ties,struts,piles],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
-#defDisplay.displayMesh([losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2]+setsEstribo+[pilasInf,pilasSup,ties,struts,piles])
-#defDisplay.displayMesh([viaFictDer,viaFictIzq,viaFictResto])
-#defDisplay.displayMesh([viaFictDer_vano2,viaFictIzq_vano2,viaFictResto_vano2])
-defDisplay.displayMesh([aceras])
+# defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2], fileName= 'PS_100_7_02.jpg',caption='PS 100.7. Modelo de cálculo, vista inferior',nodeSize=0.030,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[losInf,murRP1,murRP2,diafRP1,diafRP2,murAlig,murExtAlig],caption='PS 100.7. Modelo de cálculo, detalles',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[murAligV1],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[murAlig],caption='PS 100.7. Modelo de cálculo, detalle',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[pilasBarlov,pilasSotav],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh(xcSets=[pilasInf,pilasSup,ties,struts,piles],caption='PS 100.7. Modelo de cálculo, pilas',nodeSize=0.020,scaleConstr=0.70)
+
+# defDisplay.displayMesh([losInf,losSup,murAlig,murExtAlig,murRP1,murRP2,voladzCent,voladzExtr,riostrEstr1,riostrEstr2]+setsEstribo+[pilasInf,pilasSup,ties,struts,piles])
+
+# defDisplay.displayMesh([viaFictDer,viaFictIzq,viaFictResto])
+# defDisplay.displayMesh([viaFictDer_vano2,viaFictIzq_vano2,viaFictResto_vano2])
+# defDisplay.displayMesh([aceras])
+defDisplay.displayMesh([viaFictDer,viaFictIzq,viaFictResto,aceras])
+#out.displayFEMesh()
