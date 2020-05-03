@@ -30,7 +30,7 @@ xWestWall=distXwalls
 from materials.aci import ACI_materials as ACImat
 concrete=ACImat.c4000
 reinfSteel=ACImat.A615G60
-from materials.astm import ASTM_materials as ASTMmat
+from materials.astm_aisc import ASTM_materials as ASTMmat
 strSteel=ASTMmat.A36
 strSteel.gammaM= 1.00
 # coordinates in global X,Y,Z axes for the grid generation

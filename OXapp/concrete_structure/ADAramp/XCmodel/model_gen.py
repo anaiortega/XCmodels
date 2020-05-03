@@ -16,7 +16,7 @@ from actions import load_cases as lcases
 from actions import combinations as cc
 from actions.earth_pressure import earth_pressure as ep
 from model.geometry import geom_utils as gut
-from materials.astm import ASTM_materials
+from materials.astm_aisc import ASTM_materials
 #from materials.sia262 import SIA262_materials
 from materials.ec3 import EC3_materials
 from postprocess.config import default_config

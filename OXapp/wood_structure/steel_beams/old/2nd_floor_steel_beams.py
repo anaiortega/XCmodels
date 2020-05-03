@@ -11,7 +11,7 @@ import xc
 from solution import predefined_solutions
 from model import predefined_spaces
 from materials import typical_materials
-from materials.astm import ASTM_materials
+from materials.astm_aisc import ASTM_materials
 
 from materials.sections import structural_steel as steel
 from materials.sections.structural_shapes import aisc_metric_shapes as shapes
