@@ -13,7 +13,7 @@ from model.boundary_cond import spring_bound_cond as sprbc
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from model.geometry import geom_utils as gut
-from materials.astm import ASTM_materials as astm
+from materials.astm_aisc import ASTM_materials as astm
 from actions import loads
 from actions import load_cases as lcases
 from actions.wind import base_wind as bw

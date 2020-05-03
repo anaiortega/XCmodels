@@ -195,3 +195,4 @@ setMainBeam= preprocessor.getSets.defSet("main_beam")
 for e in setTotal.elements:
   if(e.getVtkCellType== vtk.VTK_LINE):
     setMainBeam.elements.append(e)
+setMainBeam.fillDownwards()
