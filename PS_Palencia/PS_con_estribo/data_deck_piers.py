@@ -7,7 +7,7 @@ from misc_utils import units_utils as uu
 from materials.ehe import EHE_materials
 
  # Geometry
-Lvanos=[11.50,16.10,11.50]
+Lvanos=[14.00,17.20,14.00]
 Ltablero=0
 for v in Lvanos:
     Ltablero+=v
@@ -16,7 +16,7 @@ anchoTot=9.20
 anchoAcera=(anchoTot-anchoCalz)/2.0   
 
 #  losa
-cantoLosa=0.9
+cantoLosa=1.0
 maxCantoVoladz=0.4 #canto máximo del voladizo
 minCantoVoladz=0.20
 anchoVoladz=1.90
