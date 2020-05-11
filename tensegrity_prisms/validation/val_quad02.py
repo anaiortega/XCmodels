@@ -9,7 +9,7 @@ from materials import typical_materials
 import math
 
 E=2.1e11  #Young modulus [Pa]
-l=1      #lenght of cables [m]
+l=1      #length of cables [m]
 areaStrut=1e-4   #cros-section area of struts [m2]
 areaCable=1e-4   #cros-section area of cables [m2]
 #sigmaPret=1e-5  #must be >0

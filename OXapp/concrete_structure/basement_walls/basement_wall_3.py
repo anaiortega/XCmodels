@@ -153,7 +153,7 @@ combContainer.SLS.qp.add('ELS00', '1.0*selfWeight+1.0*deadLoad+0.5*trafficLoad')
 # combContainer.ULS.perm.add('SR7A', '0.9*selfWeight+0.8*deadLoad+1.5*trafficLoad')
 # combContainer.ULS.perm.add('SRS1', '1.0*selfWeight+1.0*deadLoad+0.3*trafficLoad+1.0*quakeLoad')
 
-#Strenght ultimate states. (type 2).
+#Strength ultimate states. (type 2).
 # 'selfWeight','deadLoad','trafficLoad','liveLoad','snowLoad','windLoad','quakeLoad']
 #Equation 16.1
 combContainer.ULS.perm.add('SR101', '1.4*selfWeight+1.4*deadLoad')

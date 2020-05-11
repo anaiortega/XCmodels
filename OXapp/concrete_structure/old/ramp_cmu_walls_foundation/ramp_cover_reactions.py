@@ -140,7 +140,7 @@ combContainer.ULS.perm.add('EQ1615', '0.6*deadLoad+0.6*windLoad')
 #Equation 16-16 -> doesn't apply
 
 
-#Strenght ultimate states. (type 2).
+#Strength ultimate states. (type 2).
 # 'selfWeight','deadLoad','liveLoad','snowLoad','windLoad','quakeLoad']
 #Equation 16-1
 combContainer.ULS.perm.add('EQ1601', '1.4*deadLoad')

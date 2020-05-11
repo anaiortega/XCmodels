@@ -126,7 +126,7 @@ print('dY= ',dMidSpan*1e3,' mm; ratio= L/', 1.0/ratio1)
 ## Reactions
 print('R0= ', R0/1e3, ' kN')
 print('R1= ', R1/1e3, ' kN')
-print('bearing lenght= ', bearingNecLength, ' m')
+print('bearing length= ', bearingNecLength, ' m')
 print('number of Jack studs= ', numberOfJackStuds)
 
 #########################################################

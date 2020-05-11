@@ -9,7 +9,7 @@ from materials import typical_materials
 import math
 
 E=2.1e11  #Young modulus [Pa]
-l=1      #lenght [m]
+l=1      #length [m]
 area=1e-4   #cross-section area [m2]
 #sigmaPret=1e-5  #must be >0
 sigmaPret=210e6  #prestressing stress [Pa]

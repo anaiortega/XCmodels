@@ -26,7 +26,7 @@ gridGeom= gm.GridModel(prep,xList,yList,zList)
 gridGeom.generatePoints()
 
 # idem for J and K ranges
-deck=gridGeom.genSurfOneXYZRegion(xyzRange=((0,0,0),(lenght,width,0)),nameSet='deck')
+deck=gridGeom.genSurfOneXYZRegion(xyzRange=((0,0,0),(length,width,0)),nameSet='deck')
 
 #                         *** MATERIALS *** 
 alumin=tm.MaterialData(name='alumin',E=Ealum,nu=nualum,rho=rhoalum)
@@ -49,9 +49,9 @@ modelSpace.fixNode('000_000',n1_2.tag)
 tie1=elements.newElement("Truss",xc.ID([n1_1.tag,n1_2.tag]))
 tie1.sectionArea= tieArea
 
-pt2_1=gridGeom.getPntXYZ((lenght,width,0))
+pt2_1=gridGeom.getPntXYZ((length,width,0))
 n2_1=pt2_1.getNode()
-n2_2=nodes.newNodeXYZ(lenght,0,heigth)
+n2_2=nodes.newNodeXYZ(length,0,heigth)
 modelSpace.fixNode('000_000',n2_2.tag)
 tie2=elements.newElement("Truss",xc.ID([n2_1.tag,n2_2.tag]))
 tie2.sectionArea= tieArea
@@ -65,7 +65,7 @@ anchorTop.getNodes.append(n2_2)
 
 #Boundary conditions
 anchorBase=prep.getSets.defSet('anchorBase')
-pntAnchorBase=gridGeom.getSetPntXYZRange(xyzRange=((0,0,0),(lenght,0,0)), setName='pntAnchorBase')
+pntAnchorBase=gridGeom.getSetPntXYZRange(xyzRange=((0,0,0),(length,0,0)), setName='pntAnchorBase')
 for p in pntAnchorBase.getPoints:
     n=p.getNode()
     modelSpace.fixNode('000_FFF',n.tag)

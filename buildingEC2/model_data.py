@@ -39,7 +39,7 @@ thickFacadeColumns=0.25
 lengthFacadeColumns=0.70
 thickFacadeShearWalls=0.30
 lengthFacadeShearWalls=4.00
-lenghtSquareColumns=0.5
+lengthSquareColumns=0.5
 thickSlabs=0.21
 dimXHole=3.6
 dimYHole=3.75
@@ -162,7 +162,7 @@ slabs_mat= gm.DeckMaterialData(name= 'slabs', thickness= thickSlabs, material=co
   #   E:            Young’s modulus of the material
   #   nu:           Poisson’s ratio
 from materials.sections import section_properties as sp
-sqrColumns_sect=sp.RectangularSection(name='sqrColumns_sect',b=lenghtSquareColumns,h=lenghtSquareColumns)  #section definition
+sqrColumns_sect=sp.RectangularSection(name='sqrColumns_sect',b=lengthSquareColumns,h=lengthSquareColumns)  #section definition
 sqrColumns_mat=gm.BeamMaterialData(name='sqrColumns',section=sqrColumns_sect,material=concrForAll) #material definition (rho: mass density)
 
 #Circular sections:

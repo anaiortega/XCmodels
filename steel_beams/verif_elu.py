@@ -13,16 +13,16 @@ for key in lineDict:
     ec3beams.append(ec3b.EC3Beam(l.name,IPE450A, lstLines= [l]))
 
 def resultComb(prb,nmbComb):
-  preprocessor.resetLoadCase()
-  preprocessor.getLoadHandler.addToDomain(nmbComb)
-  #Solución
-  solution= predefined_solutions.SolutionProcedure()
-  analysis= solution.simpleStaticLinear(prb)
-  result= analysis.analyze(1)
-  for l in ec3beams:
-    l.updateLateralBucklingReductionFactor()
-  result= analysis.analyze(1) #Update resistant values 
-  preprocessor.getLoadHandler.removeFromDomain(nmbComb)
+    preprocessor.resetLoadCase()
+    preprocessor.getLoadHandler.addToDomain(nmbComb)
+    #Solución
+    solution= predefined_solutions.SolutionProcedure()
+    analysis= solution.simpleStaticLinear(prb)
+    result= analysis.analyze(1)
+    for l in ec3beams:
+      l.updateLateralBucklingReductionFactor()
+    result= analysis.analyze(1) #Update resistant values 
+    preprocessor.getLoadHandler.removeFromDomain(nmbComb)
 
 # chiLT= 1.0 #Lateral-torsional buckling reduction factor
 # recorder= IPE450A.installULSControlRecorder("element_prop_recorder",setMainBeam.elements,crossSectionClass,chiLT)

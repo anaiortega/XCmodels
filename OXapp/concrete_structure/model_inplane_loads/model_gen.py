@@ -128,7 +128,7 @@ EastW_L=ySW-yNW-(yStair2_2-yStair2_1)
 WestW_L=ySW-yNW
 NorthW_L=xWW-xEW-(xStair1-xGridA)
 SouthW_L=xWW-xEW
-bound_ret_walls=[[EastW_nod,EastW_L,'East retaining wall'],[WestW_nod,WestW_L,'West retaining wall'],[NorthW_nod,NorthW_L,'North retaining wall'],[SouthW_nod,SouthW_L,'South retaining wall']] #[node list, wall lenght,description]
+bound_ret_walls=[[EastW_nod,EastW_L,'East retaining wall'],[WestW_nod,WestW_L,'West retaining wall'],[NorthW_nod,NorthW_L,'North retaining wall'],[SouthW_nod,SouthW_L,'South retaining wall']] #[node list, wall length,description]
 bound_ramp=[[Ramp_nod_E,yRamp_2-yRamp_1,'Ramp East wall'],
             [Ramp_nod_W,yRamp_2-yStair1,'Ramp West wall'],
             [Ramp_nod_N,xRamp_1-xGridA,'Ramp North wall'],

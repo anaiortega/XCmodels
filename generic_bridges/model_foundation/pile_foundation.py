@@ -142,12 +142,12 @@ def gen_pile_cap_2columns_3X2Ypiles(preprocessor,nodCols,distXpile,distYpile,Hpi
     return struts,ties,topNodPiles
 
 
-def gen_piles(preprocessor,topNodPiles,pileLenght,pileMat,eSize,pileType,bearingCapPile,soils,nameSetPiles,alphaK=[1,1,1]):
+def gen_piles(preprocessor,topNodPiles,pileLength,pileMat,eSize,pileType,bearingCapPile,soils,nameSetPiles,alphaK=[1,1,1]):
     '''Generate piles that start in a pile-cap. Return the set of piles created.
 
     :param preprocessor: preprocessor
     :param topNodPiles: nodes of the pile-cap where piles start.
-    :param pileLenght: length of each pile.
+    :param pileLength: length of each pile.
     :param pileMat: pile section-material.
     :param eSize: size of the elements.
     :param pileType: type of pile 'endBearing' or 'friction'.
@@ -165,7 +165,7 @@ def gen_piles(preprocessor,topNodPiles,pileLenght,pileMat,eSize,pileType,bearing
         auxPileSet=preprocessor.getSets.defSet('auxPileSet')
         x,y,z=n.getCoo[0],n.getCoo[1],n.getCoo[2]
         p1=preprocessor.getMultiBlockTopology.getPoints.newPntFromPos3d(geom.Pos3d(x,y,z))
-        p0=preprocessor.getMultiBlockTopology.getPoints.newPntFromPos3d(geom.Pos3d(x,y,z-pileLenght))
+        p0=preprocessor.getMultiBlockTopology.getPoints.newPntFromPos3d(geom.Pos3d(x,y,z-pileLength))
         l=preprocessor.getMultiBlockTopology.getLines.newLine(p0.tag,p1.tag)
         auxPileSet.getLines.append(l)
         auxPileSet.fillDownwards()

@@ -12,7 +12,7 @@ from materials import typical_materials
 import math
 
 E=2.1e5  #Young modulus [MPa]
-l=1      #lenght
+l=1      #length
 area=1   #area
 #sigmaPret=1e-5  #must be >0
 sigmaPret=500

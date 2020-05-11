@@ -188,7 +188,7 @@ combContainer.ULS.perm.add('SRS1A', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1
 combContainer.ULS.perm.add('SRS1B', '1.0*selfWeight+1.0*deadLoad+0.3*crowdLoad+1.0*quakeLoad')
 combContainer.ULS.perm.add('SRS1C', '1.0*selfWeight+1.0*deadLoad+1.0*quakeLoad+1.0*derailmentLoad')
 
-#Strenght ultimate states. (type 2).
+#Strength ultimate states. (type 2).
 # Earth pressure at rest so 1.35*K0/Ka= 1.35*0.5/0.33= 2.05 -> 2.0
 combContainer.ULS.perm.add('SR9A', '1.35*selfWeight+2.0*deadLoad+1.5*crowdLoad')
 combContainer.ULS.perm.add('SR9B', '1.35*selfWeight+2.0*deadLoad+1.45*railLoad')

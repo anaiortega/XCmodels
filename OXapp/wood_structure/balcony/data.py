@@ -9,10 +9,10 @@ pound2N=4.45
 
 #Geometry
 width=round(5*ft2m+5.5*in2m,2)
-lenght=round(9*ft2m+(6+13/16.)*in2m,2)
+length=round(9*ft2m+(6+13/16.)*in2m,2)
 heigth=10*ft2m
 nAnchors=10 #number of decking anchorages 
-anchSpac=lenght/(nAnchors-1)
+anchSpac=length/(nAnchors-1)
 deckTh=10e-3 #thickness (not considered)
 tieDiam=10e-3 #tie diameter
 tieArea=math.pi*tieDiam**2/4.

@@ -69,9 +69,9 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 
 ## Loads on nodes.
 cLC= loadCaseManager.setCurrentLoadCase('load')
-supportedLenght= (20+10)/2.0*footToMeter
-floorLoad= (0.9*supportedLenght*(15+40)*psfToNm2) # N
-facadeLoad= 0.73e3*supportedLenght*(3.3528+3.302+0.6096) # N
+supportedLength= (20+10)/2.0*footToMeter
+floorLoad= (0.9*supportedLength*(15+40)*psfToNm2) # N
+facadeLoad= 0.73e3*supportedLength*(3.3528+3.302+0.6096) # N
 totalLoad= xc.Vector([0.0,-floorLoad-facadeLoad,0.0])
 p1.getNode().newLoad(totalLoad)
 
