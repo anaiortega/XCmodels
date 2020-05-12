@@ -23,7 +23,7 @@ lsd.shearResistance, # Shear stresses resistance (IS THE SAME AS NORMAL STRESSES
 #limitStates= [lsd.freqLoadsCrackControl]
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc)
+  ls.saveAll(combContainer,setCalc)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

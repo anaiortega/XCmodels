@@ -125,8 +125,8 @@ combContainer.ULS.perm.add('combN', '1.0*A')
 
 totalSet= preprocessor.getSets.getSet('total')
 lsd.LimitStateData.internal_forces_results_directory= '/tmp/'
-lsd.normalStressesResistance.saveAll(test,combContainer,totalSet)
-lsd.shearResistance.saveAll(test,combContainer,totalSet)
+lsd.normalStressesResistance.saveAll(combContainer,totalSet)
+lsd.shearResistance.saveAll(combContainer,totalSet)
 
 reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=beamRCsect)
 

@@ -94,7 +94,7 @@ combContainer= combs.CombContainer()
 combContainer.SLS.freq.add('allLoads', '1.0*lp0')
 totalSet= preprocessor.getSets.getSet('total')
 lsd.LimitStateData.internal_forces_results_directory= '/tmp/'
-lsd.freqLoadsCrackControl.saveAll(feProblem,combContainer,totalSet) 
+lsd.freqLoadsCrackControl.saveAll(combContainer,totalSet) 
 
 # Define available sections for the elements (spatial distribution of RC sections).
 # It refers to the reinforced concrete sections associated with the element

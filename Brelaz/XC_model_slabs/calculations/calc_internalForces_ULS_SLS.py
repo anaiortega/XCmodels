@@ -50,7 +50,7 @@ def customAnalysis(feProb,steps= 1):
   return result
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc,analysisToPerform= customAnalysis)
+  ls.saveAll(combContainer,setCalc,analysisToPerform= customAnalysis)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

@@ -38,6 +38,6 @@ lsd.fatigueResistance # Fatigue resistance.
 ] 
 
 for ls in limitStates:
-  ls.saveAll(model.getFEProblem(),combContainer,setCalc)
+  ls.saveAll(combContainer,setCalc)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 

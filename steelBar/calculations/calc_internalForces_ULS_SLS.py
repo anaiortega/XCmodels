@@ -21,7 +21,7 @@ lsd.shearResistance, # Shear stresses resistance (IS THE SAME AS NORMAL STRESSES
 
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=[beam01])
+  ls.saveAll(combContainer,setCalc,lstSteelBeams=[beam01])
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

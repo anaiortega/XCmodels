@@ -38,6 +38,6 @@ lsd.fatigueResistance # Fatigue resistance.
 ] 
 
 for ls in limitStates:
-  ls.saveAll(feProblem=gilamontDock,combContainer=combContainer,setCalc= elementsWithSection,fConvIntForc= 1.0)
+  ls.saveAll(combContainer=combContainer,setCalc= elementsWithSection,fConvIntForc= 1.0)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 

@@ -29,7 +29,7 @@ limitStates= [lsd.normalStressesResistance, # Normal stresses resistance.
 #limitStates= [lsd.freqLoadsCrackControl]
 
 for ls in limitStates:
-    ls.saveAll(FEcase,combContainer,setCalc,lstSteelBeams=None)
+    ls.saveAll(combContainer,setCalc,lstSteelBeams=None)
     print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 

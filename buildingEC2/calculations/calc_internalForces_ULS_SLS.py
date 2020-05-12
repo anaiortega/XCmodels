@@ -56,6 +56,6 @@ loadCombinations= preprocessor.getLoadHandler.getLoadCombinations
 limitStates= [lsd.normalStressesResistance] # Normal stresses resistance.
 
 for ls in limitStates:
-  ls.saveAll(model.getFEProblem(),combContainer,setCalc)
+  ls.saveAll(combContainer,setCalc)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 

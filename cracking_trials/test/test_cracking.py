@@ -127,5 +127,5 @@ lsd.LimitStateData.internal_forces_results_directory= './'
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 loadCombinations= prep.getLoadHandler.getLoadCombinations
 ls=lsd.freqLoadsCrackControl
-ls.saveAll(FEcase,combContainer,beamSet)
+ls.saveAll(combContainer,beamSet)
 

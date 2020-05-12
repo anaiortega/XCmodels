@@ -30,7 +30,7 @@ lsd.freqLoadsCrackControl, # RC crack control under frequent loads
 #limitStates= [lsd.freqLoadsCrackControl]
 
 for ls in limitStates:
-  ls.saveAll(FEcase,combContainer,setCalc)
+  ls.saveAll(combContainer,setCalc)
   print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 
