@@ -202,9 +202,9 @@ columnZconcr_mat.setupElasticShear3DSection(preprocessor=prep)
   #         UPNShape, AUShape, CHSShape
   #      (defined in materials.sections.structural_shapes.arcelor_metric_shapes)
 columnZsteel_mat= EC3_materials.HEShape(steel=S235JR,name='HE_200_A')
-columnZsteel_mat.defElasticShearSection3d(prep,S235JR)
+columnZsteel_mat.defElasticShearSection3d(prep)
 beamXsteel_mat= EC3_materials.IPEShape(steel=S235JR,name='IPE_A_300')
-beamXsteel_mat.defElasticShearSection3d(prep,S235JR)
+beamXsteel_mat.defElasticShearSection3d(prep)
 
 #                         ***FE model - MESH***
 # IMPORTANT: it's convenient to generate the mesh of surfaces before meshing

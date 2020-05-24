@@ -26,7 +26,7 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
 S235JR= EC3_materials.S235JR
 S235JR.gammaM= 1.00
 IPE450A= EC3_materials.IPEShape(S235JR,'IPE_A_450')
-fs3dIPE450= IPE450A.defElasticShearSection3d(preprocessor,S235JR)
+fs3dIPE450= IPE450A.defElasticShearSection3d(preprocessor)
 
 points= preprocessor.getMultiBlockTopology.getPoints
 pt= dict()
@@ -95,7 +95,7 @@ for key in lineDict:
   l.genMesh(xc.meshDir.I)
 
 joint= EC3_materials.IPEShape(S235JR,'IPE_300')
-fs3djoint= joint.defElasticShearSection3d(preprocessor,S235JR)
+fs3djoint= joint.defElasticShearSection3d(preprocessor)
 elements= preprocessor.getElementHandler
 elements.defaultMaterial= joint.sectionName
 zl= elements.newElement("ZeroLengthSection",xc.ID([pt[10].getNode().tag,pt[21].getNode().tag]))
