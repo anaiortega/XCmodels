@@ -28,7 +28,7 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 
 execfile('../generic_layers_aux.py')
 
-#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
@@ -40,7 +40,7 @@ Twofi10r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= area
 Twofi10r50.nRebars=2
 Twofi10r50.coverLat=0.05
 
-cantlvRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='cantlvRCSects',sectionDescr='cantilever of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=cantlvTh)  
+cantlvRCSects= def_simple_RC_section.RCSlabBeamSection(name='cantlvRCSects',sectionDescr='cantilever of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=cantlvTh)  
 cantlvRCSects.dir1PositvRebarRows=[Twofi20r50]
 cantlvRCSects.dir1NegatvRebarRows=[Twofi10r50]
 cantlvRCSects.dir2PositvRebarRows=[Twofi20r50]

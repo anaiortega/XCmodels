@@ -61,7 +61,7 @@ fi20s125r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= are
 fi26s250r30=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing=0.250,width=1.0,nominalCover=0.030)
 fi26s250r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing=0.250,width=1.0,nominalCover=0.050)
 
-FoundExtSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='foundExtSlabRCSect',sectionDescr="underpass.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.60)
+FoundExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='foundExtSlabRCSect',sectionDescr="underpass.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.60)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 FoundExtSlabRCSect.dir1PositvRebarRows=[fi14s250r30]
@@ -73,7 +73,7 @@ FoundExtSlabRCSect.creaTwoSections()
 sections.append(FoundExtSlabRCSect)
 
 
-FoundIntSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection('foundIntSlabRCSect',"underpass.",concrete, reinfSteel,0.60)
+FoundIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('foundIntSlabRCSect',"underpass.",concrete, reinfSteel,0.60)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 FoundIntSlabRCSect.dir1PositvRebarRows=[fi14s125r30,fi8s125r44]
@@ -84,7 +84,7 @@ FoundIntSlabRCSect.dir2NegatvRebarRows=[fi10s200r44]
 FoundIntSlabRCSect.creaTwoSections() 
 sections.append(FoundIntSlabRCSect)
 
-LeftWallRCSect= def_simple_RC_section.RecordRCSlabBeamSection('leftWallRCSect',"underpass.",concrete, reinfSteel,0.45)
+LeftWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftWallRCSect',"underpass.",concrete, reinfSteel,0.45)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 LeftWallRCSect.dir1PositvRebarRows=[fi12s250r46]
@@ -96,7 +96,7 @@ LeftWallRCSect.creaTwoSections()
 sections.append(LeftWallRCSect)
 
 
-RightWallRCSect= def_simple_RC_section.RecordRCSlabBeamSection('rightWallRCSect',"underpass.",concrete, reinfSteel,0.45)
+RightWallRCSect= def_simple_RC_section.RCSlabBeamSection('rightWallRCSect',"underpass.",concrete, reinfSteel,0.45)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 RightWallRCSect.dir1PositvRebarRows=[fi12s250r46]
@@ -107,7 +107,7 @@ RightWallRCSect.dir2NegatvRebarRows=[fi16s125r30]
 RightWallRCSect.creaTwoSections() 
 sections.append(RightWallRCSect)
 
-DeckExtSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection('deckExtSlabRCSect',"underpass.",concrete, reinfSteel,0.35)
+DeckExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection('deckExtSlabRCSect',"underpass.",concrete, reinfSteel,0.35)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 DeckExtSlabRCSect.dir1PositvRebarRows=[fi20s250r30,fi20s125r30]
@@ -120,7 +120,7 @@ sections.append(DeckExtSlabRCSect)
 
 
 
-DeckIntSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection('deckIntSlabRCSect',"underpass.",concrete, reinfSteel,0.35)
+DeckIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('deckIntSlabRCSect',"underpass.",concrete, reinfSteel,0.35)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 DeckIntSlabRCSect.dir1PositvRebarRows=[fi12s250r30]

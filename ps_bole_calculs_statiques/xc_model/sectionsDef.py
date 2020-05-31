@@ -65,7 +65,7 @@ fi26s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= are
 fi26s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
 
-deckSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+deckSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: rebars on back end section.
 #[1]: rebars on front end section
 
@@ -78,7 +78,7 @@ deckSlabRCSect.dir2NegatvRebarRows=[fi12s150r40] #Ok
 deckSlabRCSect.creaTwoSections() 
 sections.append(deckSlabRCSect)
 
-parapetRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+parapetRCSect= def_simple_RC_section.RCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: rebars on back end section.
 #[1]: rebars on front end section
 parapetRCSect.dir1PositvRebarRows=[fi10s150r40] #Ok

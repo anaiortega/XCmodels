@@ -30,12 +30,12 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 
 execfile('../generic_layers_aux.py')
 
-#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-deckRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
+deckRCSects= def_simple_RC_section.RCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
 deckRCSects.dir1PositvRebarRows=[fi20s150r35]  #transv. sup.
 deckRCSects.dir1NegatvRebarRows=[fi14s150r35]  #transv. inf.
 deckRCSects.dir2PositvRebarRows=[fi12s150r35]  #long. sup.

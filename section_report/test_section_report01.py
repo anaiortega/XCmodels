@@ -34,7 +34,7 @@ concrete.alfacc=0.85    #concrete fatigue factor (generalmente se toma alfacc=1)
 reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15
-sccData= def_simple_RC_section.RecordRCSimpleSection()
+sccData= def_simple_RC_section.RCSimpleSection()
 sccData.sectionName= "sccData"
 sccData.sectionDescr= "Prueba."
 sccData.concrType= concrete

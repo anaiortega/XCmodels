@@ -51,7 +51,7 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 execfile('../generic_fis.py')
 
 
-botColRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='botColRCSects',sectionDescr='fut fondation',concrType=concrete, reinfSteelType=reinfSteel,width=BCside-0.25,depth=BCside)
+botColRCSects= def_simple_RC_section.RCSlabBeamSection(name='botColRCSects',sectionDescr='fut fondation',concrType=concrete, reinfSteelType=reinfSteel,width=BCside-0.25,depth=BCside)
 #auxiliar data
 layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll)
 layer1.nRebars=8
@@ -76,7 +76,7 @@ botColRCSects.dir2ShReinfZ=shear1
 botColRCSects.creaTwoSections() 
 sections.append(botColRCSects)
 
-topColRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='topColRCSects',sectionDescr='pilier prefabriqué inf.',concrType=concrete, reinfSteelType=reinfSteel,width=TCheight,depth=TCwidth)  
+topColRCSects= def_simple_RC_section.RCSlabBeamSection(name='topColRCSects',sectionDescr='pilier prefabriqué inf.',concrType=concrete, reinfSteelType=reinfSteel,width=TCheight,depth=TCwidth)  
 #auxiliar data
 layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll)
 layer1.nRebars=2
@@ -102,7 +102,7 @@ topColRCSects.dir2ShReinfZ=shear1
 topColRCSects.creaTwoSections() 
 sections.append(topColRCSects)
 
-glsColRCSects= def_simple_RC_section.RecordRCSlabBeamSection(name='glsColRCSects',sectionDescr='pilier prefabriqué sup.',concrType=concrete, reinfSteelType=reinfSteel,width=CCheight,depth=CCwidth)  
+glsColRCSects= def_simple_RC_section.RCSlabBeamSection(name='glsColRCSects',sectionDescr='pilier prefabriqué sup.',concrType=concrete, reinfSteelType=reinfSteel,width=CCheight,depth=CCwidth)  
 #auxiliar data
 layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+12e-3,width=CCheight,nominalCover=coverForAll)
 layer1.nRebars=2

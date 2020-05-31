@@ -16,12 +16,12 @@ rnom=35 #recubrimiento nominal
 
 areaFi16= math.pi*(16*1e-3)**2/4.0
 
-#instances of rcs.RecordRCSlabBeamSection that define the
+#instances of rcs.RCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-losSupV2RCSects= rcs.RecordRCSlabBeamSection(name='losSupV2RCSects',sectionDescr='losa aligerada, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupV2')
+losSupV2RCSects= rcs.RCSlabBeamSection(name='losSupV2RCSects',sectionDescr='losa aligerada, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupV2')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -32,7 +32,7 @@ losSupV2RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(16,200,rnom+20)]
 losSupV2RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+espLosAlig/2.)]
 
 
-losInfV2RCSects= rcs.RecordRCSlabBeamSection(name='losInfV2RCSects',sectionDescr='losa aligerada, cara superior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfV2')
+losInfV2RCSects= rcs.RCSlabBeamSection(name='losInfV2RCSects',sectionDescr='losa aligerada, cara superior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfV2')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -42,7 +42,7 @@ losInfV2RCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(16,400,rnom++espLosAlig/2.0
 losInfV2RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(32,200,rnom+16)]
 losInfV2RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(20,200,rnom+espLosAlig/2.0)]
 
-losInfV1RCSects= rcs.RecordRCSlabBeamSection(name='losInfV1RCSects',sectionDescr='losa aligerada, cara superior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfV1')
+losInfV1RCSects= rcs.RCSlabBeamSection(name='losInfV1RCSects',sectionDescr='losa aligerada, cara superior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfV1')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -52,7 +52,7 @@ losInfV1RCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(16,400,rnom++espLosAlig/2.0
 losInfV1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(25,200,rnom+16)]
 losInfV1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(25,200,rnom+espLosAlig/2.0)]
 
-voladzCentV2RCSects= rcs.RecordRCSlabBeamSection(name='voladzCentV2RCSects',sectionDescr='voladizo, zona central vano',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzCentV2')
+voladzCentV2RCSects= rcs.RCSlabBeamSection(name='voladzCentV2RCSects',sectionDescr='voladizo, zona central vano',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzCentV2')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -62,7 +62,7 @@ voladzCentV2RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(20,20,rnom+25)]
 voladzCentV2RCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom)]
 voladzCentV2RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12)]
 
-voladzExtrV2RCSects= rcs.RecordRCSlabBeamSection(name='voladzExtrV2RCSects',sectionDescr='voladizo, zona exterior vano',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMin,elemSetName='voladzExtrV2')
+voladzExtrV2RCSects= rcs.RCSlabBeamSection(name='voladzExtrV2RCSects',sectionDescr='voladizo, zona exterior vano',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMin,elemSetName='voladzExtrV2')
 #D1: transversal rebars
 #D2: longitudinal rebars
 voladzExtrV2RCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(20,400,rnom),rcs.rebLayer_mm(25,400,rnom)]
@@ -72,7 +72,7 @@ voladzExtrV2RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12)]
 
 
 
-losSupRP1RCSects= rcs.RecordRCSlabBeamSection(name='losSupRP1RCSects',sectionDescr='riostra sobre pila, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupRP1')
+losSupRP1RCSects= rcs.RCSlabBeamSection(name='losSupRP1RCSects',sectionDescr='riostra sobre pila, cara superior.',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losSupRP1')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -82,7 +82,7 @@ losSupRP1RCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(25,130,rnom+espLosAlig/2.0
 losSupRP1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(25,200,rnom)]
 losSupRP1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(25,200,rnom+espLosAlig/2.0)]
 
-losInfRP1RCSects= rcs.RecordRCSlabBeamSection(name='losInfRP1RCSects',sectionDescr='riostra sobre pila, cara inferior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfRP1')
+losInfRP1RCSects= rcs.RCSlabBeamSection(name='losInfRP1RCSects',sectionDescr='riostra sobre pila, cara inferior',concrType=concrete, reinfSteelType=reinfSteel,depth=espLosAlig,elemSetName='losInfRP1')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -92,7 +92,7 @@ losInfRP1RCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(16,130,rnom++espLosAlig/2.
 losInfRP1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(25,200,rnom)]
 losInfRP1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(16,130,rnom+40)]
 
-voladzCentRP1RCSects= rcs.RecordRCSlabBeamSection(name='voladzCentRP1RCSects',sectionDescr='voladizo, zona central riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzCentRP1')
+voladzCentRP1RCSects= rcs.RCSlabBeamSection(name='voladzCentRP1RCSects',sectionDescr='voladizo, zona central riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzCentRP1')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -102,7 +102,7 @@ voladzCentRP1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(25,100,rnom+25)]
 voladzCentRP1RCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,125,rnom)]
 voladzCentRP1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12)]
 
-voladzExtrRP1RCSects= rcs.RecordRCSlabBeamSection(name='voladzExtrRP1RCSects',sectionDescr='voladizo, zona exterior riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzExtrRP1')
+voladzExtrRP1RCSects= rcs.RCSlabBeamSection(name='voladzExtrRP1RCSects',sectionDescr='voladizo, zona exterior riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espVoladzMax,elemSetName='voladzExtrRP1')
 #D1: transversal rebars
 #D2: longitudinal rebars
 #positiv: top face
@@ -112,7 +112,7 @@ voladzExtrRP1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(25,100,rnom+25)]
 voladzExtrRP1RCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,125,rnom)]
 voladzExtrRP1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12)]
 
-murAligV2RCSects= rcs.RecordRCSlabBeamSection(name='murAligV2RCSects',sectionDescr='nervios losa aligerada',concrType=concrete, reinfSteelType=reinfSteel,depth=espEntreAlig,elemSetName='murAligV2')
+murAligV2RCSects= rcs.RCSlabBeamSection(name='murAligV2RCSects',sectionDescr='nervios losa aligerada',concrType=concrete, reinfSteelType=reinfSteel,depth=espEntreAlig,elemSetName='murAligV2')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: top face
@@ -128,7 +128,7 @@ murAligV2RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(8,200,rnom)]
 shear2=rcs.RecordShearReinforcement(familyName= "shear2",nShReinfBranches= 2.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.10,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 murAligV2RCSects.dir2ShReinfY=shear2
 
-diafRP1RCSects= rcs.RecordRCSlabBeamSection(name='diafRP1RCSects',sectionDescr='diafragmas riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espDiafRP,elemSetName='diafRP1')
+diafRP1RCSects= rcs.RCSlabBeamSection(name='diafRP1RCSects',sectionDescr='diafragmas riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espDiafRP,elemSetName='diafRP1')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: top face
@@ -145,9 +145,9 @@ shear3=rcs.RecordShearReinforcement(familyName= "shear3",nShReinfBranches=4.0,ar
 diafRP1RCSects.dir2ShReinfY=shear3
 diafRP1RCSects.dir2ShReinfZ=shear3
 
-pilasInfRCSects= rcs.RecordRCSlabBeamSection(name='pilasInfRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName='pilasInf')
+pilasInfRCSects= rcs.RCSlabBeamSection(name='pilasInfRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName='pilasInf')
 #Comprobación cortante
-#pilasInfRCSects= rcs.RecordRCSlabBeamSection(name='pilasInfRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=1.0,depth=lRectEqPila**2,elemSetName='pilasInf')
+#pilasInfRCSects= rcs.RCSlabBeamSection(name='pilasInfRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=1.0,depth=lRectEqPila**2,elemSetName='pilasInf')
 #D1: cara dorsal
 #D2: cara frontal
 #positiv: top face
@@ -171,9 +171,9 @@ pilasInfRCSects.dir2NegatvRebarRows=[capa1,capa2,capa3,capa4]
 pilasInfRCSects.dir1ShReinfY=shear1 
 pilasInfRCSects.dir2ShReinfY=shear1 
 
-pilasSupRCSects= rcs.RecordRCSlabBeamSection(name='pilasSupRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName='pilasSup')
+pilasSupRCSects= rcs.RCSlabBeamSection(name='pilasSupRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName='pilasSup')
 #comprobación a cortante
-#pilasSupRCSects= rcs.RecordRCSlabBeamSection(name='pilasSupRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=1.0,depth=lRectEqPila**2,elemSetName='pilasSup')
+#pilasSupRCSects= rcs.RCSlabBeamSection(name='pilasSupRCSects',sectionDescr='pilas ',concrType=concrete, reinfSteelType=reinfSteel,width=1.0,depth=lRectEqPila**2,elemSetName='pilasSup')
 pilasSupRCSects.dir1PositvRebarRows=[capa1,capa2,capa3,capa4]
 pilasSupRCSects.dir1NegatvRebarRows=[capa1,capa2,capa3,capa4]
 pilasSupRCSects.dir2PositvRebarRows=[capa1,capa2,capa3,capa4]
@@ -182,7 +182,7 @@ pilasSupRCSects.dir1ShReinfY=shear1
 pilasSupRCSects.dir2ShReinfY=shear1 
 
 
-riostrEstr1RCSects= rcs.RecordRCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='riostra estribo 1 ',concrType=concrete, reinfSteelType=reinfSteel,width=espRiostrEstr,depth=cantoLosa,elemSetName='riostrEstr1')
+riostrEstr1RCSects= rcs.RCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='riostra estribo 1 ',concrType=concrete, reinfSteelType=reinfSteel,width=espRiostrEstr,depth=cantoLosa,elemSetName='riostrEstr1')
 sep_mm=(cantoLosa*1e3-2*(rnom +16+25/2.))/6.
 capa5=rcs.rebLayer_mm(25,100,rnom +16)
 capa5.nRebars=9
@@ -202,7 +202,7 @@ riostrEstr1RCSects.dir1ShReinfY=shear2
 riostrEstr1RCSects.dir2ShReinfY=shear2
 
 '''
-murExtAligRCSects= rcs.RecordRCSlabBeamSection(name='murExtAligRCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espExtAlig,elemSetName='murExtAlig')
+murExtAligRCSects= rcs.RCSlabBeamSection(name='murExtAligRCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espExtAlig,elemSetName='murExtAlig')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: top face
@@ -211,7 +211,7 @@ murExtAligRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(20,150,rnom)]
 murExtAligRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(12,200,rnom),rcs.rebLayer_mm(16,200,rnom)]
 murExtAligRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom)]
 
-riostrEstr1RCSects= rcs.RecordRCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espRiostrEstr,elemSetName='riostrEstr1')
+riostrEstr1RCSects= rcs.RCSlabBeamSection(name='riostrEstr1RCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espRiostrEstr,elemSetName='riostrEstr1')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: cara +y
@@ -221,7 +221,7 @@ riostrEstr1RCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom),rcs.rebLaye
 riostrEstr1RCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12),rcs.rebLayer_mm(16,200,rnom+12)]
 riostrEstr1RCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(12,200,rnom+12)]
 
-riostrPilRCSects= rcs.RecordRCSlabBeamSection(name='riostrPilRCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espRiostrPila,elemSetName='riostrPil')
+riostrPilRCSects= rcs.RCSlabBeamSection(name='riostrPilRCSects',sectionDescr='diafragma entre aligeramientos',concrType=concrete, reinfSteelType=reinfSteel,depth=espRiostrPila,elemSetName='riostrPil')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: cara +y
