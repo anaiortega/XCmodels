@@ -63,10 +63,10 @@ def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,ar
     cercosRef: refuerzo cercos
     cercos: armadura de cortante en losa
     '''
-    RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-    RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm1[0],arm1[1],rnom)] #transv. inf.
-    RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
-    RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm6a[0],arm6a[1],rnom+arm1[0])] #long. inf.
+    RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+    RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm1[0],arm1[1],rnom)]) #transv. inf.
+    RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])]) #long. sup.
+    RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm6a[0],arm6a[1],rnom+arm1[0])]) #long. inf.
     recNomTrSup=rnom+arm5[0]+arm9a[0]
     if arm9b:
         RCSet.dir2PositvRebarRows.append(rcs.rebLayer_mm(arm9b[0],arm9b[1],recNomTrSup)) #long. sup. 2a. capa
@@ -124,19 +124,19 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
     #armaduras cartabón
     RCSets=[cartIntRC[nZona-1],cartExtRC[nZona-1]]
     for RCSet in RCSets:
-        RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-        RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm2[0],arm2[1],rnom)] #transv. inf.
-        RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
-        RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm7[0],arm7[1],rnom+arm2[0])] #long. inf.
+        RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+        RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm2[0],arm2[1],rnom)]) #transv. inf.
+        RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])]) #long. sup.
+        RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm7[0],arm7[1],rnom+arm2[0])]) #long. inf.
         if arm9b:
             RCSet.dir2PositvRebarRows.append(rcs.rebLayer_mm(arm9b[0],arm9b[1],rnom+arm5[0]+arm9a[0])) #long. sup. 2a. capa
     #armaduras voladizo
     RCSets=[volIntRC[nZona-1],volExtRC[nZona-1]]
     for RCSet in RCSets:
-        RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-        RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm4[0],arm4[1],rnom)] #transv. inf.
-        RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm10[0],arm10[1],rnom+arm5[0])] #long. sup.
-        RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm8[0],arm8[1],rnom+arm4[0])] #long. inf.
+        RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+        RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm4[0],arm4[1],rnom)]) #transv. inf.
+        RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm10[0],arm10[1],rnom+arm5[0])]) #long. sup.
+        RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm8[0],arm8[1],rnom+arm4[0])]) #long. inf.
 
 
 #Armaduras riostra estribo 1
@@ -274,10 +274,10 @@ armaduraZonas(nZona=6,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
     
 
 #armadura pilas
-pilasRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
+pilasRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
 
 pilasRCSects.dir1ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 pilasRCSects.dir2ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)

@@ -41,10 +41,10 @@ Twofi10r50.nRebars=2
 Twofi10r50.coverLat=0.05
 
 cantlvRCSects= def_simple_RC_section.RCSlabBeamSection(name='cantlvRCSects',sectionDescr='cantilever of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=cantlvTh)  
-cantlvRCSects.dir1PositvRebarRows=[Twofi20r50]
-cantlvRCSects.dir1NegatvRebarRows=[Twofi10r50]
-cantlvRCSects.dir2PositvRebarRows=[Twofi20r50]
-cantlvRCSects.dir2NegatvRebarRows=[Twofi20r50]
+cantlvRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi20r50])
+cantlvRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi10r50])
+cantlvRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi20r50])
+cantlvRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi20r50])
 
 cantlvRCSects.creaTwoSections() 
 sections.append(cantlvRCSects)   

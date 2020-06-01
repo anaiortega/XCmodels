@@ -70,10 +70,10 @@ deckSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='deckSlabRCSect',se
 #[1]: rebars on front end section
 
 
-deckSlabRCSect.dir1PositvRebarRows=[fi12s150r40] #Ok
-deckSlabRCSect.dir1NegatvRebarRows=[fi12s150r40] #Ok
-deckSlabRCSect.dir2PositvRebarRows=[fi12s150r40] #Ok
-deckSlabRCSect.dir2NegatvRebarRows=[fi12s150r40] #Ok
+deckSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
+deckSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
+deckSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
+deckSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
 
 deckSlabRCSect.creaTwoSections() 
 sections.append(deckSlabRCSect)
@@ -81,10 +81,10 @@ sections.append(deckSlabRCSect)
 parapetRCSect= def_simple_RC_section.RCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: rebars on back end section.
 #[1]: rebars on front end section
-parapetRCSect.dir1PositvRebarRows=[fi10s150r40] #Ok
-parapetRCSect.dir1NegatvRebarRows=[fi12s150r40] #Ok
-parapetRCSect.dir2PositvRebarRows=[fi10s150r40] #Ok
-parapetRCSect.dir2NegatvRebarRows=[fi12s150r40] #Ok
+parapetRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s150r40]) #Ok
+parapetRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
+parapetRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s150r40]) #Ok
+parapetRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
 
 parapetRCSect.creaTwoSections() 
 sections.append(parapetRCSect)

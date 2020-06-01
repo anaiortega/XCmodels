@@ -53,10 +53,10 @@ fi8s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaF
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 beamRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
-beamRCsect.lstRCSects[0].positvRebarRows=[fi10s200r44]
-beamRCsect.lstRCSects[0].negatvRebarRows=[fi16s200r44]
-beamRCsect.lstRCSects[1].positvRebarRows=[fi10s200r44]
-beamRCsect.lstRCSects[1].negatvRebarRows=[fi16s200r44]
+beamRCsect.lstRCSects[0].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsect.lstRCSects[0].negatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
+beamRCsect.lstRCSects[1].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsect.lstRCSects[1].negatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
 sections.append(beamRCsect)
 
 test= xc.FEProblem()
@@ -78,7 +78,7 @@ lin= trfs.newLinearCrdTransf2d("lin")
 
     
 # Materials definition
-scc= typical_materials.defElasticSection2d(preprocessor, "scc",beamRCsect.lstRCSects[0].getAc(),beamRCsect.lstRCSects[0].concrType.Ecm(),beamRCsect.lstRCSects[0].getI())
+scc= typical_materials.defElasticSection2d(preprocessor, "scc",beamRCsect.lstRCSects[0].getAc(),beamRCsect.lstRCSects[0].fiberSectionParameters.concrType.Ecm(),beamRCsect.lstRCSects[0].getI())
 
 #print scc.sectionProperties.I
 

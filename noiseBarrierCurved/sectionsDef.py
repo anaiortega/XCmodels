@@ -76,10 +76,10 @@ shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinf
 
 
 #end auxiliar data
-botColRCSects.dir1PositvRebarRows=[layer1,layer2,layer3,layer4,layer5]
-botColRCSects.dir1NegatvRebarRows=[layer1,layer2,layer4,layer5]
-botColRCSects.dir2PositvRebarRows=[layer1,layer2,layer3,layer4,layer5]
-botColRCSects.dir2NegatvRebarRows=[layer1,layer2,layer4,layer5]
+botColRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4,layer5])
+botColRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer4,layer5])
+botColRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4,layer5])
+botColRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer4,layer5])
 botColRCSects.dir1ShReinfY=shear1
 botColRCSects.dir1ShReinfZ=shear1
 botColRCSects.dir2ShReinfY=shear1
@@ -99,10 +99,10 @@ layer3.nRebars=2
 layer4=def_simple_RC_section.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing=0.15,width=TCheight,nominalCover=coverForAll+0.10)
 layer4.nRebars=3
 #end auxiliar data
-topColRCSects.dir1PositvRebarRows=[layer1,layer2,layer3,layer4]
-topColRCSects.dir1NegatvRebarRows=[layer1,layer2,layer3,layer4]
-topColRCSects.dir2PositvRebarRows=[layer1,layer2,layer3,layer4]
-topColRCSects.dir2NegatvRebarRows=[layer1,layer2,layer3,layer4]
+topColRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4])
+topColRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4])
+topColRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4])
+topColRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4])
 topColRCSects.dir1ShReinfY=shear1
 topColRCSects.dir1ShReinfZ=shear1
 topColRCSects.dir2ShReinfY=shear1
@@ -118,10 +118,10 @@ layer1.nRebars=2
 layer2=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.20,width=CCheight,nominalCover=coverForAll)
 layer2.nRebars=2
 #end auxiliar data
-curvColRCSects.dir1PositvRebarRows=[layer1,layer2]
-curvColRCSects.dir1NegatvRebarRows=[layer1,layer2]
-curvColRCSects.dir2PositvRebarRows=[layer1,layer2]
-curvColRCSects.dir2NegatvRebarRows=[layer1,layer2]
+curvColRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2])
+curvColRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2])
+curvColRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2])
+curvColRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2])
 curvColRCSects.dir1ShReinfY=shear1
 curvColRCSects.dir1ShReinfZ=shear1
 curvColRCSects.dir2ShReinfY=shear1

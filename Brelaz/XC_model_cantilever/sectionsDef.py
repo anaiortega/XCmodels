@@ -36,10 +36,10 @@ execfile('../generic_layers_aux.py')
 #of a beam element
 
 deckRCSects= def_simple_RC_section.RCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
-deckRCSects.dir1PositvRebarRows=[fi20s150r35]  #transv. sup.
-deckRCSects.dir1NegatvRebarRows=[fi14s150r35]  #transv. inf.
-deckRCSects.dir2PositvRebarRows=[fi12s150r35]  #long. sup.
-deckRCSects.dir2NegatvRebarRows=[fi12s150r35]  #long. inf.
+deckRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])  #transv. sup.
+deckRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r35])  #transv. inf.
+deckRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r35])  #long. sup.
+deckRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r35])  #long. inf.
 
 deckRCSects.creaTwoSections() 
 sections.append(deckRCSects)   

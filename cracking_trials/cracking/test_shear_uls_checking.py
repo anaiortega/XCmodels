@@ -112,10 +112,10 @@ reinfLayer= def_simple_RC_section.MainReinfLayer(rebarsDiam= barDiameter,areaReb
 #of a beam element
 reinfSteel= EHE_materials.B500S
 beamRCsect= def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
-beamRCsect.lstRCSects[0].positvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[0].negatvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[1].positvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[1].negatvRebarRows=[reinfLayer]
+beamRCsect.lstRCSects[0].positvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[0].negatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[1].positvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[1].negatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 sections.append(beamRCsect)
 
 # Spatial distribution of reinforced concrete

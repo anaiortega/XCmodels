@@ -134,7 +134,7 @@ reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistributio
 
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
 for secRec in lstOfSectRecords:
-    secRec.concrType.initTensStiff='Y' #tension stiffening initialized in
+    secRec.fiberSectionParameters.concrType.initTensStiff='Y' #tension stiffening initialized in
                                        #concrete material diagram
     secRec.creaTwoSections()    
     sections.append(secRec)

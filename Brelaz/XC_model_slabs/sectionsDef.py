@@ -37,19 +37,19 @@ execfile('../generic_layers_aux.py')
 #of a beam element
 
 deckRCSects= def_simple_RC_section.RCSlabBeamSection(name='deckRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
-deckRCSects.dir1PositvRebarRows=[fi20s150r35]  #transv. sup.
-deckRCSects.dir1NegatvRebarRows=[fi20s150r35]  #transv. inf.
-deckRCSects.dir2PositvRebarRows=[fi16s150r35]  #long. sup.
-deckRCSects.dir2NegatvRebarRows=[fi20s150r35]  #long. inf.
+deckRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])  #transv. sup.
+deckRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])  #transv. inf.
+deckRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])  #long. sup.
+deckRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])  #long. inf.
 
 deckRCSects.creaTwoSections() 
 sections.append(deckRCSects)   
 
 curbRCSects= def_simple_RC_section.RCSlabBeamSection(name='curbRCSects',sectionDescr='curbs',concrType=concrete, reinfSteelType=reinfSteel,depth=curbTh)
-curbRCSects.dir1PositvRebarRows=[fi16s150r35]  #hor.
-curbRCSects.dir1NegatvRebarRows=[fi16s150r35]
-curbRCSects.dir2PositvRebarRows=[fi12s150r35]  #vert.
-curbRCSects.dir2NegatvRebarRows=[fi12s150r35]
+curbRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])  #hor.
+curbRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
+curbRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r35])  #vert.
+curbRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r35])
 
 curbRCSects.creaTwoSections() 
 sections.append(curbRCSects)   

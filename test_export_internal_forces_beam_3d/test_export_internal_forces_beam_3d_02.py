@@ -53,10 +53,10 @@ fi8s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaF
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 beamRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
-beamRCsect.lstRCSects[0].positvRebarRows=[fi10s200r44]
-beamRCsect.lstRCSects[0].negatvRebarRows=[fi16s200r44]
-beamRCsect.lstRCSects[1].positvRebarRows=[fi10s200r44]
-beamRCsect.lstRCSects[1].negatvRebarRows=[fi16s200r44]
+beamRCsect.lstRCSects[0].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsect.lstRCSects[0].negatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
+beamRCsect.lstRCSects[1].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsect.lstRCSects[1].negatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
 sections.append(beamRCsect)
 
 test= xc.FEProblem()
@@ -93,7 +93,7 @@ JElem= beamRCsect.lstRCSects[0].getJTorsion()
 # Iy:           second moment of area about the local y-axis 
 # J:            torsional moment of inertia of the section
 
-scc= typical_materials.defElasticSection3d(preprocessor=preprocessor, name="scc",A=beamRCsect.lstRCSects[0].getAc(),E=beamRCsect.lstRCSects[0].concrType.Ecm(),G=beamRCsect.lstRCSects[0].concrType.Gcm(),Iz=IzElem,Iy=IyElem,J=JElem)
+scc= typical_materials.defElasticSection3d(preprocessor=preprocessor, name="scc",A=beamRCsect.lstRCSects[0].getAc(),E=beamRCsect.lstRCSects[0].fiberSectionParameters.concrType.Ecm(),G=beamRCsect.lstRCSects[0].fiberSectionParameters.concrType.Gcm(),Iz=IzElem,Iy=IyElem,J=JElem)
 
 
 # Elements definition
