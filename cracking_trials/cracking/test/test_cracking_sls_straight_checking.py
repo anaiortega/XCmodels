@@ -167,7 +167,7 @@ predefined_solutions.resuelveComb(preprocessor,nmbComb=key,analysis=predefined_s
 for e in elements:
   e.getResistingForce()
   scc=e.getSection()
-  sccProp=scc.getProp("datosSecc")
+  sccProp=scc.getProp("sectionData")
   concrTag=sccProp.fiberSectionParameters.concrType.matTagK
   rsteelTag=sccProp.fiberSectionParameters.reinfSteelType.matTagK
   setsRC= fiber_sets.fiberSectionSetupRCSets(scc=scc,concrMatTag=concrTag,concrSetName="concrSetFb",reinfMatTag=rsteelTag,reinfSetName="reinfSetFb")
