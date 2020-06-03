@@ -34,7 +34,7 @@ M1dintExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi1
 M1dintExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r80]) #long. inf.
 M1dintExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s100r60]) #transv. sup.
 M1dintExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60]) #transv. inf.
-sh3=def_simple_RC_section.RecordShearReinforcement(familyName= "sh3",nShReinfBranches= 5.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
+sh3=def_simple_RC_section.ShearReinforcement(familyName= "sh3",nShReinfBranches= 5.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
 M1dintExtRCSects.dir2ShReinfY=sh3
 
 M1dintExtRCSects.creaTwoSections() 
@@ -54,7 +54,7 @@ M1losCimExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([f
 M1losCimExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r76]) #long. inf.
 M1losCimExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60]) #transv. sup.
 M1losCimExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s100r60]) #transv. inf.
-sh4=def_simple_RC_section.RecordShearReinforcement(familyName= "sh4",nShReinfBranches= 5.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
+sh4=def_simple_RC_section.ShearReinforcement(familyName= "sh4",nShReinfBranches= 5.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
 M1losCimExtRCSects.dir2ShReinfY=sh4
 
 M1losCimExtRCSects.creaTwoSections() 
@@ -101,7 +101,7 @@ M2dintExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi1
 M2dintExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r85]) #long. inf.
 M2dintExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60,fi25s200r60]) #transv. sup.
 M2dintExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi25s150r60]) #transv. inf.
-sh1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 5.0,areaShReinfBranch= areaFi10,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
+sh1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 5.0,areaShReinfBranch= areaFi10,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
 M2dintExtRCSects.dir2ShReinfY=sh1
 
 M2dintExtRCSects.creaTwoSections() 
@@ -121,7 +121,7 @@ M2losCimExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([f
 M2losCimExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r80]) #long. inf.
 M2losCimExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi25s200r60]) #transv. sup.
 M2losCimExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60,fi20s200r60]) #transv. inf.
-sh2=def_simple_RC_section.RecordShearReinforcement(familyName= "sh2",nShReinfBranches= 5.0,areaShReinfBranch= areaFi10,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
+sh2=def_simple_RC_section.ShearReinforcement(familyName= "sh2",nShReinfBranches= 5.0,areaShReinfBranch= areaFi10,shReinfSpacing= 0.20,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
 M2losCimExtRCSects.dir2ShReinfY=sh2
 
 M2losCimExtRCSects.creaTwoSections() 

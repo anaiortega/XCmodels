@@ -48,8 +48,8 @@ for sect in sect2Disp:
   sect.creaTwoSections()
   sect1=sect.lstRCSects[0]
   sect2=sect.lstRCSects[1]
-  sect1.defRCSimpleSection(preprocessor,'d')
-  sect2.defRCSimpleSection(preprocessor,'d')
+  sect1.defRCRectangularSection(preprocessor,'d')
+  sect2.defRCRectangularSection(preprocessor,'d')
   #plotting of steel stress-strain diagram (only if not equal to precedent steel)
   if sect1.fiberSectionParameters.reinfSteelType!=scSteel or sect1.fiberSectionParameters.concrType!=scConcr:
      scSteel=sect1.fiberSectionParameters.reinfSteelType

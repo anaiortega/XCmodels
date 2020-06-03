@@ -34,7 +34,7 @@ concrete.alfacc=0.85    #concrete fatigue factor (generalmente se toma alfacc=1)
 reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15
-sccData= def_simple_RC_section.RCSimpleSection()
+sccData= def_simple_RC_section.RCRectangularSection()
 sccData.sectionName= "sccData"
 sccData.sectionDescr= "Prueba."
 sccData.fiberSectionParameters.concrType= concrete
@@ -57,7 +57,7 @@ preprocessor= prueba.getPreprocessor
 print "divIJ= ", sccData.nDivIJ, "divJK= ", sccData.nDivJK
 #sccData.nDivIJ= 100
 #sccData.nDivJK= 100
-sccData.defRCSimpleSection(preprocessor,'d')
+sccData.defRCRectangularSection(preprocessor,'d')
 si= sr.SectionInfoHASimple(preprocessor,sccData)
 si.writeReport('./prueba.tex','./prueba.eps')
 

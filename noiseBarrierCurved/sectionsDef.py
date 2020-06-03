@@ -72,7 +72,7 @@ layer4.nRebars=5
 layer5=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.20,width=BCheight,nominalCover=coverForAll+0.15)
 layer5.nRebars=6
 
-shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 
 #end auxiliar data

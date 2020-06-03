@@ -33,7 +33,7 @@ dintExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s
 dintExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r85])  #long. inf.
 dintExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60])  #transv.sup
 dintExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi25s200r60])  #transv.inf
-sh1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 4.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.25,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
+sh1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 4.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.25,angAlphaShReinf= math.radians(90),angThetaConcrStruts= math.radians(30))
 dintExtRCSects.dir2ShReinfY=sh1
 
 dintExtRCSects.creaTwoSections() 

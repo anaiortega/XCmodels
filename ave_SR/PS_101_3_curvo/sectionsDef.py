@@ -125,7 +125,7 @@ murAligV2RCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs
 murAligV2RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom)])
 murAligV2RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom+12)])
 murAligV2RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom)])
-shear2=rcs.RecordShearReinforcement(familyName= "shear2",nShReinfBranches= 2.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.10,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear2=rcs.ShearReinforcement(familyName= "shear2",nShReinfBranches= 2.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.10,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 murAligV2RCSects.dir2ShReinfY=shear2
 
 diafRP1RCSects= rcs.RCSlabBeamSection(name='diafRP1RCSects',sectionDescr='diafragmas riostra pila',concrType=concrete, reinfSteelType=reinfSteel,depth=espDiafRP,elemSetName='diafRP1')
@@ -141,7 +141,7 @@ diafRP1RCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 diafRP1RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom)])
 diafRP1RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom+12)])
 diafRP1RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(8,200,rnom)])
-shear3=rcs.RecordShearReinforcement(familyName= "shear3",nShReinfBranches=4.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear3=rcs.ShearReinforcement(familyName= "shear3",nShReinfBranches=4.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 diafRP1RCSects.dir2ShReinfY=shear3
 diafRP1RCSects.dir2ShReinfZ=shear3
 
@@ -162,7 +162,7 @@ capa3.nRebars=2
 capa4=rcs.rebLayer_mm(25,100,rnom +29+3*sep_mm)
 capa4.nRebars=2
 areaFi16= math.pi*(16*1e-3)**2/4.0
-shear1=rcs.RecordShearReinforcement(familyName= "shear1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear1=rcs.ShearReinforcement(familyName= "shear1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 pilasInfRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([capa1,capa2,capa3,capa4])
 pilasInfRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([capa1,capa2,capa3,capa4])
@@ -192,7 +192,7 @@ capa7=rcs.rebLayer_mm(12,100,rnom +29+2*sep_mm)
 capa7.nRebars=2
 capa8=rcs.rebLayer_mm(12,100,rnom +29+3*sep_mm)
 capa8.nRebars=2
-shear2=rcs.RecordShearReinforcement(familyName= "shear2",nShReinfBranches= 3.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear2=rcs.ShearReinforcement(familyName= "shear2",nShReinfBranches= 3.0,areaShReinfBranch= areaFi16,shReinfSpacing= 0.20,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 riostrEstr1RCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([capa5,capa6,capa7])
 riostrEstr1RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([capa5,capa6,capa7,capa8])

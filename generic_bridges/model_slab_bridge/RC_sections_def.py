@@ -93,8 +93,8 @@ def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,ar
             separRef=cercosRef[2]*1e-3
             areaCercoEquiv=(nRamas*areaCercos/separ+nRamasRef*areaCercosRef/separRef)/nRamas*separ
             areaCercos=areaCercoEquiv
-        RCSet.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-        RCSet.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+        RCSet.dir1ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+        RCSet.dir2ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
      
 def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos):
     '''armaduras definidas para una zona de armado. Diámetros armadura y separación en mm.
@@ -279,10 +279,10 @@ pilasRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.reb
 pilasRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
 pilasRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
 
-pilasRCSects.dir1ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-pilasRCSects.dir2ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir1ShReinfZ=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir2ShReinfZ=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
-pilasRCSects.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-pilasRCSects.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir1ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir2ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 

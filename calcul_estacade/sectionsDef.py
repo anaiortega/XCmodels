@@ -103,7 +103,7 @@ columnRCSect=def_simple_RC_section.RCSlabBeamSection(name='columnRCSect',section
 mecCover= 35e-3
 layer1= def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.1,width=0.2,nominalCover= mecCover)
 layer1.nRebars=2
-shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 columnRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
 columnRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
 columnRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok

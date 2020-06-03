@@ -62,7 +62,7 @@ layer3.nRebars=2
 layer4=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.42)
 layer4.nRebars=2
 
-shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+shear1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 #end auxiliar data
 botColRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3,layer4])
 botColRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2,layer3])
