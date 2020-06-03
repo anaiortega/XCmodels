@@ -22,7 +22,7 @@ argument= 'CF' #Possible arguments: 'CF', 'N', 'My','Mz'
 setDisp= setArmados  #Set of shell elements to be displayed
 #setDisp= setArmLosa  #Set of shell elements to be displayed
 #setDisp= sets_arm_losa[4]
-setDisp= setArmZ5
+setDisp= setArmZ1
 #setDisp=sets_arm_cartInt[5]
 #setDisp=sets_arm_volInt[5]
 
