@@ -121,7 +121,7 @@ combs.newLoadCombination("CombB","1.00*B")
 #Reinforced concrete sections
 from materials.sections.fiber_section import def_simple_RC_section
 concrete=EC2_materials.C30
-mainBottReinf=def_simple_RC_section.MainReinfLayer(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
+mainBottReinf=def_simple_RC_section.ReinfRow(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
 mainBottReinf.nRebars=nmbBarsBott
 beamRCSect=def_simple_RC_section.RCSlabBeamSection(name='beamRCSect',sectionDescr='beam',concrType=concrete, reinfSteelType=rfSteel,width=width,depth=depth,elemSetName='total') 
 beamRCSect.dir1NegatvRebarRows=mainBottReinf

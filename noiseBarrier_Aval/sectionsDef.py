@@ -53,13 +53,13 @@ execfile('../generic_fis.py')
 
 botColRCSects= def_simple_RC_section.RCSlabBeamSection(name='botColRCSects',sectionDescr='fut fondation',concrType=concrete, reinfSteelType=reinfSteel,width=BCside-0.25,depth=BCside)
 #auxiliar data
-layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll)
+layer1=def_simple_RC_section.ReinfRow(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll)
 layer1.nRebars=8
-layer2=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.12)
+layer2=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.12)
 layer2.nRebars=2
-layer3=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.26)
+layer3=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.26)
 layer3.nRebars=2
-layer4=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.42)
+layer4=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=coverForAll+14e-3,width=BCside,nominalCover=coverForAll+0.42)
 layer4.nRebars=2
 
 shear1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
@@ -78,15 +78,15 @@ sections.append(botColRCSects)
 
 topColRCSects= def_simple_RC_section.RCSlabBeamSection(name='topColRCSects',sectionDescr='pilier prefabriqué inf.',concrType=concrete, reinfSteelType=reinfSteel,width=TCheight,depth=TCwidth)  
 #auxiliar data
-layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll)
+layer1=def_simple_RC_section.ReinfRow(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll)
 layer1.nRebars=2
-layer2=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll+0.1)
+layer2=def_simple_RC_section.ReinfRow(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll+0.1)
 layer2.nRebars=2
-layer3=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll+0.15)
+layer3=def_simple_RC_section.ReinfRow(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=coverForAll+16e-3,width=TCheight,nominalCover=coverForAll+0.15)
 layer3.nRebars=2
-layer4=def_simple_RC_section.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing=0.10,width=TCheight,nominalCover=coverForAll)
+layer4=def_simple_RC_section.ReinfRow(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing=0.10,width=TCheight,nominalCover=coverForAll)
 layer4.nRebars=2
-layer5=def_simple_RC_section.MainReinfLayer(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing=0.10,width=TCheight,nominalCover=coverForAll+0.1)
+layer5=def_simple_RC_section.ReinfRow(rebarsDiam=12e-3,areaRebar= areaFi12,rebarsSpacing=0.10,width=TCheight,nominalCover=coverForAll+0.1)
 layer5.nRebars=3
 
 #end auxiliar data
@@ -104,9 +104,9 @@ sections.append(topColRCSects)
 
 glsColRCSects= def_simple_RC_section.RCSlabBeamSection(name='glsColRCSects',sectionDescr='pilier prefabriqué sup.',concrType=concrete, reinfSteelType=reinfSteel,width=CCheight,depth=CCwidth)  
 #auxiliar data
-layer1=def_simple_RC_section.MainReinfLayer(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+12e-3,width=CCheight,nominalCover=coverForAll)
+layer1=def_simple_RC_section.ReinfRow(rebarsDiam=14e-3,areaRebar= areaFi14,rebarsSpacing=coverForAll+12e-3,width=CCheight,nominalCover=coverForAll)
 layer1.nRebars=2
-layer2=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.20,width=CCheight,nominalCover=coverForAll)
+layer2=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.20,width=CCheight,nominalCover=coverForAll)
 layer2.nRebars=2
 #end auxiliar data
 glsColRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1,layer2])

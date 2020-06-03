@@ -32,11 +32,11 @@ execfile('../generic_layers_aux.py')
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
-Twofi20r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,width=1.0,nominalCover=0.050)
+Twofi20r50=def_simple_RC_section.ReinfRow(rebarsDiam=20e-3,areaRebar= areaFi20,width=1.0,nominalCover=0.050)
 Twofi20r50.nRebars=2
 Twofi20r50.coverLat=0.05
 
-Twofi10r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,width=1.0,nominalCover=0.050)
+Twofi10r50=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,width=1.0,nominalCover=0.050)
 Twofi10r50.nRebars=2
 Twofi10r50.coverLat=0.05
 

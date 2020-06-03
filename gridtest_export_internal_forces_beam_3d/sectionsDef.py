@@ -24,12 +24,12 @@ areaFi10= SIA262_materials.section_barres_courantes[10e-3]
 areaFi16= SIA262_materials.section_barres_courantes[16e-3]
 areaFi20= SIA262_materials.section_barres_courantes[20e-3]
 #Generic layers (rows of rebars). Other instance variables that we can define
-#for MainReinfLayers are coverLat and nRebars.If we define nRebars that
+#for ReinfRows are coverLat and nRebars.If we define nRebars that
 #value overrides the rebarsSpacing
-fi10s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi16s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi20s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
-fi8s200r44=def_simple_RC_section.MainReinfLayer(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi10s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=10e-3,areaRebar= areaFi10,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi16s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=16e-3,areaRebar= areaFi16,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi20s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
+fi8s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
 
 concrete= SIA262_materials.c30_37
 reinfSteel= SIA262_materials.SpecialII1956SIA161

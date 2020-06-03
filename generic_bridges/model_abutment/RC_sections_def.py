@@ -17,13 +17,13 @@ zapEstrRCSects= rcs.RCSlabBeamSection(name='zapEstrRCSects',sectionDescr='zapata
 #        transversal superior
 zapEstrRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(trSup_zapEstr[0],trSup_zapEstr[1],rnomZap+lnSup_zapEstr[0][0])])
 #        longitudinal superior
-zapEstrRCSects.dir2PositvRebarRows=list() 
+zapEstrRCSects.dir2PositvRebarRows=def_simple_RC_section.LongReinfLayers() 
 for rLay in lnSup_zapEstr:
     zapEstrRCSects.dir2PositvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomZap))
 #        transversal inferior
 zapEstrRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(trInf_zapEstr[0],trInf_zapEstr[1],rnomZap+lnInf_zapEstr[0][0])])
 #        longitudinal inferior
-zapEstrRCSects.dir2NegatvRebarRows=list()
+zapEstrRCSects.dir2NegatvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in lnInf_zapEstr:
     zapEstrRCSects.dir2NegatvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomZap))
 
@@ -35,13 +35,13 @@ murEstrZ1RCSects= rcs.RCSlabBeamSection(name='murEstrZ1RCSects',sectionDescr='mu
 #negativ: interior
 #           zona 1
 #vertical exterior
-murEstrZ1RCSects.dir1PositvRebarRows=list()
+murEstrZ1RCSects.dir1PositvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertExt_murEstr[0]:
     murEstrZ1RCSects.dir1PositvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomZap))
 #horizontal exterior
 murEstrZ1RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(horzExt_murEstr[0][0],horzExt_murEstr[0][1],rnomMur+vertExt_murEstr[0][0][0])])
 #vertical interior
-murEstrZ1RCSects.dir1NegatvRebarRows=list()
+murEstrZ1RCSects.dir1NegatvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertInt_murEstr[0]:
     murEstrZ1RCSects.dir1NegatvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomMur))
 #horizontal interior
@@ -54,13 +54,13 @@ murEstrZ2RCSects= rcs.RCSlabBeamSection(name='murEstrZ2RCSects',sectionDescr='mu
 #positiv: exterior
 #negativ: interior
 #vertical exterior
-murEstrZ2RCSects.dir1PositvRebarRows=list()
+murEstrZ2RCSects.dir1PositvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertExt_murEstr[1]:
     murEstrZ2RCSects.dir1PositvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomZap))
 #horizontal exterior
 murEstrZ2RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(horzExt_murEstr[1][0],horzExt_murEstr[1][1],rnomMur+vertExt_murEstr[1][0][0])])
 #vertical interior
-murEstrZ2RCSects.dir1NegatvRebarRows=list()
+murEstrZ2RCSects.dir1NegatvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertInt_murEstr[1]:
     murEstrZ2RCSects.dir1NegatvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomMur))
 #horizontal interior
@@ -73,13 +73,13 @@ murEstrZ3RCSects= rcs.RCSlabBeamSection(name='murEstrZ3RCSects',sectionDescr='mu
 #positiv: exterior
 #negativ: interior
 #vertical exterior
-murEstrZ3RCSects.dir1PositvRebarRows=list()
+murEstrZ3RCSects.dir1PositvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertExt_murEstr[2]:
     murEstrZ3RCSects.dir1PositvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomZap))
 #horizontal exterior
 murEstrZ3RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(horzExt_murEstr[2][0],horzExt_murEstr[2][1],rnomMur+vertExt_murEstr[2][0][0])])
 #vertical interior
-murEstrZ3RCSects.dir1NegatvRebarRows=list()
+murEstrZ3RCSects.dir1NegatvRebarRows=def_simple_RC_section.LongReinfLayers()
 for rLay in vertInt_murEstr[2]:
     murEstrZ3RCSects.dir1NegatvRebarRows.append(rcs.rebLayer_mm(rLay[0],rLay[1],rnomMur))
 
