@@ -106,16 +106,16 @@ barDiameter= math.sqrt(barArea)/math.pi
 
 reinfLayer= def_simple_RC_section.MainReinfLayer(rebarsDiam= barDiameter,areaRebar= barArea,rebarsSpacing=0.075,width=0.25,nominalCover=0.050)
 
-#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 reinfSteel= EHE_materials.B500S
-beamRCsect= def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
-beamRCsect.lstRCSects[0].positvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[0].negatvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[1].positvRebarRows=[reinfLayer]
-beamRCsect.lstRCSects[1].negatvRebarRows=[reinfLayer]
+beamRCsect= def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
+beamRCsect.lstRCSects[0].positvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[0].negatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[1].positvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.lstRCSects[1].negatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 sections.append(beamRCsect)
 
 # Spatial distribution of reinforced concrete

@@ -14,34 +14,34 @@ execfile('../arm_def.py')
 
 rnom=35 #recubrimiento nominal 
 
-#instances of rcs.RecordRCSlabBeamSection that define the
+#instances of rcs.RCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 #losa [losaZonaArm1,losaZonaArm2, ...]
 losaRCSects=[]
 for st in  sets_arm_losa:
-    losaRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='losa, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=cantoLosa,elemSetName=st.name))
+    losaRCSects.append(rcs.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='losa, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=cantoLosa,elemSetName=st.name))
 #cartabón derecho interno [CartIntZonaArm1,CartIntZonaArm2, ...]
 cartIntRCSects=[]
 for st in  sets_arm_cartInt:
-    cartIntRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartInt,elemSetName=st.name))
+    cartIntRCSects.append(rcs.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartInt,elemSetName=st.name))
 #cartabón derecho externo [CartExtZonaArm1,CartExtZonaArm2, ...]
 cartExtRCSects=[]
 for st in  sets_arm_cartExt:
-    cartExtRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartExt,elemSetName=st.name))
+    cartExtRCSects.append(rcs.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartExt,elemSetName=st.name))
 #voladizo derecho interno [VolIntZonaArm1,VolIntZonaArm2, ...]
 volIntRCSects=[]
 for st in  sets_arm_volInt:
-    volIntRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolInt,elemSetName=st.name))
+    volIntRCSects.append(rcs.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolInt,elemSetName=st.name))
 #voladizo derecho externo [VolExtZonaArm1,VolExtZonaArm2, ...]
 volExtRCSects=[]
 for st in  sets_arm_volExt:
-    volExtRCSects.append(rcs.RecordRCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolExt,elemSetName=st.name))
+    volExtRCSects.append(rcs.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolExt,elemSetName=st.name))
 #Riostra estribo
-RestrRCSects=rcs.RecordRCSlabBeamSection(name='RestrRCSects',sectionDescr='riostra estribo',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoRiostrEstr,elemSetName=setArmREstr.name)
+RestrRCSects=rcs.RCSlabBeamSection(name='RestrRCSects',sectionDescr='riostra estribo',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoRiostrEstr,elemSetName=setArmREstr.name)
 #Pilas
-pilasRCSects=rcs.RecordRCSlabBeamSection(name='pilasRCSects',sectionDescr='pilas',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName=setArmPil.name)
+pilasRCSects=rcs.RCSlabBeamSection(name='pilasRCSects',sectionDescr='pilas',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName=setArmPil.name)
 
 
 def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,ref1Inf,ref2Sup,ref3Mid,cercosRef,cercos):
@@ -63,10 +63,10 @@ def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,ar
     cercosRef: refuerzo cercos
     cercos: armadura de cortante en losa
     '''
-    RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-    RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm1[0],arm1[1],rnom)] #transv. inf.
-    RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
-    RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm6a[0],arm6a[1],rnom+arm1[0])] #long. inf.
+    RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+    RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm1[0],arm1[1],rnom)]) #transv. inf.
+    RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])]) #long. sup.
+    RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm6a[0],arm6a[1],rnom+arm1[0])]) #long. inf.
     recNomTrSup=rnom+arm5[0]+arm9a[0]
     if arm9b:
         RCSet.dir2PositvRebarRows.append(rcs.rebLayer_mm(arm9b[0],arm9b[1],recNomTrSup)) #long. sup. 2a. capa
@@ -93,8 +93,8 @@ def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,ar
             separRef=cercosRef[2]*1e-3
             areaCercoEquiv=(nRamas*areaCercos/separ+nRamasRef*areaCercosRef/separRef)/nRamas*separ
             areaCercos=areaCercoEquiv
-        RCSet.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-        RCSet.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+        RCSet.dir1ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=nRamas,areaShReinfBranch=areaCercos,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+        RCSet.dir2ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercos[1],areaShReinfBranch= math.pi*(cercos[0]*1e-3)**2/4.,shReinfSpacing=separ,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
      
 def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,arm1P,arm2P,arm3P,arm4P,cercos):
     '''armaduras definidas para una zona de armado. Diámetros armadura y separación en mm.
@@ -124,19 +124,19 @@ def armaduraZonas(nZona,recNom,losaRC,cartIntRC,cartExtRC,volIntRC,volExtRC,arm1
     #armaduras cartabón
     RCSets=[cartIntRC[nZona-1],cartExtRC[nZona-1]]
     for RCSet in RCSets:
-        RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-        RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm2[0],arm2[1],rnom)] #transv. inf.
-        RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])] #long. sup.
-        RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm7[0],arm7[1],rnom+arm2[0])] #long. inf.
+        RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+        RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm2[0],arm2[1],rnom)]) #transv. inf.
+        RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm9a[0],arm9a[1],rnom+arm5[0])]) #long. sup.
+        RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm7[0],arm7[1],rnom+arm2[0])]) #long. inf.
         if arm9b:
             RCSet.dir2PositvRebarRows.append(rcs.rebLayer_mm(arm9b[0],arm9b[1],rnom+arm5[0]+arm9a[0])) #long. sup. 2a. capa
     #armaduras voladizo
     RCSets=[volIntRC[nZona-1],volExtRC[nZona-1]]
     for RCSet in RCSets:
-        RCSet.dir1PositvRebarRows=[rcs.rebLayer_mm(arm5[0],arm5[1],rnom)] #transv. sup.
-        RCSet.dir1NegatvRebarRows=[rcs.rebLayer_mm(arm4[0],arm4[1],rnom)] #transv. inf.
-        RCSet.dir2PositvRebarRows=[rcs.rebLayer_mm(arm10[0],arm10[1],rnom+arm5[0])] #long. sup.
-        RCSet.dir2NegatvRebarRows=[rcs.rebLayer_mm(arm8[0],arm8[1],rnom+arm4[0])] #long. inf.
+        RCSet.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm5[0],arm5[1],rnom)]) #transv. sup.
+        RCSet.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm4[0],arm4[1],rnom)]) #transv. inf.
+        RCSet.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm10[0],arm10[1],rnom+arm5[0])]) #long. sup.
+        RCSet.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(arm8[0],arm8[1],rnom+arm4[0])]) #long. inf.
 
 
 #Armaduras riostra estribo 1
@@ -274,15 +274,15 @@ armaduraZonas(nZona=6,recNom=rnom,losaRC=losaRCSects,cartIntRC=cartIntRCSects,ca
     
 
 #armadura pilas
-pilasRCSects.dir1PositvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir1NegatvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir2PositvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
-pilasRCSects.dir2NegatvRebarRows=[rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)]
+pilasRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
+pilasRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(lnPil[0],lnPil[1],rnom)])
 
-pilasRCSects.dir1ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-pilasRCSects.dir2ShReinfZ=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir1ShReinfZ=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir2ShReinfZ=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
-pilasRCSects.dir1ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-pilasRCSects.dir2ShReinfY=rcs.RecordShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir1ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+pilasRCSects.dir2ShReinfY=rcs.ShearReinforcement(familyName= "sh",nShReinfBranches=cercosPil[1],areaShReinfBranch= math.pi*(cercosPil[0]*1e-3)**2/4.,shReinfSpacing=cercosPil[2]*1e-3,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
 
 

@@ -49,18 +49,18 @@ scConcr=None
 for sect in sections.sections:
   sect1=sect.D1Section
   sect2=sect.D2Section
-  sect1.defRCSimpleSection(preprocessor,'d')
-  sect2.defRCSimpleSection(preprocessor,'d')
+  sect1.defRCRectangularSection(preprocessor,'d')
+  sect2.defRCRectangularSection(preprocessor,'d')
   #plotting of steel stress-strain diagram (only if not equal to precedent steel)
-  if sect1.reinfSteelType!=scSteel or sect1.concrType!=scConcr:
+  if sect1.fiberSectionParameters.reinfSteelType!=scSteel or sect1.fiberSectionParameters.concrType!=scConcr:
      print 'hola'
-     scSteel=sect1.reinfSteelType
+     scSteel=sect1.fiberSectionParameters.reinfSteelType
      steelDiag=scSteel.plotDesignStressStrainDiagram(preprocessor)
      steelGrphFile=scSteel.nmbMaterial+'_design_stress_strain_diagram'
      report.write('\\begin{center}\n')
      report.write('\includegraphics[width=120mm]{./'+steelGrphFile+'}\n')
      report.write('\end{center}\n')
-     scConcr=sect1.concrType
+     scConcr=sect1.fiberSectionParameters.concrType
      concrDiag=scConcr.plotDesignStressStrainDiagram(preprocessor)
      concrGrphFile=scConcr.nmbMaterial+'_design_stress_strain_diagram'
      report.write('\\begin{center}\n')

@@ -39,11 +39,11 @@ reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistributio
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
 
-beamRCsects=def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsects',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
-beamRCsects.dir1PositvRebarRows=[fi10s200r44]
-beamRCsects.dir1NegatvRebarRows=[fi16s200r44]
-beamRCsects.dir2PositvRebarRows=[fi10s200r44]
-beamRCsects.dir2NegatvRebarRows=[fi16s200r44]
+beamRCsects=def_simple_RC_section.RCSlabBeamSection(name='beamRCsects',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
+beamRCsects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
+beamRCsects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
+beamRCsects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
 
 beamRCsects.creaTwoSections() 
 sections.append(beamRCsects)

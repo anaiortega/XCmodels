@@ -34,17 +34,17 @@ concrete.alfacc=0.85    #concrete fatigue factor (generalmente se toma alfacc=1)
 reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15
-sccData= def_simple_RC_section.RecordRCSimpleSection()
+sccData= def_simple_RC_section.RCRectangularSection()
 sccData.sectionName= "sccData"
 sccData.sectionDescr= "Prueba."
-sccData.concrType= concrete
+sccData.fiberSectionParameters.concrType= concrete
 sccData.h= 0.5
 sccData.b= 1.0
-sccData.reinfSteelType= reinfSteel
+sccData.fiberSectionParameters.reinfSteelType= reinfSteel
 negReb=def_simple_RC_section.MainReinfLayer(rebarsDiam=40e-3,areaRebar= areaFi40,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
-sccData.negatvRebarRows=[negReb]
+sccData.negatvRebarRows= def_simple_RC_section.LongReinfLayers([negReb])
 posReb=def_simple_RC_section.MainReinfLayer(rebarsDiam=6e-3,areaRebar= areaFi6,rebarsSpacing=dRebar,width=1.0,nominalCover=0.25-0.19)
-sccData.positvRebarRows=[posReb]
+sccData.positvRebarRows= def_simple_RC_section.LongReinfLayers([posReb])
 
 zinf= sccData.h/2.0
 zsup= -sccData.h/2.0
@@ -57,7 +57,7 @@ preprocessor= prueba.getPreprocessor
 print "divIJ= ", sccData.nDivIJ, "divJK= ", sccData.nDivJK
 #sccData.nDivIJ= 100
 #sccData.nDivJK= 100
-sccData.defRCSimpleSection(preprocessor,'d')
+sccData.defRCRectangularSection(preprocessor,'d')
 si= sr.SectionInfoHASimple(preprocessor,sccData)
 si.writeReport('./prueba.tex','./prueba.eps')
 
@@ -140,8 +140,8 @@ class Extrema(object):
 #Test N-My interaction diagram.
 diagNMy= sccData.defInteractionDiagramNMy(preprocessor)
 extNMy= Extrema(diagNMy.getXMax,diagNMy.getXMin,diagNMy.getYMax,diagNMy.getYMin)
-nPos= AsTeor*sccData.reinfSteelType.fyd()
-nNeg= -nPos+(Agross-AsTeor)*sccData.concrType.fcd()*0.85
+nPos= AsTeor*sccData.fiberSectionParameters.reinfSteelType.fyd()
+nNeg= -nPos+(Agross-AsTeor)*sccData.fiberSectionParameters.concrType.fcd()*0.85
 extNMyTeor= Extrema(nPos,nNeg,1062.9e3,-1069.8e3) #Numeric values obtained from Fagus program.
 ratiosNMy= extNMy.getRatios(extNMyTeor)
 
@@ -224,7 +224,7 @@ extNMz.printRatios(extNMzTeor)
 '''
 import matplotlib.pyplot as plt
 #Steel stress-strain diagram
-materialDiagram= sccData.reinfSteelType.plotDesignStressStrainDiagram(preprocessor)
+materialDiagram= sccData.fiberSectionParameters.reinfSteelType.plotDesignStressStrainDiagram(preprocessor)
 
 
 #mg.plotInteractionDiagram2D(diagNMy)

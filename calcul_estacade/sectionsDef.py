@@ -65,49 +65,49 @@ fi26s150r40=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= are
 fi26s150r50=def_simple_RC_section.MainReinfLayer(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing= 0.150,width=1.0,nominalCover= 0.050)
 
 
-deckSlabRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+deckSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='deckSlabRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: longitudinal rebars
 #[1]: transversal rebars
-deckSlabRCSect.dir1PositvRebarRows=[fi14s150r50] #Ok
-deckSlabRCSect.dir1NegatvRebarRows=[fi16s150r50] #Ok
-deckSlabRCSect.dir2PositvRebarRows=[fi8s150r40] #Ok
-deckSlabRCSect.dir2NegatvRebarRows=[fi8s150r40] #Ok
+deckSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #Ok
+deckSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r50]) #Ok
+deckSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
+deckSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
 
 deckSlabRCSect.creaTwoSections() 
 sections.append(deckSlabRCSect)
 
-dockRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='dockRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+dockRCSect= def_simple_RC_section.RCSlabBeamSection(name='dockRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
-dockRCSect.dir1PositvRebarRows=[fi8s150r50] #Ok
-dockRCSect.dir1NegatvRebarRows=[fi8s150r50] #Ok
-dockRCSect.dir2PositvRebarRows=[fi12s150r40] #Ok
-dockRCSect.dir2NegatvRebarRows=[fi12s150r40] #Ok
+dockRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r50]) #Ok
+dockRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r50]) #Ok
+dockRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
+dockRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
 
 dockRCSect.creaTwoSections() 
 sections.append(dockRCSect)
 
-parapetRCSect= def_simple_RC_section.RecordRCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
+parapetRCSect= def_simple_RC_section.RCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
 #[0]: longitudinal rebars
 #[1]: transversal rebars
-parapetRCSect.dir1PositvRebarRows=[fi8s150r40] #Ok
-parapetRCSect.dir1NegatvRebarRows=[fi8s150r40] #Ok
-parapetRCSect.dir2PositvRebarRows=[fi16s150r40] #Ok
-parapetRCSect.dir2NegatvRebarRows=[fi16s150r40] #Ok
+parapetRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
+parapetRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
+parapetRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r40]) #Ok
+parapetRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r40]) #Ok
 
 parapetRCSect.creaTwoSections() 
 sections.append(parapetRCSect)
 
 
-columnRCSect=def_simple_RC_section.RecordRCSlabBeamSection(name='columnRCSect',sectionDescr='column',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
+columnRCSect=def_simple_RC_section.RCSlabBeamSection(name='columnRCSect',sectionDescr='column',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
 mecCover= 35e-3
 layer1= def_simple_RC_section.MainReinfLayer(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing= 0.1,width=0.2,nominalCover= mecCover)
 layer1.nRebars=2
-shear1=def_simple_RC_section.RecordShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
-columnRCSect.dir1PositvRebarRows=[layer1] #Ok
-columnRCSect.dir1NegatvRebarRows=[layer1] #Ok
-columnRCSect.dir2PositvRebarRows=[layer1] #Ok
-columnRCSect.dir2NegatvRebarRows=[layer1] #Ok
+shear1=def_simple_RC_section.ShearReinforcement(familyName= "sh1",nShReinfBranches= 2.0,areaShReinfBranch= areaFi8,shReinfSpacing= 0.15,angAlphaShReinf= math.pi/2.0,angThetaConcrStruts= math.pi/4.0)
+columnRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
+columnRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
+columnRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
+columnRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([layer1]) #Ok
 columnRCSect.dir1ShReinfY=shear1 #Ok
 columnRCSect.dir1ShReinfZ=shear1 #Ok
 columnRCSect.dir2ShReinfY=shear1 #Ok
@@ -116,11 +116,11 @@ columnRCSect.dir2ShReinfZ=shear1 #Ok
 columnRCSect.creaTwoSections() 
 sections.append(columnRCSect)
 
-# transverseReinfRCSect=def_simple_RC_section.RecordRCSlabBeamSection(name='transverseReinfRCSect',sectionDescr='transverseReinf',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
-# transverseReinfRCSect.dir1PositvRebarRows=[fi20s150r40]
-# transverseReinfRCSect.dir1NegatvRebarRows=[fi20s150r40]
-# transverseReinfRCSect.dir2PositvRebarRows=[fi20s150r40]
-# transverseReinfRCSect.dir2NegatvRebarRows=[fi20s150r40]
+# transverseReinfRCSect=def_simple_RC_section.RCSlabBeamSection(name='transverseReinfRCSect',sectionDescr='transverseReinf',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
+# transverseReinfRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
+# transverseReinfRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
+# transverseReinfRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
+# transverseReinfRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
 # 
 transverseReinfRCSect.creaTwoSections() 
 sections.append(transverseReinfRCSect)

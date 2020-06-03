@@ -45,17 +45,17 @@ report_graphics_outDir=projectDirs.getSectionOutputDir()
 for sect in sections.sections:
   sect1=sect.lstRCSects[0]
   sect2=sect.lstRCSects[1]
-  sect1.defRCSimpleSection(preprocessor,'d')
-  sect2.defRCSimpleSection(preprocessor,'d')
+  sect1.defRCRectangularSection(preprocessor,'d')
+  sect2.defRCRectangularSection(preprocessor,'d')
   #plotting of steel stress-strain diagram (only if not equal to precedent steel)
-  if sect1.reinfSteelType!=scSteel or sect1.concrType!=scConcr:
-     scSteel=sect1.reinfSteelType
+  if sect1.fiberSectionParameters.reinfSteelType!=scSteel or sect1.fiberSectionParameters.concrType!=scConcr:
+     scSteel=sect1.fiberSectionParameters.reinfSteelType
      steelDiag=scSteel.plotDesignStressStrainDiagram(preprocessor,path=report_graphics_outDir)
      steelGrphFile=scSteel.materialName+'_design_stress_strain_diagram'
      report.write('\\begin{center}\n')
      report.write('\includegraphics[width=120mm]{'+report_graphics_outDir+steelGrphFile+'}\n')
      report.write('\end{center}\n')
-     scConcr=sect1.concrType
+     scConcr=sect1.fiberSectionParameters.concrType
      concrDiag=scConcr.plotDesignStressStrainDiagram(preprocessor,path=report_graphics_outDir)
      concrGrphFile=scConcr.materialName+'_design_stress_strain_diagram'
      report.write('\\begin{center}\n')

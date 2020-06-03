@@ -112,16 +112,16 @@ barDiameter= math.sqrt(barArea)/math.pi
 
 reinfLayer= def_simple_RC_section.MainReinfLayer(rebarsDiam= barDiameter,areaRebar= barArea,rebarsSpacing=0.075,width=0.25,nominalCover=0.050)
 
-#instances of def_simple_RC_section.RecordRCSlabBeamSection that defines the
+#instances of def_simple_RC_section.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 reinfSteel= EHE_materials.B500S
-beamRCsect= def_simple_RC_section.RecordRCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
-beamRCsect.dir1PositvRebarRows=[reinfLayer]
-beamRCsect.dir1NegatvRebarRows=[reinfLayer]
-beamRCsect.dir2PositvRebarRows=[reinfLayer]
-beamRCsect.dir2NegatvRebarRows=[reinfLayer]
+beamRCsect= def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
+beamRCsect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
+beamRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 beamRCsect.creaTwoSections()
 sectContainer.append(beamRCsect)
 
@@ -167,9 +167,9 @@ predefined_solutions.resuelveComb(preprocessor,nmbComb=key,analysis=predefined_s
 for e in elements:
   e.getResistingForce()
   scc=e.getSection()
-  sccProp=scc.getProp("datosSecc")
-  concrTag=sccProp.concrType.matTagK
-  rsteelTag=sccProp.reinfSteelType.matTagK
+  sccProp=scc.getProp("sectionData")
+  concrTag=sccProp.fiberSectionParameters.concrType.matTagK
+  rsteelTag=sccProp.fiberSectionParameters.reinfSteelType.matTagK
   setsRC= fiber_sets.fiberSectionSetupRCSets(scc=scc,concrMatTag=concrTag,concrSetName="concrSetFb",reinfMatTag=rsteelTag,reinfSetName="reinfSetFb")
   setsRC.reselTensionFibers(scc=scc,tensionFibersSetName='tensSetFb')
   ###Borrar
