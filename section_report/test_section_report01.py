@@ -57,7 +57,7 @@ preprocessor= prueba.getPreprocessor
 print "divIJ= ", sccData.nDivIJ, "divJK= ", sccData.nDivJK
 #sccData.nDivIJ= 100
 #sccData.nDivJK= 100
-sccData.defRCRectangularSection(preprocessor,'d')
+sccData.defRCSection(preprocessor,'d')
 si= sr.SectionInfoHASimple(preprocessor,sccData)
 si.writeReport('./prueba.tex','./prueba.eps')
 

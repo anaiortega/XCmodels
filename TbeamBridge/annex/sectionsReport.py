@@ -49,8 +49,8 @@ scConcr=None
 for sect in sections.sections:
   sect1=sect.D1Section
   sect2=sect.D2Section
-  sect1.defRCRectangularSection(preprocessor,'d')
-  sect2.defRCRectangularSection(preprocessor,'d')
+  sect1.defRCSection(preprocessor,'d')
+  sect2.defRCSection(preprocessor,'d')
   #plotting of steel stress-strain diagram (only if not equal to precedent steel)
   if sect1.fiberSectionParameters.reinfSteelType!=scSteel or sect1.fiberSectionParameters.concrType!=scConcr:
      print 'hola'
