@@ -81,7 +81,7 @@ springSet.fillDownwards()
 allSets=pile+springSet
 '''
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 defDisplay.displayMesh(xcSets=allSets,caption='Mesh',nodeSize=0.5,scaleConstr=0.10)
 '''
 modelSpace.fixNodeFFF_000(0)

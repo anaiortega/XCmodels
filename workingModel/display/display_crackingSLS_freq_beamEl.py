@@ -20,7 +20,7 @@ fUnitConv=1e3          #unit conversion factor (i.e m->mm => fUnitConv= 1e3)
 
 diagram= cvd.ControlVarDiagram(scaleFactor=scaleFactor,fUnitConv=fUnitConv,sets=setsDispRes,attributeName=lsd.freqLoadsCrackControl.label,component=argument)
 diagram.addDiagram()
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 defDisplay.setupGrid(setDisp)
 defDisplay.defineMeshScene(None,defFScale=0.0)
 defDisplay.appendDiagram(diagram) #Append diagram to the scene.

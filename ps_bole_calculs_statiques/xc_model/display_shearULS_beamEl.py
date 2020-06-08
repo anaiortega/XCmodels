@@ -33,7 +33,7 @@ diagram= cvd.ControlVarDiagram(scaleFactor= -0.005,fUnitConv= shearFactor,sets=[
 diagram.addDiagram()
 
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
 

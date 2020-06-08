@@ -32,7 +32,7 @@ diagram= cvd.ControlVarDiagram(scaleFactor= 10,fUnitConv= 1,sets=[totalSet],attr
 #diagram= npd.InternalForceDiagram(-0.02,fUnitConv=1e-3,sets=[colsSet.elSet],component= "Qy")
 diagram.addDiagram()
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 #defDisplay.windowHeight= 300
 defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
 defDisplay.setupGrid(totalSet)

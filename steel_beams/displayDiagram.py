@@ -15,7 +15,7 @@ defGrid.nmbSet= "total"
 diagram= ifd.InternalForceDiagram(-0.02,fUnitConv=1e-3,sets=[setMainBeam],component= "Qy")
 diagram.addDiagram()
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 #defDisplay.windowHeight= 300
 defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
 defDisplay.setupGrid(preprocessor.getSets.getSet('total'))

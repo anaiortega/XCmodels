@@ -15,7 +15,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #             its displacement multiplied by this factor. (Defaults to 0.0,
 #             i.e. display of initial/undeformed shape)
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 setToDisp=shells
 #setToDisp=overallSet
 #setToDisp=shellsPcable

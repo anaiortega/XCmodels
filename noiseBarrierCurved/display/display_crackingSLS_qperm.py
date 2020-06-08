@@ -23,7 +23,7 @@ limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
 argument= 'getMaxSteelStress'
 
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 
 setDisp= shellElements
 oh= output_handler.OutputHandler(modelSpace)

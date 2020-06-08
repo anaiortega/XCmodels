@@ -37,7 +37,7 @@ argument= 'CF'
 #   extrapolate_elem_attr.flatten_attribute(elemSet,attributeName,1,2)
 
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 xcSet= deckSet
 attributeName= limitStateLabel + 'Sect1'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)

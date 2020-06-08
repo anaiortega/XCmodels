@@ -14,7 +14,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #  nodeSize:  size of the points that represent nodes (defaults to 0.01)
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 
 lstSets=[zap,murestrZ1,murestrZ2,aletiZ1,aletiZ2,aletiZ3,aletdZ1,aletdZ2,aletdZ3]
 if Lvoladzi >0:

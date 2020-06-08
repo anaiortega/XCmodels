@@ -112,7 +112,7 @@ strutMat=typical_materials.defElasticSection3d(preprocessor=prep,name='strutMat'
 
 # # Plotting of CAD entities
 # from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
-# defDisplay= vtk_CAD_graphic.RecordDefDisplayCAD()
+# defDisplay= vtk_CAD_graphic.DisplaySettingsBlockTopo()
 # totalSet= prep.getSets.getSet('total')
 # defDisplay.displayBlocks(setToDisplay=totalSet,caption= 'Model grid')
 
@@ -189,7 +189,7 @@ quit()
 
 # # Displaying of the mesh
 # from postprocess.xcVtk.FE_model import vtk_FE_graphic
-# defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+# defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 # totalSet= prep.getSets.getSet('total')
 # defDisplay.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
 # defDisplay.FEmeshGraphic(xcSet=strutSet,caption= 'Struts',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))

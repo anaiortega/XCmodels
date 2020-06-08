@@ -34,5 +34,5 @@ argument= 'getMaxSteelStress'
 
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 field.plot(defDisplay,caption= 'Crack control '+ attributeName + ' '+argument+' [MPa]')

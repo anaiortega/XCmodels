@@ -22,7 +22,7 @@ execfile(fName)
 execfile('./captionTexts.py')
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 
 argument= 'getMaxSteelStress'
 #argument= 'crackControlVarsNeg.steelStress'

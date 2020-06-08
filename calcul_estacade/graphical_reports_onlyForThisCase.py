@@ -226,7 +226,7 @@ def checksReports(limitStateLabel,setsShEl,argsShEl,capTexts,pathGr,texReportFil
                        argument] to be included in the report for beam elements
     '''
     report=open(texReportFile,'w')    #report latex file
-    dfDisp= vtk_FE_graphic.RecordDefDisplayEF()
+    dfDisp= vtk_FE_graphic.DisplaySettingsFE()
     for st in setsShEl:
         for arg in argsShEl:
             attributeName= limitStateLabel + 'Sect1'

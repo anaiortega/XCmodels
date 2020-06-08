@@ -31,7 +31,7 @@ diagram= cvd.ControlVarDiagram(scaleFactor= 10,fUnitConv= 1,sets=[setDisp.elSet]
 diagram.addDiagram()
 
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
 defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)

@@ -1,7 +1,7 @@
 execfile('./fe_model.py')
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
-defDisplay= vtk_CAD_graphic.RecordDefDisplayCAD()
+defDisplay= vtk_CAD_graphic.DisplaySettingsBlockTopo()
 
 defDisplay.displayBlocks(xcTotalSet,caption= xcTotalSet.name+' set')
 #defDisplay.displayBlocks(setParapet,caption= setParapet.name+' set')

@@ -52,7 +52,7 @@ diagram= npd.NodePropertyDiagram(-0.1,1e3,[setTotal],"dispMax")
 #diagram= npd.NodePropertyDiagram(-0.02,1e-3,[total],"Qy")
 diagram.addDiagram()
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
 defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 defDisplay.setupGrid(preprocessor.getSets.getSet('total'))
 defDisplay.defineMeshScene(None)

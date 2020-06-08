@@ -34,7 +34,7 @@ diagram= cvd.ControlVarDiagram(scaleFactor= 0.005,fUnitConv= 1,sets=[setDispRes]
 diagram.addDiagram()
 
 
-defDisplay= vtk_FE_graphic.RecordDefDisplayEF()
+defDisplay= vtk_FE_graphic.DisplaySettingsFE()
  #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
 defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
