@@ -233,14 +233,14 @@ def checksReports(limitStateLabel,setsShEl,argsShEl,capTexts,pathGr,texReportFil
             field= Fields.getScalarFieldFromControlVar(attributeName,arg,st,None,1.0)
             capt=capTexts[limitStateLabel] + ', ' + capTexts[arg] + '. '+ st.name.capitalize() + ', ' + st.sectDescr[0]
             grFileNm=pathGr+st.name+arg+'Sect1'
-            field.display(defDisplay=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
+            field.display(displaySettings=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
             insertGrInTex(texFile=report,grFileNm=grFileNm,grWdt=grWdt,capText=capt)
 
             attributeName= limitStateLabel + 'Sect2'
             field= Fields.getScalarFieldFromControlVar(attributeName,arg,st,None,1.0)
             capt=capTexts[limitStateLabel] + ', ' + capTexts[arg] + '. '+ st.name.capitalize() + ', ' + st.sectDescr[1]
             grFileNm=pathGr+st.name+arg+'Sect2'
-            field.display(defDisplay=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
+            field.display(displaySettings=dfDisp,caption=capt, fileName=grFileNm+'.jpg')
             insertGrInTex(texFile=report,grFileNm=grFileNm,grWdt=grWdt,capText=capt)
     for stV in setsBmElView:
         for argS in argsBmElScale:

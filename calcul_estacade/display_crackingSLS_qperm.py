@@ -22,7 +22,7 @@ execfile(fName)
 execfile('./captionTexts.py')
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 
 argument= 'getMaxSteelStress'
 #argument= 'crackControlVarsNeg.steelStress'
@@ -33,8 +33,8 @@ sets= [setDeck,setDock,setParapet]
 for setDisp in sets:
   attributeName= limitStateLabel + 'Sect1'
   field= Fields.getScalarFieldFromControlVar(attributeName,argument,setDisp,None,1.0)
-  field.plot(defDisplay,caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDisp.genDescr.capitalize() + ', ' + setDisp.sectDescr[0] )
+  field.plot(displaySettings,caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDisp.genDescr.capitalize() + ', ' + setDisp.sectDescr[0] )
   attributeName= limitStateLabel + 'Sect2'
   field= Fields.getScalarFieldFromControlVar(attributeName,argument,setDisp,None,1.0)
-  field.plot(defDisplay,caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDisp.genDescr.capitalize() + ', ' + setDisp.sectDescr[1] )
+  field.plot(displaySettings,caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDisp.genDescr.capitalize() + ', ' + setDisp.sectDescr[1] )
 

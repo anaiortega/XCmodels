@@ -111,9 +111,9 @@ saddCableMat=typical_materials.defElasticMaterial(preprocessor=prep, name="saddC
 
 # # Plotting of CAD entities
 # from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
-# defDisplay= vtk_CAD_graphic.DisplaySettingsBlockTopo()
+# displaySettings= vtk_CAD_graphic.DisplaySettingsBlockTopo()
 # totalSet= prep.getSets.getSet('total')
-# defDisplay.displayBlocks(setToDisplay=totalSet,caption= 'Model grid')
+# displaySettings.displayBlocks(setToDisplay=totalSet,caption= 'Model grid')
 
 
 # Geometric transformations
@@ -182,12 +182,12 @@ saddSet.fillDownwards()
 
 # # Displaying of the mesh
 # from postprocess.xcVtk.FE_model import vtk_FE_graphic
-# defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+# displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 # totalSet= prep.getSets.getSet('total')
-# defDisplay.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
-# defDisplay.FEmeshGraphic(xcSet=strutSet,caption= 'Struts',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
-# defDisplay.FEmeshGraphic(xcSet=diagSet,caption= 'Diagonal',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
-# defDisplay.FEmeshGraphic(xcSet=saddSet,caption= 'Saddle cables',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# displaySettings.FEmeshGraphic(xcSet=totalSet,caption= 'All elements',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# displaySettings.FEmeshGraphic(xcSet=strutSet,caption= 'Struts',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# displaySettings.FEmeshGraphic(xcSet=diagSet,caption= 'Diagonal',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
+# displaySettings.FEmeshGraphic(xcSet=saddSet,caption= 'Saddle cables',cameraParameters= vtk_graphic_base.CameraParameters('XYZPos'))
 # quit()
 
 

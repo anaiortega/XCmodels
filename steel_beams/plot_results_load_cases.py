@@ -39,7 +39,7 @@ figVy.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 internalForcesFigList.append(figVy)
 
 tp= utils_display.TakePhotos("total")
-#tp.defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
+#tp.displaySettings.cameraParameters= vtk_graphic_base.CameraParameters('YPos')
 tp.pthGraphOutput= "figures/"
 
 import os

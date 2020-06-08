@@ -15,11 +15,11 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #             its displacement multiplied by this factor. (Defaults to 0.0,
 #             i.e. display of initial/undeformed shape)
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 #setToDisp=shells
 setToDisp=overallSet
 #setToDisp=shellsPcable
 #setToDisp=rest_Acc
 
-defDisplay.FEmeshGraphic(xcSets=[setToDisp],caption='',cameraParameters= vtk_graphic_base.CameraParameters('XPos'),defFScale=1.0)
+displaySettings.FEmeshGraphic(xcSets=[setToDisp],caption='',cameraParameters= vtk_graphic_base.CameraParameters('XPos'),defFScale=1.0)
 

@@ -1,10 +1,10 @@
 execfile('./fe_model.py')
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
-defDisplay= vtk_CAD_graphic.DisplaySettingsBlockTopo()
+displaySettings= vtk_CAD_graphic.DisplaySettingsBlockTopo()
 
-defDisplay.displayBlocks(xcTotalSet,caption= xcTotalSet.name+' set')
-#defDisplay.displayBlocks(setParapet,caption= setParapet.name+' set')
-#defDisplay.displayBlocks(setColumns,caption= setColumns.name+' set')
-#defDisplay.displayBlocks(setTransverseBeams,caption= setTransverseBeams.name+' set')
-#defDisplay.displayBlocks(springLines,caption= springLines.name+' set')
+displaySettings.displayBlocks(xcTotalSet,caption= xcTotalSet.name+' set')
+#displaySettings.displayBlocks(setParapet,caption= setParapet.name+' set')
+#displaySettings.displayBlocks(setColumns,caption= setColumns.name+' set')
+#displaySettings.displayBlocks(setTransverseBeams,caption= setTransverseBeams.name+' set')
+#displaySettings.displayBlocks(springLines,caption= springLines.name+' set')

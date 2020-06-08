@@ -36,8 +36,8 @@ for lc in loadCasesToDisplay:
         for arg in lc.listBeamIntForc:
             lcs.displayIntForcDiag(itemToDisp=arg,setToDisplay=st,fileName=None,defFScale=1)
     if abutment.lower()[0]=='y': 
-        defDisplay= vtk_FE_graphic.DisplaySettingsFE() 
-        found_wink.displayPressures(defDisplay,lc.loadCaseName +'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
+        displaySettings= vtk_FE_graphic.DisplaySettingsFE() 
+        found_wink.displayPressures(displaySettings,lc.loadCaseName +'Ground pressures',fUnitConv= 1e-6,unitDescription= '[MPa]')
 
 
             

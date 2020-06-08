@@ -31,16 +31,16 @@ setDisp=xcTotalSet    #set of elements (any type) to be displayed
 diagram= cvd.ControlVarDiagram(scaleFactor= 1,fUnitConv= 100,sets=[setDispRes.elSet],attributeName= limitStateLabel,component= argument)
 diagram.addDiagram()
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
  #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
-#defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
-defDisplay.setupGrid(setDisp.elSet)
-defDisplay.defineMeshScene(None)
-defDisplay.appendDiagram(diagram) #Append diagram to the scene.
+#displaySettings.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
+displaySettings.setupGrid(setDisp.elSet)
+displaySettings.defineMeshScene(None)
+displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
 caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDispRes.genDescr.capitalize() + ', ' + setDispRes.sectDescr[0]
-defDisplay.displayScene(caption)
+displaySettings.displayScene(caption)
 
 
 

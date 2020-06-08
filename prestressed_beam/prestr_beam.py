@@ -151,9 +151,9 @@ overallSet=preprocessor.getSets.getSet('total')
 
 #Plot elements
 # from postprocess.xcVtk.FE_model import vtk_FE_graphic
-# defDisplay= vtk_FE_graphic.DisplaySettingsFE()
-# defDisplay.FEmeshGraphic(xcSet=tendonSet,caption='Prestressing tendon',cameraParameters= vtk_graphic_base.CameraParameters('YPos'),defFScale=1.0)
-# defDisplay.FEmeshGraphic(xcSet=beamSet,caption='Beam',cameraParameters= vtk_graphic_base.CameraParameters('YPos'),defFScale=1.0)
+# displaySettings= vtk_FE_graphic.DisplaySettingsFE()
+# displaySettings.FEmeshGraphic(xcSet=tendonSet,caption='Prestressing tendon',cameraParameters= vtk_graphic_base.CameraParameters('YPos'),defFScale=1.0)
+# displaySettings.FEmeshGraphic(xcSet=beamSet,caption='Beam',cameraParameters= vtk_graphic_base.CameraParameters('YPos'),defFScale=1.0)
 
 # Connection between cable and beam
 # gluedDOFs= [0,1,2,3,4,5]

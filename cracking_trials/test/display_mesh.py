@@ -13,7 +13,7 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 #  nodeSize:  size of the points that represent nodes (defaults to 0.01)
 #  scaleConstr: scale of SPContraints symbols (defaults to 0.2)
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 #setToDisp=overallSet
-#defDisplay.displayMesh(xcSet=setToDisp)
-defDisplay.displayMesh(xcSets=[beamSet],caption='Mesh',nodeSize=0.005,scaleConstr=0.05)
+#displaySettings.displayMesh(xcSet=setToDisp)
+displaySettings.displayMesh(xcSets=[beamSet],caption='Mesh',nodeSize=0.005,scaleConstr=0.05)

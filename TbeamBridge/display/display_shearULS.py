@@ -37,26 +37,26 @@ argument= 'CF'
 #   extrapolate_elem_attr.flatten_attribute(elemSet,attributeName,1,2)
 
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 xcSet= deckSet
 attributeName= limitStateLabel + 'Sect1'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + '  '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + '  '+xcSet.name+ '  '+argument)
 attributeName= limitStateLabel + 'Sect2'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
 xcSet= foundationSet
 attributeName= limitStateLabel + 'Sect1'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
 attributeName= limitStateLabel + 'Sect2'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
 xcSet= wallsSet
 attributeName= limitStateLabel + 'Sect1'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
 attributeName= limitStateLabel + 'Sect2'
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
+field.plot(displaySettings,caption= 'Shear check '+ attributeName + ' '+xcSet.name+ '  '+argument)
 

@@ -30,27 +30,27 @@ argument= 'CF'
 
 # if("FCCP" in attributeName):
 #   extrapolate_elem_attr.flatten_attribute(xcSet.elements,attributeName,1,2)
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 xcSet= deckSet
 attributeName= limitStateLabel + 'Sect1'   #Normal stresses limit state direction 1.
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 attributeName= limitStateLabel + 'Sect2'   #Normal stresses limit state direction 2
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 xcSet= foundationSet
 attributeName= limitStateLabel + 'Sect1'   #Normal stresses limit state direction 1.
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 attributeName= limitStateLabel + 'Sect2'   #Normal stresses limit state direction 2
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 xcSet= wallsSet
 attributeName= limitStateLabel + 'Sect1'   #Normal stresses limit state direction 1.
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 attributeName= limitStateLabel + 'Sect2'   #Normal stresses limit state direction 2
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
-field.plot(defDisplay,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
+field.plot(displaySettings,caption= 'Normal stresses check '+ attributeName +'   ' + argument+ '   '+xcSet.name )
 
 

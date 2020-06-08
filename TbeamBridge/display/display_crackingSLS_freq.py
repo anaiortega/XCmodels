@@ -30,5 +30,5 @@ xcSet=wallsSet
 
 field= Fields.getScalarFieldFromControlVar(attributeName,argument,xcSet,None,1.0)
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
-field.plot(defDisplay,caption= 'Crack control '+ attributeName + ' '+argument+' [MPa]')
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
+field.plot(displaySettings,caption= 'Crack control '+ attributeName + ' '+argument+' [MPa]')

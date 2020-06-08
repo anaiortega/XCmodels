@@ -32,14 +32,14 @@ diagram= cvd.ControlVarDiagram(scaleFactor= 10,fUnitConv= 1,sets=[totalSet],attr
 #diagram= npd.InternalForceDiagram(-0.02,fUnitConv=1e-3,sets=[colsSet.elSet],component= "Qy")
 diagram.addDiagram()
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
-#defDisplay.windowHeight= 300
-defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
-defDisplay.setupGrid(totalSet)
-defDisplay.defineMeshScene(None)
-defDisplay.appendDiagram(diagram) #Append diagram to the scene.
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
+#displaySettings.windowHeight= 300
+displaySettings.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
+displaySettings.setupGrid(totalSet)
+displaySettings.defineMeshScene(None)
+displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
 #execfile('draw_supports.py')
-#defDisplay.renderer.AddActor(supportsActor)
+#displaySettings.renderer.AddActor(supportsActor)
 
-defDisplay.displayScene('Noise barrier: '+ 'N [kN]')
+displaySettings.displayScene('Noise barrier: '+ 'N [kN]')

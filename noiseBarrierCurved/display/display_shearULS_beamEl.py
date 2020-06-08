@@ -32,21 +32,21 @@ diagram= cvd.ControlVarDiagram(scaleFactor= 0.01,fUnitConv= 1,sets=[setDispRes.e
 diagram.addDiagram()
 
 
-defDisplay= vtk_FE_graphic.DisplaySettingsFE()
+displaySettings= vtk_FE_graphic.DisplaySettingsFE()
 #predefined view names: 'XYZPos','XNeg','XPos','YNeg','YPos',
  #                        'ZNeg','ZPos'  (defaults to 'XYZPos')
 
-defDisplay.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
-defDisplay.setupGrid(setDisp.elSet)
+displaySettings.cameraParameters= vtk_graphic_base.CameraParameters('YPos') #Point of view.
+displaySettings.setupGrid(setDisp.elSet)
 
-defDisplay.defineMeshScene(None)
-defDisplay.appendDiagram(diagram) #Append diagram to the scene.
+displaySettings.defineMeshScene(None)
+displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
 #execfile('draw_supports.py')
-#defDisplay.renderer.AddActor(supportsActor)
+#displaySettings.renderer.AddActor(supportsActor)
 
 caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDispRes.genDescr.capitalize() + ', ' + setDispRes.sectDescr[1]
-defDisplay.displayScene(caption)
+displaySettings.displayScene(caption)
 
 
 
