@@ -73,7 +73,6 @@ botColRCSects.dir1ShReinfZ=shear1
 botColRCSects.dir2ShReinfY=shear1
 botColRCSects.dir2ShReinfZ=shear1
 
-botColRCSects.creaTwoSections() 
 sections.append(botColRCSects)
 
 topColRCSects= def_simple_RC_section.RCSlabBeamSection(name='topColRCSects',sectionDescr='pilier prefabriqué inf.',concrType=concrete, reinfSteelType=reinfSteel,width=TCheight,depth=TCwidth)  
@@ -99,7 +98,6 @@ topColRCSects.dir1ShReinfZ=shear1
 topColRCSects.dir2ShReinfY=shear1
 topColRCSects.dir2ShReinfZ=shear1
 
-topColRCSects.creaTwoSections() 
 sections.append(topColRCSects)
 
 glsColRCSects= def_simple_RC_section.RCSlabBeamSection(name='glsColRCSects',sectionDescr='pilier prefabriqué sup.',concrType=concrete, reinfSteelType=reinfSteel,width=CCheight,depth=CCwidth)  
@@ -118,5 +116,4 @@ glsColRCSects.dir1ShReinfZ=shear1
 glsColRCSects.dir2ShReinfY=shear1
 glsColRCSects.dir2ShReinfZ=shear1
 
-glsColRCSects.creaTwoSections() 
 sections.append(glsColRCSects)

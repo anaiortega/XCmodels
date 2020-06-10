@@ -69,7 +69,6 @@ FoundExtSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 FoundExtSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 FoundExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 
-FoundExtSlabRCSect.creaTwoSections() 
 sections.append(FoundExtSlabRCSect)
 
 
@@ -81,7 +80,6 @@ FoundIntSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 FoundIntSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 FoundIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 
-FoundIntSlabRCSect.creaTwoSections() 
 sections.append(FoundIntSlabRCSect)
 
 LeftWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftWallRCSect',"underpass.",concrete, reinfSteel,0.45)
@@ -92,7 +90,6 @@ LeftWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s
 LeftWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s125r30])
 LeftWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s125r30])
 
-LeftWallRCSect.creaTwoSections() 
 sections.append(LeftWallRCSect)
 
 
@@ -104,7 +101,6 @@ RightWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12
 RightWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s125r30])
 RightWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s125r30])
 
-RightWallRCSect.creaTwoSections() 
 sections.append(RightWallRCSect)
 
 DeckExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection('deckExtSlabRCSect',"underpass.",concrete, reinfSteel,0.35)
@@ -115,7 +111,6 @@ DeckExtSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi
 DeckExtSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s250r50])
 DeckExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s250r56])
 
-DeckExtSlabRCSect.creaTwoSections() 
 sections.append(DeckExtSlabRCSect)
 
 
@@ -128,7 +123,6 @@ DeckIntSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi
 DeckIntSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s250r42])
 DeckIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s250r56])
 
-DeckIntSlabRCSect.creaTwoSections() 
 sections.append(DeckIntSlabRCSect)
 
 

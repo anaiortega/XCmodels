@@ -136,7 +136,6 @@ sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
 for secRec in lstOfSectRecords:
     secRec.fiberSectionParameters.concrType.initTensStiff='Y' #tension stiffening initialized in
                                        #concrete material diagram
-    secRec.creaTwoSections()    
     sections.append(secRec)
 for secRec in lstOfSectRecords:
     elset=preprocessor.getSets.getSet(secRec.elemSetName)

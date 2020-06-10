@@ -73,7 +73,6 @@ deckSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s
 deckSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
 deckSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r40]) #Ok
 
-deckSlabRCSect.creaTwoSections() 
 sections.append(deckSlabRCSect)
 
 dockRCSect= def_simple_RC_section.RCSlabBeamSection(name='dockRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
@@ -84,7 +83,6 @@ dockRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s150r5
 dockRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
 dockRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r40]) #Ok
 
-dockRCSect.creaTwoSections() 
 sections.append(dockRCSect)
 
 parapetRCSect= def_simple_RC_section.RCSlabBeamSection(name='parapetRCSect',sectionDescr="estacade.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.20)
@@ -95,7 +93,6 @@ parapetRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi8s15
 parapetRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r40]) #Ok
 parapetRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r40]) #Ok
 
-parapetRCSect.creaTwoSections() 
 sections.append(parapetRCSect)
 
 
@@ -113,7 +110,6 @@ columnRCSect.dir1ShReinfZ=shear1 #Ok
 columnRCSect.dir2ShReinfY=shear1 #Ok
 columnRCSect.dir2ShReinfZ=shear1 #Ok
 
-columnRCSect.creaTwoSections() 
 sections.append(columnRCSect)
 
 # transverseReinfRCSect=def_simple_RC_section.RCSlabBeamSection(name='transverseReinfRCSect',sectionDescr='transverseReinf',concrType=concrete, reinfSteelType=reinfSteel,width=0.2,depth=0.2)
@@ -122,5 +118,4 @@ sections.append(columnRCSect)
 # transverseReinfRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
 # transverseReinfRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r40])
 # 
-transverseReinfRCSect.creaTwoSections() 
 sections.append(transverseReinfRCSect)

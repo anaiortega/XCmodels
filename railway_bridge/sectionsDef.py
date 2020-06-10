@@ -51,7 +51,6 @@ deckRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150
 deckRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 deckRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-deckRCSects.creaTwoSections() 
 sections.append(deckRCSects)   
 
 foundRCSects= def_simple_RC_section.RCSlabBeamSection(name='foundRCSects',sectionDescr='foundation',concrType=concrete, reinfSteelType=reinfSteel,depth=foundTh)
@@ -62,7 +61,6 @@ foundRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s15
 foundRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 foundRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-foundRCSects.creaTwoSections() 
 sections.append(foundRCSects)   
 
 wallRCSects= def_simple_RC_section.RCSlabBeamSection(name='wallRCSects',sectionDescr='wall of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh)  
@@ -71,7 +69,6 @@ wallRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150
 wallRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 wallRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-wallRCSects.creaTwoSections() 
 sections.append(wallRCSects)   
 
 beamXRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamXRCsect',sectionDescr='beam elements in X direction',concrType=concrete, reinfSteelType=reinfSteel,width=wbeamX,depth=hbeamX)
@@ -80,7 +77,6 @@ beamXRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150
 beamXRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 beamXRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35])
 
-beamXRCsect.creaTwoSections() 
 sections.append(beamXRCsect)
 
 beamYRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamYRCsect',sectionDescr='beam elements in Y direction',concrType=concrete, reinfSteelType=reinfSteel,width=wbeamY,depth=hbeamY)
@@ -89,7 +85,6 @@ beamYRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150
 beamYRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 beamYRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35])
 
-beamYRCsect.creaTwoSections() 
 sections.append(beamYRCsect)
 
 columnZRCsect=def_simple_RC_section.RCSlabBeamSection(name='columnZRCsect',sectionDescr='columnZ',concrType=concrete, reinfSteelType=reinfSteel,width=wbeamZ,depth=hbeamZ)
@@ -98,7 +93,6 @@ columnZRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s1
 columnZRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 columnZRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35])
 
-columnZRCsect.creaTwoSections() 
 sections.append(columnZRCsect)
 
 

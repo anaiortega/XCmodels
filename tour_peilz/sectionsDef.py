@@ -70,7 +70,6 @@ slab30RCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s15
 slab30RCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #Transverse
 slab30RCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #
 
-slab30RCSect.creaTwoSections() 
 sections.append(slab30RCSect)
 
 slab40RCSect= def_simple_RC_section.RCSlabBeamSection(name='slab40RCSect',sectionDescr="foundation slab thickness 40 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
@@ -79,7 +78,6 @@ slab40RCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s15
 slab40RCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #Transverse
 slab40RCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #
 
-slab40RCSect.creaTwoSections() 
 sections.append(slab40RCSect)
 
 wall30RCSect= def_simple_RC_section.RCSlabBeamSection(name='wall30RCSect',sectionDescr="walls thickness 30 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.3)
@@ -88,7 +86,6 @@ wall30RCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s15
 wall30RCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #Horizontal
 wall30RCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #
 
-wall30RCSect.creaTwoSections() 
 sections.append(wall30RCSect)
 
 wall40RCSect= def_simple_RC_section.RCSlabBeamSection(name='wall40RCSect',sectionDescr="walls thickness 40 cm.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
@@ -97,7 +94,6 @@ wall40RCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s15
 wall40RCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #Horizontal
 wall40RCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi14s150r50]) #
 
-wall40RCSect.creaTwoSections() 
 sections.append(wall40RCSect)
 
 deckRCSect= def_simple_RC_section.RCSlabBeamSection(name='deckRCSect',sectionDescr="roof deck.",concrType=concrete, reinfSteelType=reinfSteel,depth=0.4)
@@ -106,5 +102,4 @@ deckRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r
 deckRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r50]) #Transverse
 deckRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r50]) #
 
-deckRCSect.creaTwoSections() 
 sections.append(deckRCSect)

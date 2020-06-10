@@ -45,8 +45,7 @@ scSteel=None
 scConcr=None
 #for sect in sections.sections:
 for sect in sect2Disp:
-  sect.creaTwoSections()
-  sect1=sect.lstRCSects[0]
+    sect1=sect.lstRCSects[0]
   sect2=sect.lstRCSects[1]
   sect1.defRCSection(preprocessor,'d')
   sect2.defRCSection(preprocessor,'d')

@@ -44,7 +44,6 @@ deckRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([deckLong
 deckTransv= def_simple_RC_section.ReinfRow(rebarsDiam=13e-3,areaRebar= (areaFi12+areaFi14)/2.0,rebarsSpacing=0.150,width=1.0,nominalCover=0.040)
 deckRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([deckTransv])  #transv. sup.
 deckRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([deckTransv])  #transv. inf.
-deckRCSects.creaTwoSections() 
 sections.append(deckRCSects)
 
 parapetBodyRCSects= def_simple_RC_section.RCSlabBeamSection(name='parapetBodyRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=parapetBodyThickness)  
@@ -54,7 +53,6 @@ parapetBodyRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([p
 parapetBodyVert= def_simple_RC_section.ReinfRow(rebarsDiam=13e-3,areaRebar= (areaFi12+areaFi14)/2.0,rebarsSpacing=0.150,width=1.0,nominalCover=0.040)
 parapetBodyRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([parapetBodyVert])  #vert. sup.
 parapetBodyRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([parapetBodyVert])  #vert. inf.
-parapetBodyRCSects.creaTwoSections() 
 sections.append(parapetBodyRCSects)
 
 parapetHeadRCSects= def_simple_RC_section.RCSlabBeamSection(name='parapetHeadRCSects',sectionDescr='slab of shell elements',concrType=concrete, reinfSteelType=reinfSteel,depth=parapetHeadThickness)  
@@ -64,7 +62,6 @@ parapetHeadRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([p
 parapetHeadVert= def_simple_RC_section.ReinfRow(rebarsDiam=13e-3,areaRebar= (areaFi12+areaFi14)/2.0,rebarsSpacing=0.150,width=1.0,nominalCover=0.040)
 parapetHeadRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([parapetHeadVert])  #vert. sup.
 parapetHeadRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([parapetHeadVert])  #vert. inf.
-parapetHeadRCSects.creaTwoSections() 
 sections.append(parapetHeadRCSects)
 
 

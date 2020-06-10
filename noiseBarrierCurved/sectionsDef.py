@@ -85,7 +85,6 @@ botColRCSects.dir1ShReinfZ=shear1
 botColRCSects.dir2ShReinfY=shear1
 botColRCSects.dir2ShReinfZ=shear1
 
-botColRCSects.creaTwoSections() 
 sections.append(botColRCSects)
 
 topColRCSects= def_simple_RC_section.RCSlabBeamSection(name='topColRCSects',sectionDescr='pilier prefabriqué',concrType=concrete, reinfSteelType=reinfSteel,width=TCheight,depth=TCwidth)  
@@ -108,7 +107,6 @@ topColRCSects.dir1ShReinfZ=shear1
 topColRCSects.dir2ShReinfY=shear1
 topColRCSects.dir2ShReinfZ=shear1
 
-topColRCSects.creaTwoSections() 
 sections.append(topColRCSects)
 
 curvColRCSects= def_simple_RC_section.RCSlabBeamSection(name='curvColRCSects',sectionDescr='pilier incurvé',concrType=concrete, reinfSteelType=reinfSteel,width=CCheight,depth=CCwidth)  
@@ -127,5 +125,4 @@ curvColRCSects.dir1ShReinfZ=shear1
 curvColRCSects.dir2ShReinfY=shear1
 curvColRCSects.dir2ShReinfZ=shear1
 
-curvColRCSects.creaTwoSections() 
 sections.append(curvColRCSects)

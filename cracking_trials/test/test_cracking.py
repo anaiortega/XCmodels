@@ -113,7 +113,6 @@ from postprocess import element_section_map
 # Concrete of type concrete01 with no tension branch
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition #sections container
-beamRCsect.creaTwoSections()
 sections.append(beamRCsect)
 #Generation of the distribution of material extended to the elements of the
 #FE model, assigning to each element the section-group that corresponds to it

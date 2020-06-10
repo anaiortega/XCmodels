@@ -45,5 +45,4 @@ beamRCsects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200
 beamRCsects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 beamRCsects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
 
-beamRCsects.creaTwoSections() 
 sections.append(beamRCsects)

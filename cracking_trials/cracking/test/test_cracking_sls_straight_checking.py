@@ -122,8 +122,7 @@ beamRCsect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLaye
 beamRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 beamRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 beamRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
-beamRCsect.creaTwoSections()
-sectContainer.append(beamRCsect)
+beamRCsect.append(beamRCsect)
 
 # Spatial distribution of reinforced concrete
 # sections (assign RC sections to elements).

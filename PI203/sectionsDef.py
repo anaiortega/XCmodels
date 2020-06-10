@@ -83,7 +83,6 @@ UpDeckExtSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 UpDeckExtSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 UpDeckExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-UpDeckExtSlabRCSect.creaTwoSections() 
 sections.append(UpDeckExtSlabRCSect)
 
 UpDeckIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('upDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,upDeckTh)
@@ -94,7 +93,6 @@ UpDeckIntSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 UpDeckIntSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 UpDeckIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi18s150r35])
 
-UpDeckIntSlabRCSect.creaTwoSections() 
 sections.append(UpDeckIntSlabRCSect)
 
 DownDeckExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection('downDeckExtSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
@@ -105,7 +103,6 @@ DownDeckExtSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers
 DownDeckExtSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 DownDeckExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-DownDeckExtSlabRCSect.creaTwoSections() 
 sections.append(DownDeckExtSlabRCSect)
 
 DownDeckIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('downDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
@@ -116,7 +113,6 @@ DownDeckIntSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers
 DownDeckIntSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 DownDeckIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi18s150r35])
 
-DownDeckIntSlabRCSect.creaTwoSections() 
 sections.append(DownDeckIntSlabRCSect)
 
 FoundExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='foundExtSlabRCSect',sectionDescr="underpass.",depth=baseSlabTh,concrType=concrete, reinfSteelType=reinfSteel)
@@ -127,7 +123,6 @@ FoundExtSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 FoundExtSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 FoundExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-FoundExtSlabRCSect.creaTwoSections() 
 sections.append(FoundExtSlabRCSect)
 
 FoundIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('foundIntSlabRCSect',"underpass.",concrete, reinfSteel,baseSlabTh)
@@ -138,7 +133,6 @@ FoundIntSlabRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 FoundIntSlabRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 FoundIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-FoundIntSlabRCSect.creaTwoSections() 
 sections.append(FoundIntSlabRCSect)
 
 LeftUpWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
@@ -149,7 +143,6 @@ LeftUpWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi1
 LeftUpWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 LeftUpWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi20s150r35])
 
-LeftUpWallRCSect.creaTwoSections() 
 sections.append(LeftUpWallRCSect)
 
 RightUpWallRCSect= def_simple_RC_section.RCSlabBeamSection('rightUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
@@ -160,7 +153,6 @@ RightUpWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi
 RightUpWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi20s150r35])
 RightUpWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-RightUpWallRCSect.creaTwoSections() 
 sections.append(RightUpWallRCSect)
 
 LeftDownWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
@@ -171,7 +163,6 @@ LeftDownWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 LeftDownWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 LeftDownWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi20s150r35])
 
-LeftDownWallRCSect.creaTwoSections() 
 sections.append(LeftDownWallRCSect)
 
 RightDownWallRCSect= def_simple_RC_section.RCSlabBeamSection('rightDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
@@ -182,7 +173,6 @@ RightDownWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 RightDownWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi20s150r35])
 RightDownWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-RightDownWallRCSect.creaTwoSections() 
 sections.append(RightDownWallRCSect)
 
 MidWallRCSect= def_simple_RC_section.RCSlabBeamSection('midWallRCSect',"underpass.",concrete, reinfSteel,midWallTh)
@@ -193,7 +183,6 @@ MidWallRCSect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s1
 MidWallRCSect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 MidWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
 
-MidWallRCSect.creaTwoSections() 
 sections.append(MidWallRCSect)
 
 

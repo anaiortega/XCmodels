@@ -46,6 +46,5 @@ cantlvRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi1
 cantlvRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi20r50])
 cantlvRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([Twofi20r50])
 
-cantlvRCSects.creaTwoSections() 
 sections.append(cantlvRCSects)   
 

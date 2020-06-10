@@ -39,6 +39,5 @@ dintelRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s2
 dintelRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r60])  #transv.sup
 dintelRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r60,fi20s150r60])  #transv.inf
 
-dintelRCSects.creaTwoSections() 
 sections.append(dintelRCSects)   
 
