@@ -50,11 +50,11 @@ fi16s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=16e-3,areaRebar= areaFi16,
 fi20s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=20e-3,areaRebar= areaFi20,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
 fi8s200r44=def_simple_RC_section.ReinfRow(rebarsDiam=8e-3,areaRebar= areaFi8,rebarsSpacing=0.200,width=1.0,nominalCover=0.044)
 
-#instances of def_simple_RC_section.RCSlabBeamSection that defines the
+#instances of element_section_map.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
-beamRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
+beamRCsect=element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concrete, reinfSteelType=reinfSteel,width=wbeam,depth=hbeam)
 beamRCsect.lstRCSects[0].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])
 beamRCsect.lstRCSects[0].negatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r44])
 beamRCsect.lstRCSects[1].positvRebarRows= def_simple_RC_section.LongReinfLayers([fi10s200r44])

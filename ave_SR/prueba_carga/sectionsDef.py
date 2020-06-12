@@ -28,12 +28,12 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 
 execfile('../generic_layers_aux.py')
 
-#instances of def_simple_RC_section.RCSlabBeamSection that defines the
+#instances of element_section_map.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-dintelRCSects= def_simple_RC_section.RCSlabBeamSection(name='dintel',sectionDescr='dintel',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
+dintelRCSects= element_section_map.RCSlabBeamSection(name='dintel',sectionDescr='dintel',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
 dintelRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r60])  #long. sup.
 dintelRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60])  #long. inf.
 dintelRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r60])  #transv.sup

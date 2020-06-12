@@ -5,6 +5,7 @@ import xc_base
 import geom
 import xc
 from materials.sections.fiber_section import def_simple_RC_section as rcs
+from postprocess import element_section_map
 from materials.ehe import EHE_materials
 import math
 
@@ -14,13 +15,13 @@ execfile('../basic_data.py')
 rnom=35 #recubrimiento nominal (todos los elementos)
 
 
-#instances of rcs.RCSlabBeamSection that define the
+#instances of element_section_map.RCSlabBeamSection that define the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
 
-zapRCSects= rcs.RCSlabBeamSection(name='zapRCSects',sectionDescr='zapata',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoZap,elemSetName='zap')
+zapRCSects= element_section_map.RCSlabBeamSection(name='zapRCSects',sectionDescr='zapata',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoZap,elemSetName='zap')
 #D1: longitudinal rebars
 #D2:  transversal rebars
 #positiv: top face
@@ -30,7 +31,7 @@ zapRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLa
 zapRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom)])
 zapRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+25)])
 
-murestrZ1RCSects= rcs.RCSlabBeamSection(name='murestrZ1RCSects',sectionDescr='muro de estribo, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ1')
+murestrZ1RCSects= element_section_map.RCSlabBeamSection(name='murestrZ1RCSects',sectionDescr='muro de estribo, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ1')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: interior
@@ -40,7 +41,7 @@ murestrZ1RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs
 murestrZ1RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(16,200,rnom)])
 murestrZ1RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+16)])
 
-murestrZ2RCSects= rcs.RCSlabBeamSection(name='murestrZ2RCSects',sectionDescr='muro de estribo, zona Z2 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ2')
+murestrZ2RCSects= element_section_map.RCSlabBeamSection(name='murestrZ2RCSects',sectionDescr='muro de estribo, zona Z2 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espMurEstr,elemSetName='murestrZ2')
 #D1: vertical rebars
 #D2: horizontal rebars
 #positiv: trasdós
@@ -50,7 +51,7 @@ murestrZ2RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs
 murestrZ2RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(16,200,rnom)])
 murestrZ2RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+16)])
 
-aletiZ1RCSects= rcs.RCSlabBeamSection(name='aletiZ1RCSects',sectionDescr='aleta izquierda, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ1,elemSetName='aletiZ1')
+aletiZ1RCSects= element_section_map.RCSlabBeamSection(name='aletiZ1RCSects',sectionDescr='aleta izquierda, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ1,elemSetName='aletiZ1')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: interior
@@ -60,7 +61,7 @@ aletiZ1RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletiZ1RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+20)])
 aletiZ1RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom)])
 
-aletiZ2RCSects= rcs.RCSlabBeamSection(name='aletiZ2RCSects',sectionDescr='aleta izquierda, zona Z2 (central)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ2,elemSetName='aletiZ2')
+aletiZ2RCSects= element_section_map.RCSlabBeamSection(name='aletiZ2RCSects',sectionDescr='aleta izquierda, zona Z2 (central)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ2,elemSetName='aletiZ2')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: interior
@@ -70,7 +71,7 @@ aletiZ2RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletiZ2RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+20)])
 aletiZ2RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom)])
 
-aletiZ3RCSects= rcs.RCSlabBeamSection(name='aletiZ3RCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ3,elemSetName='aletiZ3')
+aletiZ3RCSects= element_section_map.RCSlabBeamSection(name='aletiZ3RCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletiZ3,elemSetName='aletiZ3')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: interior
@@ -80,7 +81,7 @@ aletiZ3RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletiZ3RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom+20)])
 aletiZ3RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(20,200,rnom)])
 
-aletdZ1RCSects= rcs.RCSlabBeamSection(name='aletdZ1RCSects',sectionDescr='aleta izquierda, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ1,elemSetName='aletdZ1')
+aletdZ1RCSects= element_section_map.RCSlabBeamSection(name='aletdZ1RCSects',sectionDescr='aleta izquierda, zona Z1 (inferior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ1,elemSetName='aletdZ1')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: exterior
@@ -90,7 +91,7 @@ aletdZ1RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletdZ1RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom+25)])
 aletdZ1RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom),rcs.rebLayer_mm(25,200,rnom)])
 
-aletdZ2RCSects= rcs.RCSlabBeamSection(name='aletdZ2RCSects',sectionDescr='aleta izquierda, zona Z2 (central)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ2,elemSetName='aletdZ2')
+aletdZ2RCSects= element_section_map.RCSlabBeamSection(name='aletdZ2RCSects',sectionDescr='aleta izquierda, zona Z2 (central)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ2,elemSetName='aletdZ2')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: exterior
@@ -100,7 +101,7 @@ aletdZ2RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletdZ2RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom+25)])
 aletdZ2RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom)])
 
-aletdZ3RCSects= rcs.RCSlabBeamSection(name='aletdZ3RCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ3,elemSetName='aletdZ3')
+aletdZ3RCSects= element_section_map.RCSlabBeamSection(name='aletdZ3RCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ3,elemSetName='aletdZ3')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: exterior
@@ -110,7 +111,7 @@ aletdZ3RCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.r
 aletdZ3RCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom+25)])
 aletdZ3RCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([rcs.rebLayer_mm(25,200,rnom)])
 
-voladzdRCSects= rcs.RCSlabBeamSection(name='voladzdRCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ3,elemSetName='voladzd')
+voladzdRCSects= element_section_map.RCSlabBeamSection(name='voladzdRCSects',sectionDescr='aleta izquierda, zona Z3 (superior)',concrType=concrete, reinfSteelType=reinfSteel,depth=espAletdZ3,elemSetName='voladzd')
 #D1: horizontal rebars
 #D2: vertical rebars
 #positiv: exterior

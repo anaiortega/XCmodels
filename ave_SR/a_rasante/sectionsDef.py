@@ -23,12 +23,12 @@ sections= reinfConcreteSectionDistribution.sectionDefinition
 
 execfile('../generic_layers_aux.py')
 
-#instances of def_simple_RC_section.RCSlabBeamSection that defines the
+#instances of element_section_map.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 
-dintExtRCSects= def_simple_RC_section.RCSlabBeamSection(name='dintExtRCSects',sectionDescr='dintel, zona extremos',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
+dintExtRCSects= element_section_map.RCSlabBeamSection(name='dintExtRCSects',sectionDescr='dintel, zona extremos',concrType=concrete, reinfSteelType=reinfSteel,depth=deckTh)  
 dintExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r80])  #long. sup.
 dintExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r85])  #long. inf.
 dintExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60])  #transv.sup
@@ -38,7 +38,7 @@ dintExtRCSects.dir2ShReinfY=sh1
 
 sections.append(dintExtRCSects)   
 
-dintCentRCSects= def_simple_RC_section.RCSlabBeamSection(name='dintCentRCSects',sectionDescr='dintel, zona central',concrType=concrete,reinfSteelType=reinfSteel,depth=deckTh)  
+dintCentRCSects= element_section_map.RCSlabBeamSection(name='dintCentRCSects',sectionDescr='dintel, zona central',concrType=concrete,reinfSteelType=reinfSteel,depth=deckTh)  
 dintCentRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r76])  #long. sup.
 dintCentRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r85])  #long. inf.
 dintCentRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s200r60])  #transv.sup
@@ -46,7 +46,7 @@ dintCentRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi25
 
 sections.append(dintCentRCSects)   
 
-losCimExtRCSects= def_simple_RC_section.RCSlabBeamSection(name='losCimExtRCSects',sectionDescr='losa de cimentación, zona exterior',concrType=concrete, reinfSteelType=reinfSteel,depth=baseSlabTh)
+losCimExtRCSects= element_section_map.RCSlabBeamSection(name='losCimExtRCSects',sectionDescr='losa de cimentación, zona exterior',concrType=concrete, reinfSteelType=reinfSteel,depth=baseSlabTh)
 losCimExtRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r80])  #long. sup.
 losCimExtRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r80])  #long. inf.
 losCimExtRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r60])  #transv.sup
@@ -54,7 +54,7 @@ losCimExtRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi2
 
 sections.append(losCimExtRCSects)   
 
-losCimCentRCSects= def_simple_RC_section.RCSlabBeamSection(name='losCimCentRCSects',sectionDescr='losa de cimentación, zona central',concrType=concrete, reinfSteelType=reinfSteel,depth=baseSlabTh)
+losCimCentRCSects= element_section_map.RCSlabBeamSection(name='losCimCentRCSects',sectionDescr='losa de cimentación, zona central',concrType=concrete, reinfSteelType=reinfSteel,depth=baseSlabTh)
 losCimCentRCSects.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r80])  #long. sup.
 losCimCentRCSects.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s150r60])  #long. inf.
 losCimCentRCSects.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s200r76])  #transv.sup
@@ -62,7 +62,7 @@ losCimCentRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi
 
 sections.append(losCimCentRCSects)   
 
-hastIzqRCSects= def_simple_RC_section.RCSlabBeamSection(name='hastIzqRCSects',sectionDescr='hastial izquierdo',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh)
+hastIzqRCSects= element_section_map.RCSlabBeamSection(name='hastIzqRCSects',sectionDescr='hastial izquierdo',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh)
 #0:Vert
 #1:Hor
 #+:Cent
@@ -73,7 +73,7 @@ hastIzqRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s
 
 sections.append(hastIzqRCSects)   
 
-hastDerRCSects= def_simple_RC_section.RCSlabBeamSection(name='hastDerRCSects',sectionDescr='hastial izquierdo',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh)
+hastDerRCSects= element_section_map.RCSlabBeamSection(name='hastDerRCSects',sectionDescr='hastial izquierdo',concrType=concrete, reinfSteelType=reinfSteel,depth=wallTh)
 #0:Vert
 #1:Hor
 #+:Int
@@ -84,7 +84,7 @@ hastDerRCSects.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi12s
 
 sections.append(hastDerRCSects)   
 
-# muretesRCsect=def_simple_RC_section.RCSlabBeamSection(name='muretesRCsect',sectionDescr='muretes',concrType=concrete, reinfSteelType=reinfSteel,width=emuret,depth=hmuret)
+# muretesRCsect=element_section_map.RCSlabBeamSection(name='muretesRCsect',sectionDescr='muretes',concrType=concrete, reinfSteelType=reinfSteel,width=emuret,depth=hmuret)
 # muretesRCsect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 # muretesRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])
 # muretesRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35])

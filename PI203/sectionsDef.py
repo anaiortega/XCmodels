@@ -75,7 +75,7 @@ fi26s250r50=def_simple_RC_section.ReinfRow(rebarsDiam=26e-3,areaRebar= areaFi26,
 fi26s150r35=def_simple_RC_section.ReinfRow(rebarsDiam=26e-3,areaRebar= areaFi26,rebarsSpacing=0.150,width=1.0,nominalCover=0.035)
 
 
-UpDeckExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection('upDeckExtSlabRCSect',"underpass.",concrete, reinfSteel,upDeckTh)
+UpDeckExtSlabRCSect= element_section_map.RCSlabBeamSection('upDeckExtSlabRCSect',"underpass.",concrete, reinfSteel,upDeckTh)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 UpDeckExtSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi20s150r35,fi20s150r35])
@@ -85,7 +85,7 @@ UpDeckExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 
 sections.append(UpDeckExtSlabRCSect)
 
-UpDeckIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('upDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,upDeckTh)
+UpDeckIntSlabRCSect= element_section_map.RCSlabBeamSection('upDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,upDeckTh)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 UpDeckIntSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -95,7 +95,7 @@ UpDeckIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 
 sections.append(UpDeckIntSlabRCSect)
 
-DownDeckExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection('downDeckExtSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
+DownDeckExtSlabRCSect= element_section_map.RCSlabBeamSection('downDeckExtSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 DownDeckExtSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi16s150r35])
@@ -105,7 +105,7 @@ DownDeckExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers
 
 sections.append(DownDeckExtSlabRCSect)
 
-DownDeckIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('downDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
+DownDeckIntSlabRCSect= element_section_map.RCSlabBeamSection('downDeckIntSlabRCSect',"underpass.",concrete, reinfSteel,downDeckTh)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 DownDeckIntSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -115,7 +115,7 @@ DownDeckIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers
 
 sections.append(DownDeckIntSlabRCSect)
 
-FoundExtSlabRCSect= def_simple_RC_section.RCSlabBeamSection(name='foundExtSlabRCSect',sectionDescr="underpass.",depth=baseSlabTh,concrType=concrete, reinfSteelType=reinfSteel)
+FoundExtSlabRCSect= element_section_map.RCSlabBeamSection(name='foundExtSlabRCSect',sectionDescr="underpass.",depth=baseSlabTh,concrType=concrete, reinfSteelType=reinfSteel)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 FoundExtSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35])
@@ -125,7 +125,7 @@ FoundExtSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 
 sections.append(FoundExtSlabRCSect)
 
-FoundIntSlabRCSect= def_simple_RC_section.RCSlabBeamSection('foundIntSlabRCSect',"underpass.",concrete, reinfSteel,baseSlabTh)
+FoundIntSlabRCSect= element_section_map.RCSlabBeamSection('foundIntSlabRCSect',"underpass.",concrete, reinfSteel,baseSlabTh)
 #[0]: transversal rebars
 #[1]: longitudinal rebars
 FoundIntSlabRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi22s150r35,fi22s150r35])
@@ -135,7 +135,7 @@ FoundIntSlabRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 
 sections.append(FoundIntSlabRCSect)
 
-LeftUpWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
+LeftUpWallRCSect= element_section_map.RCSlabBeamSection('leftUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 LeftUpWallRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -145,7 +145,7 @@ LeftUpWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi2
 
 sections.append(LeftUpWallRCSect)
 
-RightUpWallRCSect= def_simple_RC_section.RCSlabBeamSection('rightUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
+RightUpWallRCSect= element_section_map.RCSlabBeamSection('rightUpWallRCSect',"underpass.",concrete, reinfSteel,upWallTh)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 RightUpWallRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -155,7 +155,7 @@ RightUpWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([fi
 
 sections.append(RightUpWallRCSect)
 
-LeftDownWallRCSect= def_simple_RC_section.RCSlabBeamSection('leftDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
+LeftDownWallRCSect= element_section_map.RCSlabBeamSection('leftDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 LeftDownWallRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -165,7 +165,7 @@ LeftDownWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([f
 
 sections.append(LeftDownWallRCSect)
 
-RightDownWallRCSect= def_simple_RC_section.RCSlabBeamSection('rightDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
+RightDownWallRCSect= element_section_map.RCSlabBeamSection('rightDownWallRCSect',"underpass.",concrete, reinfSteel,downWallTh)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 RightDownWallRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])
@@ -175,7 +175,7 @@ RightDownWallRCSect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([
 
 sections.append(RightDownWallRCSect)
 
-MidWallRCSect= def_simple_RC_section.RCSlabBeamSection('midWallRCSect',"underpass.",concrete, reinfSteel,midWallTh)
+MidWallRCSect= element_section_map.RCSlabBeamSection('midWallRCSect',"underpass.",concrete, reinfSteel,midWallTh)
 #[0]: horizontal rebars
 #[1]: vertical rebars
 MidWallRCSect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([fi16s150r35])

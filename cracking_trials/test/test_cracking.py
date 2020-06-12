@@ -99,7 +99,8 @@ combContainer.SLS.freq.add('ELSF02', '1.0*lcase02')
 
 # Reinforced concrete sections
 from materials.sections.fiber_section import def_simple_RC_section
-beamRCsect=def_simple_RC_section.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSetName='beamSet')
+from postprocess import element_section_map
+beamRCsect= element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSetName='beamSet')
 mainBottReinf=def_simple_RC_section.ReinfRow(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
 mainBottReinf.nRebars=nmbBarsBott
 beamRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([mainBottReinf])
@@ -107,7 +108,6 @@ beamRCsect.dir2NegatvRebarRows= def_simple_RC_section.LongReinfLayers([mainBottR
 
 #Assigning of sections
 from postprocess import RC_material_distribution
-from postprocess import element_section_map
 
 # Reinforced concrete material distribution over the elements of the FE model.
 # Concrete of type concrete01 with no tension branch
