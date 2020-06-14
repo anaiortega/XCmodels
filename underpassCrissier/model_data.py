@@ -113,12 +113,12 @@ rightWall_rg= [gm.IJKRange([lastXpos,0,0],[lastXpos,lastYpos,lastZpos])]
 deckExtSlab_rg= [ gm.IJKRange([0,0,lastZpos],[1,lastYpos,lastZpos]), gm.IJKRange([2,0,lastZpos],[lastXpos,lastYpos,lastZpos]) ]
 deckIntSlab_rg= [ gm.IJKRange([1,0,lastZpos],[2,lastYpos,lastZpos])]
 #Surfaces generation
-foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,nameSet='foundExtSlab')
-foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,nameSet='foundIntSlab')
-leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,nameSet='leftWall')
-rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,nameSet='rightWall')
-deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,nameSet='deckExtSlab')
-deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,nameSet='deckIntSlab')
+foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,setName='foundExtSlab')
+foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,setName='foundIntSlab')
+leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,setName='leftWall')
+rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,setName='rightWall')
+deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,setName='deckExtSlab')
+deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,setName='deckIntSlab')
 
 #                         *** MATERIALS *** 
 #*Auxiliary data
@@ -264,12 +264,12 @@ rightWall_rg= [gm.IJKRange([lastXpos,0,0],[lastXpos,lastYpos,lastZpos])]
 deckExtSlab_rg= [ gm.IJKRange([0,0,lastZpos],[1,lastYpos,lastZpos]), gm.IJKRange([2,0,lastZpos],[lastXpos,lastYpos,lastZpos]) ]
 deckIntSlab_rg= [ gm.IJKRange([1,0,lastZpos],[2,lastYpos,lastZpos])]
 #Surfaces generation
-foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,nameSet='foundExtSlab')
-foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,nameSet='foundIntSlab')
-leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,nameSet='leftWall')
-rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,nameSet='rightWall')
-deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,nameSet='deckExtSlab')
-deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,nameSet='deckIntSlab')
+foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,setName='foundExtSlab')
+foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,setName='foundIntSlab')
+leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,setName='leftWall')
+rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,setName='rightWall')
+deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,setName='deckExtSlab')
+deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,setName='deckIntSlab')
 
 #                         *** MATERIALS *** 
 #*Auxiliary data
@@ -338,14 +338,14 @@ Lane3Sit1Set_rg=Lane1Sit2Set_rg
 Lane3Sit2Set_rg=Lane1Sit1Set_rg
 RestSet_rg=[gm.IJKRange([0,2,lastZpos],[lastXpos,3,lastZpos]),gm.IJKRange([0,6,lastZpos],[lastXpos,7,lastZpos])]
 
-AsphaltSet=gridGeom.getSetSurfOneRegion(ijkRange=AsphaltSet_rg,nameSet='alphaltSet')
-GuardrailSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=GuardrailSet_rg,nameSet='GuardrailSet')
-Lane1Sit1Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane1Sit1Set_rg,nameSet='Lane1Sit1Set')
-Lane1Sit2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane1Sit2Set_rg,nameSet='Lane1Sit2Set')
-Lane2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane2Set_rg,nameSet='Lane2Set')
-Lane3Sit1Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane3Sit1Set_rg,nameSet='Lane3Sit1Set')
-Lane3Sit2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane3Sit2Set_rg,nameSet='Lane3Sit2Set')
-RestSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=RestSet_rg,nameSet='RestSet')
+AsphaltSet=gridGeom.getSetSurfOneRegion(ijkRange=AsphaltSet_rg,setName='alphaltSet')
+GuardrailSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=GuardrailSet_rg,setName='GuardrailSet')
+Lane1Sit1Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane1Sit1Set_rg,setName='Lane1Sit1Set')
+Lane1Sit2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane1Sit2Set_rg,setName='Lane1Sit2Set')
+Lane2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane2Set_rg,setName='Lane2Set')
+Lane3Sit1Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane3Sit1Set_rg,setName='Lane3Sit1Set')
+Lane3Sit2Set=gridGeom.getSetSurfOneRegion(ijkRange=Lane3Sit2Set_rg,setName='Lane3Sit2Set')
+RestSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=RestSet_rg,setName='RestSet')
 
         
             

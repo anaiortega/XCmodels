@@ -72,7 +72,7 @@ gridGeom.generatePoints()
 # idem for J and K ranges
 beamY_rg=gm.IJKRange((0,0,0),(0,lastYpos,0))
 #Lines generation
-beamY=gridGeom.genLinOneRegion(ijkRange=beamY_rg,nameSet='beamY')
+beamY=gridGeom.genLinOneRegion(ijkRange=beamY_rg,setName='beamY')
 
 #                         *** MATERIALS *** 
 S235JR= EC3_materials.S235JR

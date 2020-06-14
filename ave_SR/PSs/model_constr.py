@@ -76,52 +76,52 @@ riostrEstr2_rg.append(gm.IJKRange((0,lastYpos,zList.index(zriostrEstr)),(lastXpo
 
 
 #Lines generation
-pilasInf=gridGeom.genLinMultiRegion(lstIJKRange=pilasInf_rg,nameSet='pilasInf')
-pilasSup=gridGeom.genLinMultiRegion(lstIJKRange=pilasSup_rg,nameSet='pilasSup')
-riostrEstr1=gridGeom.genLinMultiRegion(lstIJKRange=riostrEstr1_rg,nameSet='riostrEstr1')
-riostrEstr2=gridGeom.genLinMultiRegion(lstIJKRange=riostrEstr2_rg,nameSet='riostrEstr2')
+pilasInf=gridGeom.genLinMultiRegion(lstIJKRange=pilasInf_rg,setName='pilasInf')
+pilasSup=gridGeom.genLinMultiRegion(lstIJKRange=pilasSup_rg,setName='pilasSup')
+riostrEstr1=gridGeom.genLinMultiRegion(lstIJKRange=riostrEstr1_rg,setName='riostrEstr1')
+riostrEstr2=gridGeom.genLinMultiRegion(lstIJKRange=riostrEstr2_rg,setName='riostrEstr2')
 
 #Surfaces generation
-losInfV1=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV1_rg,nameSet='losInfV1')
-losInfV2=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV2_rg,nameSet='losInfV2')
-losInfV3=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV3_rg,nameSet='losInfV3')
-losInfRP1=gridGeom.genSurfMultiRegion(lstIJKRange=losInfRP1_rg,nameSet='losInfRP1')
-losInfRP2=gridGeom.genSurfMultiRegion(lstIJKRange=losInfRP2_rg,nameSet='losInfRP2')
+losInfV1=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV1_rg,setName='losInfV1')
+losInfV2=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV2_rg,setName='losInfV2')
+losInfV3=gridGeom.genSurfMultiRegion(lstIJKRange=losInfV3_rg,setName='losInfV3')
+losInfRP1=gridGeom.genSurfMultiRegion(lstIJKRange=losInfRP1_rg,setName='losInfRP1')
+losInfRP2=gridGeom.genSurfMultiRegion(lstIJKRange=losInfRP2_rg,setName='losInfRP2')
 
-losSupV1=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV1_rg,nameSet='losSupV1')
-losSupV2=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV2_rg,nameSet='losSupV2')
-losSupV3=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV3_rg,nameSet='losSupV3')
-losSupRP1=gridGeom.genSurfMultiRegion(lstIJKRange=losSupRP1_rg,nameSet='losSupRP1')
-losSupRP2=gridGeom.genSurfMultiRegion(lstIJKRange=losSupRP2_rg,nameSet='losSupRP2')
-
-
-murAligV1=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV1_rg,nameSet='murAligV1')
-murAligV2=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV2_rg,nameSet='murAligV2')
-murAligV3=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV3_rg,nameSet='murAligV3')
+losSupV1=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV1_rg,setName='losSupV1')
+losSupV2=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV2_rg,setName='losSupV2')
+losSupV3=gridGeom.genSurfMultiRegion(lstIJKRange=losSupV3_rg,setName='losSupV3')
+losSupRP1=gridGeom.genSurfMultiRegion(lstIJKRange=losSupRP1_rg,setName='losSupRP1')
+losSupRP2=gridGeom.genSurfMultiRegion(lstIJKRange=losSupRP2_rg,setName='losSupRP2')
 
 
+murAligV1=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV1_rg,setName='murAligV1')
+murAligV2=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV2_rg,setName='murAligV2')
+murAligV3=gridGeom.genSurfMultiRegion(lstIJKRange=murAligV3_rg,setName='murAligV3')
 
-murExtAligV1=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV1_rg,nameSet='murExtAligV1')
-murExtAligV2=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV2_rg,nameSet='murExtAligV2')
-murExtAligV3=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV3_rg,nameSet='murExtAligV3')
 
-murRP1=gridGeom.genSurfMultiRegion(lstIJKRange=murRP1_rg,nameSet='murRP1')
-murRP2=gridGeom.genSurfMultiRegion(lstIJKRange=murRP2_rg,nameSet='murRP2')
 
-diafRP1=gridGeom.genSurfMultiRegion(lstIJKRange=diafRP1_rg,nameSet='diafRP1')
-diafRP2=gridGeom.genSurfMultiRegion(lstIJKRange=diafRP2_rg,nameSet='diafRP2')
+murExtAligV1=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV1_rg,setName='murExtAligV1')
+murExtAligV2=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV2_rg,setName='murExtAligV2')
+murExtAligV3=gridGeom.genSurfMultiRegion(lstIJKRange=murExtAligV3_rg,setName='murExtAligV3')
 
-voladzCentV1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV1_rg,nameSet='voladzCentV1')
-voladzCentV2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV2_rg,nameSet='voladzCentV2')
-voladzCentV3=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV3_rg,nameSet='voladzCentV3')
-voladzCentRP1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentRP1_rg,nameSet='voladzCentRP1')
-voladzCentRP2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentRP2_rg,nameSet='voladzCentRP2')
+murRP1=gridGeom.genSurfMultiRegion(lstIJKRange=murRP1_rg,setName='murRP1')
+murRP2=gridGeom.genSurfMultiRegion(lstIJKRange=murRP2_rg,setName='murRP2')
 
-voladzExtrV1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV1_rg,nameSet='voladzExtrV1')
-voladzExtrV2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV2_rg,nameSet='voladzExtrV2')
-voladzExtrV3=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV3_rg,nameSet='voladzExtrV3')
-voladzExtrRP1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrRP1_rg,nameSet='voladzExtrRP1')
-voladzExtrRP2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrRP2_rg,nameSet='voladzExtrRP2')
+diafRP1=gridGeom.genSurfMultiRegion(lstIJKRange=diafRP1_rg,setName='diafRP1')
+diafRP2=gridGeom.genSurfMultiRegion(lstIJKRange=diafRP2_rg,setName='diafRP2')
+
+voladzCentV1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV1_rg,setName='voladzCentV1')
+voladzCentV2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV2_rg,setName='voladzCentV2')
+voladzCentV3=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentV3_rg,setName='voladzCentV3')
+voladzCentRP1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentRP1_rg,setName='voladzCentRP1')
+voladzCentRP2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzCentRP2_rg,setName='voladzCentRP2')
+
+voladzExtrV1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV1_rg,setName='voladzExtrV1')
+voladzExtrV2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV2_rg,setName='voladzExtrV2')
+voladzExtrV3=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrV3_rg,setName='voladzExtrV3')
+voladzExtrRP1=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrRP1_rg,setName='voladzExtrRP1')
+voladzExtrRP2=gridGeom.genSurfMultiRegion(lstIJKRange=voladzExtrRP2_rg,setName='voladzExtrRP2')
 
 
 #                         *** MATERIALS ***
@@ -263,17 +263,17 @@ riostrEstr.description='Riostras estribos'
 
 acerIzq_rg=list()
 acerIzq_rg.append(gm.IJKRange((0,0,zList.index(zArrVoladz)),(xList.index(-xBordeCalz),lastYpos,zList.index(zArrVoladz))))
-acerIzq=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,nameSet='acerIzq')
+acerIzq=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,setName='acerIzq')
 
 acerDer_rg=list()
 acerDer_rg.append(gm.IJKRange((xList.index(xBordeCalz),0,zList.index(zArrVoladz)),(lastXpos,lastYpos,zList.index(zArrVoladz))))
-acerDer=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,nameSet='acerDer')
+acerDer=gridGeom.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,setName='acerDer')
 
 aceras=acerIzq+acerDer
 aceras.name='aceras'
 
 calzada_rg=gm.IJKRange((xList.index(-xBordeCalz),0,zList.index(zArrVoladz)),(xList.index(xBordeCalz),lastYpos,zList.index(zLosSup))).extractIncludedIJranges()
-calzada=gridGeom.getSetSurfMultiRegion(lstIJKRange=calzada_rg,nameSet='calzada')
+calzada=gridGeom.getSetSurfMultiRegion(lstIJKRange=calzada_rg,setName='calzada')
 #Imposta
 auxSetPnt1=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((0,0,zList.index(zArrVoladz)),(0,lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt1')
 auxSetPnt2=gridGeom.getSetPntRange(ijkRange=gm.IJKRange((lastXpos,0,zList.index(zArrVoladz)),(lastXpos,lastYpos,zList.index(zArrVoladz))),setName='auxSetPnt2')
@@ -294,7 +294,7 @@ arrqVol=sets.get_lines_on_points(setPoints=arrqVolPnt,setLinName='arrqVol',onlyI
 def traf_vias_fict(name,xmin,xmax,ymin,ymax,zmin,zmax,qmax=qunifmax,qmin=qunifmin,preprocessor=prep):
     rg=gm.IJKRange((xList.index(xmin),yList.index(ymin),zList.index(zmin)),(xList.index(xmax),yList.index(ymax),zList.index(zmax))).extractIncludedIJranges()
     nmset=name+'_set'
-    retval=(gridGeom.getSetSurfMultiRegion(lstIJKRange=rg,nameSet=name+'_set'),
+    retval=(gridGeom.getSetSurfMultiRegion(lstIJKRange=rg,setName=name+'_set'),
             loads.UniformLoadOnSurfaces(name=name+'_qunifmax',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-qmax,0,0,0]),refSystem='Global'),
             loads.UniformLoadOnSurfaces(name=name+'_qunifmin',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-qmin,0,0,0]),refSystem='Global'),
             loads.UniformLoadOnSurfaces(name=name+'_frqunifmax',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-0.4*qmax,0,0,0]),refSystem='Global'),
@@ -463,8 +463,8 @@ Wpil_barlov_rg.append(gm.IJKRange((xList.index(-xPila),yList.index(yPil2),zList.
 Wpil_sotav_rg=[]
 Wpil_sotav_rg.append(gm.IJKRange((xList.index(xPila),yList.index(yPil1),zList.index(zInfPilAer)),(xList.index(xPila),yList.index(yPil1),zList.index(zLosInf))))
 Wpil_sotav_rg.append(gm.IJKRange((xList.index(xPila),yList.index(yPil2),zList.index(zInfPilAer)),(xList.index(xPila),yList.index(yPil2),zList.index(zLosInf))))
-pilBarlov=gridGeom.getSetLinMultiRegion(lstIJKRange=Wpil_barlov_rg,nameSet='pilBarlov')
-pilSotav=gridGeom.getSetLinMultiRegion(lstIJKRange=Wpil_sotav_rg,nameSet='pilSotav')
+pilBarlov=gridGeom.getSetLinMultiRegion(lstIJKRange=Wpil_barlov_rg,setName='pilBarlov')
+pilSotav=gridGeom.getSetLinMultiRegion(lstIJKRange=Wpil_sotav_rg,setName='pilSotav')
 
 WpilBarlov=loads.UniformLoadOnBeams(name='WpilBarlov', xcSet=pilBarlov,loadVector=xc.Vector([0,qWpilas,0,0,0,0]),refSystem='Local')
 WpilSotav=loads.UniformLoadOnBeams(name='WpilSotav', xcSet=pilSotav,loadVector=xc.Vector([0,coef_ocult*qWpilas,0,0,0,0]),refSystem='Local')

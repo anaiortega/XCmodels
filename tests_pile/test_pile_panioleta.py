@@ -69,7 +69,7 @@ gridGeom= gm.GridModel(prep,xList,yList,zList)
 gridGeom.generatePoints()
 #Lines generation
 pile_rg=gm.IJKRange((0,0,0),(0,0,1))
-pile=gridGeom.genLinOneRegion(ijkRange=pile_rg,nameSet='pile')
+pile=gridGeom.genLinOneRegion(ijkRange=pile_rg,setName='pile')
 
 #                         *** MATERIALS *** 
 concrProp=tm.MaterialData(name='concrProp',E=concrete.Ecm(),nu=concrete.nuc,rho=concrete.density())

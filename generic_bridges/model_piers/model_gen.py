@@ -14,14 +14,14 @@ for j in range(len(y)):
     i=0
     xyzRang.append([(x[i],y[j],z[k][0]),(x[i],y[j],z[k][-1])])
 
-pilasBarlov=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasBarlov')
+pilasBarlov=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, setName='pilasBarlov')
 if len(x)>1:
     xyzRang=list()
     for j in range(len(y)):
         k=j
         for i in range(1,len(x)):
             xyzRang.append([(x[i],y[j],z[k][0]),(x[i],y[j],z[k][-1])])
-    pilasSotav=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, nameSet='pilasSotav')
+    pilasSotav=gridPil.genLinMultiXYZRegion(lstXYZRange=xyzRang, setName='pilasSotav')
 else:
     pilasSotav=None
 

@@ -16,12 +16,12 @@ if abutment.lower()[0]=='y':
     x=[0,xExtrAletaD]
     y=Yzap
     z=Zzap
-    setArmZapEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), nameSet='setArmZapEstr')
+    setArmZapEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), setName='setArmZapEstr')
     #muro estribo
     x=[0,xAletaD]
     y=Ymurestr
     z=[zZapata,zMurEstr]
-    setArmMurEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), nameSet='setArmMurEstr')
+    setArmMurEstr=gridAbutment.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z[0]),(x[-1],y[-1],z[-1])), setName='setArmMurEstr')
     setArmadosEstr=setArmZapEstr+setArmMurEstr
     # No se incluye la aleta izquierda en el set de armados al ser simétrica
     # de la derecha
@@ -48,20 +48,20 @@ bordizqTabl=sets.get_lines_on_points(setPoints=setPntBordizqTabl,setLinName='bor
 x=xViasFict[0]
 y=[0,yListTabl[-1]]
 z=zArrVoladz
-viaFictDerVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictDerVol')
+viaFictDerVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictDerVol')
 x=xViasFict[1]
-viaFictIzqVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzqVol')
+viaFictIzqVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictIzqVol')
 x=xViasFict[2]
-viaFictRestoVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictRestoVol')
+viaFictRestoVol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictRestoVol')
 # En la losa
 x=xViasFict[0]
 y=[0,yListTabl[-1]]
 z=zLosSup
-viaFictDerLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictDerLos')
+viaFictDerLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictDerLos')
 x=xViasFict[1]
-viaFictIzqLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictIzqLos')
+viaFictIzqLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictIzqLos')
 x=xViasFict[2]
-viaFictRestoLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), nameSet='viaFictRestoLos')
+viaFictRestoLos=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)), setName='viaFictRestoLos')
 
 viaFictDer=viaFictDerVol+viaFictDerLos
 viaFictDer.description='Vía ficticia derecha'
@@ -75,20 +75,20 @@ viaFictResto.description='Resto vías ficticias'
 x=xViasFict[0]
 y=yPil
 z=zArrVoladz
-viaFictDer_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2_vol')
+viaFictDer_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictDer_vano2_vol')
 x=xViasFict[1]
-viaFictIzq_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2_vol')
+viaFictIzq_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictIzq_vano2_vol')
 x=xViasFict[2]
-viaFictResto_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictResto_vano2_vol')
+viaFictResto_vano2_vol=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictResto_vano2_vol')
 # En la losa
 x=xViasFict[0]
 y=yPil
 z=zLosSup
-viaFictDer_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictDer_vano2_los')
+viaFictDer_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictDer_vano2_los')
 x=xViasFict[1]
-viaFictIzq_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictIzq_vano2_los')
+viaFictIzq_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictIzq_vano2_los')
 x=xViasFict[2]
-viaFictResto_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), nameSet='viaFictResto_vano2_los')
+viaFictResto_vano2_los=gridTabl.getSetSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[1],z)), setName='viaFictResto_vano2_los')
 
 viaFictDer_vano2=viaFictDer_vano2_vol+viaFictDer_vano2_los
 viaFictIzq_vano2=viaFictIzq_vano2_vol+viaFictIzq_vano2_los
@@ -99,17 +99,17 @@ viaFictResto_vano2=viaFictResto_vano2_vol+viaFictResto_vano2_los
 
 acerIzq_rg=list()
 acerIzq_rg.append(gm.IJKRange((0,0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[0]),len(yListTabl)-1,zListTabl.index(zArrVoladz))))
-acerIzq=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,nameSet='acerIzq')
+acerIzq=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerIzq_rg,setName='acerIzq')
 
 acerDer_rg=list()
 acerDer_rg.append(gm.IJKRange((xListTabl.index(xCalzada[-1]),0,zListTabl.index(zArrVoladz)),(len(xListTabl)-1,len(yListTabl)-1,zListTabl.index(zArrVoladz))))
-acerDer=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,nameSet='acerDer')
+acerDer=gridTabl.getSetSurfMultiRegion(lstIJKRange=acerDer_rg,setName='acerDer')
 
 aceras=acerIzq+acerDer
 aceras.name='aceras'
 
 calzada_rg=gm.IJKRange((xListTabl.index(xCalzada[0]),0,zListTabl.index(zArrVoladz)),(xListTabl.index(xCalzada[-1]),len(yListTabl)-1,zListTabl.index(zLosSup))).extractIncludedIJranges()
-calzada=gridTabl.getSetSurfMultiRegion(lstIJKRange=calzada_rg,nameSet='calzada')
+calzada=gridTabl.getSetSurfMultiRegion(lstIJKRange=calzada_rg,setName='calzada')
 #Imposta
 auxSetPnt1=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((0,0,zListTabl.index(zArrVoladz)),(0,len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt1')
 auxSetPnt2=gridTabl.getSetPntRange(ijkRange=gm.IJKRange((len(xListTabl)-1,0,zListTabl.index(zArrVoladz)),(len(xListTabl)-1,len(yListTabl)-1,zListTabl.index(zArrVoladz))),setName='auxSetPnt2')

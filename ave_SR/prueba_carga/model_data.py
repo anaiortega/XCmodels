@@ -159,13 +159,13 @@ murete_i_rg=[gm.IJKRange((0,0,lastZpos),(0,lastYpos,lastZpos))]
 murete_d_rg=[gm.IJKRange((lastXpos,0,lastZpos),(lastXpos,lastYpos,lastZpos))]
 
 #Surfaces generation
-losCim=gridGeom.genSurfMultiRegion(lstIJKRange=losCim_rg,nameSet='losCim')
-hastiales=gridGeom.genSurfMultiRegion(lstIJKRange=hastiales_rg,nameSet='hastiales')
-dintel=gridGeom.genSurfMultiRegion(lstIJKRange=dintel_rg,nameSet='dintel')
+losCim=gridGeom.genSurfMultiRegion(lstIJKRange=losCim_rg,setName='losCim')
+hastiales=gridGeom.genSurfMultiRegion(lstIJKRange=hastiales_rg,setName='hastiales')
+dintel=gridGeom.genSurfMultiRegion(lstIJKRange=dintel_rg,setName='dintel')
 
 #Lines generation
-murete_i=gridGeom.genLinMultiRegion(lstIJKRange=murete_i_rg,nameSet='murete_i')
-murete_d=gridGeom.genLinMultiRegion(lstIJKRange=murete_d_rg,nameSet='murete_d')
+murete_i=gridGeom.genLinMultiRegion(lstIJKRange=murete_i_rg,setName='murete_i')
+murete_d=gridGeom.genLinMultiRegion(lstIJKRange=murete_d_rg,setName='murete_d')
 
 
 
@@ -248,34 +248,34 @@ surf_eje1_rg=list()
 for i in range(nCam):
     surf_eje1_rg.append(gm.IJKRange([4*i+1,7,lastZpos],[4*i+2,8,lastZpos]))
     surf_eje1_rg.append(gm.IJKRange([4*i+3,7,lastZpos],[4*i+4,8,lastZpos]))
-surf_eje1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje1_rg,nameSet='surf_eje1_set')
+surf_eje1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje1_rg,setName='surf_eje1_set')
     
 surf_eje2_rg=list()
 for i in range(nCam):
     surf_eje2_rg.append(gm.IJKRange([4*i+1,5,lastZpos],[4*i+2,6,lastZpos]))
     surf_eje2_rg.append(gm.IJKRange([4*i+3,5,lastZpos],[4*i+4,6,lastZpos]))
-surf_eje2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje2_rg,nameSet='surf_eje2_set')
+surf_eje2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje2_rg,setName='surf_eje2_set')
 
 surf_eje3_rg=list()
 for i in range(nCam):
     surf_eje3_rg.append(gm.IJKRange([4*i+1,3,lastZpos],[4*i+2,4,lastZpos]))
     surf_eje3_rg.append(gm.IJKRange([4*i+3,3,lastZpos],[4*i+4,4,lastZpos]))
-surf_eje3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje3_rg,nameSet='surf_eje3_set')
+surf_eje3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje3_rg,setName='surf_eje3_set')
 
 surf_eje4_rg=list()
 for i in range(nCam):
     surf_eje4_rg.append(gm.IJKRange([4*i+1,1,lastZpos],[4*i+2,2,lastZpos]))
     surf_eje4_rg.append(gm.IJKRange([4*i+3,1,lastZpos],[4*i+4,2,lastZpos]))
-surf_eje4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje4_rg,nameSet='surf_eje4_set')
+surf_eje4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=surf_eje4_rg,setName='surf_eje4_set')
 '''
 #Balasto
-bal_tali_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp1,0,lastZpos],[pxcarr1-1,lastYpos,lastZpos]),nameSet='bal_tali_set')
-bal_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr1-1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),nameSet='bal_i_set')
-bal_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxcarr4+1,lastYpos,lastZpos]),nameSet='bal_d_set')
-bal_tald_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr4+1,0,lastZpos],[pxmnp2,lastYpos,lastZpos]),nameSet='bal_tald_set')
-paseos_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange([pxmnp1,pyhast1,lastZpos],[pxmxp1,pyhast2,lastZpos]),gm.IJKRange([pxmnp2,pyhast1,lastZpos],[pxmxp2,pyhast2,lastZpos])],nameSet='paseos_set')
+bal_tali_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp1,0,lastZpos],[pxcarr1-1,lastYpos,lastZpos]),setName='bal_tali_set')
+bal_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr1-1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),setName='bal_i_set')
+bal_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxcarr4+1,lastYpos,lastZpos]),setName='bal_d_set')
+bal_tald_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr4+1,0,lastZpos],[pxmnp2,lastYpos,lastZpos]),setName='bal_tald_set')
+paseos_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange([pxmnp1,pyhast1,lastZpos],[pxmxp1,pyhast2,lastZpos]),gm.IJKRange([pxmnp2,pyhast1,lastZpos],[pxmxp2,pyhast2,lastZpos])],setName='paseos_set')
 #Losa cimentación interior marco
-losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[lastXpos,pyhast2,0]),nameSet='losc_int_set')
+losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[lastXpos,pyhast2,0]),setName='losc_int_set')
 '''
 
 #Inertial load (density*acceleration) applied to the elements in a set
@@ -379,9 +379,9 @@ Qptren_v2_e4=qPuntEjeSobreBalasto(prep=prep,setBusq=dintel,hBalast=hBalast,eDint
 
 # auxiliary sets
 #   muro izquierdo
-muri_z1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,0,0),(lastXpos,0,lastZpos))],nameSet='muri_z1_set')
+muri_z1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,0,0),(lastXpos,0,lastZpos))],setName='muri_z1_set')
 #   muro derecho
-murd_z1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos))],nameSet='murd_z1_set')
+murd_z1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,lastYpos,0),(lastXpos,lastYpos,lastZpos))],setName='murd_z1_set')
 
 # empuje del terreno
 zGroundZ1=zList[lastZpos]+deckTh/2.0

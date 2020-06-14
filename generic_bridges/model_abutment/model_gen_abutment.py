@@ -49,10 +49,10 @@ murestrZ2_rg=[gut.def_rg_cooLim(XYZListsAbut,Xmurestr,Ymurestr,zZ2mur)]
 murestrZ3_rg=[gut.def_rg_cooLim(XYZListsAbut,Xmurestr,Ymurestr,zZ3mur)]
 
 #Surfaces generation
-zapEstr=gridAbutment.genSurfMultiRegion(lstIJKRange=zap_rg,nameSet='zapEstr')
-murestrZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ1_rg,nameSet='murestrZ1')
-murestrZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ2_rg,nameSet='murestrZ2')
-murestrZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ3_rg,nameSet='murestrZ3')
+zapEstr=gridAbutment.genSurfMultiRegion(lstIJKRange=zap_rg,setName='zapEstr')
+murestrZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ1_rg,setName='murestrZ1')
+murestrZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ2_rg,setName='murestrZ2')
+murestrZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=murestrZ3_rg,setName='murestrZ3')
 
 #                         *** MATERIALS ***
 concrete=EHE_materials.HA30
@@ -76,9 +76,9 @@ if LaletaIzq>0:
     aletiZ1_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaleti,Yaleti,zZ1)]
     aletiZ2_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaleti,Yaleti,zZ2alet)]
     aletiZ3_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaleti,Yaleti,zZ3alet)]
-    aletiZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ1_rg,nameSet='aletiZ1')
-    aletiZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ2_rg,nameSet='aletiZ2')
-    aletiZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ3_rg,nameSet='aletiZ3')
+    aletiZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ1_rg,setName='aletiZ1')
+    aletiZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ2_rg,setName='aletiZ2')
+    aletiZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=aletiZ3_rg,setName='aletiZ3')
     aletiZ1_mat=tm.DeckMaterialData(name='aletiZ1_mat',thickness=espAletiZ1,material=concrData)
     aletiZ1_mat.setupElasticSection(preprocessor=prep)
     aletiZ2_mat=tm.DeckMaterialData(name='aletiZ2_mat',thickness=espAletiZ2,material=concrData)
@@ -95,9 +95,9 @@ if LaletaDer>0:
     aletdZ1_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaletd,Yaletd,zZ1)]
     aletdZ2_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaletd,Yaletd,zZ2alet)]
     aletdZ3_rg=[gut.def_rg_cooLim(XYZListsAbut,Xaletd,Yaletd,zZ3alet)]
-    aletdZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ1_rg,nameSet='aletdZ1')
-    aletdZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ2_rg,nameSet='aletdZ2')
-    aletdZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ3_rg,nameSet='aletdZ3')
+    aletdZ1=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ1_rg,setName='aletdZ1')
+    aletdZ2=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ2_rg,setName='aletdZ2')
+    aletdZ3=gridAbutment.genSurfMultiRegion(lstIJKRange=aletdZ3_rg,setName='aletdZ3')
     aletdZ1_mat=tm.DeckMaterialData(name='aletdZ1_mat',thickness=espAletdZ1,material=concrData)
     aletdZ1_mat.setupElasticSection(preprocessor=prep)
     aletdZ2_mat=tm.DeckMaterialData(name='aletdZ2_mat',thickness=espAletdZ2,material=concrData)
@@ -114,7 +114,7 @@ lstSups+=[zap_mesh,murestrZ1_mesh,murestrZ2_mesh,murestrZ3_mesh]
 fem.multi_mesh(preprocessor=prep,lstMeshSets=lstSups)
 
 zapTrasdos_rg=gut.def_rg_cooLim(XYZListsAbut,Xzap,[Yzap[0],Ymurestr[0]],Zzap)
-zapTrasdos=gridAbutment.getSetSurfOneRegion(ijkRange=zapTrasdos_rg, nameSet='zapTrasdos')
+zapTrasdos=gridAbutment.getSetSurfOneRegion(ijkRange=zapTrasdos_rg, setName='zapTrasdos')
 
 
 #Sets for loading

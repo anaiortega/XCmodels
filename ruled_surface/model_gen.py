@@ -86,7 +86,7 @@ gridGeom.slopePointsRange(ijkRange=r,slopeX=-deltaH/Lx,xZeroSlope=Lx)
 roof_rg=[gm.IJKRange((0,0,lastZpos),(lastXpos,lastYpos,lastZpos))]
 
 #Surfaces generation
-roof=gridGeom.genSurfMultiRegion(lstIJKRange=roof_rg,nameSet='roof')
+roof=gridGeom.genSurfMultiRegion(lstIJKRange=roof_rg,setName='roof')
 
 roof.description='Roof'
 roof.color=cfg.colors['purple01']

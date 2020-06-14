@@ -121,19 +121,19 @@ decklv1_rg=gm.IJKRange((0,1,1),(lastXpos,lastYpos,lastZpos)).extractIncludedIJra
 foot_rg=[gut.def_rg_cooLim(XYZLists=(xList,yList,zList),Xcoo=(0,LbeamX),Ycoo=(-Wfoot/2.,Wfoot/2.),Zcoo=(0,0))]
 beamXsteel_rg=gm.IJKRange((0,2,lastZpos),(lastXpos,2,lastZpos))
 #Lines generation
-beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,nameSet='beamXconcr')
-beamXsteel=gridGeom.genLinOneRegion(ijkRange=beamXsteel_rg,nameSet='beamXsteel')
-beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,nameSet='beamY')
-columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,nameSet='columnZconcr')
-columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,nameSet='columnZsteel')
+beamXconcr=gridGeom.genLinMultiRegion(lstIJKRange=beamXconcr_rg,setName='beamXconcr')
+beamXsteel=gridGeom.genLinOneRegion(ijkRange=beamXsteel_rg,setName='beamXsteel')
+beamY=gridGeom.genLinMultiRegion(lstIJKRange=beamY_rg,setName='beamY')
+columnZconcr=gridGeom.genLinMultiRegion(lstIJKRange=columnZconcr_rg,setName='columnZconcr')
+columnZsteel=gridGeom.genLinMultiRegion(lstIJKRange=columnZsteel_rg,setName='columnZsteel')
 
 #out.displayBlocks()
 
 #Surfaces generation
-decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,nameSet='decklv1')
-decklv2=gridGeom.genSurfOneXYZRegion(xyzRange=((0,Wfoot/2.,LcolumnZ),(LbeamX/2.0,LbeamY,LcolumnZ)),nameSet='decklv2')
-wall=gridGeom.genSurfOneXYZRegion(xyzRange=((0,0,0),(LbeamX,0,LcolumnZ)),nameSet='wall')
-foot=gridGeom.genSurfMultiRegion(lstIJKRange=foot_rg,nameSet='foot')
+decklv1=gridGeom.genSurfMultiRegion(lstIJKRange=decklv1_rg,setName='decklv1')
+decklv2=gridGeom.genSurfOneXYZRegion(xyzRange=((0,Wfoot/2.,LcolumnZ),(LbeamX/2.0,LbeamY,LcolumnZ)),setName='decklv2')
+wall=gridGeom.genSurfOneXYZRegion(xyzRange=((0,0,0),(LbeamX,0,LcolumnZ)),setName='wall')
+foot=gridGeom.genSurfMultiRegion(lstIJKRange=foot_rg,setName='foot')
 decklv1.description='Deck level 1'
 decklv1.color=cfg.colors['purple01']
 decklv2.description='Deck level 2'

@@ -119,9 +119,9 @@ deck_rg=[gm.IJKRange((0,0,0),(lastXpos,lastYpos,0))]
 curb_rg=[gm.IJKRange((0,0,0),(0,lastYpos,lastZpos)),gm.IJKRange((lastXpos,0,0),(lastXpos,lastYpos,lastZpos))]
 
 #Surfaces generation
-deck=gridDeck.genSurfMultiRegion(lstIJKRange=deck_rg,nameSet='deck')
+deck=gridDeck.genSurfMultiRegion(lstIJKRange=deck_rg,setName='deck')
 deck.description='Deck'
-curb=gridDeck.genSurfMultiRegion(lstIJKRange=curb_rg,nameSet='curb')
+curb=gridDeck.genSurfMultiRegion(lstIJKRange=curb_rg,setName='curb')
 curb.description='Curbs'
 
 
@@ -172,7 +172,7 @@ gridCables.movePointsRange(r,xc.Vector([0.0,0.0,deltZ_max+deltaZ_lastcable]))
 
 #Lines generation
 cabl_rg=gm.IJKRange((0,0,0),(lastXpos_cabl,lastYpos_cabl,0)).extractIncludedJranges()
-cables=gridCables.genLinMultiRegion(lstIJKRange=cabl_rg,nameSet='cables')
+cables=gridCables.genLinMultiRegion(lstIJKRange=cabl_rg,setName='cables')
 cables.description='Prestressing cables'
 
 
@@ -226,9 +226,9 @@ shells=deck+curb
 shells.description="deck"
 
 roadway_rg=gm.IJKRange((1,0,0),(2,lastYpos,0))
-roadway=gridDeck.getSetSurfOneRegion(ijkRange=roadway_rg,nameSet='roadway')
+roadway=gridDeck.getSetSurfOneRegion(ijkRange=roadway_rg,setName='roadway')
 sideway_rg=[gm.IJKRange((0,0,0),(1,lastYpos,0)),gm.IJKRange((2,0,0),(lastXpos,lastYpos,0))]
-sideway=gridDeck.getSetSurfMultiRegion(lstIJKRange=sideway_rg, nameSet='sideway')
+sideway=gridDeck.getSetSurfMultiRegion(lstIJKRange=sideway_rg, setName='sideway')
 kerb1_rg=gm.IJKRange((1,0,0),(1,lastYpos,0))
 kerb1_kps=gridDeck.getSetPntRange(ijkRange=kerb1_rg,setName='kerb1_kps')
 kerb1_ln=sets.get_lines_on_points(setPoints=kerb1_kps,setLinName='kerb1_ln',onlyIncluded=True)

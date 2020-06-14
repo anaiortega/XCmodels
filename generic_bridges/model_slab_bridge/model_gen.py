@@ -24,29 +24,29 @@ gridTabl.generatePoints()
 x=xRiostrEstr[0]
 y=yRiostrEstr[0]
 z=zLosa[0]
-riostrEstr1=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),nameSet='riostrEstr1')
+riostrEstr1=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),setName='riostrEstr1')
 #Riostra estribo 2
 x=xRiostrEstr[1]
 y=yRiostrEstr[1]
 z=zLosa[0]
-riostrEstr2=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),nameSet='riostrEstr2')
+riostrEstr2=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),setName='riostrEstr2')
 #Losa
 x=xLosa
 y=yLosa
 z=zLosa[0]
-losa=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),nameSet='losa')
+losa=gridTabl.genSurfOneXYZRegion(xyzRange=((x[0],y[0],z),(x[-1],y[-1],z)),setName='losa')
 #Cartabones
 x=xCartab
 y=yLosa
 z=zLosa[0]
-cartabInt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][1],y[0],z),(x[0][-1],y[-1],z)),((x[1][0],y[0],z),(x[1][1],y[-1],z))], nameSet='cartabInt')
-cartabExt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][1],y[-1],z)),((x[1][1],y[0],z),(x[1][-1],y[-1],z))], nameSet='cartabExt')
+cartabInt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][1],y[0],z),(x[0][-1],y[-1],z)),((x[1][0],y[0],z),(x[1][1],y[-1],z))], setName='cartabInt')
+cartabExt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][1],y[-1],z)),((x[1][1],y[0],z),(x[1][-1],y[-1],z))], setName='cartabExt')
 #Voladizos
 x=xVoladz
 y=yLosa
 z=zLosa[0]
-voladzInt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][1],y[0],z),(x[0][-1],y[-1],z)),((x[1][0],y[0],z),(x[1][1],y[-1],z))], nameSet='voladzInt')
-voladzExt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][1],y[-1],z)),((x[1][1],y[0],z),(x[1][-1],y[-1],z))], nameSet='voladzExt')
+voladzInt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][1],y[0],z),(x[0][-1],y[-1],z)),((x[1][0],y[0],z),(x[1][1],y[-1],z))], setName='voladzInt')
+voladzExt=gridTabl.genSurfMultiXYZRegion(lstXYZRange=[((x[0][0],y[0],z),(x[0][1],y[-1],z)),((x[1][1],y[0],z),(x[1][-1],y[-1],z))], setName='voladzExt')
 
 
 
