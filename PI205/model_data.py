@@ -144,12 +144,12 @@ rightWall_rg= [gm.IJKRange([lastXpos,0,0],[lastXpos,lastYpos,lastZpos])]
 deckExtSlab_rg= [ gm.IJKRange([0,0,lastZpos],[1,lastYpos,lastZpos]), gm.IJKRange([2,0,lastZpos],[lastXpos,lastYpos,lastZpos]) ]
 deckIntSlab_rg= [ gm.IJKRange([1,0,lastZpos],[2,lastYpos,lastZpos])]
 #Surfaces generation
-foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,nameSet='foundExtSlab')
-foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,nameSet='foundIntSlab')
-leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,nameSet='leftWall')
-rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,nameSet='rightWall')
-deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,nameSet='deckExtSlab')
-deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,nameSet='deckIntSlab')
+foundExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundExtSlab_rg,setName='foundExtSlab')
+foundIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=foundIntSlab_rg,setName='foundIntSlab')
+leftWall=gridGeom.genSurfMultiRegion(lstIJKRange=leftWall_rg,setName='leftWall')
+rightWall=gridGeom.genSurfMultiRegion(lstIJKRange=rightWall_rg,setName='rightWall')
+deckExtSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckExtSlab_rg,setName='deckExtSlab')
+deckIntSlab=gridGeom.genSurfMultiRegion(lstIJKRange=deckIntSlab_rg,setName='deckIntSlab')
 
 #                         *** MATERIALS *** 
 
@@ -238,22 +238,22 @@ trafLoadSit2Lane3Hw_rg=gm.IJKRange([0,YposLane3HwSit2[0],lastZpos],[lastXpos,Ypo
 trafLoadSit2RestHw_rg=gm.IJKRange([0,YposRestHwSit2[0],lastZpos],[lastXpos,YposRestHwSit2[1],lastZpos])
 trafLoadSit12Lane1Sr_rg=gm.IJKRange([0,YposLane1Sr[0],lastZpos],[lastXpos,YposLane1Sr[1],lastZpos])
 
-deadLoadAsphaltSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=deadLoadAsphalt_rg,nameSet='deadLoadAsphaltSet')
-deadLoadSubbT1Set=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbT1_rg,nameSet='deadLoadSubbT1Set')
-deadLoadSubbSrSet=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbSr_rg,nameSet='deadLoadSubbSrSet')
-deadLoadSubbHwSet=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbHw_rg,nameSet='deadLoadSubbHwSet')
-deadLoadSubbT2Set=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbT2_rg,nameSet='deadLoadSubbT2Set')
-deadLoadGuardrailSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=deadLoadGuardrail_rg,nameSet='deadLoadGuardrailSet')
+deadLoadAsphaltSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=deadLoadAsphalt_rg,setName='deadLoadAsphaltSet')
+deadLoadSubbT1Set=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbT1_rg,setName='deadLoadSubbT1Set')
+deadLoadSubbSrSet=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbSr_rg,setName='deadLoadSubbSrSet')
+deadLoadSubbHwSet=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbHw_rg,setName='deadLoadSubbHwSet')
+deadLoadSubbT2Set=gridGeom.getSetSurfOneRegion(ijkRange=deadLoadSubbT2_rg,setName='deadLoadSubbT2Set')
+deadLoadGuardrailSet=gridGeom.getSetSurfMultiRegion(lstIJKRange=deadLoadGuardrail_rg,setName='deadLoadGuardrailSet')
 
-trafLoadSit1Lane1HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane1Hw_rg,nameSet='trafLoadSit1Lane1HwSet')
-trafLoadSit1Lane2HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane2Hw_rg,nameSet='trafLoadSit1Lane2HwSet')
-trafLoadSit1Lane3HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane3Hw_rg,nameSet='trafLoadSit1Lane3HwSet')
-trafLoadSit1RestHwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1RestHw_rg,nameSet='trafLoadSit1RestHwSet')
-trafLoadSit2Lane1HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane1Hw_rg,nameSet='trafLoadSit2Lane1HwSet')
-trafLoadSit2Lane2HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane2Hw_rg,nameSet='trafLoadSit2Lane2HwSet')
-trafLoadSit2Lane3HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane3Hw_rg,nameSet='trafLoadSit2Lane3HwSet')
-trafLoadSit2RestHwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2RestHw_rg,nameSet='trafLoadSit2RestHwSet')
-trafLoadSit12Lane1SrSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit12Lane1Sr_rg,nameSet='trafLoadSit12Lane1SrSet')
+trafLoadSit1Lane1HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane1Hw_rg,setName='trafLoadSit1Lane1HwSet')
+trafLoadSit1Lane2HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane2Hw_rg,setName='trafLoadSit1Lane2HwSet')
+trafLoadSit1Lane3HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1Lane3Hw_rg,setName='trafLoadSit1Lane3HwSet')
+trafLoadSit1RestHwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit1RestHw_rg,setName='trafLoadSit1RestHwSet')
+trafLoadSit2Lane1HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane1Hw_rg,setName='trafLoadSit2Lane1HwSet')
+trafLoadSit2Lane2HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane2Hw_rg,setName='trafLoadSit2Lane2HwSet')
+trafLoadSit2Lane3HwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2Lane3Hw_rg,setName='trafLoadSit2Lane3HwSet')
+trafLoadSit2RestHwSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit2RestHw_rg,setName='trafLoadSit2RestHwSet')
+trafLoadSit12Lane1SrSet=gridGeom.getSetSurfOneRegion(ijkRange=trafLoadSit12Lane1Sr_rg,setName='trafLoadSit12Lane1SrSet')
 
 
 deadLoadAsphalt=  loads.UniformLoadOnSurfaces(name= 'deadLoadAsphalt',xcSet=deadLoadAsphaltSet ,loadVector= xc.Vector([0,0,-grav*asphaltDens*asphaltTh]))

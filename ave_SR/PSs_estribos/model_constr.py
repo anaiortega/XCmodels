@@ -31,22 +31,22 @@ if Lvoladzi >0:
 if Lvoladzd >0:
     voladzd_rg=[gut.def_rg_cooLim(XYZLists,Xaletd,(yZap,yVoladz),zZ3alet)]
 #Surfaces generation
-zap=gridGeom.genSurfMultiRegion(lstIJKRange=zap_rg,nameSet='zap')
-murestrZ1=gridGeom.genSurfMultiRegion(lstIJKRange=murestrZ1_rg,nameSet='murestrZ1')
-murestrZ2=gridGeom.genSurfMultiRegion(lstIJKRange=murestrZ2_rg,nameSet='murestrZ2')
+zap=gridGeom.genSurfMultiRegion(lstIJKRange=zap_rg,setName='zap')
+murestrZ1=gridGeom.genSurfMultiRegion(lstIJKRange=murestrZ1_rg,setName='murestrZ1')
+murestrZ2=gridGeom.genSurfMultiRegion(lstIJKRange=murestrZ2_rg,setName='murestrZ2')
 
-aletiZ1=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ1_rg,nameSet='aletiZ1')
-aletiZ2=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ2_rg,nameSet='aletiZ2')
-aletiZ3=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ3_rg,nameSet='aletiZ3')
+aletiZ1=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ1_rg,setName='aletiZ1')
+aletiZ2=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ2_rg,setName='aletiZ2')
+aletiZ3=gridGeom.genSurfMultiRegion(lstIJKRange=aletiZ3_rg,setName='aletiZ3')
 
-aletdZ1=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ1_rg,nameSet='aletdZ1')
-aletdZ2=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ2_rg,nameSet='aletdZ2')
-aletdZ3=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ3_rg,nameSet='aletdZ3')
+aletdZ1=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ1_rg,setName='aletdZ1')
+aletdZ2=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ2_rg,setName='aletdZ2')
+aletdZ3=gridGeom.genSurfMultiRegion(lstIJKRange=aletdZ3_rg,setName='aletdZ3')
 
 if Lvoladzi >0:
-    voladzi=gridGeom.genSurfMultiRegion(lstIJKRange=voladzi_rg,nameSet='voladzi')
+    voladzi=gridGeom.genSurfMultiRegion(lstIJKRange=voladzi_rg,setName='voladzi')
 if Lvoladzd >0:
-    voladzd=gridGeom.genSurfMultiRegion(lstIJKRange=voladzd_rg,nameSet='voladzd')
+    voladzd=gridGeom.genSurfMultiRegion(lstIJKRange=voladzd_rg,setName='voladzd')
 
 
 #                         *** MATERIALS ***
@@ -135,7 +135,7 @@ selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=lstSups, vAccel=xc.
 
 # Peso del relleno sobre la zapata
 zapTrasdos_rg=gut.def_rg_cooLim(XYZLists,Xmurestr,(yMurEstr,yZap),(0,0))
-zapTrasdos=gridGeom.getSetSurfOneRegion(ijkRange=zapTrasdos_rg,nameSet='zapTrasdos')
+zapTrasdos=gridGeom.getSetSurfOneRegion(ijkRange=zapTrasdos_rg,setName='zapTrasdos')
 zapTrasdos.fillDownwards()
 
 rell_zap=loads.UniformLoadOnSurfaces(name= 'rell_zap',xcSet=zapTrasdos,loadVector= xc.Vector([0,0,-grav*densrell*(zGround-zZap-cantoZap/2.)]))

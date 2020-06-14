@@ -66,50 +66,50 @@ riostrEstr2_rg.append(gm.IJKRange((0,len(yListTabl)-1,zListTabl.index(zriostrEst
 
 
 #Lines generation
-riostrEstr1=gridTabl.genLinMultiRegion(lstIJKRange=riostrEstr1_rg,nameSet='riostrEstr1')
-riostrEstr2=gridTabl.genLinMultiRegion(lstIJKRange=riostrEstr2_rg,nameSet='riostrEstr2')
+riostrEstr1=gridTabl.genLinMultiRegion(lstIJKRange=riostrEstr1_rg,setName='riostrEstr1')
+riostrEstr2=gridTabl.genLinMultiRegion(lstIJKRange=riostrEstr2_rg,setName='riostrEstr2')
 
 #Surfaces generation
-losInfV1=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV1_rg,nameSet='losInfV1')
-losInfV2=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV2_rg,nameSet='losInfV2')
-losInfV3=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV3_rg,nameSet='losInfV3')
-losInfRP1=gridTabl.genSurfMultiRegion(lstIJKRange=losInfRP1_rg,nameSet='losInfRP1')
-losInfRP2=gridTabl.genSurfMultiRegion(lstIJKRange=losInfRP2_rg,nameSet='losInfRP2')
+losInfV1=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV1_rg,setName='losInfV1')
+losInfV2=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV2_rg,setName='losInfV2')
+losInfV3=gridTabl.genSurfMultiRegion(lstIJKRange=losInfV3_rg,setName='losInfV3')
+losInfRP1=gridTabl.genSurfMultiRegion(lstIJKRange=losInfRP1_rg,setName='losInfRP1')
+losInfRP2=gridTabl.genSurfMultiRegion(lstIJKRange=losInfRP2_rg,setName='losInfRP2')
 
-losSupV1=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV1_rg,nameSet='losSupV1')
-losSupV2=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV2_rg,nameSet='losSupV2')
-losSupV3=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV3_rg,nameSet='losSupV3')
-losSupRP1=gridTabl.genSurfMultiRegion(lstIJKRange=losSupRP1_rg,nameSet='losSupRP1')
-losSupRP2=gridTabl.genSurfMultiRegion(lstIJKRange=losSupRP2_rg,nameSet='losSupRP2')
-
-
-murAligV1=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV1_rg,nameSet='murAligV1')
-murAligV2=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV2_rg,nameSet='murAligV2')
-murAligV3=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV3_rg,nameSet='murAligV3')
+losSupV1=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV1_rg,setName='losSupV1')
+losSupV2=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV2_rg,setName='losSupV2')
+losSupV3=gridTabl.genSurfMultiRegion(lstIJKRange=losSupV3_rg,setName='losSupV3')
+losSupRP1=gridTabl.genSurfMultiRegion(lstIJKRange=losSupRP1_rg,setName='losSupRP1')
+losSupRP2=gridTabl.genSurfMultiRegion(lstIJKRange=losSupRP2_rg,setName='losSupRP2')
 
 
+murAligV1=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV1_rg,setName='murAligV1')
+murAligV2=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV2_rg,setName='murAligV2')
+murAligV3=gridTabl.genSurfMultiRegion(lstIJKRange=murAligV3_rg,setName='murAligV3')
 
-murExtAligV1=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV1_rg,nameSet='murExtAligV1')
-murExtAligV2=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV2_rg,nameSet='murExtAligV2')
-murExtAligV3=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV3_rg,nameSet='murExtAligV3')
 
-murRP1=gridTabl.genSurfMultiRegion(lstIJKRange=murRP1_rg,nameSet='murRP1')
-murRP2=gridTabl.genSurfMultiRegion(lstIJKRange=murRP2_rg,nameSet='murRP2')
 
-diafRP1=gridTabl.genSurfMultiRegion(lstIJKRange=diafRP1_rg,nameSet='diafRP1')
-diafRP2=gridTabl.genSurfMultiRegion(lstIJKRange=diafRP2_rg,nameSet='diafRP2')
+murExtAligV1=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV1_rg,setName='murExtAligV1')
+murExtAligV2=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV2_rg,setName='murExtAligV2')
+murExtAligV3=gridTabl.genSurfMultiRegion(lstIJKRange=murExtAligV3_rg,setName='murExtAligV3')
 
-voladzCentV1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV1_rg,nameSet='voladzCentV1')
-voladzCentV2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV2_rg,nameSet='voladzCentV2')
-voladzCentV3=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV3_rg,nameSet='voladzCentV3')
-voladzCentRP1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentRP1_rg,nameSet='voladzCentRP1')
-voladzCentRP2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentRP2_rg,nameSet='voladzCentRP2')
+murRP1=gridTabl.genSurfMultiRegion(lstIJKRange=murRP1_rg,setName='murRP1')
+murRP2=gridTabl.genSurfMultiRegion(lstIJKRange=murRP2_rg,setName='murRP2')
 
-voladzExtrV1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV1_rg,nameSet='voladzExtrV1')
-voladzExtrV2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV2_rg,nameSet='voladzExtrV2')
-voladzExtrV3=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV3_rg,nameSet='voladzExtrV3')
-voladzExtrRP1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrRP1_rg,nameSet='voladzExtrRP1')
-voladzExtrRP2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrRP2_rg,nameSet='voladzExtrRP2')
+diafRP1=gridTabl.genSurfMultiRegion(lstIJKRange=diafRP1_rg,setName='diafRP1')
+diafRP2=gridTabl.genSurfMultiRegion(lstIJKRange=diafRP2_rg,setName='diafRP2')
+
+voladzCentV1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV1_rg,setName='voladzCentV1')
+voladzCentV2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV2_rg,setName='voladzCentV2')
+voladzCentV3=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentV3_rg,setName='voladzCentV3')
+voladzCentRP1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentRP1_rg,setName='voladzCentRP1')
+voladzCentRP2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzCentRP2_rg,setName='voladzCentRP2')
+
+voladzExtrV1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV1_rg,setName='voladzExtrV1')
+voladzExtrV2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV2_rg,setName='voladzExtrV2')
+voladzExtrV3=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrV3_rg,setName='voladzExtrV3')
+voladzExtrRP1=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrRP1_rg,setName='voladzExtrRP1')
+voladzExtrRP2=gridTabl.genSurfMultiRegion(lstIJKRange=voladzExtrRP2_rg,setName='voladzExtrRP2')
 
 
 #                         *** MATERIALS ***
@@ -250,7 +250,7 @@ riostrEstr.description='Riostras estribos'
 def traf_vias_fict(name,xmin,xmax,ymin,ymax,zmin,zmax,qmax=qunifmax,qmin=qunifmin,preprocessor=prep):
     rg=gm.IJKRange((xListTabl.index(xmin),yListTabl.index(ymin),zListTabl.index(zmin)),(xListTabl.index(xmax),yListTabl.index(ymax),zListTabl.index(zmax))).extractIncludedIJranges()
     nmset=name+'_set'
-    retval=(gridTabl.getSetSurfMultiRegion(lstIJKRange=rg,nameSet=name+'_set'),
+    retval=(gridTabl.getSetSurfMultiRegion(lstIJKRange=rg,setName=name+'_set'),
             loads.UniformLoadOnSurfaces(name=name+'_qunifmax',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-qmax,0,0,0]),refSystem='Global'),
             loads.UniformLoadOnSurfaces(name=name+'_qunifmin',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-qmin,0,0,0]),refSystem='Global'),
             loads.UniformLoadOnSurfaces(name=name+'_frqunifmax',xcSet=preprocessor.getSets.getSet(nmset),loadVector=xc.Vector([0,0,-0.4*qmax,0,0,0]),refSystem='Global'),

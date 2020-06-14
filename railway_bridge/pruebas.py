@@ -115,11 +115,11 @@ slab_step3_rg=[gm.IJKRange((0,2,lastZpos),(lastXpos,3,lastZpos)),gm.IJKRange((0,
 slab_step4_rg=[gm.IJKRange((0,3,lastZpos),(lastXpos,4,lastZpos)),gm.IJKRange((0,lastYpos-4,lastZpos),(lastXpos,lastYpos-3,lastZpos))]
 
 #Surfaces generation
-slab_unif=gridGeom.genSurfOneRegion(ijkRange=slab_unif_rg,nameSet='slab_unif')
-slab_step1=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step1_rg,nameSet='slab_step1')
-slab_step2=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step2_rg,nameSet='slab_step2')
-slab_step3=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step3_rg,nameSet='slab_step3')
-slab_step4=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step4_rg,nameSet='slab_step4')
+slab_unif=gridGeom.genSurfOneRegion(ijkRange=slab_unif_rg,setName='slab_unif')
+slab_step1=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step1_rg,setName='slab_step1')
+slab_step2=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step2_rg,setName='slab_step2')
+slab_step3=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step3_rg,setName='slab_step3')
+slab_step4=gridGeom.genSurfMultiRegion(lstIJKRange=slab_step4_rg,setName='slab_step4')
 
 slab_unif.description='Inner slab (const. thickness)'
 slab_step1.description='Extr. slab (var. thickness, step 1)'

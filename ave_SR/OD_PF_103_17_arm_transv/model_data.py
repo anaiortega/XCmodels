@@ -198,33 +198,33 @@ dintCent_M3_rg= [ gm.IJKRange((pxmx_M2+1,pyhast1+1,lastZpos),(lastXpos,pyhast2-1
 muretes_rg=[gm.IJKRange((0,pyhast1,lastZpos),(0,pyhast2,lastZpos)),gm.IJKRange((lastXpos,pyhast1,lastZpos),(lastXpos,pyhast2,lastZpos))]
 
 #Lines generation
-muretes=gridGeom.genLinMultiRegion(lstIJKRange=muretes_rg,nameSet='muretes')
+muretes=gridGeom.genLinMultiRegion(lstIJKRange=muretes_rg,setName='muretes')
 muretes.description='Muretes'
 
 #Surfaces generation
-losCimExt_M1=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M1_rg,nameSet='losCimExt_M1')
-losCimExt_M2=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M2_rg,nameSet='losCimExt_M2')
-losCimExt_M3=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M3_rg,nameSet='losCimExt_M3')
+losCimExt_M1=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M1_rg,setName='losCimExt_M1')
+losCimExt_M2=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M2_rg,setName='losCimExt_M2')
+losCimExt_M3=gridGeom.genSurfMultiRegion(lstIJKRange=losCimExt_M3_rg,setName='losCimExt_M3')
 
-losCimCent_M1=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M1_rg,nameSet='losCimCent_M1')
-losCimCent_M2=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M2_rg,nameSet='losCimCent_M2')
-losCimCent_M3=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M3_rg,nameSet='losCimCent_M3')
+losCimCent_M1=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M1_rg,setName='losCimCent_M1')
+losCimCent_M2=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M2_rg,setName='losCimCent_M2')
+losCimCent_M3=gridGeom.genSurfMultiRegion(lstIJKRange=losCimCent_M3_rg,setName='losCimCent_M3')
 
-hastIzq_M1=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M1_rg,nameSet='hastIzq_M1')
-hastIzq_M2=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M2_rg,nameSet='hastIzq_M2')
-hastIzq_M3=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M3_rg,nameSet='hastIzq_M3')
+hastIzq_M1=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M1_rg,setName='hastIzq_M1')
+hastIzq_M2=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M2_rg,setName='hastIzq_M2')
+hastIzq_M3=gridGeom.genSurfMultiRegion(lstIJKRange=hastIzq_M3_rg,setName='hastIzq_M3')
 
-hastDer_M1=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M1_rg,nameSet='hastDer_M1')
-hastDer_M2=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M2_rg,nameSet='hastDer_M2')
-hastDer_M3=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M3_rg,nameSet='hastDer_M3')
+hastDer_M1=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M1_rg,setName='hastDer_M1')
+hastDer_M2=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M2_rg,setName='hastDer_M2')
+hastDer_M3=gridGeom.genSurfMultiRegion(lstIJKRange=hastDer_M3_rg,setName='hastDer_M3')
 
-dintExt_M1=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M1_rg,nameSet='dintExt_M1')
-dintExt_M2=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M2_rg,nameSet='dintExt_M2')
-dintExt_M3=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M3_rg,nameSet='dintExt_M3')
+dintExt_M1=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M1_rg,setName='dintExt_M1')
+dintExt_M2=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M2_rg,setName='dintExt_M2')
+dintExt_M3=gridGeom.genSurfMultiRegion(lstIJKRange=dintExt_M3_rg,setName='dintExt_M3')
 
-dintCent_M1=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M1_rg,nameSet='dintCent_M1')
-dintCent_M2=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M2_rg,nameSet='dintCent_M2')
-dintCent_M3=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M3_rg,nameSet='dintCent_M3')
+dintCent_M1=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M1_rg,setName='dintCent_M1')
+dintCent_M2=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M2_rg,setName='dintCent_M2')
+dintCent_M3=gridGeom.genSurfMultiRegion(lstIJKRange=dintCent_M3_rg,setName='dintCent_M3')
 
 
 
@@ -396,25 +396,25 @@ foundationElasticSupports.generateSprings(xcSet=losCim)
 #                       ***ACTIONS***
 # Auxiliary ranges and sets
 # Rellenos
-rell_tali1_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-4,0,lastZpos],[pxmnp1-3,lastYpos,lastZpos]),nameSet='rell_tali1_set')
-rell_tali2_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-3,0,lastZpos],[pxmnp1-2,lastYpos,lastZpos]),nameSet='rell_tali2_set')
-rell_tali3_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-2,0,lastZpos],[pxmnp1-1,lastYpos,lastZpos]),nameSet='rell_tali3_set')
+rell_tali1_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-4,0,lastZpos],[pxmnp1-3,lastYpos,lastZpos]),setName='rell_tali1_set')
+rell_tali2_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-3,0,lastZpos],[pxmnp1-2,lastYpos,lastZpos]),setName='rell_tali2_set')
+rell_tali3_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1-2,0,lastZpos],[pxmnp1-1,lastYpos,lastZpos]),setName='rell_tali3_set')
 
-rell_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),nameSet='rell_i_set')
-rell_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxmxp2,lastYpos,lastZpos]),nameSet='rell_d_set')
+rell_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmnp1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),setName='rell_i_set')
+rell_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxmxp2,lastYpos,lastZpos]),setName='rell_d_set')
 
-rell_tald1_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+3,0,lastZpos],[pxmxp2+4,lastYpos,lastZpos]),nameSet='rell_tald1_set')
-rell_tald2_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+2,0,lastZpos],[pxmxp2+3,lastYpos,lastZpos]),nameSet='rell_tald2_set')
-rell_tald3_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+1,0,lastZpos],[pxmxp2+2,lastYpos,lastZpos]),nameSet='rell_tald3_set')
+rell_tald1_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+3,0,lastZpos],[pxmxp2+4,lastYpos,lastZpos]),setName='rell_tald1_set')
+rell_tald2_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+2,0,lastZpos],[pxmxp2+3,lastYpos,lastZpos]),setName='rell_tald2_set')
+rell_tald3_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp2+1,0,lastZpos],[pxmxp2+2,lastYpos,lastZpos]),setName='rell_tald3_set')
 #Balasto
 
-bal_tali_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp1,0,lastZpos],[pxcarr1-1,lastYpos,lastZpos]),nameSet='bal_tali_set')
-bal_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr1-1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),nameSet='bal_i_set')
-bal_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxcarr4+1,lastYpos,lastZpos]),nameSet='bal_d_set')
-bal_tald_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr4+1,0,lastZpos],[pxmnp2,lastYpos,lastZpos]),nameSet='bal_tald_set')
-paseos_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange([pxmnp1,pyhast1,lastZpos],[pxmxp1,pyhast2,lastZpos]),gm.IJKRange([pxmnp2,pyhast1,lastZpos],[pxmxp2,pyhast2,lastZpos])],nameSet='paseos_set')
+bal_tali_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxmxp1,0,lastZpos],[pxcarr1-1,lastYpos,lastZpos]),setName='bal_tali_set')
+bal_i_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr1-1,0,lastZpos],[pxcarr3-1,lastYpos,lastZpos]),setName='bal_i_set')
+bal_d_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr3-1,0,lastZpos],[pxcarr4+1,lastYpos,lastZpos]),setName='bal_d_set')
+bal_tald_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([pxcarr4+1,0,lastZpos],[pxmnp2,lastYpos,lastZpos]),setName='bal_tald_set')
+paseos_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange([pxmnp1,pyhast1,lastZpos],[pxmxp1,pyhast2,lastZpos]),gm.IJKRange([pxmnp2,pyhast1,lastZpos],[pxmxp2,pyhast2,lastZpos])],setName='paseos_set')
 #Losa cimentación interior marco
-losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[lastXpos,pyhast2,0]),nameSet='losc_int_set')
+losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[lastXpos,pyhast2,0]),setName='losc_int_set')
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
@@ -641,22 +641,22 @@ sc_descarr_2=qLinYsobreMontera(prep=prep,setBusq=dintel,hMont=Hrelld+deckTh/2.0,
 
 # auxiliary sets
 #   muro izquierdo
-muri_z1_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-4,pyhast1,0),(pxmnp1-3,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+3,pyhast1,0),(pxmxp2+4,pyhast1,lastZpos))],nameSet='muri_z1_1_set')
-muri_z1_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-3,pyhast1,0),(pxmnp1-2,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+2,pyhast1,0),(pxmxp2+3,pyhast1,lastZpos))],nameSet='muri_z1_2_set')
-muri_z1_3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-2,pyhast1,0),(pxmnp1-1,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+1,pyhast1,0),(pxmxp2+2,pyhast1,lastZpos))],nameSet='muri_z1_3_set')
+muri_z1_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-4,pyhast1,0),(pxmnp1-3,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+3,pyhast1,0),(pxmxp2+4,pyhast1,lastZpos))],setName='muri_z1_1_set')
+muri_z1_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-3,pyhast1,0),(pxmnp1-2,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+2,pyhast1,0),(pxmxp2+3,pyhast1,lastZpos))],setName='muri_z1_2_set')
+muri_z1_3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-2,pyhast1,0),(pxmnp1-1,pyhast1,lastZpos)),gm.IJKRange((pxmxp2+1,pyhast1,0),(pxmxp2+2,pyhast1,lastZpos))],setName='muri_z1_3_set')
 
-muri_z2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast1,0),(pxmxp1,pyhast1,lastZpos)),gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],nameSet='muri_z2_set')
-muri_z3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmxp1,pyhast1,0),(pxcarr3-1,pyhast1,lastZpos))],nameSet='muri_z3_set')
-muri_z4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3-1,pyhast1,0),(pxmnp2,pyhast1,lastZpos))],nameSet='muri_z4_set')
+muri_z2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast1,0),(pxmxp1,pyhast1,lastZpos)),gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],setName='muri_z2_set')
+muri_z3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmxp1,pyhast1,0),(pxcarr3-1,pyhast1,lastZpos))],setName='muri_z3_set')
+muri_z4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3-1,pyhast1,0),(pxmnp2,pyhast1,lastZpos))],setName='muri_z4_set')
 
 #   muro derecho
-murd_z1_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-4,pyhast2,0),(pxmnp1-3,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+3,pyhast2,0),(pxmxp2+4,pyhast2,lastZpos))],nameSet='murd_z1_1_set')
-murd_z1_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-3,pyhast2,0),(pxmnp1-2,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+2,pyhast2,0),(pxmxp2+3,pyhast2,lastZpos))],nameSet='murd_z1_2_set')
-murd_z1_3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-2,pyhast2,0),(pxmnp1-1,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+1,pyhast2,0),(pxmxp2+2,pyhast2,lastZpos))],nameSet='murd_z1_3_set')
+murd_z1_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-4,pyhast2,0),(pxmnp1-3,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+3,pyhast2,0),(pxmxp2+4,pyhast2,lastZpos))],setName='murd_z1_1_set')
+murd_z1_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-3,pyhast2,0),(pxmnp1-2,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+2,pyhast2,0),(pxmxp2+3,pyhast2,lastZpos))],setName='murd_z1_2_set')
+murd_z1_3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1-2,pyhast2,0),(pxmnp1-1,pyhast2,lastZpos)),gm.IJKRange((pxmxp2+1,pyhast2,0),(pxmxp2+2,pyhast2,lastZpos))],setName='murd_z1_3_set')
 
-murd_z2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast2,0),(pxmxp1,pyhast2,lastZpos)),gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],nameSet='murd_z2_set')
-murd_z3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmxp1,pyhast2,0),(pxcarr3-1,pyhast2,lastZpos))],nameSet='murd_z3_set')
-murd_z4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3-1,pyhast2,0),(pxmnp2,pyhast2,lastZpos))],nameSet='murd_z4_set')
+murd_z2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast2,0),(pxmxp1,pyhast2,lastZpos)),gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],setName='murd_z2_set')
+murd_z3_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmxp1,pyhast2,0),(pxcarr3-1,pyhast2,lastZpos))],setName='murd_z3_set')
+murd_z4_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3-1,pyhast2,0),(pxmnp2,pyhast2,lastZpos))],setName='murd_z4_set')
 
 # empuje del terreno
 zGroundZ1_1=zList[lastZpos]+deckTh/2.0+(Hrell_tali1+Hrell_tald1)/2.0
@@ -697,56 +697,56 @@ ep_murd_z4= loads.EarthPressLoad(name= 'ep_murd_z4', xcSet=murd_z4_set,soilData=
 ep_murd_z4_desbal= loads.EarthPressLoad(name= 'ep_murd_z4', xcSet=murd_z4_set,soilData=soilZ4_desbal, vDir=xc.Vector([0,-1,0]))
 
 # cargas sobre el terreno
-qb_Qptren_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast1,0),(pxcarr2,pyhast1,lastZpos))],nameSet='qb_Qptren_1_set')
+qb_Qptren_1_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast1,0),(pxcarr2,pyhast1,lastZpos))],setName='qb_Qptren_1_set')
 dist_carr=xList[pxcarr2]-xList[pxcarr1]
 strip_QPtren=ep.StripLoadOnBackfill(qLoad=2*Qptren_carr/L_Qptren_carr/dist_carr, zLoad=zGroundZ3,distWall=0, stripWidth=L_Qptren_carr)
 qb_Qptren_1= loads.EarthPressLoad(name= 'qb_Qptren_1', xcSet=qb_Qptren_1_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_Qptren_1.stripLoads=[strip_QPtren]
 
-qb_Qptren_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3,pyhast1,0),(pxcarr4,pyhast1,lastZpos))],nameSet='qb_Qptren_2_set')
+qb_Qptren_2_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr3,pyhast1,0),(pxcarr4,pyhast1,lastZpos))],setName='qb_Qptren_2_set')
 qb_Qptren_2= loads.EarthPressLoad(name= 'qb_Qptren_2', xcSet=qb_Qptren_2_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_Qptren_2.stripLoads=[strip_QPtren]
 
-qb_qstren_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcan1,pyhast1,0),(pxcan2,pyhast1,lastZpos))],nameSet='qb_qstren_set')
+qb_qstren_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcan1,pyhast1,0),(pxcan2,pyhast1,lastZpos))],setName='qb_qstren_set')
 strip_qstren=ep.StripLoadOnBackfill(qLoad=scterr, zLoad=zGroundZ3,distWall=0, stripWidth=L_Qptren_carr)
 qb_qstren=loads.EarthPressLoad(name= 'qb_qstren', xcSet=qb_qstren_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_qstren.stripLoads=[strip_qstren]
 
 strip_paseos=ep.StripLoadOnBackfill(qLoad=qnferr, zLoad=zGroundZ2,distWall=0, stripWidth=20)
-qb_paseos_i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast1,0),(pxmxp1,pyhast1,lastZpos)),gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],nameSet='qb_paseos_i_set')
+qb_paseos_i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast1,0),(pxmxp1,pyhast1,lastZpos)),gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],setName='qb_paseos_i_set')
 qb_paseos_i=loads.EarthPressLoad(name= 'qb_paseos_i', xcSet=qb_paseos_i_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_paseos_i.stripLoads=[strip_paseos]
 
-qb_paseos_d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast2,0),(pxmxp1,pyhast2,lastZpos)),gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],nameSet='qb_paseos_d_set')
+qb_paseos_d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp1,pyhast2,0),(pxmxp1,pyhast2,lastZpos)),gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],setName='qb_paseos_d_set')
 qb_paseos_d=loads.EarthPressLoad(name= 'qb_paseos_d', xcSet=qb_paseos_d_set,soilData=None, vDir=xc.Vector([0,-1,0]))
 qb_paseos_d.stripLoads=[strip_paseos]
 
 qlsup=4*qltren/(xList[pxcarr4]-xList[pxcarr1])
 strip_qlsup=ep.StripLoadOnBackfill(qLoad=qlsup, zLoad=zGroundZ3,distWall=0, stripWidth=20)
-qb_qltren_i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast1,0),(pxcarr4,pyhast1,lastZpos))],nameSet='qb_qltren_i_set')
+qb_qltren_i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast1,0),(pxcarr4,pyhast1,lastZpos))],setName='qb_qltren_i_set')
 qb_qltren_i=loads.EarthPressLoad(name= 'qb_qltren_i', xcSet=qb_qltren_i_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_qltren_i.stripLoads=[strip_qlsup]
-qb_qltren_d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast2,0),(pxcarr4,pyhast2,lastZpos))],nameSet='qb_qltren_d_set')
+qb_qltren_d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr1,pyhast2,0),(pxcarr4,pyhast2,lastZpos))],setName='qb_qltren_d_set')
 qb_qltren_d=loads.EarthPressLoad(name= 'qb_qltren_d', xcSet=qb_qltren_d_set,soilData=None, vDir=xc.Vector([0,-1,0]))
 qb_qltren_d.stripLoads=[strip_qlsup]
 
 #descarrilamiento en situación de proyecto 2
 strip_descarr2=ep.StripLoadOnBackfill(qLoad=qdesc2/(xList[pxmxp2]-xList[pxmnp2]), zLoad=zGroundZ2,distWall=0, stripWidth=10-(yList[pyhast2]-yList[pyhast1])/2.0)
 
-qb_descarr_2i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],nameSet='qb_descarr_2i_set')
+qb_descarr_2i_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp2,pyhast1,0),(pxmxp2,pyhast1,lastZpos))],setName='qb_descarr_2i_set')
 qb_descarr_2i=loads.EarthPressLoad(name= 'qb_descarr_2i', xcSet=qb_descarr_2i_set,soilData=None, vDir=xc.Vector([0,1,0]))
 qb_descarr_2i.stripLoads=[strip_descarr2]
 
-qb_descarr_2d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],nameSet='qb_descarr_2d_set')
+qb_descarr_2d_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxmnp2,pyhast2,0),(pxmxp2,pyhast2,lastZpos))],setName='qb_descarr_2d_set')
 qb_descarr_2d=loads.EarthPressLoad(name= 'qb_descarr_2d', xcSet=qb_descarr_2d_set,soilData=None, vDir=xc.Vector([0,-1,0]))
 qb_descarr_2d.stripLoads=[strip_descarr2]
 
 #Empuje del terreno en situación de construcción
 soilConstr=ep.EarthPressureModel(zGround=zList[-1],  zBottomSoils=[-10], KSoils=[K0],gammaSoils=[densrell*grav], zWater=-10.0, gammaWater=grav)
-ep_construct_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,pyhast1,0),(lastXpos,pyhast1,lastZpos))],nameSet='ep_construct_set')
+ep_construct_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((0,pyhast1,0),(lastXpos,pyhast1,lastZpos))],setName='ep_construct_set')
 ep_construct= loads.EarthPressLoad(name= 'ep_construct', xcSet=ep_construct_set,soilData=soilConstr, vDir=xc.Vector([0,1,0]))
 #cargas lineales vehículo en construcción
-ql_construct_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr2+1,pyhast1,0),(pxcarr3,pyhast1,lastZpos))],nameSet='ql_construct_set')
+ql_construct_set=gridGeom.getSetSurfMultiRegion(lstIJKRange=[gm.IJKRange((pxcarr2+1,pyhast1,0),(pxcarr3,pyhast1,lastZpos))],setName='ql_construct_set')
 ql=qlConstruct*1.3/(xList[pxcarr3]-xList[pxcarr2+1])
 lineL1=ep.LineVerticalLoadOnBackfill(qLoad=ql, zLoad=zList[lastZpos],distWall=2.20)
 lineL2=ep.LineVerticalLoadOnBackfill(qLoad=ql, zLoad=zList[lastZpos],distWall=0.10)

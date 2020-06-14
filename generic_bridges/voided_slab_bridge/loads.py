@@ -70,8 +70,8 @@ Wpil_barlov_rg.append(gm.IJKRange((xList.index(-xPila),yList.index(yPil2),zList.
 Wpil_sotav_rg=[]
 Wpil_sotav_rg.append(gm.IJKRange((xList.index(xPila),yList.index(yPil1),zList.index(zInfPilAer)),(xList.index(xPila),yList.index(yPil1),zList.index(zLosInf))))
 Wpil_sotav_rg.append(gm.IJKRange((xList.index(xPila),yList.index(yPil2),zList.index(zInfPilAer)),(xList.index(xPila),yList.index(yPil2),zList.index(zLosInf))))
-pilBarlov=gridPil.getSetLinMultiRegion(lstIJKRange=Wpil_barlov_rg,nameSet='pilBarlov')
-pilSotav=gridPil.getSetLinMultiRegion(lstIJKRange=Wpil_sotav_rg,nameSet='pilSotav')
+pilBarlov=gridPil.getSetLinMultiRegion(lstIJKRange=Wpil_barlov_rg,setName='pilBarlov')
+pilSotav=gridPil.getSetLinMultiRegion(lstIJKRange=Wpil_sotav_rg,setName='pilSotav')
 
 WpilBarlov=loads.UniformLoadOnBeams(name='WpilBarlov', xcSet=pilBarlov,loadVector=xc.Vector([0,qWpilas,0,0,0,0]),refSystem='Local')
 WpilSotav=loads.UniformLoadOnBeams(name='WpilSotav', xcSet=pilSotav,loadVector=xc.Vector([0,coef_ocult*qWpilas,0,0,0,0]),refSystem='Local')

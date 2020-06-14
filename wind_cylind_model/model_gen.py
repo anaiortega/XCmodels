@@ -68,7 +68,7 @@ tankwall_rg=[gm.IJKRange((0,0,0),(lastXpos,lastYpos,lastZpos))]
 
 
 #Surfaces generation
-tankwall=gridGeom.genSurfMultiRegion(lstIJKRange=tankwall_rg,nameSet='tankwall')
+tankwall=gridGeom.genSurfMultiRegion(lstIJKRange=tankwall_rg,setName='tankwall')
 
 '''
 tankwall.description='Cylindrical wall'
