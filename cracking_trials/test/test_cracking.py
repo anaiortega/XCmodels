@@ -100,7 +100,7 @@ combContainer.SLS.freq.add('ELSF02', '1.0*lcase02')
 # Reinforced concrete sections
 from materials.sections.fiber_section import def_simple_RC_section
 from postprocess import element_section_map
-beamRCsect= element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSetName='beamSet')
+beamRCsect= element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam',concrType=concrete, reinfSteelType=reinfSteel,width=width,depth=depth,elemSet=beamSet)
 mainBottReinf=def_simple_RC_section.ReinfRow(rebarsDiam=fiBott,areaRebar=math.pi*fiBott**2/4.,width=width,nominalCover=cover)
 mainBottReinf.nRebars=nmbBarsBott
 beamRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([mainBottReinf])
