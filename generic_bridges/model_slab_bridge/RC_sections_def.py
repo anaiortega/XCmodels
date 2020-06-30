@@ -22,27 +22,27 @@ rnom=35 #recubrimiento nominal
 #losa [losaZonaArm1,losaZonaArm2, ...]
 losaRCSects=[]
 for st in  sets_arm_losa:
-    losaRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='losa, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=cantoLosa,elemSetName=st.name))
+    losaRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='losa, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=cantoLosa,elemSet=st))
 #cartabón derecho interno [CartIntZonaArm1,CartIntZonaArm2, ...]
 cartIntRCSects=[]
 for st in  sets_arm_cartInt:
-    cartIntRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartInt,elemSetName=st.name))
+    cartIntRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartInt,elemSet=st))
 #cartabón derecho externo [CartExtZonaArm1,CartExtZonaArm2, ...]
 cartExtRCSects=[]
 for st in  sets_arm_cartExt:
-    cartExtRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartExt,elemSetName=st.name))
+    cartExtRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='cartabón externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eCartExt,elemSet=st))
 #voladizo derecho interno [VolIntZonaArm1,VolIntZonaArm2, ...]
 volIntRCSects=[]
 for st in  sets_arm_volInt:
-    volIntRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolInt,elemSetName=st.name))
+    volIntRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo interno, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolInt,elemSet=st))
 #voladizo derecho externo [VolExtZonaArm1,VolExtZonaArm2, ...]
 volExtRCSects=[]
 for st in  sets_arm_volExt:
-    volExtRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolExt,elemSetName=st.name))
+    volExtRCSects.append(element_section_map.RCSlabBeamSection(name=st.name+'RCSects',sectionDescr='voladizo externo, zona de armado '+st.name[-2:],concrType=concrete, reinfSteelType=reinfSteel,depth=eVolExt,elemSet=st))
 #Riostra estribo
-RestrRCSects=element_section_map.RCSlabBeamSection(name='RestrRCSects',sectionDescr='riostra estribo',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoRiostrEstr,elemSetName=setArmREstr.name)
+RestrRCSects=element_section_map.RCSlabBeamSection(name='RestrRCSects',sectionDescr='riostra estribo',concrType=concrete, reinfSteelType=reinfSteel,depth=cantoRiostrEstr,elemSet=setArmREstr)
 #Pilas
-pilasRCSects=element_section_map.RCSlabBeamSection(name='pilasRCSects',sectionDescr='pilas',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSetName=setArmPil.name)
+pilasRCSects=element_section_map.RCSlabBeamSection(name='pilasRCSects',sectionDescr='pilas',concrType=concrete, reinfSteelType=reinfSteel,width=lRectEqPila,depth=lRectEqPila,elemSet=setArmPil)
 
 
 def armaduraLosa(RCSet,recNom,arm1,arm2,arm4,arm5,arm6a,arm6b,arm7,arm8,arm9a,arm9b,arm10,ref1Inf,ref2Sup,ref3Mid,cercosRef,cercos):
