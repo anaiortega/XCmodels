@@ -10,7 +10,7 @@ from materials.sia262 import SIA262_limit_state_checking
 from materials.sections import rebar_family
 from materials import typical_materials
 from geotechnics import earth_pressure as ep
-from geotechnics import FrictionalCohesionalSoil as fcs
+from geotechnics import frictional_cohesional_soil as fcs
 from actions import load_cases
 from actions import combinations
 from actions.earth_pressure import earth_pressure
