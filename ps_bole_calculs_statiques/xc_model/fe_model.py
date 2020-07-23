@@ -279,7 +279,7 @@ combContainer.ULS.perm.add('AT202','1.35*GselfWeight+1.35*GdeadLoad+1.0*truckLiv
 # #Non linear static analysis
 # solution= predefined_solutions.SolutionProcedure()
 # solution.convergenceTestTol= 1.0e-2
-# analysis= solution.simpleNewtonRaphsonBandGen(deck)
+# analysis= solution.plainNewtonRaphsonBandGen(deck)
 # result= analysis.analyze(10) 
 
 
