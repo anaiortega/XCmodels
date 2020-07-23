@@ -44,13 +44,13 @@ preprocessor=  feProblem.getPreprocessor
 nodes= preprocessor.getNodeHandler
 
 # Materials
-sectionGeometry= section_properties.RectangularSection("test",b=.3,h=.4)
+crossSection= section_properties.RectangularSection("test",b=.3,h=.4)
 concr= EHE_materials.HA25
 concr.alfacc=0.85    #f_maxd= 0.85*fcd concrete long term compressive strength factor (normally alfacc=1)
 concr.initTensStiff='Y'  #initialize concrete with tension-stiffening branch
                          #(diagram of type concrete02)
 
-section= concr.defElasticShearSection3d(preprocessor, sectionGeometry)
+section= concr.defElasticShearSection3d(preprocessor, crossSection)
 
 # Problem type
 modelSpace= predefined_spaces.StructuralMechanics3D(nodes)
@@ -118,7 +118,7 @@ reinfLayer= def_simple_RC_section.ReinfRow(rebarsDiam= barDiameter,areaRebar= ba
 #reinforcement directions of a slab or the front and back ending sections
 #of a beam element
 reinfSteel= EHE_materials.B500S
-beamRCsect= element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= sectionGeometry.b,depth= sectionGeometry.h)
+beamRCsect= element_section_map.RCSlabBeamSection(name='beamRCsect',sectionDescr='beam section',concrType=concr, reinfSteelType=reinfSteel,width= crossSection.b,depth= crossSection.h)
 beamRCsect.dir1PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 beamRCsect.dir1NegatvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
 beamRCsect.dir2PositvRebarRows= def_simple_RC_section.LongReinfLayers([reinfLayer])
