@@ -162,7 +162,7 @@ elements.pop(0)
 elements.pop(0)
 key=combs.getKeys()[0]
 comb= combs[key]
-predefined_solutions.resuelveComb(preprocessor,nmbComb=key,analysis=predefined_solutions.simple_static_modified_newton(feProblem),numSteps=1)
+predefined_solutions.resuelveComb(preprocessor,nmbComb=key,analysis=predefined_solutions.plain_static_modified_newton(feProblem),numSteps=1)
 
 for e in elements:
   e.getResistingForce()

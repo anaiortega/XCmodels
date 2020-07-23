@@ -166,7 +166,7 @@ casos.addToDomain("0")           #reads load pattern "0" and adds it to the doma
 
 # Solve
 #analysis= predefined_solutions.plain_newton_raphson(problem)
-analysis= predefined_solutions.simple_static_modified_newton(problem)
+analysis= predefined_solutions.plain_static_modified_newton(problem)
 analOk= analysis.analyze(1)
 
 

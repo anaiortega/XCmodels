@@ -14,7 +14,7 @@ fiber_sets.redefTensStiffConcr(setOfTenStffConcrFibSect=setsRCEl1.concrFibers,ft
 
 # Solve
 dom.revertToStart()  #!!!VERY IMPORTANT, don't forget!!!
-analysis= predefined_solutions.simple_static_modified_newton(problem)
+analysis= predefined_solutions.plain_static_modified_newton(problem)
 analOk= analysis.analyze(1)
 x= sccEl1.getNeutralAxisDepth()
 d=sccEl1.getEffectiveDepth()
