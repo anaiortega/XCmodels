@@ -184,5 +184,5 @@ xcTotalSet= preprocessor.getSets.getSet('total')
 # \incluye{"listados.xci"}
 
 # \incluye{"cargas.xci"}
-# \incluye{"resuelve_casos.xci"}
+# \incluye{"solve_cases.xci"}
 
