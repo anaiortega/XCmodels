@@ -83,7 +83,7 @@ casos.addToDomain("0")
 
 
 # Solution procedure
-analysis= predefined_solutions.simple_newton_raphson(feProblem)
+analysis= predefined_solutions.plain_newton_raphson(feProblem)
 analOk= analysis.analyze(1)
 if(analOk!=0):
   print "Error!; failed to converge."

@@ -211,7 +211,7 @@ lcs.displayDispRot(itemToDisp='uX')
 quit()
 
 # #Newton Raphson
-# analysis= predefined_solutions.simple_newton_raphson(test)
+# analysis= predefined_solutions.plain_newton_raphson(test)
 # result= analysis.analyze(10)
 
 print n1.getReaction

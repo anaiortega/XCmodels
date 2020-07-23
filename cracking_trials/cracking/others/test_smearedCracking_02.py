@@ -173,7 +173,7 @@ for F in Flist:
   #We add the load case to domain.
   casos.addToDomain("0")           #reads load pattern "0" and adds it to the domain
   # Solve
-  #analysis= predefined_solutions.simple_newton_raphson(feProblem)
+  #analysis= predefined_solutions.plain_newton_raphson(feProblem)
   analysis= predefined_solutions.simple_static_modified_newton(feProblem)
   analOk= analysis.analyze(1)
   fConcrMin= setsRCEl1.concrFibers.getFiberWithMinStrain()

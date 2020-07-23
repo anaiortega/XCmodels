@@ -203,7 +203,7 @@ for e in saddSet.elements:
 # result= analysis.analyze(1)
 
 #Newton Raphson
-# analysis= predefined_solutions.simple_newton_raphson(test)
+# analysis= predefined_solutions.plain_newton_raphson(test)
 # result= analysis.analyze(10)
 
 Nstep= 10  #  apply load in 10 steps
