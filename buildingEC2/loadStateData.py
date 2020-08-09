@@ -70,7 +70,7 @@ Definition of record objects with these attributes:
   
     
 '''
-LC1_deadLoadBearingStructure=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1_deadLoadBearingStructure',loadCaseDescr='LC1: dead load of the bearing structure',loadCaseExpr='1.0*LC1_deadLoadBearingStructure',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC1_deadLoadBearingStructure=graphical_reports.LoadCaseDispParameters(loadCaseName='LC1_deadLoadBearingStructure',loadCaseDescr='LC1: dead load of the bearing structure',loadCaseExpr='1.0*LC1_deadLoadBearingStructure',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC1_deadLoadBearingStructure.unitsScaleLoads=1 
 LC1_deadLoadBearingStructure.unitsScaleDispl=1e3 
 LC1_deadLoadBearingStructure.unitsDispl='[mm]' 
@@ -86,7 +86,7 @@ LC1_deadLoadBearingStructure.vectorScalePointLoads=0.005
 LC1_deadLoadBearingStructure.compElLoad='transComponent' 
 
 
-LC2_deadLoadInterior=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC2_deadLoadInterior',loadCaseDescr='LC2: dead load of the interior',loadCaseExpr='1.0*LC2_deadLoadInterior',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC2_deadLoadInterior=graphical_reports.LoadCaseDispParameters(loadCaseName='LC2_deadLoadInterior',loadCaseDescr='LC2: dead load of the interior',loadCaseExpr='1.0*LC2_deadLoadInterior',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC2_deadLoadInterior.unitsScaleLoads=1 
 LC2_deadLoadInterior.unitsScaleDispl=1e3 
 LC2_deadLoadInterior.unitsDispl='[mm]' 
@@ -101,7 +101,7 @@ LC2_deadLoadInterior.setsToDispBeamLoads=[]
 LC2_deadLoadInterior.vectorScalePointLoads=0.005 
 LC2_deadLoadInterior.compElLoad='transComponent' 
 
-LC3_deadLoadFacade=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC3_deadLoadFacade',loadCaseDescr='LC3: dead load of the facade',loadCaseExpr='1.0*LC3_deadLoadFacade',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC3_deadLoadFacade=graphical_reports.LoadCaseDispParameters(loadCaseName='LC3_deadLoadFacade',loadCaseDescr='LC3: dead load of the facade',loadCaseExpr='1.0*LC3_deadLoadFacade',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC3_deadLoadFacade.unitsScaleLoads=1 
 LC3_deadLoadFacade.unitsScaleDispl=1e3 
 LC3_deadLoadFacade.unitsDispl='[mm]' 
@@ -116,7 +116,7 @@ LC3_deadLoadFacade.setsToDispBeamLoads=[]
 LC3_deadLoadFacade.vectorScalePointLoads=0.005 
 LC3_deadLoadFacade.compElLoad='transComponent' 
  
-LC51_windX=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC51_windX',loadCaseDescr='LC51: wind in global X direction',loadCaseExpr='1.0*LC51_windX',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC51_windX=graphical_reports.LoadCaseDispParameters(loadCaseName='LC51_windX',loadCaseDescr='LC51: wind in global X direction',loadCaseExpr='1.0*LC51_windX',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC51_windX.unitsScaleLoads=1 
 LC51_windX.unitsScaleDispl=1e3 
 LC51_windX.unitsDispl='[mm]' 
@@ -131,7 +131,7 @@ LC51_windX.setsToDispBeamLoads=[]
 LC51_windX.vectorScalePointLoads=0.005 
 LC51_windX.compElLoad='transComponent' 
  
-LC101_windY=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC101_windY',loadCaseDescr='LC101: wind in global Y direction',loadCaseExpr='1.0*LC101_windY',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC101_windY=graphical_reports.LoadCaseDispParameters(loadCaseName='LC101_windY',loadCaseDescr='LC101: wind in global Y direction',loadCaseExpr='1.0*LC101_windY',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC101_windY.unitsScaleLoads=1 
 LC101_windY.unitsScaleDispl=1e3 
 LC101_windY.unitsDispl='[mm]' 
@@ -146,7 +146,7 @@ LC101_windY.setsToDispBeamLoads=[]
 LC101_windY.vectorScalePointLoads=0.005 
 LC101_windY.compElLoad='transComponent' 
  
-LC201_snowRoof=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC201_snowRoof',loadCaseDescr='LC201: snow on the roof',loadCaseExpr='1.0*LC201_snowRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC201_snowRoof=graphical_reports.LoadCaseDispParameters(loadCaseName='LC201_snowRoof',loadCaseDescr='LC201: snow on the roof',loadCaseExpr='1.0*LC201_snowRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC201_snowRoof.unitsScaleLoads=1 
 LC201_snowRoof.unitsScaleDispl=1e3 
 LC201_snowRoof.unitsDispl='[mm]' 
@@ -161,7 +161,7 @@ LC201_snowRoof.setsToDispBeamLoads=[]
 LC201_snowRoof.vectorScalePointLoads=0.005 
 LC201_snowRoof.compElLoad='transComponent' 
  
-LC202_snowAx1_2=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC202_snowAx1_2',loadCaseDescr='LC202: snow on the external area between axes 1 and 2',loadCaseExpr='1.0*LC202_snowAx1_2',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC202_snowAx1_2=graphical_reports.LoadCaseDispParameters(loadCaseName='LC202_snowAx1_2',loadCaseDescr='LC202: snow on the external area between axes 1 and 2',loadCaseExpr='1.0*LC202_snowAx1_2',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC202_snowAx1_2.unitsScaleLoads=1 
 LC202_snowAx1_2.unitsScaleDispl=1e3 
 LC202_snowAx1_2.unitsDispl='[mm]' 
@@ -176,7 +176,7 @@ LC202_snowAx1_2.setsToDispBeamLoads=[]
 LC202_snowAx1_2.vectorScalePointLoads=0.005 
 LC202_snowAx1_2.compElLoad='transComponent' 
  
-LC203_snowAx2_3=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC203_snowAx2_3',loadCaseDescr='LC203: snow on the external area between axes 2 and 3',loadCaseExpr='1.0*LC203_snowAx2_3',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC203_snowAx2_3=graphical_reports.LoadCaseDispParameters(loadCaseName='LC203_snowAx2_3',loadCaseDescr='LC203: snow on the external area between axes 2 and 3',loadCaseExpr='1.0*LC203_snowAx2_3',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC203_snowAx2_3.unitsScaleLoads=1 
 LC203_snowAx2_3.unitsScaleDispl=1e3 
 LC203_snowAx2_3.unitsDispl='[mm]' 
@@ -191,7 +191,7 @@ LC203_snowAx2_3.setsToDispBeamLoads=[]
 LC203_snowAx2_3.vectorScalePointLoads=0.005 
 LC203_snowAx2_3.compElLoad='transComponent' 
  
-LC204_snowAx3_4=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC204_snowAx3_4',loadCaseDescr='LC204: snow on the external area between axes 3 and 4',loadCaseExpr='1.0*LC204_snowAx3_4',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC204_snowAx3_4=graphical_reports.LoadCaseDispParameters(loadCaseName='LC204_snowAx3_4',loadCaseDescr='LC204: snow on the external area between axes 3 and 4',loadCaseExpr='1.0*LC204_snowAx3_4',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC204_snowAx3_4.unitsScaleLoads=1 
 LC204_snowAx3_4.unitsScaleDispl=1e3 
 LC204_snowAx3_4.unitsDispl='[mm]' 
@@ -206,7 +206,7 @@ LC204_snowAx3_4.setsToDispBeamLoads=[]
 LC204_snowAx3_4.vectorScalePointLoads=0.005 
 LC204_snowAx3_4.compElLoad='transComponent' 
  
-LC205_snowAx4_5=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC205_snowAx4_5',loadCaseDescr='LC205: snow on the external area between axes 4 and 5',loadCaseExpr='1.0*LC205_snowAx4_5',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC205_snowAx4_5=graphical_reports.LoadCaseDispParameters(loadCaseName='LC205_snowAx4_5',loadCaseDescr='LC205: snow on the external area between axes 4 and 5',loadCaseExpr='1.0*LC205_snowAx4_5',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC205_snowAx4_5.unitsScaleLoads=1 
 LC205_snowAx4_5.unitsScaleDispl=1e3 
 LC205_snowAx4_5.unitsDispl='[mm]' 
@@ -221,7 +221,7 @@ LC205_snowAx4_5.setsToDispBeamLoads=[]
 LC205_snowAx4_5.vectorScalePointLoads=0.005 
 LC205_snowAx4_5.compElLoad='transComponent' 
  
-LC206_snowAx5_6=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC206_snowAx5_6',loadCaseDescr='LC206: snow on the external area between axes 5 and 6',loadCaseExpr='1.0*LC206_snowAx5_6',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC206_snowAx5_6=graphical_reports.LoadCaseDispParameters(loadCaseName='LC206_snowAx5_6',loadCaseDescr='LC206: snow on the external area between axes 5 and 6',loadCaseExpr='1.0*LC206_snowAx5_6',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC206_snowAx5_6.unitsScaleLoads=1 
 LC206_snowAx5_6.unitsScaleDispl=1e3 
 LC206_snowAx5_6.unitsDispl='[mm]' 
@@ -236,7 +236,7 @@ LC206_snowAx5_6.setsToDispBeamLoads=[]
 LC206_snowAx5_6.vectorScalePointLoads=0.005 
 LC206_snowAx5_6.compElLoad='transComponent' 
  
-LC1326_servRoof=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1326_servRoof',loadCaseDescr='LC1326: service load 1 on the roof, arrangement 1',loadCaseExpr='1.0*LC1326_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC1326_servRoof=graphical_reports.LoadCaseDispParameters(loadCaseName='LC1326_servRoof',loadCaseDescr='LC1326: service load 1 on the roof, arrangement 1',loadCaseExpr='1.0*LC1326_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC1326_servRoof.unitsScaleLoads=1 
 LC1326_servRoof.unitsScaleDispl=1e3 
 LC1326_servRoof.unitsDispl='[mm]' 
@@ -251,7 +251,7 @@ LC1326_servRoof.setsToDispBeamLoads=[]
 LC1326_servRoof.vectorScalePointLoads=0.005 
 LC1326_servRoof.compElLoad='transComponent' 
  
-LC1336_servRoof=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1336_servRoof',loadCaseDescr='LC1336: service load 1 on the roof, arrangement 2',loadCaseExpr='1.0*LC1336_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC1336_servRoof=graphical_reports.LoadCaseDispParameters(loadCaseName='LC1336_servRoof',loadCaseDescr='LC1336: service load 1 on the roof, arrangement 2',loadCaseExpr='1.0*LC1336_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC1336_servRoof.unitsScaleLoads=1 
 LC1336_servRoof.unitsScaleDispl=1e3 
 LC1336_servRoof.unitsDispl='[mm]' 
@@ -266,7 +266,7 @@ LC1336_servRoof.setsToDispBeamLoads=[]
 LC1336_servRoof.vectorScalePointLoads=0.005 
 LC1336_servRoof.compElLoad='transComponent' 
  
-LC1356_servRoof=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1356_servRoof',loadCaseDescr='LC1356: service load 1 on the roof, arrangement 3',loadCaseExpr='1.0*LC1356_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC1356_servRoof=graphical_reports.LoadCaseDispParameters(loadCaseName='LC1356_servRoof',loadCaseDescr='LC1356: service load 1 on the roof, arrangement 3',loadCaseExpr='1.0*LC1356_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC1356_servRoof.unitsScaleLoads=1 
 LC1356_servRoof.unitsScaleDispl=1e3 
 LC1356_servRoof.unitsDispl='[mm]' 
@@ -281,7 +281,7 @@ LC1356_servRoof.setsToDispBeamLoads=[]
 LC1356_servRoof.vectorScalePointLoads=0.005 
 LC1356_servRoof.compElLoad='transComponent' 
  
-LC1366_servRoof=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC1366_servRoof',loadCaseDescr='LC1366: service load 1 on the roof, arrangement 4',loadCaseExpr='1.0*LC1366_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC1366_servRoof=graphical_reports.LoadCaseDispParameters(loadCaseName='LC1366_servRoof',loadCaseDescr='LC1366: service load 1 on the roof, arrangement 4',loadCaseExpr='1.0*LC1366_servRoof',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC1366_servRoof.unitsScaleLoads=1 
 LC1366_servRoof.unitsScaleDispl=1e3 
 LC1366_servRoof.unitsDispl='[mm]' 
@@ -296,7 +296,7 @@ LC1366_servRoof.setsToDispBeamLoads=[]
 LC1366_servRoof.vectorScalePointLoads=0.005 
 LC1366_servRoof.compElLoad='transComponent' 
  
-LC10001_serv1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10001_serv1',loadCaseDescr='LC10001: service load 1 on levels 0 to 5, arrangement 1',loadCaseExpr='1.0*LC10001_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10001_serv1=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10001_serv1',loadCaseDescr='LC10001: service load 1 on levels 0 to 5, arrangement 1',loadCaseExpr='1.0*LC10001_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10001_serv1.unitsScaleLoads=1 
 LC10001_serv1.unitsScaleDispl=1e3 
 LC10001_serv1.unitsDispl='[mm]' 
@@ -311,7 +311,7 @@ LC10001_serv1.setsToDispBeamLoads=[]
 LC10001_serv1.vectorScalePointLoads=0.005 
 LC10001_serv1.compElLoad='transComponent' 
  
-LC10011_serv1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10011_serv1',loadCaseDescr='LC10011: service load 1 on levels 0 to 5, arrangement 2',loadCaseExpr='1.0*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10011_serv1=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10011_serv1',loadCaseDescr='LC10011: service load 1 on levels 0 to 5, arrangement 2',loadCaseExpr='1.0*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10011_serv1.unitsScaleLoads=1 
 LC10011_serv1.unitsScaleDispl=1e3 
 LC10011_serv1.unitsDispl='[mm]' 
@@ -326,7 +326,7 @@ LC10011_serv1.setsToDispBeamLoads=[]
 LC10011_serv1.vectorScalePointLoads=0.005 
 LC10011_serv1.compElLoad='transComponent' 
  
-LC10021_serv1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10021_serv1',loadCaseDescr='LC10021: service load 1 on levels 0 to 5, arrangement 3',loadCaseExpr='1.0*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10021_serv1=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10021_serv1',loadCaseDescr='LC10021: service load 1 on levels 0 to 5, arrangement 3',loadCaseExpr='1.0*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10021_serv1.unitsScaleLoads=1 
 LC10021_serv1.unitsScaleDispl=1e3 
 LC10021_serv1.unitsDispl='[mm]' 
@@ -341,7 +341,7 @@ LC10021_serv1.setsToDispBeamLoads=[]
 LC10021_serv1.vectorScalePointLoads=0.005 
 LC10021_serv1.compElLoad='transComponent' 
  
-LC10031_serv1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10031_serv1',loadCaseDescr='LC10031: service load 1 on levels 0 to 5, arrangement 4',loadCaseExpr='1.0*LC10031_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10031_serv1=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10031_serv1',loadCaseDescr='LC10031: service load 1 on levels 0 to 5, arrangement 4',loadCaseExpr='1.0*LC10031_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10031_serv1.unitsScaleLoads=1 
 LC10031_serv1.unitsScaleDispl=1e3 
 LC10031_serv1.unitsDispl='[mm]' 
@@ -356,7 +356,7 @@ LC10031_serv1.setsToDispBeamLoads=[]
 LC10031_serv1.vectorScalePointLoads=0.005 
 LC10031_serv1.compElLoad='transComponent' 
  
-LC10101_servParking=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10101_servParking',loadCaseDescr='LC10101: service load 2 on levels -1 and -2, arrangement 1',loadCaseExpr='1.0*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10101_servParking=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10101_servParking',loadCaseDescr='LC10101: service load 2 on levels -1 and -2, arrangement 1',loadCaseExpr='1.0*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10101_servParking.unitsScaleLoads=1 
 LC10101_servParking.unitsScaleDispl=1e3 
 LC10101_servParking.unitsDispl='[mm]' 
@@ -371,7 +371,7 @@ LC10101_servParking.setsToDispBeamLoads=[]
 LC10101_servParking.vectorScalePointLoads=0.005 
 LC10101_servParking.compElLoad='transComponent' 
  
-LC10111_servParking=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10111_servParking',loadCaseDescr='LC10111: service load 2 on levels -1 and -2, arrangement 2',loadCaseExpr='1.0*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10111_servParking=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10111_servParking',loadCaseDescr='LC10111: service load 2 on levels -1 and -2, arrangement 2',loadCaseExpr='1.0*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10111_servParking.unitsScaleLoads=1 
 LC10111_servParking.unitsScaleDispl=1e3 
 LC10111_servParking.unitsDispl='[mm]' 
@@ -386,7 +386,7 @@ LC10111_servParking.setsToDispBeamLoads=[]
 LC10111_servParking.vectorScalePointLoads=0.005 
 LC10111_servParking.compElLoad='transComponent' 
  
-LC10121_servParking=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10121_servParking',loadCaseDescr='LC10121: service load 2 on levels -1 and -2, arrangement 3',loadCaseExpr='1.0*LC10121_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10121_servParking=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10121_servParking',loadCaseDescr='LC10121: service load 2 on levels -1 and -2, arrangement 3',loadCaseExpr='1.0*LC10121_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10121_servParking.unitsScaleLoads=1 
 LC10121_servParking.unitsScaleDispl=1e3 
 LC10121_servParking.unitsDispl='[mm]' 
@@ -401,7 +401,7 @@ LC10121_servParking.setsToDispBeamLoads=[]
 LC10121_servParking.vectorScalePointLoads=0.005 
 LC10121_servParking.compElLoad='transComponent' 
  
-LC10131_servParking=graphical_reports.RecordLoadCaseDisp(loadCaseName='LC10131_servParking',loadCaseDescr='LC10131: service load 2 on levels -1 and -2, arrangement 4',loadCaseExpr='1.0*LC10131_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
+LC10131_servParking=graphical_reports.LoadCaseDispParameters(loadCaseName='LC10131_servParking',loadCaseDescr='LC10131: service load 2 on levels -1 and -2, arrangement 4',loadCaseExpr='1.0*LC10131_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) 
 LC10131_servParking.unitsScaleLoads=1 
 LC10131_servParking.unitsScaleDispl=1e3 
 LC10131_servParking.unitsDispl='[mm]' 
@@ -417,7 +417,7 @@ LC10131_servParking.vectorScalePointLoads=0.005
 LC10131_servParking.compElLoad='transComponent' 
 
 
-ELUmaxMy=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUmaxMy',loadCaseDescr='ELUmaxMy: maximum internal moment My',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC101_windY+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC1356_servRoof+1.05*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUmaxMy=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUmaxMy',loadCaseDescr='ELUmaxMy: maximum internal moment My',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC101_windY+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC1356_servRoof+1.05*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUmaxMy.unitsScaleLoads=1 
 ELUmaxMy.unitsScaleDispl=1e3 
 ELUmaxMy.unitsDispl='[mm]' 
@@ -433,7 +433,7 @@ ELUmaxMy.setsToDispBeamLoads=[]
 ELUmaxMy.vectorScalePointLoads=0.005 
 ELUmaxMy.compElLoad='transComponent' 
 
-ELUmaxMz=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUmaxMz',loadCaseDescr='ELUmaxMz: maximum internal moment Mz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10111_servParking+0.9*LC51_windX+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUmaxMz=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUmaxMz',loadCaseDescr='ELUmaxMz: maximum internal moment Mz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10111_servParking+0.9*LC51_windX+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUmaxMz.unitsScaleLoads=1 
 ELUmaxMz.unitsScaleDispl=1e3 
 ELUmaxMz.unitsDispl='[mm]' 
@@ -449,7 +449,7 @@ ELUmaxMz.setsToDispBeamLoads=[]
 ELUmaxMz.vectorScalePointLoads=0.005 
 ELUmaxMz.compElLoad='transComponent' 
 
-ELUmaxVy=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUmaxVy',loadCaseDescr='ELUmaxVy: maximum internal force Vy',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10111_servParking+0.9*LC51_windX+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUmaxVy=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUmaxVy',loadCaseDescr='ELUmaxVy: maximum internal force Vy',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10111_servParking+0.9*LC51_windX+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10011_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUmaxVy.unitsScaleLoads=1 
 ELUmaxVy.unitsScaleDispl=1e3 
 ELUmaxVy.unitsDispl='[mm]' 
@@ -465,7 +465,7 @@ ELUmaxVy.setsToDispBeamLoads=[]
 ELUmaxVy.vectorScalePointLoads=0.005 
 ELUmaxVy.compElLoad='transComponent' 
 
-ELUmaxVz=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUmaxVz',loadCaseDescr='ELUmaxVz: maximum internal force Vz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+1.05*LC10031_serv1+1.05*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUmaxVz=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUmaxVz',loadCaseDescr='ELUmaxVz: maximum internal force Vz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+1.05*LC10031_serv1+1.05*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUmaxVz.unitsScaleLoads=1 
 ELUmaxVz.unitsScaleDispl=1e3 
 ELUmaxVz.unitsDispl='[mm]' 
@@ -481,7 +481,7 @@ ELUmaxVz.setsToDispBeamLoads=[]
 ELUmaxVz.vectorScalePointLoads=0.005 
 ELUmaxVz.compElLoad='transComponent' 
 
-ELUmaxN=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUmaxN',loadCaseDescr='ELUmaxN: maximum internal force N',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+0.75*LC202_snowAx1_2+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUmaxN=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUmaxN',loadCaseDescr='ELUmaxN: maximum internal force N',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+0.75*LC202_snowAx1_2+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUmaxN.unitsScaleLoads=1 
 ELUmaxN.unitsScaleDispl=1e3 
 ELUmaxN.unitsDispl='[mm]' 
@@ -497,7 +497,7 @@ ELUmaxN.setsToDispBeamLoads=[]
 ELUmaxN.vectorScalePointLoads=0.005 
 ELUmaxN.compElLoad='transComponent' 
 
-ELUminMy=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUminMy',loadCaseDescr='ELUminMy: minimum internal moment My',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+0.75*LC201_snowRoof+1.05*LC1326_servRoof+1.05*LC10031_serv1+1.05*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUminMy=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUminMy',loadCaseDescr='ELUminMy: minimum internal moment My',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC51_windX+0.75*LC201_snowRoof+1.05*LC1326_servRoof+1.05*LC10031_serv1+1.05*LC10101_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUminMy.unitsScaleLoads=1 
 ELUminMy.unitsScaleDispl=1e3 
 ELUminMy.unitsDispl='[mm]' 
@@ -513,7 +513,7 @@ ELUminMy.setsToDispBeamLoads=[]
 ELUminMy.vectorScalePointLoads=0.005 
 ELUminMy.compElLoad='transComponent' 
 
-ELUminMz=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUminMz',loadCaseDescr='ELUminMz: minimum internal moment Mz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10121_servParking+0.9*LC101_windY+0.75*LC201_snowRoof+0.75*LC202_snowAx1_2+1.05*LC1326_servRoof+1.5*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUminMz=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUminMz',loadCaseDescr='ELUminMz: minimum internal moment Mz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10121_servParking+0.9*LC101_windY+0.75*LC201_snowRoof+0.75*LC202_snowAx1_2+1.05*LC1326_servRoof+1.5*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUminMz.unitsScaleLoads=1 
 ELUminMz.unitsScaleDispl=1e3 
 ELUminMz.unitsDispl='[mm]' 
@@ -529,7 +529,7 @@ ELUminMz.setsToDispBeamLoads=[]
 ELUminMz.vectorScalePointLoads=0.005 
 ELUminMz.compElLoad='transComponent' 
 
-ELUminVy=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUminVy',loadCaseDescr='ELUminVy: minimum internal force Vy',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10121_servParking+0.75*LC201_snowRoof+0.75*LC202_snowAx1_2+1.05*LC1356_servRoof+1.05*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUminVy=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUminVy',loadCaseDescr='ELUminVy: minimum internal force Vy',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10121_servParking+0.75*LC201_snowRoof+0.75*LC202_snowAx1_2+1.05*LC1356_servRoof+1.05*LC10021_serv1',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUminVy.unitsScaleLoads=1 
 ELUminVy.unitsScaleDispl=1e3 
 ELUminVy.unitsDispl='[mm]' 
@@ -545,7 +545,7 @@ ELUminVy.setsToDispBeamLoads=[]
 ELUminVy.vectorScalePointLoads=0.005 
 ELUminVy.compElLoad='transComponent' 
 
-ELUminVz=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUminVz',loadCaseDescr='ELUminVz: minimum internal force Vz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC101_windY+0.75*LC202_snowAx1_2+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUminVz=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUminVz',loadCaseDescr='ELUminVz: minimum internal force Vz',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC101_windY+0.75*LC202_snowAx1_2+0.75*LC203_snowAx2_3+0.75*LC204_snowAx3_4+0.75*LC205_snowAx4_5+0.75*LC206_snowAx5_6+1.05*LC10111_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUminVz.unitsScaleLoads=1 
 ELUminVz.unitsScaleDispl=1e3 
 ELUminVz.unitsDispl='[mm]' 
@@ -561,7 +561,7 @@ ELUminVz.setsToDispBeamLoads=[]
 ELUminVz.vectorScalePointLoads=0.005 
 ELUminVz.compElLoad='transComponent' 
 
-ELUminN=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUminN',loadCaseDescr='ELUminN: minimum internal force N',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10031_serv1+1.5*LC1366_servRoof+0.75*LC201_snowRoof+1.05*LC10121_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
+ELUminN=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUminN',loadCaseDescr='ELUminN: minimum internal force N',loadCaseExpr='1.35*LC1_deadLoadBearingStructure+1.35*LC2_deadLoadInterior+1.35*LC3_deadLoadFacade+1.5*LC10031_serv1+1.5*LC1366_servRoof+0.75*LC201_snowRoof+1.05*LC10121_servParking',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet])
 ELUminN.unitsScaleLoads=1 
 ELUminN.unitsScaleDispl=1e3 
 ELUminN.unitsDispl='[mm]' 

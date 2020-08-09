@@ -70,7 +70,7 @@ Definition of record objects with these attributes:
   
 '''
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qcantlv',loadCaseDescr='Q1: uniform load on the cantilever',loadCaseExpr='1.0*Qcantlv',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[xcTotalSet])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Qcantlv',loadCaseDescr='Q1: uniform load on the cantilever',loadCaseExpr='1.0*Qcantlv',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[xcTotalSet])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'

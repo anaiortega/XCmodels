@@ -5,7 +5,7 @@ loadStates= ['LC1_deadLoadBearingStructure','LC2_deadLoadInterior','LC3_deadLoad
 
 f=open('pp.txt','w')
 for ld in loadStates:
-    f.write(ld+"=graphical_reports.RecordLoadCaseDisp(loadCaseName='"+ld+"',loadCaseDescr='"+ld+"',loadCaseExpr='1.0*"+ld+"',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) \n" +
+    f.write(ld+"=graphical_reports.LoadCaseDispParameters(loadCaseName='"+ld+"',loadCaseDescr='"+ld+"',loadCaseExpr='1.0*"+ld+"',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[shellSet]) \n" +
 ld+".unitsScaleLoads=1 \n"+
 ld+".vectorScaleLoads=0.2 \n"+
 ld+".unitsScaleDispl=1e3 \n"+

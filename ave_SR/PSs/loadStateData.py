@@ -72,7 +72,7 @@ Definition of record objects with these attributes:
 setsIntF=[allLosas,murAlig,diafRP]
 setsBeamIntF=[riostrEstr,pilas]
 
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='G1',loadCaseDescr='G1: peso propio',loadCaseExpr='1.0*G1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='G1',loadCaseDescr='G1: peso propio',loadCaseExpr='1.0*G1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -85,7 +85,7 @@ G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G1.setsToDispBeamIntForc=setsBeamIntF
 G1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='G2',loadCaseDescr='G2: carga muerta',loadCaseExpr='1.0*G2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+G2=graphical_reports.LoadCaseDispParameters(loadCaseName='G2',loadCaseDescr='G2: carga muerta',loadCaseExpr='1.0*G2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'
@@ -99,7 +99,7 @@ G2.setsToDispBeamIntForc=setsBeamIntF
 G2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
 
-G3=graphical_reports.RecordLoadCaseDisp(loadCaseName='G3',loadCaseDescr='G3: Retracción',loadCaseExpr='1.0*G3',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+G3=graphical_reports.LoadCaseDispParameters(loadCaseName='G3',loadCaseDescr='G3: Retracción',loadCaseExpr='1.0*G3',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 G3.unitsScaleLoads=1e-3
 G3.unitsScaleDispl=1e3
 G3.unitsDispl='[mm]'
@@ -112,7 +112,7 @@ G3.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 G3.setsToDispBeamIntForc=setsBeamIntF
 G3.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1a_1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a_1',loadCaseDescr='Q1a_1: tren de cargas, posición A1',loadCaseExpr='1.0*Q1a_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1a_1=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a_1',loadCaseDescr='Q1a_1: tren de cargas, posición A1',loadCaseExpr='1.0*Q1a_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1a_1.unitsScaleLoads=1e-3
 Q1a_1.unitsScaleDispl=1e3
 Q1a_1.unitsDispl='[mm]'
@@ -125,7 +125,7 @@ Q1a_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1a_1.setsToDispBeamIntForc=setsBeamIntF
 Q1a_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1a_2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a_2',loadCaseDescr='Q1a_2: tren de cargas, posición A2',loadCaseExpr='1.0*Q1a_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1a_2=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a_2',loadCaseDescr='Q1a_2: tren de cargas, posición A2',loadCaseExpr='1.0*Q1a_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1a_2.unitsScaleLoads=1e-3
 Q1a_2.unitsScaleDispl=1e3
 Q1a_2.unitsDispl='[mm]'
@@ -138,7 +138,7 @@ Q1a_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1a_2.setsToDispBeamIntForc=setsBeamIntF
 Q1a_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1b_1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b_1',loadCaseDescr='Q1b_1: tren de cargas, posición B1',loadCaseExpr='1.0*Q1b_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1b_1=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1b_1',loadCaseDescr='Q1b_1: tren de cargas, posición B1',loadCaseExpr='1.0*Q1b_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1b_1.unitsScaleLoads=1e-3
 Q1b_1.unitsScaleDispl=1e3
 Q1b_1.unitsDispl='[mm]'
@@ -151,7 +151,7 @@ Q1b_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1b_1.setsToDispBeamIntForc=setsBeamIntF
 Q1b_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1b_2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b_2',loadCaseDescr='Q1b_2: tren de cargas, posición B2',loadCaseExpr='1.0*Q1b_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1b_2=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1b_2',loadCaseDescr='Q1b_2: tren de cargas, posición B2',loadCaseExpr='1.0*Q1b_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1b_2.unitsScaleLoads=1e-3
 Q1b_2.unitsScaleDispl=1e3
 Q1b_2.unitsDispl='[mm]'
@@ -164,7 +164,7 @@ Q1b_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1b_2.setsToDispBeamIntForc=setsBeamIntF
 Q1b_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1c=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1c',loadCaseDescr='Q1c: tren de cargas, posición C',loadCaseExpr='1.0*Q1c',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1c=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1c',loadCaseDescr='Q1c: tren de cargas, posición C',loadCaseExpr='1.0*Q1c',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1c.unitsScaleLoads=1e-3
 Q1c.unitsScaleDispl=1e3
 Q1c.unitsDispl='[mm]'
@@ -177,7 +177,7 @@ Q1c.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1c.setsToDispBeamIntForc=setsBeamIntF
 Q1c.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1d=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1d',loadCaseDescr='Q1d: tren de cargas, posición D',loadCaseExpr='1.0*Q1d',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1d=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1d',loadCaseDescr='Q1d: tren de cargas, posición D',loadCaseExpr='1.0*Q1d',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1d.unitsScaleLoads=1e-3
 Q1d.unitsScaleDispl=1e3
 Q1d.unitsDispl='[mm]'
@@ -190,7 +190,7 @@ Q1d.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1d.setsToDispBeamIntForc=setsBeamIntF
 Q1d.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1e=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1e',loadCaseDescr='Q1e: tren de cargas, posición E',loadCaseExpr='1.0*Q1e',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1e=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1e',loadCaseDescr='Q1e: tren de cargas, posición E',loadCaseExpr='1.0*Q1e',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1e.unitsScaleLoads=1e-3
 Q1e.unitsScaleDispl=1e3
 Q1e.unitsDispl='[mm]'
@@ -203,7 +203,7 @@ Q1e.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1e.setsToDispBeamIntForc=setsBeamIntF
 Q1e.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1f=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1f',loadCaseDescr='Q1f: tren de cargas, posición F',loadCaseExpr='1.0*Q1f',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1f=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1f',loadCaseDescr='Q1f: tren de cargas, posición F',loadCaseExpr='1.0*Q1f',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1f.unitsScaleLoads=1e-3
 Q1f.unitsScaleDispl=1e3
 Q1f.unitsDispl='[mm]'
@@ -218,7 +218,7 @@ Q1f.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
 
 
-Q1b_fren=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1b_fren',loadCaseDescr='Q1b_fren: tren de cargas, posición B1+frenado',loadCaseExpr='1.0*Q1b_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1b_fren=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1b_fren',loadCaseDescr='Q1b_fren: tren de cargas, posición B1+frenado',loadCaseExpr='1.0*Q1b_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1b_fren.unitsScaleLoads=1e-3
 Q1b_fren.unitsScaleDispl=1e3
 Q1b_fren.unitsDispl='[mm]'
@@ -231,7 +231,7 @@ Q1b_fren.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1b_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1b_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1d_fren=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1d_fren',loadCaseDescr='Q1d_fren: tren de cargas, posición D+frenado',loadCaseExpr='1.0*Q1d_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1d_fren=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1d_fren',loadCaseDescr='Q1d_fren: tren de cargas, posición D+frenado',loadCaseExpr='1.0*Q1d_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1d_fren.unitsScaleLoads=1e-3
 Q1d_fren.unitsScaleDispl=1e3
 Q1d_fren.unitsDispl='[mm]'
@@ -244,7 +244,7 @@ Q1d_fren.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1d_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1d_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q1e_fren=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1e_fren',loadCaseDescr='Q1e_fren: tren de cargas, posición E+frenado',loadCaseExpr='1.0*Q1e_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q1e_fren=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1e_fren',loadCaseDescr='Q1e_fren: tren de cargas, posición E+frenado',loadCaseExpr='1.0*Q1e_fren',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q1e_fren.unitsScaleLoads=1e-3
 Q1e_fren.unitsScaleDispl=1e3
 Q1e_fren.unitsDispl='[mm]'
@@ -258,7 +258,7 @@ Q1e_fren.setsToDispBeamIntForc=setsBeamIntF
 Q1e_fren.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
 
-Q2_1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q2_1',loadCaseDescr='Q2_1: viento aislado',loadCaseExpr='1.0*Q2_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q2_1=graphical_reports.LoadCaseDispParameters(loadCaseName='Q2_1',loadCaseDescr='Q2_1: viento aislado',loadCaseExpr='1.0*Q2_1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q2_1.unitsScaleLoads=1e-3
 Q2_1.unitsScaleDispl=1e3
 Q2_1.unitsDispl='[mm]'
@@ -272,7 +272,7 @@ Q2_1.setsToDispBeamLoads=setsBeamIntF
 Q2_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
 
-Q2_2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q2_2',loadCaseDescr='Q2_2: viento con SC uso',loadCaseExpr='1.0*Q2_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q2_2=graphical_reports.LoadCaseDispParameters(loadCaseName='Q2_2',loadCaseDescr='Q2_2: viento con SC uso',loadCaseExpr='1.0*Q2_2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q2_2.unitsScaleLoads=1e-3
 Q2_2.unitsScaleDispl=1e3
 Q2_2.unitsDispl='[mm]'
@@ -285,7 +285,7 @@ Q2_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 Q2_2.setsToDispBeamLoads=setsBeamIntF
 Q2_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q3_1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_1',loadCaseDescr='Q3_1: Temperatura uniforme, contracción',loadCaseExpr='1.0*Q3_1',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_1=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_1',loadCaseDescr='Q3_1: Temperatura uniforme, contracción',loadCaseExpr='1.0*Q3_1',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_1.unitsScaleLoads=1e-3
 Q3_1.unitsScaleDispl=1e3
 Q3_1.unitsDispl='[mm]'
@@ -298,7 +298,7 @@ Q3_1.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 Q3_1.setsToDispBeamLoads=setsBeamIntF
 Q3_1.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q3_2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_2',loadCaseDescr='Q3_2: Temperatura uniforme, dilatación',loadCaseExpr='1.0*Q3_2',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_2=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_2',loadCaseDescr='Q3_2: Temperatura uniforme, dilatación',loadCaseExpr='1.0*Q3_2',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_2.unitsScaleLoads=1e-3
 Q3_2.unitsScaleDispl=1e3
 Q3_2.unitsDispl='[mm]'
@@ -311,7 +311,7 @@ Q3_2.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 Q3_2.setsToDispBeamLoads=setsBeamIntF
 Q3_2.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q3_3=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_3',loadCaseDescr='Q3_3: Diferencia temperatura, fibra sup. más caliente',loadCaseExpr='1.0*Q3_3',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_3=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_3',loadCaseDescr='Q3_3: Diferencia temperatura, fibra sup. más caliente',loadCaseExpr='1.0*Q3_3',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_3.unitsScaleLoads=1e-3
 Q3_3.unitsScaleDispl=1e3
 Q3_3.unitsDispl='[mm]'
@@ -324,7 +324,7 @@ Q3_3.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 Q3_3.setsToDispBeamLoads=setsBeamIntF
 Q3_3.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
-Q3_4=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_4',loadCaseDescr='Q3_4: Diferencia temperatura, fibra sup. más fría',loadCaseExpr='1.0*Q3_4',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_4=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_4',loadCaseDescr='Q3_4: Diferencia temperatura, fibra sup. más fría',loadCaseExpr='1.0*Q3_4',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_4.unitsScaleLoads=1e-3
 Q3_4.unitsScaleDispl=1e3
 Q3_4.unitsDispl='[mm]'
@@ -338,7 +338,7 @@ Q3_4.setsToDispBeamLoads=setsBeamIntF
 Q3_4.listBeamIntForc=['N', 'My', 'Mz', 'Qy', 'Qz']
 
 
-Q3_1_neopr=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_1_neopr',loadCaseDescr='Q3_1_neopr: Temperatura uniforme, contracción',loadCaseExpr='1.0*Q3_1_neopr',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_1_neopr=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_1_neopr',loadCaseDescr='Q3_1_neopr: Temperatura uniforme, contracción',loadCaseExpr='1.0*Q3_1_neopr',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_1_neopr.unitsScaleLoads=1e-3
 Q3_1_neopr.unitsScaleDispl=1e3
 Q3_1_neopr.unitsDispl='[mm]'
@@ -349,7 +349,7 @@ Q3_1_neopr.unitsForc='[kN]'
 Q3_1_neopr.cameraParameters= vtk_graphic_base.CameraParameters('XYZNeg')
 
 
-Q3_2_neopr=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3_2_neopr',loadCaseDescr='Q3_2_neopr: Temperatura uniforme, dilatación',loadCaseExpr='1.0*Q3_2_neopr',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
+Q3_2_neopr=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3_2_neopr',loadCaseDescr='Q3_2_neopr: Temperatura uniforme, dilatación',loadCaseExpr='1.0*Q3_2_neopr',setsToDispLoads=[],setsToDispDspRot=[overallSet],setsToDispIntForc=setsIntF)
 Q3_2_neopr.unitsScaleLoads=1e-3
 Q3_2_neopr.unitsScaleDispl=1e3
 Q3_2_neopr.unitsDispl='[mm]'

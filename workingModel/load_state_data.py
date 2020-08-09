@@ -74,7 +74,7 @@ Definition of record objects with these attributes:
 
 
 
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -90,7 +90,7 @@ G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
 
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qdecks',loadCaseDescr='Q1: uniform load on the decks',loadCaseExpr='1.0*Qdecks',setsToDispLoads=[decks],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Qdecks',loadCaseDescr='Q1: uniform load on the decks',loadCaseExpr='1.0*Qdecks',setsToDispLoads=[decks],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
@@ -105,7 +105,7 @@ Q1.setsToDispBeamLoads=[]
 Q1.vectorScalePointLoads=0.005
 Q1.compElLoad='transComponent'
 
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressWall',loadCaseDescr='Q2: earth pressure columns',loadCaseExpr='1.0*QearthPressWall',setsToDispLoads=[wall],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q2=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPressWall',loadCaseDescr='Q2: earth pressure columns',loadCaseExpr='1.0*QearthPressWall',setsToDispLoads=[wall],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q2.unitsScaleLoads=1e-3
 Q2.unitsScaleDispl=1e3
 Q2.unitsDispl='[mm]'
@@ -121,7 +121,7 @@ Q2.vectorScalePointLoads=0.005
 Q2.compElLoad='transComponent'
 
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressCols',loadCaseDescr='Q3: earth pressure columns',loadCaseExpr='1.0*QearthPressCols',setsToDispLoads=[overallSet],setsToDispDspRot=[decklv2],setsToDispIntForc=[])
+Q3=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPressCols',loadCaseDescr='Q3: earth pressure columns',loadCaseExpr='1.0*QearthPressCols',setsToDispLoads=[overallSet],setsToDispDspRot=[decklv2],setsToDispIntForc=[])
 Q3.unitsScaleLoads=1e-3
 Q3.unitsScaleDispl=1e3
 Q3.unitsDispl='[mm]'
@@ -137,7 +137,7 @@ Q3.setsToDispBeamLoads=[decks]
 Q3.vectorScalePointLoads=0.005
 Q3.compElLoad='transComponent'
 
-Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsStrL',loadCaseDescr='Q4: earth pressure columns strip load',loadCaseExpr='1.0*QearthPColsStrL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q4=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsStrL',loadCaseDescr='Q4: earth pressure columns strip load',loadCaseExpr='1.0*QearthPColsStrL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q4.unitsScaleLoads=1e-3
 Q4.unitsScaleDispl=1e3
 Q4.unitsDispl='[mm]'
@@ -152,7 +152,7 @@ Q4.setsToDispBeamLoads=[overallSet]
 Q4.vectorScalePointLoads=0.005
 Q4.compElLoad='transComponent'
 
-Q5=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsLinL',loadCaseDescr='Q5: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsLinL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q5=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsLinL',loadCaseDescr='Q5: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsLinL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q5.unitsScaleLoads=1e-3
 Q5.unitsScaleDispl=1e3
 Q5.unitsDispl='[mm]'
@@ -167,7 +167,7 @@ Q5.setsToDispBeamLoads=[overallSet]
 Q5.vectorScalePointLoads=0.005
 Q5.compElLoad='transComponent'
 
-Q6=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsHrzL',loadCaseDescr='Q6: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsHrzL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q6=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsHrzL',loadCaseDescr='Q6: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsHrzL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q6.unitsScaleLoads=1e-3
 Q6.unitsScaleDispl=1e3
 Q6.unitsDispl='[mm]'
@@ -182,7 +182,7 @@ Q6.setsToDispBeamLoads=[overallSet]
 Q6.vectorScalePointLoads=0.005
 Q6.compElLoad='transComponent'
 
-Q7=graphical_reports.RecordLoadCaseDisp(loadCaseName='qunifBeams',loadCaseDescr='Q7: uniform load on beams',loadCaseExpr='1.0*qunifBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q7=graphical_reports.LoadCaseDispParameters(loadCaseName='qunifBeams',loadCaseDescr='Q7: uniform load on beams',loadCaseExpr='1.0*qunifBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q7.unitsScaleLoads=1e-3
 Q7.unitsScaleDispl=1e3
 Q7.unitsDispl='[mm]'
@@ -197,7 +197,7 @@ Q7.setsToDispBeamLoads=[overallSet]
 Q7.vectorScalePointLoads=0.005
 Q7.compElLoad='transComponent'
 
-Q8=graphical_reports.RecordLoadCaseDisp(loadCaseName='qlinDeck',loadCaseDescr='Q8: linear load on deck level 2',loadCaseExpr='1.0*qlinDeck',setsToDispLoads=[decklv2],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q8=graphical_reports.LoadCaseDispParameters(loadCaseName='qlinDeck',loadCaseDescr='Q8: linear load on deck level 2',loadCaseExpr='1.0*qlinDeck',setsToDispLoads=[decklv2],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q8.unitsScaleLoads=1e-3
 Q8.unitsScaleDispl=1e3
 Q8.unitsDispl='[mm]'
@@ -210,7 +210,7 @@ Q8.listBeamIntForc=['My','Mz','Qy','Qz','N']
 Q8.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q8.vectorScalePointLoads=0.005
 
-Q9=graphical_reports.RecordLoadCaseDisp(loadCaseName='QpntBeams',loadCaseDescr='Q9: point loads on beams',loadCaseExpr='1.0*QpntBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q9=graphical_reports.LoadCaseDispParameters(loadCaseName='QpntBeams',loadCaseDescr='Q9: point loads on beams',loadCaseExpr='1.0*QpntBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q9.unitsScaleLoads=1e-3
 Q9.unitsScaleDispl=1e3
 Q9.unitsDispl='[mm]'
@@ -224,7 +224,7 @@ Q9.setsToDispBeamLoads=[overallSet]
 Q9.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q9.vectorScalePointLoads=0.35
 
-Q10=graphical_reports.RecordLoadCaseDisp(loadCaseName='QwheelDeck1',loadCaseDescr='Q10: load of a wheel over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[decklv1],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q10=graphical_reports.LoadCaseDispParameters(loadCaseName='QwheelDeck1',loadCaseDescr='Q10: load of a wheel over deck level 1',loadCaseExpr='1.0*QwheelDeck1',setsToDispLoads=[decklv1],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q10.unitsScaleLoads=1e-3
 Q10.unitsScaleDispl=1e3
 Q10.unitsDispl='[mm]'
@@ -238,7 +238,7 @@ Q10.setsToDispBeamLoads=[overallSet]
 Q10.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q10.vectorScalePointLoads=0.05
 
-Q11=graphical_reports.RecordLoadCaseDisp(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q11=graphical_reports.LoadCaseDispParameters(loadCaseName='QvehicleDeck1',loadCaseDescr='Q11: load of a vehicle over deck level 1',loadCaseExpr='1.0*QvehicleDeck1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q11.unitsScaleLoads=1e-3
 Q11.unitsScaleDispl=1e3
 Q11.unitsDispl='[mm]'
@@ -252,7 +252,7 @@ Q11.setsToDispBeamLoads=[overallSet]
 Q11.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q11.vectorScalePointLoads=0.05
 
-Comb1=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS1',loadCaseDescr='Comb1: combination 1 ',loadCaseExpr='1.0*LS1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
+Comb1=graphical_reports.LoadCaseDispParameters(loadCaseName='LS1',loadCaseDescr='Comb1: combination 1 ',loadCaseExpr='1.0*LS1',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
 Comb1.unitsScaleLoads=1e-3
 Comb1.unitsScaleDispl=1e3
 Comb1.unitsDispl='[mm]'
@@ -267,7 +267,7 @@ Comb1.compElLoad='transComponent'
 Comb1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Comb1.vectorScalePointLoads=0.05
 
-Comb2=graphical_reports.RecordLoadCaseDisp(loadCaseName='LS2',loadCaseDescr='Comb2: combination 2 ',loadCaseExpr='1.0*LS2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
+Comb2=graphical_reports.LoadCaseDispParameters(loadCaseName='LS2',loadCaseDescr='Comb2: combination 2 ',loadCaseExpr='1.0*LS2',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[allShells])
 Comb2.unitsScaleLoads=1e-3
 Comb2.unitsScaleDispl=1e3
 Comb2.unitsDispl='[mm]'

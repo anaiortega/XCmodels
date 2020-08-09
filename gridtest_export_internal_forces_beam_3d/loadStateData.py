@@ -49,17 +49,17 @@ Definition of record objects with these attributes:
                  camera (defaults to "XYZPos")
 
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleMom=1e-3
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qwind',loadCaseDescr='Q1: wind',loadCaseExpr='1.0*Qwind',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Qwind',loadCaseDescr='Q1: wind',loadCaseExpr='1.0*Qwind',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleMom=1e-3
-A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='AvehicCrash',loadCaseDescr='A1: vehicle crash',loadCaseExpr='1.0*AvehicCrash',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
+A1=graphical_reports.LoadCaseDispParameters(loadCaseName='AvehicCrash',loadCaseDescr='A1: vehicle crash',loadCaseExpr='1.0*AvehicCrash',setsToDispLoads=[colsSet],setsToDispDspRot=[colsSet],setsToDispIntForc=[colsSet])
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleLoads=1e-3

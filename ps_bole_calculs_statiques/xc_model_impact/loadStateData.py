@@ -69,7 +69,7 @@ Definition of record objects with these attributes:
                  camera for beam elements displays (defaults to "XYZPos")
   
 '''
-A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='A1',loadCaseDescr='A1: impact on parapet head',loadCaseExpr='1.0*A1',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
+A1=graphical_reports.LoadCaseDispParameters(loadCaseName='A1',loadCaseDescr='A1: impact on parapet head',loadCaseExpr='1.0*A1',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
 A1.unitsScaleLoads= 1e-3
 A1.unitsScaleForc= 1e-3
 A1.unitsScaleMom= 1e-3
@@ -77,7 +77,7 @@ A1.unitsScaleDispl= 1e3
 A1.cameraParameters= vtk_graphic_base.CameraParameters('-X+Y+Z')
 A1.unitsDispl='[mm]'
 
-A2=graphical_reports.RecordLoadCaseDisp(loadCaseName='A2',loadCaseDescr='A2: impact on parapet body',loadCaseExpr='1.0*A2',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
+A2=graphical_reports.LoadCaseDispParameters(loadCaseName='A2',loadCaseDescr='A2: impact on parapet body',loadCaseExpr='1.0*A2',setsToDispLoads=[totalSet],setsToDispDspRot=[shells],setsToDispIntForc=[totalSet])
 A2.unitsScaleLoads= 1e-3
 A2.unitsScaleForc= 1e-3
 A2.unitsScaleMom= 1e-3

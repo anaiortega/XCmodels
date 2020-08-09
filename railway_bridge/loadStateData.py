@@ -69,7 +69,7 @@ Definition of record objects with these attributes:
                  camera for beam elements displays (defaults to "XYZPos")
   
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[deck,found],setsToDispDspRot=[deck,found],setsToDispIntForc=[])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[deck,found],setsToDispDspRot=[deck,found],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -85,7 +85,7 @@ G1.vectorScalePointLoads=0.005
 G1.compElLoad='axialComponent'
 
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qdeck',loadCaseDescr='Q1: uniform load on the deck',loadCaseExpr='1.0*Qdeck',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Qdeck',loadCaseDescr='Q1: uniform load on the deck',loadCaseExpr='1.0*Qdeck',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
@@ -100,7 +100,7 @@ Q1.setsToDispBeamLoads=[beamY]
 Q1.vectorScalePointLoads=0.005
 Q1.compElLoad='transComponent'
 
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressWall',loadCaseDescr='Q2: earth pressure columns',loadCaseExpr='1.0*QearthPressWall',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q2=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPressWall',loadCaseDescr='Q2: earth pressure columns',loadCaseExpr='1.0*QearthPressWall',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q2.unitsScaleLoads=1e-3
 Q2.unitsScaleDispl=1e3
 Q2.unitsDispl='[mm]'
@@ -116,7 +116,7 @@ Q2.vectorScalePointLoads=0.005
 Q2.compElLoad='transComponent'
 
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPressCols',loadCaseDescr='Q3: earth pressure columns',loadCaseExpr='1.0*QearthPressCols',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q3=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPressCols',loadCaseDescr='Q3: earth pressure columns',loadCaseExpr='1.0*QearthPressCols',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q3.unitsScaleLoads=1e-3
 Q3.unitsScaleDispl=1e3
 Q3.unitsDispl='[mm]'
@@ -131,7 +131,7 @@ Q3.setsToDispBeamLoads=[overallSet]
 Q3.vectorScalePointLoads=0.005
 Q3.compElLoad='transComponent'
 
-Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsStrL',loadCaseDescr='Q4: earth pressure columns strip load',loadCaseExpr='1.0*QearthPColsStrL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q4=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsStrL',loadCaseDescr='Q4: earth pressure columns strip load',loadCaseExpr='1.0*QearthPColsStrL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q4.unitsScaleLoads=1e-3
 Q4.unitsScaleDispl=1e3
 Q4.unitsDispl='[mm]'
@@ -146,7 +146,7 @@ Q4.setsToDispBeamLoads=[overallSet]
 Q4.vectorScalePointLoads=0.005
 Q4.compElLoad='transComponent'
 
-Q5=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsLinL',loadCaseDescr='Q5: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsLinL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q5=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsLinL',loadCaseDescr='Q5: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsLinL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q5.unitsScaleLoads=1e-3
 Q5.unitsScaleDispl=1e3
 Q5.unitsDispl='[mm]'
@@ -161,7 +161,7 @@ Q5.setsToDispBeamLoads=[overallSet]
 Q5.vectorScalePointLoads=0.005
 Q5.compElLoad='transComponent'
 
-Q6=graphical_reports.RecordLoadCaseDisp(loadCaseName='QearthPColsHrzL',loadCaseDescr='Q6: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsHrzL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
+Q6=graphical_reports.LoadCaseDispParameters(loadCaseName='QearthPColsHrzL',loadCaseDescr='Q6: earth pressure columns line load',loadCaseExpr='1.0*QearthPColsHrzL',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[deck,found])
 Q6.unitsScaleLoads=1e-3
 Q6.unitsScaleDispl=1e3
 Q6.unitsDispl='[mm]'

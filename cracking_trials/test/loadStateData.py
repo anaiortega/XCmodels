@@ -69,7 +69,7 @@ Definition of record objects with these attributes:
                  camera for beam elements displays (defaults to "XYZPos")
   
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase01',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*lcase01',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='lcase01',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*lcase01',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -85,7 +85,7 @@ G1.vectorScalePointLoads=0.005
 G1.compElLoad='axialComponent'
 
 
-G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='lcase02',loadCaseDescr='G2: self weight',loadCaseExpr='1.0*lcase02',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
+G2=graphical_reports.LoadCaseDispParameters(loadCaseName='lcase02',loadCaseDescr='G2: self weight',loadCaseExpr='1.0*lcase02',setsToDispLoads=[],setsToDispDspRot=[beamSet],setsToDispIntForc=[])
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'

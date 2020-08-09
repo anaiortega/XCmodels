@@ -70,7 +70,7 @@ Definition of record objects with these attributes:
   
 
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleLoads=1e-3
@@ -85,7 +85,7 @@ G1.setsToDispBeamLoads=[colsSet]
 G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qwind',loadCaseDescr='Q1: wind',loadCaseExpr='1.0*Qwind',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Qwind',loadCaseDescr='Q1: wind',loadCaseExpr='1.0*Qwind',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
 Q1.unitsScaleLoads=1e-3
@@ -100,7 +100,7 @@ Q1.setsToDispBeamLoads=[colsSet]
 Q1.vectorScalePointLoads=0.005
 Q1.compElLoad='transComponent'
 
-A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='AvehicCrash',loadCaseDescr='A1: vehicle crash',loadCaseExpr='1.0*AvehicCrash',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
+A1=graphical_reports.LoadCaseDispParameters(loadCaseName='AvehicCrash',loadCaseDescr='A1: vehicle crash',loadCaseExpr='1.0*AvehicCrash',setsToDispLoads=[],setsToDispDspRot=[colsSet],setsToDispIntForc=[])
 A1.unitsScaleDispl=1e3
 A1.unitsDispl='[mm]'
 A1.unitsScaleLoads=1e-3

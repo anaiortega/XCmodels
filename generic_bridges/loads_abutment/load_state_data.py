@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #Earth pressures
-G4=graphical_reports.RecordLoadCaseDisp(loadCaseName='G4',loadCaseDescr='G4: empuje del relleno',loadCaseExpr='1.0*G4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+G4=graphical_reports.LoadCaseDispParameters(loadCaseName='G4',loadCaseDescr='G4: empuje del relleno',loadCaseExpr='1.0*G4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 
-Q4=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q4',loadCaseDescr='Q4: sobrecarga sobre relleno trasdós',loadCaseExpr='1.0*Q4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q4=graphical_reports.LoadCaseDispParameters(loadCaseName='Q4',loadCaseDescr='Q4: sobrecarga sobre relleno trasdós',loadCaseExpr='1.0*Q4',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 
 LSDabut=[G4,Q4]
 for lc in LSDabut:

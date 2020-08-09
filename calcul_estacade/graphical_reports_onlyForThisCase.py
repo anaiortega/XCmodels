@@ -16,7 +16,7 @@ from model.grid_based_oldStyle_deprecated import GridModel
 from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-class RecordLoadCaseDisp(object):
+class LoadCaseDispParameters(object):
   '''Generation of graphic files and adding to report-tex files for a load case
   
   :ivar loadCaseName:  name of the load case to be depicted

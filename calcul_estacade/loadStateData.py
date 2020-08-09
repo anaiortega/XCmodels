@@ -72,7 +72,7 @@ Definition of record objects with these attributes:
 
 
 
-G1=gr.RecordLoadCaseDisp(loadCaseName='selfWeight',loadCaseDescr='Poids propre',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shellElements],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+G1=gr.LoadCaseDispParameters(loadCaseName='selfWeight',loadCaseDescr='Poids propre',loadCaseExpr='1.0*selfWeight',setsToDispLoads=[shellElements],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -87,7 +87,7 @@ G1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G1.compElLoad='transComponent'
 
 
-G2=gr.RecordLoadCaseDisp(loadCaseName='deadLoad',loadCaseDescr='Charge permanente',loadCaseExpr='1.0*deadLoad',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+G2=gr.LoadCaseDispParameters(loadCaseName='deadLoad',loadCaseDescr='Charge permanente',loadCaseExpr='1.0*deadLoad',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'
@@ -102,7 +102,7 @@ G2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G2.compElLoad='transComponent'
 
 
-G3=gr.RecordLoadCaseDisp(loadCaseName='shrinkage',loadCaseDescr='Retrait',loadCaseExpr='1.0*shrinkage',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+G3=gr.LoadCaseDispParameters(loadCaseName='shrinkage',loadCaseDescr='Retrait',loadCaseExpr='1.0*shrinkage',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 G3.unitsScaleLoads=1e-3
 G3.unitsScaleDispl=1e3
 G3.unitsDispl='[mm]'
@@ -117,7 +117,7 @@ G3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 G3.compElLoad='transComponent'
 
 
-QA=gr.RecordLoadCaseDisp(loadCaseName='liveLoadA',loadCaseDescr='Rassemblement de personnes',loadCaseExpr='1.0*liveLoadA',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+QA=gr.LoadCaseDispParameters(loadCaseName='liveLoadA',loadCaseDescr='Rassemblement de personnes',loadCaseExpr='1.0*liveLoadA',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 QA.unitsScaleLoads=1e-3
 QA.unitsScaleDispl=1e3
 QA.unitsDispl='[mm]'
@@ -132,7 +132,7 @@ QA.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 QA.compElLoad='transComponent'
 
 
-QB=gr.RecordLoadCaseDisp(loadCaseName='liveLoadB',loadCaseDescr="Véhicule d'entrétien",loadCaseExpr='1.0*liveLoadB',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+QB=gr.LoadCaseDispParameters(loadCaseName='liveLoadB',loadCaseDescr="Véhicule d'entrétien",loadCaseExpr='1.0*liveLoadB',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 QB.unitsScaleLoads=1e-3
 QB.unitsScaleDispl=1e3
 QB.unitsDispl='[mm]'
@@ -147,7 +147,7 @@ QB.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 QB.compElLoad='transComponent'
 
 
-T=gr.RecordLoadCaseDisp(loadCaseName='temperature',loadCaseDescr='Température',loadCaseExpr='1.0*temperature',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+T=gr.LoadCaseDispParameters(loadCaseName='temperature',loadCaseDescr='Température',loadCaseExpr='1.0*temperature',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 T.unitsScaleLoads=1e-3
 T.unitsScaleDispl=1e3
 T.unitsDispl='[mm]'
@@ -163,7 +163,7 @@ T.compElLoad='transComponent'
 
 
 
-Snow=gr.RecordLoadCaseDisp(loadCaseName='snowLoad',loadCaseDescr='Neige',loadCaseExpr='1.0*snowLoad',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+Snow=gr.LoadCaseDispParameters(loadCaseName='snowLoad',loadCaseDescr='Neige',loadCaseExpr='1.0*snowLoad',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 Snow.unitsScaleLoads=1e-3
 Snow.unitsScaleDispl=1e3
 Snow.unitsDispl='[mm]'
@@ -178,7 +178,7 @@ Snow.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Snow.compElLoad='transComponent'
 
 
-EQ=gr.RecordLoadCaseDisp(loadCaseName='earthquake',loadCaseDescr='Séisme',loadCaseExpr='1.0*earthquake',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+EQ=gr.LoadCaseDispParameters(loadCaseName='earthquake',loadCaseDescr='Séisme',loadCaseExpr='1.0*earthquake',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 EQ.unitsScaleLoads=1e-3
 EQ.unitsScaleDispl=1e3
 EQ.unitsDispl='[mm]'
@@ -193,7 +193,7 @@ EQ.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 EQ.compElLoad='transComponent'
 
 
-qperm=gr.RecordLoadCaseDisp(loadCaseName='qperm',loadCaseDescr='Charges quasi permanentes',loadCaseExpr='1.0*selfWeight+1.0*deadLoad+1.0*shrinkage',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
+qperm=gr.LoadCaseDispParameters(loadCaseName='qperm',loadCaseDescr='Charges quasi permanentes',loadCaseExpr='1.0*selfWeight+1.0*deadLoad+1.0*shrinkage',setsToDispLoads=[xcTotalSet],setsToDispDspRot=[xcTotalSet],setsToDispIntForc=[setDeck])
 qperm.unitsScaleLoads=1e-3
 qperm.unitsScaleDispl=1e3
 qperm.unitsDispl='[mm]'

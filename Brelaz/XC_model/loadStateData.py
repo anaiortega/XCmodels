@@ -69,42 +69,42 @@ Definition of record objects with these attributes:
                  camera for beam elements displays (defaults to "XYZPos")
   
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleForc=1e-3
 G1.unitsScaleMom=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 
-G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='GdeadLoad',loadCaseDescr='G2: dead load',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+G2=graphical_reports.LoadCaseDispParameters(loadCaseName='GdeadLoad',loadCaseDescr='G2: dead load',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleForc=1e-3
 G2.unitsScaleMom=1e-3
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'
 
-QA=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadA',loadCaseDescr='QA: live load A',loadCaseExpr='1.0*QliveLoadA',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+QA=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadA',loadCaseDescr='QA: live load A',loadCaseExpr='1.0*QliveLoadA',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 QA.unitsScaleLoads=1e-3
 QA.unitsScaleForc=1e-3
 QA.unitsScaleMom=1e-3
 QA.unitsScaleDispl=1e3
 QA.unitsDispl='[mm]'
 
-QB=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadB',loadCaseDescr='QB: live load B',loadCaseExpr='1.0*QliveLoadB',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+QB=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadB',loadCaseDescr='QB: live load B',loadCaseExpr='1.0*QliveLoadB',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 QB.unitsScaleLoads=1e-3
 QB.unitsScaleForc=1e-3
 QB.unitsScaleMom=1e-3
 QB.unitsScaleDispl=1e3
 QB.unitsDispl='[mm]'
 
-QF=graphical_reports.RecordLoadCaseDisp(loadCaseName='QfatigueLoad',loadCaseDescr='QF: fatigue load',loadCaseExpr='1.0*QfatigueLoad',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+QF=graphical_reports.LoadCaseDispParameters(loadCaseName='QfatigueLoad',loadCaseDescr='QF: fatigue load',loadCaseExpr='1.0*QfatigueLoad',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 QF.unitsScaleLoads=1e-3
 QF.unitsScaleForc=1e-3
 QF.unitsScaleMom=1e-3
 QF.unitsScaleDispl=1e3
 QF.unitsDispl='[mm]'
 
-QAcc=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qaccidental',loadCaseDescr='QAcc: accidental',loadCaseExpr='1.0*Qaccidental',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+QAcc=graphical_reports.LoadCaseDispParameters(loadCaseName='Qaccidental',loadCaseDescr='QAcc: accidental',loadCaseExpr='1.0*Qaccidental',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 QAcc.unitsScaleLoads=1e-3
 QAcc.unitsScaleForc=1e-3
 QAcc.unitsScaleMom=1e-3
@@ -112,21 +112,21 @@ QAcc.unitsScaleDispl=1e3
 QAcc.unitsDispl='[mm]'
 
 # ULS
-ULS_A=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS_A',loadCaseDescr='ULS_A: ultimate limit state A',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*QliveLoadA',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+ULS_A=graphical_reports.LoadCaseDispParameters(loadCaseName='ULS_A',loadCaseDescr='ULS_A: ultimate limit state A',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*QliveLoadA',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 ULS_A.unitsScaleLoads=1e-3
 ULS_A.unitsScaleForc=1e-3
 ULS_A.unitsScaleMom=1e-3
 ULS_A.unitsScaleDispl=1e3
 ULS_A.unitsDispl='[mm]'
 
-ULS_B=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS_B',loadCaseDescr='ULS_B: ultimate limit state B',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*QliveLoadB',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+ULS_B=graphical_reports.LoadCaseDispParameters(loadCaseName='ULS_B',loadCaseDescr='ULS_B: ultimate limit state B',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*QliveLoadB',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 ULS_B.unitsScaleLoads=1e-3
 ULS_B.unitsScaleForc=1e-3
 ULS_B.unitsScaleMom=1e-3
 ULS_B.unitsScaleDispl=1e3
 ULS_B.unitsDispl='[mm]'
 
-ULS_Acc=graphical_reports.RecordLoadCaseDisp(loadCaseName='ULS_Acc',loadCaseDescr='ULS_Acc: ultimate limit state Accidental',loadCaseExpr='1.00*GselfWeight+1.00*GdeadLoad+1.00*Qaccidental',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
+ULS_Acc=graphical_reports.LoadCaseDispParameters(loadCaseName='ULS_Acc',loadCaseDescr='ULS_Acc: ultimate limit state Accidental',loadCaseExpr='1.00*GselfWeight+1.00*GdeadLoad+1.00*Qaccidental',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[deck])
 ULS_Acc.unitsScaleLoads=1e-3
 ULS_Acc.unitsScaleForc=1e-3
 ULS_Acc.unitsScaleMom=1e-3
@@ -134,27 +134,27 @@ ULS_Acc.unitsScaleDispl=1e3
 ULS_Acc.unitsDispl='[mm]'
 
 #For loads display
-QA_unif=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadA_unif',loadCaseDescr='QA: live load A_unif',loadCaseExpr='1.0*QliveLoadA_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QA_unif=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadA_unif',loadCaseDescr='QA: live load A_unif',loadCaseExpr='1.0*QliveLoadA_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QA_unif.unitsScaleLoads=1e-3
 
-QB_unif=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadB_unif',loadCaseDescr='QB: live load B_unif',loadCaseExpr='1.0*QliveLoadB_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QB_unif=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadB_unif',loadCaseDescr='QB: live load B_unif',loadCaseExpr='1.0*QliveLoadB_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QB_unif.unitsScaleLoads=1e-3
 
-QF_unif=graphical_reports.RecordLoadCaseDisp(loadCaseName='QfatigueLoad_unif',loadCaseDescr='QF: fatigue load_unif',loadCaseExpr='1.0*QfatigueLoad_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QF_unif=graphical_reports.LoadCaseDispParameters(loadCaseName='QfatigueLoad_unif',loadCaseDescr='QF: fatigue load_unif',loadCaseExpr='1.0*QfatigueLoad_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QF_unif.unitsScaleLoads=1e-3
 
 
-QAcc_unif=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qaccidental_unif',loadCaseDescr='QAcc: accidental_unif',loadCaseExpr='1.0*Qaccidental_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QAcc_unif=graphical_reports.LoadCaseDispParameters(loadCaseName='Qaccidental_unif',loadCaseDescr='QAcc: accidental_unif',loadCaseExpr='1.0*Qaccidental_unif',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QAcc_unif.unitsScaleLoads=1e-3
 
-QA_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadA_point',loadCaseDescr='QA: live load A_point',loadCaseExpr='1.0*QliveLoadA_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QA_point=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadA_point',loadCaseDescr='QA: live load A_point',loadCaseExpr='1.0*QliveLoadA_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QA_point.unitsScaleLoads=1e-3
 
-QB_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QliveLoadB_point',loadCaseDescr='QB: live load B_point',loadCaseExpr='1.0*QliveLoadB_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QB_point=graphical_reports.LoadCaseDispParameters(loadCaseName='QliveLoadB_point',loadCaseDescr='QB: live load B_point',loadCaseExpr='1.0*QliveLoadB_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QB_point.unitsScaleLoads=1e-3
 
-QF_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='QfatigueLoad_point',loadCaseDescr='QF: fatigue load_point',loadCaseExpr='1.0*QfatigueLoad_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QF_point=graphical_reports.LoadCaseDispParameters(loadCaseName='QfatigueLoad_point',loadCaseDescr='QF: fatigue load_point',loadCaseExpr='1.0*QfatigueLoad_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QF_point.unitsScaleLoads=1e-3
 
-QAcc_point=graphical_reports.RecordLoadCaseDisp(loadCaseName='Qaccidental_point',loadCaseDescr='QAcc: accidental_point',loadCaseExpr='1.0*Qaccidental_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
+QAcc_point=graphical_reports.LoadCaseDispParameters(loadCaseName='Qaccidental_point',loadCaseDescr='QAcc: accidental_point',loadCaseExpr='1.0*Qaccidental_point',setsToDispLoads=[shells],setsToDispDspRot=[shellsPcable],setsToDispIntForc=[])
 QAcc_point.unitsScaleLoads=1e-3

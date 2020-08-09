@@ -70,7 +70,7 @@ Definition of record objects with these attributes:
   
 '''
 
-Q1a=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a',loadCaseDescr='Q1a: Tren de cargas centrado en ambas vías',loadCaseExpr='1.0*Q1a',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
+Q1a=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a',loadCaseDescr='Q1a: Tren de cargas centrado en ambas vías',loadCaseExpr='1.0*Q1a',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
 Q1a.unitsScaleLoads=1e-3
 Q1a.unitsScaleDispl=1e3
 Q1a.unitsDispl='[mm]'
@@ -81,7 +81,7 @@ Q1a.unitsForc='[kN]'
 Q1a.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
 
 
-Q1a1via=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a1via',loadCaseDescr='Q1a1via: Tren de cargas centrado en una sola vía',loadCaseExpr='1.0*Q1a1via',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
+Q1a1via=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a1via',loadCaseDescr='Q1a1via: Tren de cargas centrado en una sola vía',loadCaseExpr='1.0*Q1a1via',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
 Q1a1via.unitsScaleLoads=1e-3
 Q1a1via.unitsScaleDispl=1e3
 Q1a1via.unitsDispl='[mm]'
@@ -92,7 +92,7 @@ Q1a1via.unitsForc='[kN]'
 Q1a1via.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
 
 
-Q1a_alabTot=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a_alabTot',loadCaseDescr='Q1a_alabTot: Cargas permanentes + tren de cargas centrado en ambas vías',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
+Q1a_alabTot=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a_alabTot',loadCaseDescr='Q1a_alabTot: Cargas permanentes + tren de cargas centrado en ambas vías',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
 Q1a_alabTot.unitsScaleLoads=1e-3
 Q1a_alabTot.unitsScaleDispl=1e3
 Q1a_alabTot.unitsDispl='[mm]'
@@ -103,7 +103,7 @@ Q1a_alabTot.unitsForc='[kN]'
 Q1a_alabTot.cameraParameters= vtk_graphic_base.CameraParameters('ZPos')
 
 
-Q1a1via_alabTot=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1a1via_alabTot',loadCaseDescr='Q1a1via_alabTot: Cargas permanentes + tren de cargas centrado en una sola vía',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a1via',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
+Q1a1via_alabTot=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1a1via_alabTot',loadCaseDescr='Q1a1via_alabTot: Cargas permanentes + tren de cargas centrado en una sola vía',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a1via',setsToDispLoads=[marco],setsToDispDspRot=[dintel],setsToDispIntForc=[])
 Q1a1via_alabTot.unitsScaleLoads=1e-3
 Q1a1via_alabTot.unitsScaleDispl=1e3
 Q1a1via_alabTot.unitsDispl='[mm]'

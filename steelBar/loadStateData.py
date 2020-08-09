@@ -77,7 +77,7 @@ Definition of record objects with these attributes:
 
 
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='qunifBeams',loadCaseDescr='Q1: uniform load on beams',loadCaseExpr='1.0*qunifBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='qunifBeams',loadCaseDescr='Q1: uniform load on beams',loadCaseExpr='1.0*qunifBeams',setsToDispLoads=[overallSet],setsToDispDspRot=[overallSet],setsToDispIntForc=[])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'

@@ -52,14 +52,14 @@ Definition of record objects with these attributes:
 
 
 
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: Poids propre',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: Poids propre',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
 G1.unitsScaleForc=1e-3
 G1.unitsScaleMom=1e-3
 
-G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='GdeadLoad',loadCaseDescr='G2: Poids propre non porteur',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+G2=graphical_reports.LoadCaseDispParameters(loadCaseName='GdeadLoad',loadCaseDescr='G2: Poids propre non porteur',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 #G2.setToDisplay=foundation
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleDispl=1e3
@@ -69,7 +69,7 @@ G2.unitsScaleMom=1e-3
 
 
 
-G3=graphical_reports.RecordLoadCaseDisp(loadCaseName='GearthPress',loadCaseDescr='G3: Poussée des terres',loadCaseExpr='1.0*GearthPress',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+G3=graphical_reports.LoadCaseDispParameters(loadCaseName='GearthPress',loadCaseDescr='G3: Poussée des terres',loadCaseExpr='1.0*GearthPress',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 G3.unitsScaleLoads=1e-3
 G3.unitsScaleDispl=1e3
 G3.unitsDispl='[mm]'
@@ -77,7 +77,7 @@ G3.unitsScaleForc=1e-3
 G3.unitsScaleMom=1e-3
 
 
-Q1ayb=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit1unif',loadCaseDescr='Q1a and Q1b: Modèle de charge 1 . Distribution des charges uniformes',loadCaseExpr='1.0*QtrafSit1unif',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q1ayb=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit1unif',loadCaseDescr='Q1a and Q1b: Modèle de charge 1 . Distribution des charges uniformes',loadCaseExpr='1.0*QtrafSit1unif',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q1ayb.unitsScaleLoads=1e-3
 Q1ayb.unitsScaleDispl=1e3
 Q1ayb.unitsDispl='[mm]'
@@ -85,7 +85,7 @@ Q1ayb.unitsScaleForc=1e-3
 Q1ayb.unitsScaleMom=1e-3
 
 
-Q1a=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit1a',loadCaseDescr='Q1a: Modèle de charge 1 en position Ia',loadCaseExpr='1.0*QtrafSit1a',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q1a=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit1a',loadCaseDescr='Q1a: Modèle de charge 1 en position Ia',loadCaseExpr='1.0*QtrafSit1a',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q1a.unitsScaleLoads=1e-3
 Q1a.unitsScaleDispl=1e3
 Q1a.unitsDispl='[mm]'
@@ -93,14 +93,14 @@ Q1a.unitsScaleForc=1e-3
 Q1a.unitsScaleMom=1e-3
 
 
-Q1b=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit1b',loadCaseDescr='Q1b:Modèle de charge 1 en position Ib',loadCaseExpr='1.0*QtrafSit1b',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q1b=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit1b',loadCaseDescr='Q1b:Modèle de charge 1 en position Ib',loadCaseExpr='1.0*QtrafSit1b',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q1b.unitsScaleLoads=1e-3
 Q1b.unitsScaleDispl=1e3
 Q1b.unitsDispl='[mm]'
 Q1b.unitsScaleForc=1e-3
 Q1b.unitsScaleMom=1e-3
 
-Q2ayb=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit2unif',loadCaseDescr='Q2a and Q2b: Modèle de charge 2. Distribution des charges uniformes',loadCaseExpr='1.0*QtrafSit2unif',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q2ayb=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit2unif',loadCaseDescr='Q2a and Q2b: Modèle de charge 2. Distribution des charges uniformes',loadCaseExpr='1.0*QtrafSit2unif',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q2ayb.unitsScaleLoads=1e-3
 Q2ayb.unitsScaleDispl=1e3
 Q2ayb.unitsDispl='[mm]'
@@ -108,7 +108,7 @@ Q2ayb.unitsScaleForc=1e-3
 Q2ayb.unitsScaleMom=1e-3
 
 
-Q2a=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit2a',loadCaseDescr='Q2a: Modèle de charge 1 en position IIa',loadCaseExpr='1.0*QtrafSit2a',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q2a=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit2a',loadCaseDescr='Q2a: Modèle de charge 1 en position IIa',loadCaseExpr='1.0*QtrafSit2a',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q2a.unitsScaleLoads=1e-3
 Q2a.unitsScaleDispl=1e3
 Q2a.unitsDispl='[mm]'
@@ -116,14 +116,14 @@ Q2a.unitsScaleForc=1e-3
 Q2a.unitsScaleMom=1e-3
 
 
-Q2b=graphical_reports.RecordLoadCaseDisp(loadCaseName='QtrafSit2b',loadCaseDescr='Q2b: Modèle de charge 1 en position IIb',loadCaseExpr='1.0*QtrafSit2b',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
+Q2b=graphical_reports.LoadCaseDispParameters(loadCaseName='QtrafSit2b',loadCaseDescr='Q2b: Modèle de charge 1 en position IIb',loadCaseExpr='1.0*QtrafSit2b',setsToDispLoads=[overallSet],setsToDispDspRot=[foundDeck,walls],setsToDispIntForc=[foundDeck,walls])
 Q2b.unitsScaleLoads=1e-3
 Q2b.unitsScaleDispl=1e3
 Q2b.unitsDispl='[mm]'
 Q2b.unitsScaleForc=1e-3
 Q2b.unitsScaleMom=1e-3
 
-ELULoadCaseDisp= combContainer.getRecordLoadCaseDisp(combName= 'ELU02',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[leftWall])
+ELULoadCaseDisp= combContainer.getLoadCaseDispParameters(combName= 'ELU02',setsToDispLoads=[overallSet],setsToDispDspRot=[],setsToDispIntForc=[leftWall])
 ELULoadCaseDisp.unitsScaleLoads=1e-3
 ELULoadCaseDisp.unitsScaleDispl=1e3
 ELULoadCaseDisp.unitsDispl='[mm]'

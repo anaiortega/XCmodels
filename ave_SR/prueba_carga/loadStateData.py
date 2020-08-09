@@ -70,7 +70,7 @@ Definition of record objects with these attributes:
   
 '''
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q1',loadCaseDescr='Q1: Prueba de carga estática',loadCaseExpr='1.0*Q1',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='Q1',loadCaseDescr='Q1: Prueba de carga estática',loadCaseExpr='1.0*Q1',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
@@ -83,7 +83,7 @@ Q1.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q1.listDspRot=[]
 Q1.listIntForc=['M2']
 
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q2',loadCaseDescr='Q2: tren de cargas ferroviario (2 vías)',loadCaseExpr='1.00*Q2',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+Q2=graphical_reports.LoadCaseDispParameters(loadCaseName='Q2',loadCaseDescr='Q2: tren de cargas ferroviario (2 vías)',loadCaseExpr='1.00*Q2',setsToDispLoads=[overallSet],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q2.unitsScaleLoads=1e-3
 Q2.unitsScaleDispl=1e3
 Q2.unitsDispl='[mm]'
@@ -96,7 +96,7 @@ Q2.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q2.listDspRot=[]
 Q2.listIntForc=['M2']
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='Q3',loadCaseDescr='Q3: tren de cargas ferroviario (1 vía)',loadCaseExpr='1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+Q3=graphical_reports.LoadCaseDispParameters(loadCaseName='Q3',loadCaseDescr='Q3: tren de cargas ferroviario (1 vía)',loadCaseExpr='1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Q3.unitsScaleLoads=1e-3
 Q3.unitsScaleDispl=1e3
 Q3.unitsDispl='[mm]'
@@ -109,7 +109,7 @@ Q3.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Q3.listDspRot=[]
 Q3.listIntForc=['M2']
 
-PrueCarga=graphical_reports.RecordLoadCaseDisp(loadCaseName='PC',loadCaseDescr='PrueCarga: Prueba de carga estática',loadCaseExpr='1.0*G1+1.00*G3+1.0*Q1',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+PrueCarga=graphical_reports.LoadCaseDispParameters(loadCaseName='PC',loadCaseDescr='PrueCarga: Prueba de carga estática',loadCaseExpr='1.0*G1+1.00*G3+1.0*Q1',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 PrueCarga.unitsScaleLoads=1e-3
 PrueCarga.unitsScaleDispl=1e3
 PrueCarga.unitsDispl='[mm]'
@@ -122,7 +122,7 @@ PrueCarga.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 PrueCarga.listDspRot=[]
 PrueCarga.listIntForc=['M2']
 
-Qtren2vias=graphical_reports.RecordLoadCaseDisp(loadCaseName='TF2',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q2',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+Qtren2vias=graphical_reports.LoadCaseDispParameters(loadCaseName='TF2',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q2',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Qtren2vias.unitsScaleLoads=1e-3
 Qtren2vias.unitsScaleDispl=1e3
 Qtren2vias.unitsDispl='[mm]'
@@ -135,7 +135,7 @@ Qtren2vias.cameraParameters= vtk_graphic_base.CameraParameters('XYZPos')
 Qtren2vias.listDspRot=[]
 Qtren2vias.listIntForc=['M2']
 
-Qtren1via=graphical_reports.RecordLoadCaseDisp(loadCaseName='TF1',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
+Qtren1via=graphical_reports.LoadCaseDispParameters(loadCaseName='TF1',loadCaseDescr='Qtren: tren de cargas ferroviario',loadCaseExpr='1.00*G1 + 1.00*G2 + 1.00*G3 + 1.00*Q3',setsToDispLoads=[dintel],setsToDispDspRot=[dintel],setsToDispIntForc=[dintel])
 Qtren1via.unitsScaleLoads=1e-3
 Qtren1via.unitsScaleDispl=1e3
 Qtren1via.unitsDispl='[mm]'

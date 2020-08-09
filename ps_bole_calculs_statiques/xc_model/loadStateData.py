@@ -69,7 +69,7 @@ Definition of record objects with these attributes:
                  camera for beam elements displays (defaults to "XYZPos")
   
 '''
-G1=graphical_reports.RecordLoadCaseDisp(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+G1=graphical_reports.LoadCaseDispParameters(loadCaseName='GselfWeight',loadCaseDescr='G1: self weight',loadCaseExpr='1.0*GselfWeight',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 G1.unitsScaleLoads=1e-3
 G1.unitsScaleDispl=1e3
 G1.unitsDispl='[mm]'
@@ -85,7 +85,7 @@ G1.vectorScalePointLoads=0.005
 G1.compElLoad='transComponent'
 
 
-G2=graphical_reports.RecordLoadCaseDisp(loadCaseName='GdeadLoad',loadCaseDescr='G2: dead load',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+G2=graphical_reports.LoadCaseDispParameters(loadCaseName='GdeadLoad',loadCaseDescr='G2: dead load',loadCaseExpr='1.0*GdeadLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 G2.unitsScaleLoads=1e-3
 G2.unitsScaleDispl=1e3
 G2.unitsDispl='[mm]'
@@ -101,7 +101,7 @@ G2.vectorScalePointLoads=0.005
 G2.compElLoad='transComponent'
 
 
-Q1=graphical_reports.RecordLoadCaseDisp(loadCaseName='vehicleLiveLoad',loadCaseDescr='Q1: vehicle loads',loadCaseExpr='1.0*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+Q1=graphical_reports.LoadCaseDispParameters(loadCaseName='vehicleLiveLoad',loadCaseDescr='Q1: vehicle loads',loadCaseExpr='1.0*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 Q1.unitsScaleLoads=1e-3
 Q1.unitsScaleDispl=1e3
 Q1.unitsDispl='[mm]'
@@ -117,7 +117,7 @@ Q1.vectorScalePointLoads=0.025
 Q1.compElLoad='transComponent'
 
 
-Q2=graphical_reports.RecordLoadCaseDisp(loadCaseName='truckLiveLoad',loadCaseDescr='Q2: truck loads',loadCaseExpr='1.0*truckLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+Q2=graphical_reports.LoadCaseDispParameters(loadCaseName='truckLiveLoad',loadCaseDescr='Q2: truck loads',loadCaseExpr='1.0*truckLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 Q2.unitsScaleLoads=1e-3
 Q2.unitsScaleDispl=1e3
 Q2.unitsDispl='[mm]'
@@ -133,7 +133,7 @@ Q2.vectorScalePointLoads=0.025
 Q2.compElLoad='transComponent'
 
 
-Q3=graphical_reports.RecordLoadCaseDisp(loadCaseName='pedestrianLiveLoad',loadCaseDescr='Q3: pedestrian load',loadCaseExpr='1.0*pedestrianLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+Q3=graphical_reports.LoadCaseDispParameters(loadCaseName='pedestrianLiveLoad',loadCaseDescr='Q3: pedestrian load',loadCaseExpr='1.0*pedestrianLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 Q3.unitsScaleLoads=1e-3
 Q3.unitsScaleDispl=1e3
 Q3.unitsDispl='[mm]'
@@ -149,7 +149,7 @@ Q3.vectorScalePointLoads=0.025
 Q3.compElLoad='transComponent'
 
 
-A1=graphical_reports.RecordLoadCaseDisp(loadCaseName='impactLoad',loadCaseDescr='A1: impact load',loadCaseExpr='1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+A1=graphical_reports.LoadCaseDispParameters(loadCaseName='impactLoad',loadCaseDescr='A1: impact load',loadCaseExpr='1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 A1.unitsScaleLoads=1e-3
 A1.unitsScaleDispl=1e3
 A1.unitsDispl='[mm]'
@@ -166,7 +166,7 @@ A1.compElLoad='transComponent'
 
 
 
-ELUT201=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUT201',loadCaseDescr='ELUT201: vehicle live load',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+ELUT201=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUT201',loadCaseDescr='ELUT201: vehicle live load',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 ELUT201.unitsScaleLoads=1e-3
 ELUT201.unitsScaleDispl=1e3
 ELUT201.unitsDispl='[mm]'
@@ -182,7 +182,7 @@ ELUT201.vectorScalePointLoads=0.025
 ELUT201.compElLoad='transComponent'
 
 
-ELUT202=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUT202',loadCaseDescr='ELUT202: pedestrian live load',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*pedestrianLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+ELUT202=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUT202',loadCaseDescr='ELUT202: pedestrian live load',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.5*pedestrianLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 ELUT202.unitsScaleLoads=1e-3
 ELUT202.unitsScaleDispl=1e3
 ELUT202.unitsDispl='[mm]'
@@ -198,7 +198,7 @@ ELUT202.vectorScalePointLoads=0.025
 ELUT202.compElLoad='transComponent'
 
 
-AT101=graphical_reports.RecordLoadCaseDisp(loadCaseName='AT101',loadCaseDescr='AT101: impact load 1a',loadCaseExpr='0.9*GselfWeight+0.9*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+AT101=graphical_reports.LoadCaseDispParameters(loadCaseName='AT101',loadCaseDescr='AT101: impact load 1a',loadCaseExpr='0.9*GselfWeight+0.9*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 AT101.unitsScaleLoads=1e-3
 AT101.unitsScaleDispl=1e3
 AT101.unitsDispl='[mm]'
@@ -214,7 +214,7 @@ AT101.vectorScalePointLoads=0.025
 AT101.compElLoad='transComponent'
 
 
-AT201=graphical_reports.RecordLoadCaseDisp(loadCaseName='AT201',loadCaseDescr='AT201: impact load 1a',loadCaseExpr='0.8*GselfWeight+0.8*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+AT201=graphical_reports.LoadCaseDispParameters(loadCaseName='AT201',loadCaseDescr='AT201: impact load 1a',loadCaseExpr='0.8*GselfWeight+0.8*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 AT201.unitsScaleLoads=1e-3
 AT201.unitsScaleDispl=1e3
 AT201.unitsDispl='[mm]'
@@ -230,7 +230,7 @@ AT201.vectorScalePointLoads=0.025
 AT201.compElLoad='transComponent'
 
 
-AT202=graphical_reports.RecordLoadCaseDisp(loadCaseName='AT202',loadCaseDescr='AT202: impact load 1a',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+AT202=graphical_reports.LoadCaseDispParameters(loadCaseName='AT202',loadCaseDescr='AT202: impact load 1a',loadCaseExpr='1.35*GselfWeight+1.35*GdeadLoad+1.0*truckLiveLoad+1.0*impactLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 AT202.unitsScaleLoads=1e-3
 AT202.unitsScaleDispl=1e3
 AT202.unitsDispl='[mm]'
@@ -246,7 +246,7 @@ AT202.vectorScalePointLoads=0.025
 AT202.compElLoad='transComponent'
 
 
-ELUT40=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUT40',loadCaseDescr='ELUT40: vehicle live load',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+ELUT40=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUT40',loadCaseDescr='ELUT40: vehicle live load',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 ELUT40.unitsScaleLoads=1e-3
 ELUT40.unitsScaleDispl=1e3
 ELUT40.unitsDispl='[mm]'
@@ -262,7 +262,7 @@ ELUT40.vectorScalePointLoads=0.025
 ELUT40.compElLoad='transComponent'
 
 
-ELUT41=graphical_reports.RecordLoadCaseDisp(loadCaseName='ELUT41',loadCaseDescr='ELUT41: vehicle live load',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.0*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
+ELUT41=graphical_reports.LoadCaseDispParameters(loadCaseName='ELUT41',loadCaseDescr='ELUT41: vehicle live load',loadCaseExpr='1.0*GselfWeight+1.0*GdeadLoad+1.0*vehicleLiveLoad',setsToDispLoads=[bridgeSectionSet],setsToDispDspRot=[bridgeSectionSet],setsToDispIntForc=[])
 ELUT41.unitsScaleLoads=1e-3
 ELUT41.unitsScaleDispl=1e3
 ELUT41.unitsDispl='[mm]'
