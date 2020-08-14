@@ -1,0 +1,4 @@
+/*grind(diff(2*P/m/L/sqr(w0)/(1-sqr(K))*(sin(K*w0*t)-K*exp(-psi*w0*t)*sin(w0*t)),t));
+grind(diff(2*P/m/L/sqr(w0)/(1-sqr(K))*(sin(K*w0*t)-K*exp(-psi*w0*t)*sin(w0*t)),t,2));
+grind(diff(2*P/m/L/sqr(w0)*K/(1-sqr(K))*(exp(-psi*w0*t)*sin(w0*t)-exp(-psi*w0*(t-L/V))*sin(w0*(t-L/V))),t));*/
+grind(diff(2*P/m/L/sqr(w0)*K/(1-sqr(K))*(exp(-psi*w0*t)*sin(w0*t)-exp(-psi*w0*(t-L/V))*sin(w0*(t-L/V))),t,2));
