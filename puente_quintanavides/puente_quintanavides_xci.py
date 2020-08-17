@@ -30,25 +30,34 @@ import math
 import xc_base
 import geom
 import xc
-
+import deck_geometry
 from model import predefined_spaces
+from postprocess import output_handler
+from materials import typical_materials
+from materials.ehe import EHE_materials
 
 FEcase= xc.FEProblem()
 FEcase.title= 'Puente Arroyo del Molino'
 # Problem type
 preprocessor=FEcase.getPreprocessor
 nodes= preprocessor.getNodeHandler
-modelSpace= predefined_spaces.StructuralMechanics3D(nodes) 
+modelSpace= deck_geometry.DeckGeometry(nodes) 
 
 xcTotalSet= preprocessor.getSets.getSet('total')
 
 execfile('datos_base_xci.py')
 
-
-execfile('modelo/geom_tablero_xci.py')
-execfile('modelo/sets_tablero_xci.py')
+modelSpace.defineTablero()
+modelSpace.defineSets()
 execfile('modelo/materiales_xci.py')
-execfile('modelo/genera_malla_viga_xci.py')
+modelSpace.genMesh()
+
+# Graphic stuff.
+oh= output_handler.OutputHandler(modelSpace)
+oh.displayBlocks()
+oh.displayFEMesh()
+quit()
+
 execfile('modelo/conds_contorno_xci.py')
 LTot= (LTramo0+LTramo1+LTramo2)*2.0+LTramo3
 execfile('modelo/sets_pretensado_xci.py')
