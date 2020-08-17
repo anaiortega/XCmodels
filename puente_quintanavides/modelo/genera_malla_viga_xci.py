@@ -1,4 +1,4 @@
-tagNodoCentroLosaInf= 
+tagNodoCentroLosaInf= -1
 \mdlr
     \nodos
         ncoo_def(3) # Dimensiones de los nodos

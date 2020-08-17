@@ -1,3 +1,4 @@
+# -*- coding: utf-8
 
 execfile('../datos_cordon_pret_xci.py')
 

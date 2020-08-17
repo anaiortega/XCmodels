@@ -22,6 +22,26 @@ execfile('listados/exporta_esfuerzos_xcm.py')
 execfile('listados/listados_desplazamientos_xcm.py')
 execfile('latex/supertabular.lcmm')
 '''
+
+from __future__ import division
+from __future__ import print_function
+
+import math
+import xc_base
+import geom
+import xc
+
+from model import predefined_spaces
+
+FEcase= xc.FEProblem()
+FEcase.title= 'Puente Arroyo del Molino'
+# Problem type
+preprocessor=FEcase.getPreprocessor
+nodes= preprocessor.getNodeHandler
+modelSpace= predefined_spaces.StructuralMechanics3D(nodes) 
+
+xcTotalSet= preprocessor.getSets.getSet('total')
+
 execfile('datos_base_xci.py')
 
 

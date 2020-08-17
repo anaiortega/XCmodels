@@ -1,3 +1,4 @@
+# -*- coding: utf-8
 xTendon0= 3.0
 xTendon1= 4.0
 xTendon2= 5.0
@@ -55,8 +56,7 @@ def asignaAreasTendon(nmbSet):
               }}}}}}}
           }}}}
         '''\sets{\nmbSet{\elementos{\for_each
-          { print("elemento: ",tag," xCDG: ",getCooCdg[0]," cordones: ",getArea/areaCordon,"\n")
-          }}}}'''
+          { print("elemento: ",tag," xCDG: ",getCooCdg[0]," cordones: ",getArea/areaCordon,"\n")}}}}'''
        }
 
 \mallaTendon("setNodosTendon00")
