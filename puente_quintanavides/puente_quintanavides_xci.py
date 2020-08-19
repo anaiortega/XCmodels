@@ -51,6 +51,7 @@ modelSpace.genMesh()
 modelSpace.setConstraints()
 LTot= modelSpace.getLTot()
 modelSpace.defineSetsPretensado()
+modelSpace.mallaTendones(areaCordon)
 
 
 # Graphic stuff.
@@ -59,8 +60,6 @@ oh.displayBlocks()
 oh.displayFEMesh()
 quit()
 
-execfile('modelo/sets_pretensado_xci.py')
-execfile('modelo/genera_malla_tendones_xci.py')
 execfile('acciones/define_casos_carga_xci.py')
 execfile('acciones/parametros_carga_xci.py')
 execfile('acciones/carga_viga_xci.py')
