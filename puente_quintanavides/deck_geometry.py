@@ -131,6 +131,8 @@ class DeckGeometry(predefined_spaces.StructuralMechanics3D):
         abcisaSeccion+= self.LTramo0
         self.puntosD= self.defineSeccion(abcisaSeccion)
 
+    def getLTot(self):
+        return (self.LTramo0+self.LTramo1+self.LTramo2)*2.0+self.LTramo3
 
     def defineTramoTablero(self, listaPuntos1,listaPuntos2,idTramo):
         surfaces= self.preprocessor.getMultiBlockTopology.getSurfaces
@@ -374,7 +376,7 @@ class DeckGeometry(predefined_spaces.StructuralMechanics3D):
 
 
     def genMesh(self):
-        # *** Meshing ***
+        ''' Generate mesh.'''
         seedElemHandler= self.preprocessor.getElementHandler.seedElemHandler
         self.preprocessor.getMultiBlockTopology.getSurfaces.conciliaNDivs()
         seedElemHandler.defaultMaterial= "hormLosaInf"
@@ -407,10 +409,156 @@ class DeckGeometry(predefined_spaces.StructuralMechanics3D):
         self.setDiafragmas.fillDownwards()
 
         xcTotalSet= self.getTotalSet()
-        nodoApoyoDorsalDerecho= xcTotalSet.getNearestNode(self.puntoApoyoDorsalDerecho.getPos)
-        nodoApoyoDorsalIzquierdo= xcTotalSet.getNearestNode(self.puntoApoyoDorsalIzquierdo.getPos)
-        nodoApoyoFrontalDerecho= xcTotalSet.getNearestNode(self.puntoApoyoFrontalDerecho.getPos)
-        nodoApoyoFrontalIzquierdo= xcTotalSet.getNearestNode(self.puntoApoyoFrontalIzquierdo.getPos)
+        self.nodoApoyoDorsalDerecho= xcTotalSet.getNearestNode(self.puntoApoyoDorsalDerecho.getPos)
+        self.nodoApoyoDorsalIzquierdo= xcTotalSet.getNearestNode(self.puntoApoyoDorsalIzquierdo.getPos)
+        self.nodoApoyoFrontalDerecho= xcTotalSet.getNearestNode(self.puntoApoyoFrontalDerecho.getPos)
+        self.nodoApoyoFrontalIzquierdo= xcTotalSet.getNearestNode(self.puntoApoyoFrontalIzquierdo.getPos)
 
-        tagsNodosFlecha= [nodoCentroLosaInf]
+        self.tagsNodosFlecha= [nodoCentroLosaInf]
+
+    def setConstraints(self):
+        ''' Define constraints.'''
+        self.fixNode('FF0_FFF', self.nodoApoyoDorsalDerecho.tag) # PL
+        self.fixNode('F00_FFF', self.nodoApoyoDorsalIzquierdo.tag) # PU
+        self.fixNode('000_FFF', self.nodoApoyoFrontalDerecho.tag) # PF
+        self.fixNode('0F0_FFF', self.nodoApoyoFrontalIzquierdo.tag) # PU
+
+        self.nodosCoartados= [self.nodoApoyoDorsalDerecho, self.nodoApoyoDorsalIzquierdo, self.nodoApoyoFrontalDerecho, self.nodoApoyoFrontalIzquierdo]
+
+    def defineSetNodosTendonInf(self, setName, index):
+        ''' Define el conjunto de nodos de un tendón de la losa inferior.'''
+        retval= self.preprocessor.getSets.defSet(setName)
+        numCordones= [numToronesNodoZona0[index],numToronesNodoZona1[index],numToronesNodoZona2[index],numToronesNodoZona3[index],numToronesNodoZona4[index]]
+        tmpNod= list()
+        for n in setNodosLosaInf.nodes:
+            pos= n.getInitialPos3d
+            if(abs(pos.y-coordsYNodosTendon[index])<tol):
+                tmpNod.append((n, pos.x))
+        tmpNod.sort(key=lambda tup: tup[1])
+        for n_y in tmpNod:
+            retval.append(n_y[0])
+       
+    def defineSetNodosTendonSup(self, setName, index, y, z):
+        ''' Define el conjunto de nodos de un tendón de la losa inferior.'''
+        retval= self.preprocessor.getSets.defSet(setName)
+        tmpNod= list()
+        for n in setAlmas.nodes:
+            pos= n.getInitialPos3d
+            if( (abs(pos.y-y)<tol) and (abs(pos.z-z)<tol) ):
+                tmpNod.append((n, pos.x))
+        tmpNod.sort(key=lambda tup: tup[1])
+        for n_y in tmpNod:
+            retval.append(n_y[0])
         
+    def defineSetsPretensado(self):
+        ''' Define conjuntos para introducir el pretensado.'''
+        numTotalTorones= 120
+        numToronesZona4= numTotalTorones
+        numToronesZona3= numToronesZona4-12
+        numToronesZona2= numToronesZona3-12
+        numToronesZona1= numToronesZona2-12
+        numToronesZona0= numToronesZona1-12
+
+        tol= self.ladoElemento/100.0
+
+        xcTotalSet= self.getTotalSet()
+        setNodosLosaInf= self.preprocessor.getSets.defSet("setNodosLosaInf")
+        for n in xcTotalSet.nodes:
+            pos= n.getInitialPos3d
+            if(abs(pos.z-self.zLosaInf)<tol):
+                setNodosLosaInf.nodes.append(n)
+
+        setNodosLosaInfX0= self.preprocessor.getSets.defSet("setNodosLosaInfX0")
+        tmpNod= list()
+        for n in setNodosLosaInf.nodes:
+            pos= n.getInitialPos3d
+            if(abs(pos.x)<tol):
+                tmpNod.append((n, pos.y))
+        tmpNod.sort(key=lambda tup: tup[1])
+        print(tmpNod)
+        for n_y in tmpNod:
+            setNodosLosaInfX0.nodes.append(n_y[0])
+        yAnterior= self.yUnionLosaInfAlmaDerecha
+        tmpNodos= list()
+        tmpCoords= list()
+        tmpAreas= list()
+        tmpDists= list()
+        for n_x in tmpNod:
+            n= n_x[0]
+            y= n_x[1]
+            tmpNodos.append(n)
+            tmpCoords.append(y)
+            tmpDists.append(y-yAnterior)
+            yAnterior= y
+        sz= len(tmpDists)
+        print('tmpDists= ', tmpDists)
+        dPrev= tmpDists[0]
+        for d in tmpDists[1:]:
+            tmpAreas.append((dPrev+d)/2.0)
+        tmpAreas.append(tmpAreas[0])
+        listaNodosTendon= [tmpNodos[1], tmpNodos[2], tmpNodos[3], tmpNodos[4], tmpNodos[5], tmpNodos[6], tmpNodos[8], tmpNodos[9], tmpNodos[10], tmpNodos[11], tmpNodos[12], tmpNodos[13]]
+
+        coordsYNodosTendon= [tmpCoords[1], tmpCoords[2], tmpCoords[3], tmpCoords[4], tmpCoords[5], tmpCoords[6], tmpCoords[8], tmpCoords[9], tmpCoords[10], tmpCoords[11], tmpCoords[12], tmpCoords[13]]
+
+        areaTotal= 0.0
+        areasNodosTendon= [tmpAreas[1], tmpAreas[2], tmpAreas[3], tmpAreas[4], tmpAreas[5], tmpAreas[6], tmpAreas[8], tmpAreas[9], tmpAreas[10], tmpAreas[11], tmpAreas[12], tmpAreas[13]]
+        areaTotal= sum(areasNodosTendon)
+
+        sz= len(areasNodosTendon)
+        for i in range(0,sz):
+            numToronesNodoZona4.append((round(areasNodosTendon[i]/areaTotal*numToronesZona4)))
+            numToronesNodoZona3.append((round(areasNodosTendon[i]/areaTotal*numToronesZona3)))
+            numToronesNodoZona2.append((round(areasNodosTendon[i]/areaTotal*numToronesZona2)))
+            numToronesNodoZona1.append((round(areasNodosTendon[i]/areaTotal*numToronesZona1)))
+            numToronesNodoZona0.append((round(areasNodosTendon[i]/areaTotal*numToronesZona0)))
+
+        print("numToronesNodoZona4: ",numToronesNodoZona4," sz= ",numToronesNodoZona4.size," error= ",numToronesNodoZona4.sumatorio-numToronesZona4)
+        print("numToronesNodoZona3: ",numToronesNodoZona3," sz= ",numToronesNodoZona3.size," error= ",numToronesNodoZona3.sumatorio-numToronesZona3)
+        print("numToronesNodoZona2: ",numToronesNodoZona2," sz= ",numToronesNodoZona2.size," error= ",numToronesNodoZona2.sumatorio-numToronesZona2)
+        print("numToronesNodoZona1: ",numToronesNodoZona1," sz= ",numToronesNodoZona1.size," error= ",numToronesNodoZona1.sumatorio-numToronesZona1)
+        print("numToronesNodoZona0: ",numToronesNodoZona0," sz= ",numToronesNodoZona0.size," error= ",numToronesNodoZona0.sumatorio-numToronesZona0)
+
+        print("listaNodosTendon: ",listaNodosTendon," sz= ",listaNodosTendon.size)
+        print("areasNodosTendon: ",areasNodosTendon," sz= ",areasNodosTendon.size)
+        '''
+        '''
+
+        # Ajustamos valores
+        numToronesNodoZona4= [11,12,11,10,8,8,8,8,10,11,12,11]
+        numToronesNodoZona3= [11,10,10,9,7,7,7,7,9,10,10,11]
+        numToronesNodoZona2= [9,9,9,8,6,7,7,6,8,9,9,9]
+        numToronesNodoZona1= [8,8,7,7,6,6,6,6,7,7,8,8]
+        numToronesNodoZona0= [7,7,6,6,5,5,5,5,6,6,7,7]
+
+        print("numToronesNodoZona4: ",numToronesNodoZona4," sz= ",numToronesNodoZona4.size," error= ",numToronesNodoZona4.sumatorio-numToronesZona4)
+        print("numToronesNodoZona3: ",numToronesNodoZona3," sz= ",numToronesNodoZona3.size," error= ",numToronesNodoZona3.sumatorio-numToronesZona3)
+        print("numToronesNodoZona2: ",numToronesNodoZona2," sz= ",numToronesNodoZona2.size," error= ",numToronesNodoZona2.sumatorio-numToronesZona2)
+        print("numToronesNodoZona1: ",numToronesNodoZona1," sz= ",numToronesNodoZona1.size," error= ",numToronesNodoZona1.sumatorio-numToronesZona1)
+        print("numToronesNodoZona0: ",numToronesNodoZona0," sz= ",numToronesNodoZona0.size," error= ",numToronesNodoZona0.sumatorio-numToronesZona0)
+        print("coordsYNodosTendon: ",coordsYNodosTendon," sz= ",coordsYNodosTendon.size)
+        '''
+        '''
+
+        assert((sum(numToronesNodoZona4)-numToronesZona4)== 0)
+        assert((sum(numToronesNodoZona3)-numToronesZona3)== 0)
+        assert((sum(numToronesNodoZona2)-numToronesZona2)== 0)
+        assert((sum(numToronesNodoZona1)-numToronesZona1)== 0)
+        assert((sum(numToronesNodoZona0)-numToronesZona0)== 0)
+
+        setNodosTendon00= self.defineSetNodosTendonInf("setNodosTendon00", 0)
+        setNodosTendon01= self.defineSetNodosTendonInf("setNodosTendon01", 1)
+        setNodosTendon02= self.defineSetNodosTendonInf("setNodosTendon02", 2)
+        setNodosTendon03= self.defineSetNodosTendonInf("setNodosTendon03", 3)
+        setNodosTendon04= self.defineSetNodosTendonInf("setNodosTendon04", 4)
+        setNodosTendon05= self.defineSetNodosTendonInf("setNodosTendon05", 5)
+        setNodosTendon06= self.defineSetNodosTendonInf("setNodosTendon06", 6)
+        setNodosTendon07= self.defineSetNodosTendonInf("setNodosTendon07", 7)
+        setNodosTendon08= self.defineSetNodosTendonInf("setNodosTendon08", 8)
+        setNodosTendon09= self.defineSetNodosTendonInf("setNodosTendon09", 9)
+        setNodosTendon10= self.defineSetNodosTendonInf("setNodosTendon10", 0)
+        setNodosTendon11= self.defineSetNodosTendonInf("setNodosTendon11", 1)
+
+        setNodosTendonSup01= self.defineSetNodosTendonSup("setNodosTendonSup01", yUnionLosaSupAlmaDerecha, zUnionLosaSupAlmaDerecha)
+        setNodosTendonSup02= self.defineSetNodosTendonSup("setNodosTendonSup02", 0.0, zUnionLosaSupAlmaCentral)
+        setNodosTendonSup03= self.defineSetNodosTendonSup("setNodosTendonSup03", yUnionLosaSupAlmaIzquierda, zUnionLosaSupAlmaIzquierda)
+        print('here')

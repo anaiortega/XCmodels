@@ -7,11 +7,6 @@ execfile('modelo/fija_nodo_6gdl_xcm.py')
 execfile('modelo/rigid_beam_xcm.py')
 execfile('modelo/cargas_elem_xcm.py')
 execfile('modelo/cargas_nodo_xcm.py')
-execfile('vtk/displayVtk.lcmm')
-execfile('vtk/malla_cad/vtk_define_malla_cad_xcm.py')
-execfile('vtk/malla_ef/vtk_define_malla_elementos_xcm.py')
-execfile('vtk/vtk_cargas_xcm.py')
-execfile('vtk/utilsVtk.lcmm')
 execfile('solucion/solucion_xci.py')
 execfile('materiales/ehe/auxEHE_xcm.py')
 execfile('materiales/ehe/relajacion_acero_xcm.py')
@@ -50,7 +45,13 @@ execfile('datos_base_xci.py')
 modelSpace.defineTablero()
 modelSpace.defineSets()
 execfile('modelo/materiales_xci.py')
+
+
 modelSpace.genMesh()
+modelSpace.setConstraints()
+LTot= modelSpace.getLTot()
+modelSpace.defineSetsPretensado()
+
 
 # Graphic stuff.
 oh= output_handler.OutputHandler(modelSpace)
@@ -58,8 +59,6 @@ oh.displayBlocks()
 oh.displayFEMesh()
 quit()
 
-execfile('modelo/conds_contorno_xci.py')
-LTot= (LTramo0+LTramo1+LTramo2)*2.0+LTramo3
 execfile('modelo/sets_pretensado_xci.py')
 execfile('modelo/genera_malla_tendones_xci.py')
 execfile('acciones/define_casos_carga_xci.py')
