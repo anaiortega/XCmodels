@@ -67,6 +67,14 @@ Qpoint2_Trafmod1=coef_tr_load*200e3/2.0 #[N]  Load model  1, lane 1
 
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
+from postprocess.config import default_config
+from postprocess import output_styles as outSty
+from postprocess import output_handler as outHndl
+
+workingDirectory= default_config.findWorkingDirectory()+'/'
+execfile(workingDirectory+'env_config.py')
+sty=outSty.OutputStyle() 
+
 FEcase= xc.FEProblem()
 prep=FEcase.getPreprocessor
 nodes= prep.getNodeHandler
@@ -79,6 +87,7 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the dimensio
 
 #           **** Grid model for the generation of the DECK ****
 
+out=outHndl.OutputHandler(modelSpace,sty)
 # coordinates in global X,Y,Z axes for the grid generation
 xList_deck=[0,0.45,6.45,8.15]
 yList_deck=[0,delta_Y+3,L_long_side_Y-delta_Y-3,L_long_side_Y]
@@ -222,7 +231,7 @@ curb_mesh.generateMesh(prep)     #mesh the set of surfaces
 #fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamY_mesh,columnZ_mesh,found_mesh,wall_mesh])     #mesh these sets
 
 
-shells=deck+curb
+shells=modelSpace.setSum('shells',[deck,curb])
 shells.description="deck"
 
 roadway_rg=gm.IJKRange((1,0,0),(2,lastYpos,0))
@@ -235,8 +244,8 @@ kerb1_ln=sets.get_lines_on_points(setPoints=kerb1_kps,setLinName='kerb1_ln',only
 kerb2_rg=gm.IJKRange((2,0,0),(2,lastYpos,0))
 kerb2_kps=gridDeck.getSetPntRange(ijkRange=kerb2_rg,setName='kerb2_kps')
 kerb2_ln=sets.get_lines_on_points(setPoints=kerb2_kps,setLinName='kerb2_ln',onlyIncluded=True)
-kerbs=kerb1_ln+kerb2_ln
-kerbs.name='kerbs'
+kerbs=modelSpace.setSum('kerbs',[kerb1_ln,kerb2_ln])
+
 
 barr1_rg=gm.IJKRange((0,0,lastZpos),(0,lastYpos,lastZpos))
 barr1_kps=gridDeck.getSetPntRange(ijkRange=barr1_rg,setName='barr1_kps')
@@ -244,8 +253,7 @@ barr1_ln=sets.get_lines_on_points(setPoints=barr1_kps,setLinName='barr1_ln',only
 barr2_rg=gm.IJKRange((lastXpos,0,lastZpos),(lastXpos,lastYpos,lastZpos))
 barr2_kps=gridDeck.getSetPntRange(ijkRange=barr2_rg,setName='barr2_kps')
 barr2_ln=sets.get_lines_on_points(setPoints=barr2_kps,setLinName='barr2_ln',onlyIncluded=True)
-barrs=barr1_ln+barr2_ln
-barrs.name='barrs'
+barrs=modelSpace.setSum('barrs',[barr1_ln,barr2_ln])
 
 
 # Connection between cables and deck
@@ -318,10 +326,8 @@ poly_lane_Lausanne.appendVertex(geom.Pos2d(xList_deck[2],yList_deck[lastYpos]))
 poly_lane_Lausanne.appendVertex(geom.Pos2d(xList_deck[2],0))
 lane_Lausanne=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=deck,prismBase=poly_lane_Lausanne,prismAxis='Z',setName='lane_Lausanne')
 
-rest_A=lane_Bern+sideway
-rest_A.name='rest_A'
-rest_B=lane_Lausanne+sideway
-rest_B.name='rest_B'
+rest_A=modelSpace.setSum('rest_A',[lane_Bern,sideway])
+rest_B=modelSpace.setSum('rest_A',[lane_Lausanne,sideway])
 
 poly_lane1_Acc=geom.Polygon2d()
 poly_lane1_Acc.appendVertex(geom.Pos2d(xList_deck[lastXpos]-3,0))
@@ -406,7 +412,7 @@ Qaccidental.create()
 Qaccidental.addLstLoads([q1_accidental,Q1p_accidental])
 
 overallSet=prep.getSets.getSet('total')
-shellsPcable=deck+curb+cables
+shellsPcable=modelSpace.setSum('shellsPcable',[deck,curb,cables])
 
 #Load cases defined only for purposes of loads displaying
 QliveLoadA_unif=lcases.LoadCase(preprocessor=prep,name="QliveLoadA_unif",loadPType="default",timeSType="constant_ts")
@@ -456,3 +462,4 @@ combContainer.ULS.fatigue.add('ELUF2','1.00*GselfWeight+1.0*GdeadLoad+1.0*Qfatig
 #Frequent combinations.
 combContainer.SLS.freq.add('ELS', '1.0*GselfWeight+1.0*GdeadLoad+0.75*QliveLoadA')
 
+out.displayFEMesh()
