@@ -1,0 +1,9 @@
+#!/usr/bin/gnuplot
+set encoding iso_8859_1
+set terminal postscript eps color enhanced
+set output "output.eps"
+set xlabel "Velocidad (km/h)" 0.000000,0.000000;
+set ylabel "Aceleración vertical (m/s2)" 0.000000,0.000000;
+set title "Aceleraciones máximas obtenidas en centro de vano" 0.000000,0.000000;
+plot "aMaximaTalgo350.dat" with lines;
+#    EOF
