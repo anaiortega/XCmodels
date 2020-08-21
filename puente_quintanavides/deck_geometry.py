@@ -649,3 +649,248 @@ class DeckGeometry(predefined_spaces.StructuralMechanics3D):
         for s in [self.setNodosTendonSup01, self.setNodosTendonSup02, self.setNodosTendonSup03]:
             for e in s.elements:
                 e.sectionArea= areaCordon*3
+
+    def mallaLosaSup(self):
+        ''' Malla la losa hormigonada "in situ".'''
+        seedElemHandler= self.preprocessor.getElementHandler.seedElemHandler
+        seedElemHandler.defaultMaterial= 'hormLosaSup'
+        self.setLosaSup.genMesh(xc.meshDir.I)
+        self.setLosaSup.fillDownwards()
+        
+    def createLoadDefinitionSets(self):
+        ''' Crea los conjuntos necesarios para aplicar las cargas.'''
+        tol= self.ladoElemento/100.0
+        self.setNodosVia1= self.preprocessor.getSets.defSet('setNodosVia1')
+        xcTotalSet= self.getTotalSet()
+        for n in xcTotalSet.nodes:
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yVia1CD)<tol) and (abs(pos.z-self.zVia1CD)<tol)):
+                self.setNodosVia1.nodes.append(n)
+            if((abs(pos.y-self.yVia1CI)<tol) and (abs(pos.z-self.zVia1CI)<tol)):
+                self.setNodosVia1.nodes.append(n)
+           
+        self.setNodosVia2= self.preprocessor.getSets.defSet('setNodosVia2')
+        for n in xcTotalSet.nodes:          
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yVia2CD)<tol) and (abs(pos.z-self.zVia2CD)<tol)):
+                self.setNodosVia2.nodes.append(n)
+            if((abs(pos.y-self.yVia2CI)<tol) and (abs(pos.z-self.zVia2CI)<tol)):
+                self.setNodosVia2.nodes.append(n)
+           
+        self.setNodosMureteCI= self.preprocessor.getSets.defSet('setNodosMureteCI')
+        for n in xcTotalSet.nodes:
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yMureteCI)<0.4)):
+                self.setNodosMureteCI.nodes.append(n)
+           
+         # Elementos sobre los que actúa la carga de nieve.
+        setElemsNieve= self.preprocessor.getSets.defSet('setElemsNieve')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)
+            if((center.y<self.yVia1CD) and (center.z>1.3) and (e.getDimension>1)):
+                setElemsNieve.elements.append(e)
+            if((center.y>self.yVia1CI) and (center.y<self.yVia2CD) and (center.z>1.3) and (e.getDimension>1)):
+                setElemsNieve.elements.append(e)
+            if((center.y>self.yVia2CI) and (center.z>1.3) and (e.getDimension>1)):
+                setElemsNieve.elements.append(e)
+           
+        # Abcisas para aplicación de las cargas del tren 1.
+        x1TC1= self.LTramo0
+        x2TC1= x1TC1+1.6
+        x3TC1= x2TC1+1.6
+        x4TC1= x3TC1+1.6
+        x5TC1= x4TC1+0.8
+
+        # Abcisas para aplicación de las cargas del tren 2.
+        x0TC2= 15.8
+        x1TC2= x0TC2+0.8
+        x2TC2= x1TC2+1.6
+        x3TC2= x2TC2+1.6
+        x4TC2= x3TC2+1.6
+        x5TC2= x4TC2+0.8
+
+        # Abcisas para aplicación de las cargas del tren 3.
+        LTot= self.getLTot()
+        x4TC3= LTot-self.LTramo0
+        x3TC3= x4TC3-1.6
+        x2TC3= x3TC3-1.6
+        x1TC3= x2TC3-1.6
+        x0TC3= x1TC3-0.8
+
+        self.setNodosPVia1TC1= self.preprocessor.getSets.defSet('setNodosPVia1TC1')
+        for n in self.setNodosVia1.nodes:                     
+            pos= n.getInitialPos3d
+            if(abs(pos.x-x1TC1)<tol):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-x2TC1)<tol*10):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-x3TC1)<tol*10):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-x4TC1)<tol*15):
+                self.setNodosPVia1TC1.nodes.append(n)
+        assert(len(self.setNodosPVia1TC1.nodes)==8)
+           
+        self.setNodosRVia1TC1= self.preprocessor.getSets.defSet('setNodosRVia1TC1')
+        for n in self.setNodosVia1.nodes:                                
+            pos= n.getInitialPos3d
+            if(pos.x>x5TC1):
+                self.setNodosRVia1TC1.nodes.append(n)
+           
+        self.setNodosPVia2TC1= self.preprocessor.getSets.defSet('setNodosPVia2TC1')
+        for n in self.setNodosVia2.nodes:                                          
+            pos= n.getInitialPos3d
+            if(abs(pos.x-x1TC1)<tol):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-x2TC1)<tol*10):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-x3TC1)<tol*10):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-x4TC1)<tol*15):
+                self.setNodosPVia2TC1.nodes.append(n)
+        assert(len(self.setNodosPVia2TC1.nodes)==8)
+           
+        self.setNodosRVia2TC1= self.preprocessor.getSets.defSet('setNodosRVia2TC1')
+        for n in self.setNodosVia2.nodes:                                            
+            pos= n.getInitialPos3d
+            if(pos.x>x5TC1):
+                self.setNodosRVia2TC1.nodes.append(n)
+           
+        self.setNodosPMureteCI= self.preprocessor.getSets.defSet('setNodosPMureteCI')
+        for n in self.setNodosMureteCI.nodes:                                        
+            pos= n.getInitialPos3d
+            if(abs(pos.x-x1TC1)<tol):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-x2TC1)<tol*10):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-x3TC1)<tol*10):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-x4TC1)<tol*15):
+                self.setNodosPMureteCI.nodes.append(n)
+        assert(len(self.setNodosPMureteCI.nodes)==4)
+           
+        self.setNodosRMureteCI= self.preprocessor.getSets.defSet('setNodosRMureteCI')
+        for n in self.setNodosMureteCI.nodes:
+            pos= n.getInitialPos3d
+            if((pos.x>x5TC1) and (pos.x<20)):
+                self.setNodosRMureteCI.nodes.append(n)
+        for n in self.setNodosRMureteCI.nodes:
+             print("x= ",pos.x,", y= ",pos.y,", z= ",pos.z,"n")
+                
+           
+        self.setNodosPVia1TC2= self.preprocessor.getSets.defSet('setNodosPVia1TC2')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d           
+            if(abs(pos.x-x1TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-x2TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-x3TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-x4TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+        assert(len(self.setNodosPVia1TC2.nodes)==8)
+           
+        self.setNodosRVia1TC2= self.preprocessor.getSets.defSet('setNodosRVia1TC2')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d           
+            if(pos.x<x0TC2):
+                self.setNodosRVia1TC2.nodes.append(n)
+            if(pos.x>x5TC2):
+                self.setNodosRVia1TC2.nodes.append(n)
+           
+        self.setNodosPVia2TC2= self.preprocessor.getSets.defSet('setNodosPVia2TC2')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d                      
+            if(abs(pos.x-x1TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-x2TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-x3TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-x4TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+        assert(len(self.setNodosPVia2TC2.nodes)==8)
+           
+        self.setNodosRVia2TC2= self.preprocessor.getSets.defSet('setNodosRVia2TC2')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d                                 
+            if(pos.x<x0TC2):
+                self.setNodosRVia2TC2.nodes.append(n)
+            if(pos.x>x5TC2):
+                self.setNodosRVia2TC2.nodes.append(n)
+           
+
+        self.setNodosPVia1TC3= self.preprocessor.getSets.defSet('setNodosPVia1TC3')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d                                            
+            if(abs(pos.x-x1TC3)<tol*15):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-x2TC3)<tol*10):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-x3TC3)<tol*10):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-x4TC3)<tol):
+                self.setNodosPVia1TC3.nodes.append(n)
+        assert(len(self.setNodosPVia1TC3.nodes)==8)
+           
+        self.setNodosRVia1TC3= self.preprocessor.getSets.defSet('setNodosRVia1TC3')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d                                              
+            if(pos.x<x0TC3):
+                self.setNodosRVia1TC3.nodes.append(n)
+           
+        self.setNodosPVia2TC3= self.preprocessor.getSets.defSet('setNodosPVia2TC3')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d
+            if(abs(pos.x-x1TC3)<tol*15):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-x2TC3)<tol*10):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-x3TC3)<tol*10):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-x4TC3)<tol):
+                self.setNodosPVia2TC3.nodes.append(n)
+        assert(len(self.setNodosPVia2TC3.nodes)==8)
+           
+        self.setNodosRVia2TC3= self.preprocessor.getSets.defSet('setNodosRVia2TC3')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d           
+            if(pos.x<x0TC3):
+                self.setNodosRVia2TC3.nodes.append(n)
+           
+         # Elementos sobre los que actúa la componente horizontal del viento transversal.
+        setElemsVientoTrsvH= self.preprocessor.getSets.defSet('setElemsVientoTrsvH')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)
+            if((center.y<self.yUnionLosaInfAlmaDerecha) and (center.y>self.yUnionLosaSupAlmaDerecha) and (center.z<self.zUnionLosaSupAlmaDerecha) and (center.z>(self.zUnionLosaSupAlmaDerecha+self.zLosaInf)/2) and (abs(center.x-0.6)>tol) and (abs(center.x-38.6)>tol) and (e.getDimension>1)):
+                setElemsVientoTrsvH.elements.append(e)
+             # completa_hacia_abajo(
+        print("Número de elementos: ",len(setElemsVientoTrsvH.elements))
+        print("Número de nodos: ",len(setElemsVientoTrsvH.nodes))
+           
+         # Elementos sobre los que actúa la componente vertical del viento transversal.
+        setElemsVientoTrsvV= self.preprocessor.getSets.defSet('setElemsVientoTrsvV')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)           
+            if((center.y<0) and (center.z>self.zExtremoAlas) and (e.getDimension>1)):
+                setElemsVientoTrsvV.elements.append(e)
+             # completa_hacia_abajo(
+        print("Número de elementos: ",len(setElemsVientoTrsvV.elements))
+        print("Número de nodos: ",len(setElemsVientoTrsvV.nodes))
+           
+         # Elementos sobre los que actúa el viento transversal.
+        setElemsVientoTrsv= self.setSum('setElemsVientoTrsv',[setElemsVientoTrsvH, setElemsVientoTrsvV])
+        print("Número de elementos: ",len(setElemsVientoTrsv.elements))
+        print("Número de nodos: ",len(setElemsVientoTrsv.nodes))
+           
+         # Elementos sobre los que actúa el viento longitudinal.
+        setElemsVientoLong= self.preprocessor.getSets.defSet('setElemsVientoLong')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)           
+           
+            if((center.z>self.zExtremoAlas) and (e.getDimension>1)):
+                setElemsVientoLong.elements.append(e)
+        print("Número de elementos: ",len(setElemsVientoLong.elements))
+        print("Número de nodos: ",len(setElemsVientoLong.nodes))
+           
+        

@@ -1,6 +1,5 @@
-\mdlr
-    loads(casos(set_current_load_pattern("NV")))
-    \sets
+    cLC= loadCaseManager.setCurrentLoadCase('NV')
         cargaNieve= 1e3
-        \setElemsNieve{\elementos{\for_each{\vector3d_uniform_load_global{[0.0,0.0,-cargaNieve]}}}}
+        for e in setElemsNieve.elements:
+            e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-cargaNieve]))
 

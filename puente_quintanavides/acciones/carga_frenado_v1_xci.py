@@ -1,10 +1,6 @@
 # Frenado en vía 1
-\mdlr
-    loads(casos(set_current_load_pattern("FV1")))
-    \sets
+    cLC= loadCaseManager.setCurrentLoadCase('FV1')
         frenadoVia= 1.21*20e3*ladoElemento/2
-        \setNodosVia1{\nodos{\for_each
-          {
-            load([frenadoVia,0,0,0,0,0])
-          }}}
+        for n in setNodosVia1.nodes:
+            n.newLoad(xc.Vector([frenadoVia,0,0,0,0,0]))
 

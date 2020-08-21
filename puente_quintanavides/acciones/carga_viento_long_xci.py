@@ -1,6 +1,5 @@
-\mdlr
-    loads(casos(set_current_load_pattern("VLONG")))
-    \sets
+    cLC= loadCaseManager.setCurrentLoadCase('VLONG')
         vientoLongH= FkHTablero/cantoTablero*0.25/coefReductor
-        \setElemsVientoLong{\elementos{\for_each{\vector3d_uniform_load_global{[vientoLongH,0,0]}}}}
+        for e in setElemsVientoLong.elements:
+            e.vector3dUniformLoadGlobal(xc.Vector([vientoLongH,0,0]))
 

@@ -8,28 +8,28 @@ x2= x1+1.6 # Abcisa de la segunda carga puntual.
 x3= x2+1.6 # Abcisa de la tercera carga puntual.
 x4= x3+1.6 # Abcisa de la cuarta carga puntual.
 
-\sets
+sets
    {
      nP1= 
      nP2= 
      nP3= 
      nP4= 
-     \lineasTablero
+     lineasTablero
        {
          nP1= getTagNearestNode(x1,0.0,0.0)
          nP2= getTagNearestNode(x2,0.0,0.0)
          nP3= getTagNearestNode(x3,0.0,0.0)
          nP4= getTagNearestNode(x4,0.0,0.0)
        }
-     \def_set["TC3ElementosCargaR"]
+     def_set["TC3ElementosCargaR"]
        {
          sel_elem_cond((getCooMinNod(0)<x0) & (getDimension==1))
        }
-     \def_set["TC3NodosCargaR"]
+     def_set["TC3NodosCargaR"]
        {
          sel_nod_cond((coord[0]<x1) & (coord[2]>9) )
        }
-     \def_set["TC3NodosCargaP"]
+     def_set["TC3NodosCargaP"]
        {
          sel_nod(nP1,nP2,nP3,nP4)
        }

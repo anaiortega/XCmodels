@@ -30,6 +30,7 @@ from model import predefined_spaces
 from postprocess import output_handler
 from materials import typical_materials
 from materials.ehe import EHE_materials
+from actions import load_cases as lcm
 
 FEcase= xc.FEProblem()
 FEcase.title= 'Puente Arroyo del Molino'
@@ -53,6 +54,9 @@ LTot= modelSpace.getLTot()
 modelSpace.defineSetsPretensado()
 modelSpace.mallaTendones(areaCordon)
 
+# Loads
+execfile('loads.py')
+
 
 # Graphic stuff.
 oh= output_handler.OutputHandler(modelSpace)
@@ -60,12 +64,23 @@ oh.displayBlocks()
 oh.displayFEMesh()
 quit()
 
-execfile('acciones/define_casos_carga_xci.py')
-execfile('acciones/parametros_carga_xci.py')
-execfile('acciones/carga_viga_xci.py')
-execfile('modelo/genera_malla_losa_sup_xci.py')
-execfile('acciones/sets_def_cargas_xci.py')
-execfile('acciones/cargas_puente_xci.py')
+execfile('acciones/carga_arranque_v1_xci.py')
+execfile('acciones/carga_arranque_v2_xci.py')
+execfile('acciones/carga_frenado_v1_xci.py')
+execfile('acciones/carga_frenado_v2_xci.py')
+execfile('acciones/carga_lazo_v1_xci.py')
+execfile('acciones/carga_lazo_v2_xci.py')
+execfile('acciones/carga_nieve_xci.py')
+execfile('acciones/carga_tren1_v1_xci.py')
+execfile('acciones/carga_tren1_v2_xci.py')
+execfile('acciones/carga_tren2_v1_xci.py')
+execfile('acciones/carga_tren2_v2_xci.py')
+execfile('acciones/carga_tren3_v1_xci.py')
+execfile('acciones/carga_tren3_v2_xci.py')
+execfile('acciones/carga_tren3_v2_xci.py')
+execfile('acciones/carga_viento_trsv_xci.py')
+execfile('acciones/carga_viento_long_xci.py')
+execfile('acciones/carga_descarrilo_xci.py')
 execfile('modelo/sets_listados_xci.py')
 
 
