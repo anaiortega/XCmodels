@@ -152,3 +152,130 @@ cLC= loadCaseManager.setCurrentLoadCase('ARRV1')
 arranqueVia= 1.21*33e3*modelSpace.ladoElemento/2*30/LTot
 for n in modelSpace.setNodosVia1.nodes:
     n.newLoad(xc.Vector([-arranqueVia,0,0,0,0,0]))
+
+# Arranque en vía 2
+cLC= loadCaseManager.setCurrentLoadCase('ARRV2')
+arranqueVia= 1.21*33e3*modelSpace.ladoElemento/2*30/38
+for n in modelSpace.setNodosVia2.nodes:
+    n.newLoad(xc.Vector([-arranqueVia,0,0,0,0,0]))
+
+# Frenado en vía 1
+cLC= loadCaseManager.setCurrentLoadCase('FV1')
+frenadoVia= 1.21*20e3*modelSpace.ladoElemento/2
+for n in modelSpace.setNodosVia1.nodes:
+    n.newLoad(xc.Vector([frenadoVia,0,0,0,0,0]))
+    
+# Frenado en vía 2
+cLC= loadCaseManager.setCurrentLoadCase('FV2')
+frenadoVia= 1.21*20e3*modelSpace.ladoElemento/2
+for n in modelSpace.setNodosVia2.nodes:
+    n.newLoad(xc.Vector([frenadoVia,0,0,0,0,0]))
+
+# Carga de lazo en vía 1
+cargaLazo= 1.21*100e3
+nP1= modelSpace.setNodosVia1.getNearestNode(geom.Pos3d(LTablero/2.0,modelSpace.yVia1CD,modelSpace.zVia1CD))
+cLC= loadCaseManager.setCurrentLoadCase('LZV1')
+nP1.newLoad(xc.Vector([0,cargaLazo,0,0,0,0]))
+
+# Carga de lazo en vía 2
+nP1= modelSpace.setNodosVia2.getNearestNode(geom.Pos3d(LTablero/2.0,modelSpace.yVia2CI,modelSpace.zVia2CI))
+cLC= loadCaseManager.setCurrentLoadCase('LZV2')
+nP1.newLoad(xc.Vector([0,-cargaLazo,0,0,0,0]))
+
+# Carga de nieve.
+cLC= loadCaseManager.setCurrentLoadCase('NV')
+cargaNieve= 1e3
+for e in modelSpace.setElemsNieve.elements:
+    e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-cargaNieve]))
+
+# tren de cargas 1 en vía 1
+cLC= loadCaseManager.setCurrentLoadCase('TC1V1')
+sepMediaNodos= (LTot-modelSpace.x5TC1)*2/len(modelSpace.setNodosRVia1TC1.nodes)
+for n in modelSpace.setNodosRVia1TC1.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia1TC1.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+    
+# tren de cargas 1 en vía 2
+cLC= loadCaseManager.setCurrentLoadCase('TC1V2')
+sepMediaNodos= (LTot-modelSpace.x5TC1)*2/len(modelSpace.setNodosRVia1TC1.nodes)
+for n in modelSpace.setNodosRVia2TC1.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia2TC1.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+
+# tren de cargas 2 en vía 1
+cLC= loadCaseManager.setCurrentLoadCase('TC2V1')
+sepMediaNodos= (LTot-modelSpace.x5TC2+modelSpace.x0TC2)*2/len(modelSpace.setNodosRVia1TC2.nodes)
+for n in modelSpace.setNodosRVia1TC2.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia1TC2.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+    
+# tren de cargas 2 en vía 2
+cLC= loadCaseManager.setCurrentLoadCase('TC2V2')
+sepMediaNodos= (LTot-modelSpace.x5TC2+modelSpace.x0TC2)*2/len(modelSpace.setNodosRVia2TC2.nodes)
+for n in modelSpace.setNodosRVia2TC2.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia2TC2.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+
+# tren de cargas 3 en vía 1
+cLC= loadCaseManager.setCurrentLoadCase('TC3V1')
+sepMediaNodos= modelSpace.x0TC3*2/len(modelSpace.setNodosRVia1TC3.nodes)
+for n in modelSpace.setNodosRVia1TC3.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia1TC3.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+    
+# tren de cargas 3 en vía 2
+cLC= loadCaseManager.setCurrentLoadCase('TC3V2')
+sepMediaNodos= modelSpace.x0TC3*2/len(modelSpace.setNodosRVia2TC3.nodes)
+for n in modelSpace.setNodosRVia2TC3.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPVia2TC3.nodes:
+    n.newLoad(xc.Vector([0,0,-cargaPCarril,0,0,0]))
+    
+# Viento transversal
+cLC= loadCaseManager.setCurrentLoadCase('VTRSV')
+vientoTrsvH= FkHTablero/cantoTablero*2 # Se aplica en los elementos de la mitad superior para simular el momento.
+for e in modelSpace.setElemsVientoTrsvH.elements:
+    e.vector3dUniformLoadGlobal(xc.Vector([0,vientoTrsvH,0]))
+vientoTrsvV= FkVTablero/BTablero*2# Se aplica en los elementos de la mitad derecha para simular el momento.
+for e in modelSpace.setElemsVientoTrsvV.elements:
+    e.vector3dUniformLoadGlobal(xc.Vector([0,0,vientoTrsvV]))
+    
+# Viento longitudinal
+cLC= loadCaseManager.setCurrentLoadCase('VLONG')
+vientoLongH= FkHTablero/cantoTablero*0.25/coefReductor
+for e in modelSpace.setElemsVientoLong.elements:
+    e.vector3dUniformLoadGlobal(xc.Vector([vientoLongH,0,0]))
+
+# Descarrilo
+cLC= loadCaseManager.setCurrentLoadCase('AD2')
+sepMediaNodos= (20-modelSpace.x5TC1)/len(modelSpace.setNodosRMureteCI.nodes)
+print("sepMediaNodos= ",sepMediaNodos,"n")
+for n in modelSpace.setNodosRMureteCI.nodes:
+    n.newLoad(xc.Vector([0,0,-2*1.4*cargaRCarril*sepMediaNodos,0,0,0]))
+for n in modelSpace.setNodosPMureteCI.nodes:
+    n.newLoad(xc.Vector([0,0,-2*1.4*cargaPCarril,0,0,0]))
+
+# modelSpace.createStaticLoadTestSets()
+
+# # Cargas prueba de carga dinámica.
+# cLC= loadCaseManager.setCurrentLoadCase('PCD')
+# for e in modelSpace.setLosaSup.elements:
+#     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-pesoUnitarioLosaSup]))
+# for n in modelSpace.nodosRuedas:
+#     n.newLoad(xc.Vector([0,0,-19500*9.81,0,0,0]))
+
+# # Cargas prueba de carga estática.
+# cLC= loadCaseManager.setCurrentLoadCase('PCE')
+# for e in modelSpace.setLosaSup.elements:
+#     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-pesoUnitarioLosaSup]))
+# for n in modelSpace.nodosRuedasTraseras:
+#     n.newLoad(xc.Vector([0,0,-10*9810,0,0,0]))
+# for n in modelSpace.nodosRuedasIntermedias:
+#     n.newLoad(xc.Vector([0,0,-13*9810,0,0,0]))
+# for n in modelSpace.nodosRuedasDelanteras:
+#     n.newLoad(xc.Vector([0,0,-7*9810,0,0,0]))
