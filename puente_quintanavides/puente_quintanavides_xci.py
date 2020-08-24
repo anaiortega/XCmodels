@@ -2,15 +2,7 @@
 # Definición del puente.
 
 '''
-execfile('modelo/puntos_xcm.py')
-execfile('modelo/fija_nodo_6gdl_xcm.py')
-execfile('modelo/rigid_beam_xcm.py')
-execfile('modelo/cargas_elem_xcm.py')
-execfile('modelo/cargas_nodo_xcm.py')
 execfile('solucion/solucion_xci.py')
-execfile('materiales/ehe/auxEHE_xcm.py')
-execfile('materiales/ehe/relajacion_acero_xcm.py')
-execfile('materiales/ehe/retraccion_fluencia_xcm.py')
 execfile('listados/listados_reacciones_xcm.py')
 execfile('listados/listados_esfuerzos_xcm.py')
 execfile('listados/exporta_esfuerzos_xcm.py')
