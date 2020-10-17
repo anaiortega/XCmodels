@@ -29,13 +29,13 @@ class PP(object):
     self.cHandler= self.sm.newConstraintHandler("transformation_constraint_handler")
     self.numberer= self.sm.newNumberer("default_numberer")
     self.numberer.useAlgorithm("rcm")
-    analysisAggregations= self.solCtrl.getAnalysisAggregationContainer
-    self.analysisAggregation= analysisAggregations.newAnalysisAggregation("analysisAggregation","sm")
-    self.solAlgo= self.analysisAggregation.newSolutionAlgorithm("frequency_soln_algo")
-    self.integ= self.analysisAggregation.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
-    self.soe= self.analysisAggregation.newSystemOfEqn("band_arpack_soe")
+    solutionStrategies= self.solCtrl.getSolutionStrategyContainer
+    self.solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm")
+    self.solAlgo= self.solutionStrategy.newSolutionAlgorithm("frequency_soln_algo")
+    self.integ= self.solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
+    self.soe= self.solutionStrategy.newSystemOfEqn("band_arpack_soe")
     self.solver= self.soe.newSolver("band_arpack_solver")
-    self.analysis= self.solu.newAnalysis("modal_analysis","analysisAggregation","")
+    self.analysis= self.solu.newAnalysis("modal_analysis","solutionStrategy","")
     return self.analysis
 
 pp= PP()

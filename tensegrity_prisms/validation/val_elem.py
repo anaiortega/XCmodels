@@ -95,28 +95,28 @@ cHandler.alphaMP= 1.0e15  #Factor applied with multi-freedom constraints
 
 # Definition of the solution method
   #creation of a solution method
-analysisAggregations= solCtrl.getAnalysisAggregationContainer
-analysisAggregation= analysisAggregations.newAnalysisAggregation("analysisAggregation","sm") # newAnalysisAggregation(nameAnalysisAggregation,nameWrapper)
+solutionStrategies= solCtrl.getSolutionStrategyContainer
+solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm") # newSolutionStrategy(nameSolutionStrategy,nameWrapper)
   #definition of the solution algoritm
   #Available types: 'bfgs_soln_algo', 'broyden_soln_algo',
   #                  'krylov_newton_soln_algo','linear_soln_algo',
   #                  'modified_newton_soln_algo','newton_raphson_soln_algo',
   #                  'newton_line_search_soln_algo','periodic_newton_soln_algo'   #                  'frequency_soln_algo','standard_eigen_soln_algo',
   #                   'linear_buckling_soln_algo' 
-solAlgo= analysisAggregation.newSolutionAlgorithm("newton_raphson_soln_algo")
+solAlgo= solutionStrategy.newSolutionAlgorithm("newton_raphson_soln_algo")
   #definition of the convergence test
   #Available types: 'energy_inc_conv_test', 'fixed_num_iter_conv_test', 'norm_disp_incr_conv_test', 'norm_unbalance_conv_test', 'relative_energy_incr_conv_test', 'relative_norm_disp_incr_conv_test', 'relative_norm_unbalance_conv_test', 'relative_total_norm_disp_incr_conv_test'
-ctest= analysisAggregation.newConvergenceTest("norm_unbalance_conv_test")
+ctest= solutionStrategy.newConvergenceTest("norm_unbalance_conv_test")
 ctest.tol= 1e-4
 ctest.maxNumIter= 10
 ctest.printFlag= 1 #flag used to print information on convergence (optional)
   #definition of the integrator
   #Available types:'arc_length_integrator', 'arc_length1_integrator',  'displacement_control_integrator', 'distributed_displacement_control_integrator', 'HS_constraint_integrator', 'load_control_integrator', 'load_path_integrator', 'min_unbal_disp_norm_integrator', 'eigen_integrator', 'linear_buckling_integrator', 'alpha_os_integrator', 'alpha_os_generalized_integrator', 'central_difference_integrator', 'central_difference_alternative_integrator', 'central_difference_no_damping_integrator', 'collocation_integrator', 'collocation_hybrid_simulation_integrator', 'HHT_integrator', 'HHT1_integrator', 'HHT_explicit_integrator', 'HHT_generalized_integrator', 'HHT_generalized_explicit_integrator', 'HHT_hybrid_simulation_integrator', 'newmark_integrator', 'newmark1_integrator', 'newmark_explicit_integrator' 'newmark_hybrid_simulation_integrator', 'wilson_theta_integrator'
-integ= analysisAggregation.newIntegrator("load_control_integrator",xc.Vector([]))
+integ= solutionStrategy.newIntegrator("load_control_integrator",xc.Vector([]))
 integ.dLambda1= 0.1
   #definition of the system of equations.
   #vailable types: 'band_arpack_soe', 'band_arpackpp_soe', 'sym_arpack_soe', 'sym_band_eigen_soe', 'full_gen_eigen_soe', 'band_gen_lin_soe', 'distributed_band_gen_lin_soe', 'band_spd_lin_soe', 'distributed_band_spd_lin_soe', 'diagonal_soe', 'distributed_diagonal_soe', 'full_gen_lin_soe', 'profile_spd_lin_soe', 'distributed_profile_spd_lin_soe', 'sparse_gen_col_lin_soe', 'distributed_sparse_gen_col_lin_soe', 'sparse_gen_row_lin_soe', 'distributed_sparse_gen_row_lin_soe', 'sym_sparse_lin_soe'.
-soe= analysisAggregation.newSystemOfEqn("band_gen_lin_soe")
+soe= solutionStrategy.newSystemOfEqn("band_gen_lin_soe")
 # newSolver(tipo).
 #  Available solvers for eigenproblem Systems Of Equations:
 #    'band_arpack_solver', 'band_arpackpp_solver', 'sym_band_eigen_solver',
@@ -132,7 +132,7 @@ solver= soe.newSolver("band_gen_lin_lapack_solver")
 #    'direct_integration_analysis', 'eigen_analysis', 'modal_analysis',
 #    'linear_buckling_analysis', 'linear_buckling_eigen_analysis',
 #    'static_analysis', 'variable_time_step_direct_integration_analysis'   
-analysis= solu.newAnalysis("static_analysis","analysisAggregation","")
+analysis= solu.newAnalysis("static_analysis","solutionStrategy","")
 result= analysis.analyze(1)
 
 nodes.calculateNodalReactions(True,1e-6)
