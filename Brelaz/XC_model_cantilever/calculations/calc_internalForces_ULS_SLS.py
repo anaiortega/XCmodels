@@ -43,13 +43,13 @@ lsd.fatigueResistance # Fatigue resistance.
 
 def customAnalysis(feProb,steps= 1):
   '''Default analysis procedure for saveAll method.'''
-  #analysis= solution.penaltyNewtonRaphson(feProb)
+  #solProc= predefined_solutions.PenaltyNewtonRaphson(feProb)
   analysis= predefined_solutions.simple_static_linear(feProb)
   result= analysis.analyze(steps) #Same with the number of steps.
   return result
 
 for ls in limitStates:
-  ls.saveAll(combContainer,setCalc,analysisToPerform= customAnalysis)
-  print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
+    ls.saveAll(combContainer,setCalc,analysisToPerform= customAnalysis)
+    print 'combinations for ', ls.label, ': ', loadCombinations.getKeys()
 
 
