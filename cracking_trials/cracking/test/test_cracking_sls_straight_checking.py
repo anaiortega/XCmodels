@@ -141,7 +141,7 @@ sect2E1=reinfConcreteSectionDistribution.getSectionDefinitionsForElement(1)[1]
 ####
 #Crack checking.
 lsd.freqLoadsCrackControl.controller= EHE_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
-lsd.freqLoadsCrackControl.controller.analysisToPerform= predefined_solutions.plain_newton_raphson
+lsd.freqLoadsCrackControl.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
 lsd.LimitStateData.check_results_directory= '/tmp/'
 lsd.normalStressesResistance.outputDataBaseFileName= 'resVerif'
 
