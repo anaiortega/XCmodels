@@ -102,13 +102,13 @@ for pair in lines2Glue:
 #        print pos0.x,pos0.y,pos0.z
         n1= nodSet1.getNearestNode(pos0) #Second node.
         pos1= n1.getInitialPos3d
-        d= pos1.distPos3d(pos0) #Distance between nodes.
+        d= pos1.dist(pos0) #Distance between nodes.
 #        print pos1.x,pos1.y,pos1.z
         if d<50*gapSl:
 #            print d
             s= geom.LineSegment3d(pos0,pos1)
             newPos= s.getCenterOfMass() #Position for the new nodes.
-            #print pos0.distPos3d(newPos),pos1.distPos3d(newPos)
+            #print pos0.dist(newPos),pos1.dist(newPos)
             newNode0= nodes.newNodeXYZ(newPos.x,newPos.y, newPos.z)
             rigidBeam0= prep.getBoundaryCondHandler.newRigidBeam(n0.tag,newNode0.tag)
             newNode1= nodes.newNodeXYZ(newPos.x,newPos.y, newPos.z)
@@ -132,11 +132,11 @@ for pair in lines2Glue:
 #             pos0= n0.getInitialPos3d #Position of first node.
 #             n1= line1.getNearestNode(pos0) #Second node.
 #             pos1= n1.getInitialPos3d
-#             d= pos1.distPos3d(pos0) #Distance between nodes.
+#             d= pos1.dist(pos0) #Distance between nodes.
 #             print d
 #             s= geom.LineSegment3d(pos0,pos1)
 #             newPos= s.getCenterOfMass() #Position for the new nodes.
-#             #print pos0.distPos3d(newPos),pos1.distPos3d(newPos)
+#             #print pos0.dist(newPos),pos1.dist(newPos)
 #             newNode0= nodes.newNodeXYZ(newPos.x,newPos.y, newPos.z)
 #             rigidBeam0= prep.getBoundaryCondHandler.newRigidBeam(n0.tag,newNode0.tag)
 #             newNode1= nodes.newNodeXYZ(newPos.x,newPos.y, newPos.z)

@@ -88,7 +88,7 @@ for s in pairedLines:
     #print bl.nDiv, dl.nDiv
     for n1 in bl.nodes:
         n2= dl.getNearestNode(n1.getInitialPos3d)
-        #print n1.tag, n2.tag, n1.getInitialPos3d.distPos3d(n2.getInitialPos3d)
+        #print n1.tag, n2.tag, n1.getInitialPos3d.dist(n2.getInitialPos3d)
         elements.defaultTransformation= trf.getName()
         webElem= elements.newElement("ElasticBeam3d",xc.ID([n1.tag,n2.tag]))
         webElements.elements.append(webElem)

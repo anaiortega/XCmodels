@@ -120,9 +120,9 @@ refBexPierB= geom.Ref3d3d(refBexPier.Org+BexPierOffset,refBexPier.Trf)
 refBexAbutment.Org+= referenceOffset
 
 
-print 'L1= ', pMassongex.distPos3d(aMassongex)
-print 'L2= ', pMassongex.distPos3d(pBex)
-print 'L3= ', pBex.distPos3d(aBex)
+print 'L1= ', pMassongex.dist(aMassongex)
+print 'L2= ', pMassongex.dist(pBex)
+print 'L3= ', pBex.dist(aBex)
 print 'vAMassongex= ', vAMassongex
 print 'vPMassongex= ', vPMassongex
 print 'vPBex= ', vPBex
