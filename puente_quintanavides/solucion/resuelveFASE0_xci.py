@@ -1,10 +1,11 @@
-mdlr(dom(nuevo_caso()))
-execfile('modelo/desactiva_losa_sup_xci.py')
+modelSpace.removeAllLoadPatternsFromDomain()
+modelSpace.revertToStart()
+modelSpace.deactivateElements(setLosaSup) # Deactivate bridge deck.
 
-mdlr(loads(add_to_domain("G0")))
-\sol_proc{ \static_analysis["smt"]{ analyze(1) analOk= result } }
-mdlr(sets(setLosaSup(alive_elements()))) # Reactivamos los elementos de la losa superior.
-mdlr(dom(mesh(melt_alive_nodes("congelaLosa")))) # Libera nodos inactivos.
+lc0= modelSpace.addLoadCaseToDomain('G0')
+analOk= solProc.solve()
+
+modelSpace.activateElements(setLosaSup) # Activate bridge deck.
 
 execfile('modelo/retraccion_fluencia_xci.py')
 \mdlr
