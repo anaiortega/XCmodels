@@ -121,7 +121,7 @@ tankWind=bw.cylindrWind(diam,height,windParams,windComp,zGround,xCent=0,yCent=0)
 #                       ***ACTIONS***
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[tankwall_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[tankwall], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 #Thermal expansion
 ## tangential

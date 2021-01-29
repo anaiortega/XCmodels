@@ -120,8 +120,8 @@ modelSpace.fixNode('000_FFF',p4.getNode().tag)
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamXconcr_mesh,beamY_mesh,columnZconcr_mesh,deck_mesh,wall_mesh,foot_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[roof_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+#selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[beamXconcr,beamY,columnZconcr,deck,wall,foot], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[roof], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 #    ***LOAD CASES***
 

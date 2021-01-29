@@ -383,8 +383,8 @@ constrNodes=constrNodesPilas+constrNodesE1+constrNodesE2
 #                       ***ACTIONS***
 #overallSet=prep.getSets.getSet('total')
 #Inertial load (density*acceleration) applied to the elements in a set
-#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh,deck_mesh,wall_mesh,found_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
-#selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[beamX_mesh,beamY_mesh,columnZ_mesh,deck_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+#selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[beamX,beamY,columnZ,deck,wall,found], vAccel=xc.Vector( [0.0,0.0,-grav]))
+#selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[beamX,beamY,columnZ,deck], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 # Load acting on one or several nodes
 #     name:       name identifying the load

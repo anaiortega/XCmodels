@@ -286,7 +286,7 @@ QpuntBeams=loads.NodalLoad(name='QpuntBeams',lstNod=nodPLoad,loadVector=xc.Vecto
 #               'Global': global coordinate system (defaults to 'Global)
 
 unifLoadDeck1= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck1',xcSet=decklv1,loadVector=xc.Vector([0,0,-qdeck1,0,0,0]),refSystem='Global')
-unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv2,loadVector=xc.Vector([0,0,-qdeck2,0,0,0]),refSystem='Global')
+unifLoadDeck2= loads.UniformLoadOnSurfaces(name= 'unifLoadDeck2',xcSet=decklv1,loadVector=xc.Vector([0,0,-qdeck2,0,0,0]),refSystem='Global')
 
 # Earth pressure applied to shell or beam elements
 #     Attributes:
@@ -334,7 +334,8 @@ earthPColumnHrzL.horzLoads=[hrzL01]
 #    refSystem: reference system in which loadVector is defined:
 #               'Local': element local coordinate system
 #               'Global': global coordinate system (defaults to 'Global)
-unifLoadBeamsY=loads.UniformLoadOnBeams(name='unifLoadBeamsY', xcSet=beamY, loadVector=xc.Vector([0,0,-qunifBeam,0,0,0]),refSystem='Global')
+unifLoadBeamsY=loads.UniformLoadOnBeams(name='unifLoadBeamsY', xcSet=beamY, loadVector=xc.Vector([1e3,2e3,-qunifBeam,0,0,0]),refSystem='Global')
+unifLoadBeamsY2=loads.UniformLoadOnBeams(name='unifLoadBeamsY2', xcSet=beamY, loadVector=xc.Vector([2e3,4e3,-2*qunifBeam,0,0,0]),refSystem='Global')
 
 # Strain gradient on shell elements
 #     name:  name identifying the load
@@ -462,91 +463,27 @@ QvehicleDeck1.addLstLoads([vehicleDeck1])
 
 LS1=lcases.LoadCase(preprocessor=prep,name="LS1",loadPType="default",timeSType="constant_ts")
 LS1.create()
-LS1.addLstLoads([selfWeight,unifLoadDeck1,unifLoadDeck2,earthPressLoadWall,earthPressLoadColumn,earthPColumnStrL,earthPColumnLinL])
-'''
-modelSpace.addLoadCaseToDomain("LS1")
-out.displayLoadVectors()
-modelSpace.removeLoadCaseFromDomain("LS1")
-'''
+LS1.addLstLoads([unifLoadDeck1])
 
 LS2=lcases.LoadCase(preprocessor=prep,name="LS2",loadPType="default",timeSType="constant_ts")
 LS2.create()
-LS2.addLstLoads([selfWeight,earthPColumnHrzL,unifLoadBeamsY,QpuntBeams,unifLoadLinDeck2,wheelDeck1])
+LS2.addLstLoads([unifLoadDeck2])
 
-'''
-from solution import predefined_solutions
-modelSpace.removeAllLoadPatternsFromDomain()
-modelSpace.addLoadCaseToDomain('LS1')
-analysis= predefined_solutions.simple_static_linear(FEcase)
-result= analysis.analyze(1)
-out.displayDispRot('uZ',tablVano2)
+LS3=lcases.LoadCase(preprocessor=prep,name="LS3",loadPType="default",timeSType="constant_ts")
+LS3.create()
+LS3.addLstLoads([unifLoadBeamsY,unifLoadBeamsY2])
+
+LS4=lcases.LoadCase(preprocessor=prep,name="LS4",loadPType="default",timeSType="constant_ts")
+LS4.create()
+LS4.addLstLoads([unifLoadBeamsY])
+
+
+modelSpace.addLoadCaseToDomain("LS3")
+#activeLoadPatterns= prep.getDomain.getConstraints.getLoadPatterns
+#lps=[lp.data() for lp in activeLoadPatterns]
+out.displayLoads(elLoadComp='xyzComponents')
+modelSpace.addLoadCaseToDomain("LS4")
+out.displayLoads(elLoadComp='xyzComponents')
+quit()
 modelSpace.removeLoadCaseFromDomain("LS1")
-'''
-
-'''
-from postprocess.xcVtk.FE_model import quick_graphics as QGrph
-LC1=QGrph.LoadCaseResults(FEcase,loadCaseName= 'LC1',loadCaseExpr= '1*GselfWeight')
-LC1.solve()
-'''
-
-#    ***LIMIT STATE COMBINATIONS***
-combContainer= cc.CombContainer()  #Container of load combinations
-
-# COMBINATIONS OF ACTIONS FOR SERVICEABILITY LIMIT STATES
-    # name:        name to identify the combination
-    # rare:        combination for a rare design situation
-    # freq:        combination for a frequent design situation
-    # qp:          combination for a quasi-permanent design situation
-    # earthquake:  combination for a seismic design situation
-#Characteristic combinations.
-combContainer.SLS.rare.add('ELSR01', '1.0*LS2')
-#Frequent combinations.
-combContainer.SLS.freq.add('ELSF01', '1.0*LS1')
-#Quasi permanent combinations.
-combContainer.SLS.qp.add('ELSQP01', '1.0*LS2')
-
-# COMBINATIONS OF ACTIONS FOR ULTIMATE LIMIT STATES
-    # name:        name to identify the combination
-    # perm:        combination for a persistent or transient design situation
-    # acc:         combination for a accidental design situation
-    # fatigue:     combination for a fatigue design situation
-    # earthquake:  combination for a seismic design situation
-#Persistent and transitory situations.
-combContainer.ULS.perm.add('ELU01', '1.2*LS1')
-combContainer.ULS.perm.add('ELU02', '1.0*LS2')
-
-#Fatigue.
-# Combinations' names must be:
-#        - ELUF0: unloaded structure (permanent loads)
-#        - ELUF1: fatigue load in position 1.
-combContainer.ULS.fatigue.add('ELUF0','1.00*GselfWeight+1.0*Qdecks')
-combContainer.ULS.fatigue.add('ELUF1','1.00*GselfWeight+1.0*QearthPressWall')
-
-decks=prep.getSets.defSet('decks')  #only this way we can recover this
-                         #set by calling it by its name with:
-                         #prep.getSets.getSet('decks') 
-decks=modelSpace.setSum('decks',[decklv1,decklv2])
-#decks.name='decks'
-decks.description='Decks'
-decks.color=cfg.colors['purple01']
-allShells=modelSpace.setSum('allShells',[decklv1,decklv2,foot,wall])
-allShells.description='Shell elements'
-allBeams=modelSpace.setSum('',[beamXconcr,beamXsteel,beamY,columnZconcr,columnZsteel])
-allBeams.description='Beams+columns'
-overallSet=modelSpace.setSum('overallSet',[beamXconcr,beamXsteel,beamY,columnZconcr,columnZsteel,wall,foot,decklv1,decklv2])
-overallSet.description='overall set'
-overallSet.color=cfg.colors['purple01']
-beamX=modelSpace.setSum('beamX',[beamXconcr,beamXsteel])
-beamX.description='beams X'
-columnZ=modelSpace.setSum('columnZ',[columnZconcr,columnZsteel])
-columnZ.description='columns'
-
-#sets for displaying some results
-pBase=gut.rect2DPolygon(xCent=LbeamX/2.,yCent=0,Lx=LbeamX,Ly=LbeamY-1.0)
-
-allShellsRes=sets.set_included_in_orthoPrism(preprocessor=prep,setInit=allShells,prismBase=pBase,prismAxis='Z',setName='allShellsRes')
- 
-
-
-
 

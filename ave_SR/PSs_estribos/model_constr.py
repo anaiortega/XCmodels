@@ -131,7 +131,8 @@ found_wink.generateSprings(xcSet=zap)
 
 #                       ***ACTIONS***
 #Inertial load (density*acceleration) applied to the elements in a set
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=lstSups, vAccel=xc.Vector( [0.0,0.0,-grav]))
+gravSets=[stm.primitiveSet for stm in lstSups]
+selfWeight=loads.InertialLoad(name='selfWeight', lstSets=gravSets, vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 # Peso del relleno sobre la zapata
 zapTrasdos_rg=gut.def_rg_cooLim(XYZLists,Xmurestr,(yMurEstr,yZap),(0,0))

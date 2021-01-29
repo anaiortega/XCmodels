@@ -323,7 +323,7 @@ deckCenter.fillDownwards()
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-selfWeight=loads.InertialLoad(name='selfWeight', lstMeshSets=[deck_mesh,curb_mesh], vAccel=xc.Vector( [0.0,0.0,-grav,0,0,0]))
+selfWeight=loads.InertialLoad(name='selfWeight', lstSets=[deck,curb], vAccel=xc.Vector( [0.0,0.0,-grav,0,0,0]))
 
 # Uniform loads applied on shell elements
 #    name:       name identifying the load

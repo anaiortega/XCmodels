@@ -280,7 +280,7 @@ losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[la
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-selfWeight= loads.InertialLoad(name='selfWeight', lstMeshSets=[hastiales_mesh,losCim_mesh,dintel_mesh,murete_i_mesh,murete_d_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight= loads.InertialLoad(name='selfWeight', lstSets=[hastiales,losCim,dintel,murete_i,murete_d], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 
 # Uniform loads applied on shell elements

@@ -240,7 +240,8 @@ foundationElasticSupports.generateSprings(xcSet=found)
 #                       ***ACTIONS***
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-selfWeight= loads.InertialLoad(name='selfWeight', lstMeshSets=allSurfList, vAccel=xc.Vector( [0.0,0.0,-grav]))
+gravSets=[stm.primitiveSet for stm in allSurfList]
+selfWeight= loads.InertialLoad(name='selfWeight', lstSets=gravSets, vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 
 # Uniform loads applied on shell elements

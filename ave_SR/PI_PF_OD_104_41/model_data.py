@@ -399,7 +399,7 @@ losc_int_set=gridGeom.getSetSurfOneRegion(ijkRange=gm.IJKRange([0,pyhast1,0],[la
 
 #Inertial load (density*acceleration) applied to the elements in a set
 grav=9.81 #Gravity acceleration (m/s2)
-selfWeight= loads.InertialLoad(name='selfWeight', lstMeshSets=[losCimExt_M1_mesh,losCimExt_M2_mesh,losCimExt_M3_mesh,losCimCent_M1_mesh,losCimCent_M2_mesh,losCimCent_M3_mesh,hastIzq_M1_mesh,hastIzq_M2_mesh,hastIzq_M3_mesh,hastDer_M1_mesh,hastDer_M2_mesh,hastDer_M3_mesh,dintExt_M1_mesh,dintExt_M2_mesh,dintExt_M3_mesh,dintCent_M1_mesh,dintCent_M2_mesh,dintCent_M3_mesh,muretes_mesh], vAccel=xc.Vector( [0.0,0.0,-grav]))
+selfWeight= loads.InertialLoad(name='selfWeight', lstSets=[losCimExt_M1,losCimExt_M2,losCimExt_M3,losCimCent_M1,losCimCent_M2,losCimCent_M3,hastIzq_M1,hastIzq_M2,hastIzq_M3,hastDer_M1,hastDer_M2,hastDer_M3,dintExt_M1,dintExt_M2,dintExt_M3,dintCent_M1,dintCent_M2,dintCent_M3,muretes], vAccel=xc.Vector( [0.0,0.0,-grav]))
 
 # Uniform loads applied on shell elements
 #    name:       name identifying the load
