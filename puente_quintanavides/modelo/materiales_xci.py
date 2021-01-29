@@ -8,7 +8,7 @@ densCordon= densAcero*areaCordon
 alphaTesado= 0.75
 cargaInicialTesadoCordon= alphaTesado*cargaRoturaCordon
 sigmaInicialTesadoCordon= cargaInicialTesadoCordon/areaCordon
-prestressingSteel= EHE_materials.EHEPrestressingSteel(steelName= "Y1860S7",fpk= 1171e6, fmax= 1860e6, alpha= alphaTesado)
+prestressingSteel= EHE_materials.PrestressingSteel(steelName= "Y1860S7",fpk= 1171e6, fmax= 1860e6, alpha= alphaTesado)
 incSigmaRelajacion= -prestressingSteel.getRelaxationStressLossFinal(sigmaInicialTesadoCordon) #getPerdidaTensionRelajacionFinalEHE("alambre","superestabilizado",alphaTesado,sigmaInicialTesadoCordon)
 
 

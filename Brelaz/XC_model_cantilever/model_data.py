@@ -99,7 +99,7 @@ for pair in lines2Glue:
     pos0= n0.getInitialPos3d #Position of first node.
     n1= pair[1].getNearestNode(pos0) #Second node.
     pos1= n1.getInitialPos3d
-    d= pos1.distPos3d(pos0) #Distance between nodes.
+    d= pos1.dist(pos0) #Distance between nodes.
     if d<0.001:
       glue= prep.getBoundaryCondHandler.newEqualDOF(n0.tag,n1.tag,gluedDOFs)
 

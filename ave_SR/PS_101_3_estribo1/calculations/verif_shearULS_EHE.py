@@ -24,7 +24,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 from materials.ehe import EHE_limit_state_checking
 lsd.shearResistance.controller= EHE_limit_state_checking.ShearController(limitStateLabel= lsd.shearResistance.label)
 #from solution import predefined_solutions
-#lsd.shearResistance.controller.analysisToPerform= predefined_solutions.plain_newton_raphson
+#lsd.shearResistance.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
 #(FEcheckedModel,meanFCs)= reinfConcreteSections.runChecking(lsd.shearResistance,outputFileName='/tmp/resVerif', matDiagType="d",threeDim= True)  
 lsd.shearResistance.check(reinfConcreteSections)
 

@@ -13,13 +13,14 @@
   }}
 
 def resuelveCombEstatLin(nmbComb):
-    mdlr(dom(nuevo_caso()))
-    execfile('desactiva_losa_sup_xci.py')
+    modelSpace.removeAllLoadPatternsFromDomain()
+    modelSpace.revertToStart()
+    modelSpace.deactivateElements(setLosaSup) # Deactivate bridge deck.
 
-    mdlr(loads(add_to_domain("G0")))
-    \sol_proc{ \static_analysis["smt"]{ analyze(1) analOk= result } }
-    mdlr(sets(setLosaSup(alive_elements()))) # Reactivamos los elementos de la losa superior.
-    mdlr(dom(mesh(melt_alive_nodes("congelaLosa")))) # Libera nodos inactivos.
-    mdlr(loads(add_to_domain(nmbComb)))
-    \sol_proc{ \static_analysis["smt"]{ analyze(1) analOk= result } }
+    lc0= modelSpace.addLoadCaseToDomain('G0')
+    analOk= solProc.solve()
+
+    modelSpace.activateElements(setLosaSup) # Activate bridge deck.
+    lc0= modelSpace.addLoadCaseToDomain(nmbComb)
+    analOk= solProc.solve()
     # print("Resuelta combinación: ",nmbComb,"\n")

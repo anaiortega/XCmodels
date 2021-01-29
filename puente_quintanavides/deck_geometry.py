@@ -649,3 +649,497 @@ class DeckGeometry(predefined_spaces.StructuralMechanics3D):
         for s in [self.setNodosTendonSup01, self.setNodosTendonSup02, self.setNodosTendonSup03]:
             for e in s.elements:
                 e.sectionArea= areaCordon*3
+
+    def mallaLosaSup(self):
+        ''' Malla la losa hormigonada "in situ".'''
+        seedElemHandler= self.preprocessor.getElementHandler.seedElemHandler
+        seedElemHandler.defaultMaterial= 'hormLosaSup'
+        self.setLosaSup.genMesh(xc.meshDir.I)
+        self.setLosaSup.fillDownwards()
+        
+    def createLoadDefinitionSets(self):
+        ''' Crea los conjuntos necesarios para aplicar las cargas.'''
+        tol= self.ladoElemento/100.0
+        self.setNodosVia1= self.preprocessor.getSets.defSet('setNodosVia1')
+        xcTotalSet= self.getTotalSet()
+        for n in xcTotalSet.nodes:
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yVia1CD)<tol) and (abs(pos.z-self.zVia1CD)<tol)):
+                self.setNodosVia1.nodes.append(n)
+            if((abs(pos.y-self.yVia1CI)<tol) and (abs(pos.z-self.zVia1CI)<tol)):
+                self.setNodosVia1.nodes.append(n)
+           
+        self.setNodosVia2= self.preprocessor.getSets.defSet('setNodosVia2')
+        for n in xcTotalSet.nodes:          
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yVia2CD)<tol) and (abs(pos.z-self.zVia2CD)<tol)):
+                self.setNodosVia2.nodes.append(n)
+            if((abs(pos.y-self.yVia2CI)<tol) and (abs(pos.z-self.zVia2CI)<tol)):
+                self.setNodosVia2.nodes.append(n)
+           
+        self.setNodosMureteCI= self.preprocessor.getSets.defSet('setNodosMureteCI')
+        for n in xcTotalSet.nodes:
+            pos= n.getInitialPos3d
+            if((abs(pos.y-self.yMureteCI)<0.4)):
+                self.setNodosMureteCI.nodes.append(n)
+           
+         # Elementos sobre los que actúa la carga de nieve.
+        self.setElemsNieve= self.preprocessor.getSets.defSet('setElemsNieve')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)
+            if((center.y<self.yVia1CD) and (center.z>1.3) and (e.getDimension>1)):
+                self.setElemsNieve.elements.append(e)
+            if((center.y>self.yVia1CI) and (center.y<self.yVia2CD) and (center.z>1.3) and (e.getDimension>1)):
+                self.setElemsNieve.elements.append(e)
+            if((center.y>self.yVia2CI) and (center.z>1.3) and (e.getDimension>1)):
+                self.setElemsNieve.elements.append(e)
+           
+        # Abcisas para aplicación de las cargas del tren 1.
+        self.x1TC1= self.LTramo0
+        self.x2TC1= self.x1TC1+1.6
+        self.x3TC1= self.x2TC1+1.6
+        self.x4TC1= self.x3TC1+1.6
+        self.x5TC1= self.x4TC1+0.8
+
+        # Abcisas para aplicación de las cargas del tren 2.
+        self.x0TC2= 15.8
+        self.x1TC2= self.x0TC2+0.8
+        self.x2TC2= self.x1TC2+1.6
+        self.x3TC2= self.x2TC2+1.6
+        self.x4TC2= self.x3TC2+1.6
+        self.x5TC2= self.x4TC2+0.8
+
+        # Abcisas para aplicación de las cargas del tren 3.
+        LTot= self.getLTot()
+        self.x4TC3= LTot-self.LTramo0
+        self.x3TC3= self.x4TC3-1.6
+        self.x2TC3= self.x3TC3-1.6
+        self.x1TC3= self.x2TC3-1.6
+        self.x0TC3= self.x1TC3-0.8
+
+        self.setNodosPVia1TC1= self.preprocessor.getSets.defSet('setNodosPVia1TC1')
+        for n in self.setNodosVia1.nodes:                     
+            pos= n.getInitialPos3d
+            if(abs(pos.x-self.x1TC1)<tol):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-self.x2TC1)<tol*10):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-self.x3TC1)<tol*10):
+                self.setNodosPVia1TC1.nodes.append(n)
+            if(abs(pos.x-self.x4TC1)<tol*15):
+                self.setNodosPVia1TC1.nodes.append(n)
+        assert(len(self.setNodosPVia1TC1.nodes)==8)
+           
+        self.setNodosRVia1TC1= self.preprocessor.getSets.defSet('setNodosRVia1TC1')
+        for n in self.setNodosVia1.nodes:                                
+            pos= n.getInitialPos3d
+            if(pos.x>self.x5TC1):
+                self.setNodosRVia1TC1.nodes.append(n)
+           
+        self.setNodosPVia2TC1= self.preprocessor.getSets.defSet('setNodosPVia2TC1')
+        for n in self.setNodosVia2.nodes:                                          
+            pos= n.getInitialPos3d
+            if(abs(pos.x-self.x1TC1)<tol):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-self.x2TC1)<tol*10):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-self.x3TC1)<tol*10):
+                self.setNodosPVia2TC1.nodes.append(n)
+            if(abs(pos.x-self.x4TC1)<tol*15):
+                self.setNodosPVia2TC1.nodes.append(n)
+        assert(len(self.setNodosPVia2TC1.nodes)==8)
+           
+        self.setNodosRVia2TC1= self.preprocessor.getSets.defSet('setNodosRVia2TC1')
+        for n in self.setNodosVia2.nodes:                                            
+            pos= n.getInitialPos3d
+            if(pos.x>self.x5TC1):
+                self.setNodosRVia2TC1.nodes.append(n)
+           
+        self.setNodosPMureteCI= self.preprocessor.getSets.defSet('setNodosPMureteCI')
+        for n in self.setNodosMureteCI.nodes:                                        
+            pos= n.getInitialPos3d
+            if(abs(pos.x-self.x1TC1)<tol):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-self.x2TC1)<tol*10):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-self.x3TC1)<tol*10):
+                self.setNodosPMureteCI.nodes.append(n)
+            if(abs(pos.x-self.x4TC1)<tol*15):
+                self.setNodosPMureteCI.nodes.append(n)
+        assert(len(self.setNodosPMureteCI.nodes)==4)
+           
+        self.setNodosRMureteCI= self.preprocessor.getSets.defSet('setNodosRMureteCI')
+        for n in self.setNodosMureteCI.nodes:
+            pos= n.getInitialPos3d
+            if((pos.x>self.x5TC1) and (pos.x<20)):
+                self.setNodosRMureteCI.nodes.append(n)
+        for n in self.setNodosRMureteCI.nodes:
+             print("x= ",pos.x,", y= ",pos.y,", z= ",pos.z,"n")
+                
+           
+        self.setNodosPVia1TC2= self.preprocessor.getSets.defSet('setNodosPVia1TC2')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d           
+            if(abs(pos.x-self.x1TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-self.x2TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-self.x3TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+            if(abs(pos.x-self.x4TC2)<tol*45):
+                self.setNodosPVia1TC2.nodes.append(n)
+        assert(len(self.setNodosPVia1TC2.nodes)==8)
+           
+        self.setNodosRVia1TC2= self.preprocessor.getSets.defSet('setNodosRVia1TC2')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d           
+            if(pos.x<self.x0TC2):
+                self.setNodosRVia1TC2.nodes.append(n)
+            if(pos.x>self.x5TC2):
+                self.setNodosRVia1TC2.nodes.append(n)
+           
+        self.setNodosPVia2TC2= self.preprocessor.getSets.defSet('setNodosPVia2TC2')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d                      
+            if(abs(pos.x-self.x1TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-self.x2TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-self.x3TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+            if(abs(pos.x-self.x4TC2)<tol*45):
+                self.setNodosPVia2TC2.nodes.append(n)
+        assert(len(self.setNodosPVia2TC2.nodes)==8)
+           
+        self.setNodosRVia2TC2= self.preprocessor.getSets.defSet('setNodosRVia2TC2')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d                                 
+            if(pos.x<self.x0TC2):
+                self.setNodosRVia2TC2.nodes.append(n)
+            if(pos.x>self.x5TC2):
+                self.setNodosRVia2TC2.nodes.append(n)
+           
+
+        self.setNodosPVia1TC3= self.preprocessor.getSets.defSet('setNodosPVia1TC3')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d                                            
+            if(abs(pos.x-self.x1TC3)<tol*15):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-self.x2TC3)<tol*10):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-self.x3TC3)<tol*10):
+                self.setNodosPVia1TC3.nodes.append(n)
+            if(abs(pos.x-self.x4TC3)<tol):
+                self.setNodosPVia1TC3.nodes.append(n)
+        assert(len(self.setNodosPVia1TC3.nodes)==8)
+           
+        self.setNodosRVia1TC3= self.preprocessor.getSets.defSet('setNodosRVia1TC3')
+        for n in self.setNodosVia1.nodes:
+            pos= n.getInitialPos3d                                              
+            if(pos.x<self.x0TC3):
+                self.setNodosRVia1TC3.nodes.append(n)
+           
+        self.setNodosPVia2TC3= self.preprocessor.getSets.defSet('setNodosPVia2TC3')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d
+            if(abs(pos.x-self.x1TC3)<tol*15):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-self.x2TC3)<tol*10):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-self.x3TC3)<tol*10):
+                self.setNodosPVia2TC3.nodes.append(n)
+            if(abs(pos.x-self.x4TC3)<tol):
+                self.setNodosPVia2TC3.nodes.append(n)
+        assert(len(self.setNodosPVia2TC3.nodes)==8)
+           
+        self.setNodosRVia2TC3= self.preprocessor.getSets.defSet('setNodosRVia2TC3')
+        for n in self.setNodosVia2.nodes:
+            pos= n.getInitialPos3d           
+            if(pos.x<self.x0TC3):
+                self.setNodosRVia2TC3.nodes.append(n)
+           
+         # Elementos sobre los que actúa la componente horizontal del viento transversal.
+        self.setElemsVientoTrsvH= self.preprocessor.getSets.defSet('setElemsVientoTrsvH')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)
+            if((center.y<self.yUnionLosaInfAlmaDerecha) and (center.y>self.yUnionLosaSupAlmaDerecha) and (center.z<self.zUnionLosaSupAlmaDerecha) and (center.z>(self.zUnionLosaSupAlmaDerecha+self.zLosaInf)/2) and (abs(center.x-0.6)>tol) and (abs(center.x-38.6)>tol) and (e.getDimension>1)):
+                self.setElemsVientoTrsvH.elements.append(e)
+             # completa_hacia_abajo(
+        print("Número de elementos: ",len(self.setElemsVientoTrsvH.elements))
+        print("Número de nodos: ",len(self.setElemsVientoTrsvH.nodes))
+           
+         # Elementos sobre los que actúa la componente vertical del viento transversal.
+        self.setElemsVientoTrsvV= self.preprocessor.getSets.defSet('setElemsVientoTrsvV')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)           
+            if((center.y<0) and (center.z>self.zExtremoAlas) and (e.getDimension>1)):
+                self.setElemsVientoTrsvV.elements.append(e)
+             # completa_hacia_abajo(
+        print("Número de elementos: ",len(self.setElemsVientoTrsvV.elements))
+        print("Número de nodos: ",len(self.setElemsVientoTrsvV.nodes))
+           
+         # Elementos sobre los que actúa el viento transversal.
+        self.setElemsVientoTrsv= self.setSum('setElemsVientoTrsv',[self.setElemsVientoTrsvH, self.setElemsVientoTrsvV])
+        print("Número de elementos: ",len(self.setElemsVientoTrsv.elements))
+        print("Número de nodos: ",len(self.setElemsVientoTrsv.nodes))
+           
+         # Elementos sobre los que actúa el viento longitudinal.
+        self.setElemsVientoLong= self.preprocessor.getSets.defSet('setElemsVientoLong')
+        for e in xcTotalSet.elements:
+            center= e.getPosCentroid(False)           
+           
+            if((center.z>self.zExtremoAlas) and (e.getDimension>1)):
+                self.setElemsVientoLong.elements.append(e)
+        print("Número de elementos: ",len(self.setElemsVientoLong.elements))
+        print("Número de nodos: ",len(self.setElemsVientoLong.nodes))
+                   
+    def createStaticLoadTestSets(self):
+        ''' Crea los conjuntos necesarios para aplicar las cargas
+            de la prueba de carga estática.'''
+        xEjesTraseros11= self.LTramo0+0.15+1.40
+        xEjesTraseros12= xEjesTraseros11+1.40
+        xEjesIntermedios1= xEjesTraseros12+4.1
+        xEjesDelanteros1= xEjesIntermedios1+3.6
+
+        xEjesTraseros21= xEjesDelanteros1+1.4+1+1.40
+        xEjesTraseros22= xEjesTraseros21+1.40
+        xEjesIntermedios2= xEjesTraseros22+4.1
+        xEjesDelanteros2= xEjesIntermedios2+3.6
+
+        xEjesTraseros31= xEjesDelanteros1+1.4+1+1.40
+        xEjesTraseros32= xEjesTraseros31+1.40
+        xEjesIntermedios3= xEjesTraseros32+4.1
+        xEjesDelanteros3= xEjesIntermedios3+3.6
+
+        yRuedasA= -2.5/2-1-2.5+0.25
+        yRuedasB= yRuedasA+2.5-0.25
+        yRuedasC= yRuedasB+1.5
+        yRuedasD= yRuedasC+2.5-0.25
+        yRuedasE= yRuedasD+1.5
+        yRuedasF= yRuedasE+2.5-0.25
+
+        xcTotalSet= self.getTotalSet()
+        # Ejes traseros
+        self.nodosRuedasTraseras= list()
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros11,yRuedasF,1.4)))
+
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros12,yRuedasF,1.4)))
+
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros21,yRuedasF,1.4)))
+
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros22,yRuedasF,1.4)))
+
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros31,yRuedasF,1.4)))
+
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasA,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasB,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasC,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasD,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasE,1.4)))
+        self.nodosRuedasTraseras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesTraseros32,yRuedasF,1.4)))        
+        self.nodosRuedasIntermedias= list()
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasA,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasB,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasC,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasD,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasE,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios1,yRuedasF,1.4)))
+
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasA,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasB,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasC,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasD,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasE,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios2,yRuedasF,1.4)))
+
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasA,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasB,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasC,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasD,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasE,1.4)))
+        self.nodosRuedasIntermedias.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesIntermedios3,yRuedasF,1.4)))
+        
+        self.nodosRuedasDelanteras= list()
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasA,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasB,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasC,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasD,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasE,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros1,yRuedasF,1.4)))
+
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasA,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasB,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasC,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasD,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasE,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros2,yRuedasF,1.4)))
+
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasA,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasB,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasC,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasD,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasE,1.4)))
+        self.nodosRuedasDelanteras.append(xcTotalSet.getNearestNode(geom.Pos3d(xEjesDelanteros3,yRuedasF,1.4)))
+
+        self.nodosRuedas= self.nodosRuedasDelanteras+self.nodosRuedasIntermedias+self.nodosRuedasTraseras
+
+    def creaSetsListados(self):
+        ''' Crea los conjuntos necesarios para mostrar resultados.'''
+
+        def sel_set_cond(xcSetFrom, label, xcSetTo):
+            for b in xcSetFrom.bodies:
+                if b.hasProp('labels'):
+                    labels= b.getProp('labels')
+                    if label in labels:
+                        xcSetTo.bodies.append(b)
+            for s in xcSetFrom.surfaces:
+                if s.hasProp('labels'):
+                    labels= s.getProp('labels')
+                    if label in labels:
+                        xcSetTo.surfaces.append(s)
+            for l in xcSetFrom.lines:
+                if l.hasProp('labels'):
+                    labels= l.getProp('labels')
+                    if label in labels:
+                        xcSetTo.lines.append(l)
+            for p in xcSetFrom.points:
+                if p.hasProp('labels'):
+                    labels= p.getProp('labels')
+                    if label in labels:
+                        xcSetTo.points.append(p)
+            for e in xcSetFrom.elements:
+                if e.hasProp('labels'):
+                    labels= e.getProp('labels')
+                    if label in labels:
+                        xcSetTo.elements.append(e)
+            for n in xcSetFrom.nodes:
+                if n.hasProp('labels'):
+                    labels= n.getProp('labels')
+                    if label in labels:
+                        xcSetTo.nodes.append(n)
+            xcSetTo.fillDowards()
+            
+            setDiafragmaDorsal.fillDownwards()
+            setDiafragmaFrontal.fillDownwards()
+
+            setVoladizoIzqTramos0156= self.preprocessor.getSets.defSet('setVoladizoIzqTramos0156')
+            sel_set_cond(setVoladizoIzquierdo,idTramo0, setVoladizoIzqTramos0156)
+            sel_set_cond(setVoladizoIzquierdo,idTramo1, setVoladizoIzqTramos0156)
+            sel_set_cond(setVoladizoIzquierdo,idTramo5, setVoladizoIzqTramos0156)
+            sel_set_cond(setVoladizoIzquierdo,idTramo6, setVoladizoIzqTramos0156)
+            setVoladizoIzqTramos0156.fillDownwards()
+
+            setVoladizoIzqTramos24= self.preprocessor.getSets.defSet('setVoladizoIzqTramos24')
+            sel_set_cond(setVoladizoIzquierdo,idTramo2, setVoladizoIzqTramos24)
+            sel_set_cond(setVoladizoIzquierdo,idTramo4, setVoladizoIzqTramos24)
+            setVoladizoIzqTramos24.fillDownwards()
+
+            setVoladizoIzqTramo3= self.preprocessor.getSets.defSet('setVoladizoIzqTramo3')
+            sel_set_cond(setVoladizoIzquierdo,idTramo3, setVoladizoIzqTramo3)
+            setVoladizoIzqTramo3.fillDownwards()
+
+            setVoladizoDerTramos0156= self.preprocessor.getSets.defSet('setVoladizoDerTramos0156')
+            sel_set_cond(setVoladizoDerecho,idTramo0, setVoladizoDerTramos0156)
+            sel_set_cond(setVoladizoDerecho,idTramo1, setVoladizoDerTramos0156)
+            sel_set_cond(setVoladizoDerecho,idTramo5, setVoladizoDerTramos0156)
+            sel_set_cond(setVoladizoDerecho,idTramo6, setVoladizoDerTramos0156)
+            setVoladizoDerTramos0156.fillDownwards()
+
+            setVoladizoDerTramos24= self.preprocessor.getSets.defSet('setVoladizoDerTramos24')
+            sel_set_cond(setVoladizoDerecho,idTramo2, setVoladizoDerTramos24)
+            sel_set_cond(setVoladizoDerecho,idTramo4, setVoladizoDerTramos24)
+            setVoladizoDerTramos24.fillDownwards()
+
+            setVoladizoDerTramo3= self.preprocessor.getSets.defSet('setVoladizoDerTramo3')
+            sel_set_cond(setVoladizoDerecho,idTramo3, setVoladizoDerTramo3)
+            setVoladizoDerTramo3.fillDownwards()
+
+            setLosaViaIzqTramos0156= self.preprocessor.getSets.defSet('setLosaViaIzqTramos0156')
+            sel_set_cond(setLosaViaIzquierda,idTramo0, setLosaViaIzqTramos0156)
+            sel_set_cond(setLosaViaIzquierda,idTramo1, setLosaViaIzqTramos0156)
+            sel_set_cond(setLosaViaIzquierda,idTramo5, setLosaViaIzqTramos0156)
+            sel_set_cond(setLosaViaIzquierda,idTramo6, setLosaViaIzqTramos0156)
+            setLosaViaIzqTramos0156.fillDownwards()
+
+            setLosaViaIzqTramos24= self.preprocessor.getSets.defSet('setLosaViaIzqTramos24')
+            sel_set_cond(setLosaViaIzquierda,idTramo2, setLosaViaIzqTramos24)
+            sel_set_cond(setLosaViaIzquierda,idTramo4, setLosaViaIzqTramos24)
+            setLosaViaIzqTramos24.fillDownwards()
+
+            setLosaViaIzqTramo3= self.preprocessor.getSets.defSet('setLosaViaIzqTramo3')
+            sel_set_cond(setLosaViaIzquierda,idTramo3, setLosaViaIzqTramo3)
+            setLosaViaIzqTramo3.fillDownwards()
+
+            setLosaViaDerTramos0156= self.preprocessor.getSets.defSet('setLosaViaDerTramos0156')
+            sel_set_cond(setLosaViaDerecha,idTramo0,  setLosaViaDerTramos0156)
+            sel_set_cond(setLosaViaDerecha,idTramo1,  setLosaViaDerTramos0156)
+            sel_set_cond(setLosaViaDerecha,idTramo5,  setLosaViaDerTramos0156)
+            sel_set_cond(setLosaViaDerecha,idTramo6,  setLosaViaDerTramos0156)
+            setLosaViaDerTramos0156.fillDownwards()
+
+            setLosaViaDerTramos24= self.preprocessor.getSets.defSet('setLosaViaDerTramos24')
+            sel_set_cond(setLosaViaDerecha,idTramo2, setLosaViaDerTramos24)
+            sel_set_cond(setLosaViaDerecha,idTramo4, setLosaViaDerTramos24)
+            setLosaViaDerTramos24.fillDownwards()
+
+            setLosaViaDerTramo3= self.preprocessor.getSets.defSet('setLosaViaDerTramo3')
+            sel_set_cond(setLosaViaDerecha,idTramo3, setLosaViaDerTramo3)
+            setLosaViaDerTramo3.fillDownwards()
+
+            setLosaInfIzqTramos0156= self.preprocessor.getSets.defSet('setLosaInfIzqTramos0156')
+            sel_set_cond(setLosaInfIzquierda,idTramo0, setLosaInfIzqTramos0156)
+            sel_set_cond(setLosaInfIzquierda,idTramo1, setLosaInfIzqTramos0156)
+            sel_set_cond(setLosaInfIzquierda,idTramo5, setLosaInfIzqTramos0156)
+            sel_set_cond(setLosaInfIzquierda,idTramo6, setLosaInfIzqTramos0156)
+            setLosaInfIzqTramos0156.fillDownwards()
+
+            setLosaInfIzqTramos24= self.preprocessor.getSets.defSet('setLosaInfIzqTramos24')
+            sel_set_cond(setLosaInfIzquierda,idTramo2, setLosaInfIzqTramos24)
+            sel_set_cond(setLosaInfIzquierda,idTramo4, setLosaInfIzqTramos24)
+            setLosaInfIzqTramos24.fillDownwards()
+
+            setLosaInfIzqTramo3= self.preprocessor.getSets.defSet('setLosaInfIzqTramo3')
+            sel_set_cond(setLosaInfIzquierda,idTramo3, setLosaInfIzqTramo3)
+            setLosaInfIzqTramo3.fillDownwards()
+
+            setLosaInfDerTramos0156= self.preprocessor.getSets.defSet('setLosaInfDerTramos0156')
+            sel_set_cond(setLosaInfDerecha,idTramo0, setLosaInfDerTramos0156)
+            sel_set_cond(setLosaInfDerecha,idTramo1, setLosaInfDerTramos0156)
+            sel_set_cond(setLosaInfDerecha,idTramo5, setLosaInfDerTramos0156)
+            sel_set_cond(setLosaInfDerecha,idTramo6, setLosaInfDerTramos0156)
+            setLosaInfDerTramos0156.fillDownwards()
+
+            setLosaInfDerTramos24= self.preprocessor.getSets.defSet('setLosaInfDerTramos24')
+            sel_set_cond(setLosaInfDerecha,idTramo2, setLosaInfDerTramos24)
+            sel_set_cond(setLosaInfDerecha,idTramo4, setLosaInfDerTramos24)
+            setLosaInfDerTramos24.fillDownwards()
+
+            setLosaInfDerTramo3= self.preprocessor.getSets.defSet('setLosaInfDerTramo3')
+            sel_set_cond(setLosaInfDerecha,idTramo3, setLosaInfDerTramo3)
+            setLosaInfDerTramo3.fillDownwards()
+                

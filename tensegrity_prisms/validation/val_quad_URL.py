@@ -102,18 +102,18 @@ numberer.useAlgorithm("rcm")   # graph algorithm: reverse Cuthill-Macgee.
 cHandler= sm.newConstraintHandler("penalty_constraint_handler")
 cHandler.alphaSP= 1.0e15  #Factor applied with single-freedom constraints
 cHandler.alphaMP= 1.0e15  #Factor applied with multi-freedom constraints
-analysisAggregations= solCtrl.getAnalysisAggregationContainer
-analysisAggregation= analysisAggregations.newAnalysisAggregation("analysisAggregation","sm") # newAnalysisAggregation(nameAnalysisAggregation,nameWrapper)
-solAlgo= analysisAggregation.newSolutionAlgorithm("newton_raphson_soln_algo")
-ctest= analysisAggregation.newConvergenceTest("norm_unbalance_conv_test")
+solutionStrategies= solCtrl.getSolutionStrategyContainer
+solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm") # newSolutionStrategy(nameSolutionStrategy,nameWrapper)
+solAlgo= solutionStrategy.newSolutionAlgorithm("newton_raphson_soln_algo")
+ctest= solutionStrategy.newConvergenceTest("norm_unbalance_conv_test")
 ctest.tol= 1e-3
 ctest.maxNumIter= 100
 ctest.printFlag= 1 #flag used to print information on convergence (optional)
-integ= analysisAggregation.newIntegrator("load_control_integrator",xc.Vector([]))
+integ= solutionStrategy.newIntegrator("load_control_integrator",xc.Vector([]))
 integ.dLambda1= 0.1
-soe= analysisAggregation.newSystemOfEqn("band_gen_lin_soe")
+soe= solutionStrategy.newSystemOfEqn("band_gen_lin_soe")
 solver= soe.newSolver("band_gen_lin_lapack_solver")
-analysis= solu.newAnalysis("static_analysis","analysisAggregation","")
+analysis= solu.newAnalysis("static_analysis","solutionStrategy","")
 result= analysis.analyze(1)
 
 
