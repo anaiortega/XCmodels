@@ -8,8 +8,8 @@ import xc
 import math
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 
-execfile('../basic_data.py')
-execfile('../basic_geom.py')
-execfile('../../PSs_estribos/model_constr.py')
+exec(open('../basic_data.py').read()))
+exec(open('../basic_geom.py').read()))
+exec(open('../../PSs_estribos/model_constr.py').read()))

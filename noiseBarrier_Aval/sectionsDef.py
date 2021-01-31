@@ -47,8 +47,8 @@ coverForAll=0.025
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
-#execfile('../generic_layers_aux.py')
-execfile('../generic_fis.py')
+#exec(open('../generic_layers_aux.py').read()))
+exec(open('../generic_fis.py').read()))
 
 
 botColRCSects= element_section_map.RCSlabBeamSection(name='botColRCSects',sectionDescr='fut fondation',concrType=concrete, reinfSteelType=reinfSteel,width=BCside-0.25,depth=BCside)

@@ -5,7 +5,7 @@ from postprocess import RC_material_distribution
 from materials.ehe import EHE_limit_state_checking as lschck
 #from materials.ec2 import EC2_limit_state_checking
 
-execfile('../env_config.py')
+exec(open('../env_config.py').read()))
 lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.

@@ -2,7 +2,7 @@
 # This script calculates and prints reactions on bearings for each load case
 
 
-execfile('model_data.py')
+exec(open('model_data.py').read()))
 def resultAction(prb,nmbAction):
   prb.getPreprocessor.resetLoadCase()
   prb.getPreprocessor.getLoadHandler.addToDomain(nmbAction)

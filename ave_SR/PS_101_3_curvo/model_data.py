@@ -11,8 +11,8 @@ from model.geometry import grid_model as gm
 
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 
-execfile('../basic_data.py')
-execfile('../basic_geom.py')
-execfile('../../PSs/model_constr.py')
+exec(open('../basic_data.py').read()))
+exec(open('../basic_geom.py').read()))
+exec(open('../../PSs/model_constr.py').read()))

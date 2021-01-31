@@ -1,17 +1,17 @@
 # -*- coding: utf-8
 # Calcula las flechas en el puente.
-execfile('puente_quintanavides_xci.py')
+exec(open('puente_quintanavides_xci.py').read()))
 
 
 def trataResultsComb(nmbComb):
-    execfile('obtenc_resultados/lista_esf_tendones_els_xci.py')
+    exec(open('obtenc_resultados/lista_esf_tendones_els_xci.py').read()))
     \nuevo_archivo_salida["flechas","app"]{"resultados/flechas_elscp.tex"}
     \listaDesplazamientosNodos(nmbComb,tagsNodosFlecha,"%7.2f","flechas","cabecera","tit")
     cierra_archivo_salida("flechas")
 
 \mdlr{\loads
     \combinacion["FASE0"]{ descomp("1.00*G0")} # Antes de hormigonar la losa.
-    execfile('combinaciones/def_hip_elscp_resumidas_xci.py')
+    exec(open('combinaciones/def_hip_elscp_resumidas_xci.py').read()))
   }}
 
 os.system("touch resultados/flechas_elscp.tex")
@@ -29,6 +29,6 @@ tagSaveFase0=
         tagSave= 
   }}
 
-execfile('solucion/resuelveFASE0_xci.py')
-execfile('combinaciones/calc_hip_elscp_resumidas_xci.py')
+exec(open('solucion/resuelveFASE0_xci.py').read()))
+exec(open('combinaciones/calc_hip_elscp_resumidas_xci.py').read()))
 

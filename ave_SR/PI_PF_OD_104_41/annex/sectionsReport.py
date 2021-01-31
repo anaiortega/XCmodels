@@ -6,11 +6,11 @@ import matplotlib.pyplot as plt
 import os
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 modelDataInputFile=model_path+'model_data.py' #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 sectDataInputFile=model_path+'sectionsDef.py'  #script that carries out the section definition
-execfile(sectDataInputFile)
+exec(open(sectDataInputFile).read()))
 report_graphics_outDir='res_PI_PF_OD_104_41/graphics/sections/'
 
 reportDir='./res_PI_PF_OD_104_41'     #directory where sections report will be placed

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
-execfile('../captionTexts.py')
+exec(open('../model_data.py').read()))
+exec(open('../captionTexts.py').read()))
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg

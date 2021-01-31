@@ -5,9 +5,9 @@ from materials.sia262 import SIA262_limit_state_checking
 
 import os
 #Project directory structure
-execfile("../env_config.py")
+exec(open("../env_config.py").read()))
 
-execfile("../sectionsDef.py")
+exec(open("../sectionsDef.py").read()))
 lsd.LimitStateData.envConfig= cfg
 
 #Information about element sections.

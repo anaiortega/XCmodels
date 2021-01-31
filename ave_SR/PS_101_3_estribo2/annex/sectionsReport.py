@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 
 import os
 modelDataInputFile='../model_data.py' #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 sectDataInputFile='../sectionsDef.py'  #script that carries out the section definition
-execfile(sectDataInputFile)
-execfile("../calculations/assign_RCsections.py")
+exec(open(sectDataInputFile).read()))
+exec(open("../calculations/assign_RCsections.py").read()))
 report_graphics_outDir='res_PS101_estribo2/graphics/sections/'
 
 reportDir='./res_PS101_estribo2'     #directory where sections report will be placed

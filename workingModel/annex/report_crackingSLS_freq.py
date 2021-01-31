@@ -3,10 +3,10 @@ from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
 from postprocess.reports import graphical_reports
 
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifCrackFreqFile())
+exec(open(cfg.projectDirTree.getVerifCrackFreqFile()).read()))
 
 
 limitStateLabel= lsd.freqLoadsCrackControl.label

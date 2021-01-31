@@ -1,5 +1,5 @@
 # -*- coding: utf-8
-execfile('puente_quintanavides_xci.py')
+exec(open('puente_quintanavides_xci.py').read()))
 
 xEjes1= LTramo0+9.4+2.535
 xEjes2= xEjes1+1.689
@@ -45,7 +45,7 @@ tagsNodosRuedas= []
           }
   }}
 
-execfile('acciones/cargas_prueba_carga_dinamica_xci.py')
+exec(open('acciones/cargas_prueba_carga_dinamica_xci.py').read()))
 
 # Puntos de control
 xPControl1= LTramo0+9

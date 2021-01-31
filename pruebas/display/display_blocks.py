@@ -1,6 +1,6 @@
 
 
-execfile('../model_gen.py') #FE model generation
+exec(open('../model_gen.py').read())) #FE model generation
 
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 displaySettings= vtk_CAD_graphic.DisplaySettingsBlockTopo()

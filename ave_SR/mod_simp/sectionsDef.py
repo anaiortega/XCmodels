@@ -11,7 +11,7 @@ from materials.ec2 import EC2_materials
 import math
 
 #Auxiliary data
-execfile('../basic_data.py')
+exec(open('../basic_data.py').read()))
 
 def rebars(fi,s,c):
     '''fi: bar diameter [mm], s: spacing [mm], c: cover [mm]

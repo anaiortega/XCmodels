@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
+exec(open('../model_data.py').read()))
 
 xcTotalSet= model.getPreprocessor().getSets.getSet('total')
 model.displayMesh(xcTotalSet,'Finite element mesh') 

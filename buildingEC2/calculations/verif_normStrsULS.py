@@ -4,10 +4,10 @@
 import os
 
 #Project directory structure
-execfile("../env_config.py")
+exec(open("../env_config.py").read()))
 
 #RC sections definition.
-execfile("../sectionsDef.py")
+exec(open("../sectionsDef.py").read()))
 
 
 

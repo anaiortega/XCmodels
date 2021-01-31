@@ -6,12 +6,12 @@ from postprocess import limit_state_data as lsd
 model_path="../"
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 #Load properties to display:
 preprocessor= FEcase.getPreprocessor
-execfile(projectDirs.getShearULSFileName())
-execfile('../captionTexts.py')
+exec(open(projectDirs.getShearULSFileName()).read()))
+exec(open('../captionTexts.py').read()))
 
 pathGrph= cfg.projectDirTree.getReportShearGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'

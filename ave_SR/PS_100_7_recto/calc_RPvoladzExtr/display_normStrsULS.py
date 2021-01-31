@@ -6,17 +6,17 @@ from postprocess import output_handler
 
 
 #Project directory structure
-execfile('./directs.py')
+exec(open('./directs.py').read()))
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
-execfile("./setCalcDisp.py")
+exec(open(modelDataInputFile).read()))
+exec(open("./setCalcDisp.py").read()))
 
 
 #Load properties to display:
 fName= dir_checks+'verifRsl_normStrsULS.py'
-execfile(fName)
-execfile('../../PSs/captionTexts.py')
+exec(open(fName).read()))
+exec(open('../../PSs/captionTexts.py').read()))
 
 limitStateLabel= lsd.normalStressesResistance.label
 

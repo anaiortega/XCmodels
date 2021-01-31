@@ -4,10 +4,10 @@ from postprocess import limit_state_data as lsd
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess import output_handler
 
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifShearFile())
+exec(open(cfg.projectDirTree.getVerifShearFile()).read()))
 
 
 #  Config

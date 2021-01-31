@@ -5,14 +5,14 @@ from postprocess import limit_state_data as lsd
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 lsd.LimitStateData.envConfig= cfg
 
 #RC sections definition.
-execfile("../sectionsDef.py")
+exec(open("../sectionsDef.py").read()))
 
 #Define section names for each element.
 

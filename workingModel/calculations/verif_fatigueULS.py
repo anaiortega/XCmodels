@@ -4,7 +4,7 @@ from misc_utils import log_messages as lmsg
 from postprocess.config import default_config
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 lsd.LimitStateData.envConfig= cfg
 
 lmsg.warning('Implementation pending. Do not use.')

@@ -8,7 +8,7 @@ from postprocess.config import default_config
 # Verificacion of shear ULS for reinf. concrete elements
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'model_gen.py') #FE model generation
+exec(open(workingDirectory+'model_gen.py').read())) #FE model generation
 lsd.LimitStateData.envConfig= cfg #configuration defined in script
                                   #env_config.py
 

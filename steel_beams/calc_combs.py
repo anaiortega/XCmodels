@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 #Calculates ELU01 combination
 
-execfile('model_data.py')
+exec(open('model_data.py').read()))
 def resultComb(prb,nmbComb):
   preprocessor.resetLoadCase()
   preprocessor.getLoadHandler.addToDomain(nmbComb)

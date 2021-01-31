@@ -6,9 +6,9 @@ from postprocess import RC_material_distribution
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 #FE model generation
-execfile("../model_data.py")
+exec(open("../model_data.py").read()))
 lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.

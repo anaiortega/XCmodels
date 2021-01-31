@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('model_data.py')
+exec(open('model_data.py').read()))
 lsd.LimitStateData.envConfig= cfg
 from postprocess import recorders
 
@@ -58,7 +58,7 @@ displaySettings.setupGrid(preprocessor.getSets.getSet('total'))
 displaySettings.defineMeshScene(None)
 displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
-# execfile('draw_supports.py')
+# exec(open('draw_supports.py').read()))
 # displaySettings.renderer.AddActor(supportsActor)
 
 displaySettings.displayScene()

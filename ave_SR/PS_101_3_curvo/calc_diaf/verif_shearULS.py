@@ -4,7 +4,7 @@ import os
 
 
 #Project directory structure
-execfile('./directs.py')
+exec(open('./directs.py').read()))
 os.system('cp ' + dir_int_forces + 'intForce_ULS_normalStressesResistance.csv ' + dir_int_forces + 'intForce_ULS_shearResistance.csv')
 
 

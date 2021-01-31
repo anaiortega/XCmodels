@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #from postprocess.reports import graphical_reports
 
-execfile("../model_gen.py") #FE model generation
-execfile('../load_state_data.py')
+exec(open("../model_gen.py").read())) #FE model generation
+exec(open('../load_state_data.py').read()))
 
 
 #ordered list of load cases (from those defined in ../load_state_data.py

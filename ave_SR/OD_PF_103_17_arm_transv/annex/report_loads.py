@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-execfile('../model_data.py')
-execfile('../loadStateData.py')
+exec(open('../model_data.py').read()))
+exec(open('../loadStateData.py').read()))
 
 pathGrph='res_OD_PF_103_17/graphics/loads/'   #directory to place the figures
                                   #(do not use ./text/....)'

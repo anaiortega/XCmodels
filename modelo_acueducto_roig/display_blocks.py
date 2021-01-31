@@ -1,4 +1,4 @@
-execfile('./fe_model.py')
+exec(open('./fe_model.py').read()))
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
 displaySettings= vtk_CAD_graphic.DisplaySettingsBlockTopo()

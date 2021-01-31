@@ -4,10 +4,10 @@ from postprocess import limit_state_data as lsd
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifCrackFreqFile())
+exec(open(cfg.projectDirTree.getVerifCrackFreqFile()).read()))
 
 #  Config
 argument= 'wk'      #Available arguments: 'N', 'My','Mz','s_rmax','eps_sm','wk'

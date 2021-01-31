@@ -8,7 +8,7 @@ analOk= solProc.solve()
 modelSpace.activateElements(setLosaSup) # Activate bridge deck.
 tPruebaCarga= 200 # Instante de la prueba de carga.
 
-execfile('modelo/retraccion_fluencia_xci.py')
+exec(open('modelo/retraccion_fluencia_xci.py').read()))
 \mdlr
     # Deformaciones de retracción.
     \sets

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-execfile('retaining_wall.py')
+exec(open('retaining_wall.py').read()))
 
 from postprocess.reports import common_formats as fmt
 

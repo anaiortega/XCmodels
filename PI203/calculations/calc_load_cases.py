@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
+exec(open('../model_data.py').read()))
 
 from solution import predefined_solutions
 

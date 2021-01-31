@@ -5,14 +5,14 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 #Load properties to display:
 fName= cfg.projectDirTree.getVerifCrackQpermFile()
-execfile(fName)
+exec(open(fName).read()))
 
 
 pathGrph='res_a_rasante/graphics/crackingSLS_qperm/'   #directory to place the figures

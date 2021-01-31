@@ -87,7 +87,7 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 
 
 # Shrinkage
-execfile(workingDirectory+'retraccion.py')  #cálculo de la retracción
+exec(open(workingDirectory+'retraccion.py').read()))  #cálculo de la retracción
 eps_retracc=Epscs  #deformación por retracción #
 
 #self weigth

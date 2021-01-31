@@ -1,15 +1,15 @@
 # -*- coding: utf-8
-execfile('puente_quintanavides_xci.py')
+exec(open('puente_quintanavides_xci.py').read()))
 os.system("rm -f resultados/esf*")
 
 def trataResultsComb(nmbComb):
-    execfile('obtenc_resultados/lista_reacciones_xci.py')
-    execfile('obtenc_resultados/lista_esf_tendones_xci.py')
-    execfile('obtenc_resultados/exporta_esfuerzos_shell_xci.py')
+    exec(open('obtenc_resultados/lista_reacciones_xci.py').read()))
+    exec(open('obtenc_resultados/lista_esf_tendones_xci.py').read()))
+    exec(open('obtenc_resultados/exporta_esfuerzos_shell_xci.py').read()))
 
 \mdlr{\loads
     \combinacion["FASE0"]{ descomp("1.00*G0")} # Antes de hormigonar la losa.
-    execfile('combinaciones/def_hip_elu_resumidas_xci.py')
+    exec(open('combinaciones/def_hip_elu_resumidas_xci.py').read()))
   }}
 
 os.system("rm -r -f ./flash/tmp_xc/calcula_elu.db")
@@ -26,10 +26,10 @@ tagSaveFase0=
   }}
 \nuevo_archivo_salida["reacc"]{"resultados/reacciones_elu.tex"}
 
-execfile('solucion/resuelveFASE0_xci.py')
-execfile('combinaciones/calc_hip_elu_resumidas_xci.py')
+exec(open('solucion/resuelveFASE0_xci.py').read()))
+exec(open('combinaciones/calc_hip_elu_resumidas_xci.py').read()))
 cierra_archivo_salida("reacc")
 quit()
 
-execfile('graficos_vtk_xci.py')
+exec(open('graficos_vtk_xci.py').read()))
 VtkMuestraVentana("renderer",800,600)

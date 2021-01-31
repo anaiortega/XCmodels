@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #from postprocess.reports import graphical_reports
 
-execfile('../model_data.py')
-execfile('../../PSs_estribos/loadStateData.py')
-execfile('../../PSs/captionTexts.py')
+exec(open('../model_data.py').read()))
+exec(open('../../PSs_estribos/loadStateData.py').read()))
+exec(open('../../PSs/captionTexts.py').read()))
 
 pathGrph='res_PS101_estribo1/graphics/resSimplLC/'   #directory to place the figures
                                         #(do not use ./text/....)'

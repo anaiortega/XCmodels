@@ -5,10 +5,10 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifShearFile())
+exec(open(cfg.projectDirTree.getVerifShearFile()).read()))
 
 #  Config
 argument= 'Vy'      #Available arguments:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile("model_data.py")
+exec(open("model_data.py").read()))
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 for e in shells.elements:

@@ -4,12 +4,12 @@ from postprocess import limit_state_data as lsd
 from postprocess.reports import graphical_reports
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 #Load properties to display:
 fName= '../results/verifications/verifRsl_crackingSLS_freq.py'
-execfile(fName)
-execfile('../../PSs/captionTexts.py')
+exec(open(fName).read()))
+exec(open('../../PSs/captionTexts.py').read()))
 
 pathGrph='res_PS101_estribo1/graphics/crackingSLS_freq/'   #directory to place the figures
                                         #(do not use ./text/....)'

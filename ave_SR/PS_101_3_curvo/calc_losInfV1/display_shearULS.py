@@ -7,15 +7,15 @@ from postprocess import output_handler
 
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 #Project directory structure
-execfile('./directs.py')
+exec(open('./directs.py').read()))
 
 #Load properties to display:
 fName= dir_checks+'verifRsl_shearULS.py'
-execfile(fName)
-execfile('../../PSs/captionTexts.py')
+exec(open(fName).read()))
+exec(open('../../PSs/captionTexts.py').read()))
 
 
 limitStateLabel= lsd.shearResistance.label

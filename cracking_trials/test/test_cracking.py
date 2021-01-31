@@ -12,7 +12,7 @@ from materials import typical_materials as tm
 from materials.ec2 import EC2_materials
 from materials.ehe import EHE_materials
 
-execfile('data_test_sect04.py')
+exec(open('data_test_sect04.py').read()))
 
 eSize= 0.1     #length of elements
 

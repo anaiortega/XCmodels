@@ -4,16 +4,16 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 #Load properties to display:
 preprocessor= model.getPreprocessor()
 fName= cfg.projectDirTree.getVerifCrackFreqFile()
-execfile(fName)
-execfile('../captionTexts.py')
+exec(open(fName).read()))
+exec(open('../captionTexts.py').read()))
 
 pathGrph= cfg.projectDirTree.getReportCrackFreqGrPath()   #directory to place the figures
                                         #(do not use ./text/....)'

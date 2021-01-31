@@ -4,13 +4,13 @@ from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 
 #FE model generation
-execfile("../model_data.py")
-execfile('./directs.py')
-execfile('setCalcDisp.py')
+exec(open("../model_data.py").read()))
+exec(open('./directs.py').read()))
+exec(open('setCalcDisp.py').read()))
 lsd.LimitStateData.envConfig= cfg
 
 #Limit states
-execfile("../../PSs_estribos/loadComb.py")
+exec(open("../../PSs_estribos/loadComb.py").read()))
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

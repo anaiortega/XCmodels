@@ -6,12 +6,12 @@ from postprocess.config import default_config
 #Verification of normal-stresses ULS for structural steel
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'model_gen.py') #FE model generation
+exec(open(workingDirectory+'model_gen.py').read())) #FE model generation
 lsd.LimitStateData.envConfig= cfg #configuration defined in script
                                   #env_config.py
 
 #Steel beams definition
-execfile(workingDirectory+'steel_beams_def.py')
+exec(open(workingDirectory+'steel_beams_def.py').read()))
 
 setCalc=beamXsteel+columnZsteel
 # variables that control the output of the checking (setCalc,

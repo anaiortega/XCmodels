@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-execfile('../model_gen.py')
-#execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py')
-#execfile('../../generic_bridges/voided_slab_bridge/loadStateData.py')
-execfile('../loadStateData.py')
+exec(open('../model_gen.py').read()))
+#exec(open(workingDirectory+'../../generic_bridges/voided_slab_bridge/loadStateDataActions.py').read()))
+#exec(open('../../generic_bridges/voided_slab_bridge/loadStateData.py').read()))
+exec(open('../loadStateData.py').read()))
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg

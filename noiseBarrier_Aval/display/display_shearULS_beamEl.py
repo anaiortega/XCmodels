@@ -6,17 +6,17 @@ from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 
 model_path="../"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 
 #Load properties to display:
 preprocessor= model.getPreprocessor()
 fName=  cfg.projectDirTree.getVerifShearFile()
-execfile(fName)
-execfile('../captionTexts.py')
+exec(open(fName).read()))
+exec(open('../captionTexts.py').read()))
 
 
 limitStateLabel= lsd.shearResistance.label
@@ -42,7 +42,7 @@ displaySettings.setupGrid(setDisp.elSet)
 displaySettings.defineMeshScene(None)
 displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
-#execfile('draw_supports.py')
+#exec(open('draw_supports.py').read()))
 #displaySettings.renderer.AddActor(supportsActor)
 
 caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDispRes.genDescr.capitalize() + ', ' + setDispRes.sectDescr[1]

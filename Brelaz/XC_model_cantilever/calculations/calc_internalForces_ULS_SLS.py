@@ -6,11 +6,11 @@ from solution import predefined_solutions
 
 model_path="../"
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 lsd.LimitStateData.internal_forces_results_directory= projectDirs.getInternalForcesResultsDirectory()
 
 #RC sections definition.
-execfile("../sectionsDef.py")
+exec(open("../sectionsDef.py").read()))
 lsd.LimitStateData.envConfig= cfg
 
 #Define section names for each element.

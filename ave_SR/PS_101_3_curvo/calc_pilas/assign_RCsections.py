@@ -7,10 +7,10 @@ from postprocess import element_section_map
 # Concrete of type concrete01 with no tension branch
 
 #FE model generation
-execfile("../model_data.py")
+exec(open("../model_data.py").read()))
 
 #RC-sections definition file.
-execfile("../sectionsDef.py")
+exec(open("../sectionsDef.py").read()))
 
 
 

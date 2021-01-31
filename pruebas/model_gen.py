@@ -26,11 +26,11 @@ from postprocess import output_handler as outHndl
 
 
 workingDirectory= default_config.findWorkingDirectory()+'/' #search env_config.py
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 sty=outSty.OutputStyle() 
 
 #Data
-execfile(workingDirectory+'data.py')
+exec(open(workingDirectory+'data.py').read()))
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***
 FEcase= xc.FEProblem()

@@ -10,7 +10,7 @@ import math
 from postprocess import element_section_map
 
 #Auxiliary data
-execfile('../basic_data.py')
+exec(open('../basic_data.py').read()))
 
 rnom=35 #recubrimiento nominal (todos los elementos)
 

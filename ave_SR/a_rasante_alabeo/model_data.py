@@ -737,19 +737,19 @@ lcs=QGrph.LoadCaseResults(FEcase)
 
 lcname='Q1a'
 lcs.solve(loadCaseName='Q1a',loadCaseExpr='1*Q1a')
-execfile('calc_alabeo.py')
+exec(open('calc_alabeo.py').read()))
 
 lcname='Q1a1via'
 lcs.solve(loadCaseName='Q1a1via',loadCaseExpr='1*Q1a1via')
-execfile('calc_alabeo.py')
+exec(open('calc_alabeo.py').read()))
 
 lcname='Q1a_alabTot'
 lcs.solve(loadCaseName='Q1a_alabTot',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a')
-execfile('calc_alabeo.py')
+exec(open('calc_alabeo.py').read()))
 
 lcname='Q1a1via_alabTot'
 lcs.solve(loadCaseName='Q1a1via_alabTot',loadCaseExpr='1.0*G1+1.0*G2a+1.0*G3+1.0*Q1a1via')
-execfile('calc_alabeo.py')
+exec(open('calc_alabeo.py').read()))
 
 f.close()
 

@@ -2,7 +2,7 @@
 
 from postprocess import output_handler
 
-execfile('model_data.py')
+exec(open('model_data.py').read()))
 #lsd.LimitStateData.envConfig= cfg
 from materials.ec3 import EC3Beam as ec3b
 

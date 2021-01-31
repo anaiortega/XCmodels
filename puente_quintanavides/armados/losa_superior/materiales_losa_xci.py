@@ -1,6 +1,6 @@
 nmbHorm= "HA30"
-execfile('ehe/hormigonesEHE_xcm.py')
-execfile('ehe/acerosEHE_xcm.py')
+exec(open('ehe/hormigonesEHE_xcm.py').read()))
+exec(open('ehe/acerosEHE_xcm.py').read()))
 
 # Coeficientes de seguridad de los materiales.
 gammac= 1.5 # Coeficiente de minoración de la resistencia del hormigón.

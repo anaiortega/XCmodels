@@ -3,7 +3,7 @@
 import os
 
 #Project directory structure
-execfile("../../PSs/env_config.py")
+exec(open("../../PSs/env_config.py").read()))
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution

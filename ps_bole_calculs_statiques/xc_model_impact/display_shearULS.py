@@ -6,13 +6,13 @@ from postprocess import output_handler
 
 
 modelDataInputFile= "model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 
 #Load properties to display:
 preprocessor= FEcase.getPreprocessor
-execfile(cfg.projectDirTree.getVerifShearFile())
-execfile('captionTexts.py')
+exec(open(cfg.projectDirTree.getVerifShearFile()).read()))
+exec(open('captionTexts.py').read()))
 
 
 limitStateLabel= lsd.shearResistance.label

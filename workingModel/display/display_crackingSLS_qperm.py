@@ -5,10 +5,10 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess import output_handler
 
 #FE model generation
-execfile("../model_gen.py")
+exec(open("../model_gen.py").read()))
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifCrackFreqFile())
+exec(open(cfg.projectDirTree.getVerifCrackFreqFile()).read()))
 
 
 #  Config

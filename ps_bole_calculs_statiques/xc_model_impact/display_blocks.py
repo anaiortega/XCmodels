@@ -1,4 +1,4 @@
-execfile('model_data.py')
+exec(open('model_data.py').read()))
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
 setToDisp= totalSet

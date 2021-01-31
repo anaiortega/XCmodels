@@ -23,7 +23,7 @@ from postprocess.config import default_config
 
 # Default configuration of environment variables.
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 
 #Auxiliary data
  #Geometry

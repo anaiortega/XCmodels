@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 import os
 model_path="../"
 modelDataInputFile=model_path+'model_data.py' #data for FE model generation
-execfile(modelDataInputFile)
-execfile(projectDirs.getSectionDataInputFile())
+exec(open(modelDataInputFile).read()))
+exec(open(projectDirs.getSectionDataInputFile()).read()))
 
 reportDir='./text'     #directory where sections report will be placed
 

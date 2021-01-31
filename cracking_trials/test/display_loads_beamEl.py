@@ -3,7 +3,7 @@
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-execfile('./test_cracking.py')
+exec(open('./test_cracking.py').read()))
 
 #available components: 'axialComponent', 'transComponent', 'transYComponent',
 #                      'transZComponent'

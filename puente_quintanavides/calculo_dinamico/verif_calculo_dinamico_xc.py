@@ -1,6 +1,6 @@
 
-execfile('acciones/IAPF/trenes_reales_av_xcm.py')
-execfile('oscilacion_viga_biapoyada_xcm.py')
+exec(open('acciones/IAPF/trenes_reales_av_xcm.py').read()))
+exec(open('oscilacion_viga_biapoyada_xcm.py').read()))
 
 L= 15
 EI= 7694081e3

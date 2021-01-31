@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
-execfile('../../PSs_estribos/loadStateData.py')
+exec(open('../model_data.py').read()))
+exec(open('../../PSs_estribos/loadStateData.py').read()))
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg

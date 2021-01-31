@@ -296,7 +296,7 @@ for n in cablNod:
 
 
 #                       ***BOUNDARY CONDITIONS***
-execfile(modelDataScriptDir+'/sets_springs.py')
+exec(open(modelDataScriptDir+'/sets_springs.py').read()))
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
@@ -309,7 +309,7 @@ found_wink_fill=sprbc.ElasticFoundation(wModulus=wModulus_fill,cRoz=0.05)
 found_wink_fill.generateSprings(xcSet=setInsideArea)
 
 # Gluing of slabs
-execfile(modelDataScriptDir+"/sets_lines_to_glue.py")
+exec(open(modelDataScriptDir+"/sets_lines_to_glue.py").read()))
 
 #Aux sets (LCPT)
 deckCenter= prep.getSets.defSet('deckCenter')

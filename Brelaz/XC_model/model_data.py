@@ -72,7 +72,7 @@ from postprocess import output_styles as outSty
 from postprocess import output_handler as outHndl
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 sty=outSty.OutputStyle() 
 
 FEcase= xc.FEProblem()
@@ -266,7 +266,7 @@ for n in cablNod:
 
 
 #                       ***BOUNDARY CONDITIONS***
-execfile(workingDirectory+'sets_springs.py')
+exec(open(workingDirectory+'sets_springs.py').read()))
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in

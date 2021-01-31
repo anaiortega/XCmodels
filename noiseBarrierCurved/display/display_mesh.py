@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-execfile('../model_data.py')
-execfile('../captionTexts.py')
+exec(open('../model_data.py').read()))
+exec(open('../captionTexts.py').read()))
 
 #  partToDisplay: XC set of elements to be displayed
 #  caption:  text to write in the graphic

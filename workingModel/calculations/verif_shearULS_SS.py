@@ -6,11 +6,11 @@ from postprocess.config import default_config
 # Verificacion of shear ULS for structural steel
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 lsd.LimitStateData.envConfig= cfg
 
 #Steel beams definition
-execfile("../steel_beams_def.py") #configuration defined in script
+exec(open("../steel_beams_def.py").read())) #configuration defined in script
                                   #env_config.py
 
 setCalc=beamXsteel+columnZsteel

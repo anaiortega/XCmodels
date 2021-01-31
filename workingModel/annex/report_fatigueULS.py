@@ -3,7 +3,7 @@ from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
 from postprocess.reports import graphical_reports
 
-execfile("../model_gen.py") #FE model generation
+exec(open("../model_gen.py").read())) #FE model generation
 
 # Ordered list of sets (defined in model_data.py as instances of
 # utils_display.setToDisplay) to be included in the report
@@ -23,7 +23,7 @@ setsBmElView=[[beamX,'XYZPos']]
 argsBmElScale=[['Mu',1],['Mu',1]]
 
 #Load properties to display:
-execfile(cfg.projectDirTree.getVerifFatigueFile())
+exec(open(cfg.projectDirTree.getVerifFatigueFile()).read()))
 limitStateLabel= lsd.fatigueResistance.label
 
 graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportFatigueGrPath,texReportFile= cfg.reportFatigueFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)

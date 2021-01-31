@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile('calc_combs.py')
+exec(open('calc_combs.py').read()))
 import datetime
 import vtk
 from postprocess.xcVtk import vtk_graphic_base
@@ -22,7 +22,7 @@ displaySettings.setupGrid(preprocessor.getSets.getSet('total'))
 displaySettings.defineMeshScene(None)
 displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
-# execfile('draw_supports.py')
+# exec(open('draw_supports.py').read()))
 # displaySettings.renderer.AddActor(supportsActor)
 
 displaySettings.displayScene('Main warehouse beams: '+diagram.component + ' [kN m]')

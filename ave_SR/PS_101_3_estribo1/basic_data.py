@@ -135,5 +135,5 @@ zZ2alet=(zRefrz,zArrVoladz)
 zZ3alet=(zArrVoladz,zAlet)
 
 #Cargas tablero
-execfile('../../PS_101_3_curvo/calcReact/results.py')
+exec(open('../../PS_101_3_curvo/calcReact/results.py').read()))
 

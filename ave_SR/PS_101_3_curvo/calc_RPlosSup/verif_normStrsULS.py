@@ -4,7 +4,7 @@
 import os
 
 #Project directory structure
-execfile('./directs.py')
+exec(open('./directs.py').read()))
 lsd.LimitStateData.envConfig= cfg
 
 from postprocess import limit_state_data as lsd

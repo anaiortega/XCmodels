@@ -6,13 +6,13 @@ from postprocess import output_handler
 
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 
 #Load properties to display:
 fName= '../results/verifications/verifRsl_normStrsULS.py'
-execfile(fName)
-execfile('../../PSs/captionTexts.py')
+exec(open(fName).read()))
+exec(open('../../PSs/captionTexts.py').read()))
 
 limitStateLabel= lsd.normalStressesResistance.label
 

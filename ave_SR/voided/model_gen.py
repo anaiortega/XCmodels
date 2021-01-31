@@ -11,23 +11,23 @@ from postprocess import output_styles as outSty
 from postprocess import output_handler as outHndl
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 
-execfile(workingDirectory+'basic_data.py')
-execfile(workingDirectory+'basic_geom.py')
+exec(open(workingDirectory+'basic_data.py').read()))
+exec(open(workingDirectory+'basic_geom.py').read()))
 if abutment.lower()[0]=='y':
-    execfile(workingDirectory+'data_abutment.py')
-execfile(workingDirectory+'../../generic_bridges/voided_slab_bridge/model_gen.py')
-execfile(workingDirectory+'../../generic_bridges/model_piers/model_gen.py')
+    exec(open(workingDirectory+'data_abutment.py').read()))
+exec(open(workingDirectory+'../../generic_bridges/voided_slab_bridge/model_gen.py').read()))
+exec(open(workingDirectory+'../../generic_bridges/model_piers/model_gen.py').read()))
 if abutment.lower()[0]=='y':
-    execfile(path_model_abutment+'model_gen_abutment.py')
+    exec(open(path_model_abutment+'model_gen_abutment.py').read()))
 #Definition of sets
-execfile(workingDirectory+'sets_def.py')
+exec(open(workingDirectory+'sets_def.py').read()))
 if pile_found.lower()[0]=='y':
-    execfile(workingDirectory+'data_foundation.py')
+    exec(open(workingDirectory+'data_foundation.py').read()))
 
 #                       ***BOUNDARY CONDITIONS***
-execfile(workingDirectory+'bound_cond.py')
+exec(open(workingDirectory+'bound_cond.py').read()))
 #                       ***ACTIONS***
-execfile(path_loads_def+'loads_def.py')                           
-execfile(path_loads_def+'loads_def_thermal_gradient_voided.py')                           
+exec(open(path_loads_def+'loads_def.py').read()))                           
+exec(open(path_loads_def+'loads_def_thermal_gradient_voided.py').read()))                           

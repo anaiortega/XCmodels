@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-execfile("./assign_RCsections.py")
-execfile("./calc_internalForces_ULS_SLS.py")
-execfile("./verif_normStrsULS.py")
+exec(open("./assign_RCsections.py").read()))
+exec(open("./calc_internalForces_ULS_SLS.py").read()))
+exec(open("./verif_normStrsULS.py").read()))
 

@@ -26,10 +26,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from materials.ec2 import EC2_limit_state_checking
 
-#execfile('data_sect03.py')
-execfile('data_sect04.py')
-#execfile('data_sect05.py')
-#execfile('data_sect06.py')
+#exec(open('data_sect03.py').read()))
+exec(open('data_sect04.py').read()))
+#exec(open('data_sect05.py').read()))
+#exec(open('data_sect06.py').read()))
 
 
 
@@ -213,19 +213,19 @@ dom=preprocessor.getDomain
 
 #step 2
 print 'step 2'
-execfile('calc_fis.py')
+exec(open('calc_fis.py').read()))
 quit()
 #step 3
 print 'step 3'
-execfile('calc_fis.py')
+exec(open('calc_fis.py').read()))
 
 #step 4
 print 'step 4'
-execfile('calc_fis.py')
+exec(open('calc_fis.py').read()))
 
 #step 5
 print 'step 5'
-execfile('calc_fis.py')
+exec(open('calc_fis.py').read()))
 
 
 

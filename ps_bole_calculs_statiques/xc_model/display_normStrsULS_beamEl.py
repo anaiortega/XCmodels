@@ -11,16 +11,16 @@ from postprocess import limit_state_data as lsd
 
 model_path="./"
 #Project directory structure
-execfile(model_path+'env_config.py')
+exec(open(model_path+'env_config.py').read()))
 
 modelDataInputFile=model_path+"fe_model.py" #data for FE model generation
-execfile(modelDataInputFile)
+exec(open(modelDataInputFile).read()))
 
 
 #Load properties to display:
 fName= cfg.projectDirTree.getVerifNormStrFile()
-execfile(fName)
-execfile(model_path+'/captionTexts.py')
+exec(open(fName).read()))
+exec(open(model_path+'/captionTexts.py').read()))
 
 
 limitStateLabel= lsd.normalStressesResistance.label
@@ -42,7 +42,7 @@ displaySettings.setupGrid(setDispRes)
 displaySettings.defineMeshScene(None)
 displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
-#execfile('draw_supports.py')
+#exec(open('draw_supports.py').read()))
 #displaySettings.renderer.AddActor(supportsActor)
 
 caption= capTexts[limitStateLabel] + ', ' + capTexts[argument] + '. '+ setDispRes.genDescr.capitalize() #+ ', ' + setDispRes.sectDescr[0]

@@ -6,6 +6,6 @@ import geom
 import xc
 import math
 
-execfile('./basic_data.py')
+exec(open('./basic_data.py').read()))
 
 locals()

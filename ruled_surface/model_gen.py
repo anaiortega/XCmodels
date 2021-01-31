@@ -24,7 +24,7 @@ from materials.ec3 import EC3_materials
 from postprocess.config import default_config
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-execfile(workingDirectory+'env_config.py')
+exec(open(workingDirectory+'env_config.py').read()))
 
 #Data
 Lx=8     

@@ -3,9 +3,9 @@
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-execfile('../model_data.py')
-execfile('../../PSs/loadStateDataActions.py')
-execfile('../../PSs/loadStateData.py')
+exec(open('../model_data.py').read()))
+exec(open('../../PSs/loadStateDataActions.py').read()))
+exec(open('../../PSs/loadStateData.py').read()))
 
 
 #available components: 'axialComponent', 'transComponent', 'transYComponent',

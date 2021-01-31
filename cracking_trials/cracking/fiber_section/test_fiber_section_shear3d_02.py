@@ -27,7 +27,7 @@ scc1x1= section_properties.RectangularSection('scc1x1',b,h)
 scc1x1.nDivIJ= 32 # number of cells in IJ direction  
 scc1x1.nDivJK= 32 # number of cells in JK direction
 
-execfile("./fiber_section_test_macros.py")
+exec(open("./fiber_section_test_macros.py").read()))
 
 fy= 2600 # yield strength [kp/cm2].
 E= 1e6   # elastic moculus [kp/cm2].
