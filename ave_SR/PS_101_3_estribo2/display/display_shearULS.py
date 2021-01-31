@@ -5,13 +5,13 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess import output_handler
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 fName= '../results/verifications/verifRsl_shearULS.py'
-exec(open(fName).read()))
-exec(open('../../PSs/captionTexts.py').read()))
+exec(open(fName).read())
+exec(open('../../PSs/captionTexts.py').read())
 
 
 limitStateLabel= lsd.shearResistance.label

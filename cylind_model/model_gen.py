@@ -20,7 +20,7 @@ from materials.ec3 import EC3_materials
 from postprocess.config import default_config
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-exec(open(workingDirectory+'env_config.py').read()))
+exec(open(workingDirectory+'env_config.py').read())
 '''
 
 

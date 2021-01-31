@@ -3,9 +3,9 @@
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
-exec(open('../model_gen.py').read()))
-exec(open('../../generic_bridges/voided_slab_bridge/loadStateDataActions.py').read()))
-exec(open('../../generic_bridges/voided_slab_bridge/loadStateData.py').read()))
+exec(open('../model_gen.py').read())
+exec(open('../../generic_bridges/voided_slab_bridge/loadStateDataActions.py').read())
+exec(open('../../generic_bridges/voided_slab_bridge/loadStateData.py').read())
 
 
 #available components: 'axialComponent', 'transComponent', 'transYComponent',

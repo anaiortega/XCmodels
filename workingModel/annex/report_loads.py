@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-exec(open("../model_gen.py").read())) #FE model generation
-exec(open('../load_state_data.py').read()))
+exec(open("../model_gen.py").read()) #FE model generation
+exec(open('../load_state_data.py').read())
 loadCasesToDisplay=[G1,Q1]
 
 pathGrph= cfg.projectDirTree.getReportLoadsGrPath()   #directory to place the figures

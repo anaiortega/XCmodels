@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 
-exec(open('../model_data.py').read()))
-exec(open('../loadStateData.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../loadStateData.py').read())
 
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:

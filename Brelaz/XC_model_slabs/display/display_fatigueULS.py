@@ -9,13 +9,13 @@ model_path="../"
 #Project directory structure
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 preprocessor= FEcase.getPreprocessor
-exec(open(projectDirs.getFatigueULSFileName()).read()))
-exec(open('../captionTexts.py').read()))
+exec(open(projectDirs.getFatigueULSFileName()).read())
+exec(open('../captionTexts.py').read())
 
 
 limitStateLabel= lsd.fatigueResistance.label

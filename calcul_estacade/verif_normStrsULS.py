@@ -5,7 +5,7 @@ import os
 
 model_path="./"
 #Project directory structure
-exec(open("env_config.py").read()))
+exec(open("env_config.py").read())
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution

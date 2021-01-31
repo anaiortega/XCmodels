@@ -4,10 +4,10 @@ from postprocess import limit_state_data as lsd
 from solution import predefined_solutions
 
 
-exec(open("model_data.py").read()))
+exec(open("model_data.py").read())
 
 #RC sections definition.
-exec(open("sectionsDef.py").read()))
+exec(open("sectionsDef.py").read())
 lsd.LimitStateData.envConfig= cfg
 
 #Define section names for each element.

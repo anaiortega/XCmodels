@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-exec(open('../model_data.py').read()))
-exec(open('../loadStateData.py').read()))
-exec(open('../captionTexts.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../loadStateData.py').read())
+exec(open('../captionTexts.py').read())
 capTexts=enCapTextsSimplLC
 
 pathGrph= cfg.projectDirTree.getReportSimplLCGrPath()   #directory to place the figures

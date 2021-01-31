@@ -6,10 +6,10 @@ from postprocess import output_handler
 
 
 #FE model generation
-exec(open("../model_gen.py").read()))
+exec(open("../model_gen.py").read())
 
 #Load properties to display:
-exec(open(cfg.projectDirTree.getVerifNormStrFile()).read()))
+exec(open(cfg.projectDirTree.getVerifNormStrFile()).read())
 
 
 #  Config

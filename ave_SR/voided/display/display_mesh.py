@@ -2,8 +2,8 @@
 from postprocess.config import default_config
 workingDirectory= default_config.findWorkingDirectory()+'/'
 
-exec(open(workingDirectory+'model_gen.py').read()))
-#exec(open('../../../generic_bridges/voided_slab_bridge/captionTexts.py').read()))
+exec(open(workingDirectory+'model_gen.py').read())
+#exec(open('../../../generic_bridges/voided_slab_bridge/captionTexts.py').read())
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 

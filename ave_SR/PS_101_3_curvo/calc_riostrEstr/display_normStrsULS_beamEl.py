@@ -7,15 +7,15 @@ from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
-exec(open('./directs.py').read()))
-exec(open('./setCalcDisp.py').read()))
+exec(open(modelDataInputFile).read())
+exec(open('./directs.py').read())
+exec(open('./setCalcDisp.py').read())
 
 
 #Load properties to display:
 fName= dir_checks + 'verifRsl_normStrsULS.py'
-exec(open(fName).read()))
-exec(open('../../PSs/captionTexts.py').read()))
+exec(open(fName).read())
+exec(open('../../PSs/captionTexts.py').read())
 
 limitStateLabel= lsd.normalStressesResistance.label
 

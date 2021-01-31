@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-exec(open('fe_model.py').read()))
+exec(open('fe_model.py').read())
 
 from postprocess import get_reactions as gr
 

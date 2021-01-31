@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-exec(open("model_data.py").read()))
+exec(open("model_data.py").read())
 #gilamontDock.errFileName= './err.txt'
 
 for part in modelSurfaces:

@@ -97,7 +97,7 @@ Tunif_dilat_neopr=31+15   #Incremento uniforme temperatura dilatación ºC
 #Retracción
 area_deck=1   #!!!Corregir
 perim_deck=1  #!!!Corregir
-exec(open(workingDirectory+'retraccion.py').read()))  #cálculo de la retracción
+exec(open(workingDirectory+'retraccion.py').read())  #cálculo de la retracción
 eps_retracc=Epscs  #deformación por retracción #
 
 

@@ -3,10 +3,10 @@ from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
 from postprocess.reports import graphical_reports
 
-exec(open("../model_gen.py").read())) #data for FE model generation
+exec(open("../model_gen.py").read()) #data for FE model generation
 
 #Load properties to display:
-exec(open(cfg.projectDirTree.getVerifShearFile()).read()))
+exec(open(cfg.projectDirTree.getVerifShearFile()).read())
 
 
 

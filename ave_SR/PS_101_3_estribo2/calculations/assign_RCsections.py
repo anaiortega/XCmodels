@@ -7,10 +7,10 @@ from postprocess import element_section_map
 # Concrete of type concrete01 with no tension branch
 
 #FE model generation
-exec(open("../model_data.py").read()))
+exec(open("../model_data.py").read())
 
 #RC-sections definition file.
-exec(open("../sectionsDef.py").read()))
+exec(open("../sectionsDef.py").read())
 
 #list of RC sections (from those whose attributes (materials, geometry, refinforcement, set of elements to which apply, ... are defined in the file 'sectionsDef.py') that we want to process in order to run different limit-state checkings.
 lstOfSectRecords=[zapRCSects,murestrZ1RCSects,murestrZ2RCSects,aletiZ1RCSects,aletiZ2RCSects,aletiZ3RCSects,aletdZ1RCSects,aletdZ2RCSects,aletdZ3RCSects,voladziRCSects]

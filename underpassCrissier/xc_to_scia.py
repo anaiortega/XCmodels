@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 
-exec(open("model_data.py").read()))
+exec(open("model_data.py").read())
 
 from import_export.sciaXML.scia_loads import load_container as lc
 from import_export.sciaXML import sXML_mesh as sxml

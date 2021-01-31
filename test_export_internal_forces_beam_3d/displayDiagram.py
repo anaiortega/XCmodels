@@ -13,14 +13,14 @@ model_path="./"
 #Project directory structure
 
 modelDataInputFile=model_path+"test_export_internal_forces_beam_2d.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 
 fName= cfg.projectDirTree.getVerifShearFile()
-exec(open(fName).read()))
-#exec(open(model_path+'/captionTexts.py').read()))
+exec(open(fName).read())
+#exec(open(model_path+'/captionTexts.py').read())
 
 defGrid= vtk_graphic_base.RecordDefGrid()
 defGrid.nmbSet= "total"
@@ -39,7 +39,7 @@ displaySettings.setupGrid(totalSet)
 displaySettings.defineMeshScene(None)
 displaySettings.appendDiagram(diagram) #Append diagram to the scene.
 
-#exec(open('draw_supports.py').read()))
+#exec(open('draw_supports.py').read())
 #displaySettings.renderer.AddActor(supportsActor)
 
 displaySettings.displayScene('Noise barrier: '+ 'N [kN]')

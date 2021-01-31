@@ -1,4 +1,4 @@
-exec(open('./model_data.py').read()))
+exec(open('./model_data.py').read())
 
 from postprocess import output_handler
 

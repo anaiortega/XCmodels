@@ -11,7 +11,7 @@ from materials.ec2 import EC2_materials
 import math
 
 #Auxiliary data
-exec(open('../basic_data.py').read()))
+exec(open('../basic_data.py').read())
 
 
 rnom=35 #recubrimiento nominal 

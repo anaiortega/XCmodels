@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-exec(open('../model_data.py').read()))
-exec(open('../../PSs/loadStateData.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../../PSs/loadStateData.py').read())
 
 pathGrph='res_PS101_curvo/graphics/loads/'   #directory to place the figures
                                   #(do not use ./text/....)'

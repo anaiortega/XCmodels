@@ -10,7 +10,7 @@ from materials.ehe import EHE_materials
 import math
 
 #Auxiliary data
-exec(open('../basic_data.py').read()))
+exec(open('../basic_data.py').read())
 
 rnom=35 #recubrimiento nominal (todos los elementos)
 

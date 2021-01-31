@@ -22,10 +22,10 @@ def resuelveCombEstatLin(nmbComb):
     \mdlr{\loads{\combinaciones
         \nmbComb
           {
-            exec(open('solution/database_helper_solve_xci.py').read()))
+            exec(open('solution/database_helper_solve_xci.py').read())
             \add_to_domain()
             \sol_proc{ \static_analysis["smt"]{ analyze(1) analOk= result } }
-            exec(open('solution/database_helper_save_xci.py').read()))
+            exec(open('solution/database_helper_save_xci.py').read())
             \remove_from_domain()
           }
       }}}

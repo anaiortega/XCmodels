@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-exec(open('model_data.py').read()))
+exec(open('model_data.py').read())
 
 from postprocess import utils_display
 from postprocess.xcVtk import vtk_internal_force_diagram as ifd

@@ -2,15 +2,15 @@
 
 
 
-exec(open('listados/listado_hipotesis_xcm.py').read()))
+exec(open('listados/listado_hipotesis_xcm.py').read())
 
 
 \comb_acciones
-    exec(open('comb_acciones/iapf/gammaf_iapf.cmbm').read()))
+    exec(open('comb_acciones/iapf/gammaf_iapf.cmbm').read())
     \pond_acciones
         \IAPF
           {
-            exec(open('comb_acciones/iapf/coefs_psi_iapf.cmbm').read()))
+            exec(open('comb_acciones/iapf/coefs_psi_iapf.cmbm').read())
             \permanentes
               {
                 \acciones
@@ -120,6 +120,6 @@ exec(open('listados/listado_hipotesis_xcm.py').read()))
     
     \genera_combinaciones()
 
-    exec(open('comb_acciones/listados/trata_comb_els_xci.py').read()))
-    exec(open('comb_acciones/listados/trata_comb_elu_xci.py').read()))
+    exec(open('comb_acciones/listados/trata_comb_els_xci.py').read())
+    exec(open('comb_acciones/listados/trata_comb_elu_xci.py').read())
 

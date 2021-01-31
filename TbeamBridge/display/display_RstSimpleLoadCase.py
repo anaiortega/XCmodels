@@ -10,11 +10,11 @@ from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 
 model_path="../"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 lsd.LimitStateData.internal_forces_results_directory= cfg.projectDirTree.intForcPath
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 #solve for load case
 #lc=QGrph.LoadCaseResults(FEcase=model,loadCaseName='GselfWeight',loadCaseExpr='1.0*GselfWeight') #solve for load case

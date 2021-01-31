@@ -5,7 +5,7 @@ from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 
-exec(open("../projectDirs.py").read()))
+exec(open("../projectDirs.py").read())
 lsd.LimitStateData.envConfig= cfg
 
 lsd.LimitStateData.internal_forces_results_directory= projectDirs.getInternalForcesResultsDirectory()

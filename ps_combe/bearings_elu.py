@@ -2,7 +2,7 @@
 
 from solution import predefined_solutions
 
-exec(open('model_data.py').read()))
+exec(open('model_data.py').read())
 
 resistingForces= list()
 

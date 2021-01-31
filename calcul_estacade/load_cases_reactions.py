@@ -2,7 +2,7 @@
 import xc_base
 import geom
 
-exec(open("model_data.py").read()))
+exec(open("model_data.py").read())
 
 def resultAction(nmbAction):
   preprocessor.resetLoadCase()

@@ -45,7 +45,7 @@ k=gridPil.gridCoo[2].index(zPil[indy][0])
 p=gridPil.getPntGrid((i,j,k))
 nPil2=p.getNode()
 
-exec(open(path_foundation+'pile_foundation.py').read()))
+exec(open(path_foundation+'pile_foundation.py').read())
 (struts1,ties1,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts1',nameSetTies='ties1')
 
 piles1=gen_piles(preprocessor,topNodPiles,pileLength,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles1')
@@ -65,7 +65,7 @@ k=gridPil.gridCoo[2].index(zPil[indy][0])
 p=gridPil.getPntGrid((i,j,k))
 nPil2=p.getNode()
 
-exec(open(path_foundation+'pile_foundation.py').read()))
+exec(open(path_foundation+'pile_foundation.py').read())
 (struts2,ties2,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts2',nameSetTies='ties2')
 
 piles2=gen_piles(preprocessor,topNodPiles,pileLength,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles2')
@@ -85,7 +85,7 @@ k=gridPil.gridCoo[2].index(zPil[indy][0])
 p=gridPil.getPntGrid((i,j,k))
 nPil2=p.getNode()
 
-exec(open(path_foundation+'pile_foundation.py').read()))
+exec(open(path_foundation+'pile_foundation.py').read())
 (struts3,ties3,topNodPiles)=gen_pile_cap_2columns_3X2Ypiles(preprocessor=prep,nodCols=[nPil1,nPil2],distXpile=distXpile,distYpile=distYpile,Hpilecap=Hpilecap,nameSetStruts='struts3',nameSetTies='ties3')
 
 piles3=gen_piles(preprocessor,topNodPiles,pileLength,pile_mat,eSize,pileType,bearingCapPile,nameSetPiles='piles3')

@@ -7,7 +7,7 @@ from materials.sia262 import SIA262_limit_state_checking
 
 import os
 #Project directory structure
-exec(open("../env_config.py").read()))
+exec(open("../env_config.py").read())
 
 lsd.LimitStateData.envConfig= cfg
 

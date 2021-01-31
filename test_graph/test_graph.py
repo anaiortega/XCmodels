@@ -18,7 +18,7 @@ from postprocess import output_styles as outSty
 from postprocess import output_handler as outHndl
 
 workingDirectory= default_config.findWorkingDirectory()+'/' #search env_config.py
-exec(open(workingDirectory+'env_config.py').read()))
+exec(open(workingDirectory+'env_config.py').read())
 sty=outSty.OutputStyle() 
 
 FEcase= xc.FEProblem()

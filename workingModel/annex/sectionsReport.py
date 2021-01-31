@@ -3,10 +3,10 @@ from materials.sections.fiber_section import section_report
 from postprocess.reports import graph_material 
 import matplotlib.pyplot as plt
 
-exec(open("../model_gen.py").read())) #FE model generation
+exec(open("../model_gen.py").read()) #FE model generation
 
 sectDataInputFile='../RC_sections_def.py'  #script that carries out the section definition
-exec(open(sectDataInputFile).read()))
+exec(open(sectDataInputFile).read())
 
 sect2Disp=[deckRCSects,beamXRCsect] #reinforced concrete sections to display
                                     #from those defined in sectDataInputFile

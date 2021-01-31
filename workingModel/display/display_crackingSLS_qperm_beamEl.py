@@ -6,9 +6,9 @@ from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 
 #FE model generation
-exec(open("../model_gen.py").read()))
+exec(open("../model_gen.py").read())
 
-exec(open(cfg.projectDirTree.getVerifCrackQpermFile()).read()))
+exec(open(cfg.projectDirTree.getVerifCrackQpermFile()).read())
 
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label

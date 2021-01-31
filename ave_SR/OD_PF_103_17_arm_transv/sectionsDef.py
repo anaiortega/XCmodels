@@ -20,7 +20,7 @@ reinfSteel= EHE_materials.B500S
 reinfConcreteSectionDistribution= RC_material_distribution.RCMaterialDistribution()
 sections= reinfConcreteSectionDistribution.sectionDefinition
 
-exec(open('../generic_layers_aux.py').read()))
+exec(open('../generic_layers_aux.py').read())
 
 #instances of element_section_map.RCSlabBeamSection that defines the
 #variables that make up THE TWO reinforced concrete sections in the two

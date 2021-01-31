@@ -5,12 +5,12 @@ from postprocess import element_section_map
 
 # Reinforced concrete material distribution over the elements of the FE model.
 #FE model generation
-exec(open("../model_data.py").read()))
+exec(open("../model_data.py").read())
 # Concrete of type concrete01 with no tension branch
-exec(open("./directs.py").read()))
+exec(open("./directs.py").read())
 
 #RC-sections definition file.
-exec(open("../sectionsDef.py").read()))
+exec(open("../sectionsDef.py").read())
 
 
 

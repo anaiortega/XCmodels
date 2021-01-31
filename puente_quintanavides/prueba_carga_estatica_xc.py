@@ -1,10 +1,10 @@
 # -*- coding: utf-8
-exec(open('puente_quintanavides_xci.py').read()))
+exec(open('puente_quintanavides_xci.py').read())
 
 
-exec(open('modelo/sets_prueba_carga_estatica_xci.py').read()))
-exec(open('acciones/cargas_prueba_carga_estatica_xci.py').read()))
-exec(open('modelo/ptos_control_prueba_carga_estatica_xci.py').read()))
+exec(open('modelo/sets_prueba_carga_estatica_xci.py').read())
+exec(open('acciones/cargas_prueba_carga_estatica_xci.py').read())
+exec(open('modelo/ptos_control_prueba_carga_estatica_xci.py').read())
 
 def trataResultsComb(nmbComb):
     \listaDesplazamientosNodos(nmbComb,tagsNodosPControl,"%7.2f","flechasPCE","cabecera","tit")
@@ -31,7 +31,7 @@ os.system("rm -rf /tmp/prueba_carga_estatica.db")
 \database["/tmp/prueba_carga_estatica.db","BerkeleyDB"]
 tagSaveFase0PCarga= 
 
-exec(open('solucion/resuelveFASE0PCARGA_xci.py').read()))
+exec(open('solucion/resuelveFASE0PCARGA_xci.py').read())
 
 \mdlr
     dom(\nuevo_caso())

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-exec(open('../model_data.py').read()))
-exec(open('../loadStateData.py').read()))
-exec(open('../captionTexts.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../loadStateData.py').read())
+exec(open('../captionTexts.py').read())
 
 pathGrph= cfg.projectDirTree.getReportLoadsGrPath()   #directory to place the figures
                                   #(do not use ./text/....)'

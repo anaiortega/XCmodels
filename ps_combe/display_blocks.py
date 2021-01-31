@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 '''Displays model block topology.'''
 
-exec(open('./model_data.py').read()))
+exec(open('./model_data.py').read())
 from postprocess.xcVtk.CAD_model import vtk_CAD_graphic
 
 displaySettings= vtk_CAD_graphic.DisplaySettingsBlockTopo()

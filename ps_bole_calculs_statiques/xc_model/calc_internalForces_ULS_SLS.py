@@ -5,14 +5,14 @@ from model.sets import sets_mng as sUtils
 
 model_path="./"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 lsd.LimitStateData.envConfig= cfg
 
 modelDataInputFile=model_path+"fe_model.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 #RC sections definition.
-exec(open(model_path+'sectionsDef.py').read()))
+exec(open(model_path+'sectionsDef.py').read())
 
 #Define section for each element (spatial distribution of RC sections).
 reinfConcreteSectionDistribution.assign(elemSet= deckSet.elements, setRCSects= deckSlabRCSect)

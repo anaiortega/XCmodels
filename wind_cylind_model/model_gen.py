@@ -24,11 +24,11 @@ from postprocess import output_styles as outSty
 from postprocess import output_handler as outHndl
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-exec(open(workingDirectory+'env_config.py').read()))
+exec(open(workingDirectory+'env_config.py').read())
 sty=outSty.OutputStyle() 
 
 #Data
-exec(open(workingDirectory+'data.py').read()))
+exec(open(workingDirectory+'data.py').read())
 
 
 #             *** GEOMETRIC model (points, lines, surfaces) - SETS ***

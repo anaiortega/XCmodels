@@ -4,12 +4,12 @@ from postprocess import limit_state_data as lsd
 from postprocess.reports import graphical_reports
 
 modelDataInputFile="../model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 #Load properties to display:
 fName= cfg.projectDirTree.getVerifNormStrFile()
-exec(open(fName).read()))
-exec(open('../../PSs/captionTexts.py').read()))
+exec(open(fName).read())
+exec(open('../../PSs/captionTexts.py').read())
 
 pathGrph='res_PS101_estribo1/graphics/normStrsULS/'   #directory to place the figures
                                         #(do not use ./text/....)'

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-exec(open('../model_data.py').read()))
+exec(open('../model_data.py').read())
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk.fields import load_vector_field as lvf

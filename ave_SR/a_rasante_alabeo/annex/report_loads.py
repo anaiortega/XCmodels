@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from postprocess.reports import graphical_reports
 
-exec(open('../model_data.py').read()))
-exec(open('../loadStateData.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../loadStateData.py').read())
 
 
 pathGrph='res_alabeo/graphics/loads/'   #directory to place the figures

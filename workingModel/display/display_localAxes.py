@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-exec(open("../model_gen.py").read())) #FE model generation
+exec(open("../model_gen.py").read()) #FE model generation
 
 from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import quick_graphics as qg

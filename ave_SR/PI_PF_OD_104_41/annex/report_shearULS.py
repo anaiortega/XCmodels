@@ -5,14 +5,14 @@ from postprocess.reports import graphical_reports
 
 model_path="../"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 #Load properties to display:
 fName= cfg.projectDirTree.getVerifShearFile()
-exec(open(fName).read()))
+exec(open(fName).read())
 
 
 pathGrph='res_PI_PF_OD_104_41/graphics/shearULS/'   #directory to place the figures

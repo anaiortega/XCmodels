@@ -21,28 +21,28 @@ from materials.ehe import EHE_materials
 #
 
 workingDirectory= default_config.findWorkingDirectory()+'/'
-exec(open(workingDirectory+'init_data.py').read()))
+exec(open(workingDirectory+'init_data.py').read())
 
-exec(open(workingDirectory+'data_deck_piers.py').read()))
+exec(open(workingDirectory+'data_deck_piers.py').read())
 if abutment.lower()[0]=='y':
-    exec(open(workingDirectory+'data_abutment.py').read()))
-exec(open(path_model_slab_bridge+'model_gen.py').read()))
+    exec(open(workingDirectory+'data_abutment.py').read())
+exec(open(path_model_slab_bridge+'model_gen.py').read())
 
 if abutment.lower()[0]=='y':
-    exec(open(path_model_abutment+'model_gen_abutment.py').read()))
+    exec(open(path_model_abutment+'model_gen_abutment.py').read())
 #Definition of sets
-exec(open(workingDirectory+'sets_def.py').read()))
+exec(open(workingDirectory+'sets_def.py').read())
 
 if pile_found.lower()[0]=='y':
-    exec(open('../data_foundation.py').read()))
+    exec(open('../data_foundation.py').read())
 #                       ***BOUNDARY CONDITIONS***
-exec(open(workingDirectory+'bound_cond.py').read()))
+exec(open(workingDirectory+'bound_cond.py').read())
         
 #                       ***ACTIONS***
-exec(open(path_loads_def+'loads_def.py').read()))                           
-exec(open(path_loads_def+'loads_def_thermal_gradient_slab.py').read()))                           
+exec(open(path_loads_def+'loads_def.py').read())                           
+exec(open(path_loads_def+'loads_def_thermal_gradient_slab.py').read())                           
 if abutment.lower()[0]=='y':
-    exec(open(path_loads_abutment+'loads_def.py').read()))
+    exec(open(path_loads_abutment+'loads_def.py').read())
 
 setsTablPilas=[riostrEstr1,riostrEstr2,losa,cartabInt,cartabExt,voladzInt,voladzExt,pilasBarlov]
 if abutment.lower()[0]=='y':

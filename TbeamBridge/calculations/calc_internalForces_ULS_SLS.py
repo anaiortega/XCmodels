@@ -5,11 +5,11 @@ from postprocess import element_section_map
 
 model_path="../"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 lsd.LimitStateData.envConfig= cfg
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Define section names for each element.

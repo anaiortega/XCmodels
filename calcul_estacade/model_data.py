@@ -25,7 +25,7 @@ from solution import predefined_solutions
 
 
 gilamontDock= xc.FEProblem()
-exec(open('./xc_model_blocks.py').read()))
+exec(open('./xc_model_blocks.py').read())
 
 
 xcTotalSet= preprocessor.getSets.getSet('total')

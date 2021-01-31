@@ -1,12 +1,12 @@
 
 
 
-exec(open('materiales/xLamina/extrae_combinaciones_xcm.py').read()))
-exec(open('materiales/xLamina/modelo_xcm.py').read()))
-exec(open('solution/resuelve_combinacion_xcm.py').read()))
-exec(open('listados/listados_factor_capacidad_xcm.py').read()))
-exec(open('materiales/xLamina/postproceso_xLamina_xcm.py').read()))
-exec(open('materiales/xLamina/calculo_tn_xcm.py').read()))
+exec(open('materiales/xLamina/extrae_combinaciones_xcm.py').read())
+exec(open('materiales/xLamina/modelo_xcm.py').read())
+exec(open('solution/resuelve_combinacion_xcm.py').read())
+exec(open('listados/listados_factor_capacidad_xcm.py').read())
+exec(open('materiales/xLamina/postproceso_xLamina_xcm.py').read())
+exec(open('materiales/xLamina/calculo_tn_xcm.py').read())
 
 
 nmbArch= "esfLosaViaDerTramo3" # XXX AQUI SE ESCRIBE EL NOMBRE (SIN EXTENSIÓN) DEL LISTADO DE HIPÓTESIS

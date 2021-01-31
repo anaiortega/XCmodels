@@ -1,5 +1,5 @@
-exec(open('fe_model.py').read()))
-exec(open('loadStateData.py').read()))
+exec(open('fe_model.py').read())
+exec(open('loadStateData.py').read())
 
 #Graphic output
 from postprocess.xcVtk import vtk_graphic_base

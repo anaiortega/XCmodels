@@ -7,15 +7,15 @@ from postprocess.xcVtk.diagrams import control_var_diagram as cvd
 
 model_path="../"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 
 modelDataInputFile=model_path+"model_gen.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 fName=  cfg.projectDirTree.getVerifCrackQpermFile()
-exec(open(fName).read()))
+exec(open(fName).read())
 
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label

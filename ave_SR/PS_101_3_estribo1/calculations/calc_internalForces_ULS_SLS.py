@@ -5,11 +5,11 @@ from postprocess import RC_material_distribution
 
 
 #Project directory structure
-exec(open('../../PSs/env_config.py').read()))
+exec(open('../../PSs/env_config.py').read())
 #FE model generation
-exec(open("../model_data.py").read()))
+exec(open("../model_data.py").read())
 #Limit states
-exec(open("../../PSs_estribos/loadComb.py").read()))
+exec(open("../../PSs_estribos/loadComb.py").read())
 lsd.LimitStateData.envConfig= cfg
 
 #Reinforced concrete sections on each element.

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-exec(open("../model_gen.py").read())) #FE model generation
+exec(open("../model_gen.py").read()) #FE model generation
 loads2disp=[GselfWeight,Qdecks]
 for l in loads2disp:
     modelSpace.addLoadCaseToDomain(l.name)
@@ -12,7 +12,7 @@ for l in loads2disp:
 
 
 '''
-exec(open('../load_state_data.py').read()))
+exec(open('../load_state_data.py').read())
 
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 

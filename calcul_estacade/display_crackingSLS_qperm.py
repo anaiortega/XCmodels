@@ -10,16 +10,16 @@ from postprocess.xcVtk.FE_model import Fields
 
 model_path="./"
 #Project directory structure
-exec(open(model_path+'env_config.py').read()))
+exec(open(model_path+'env_config.py').read())
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 fName=  cfg.projectDirTree.getVerifCrackQpermFile()
-exec(open(fName).read()))
-exec(open('./captionTexts.py').read()))
+exec(open(fName).read())
+exec(open('./captionTexts.py').read())
 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
 displaySettings= vtk_FE_graphic.DisplaySettingsFE()

@@ -2,8 +2,8 @@
 import os
 from postprocess.xcVtk.FE_model import quick_graphics as QGrph
 
-exec(open('../model_gen.py').read()))
-exec(open('../loadStateData.py').read()))
+exec(open('../model_gen.py').read())
+exec(open('../loadStateData.py').read())
 
 #ordered list of load cases (from those defined in ../loadStateData.py
 #or redefined lately) to be displayed:

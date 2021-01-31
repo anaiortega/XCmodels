@@ -4,8 +4,8 @@ from postprocess.xcVtk import vtk_graphic_base
 from postprocess.xcVtk.FE_model import vtk_FE_graphic
 from postprocess.xcVtk import linear_load_diagram as lld
 import vtk
-exec(open('../model_data.py').read()))
-exec(open('../loadStateData.py').read()))
+exec(open('../model_data.py').read())
+exec(open('../loadStateData.py').read())
 
 loadCasesToDisplay=[G1,Q1]
 

@@ -3,13 +3,13 @@ import os
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 
-exec(open('./directs.py').read()))
+exec(open('./directs.py').read())
 
 #FE model generation
-exec(open("../model_data.py").read()))
+exec(open("../model_data.py").read())
 #Limit states
-exec(open("../../PSs/loadComb.py").read()))
-exec(open("./setCalcDisp.py").read()))
+exec(open("../../PSs/loadComb.py").read())
+exec(open("./setCalcDisp.py").read())
 lsd.LimitStateData.envConfig= cfg
 #lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
 

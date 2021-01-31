@@ -7,13 +7,13 @@ from postprocess import output_handler
 model_path="../"
 
 modelDataInputFile=model_path+"model_data.py" #data for FE model generation
-exec(open(modelDataInputFile).read()))
+exec(open(modelDataInputFile).read())
 
 
 #Load properties to display:
 preprocessor= FEcase.getPreprocessor
-exec(open(projectDirs.getNormalStressesULSFileName()).read()))
-exec(open('../captionTexts.py').read()))
+exec(open(projectDirs.getNormalStressesULSFileName()).read())
+exec(open('../captionTexts.py').read())
 
 limitStateLabel= lsd.normalStressesResistance.label
 

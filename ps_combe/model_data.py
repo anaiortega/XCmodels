@@ -16,7 +16,7 @@ from actions import load_cases as lcm
 from actions import combinations as cc
 from actions.roadway_trafic import load_model_base as lmb
 
-exec(open('./model_geometry.py').read()))
+exec(open('./model_geometry.py').read())
 
 # Materials.
 

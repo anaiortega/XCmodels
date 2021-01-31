@@ -2,12 +2,12 @@
 # Definición del puente.
 
 '''
-exec(open('solucion/solucion_xci.py').read()))
-exec(open('listados/listados_reacciones_xcm.py').read()))
-exec(open('listados/listados_esfuerzos_xcm.py').read()))
-exec(open('listados/exporta_esfuerzos_xcm.py').read()))
-exec(open('listados/listados_desplazamientos_xcm.py').read()))
-exec(open('latex/supertabular.lcmm').read()))
+exec(open('solucion/solucion_xci.py').read())
+exec(open('listados/listados_reacciones_xcm.py').read())
+exec(open('listados/listados_esfuerzos_xcm.py').read())
+exec(open('listados/exporta_esfuerzos_xcm.py').read())
+exec(open('listados/listados_desplazamientos_xcm.py').read())
+exec(open('latex/supertabular.lcmm').read())
 '''
 
 from __future__ import division
@@ -33,11 +33,11 @@ modelSpace= deck_geometry.DeckGeometry(nodes)
 
 xcTotalSet= preprocessor.getSets.getSet('total')
 
-exec(open('datos_base_xci.py').read()))
+exec(open('datos_base_xci.py').read())
 
 modelSpace.defineTablero()
 modelSpace.defineSets()
-exec(open('modelo/materiales_xci.py').read()))
+exec(open('modelo/materiales_xci.py').read())
 
 
 modelSpace.genMesh()
@@ -47,7 +47,7 @@ modelSpace.defineSetsPretensado()
 modelSpace.mallaTendones(areaCordon)
 
 # Loads
-exec(open('loads.py').read()))
+exec(open('loads.py').read())
 
 modelSpace.creaSetsListados()
 
