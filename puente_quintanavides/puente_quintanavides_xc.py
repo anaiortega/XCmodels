@@ -10,7 +10,7 @@ exec(open('resuelve_hipotesis_simples_xci.py').read())
 cierra_archivo_salida("reacc")
 
 '''
-mdlr(loads(exec(open('combinaciones/def_hip_elspf_xci.py'))).read())
+mdlr(loads(exec(open('combinaciones/def_hip_elspf_xci.py')).read())
 exec(open('combinaciones/calc_hip_elspf_xci.py').read())
 '''
 exec(open('graficos_vtk_xci.py').read())
