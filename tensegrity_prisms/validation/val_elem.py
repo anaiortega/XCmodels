@@ -105,7 +105,7 @@ solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm"
   #                   'linear_buckling_soln_algo' 
 solAlgo= solutionStrategy.newSolutionAlgorithm("newton_raphson_soln_algo")
   #definition of the convergence test
-  #Available types: 'energy_inc_conv_test', 'fixed_num_iter_conv_test', 'norm_disp_incr_conv_test', 'norm_unbalance_conv_test', 'relative_energy_incr_conv_test', 'relative_norm_disp_incr_conv_test', 'relative_norm_unbalance_conv_test', 'relative_total_norm_disp_incr_conv_test'
+  #Available types: 'energy_incr_conv_test', 'fixed_num_iter_conv_test', 'norm_disp_incr_conv_test', 'norm_unbalance_conv_test', 'relative_energy_incr_conv_test', 'relative_norm_disp_incr_conv_test', 'relative_norm_unbalance_conv_test', 'relative_total_norm_disp_incr_conv_test'
 ctest= solutionStrategy.newConvergenceTest("norm_unbalance_conv_test")
 ctest.tol= 1e-4
 ctest.maxNumIter= 10
