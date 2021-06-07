@@ -110,11 +110,11 @@ refBexAbutment= geom.Ref3d3d(O,VI,-VJ)
 referenceOffset= geom.Vector3d(0.0,0.0,-asphaltThickness+beamDepth+deckDepth)
 refMassongexAbutment.Org+= referenceOffset
 refMassongexPier.Org+= referenceOffset
-MassongexPierOffset= refMassongexPier.getCooGlobales(geom.Vector3d(0.0,0.25,0.0))
+MassongexPierOffset= refMassongexPier.getGlobalCoordinates(geom.Vector3d(0.0,0.25,0.0))
 refMassongexPierA= geom.Ref3d3d(refMassongexPier.Org-MassongexPierOffset,refMassongexPier.Trf)
 refMassongexPierB= geom.Ref3d3d(refMassongexPier.Org+MassongexPierOffset,refMassongexPier.Trf)
 refBexPier.Org+= referenceOffset
-BexPierOffset= refBexPier.getCooGlobales(geom.Vector3d(0.0,0.25,0.0))
+BexPierOffset= refBexPier.getGlobalCoordinates(geom.Vector3d(0.0,0.25,0.0))
 refBexPierA= geom.Ref3d3d(refBexPier.Org-BexPierOffset,refBexPier.Trf)
 refBexPierB= geom.Ref3d3d(refBexPier.Org+BexPierOffset,refBexPier.Trf)
 refBexAbutment.Org+= referenceOffset
@@ -139,22 +139,22 @@ def createPoints(refSys):
     retval['beamCentroids']= []
     centroids= retval['beamCentroids']
     for p in beamCentroids:
-        pGlobal= refSys.getPosGlobal(p)
+        pGlobal= refSys.getGlobalPosition(p)
         centroids.append(points.newPntFromPos3d(pGlobal))
     retval['beamBottoms']= []
     bottoms= retval['beamBottoms']
     for p in beamBottoms:
-        pGlobal= refSys.getPosGlobal(p)
+        pGlobal= refSys.getGlobalPosition(p)
         bottoms.append(points.newPntFromPos3d(pGlobal))
     retval['beamSupports']= []
     supports= retval['beamSupports']
     for p in beamSupports:
-        pGlobal= refSys.getPosGlobal(p)
+        pGlobal= refSys.getGlobalPosition(p)
         supports.append(points.newPntFromPos3d(pGlobal))
     retval['deckLines']= []
     deck= retval['deckLines']
     for p in deckLines:
-        pGlobal= refSys.getPosGlobal(p)
+        pGlobal= refSys.getGlobalPosition(p)
         deck.append(points.newPntFromPos3d(pGlobal))
     return retval
        
@@ -293,7 +293,7 @@ def createLaneAxisLines():
     for s in stations:
         index= 0
         for p in laneAxisLines:
-            pGlobal= s.getPosGlobal(p)
+            pGlobal= s.getGlobalPosition(p)
             retval[index].appendVertex(pGlobal)
             index+= 1
     return retval
@@ -303,7 +303,7 @@ def createLaneRegionsPolygons():
     for s in stations:
         index= 0
         for p in laneLines:
-            pGlobal= s.getPosGlobal(p)
+            pGlobal= s.getGlobalPosition(p)
             lines[index].appendVertex(pGlobal)
             index+= 1
     polygons= [geom.Polygon2d(),geom.Polygon2d(),geom.Polygon2d()]
