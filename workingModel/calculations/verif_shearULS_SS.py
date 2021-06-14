@@ -19,7 +19,7 @@ setCalc=beamXsteel+columnZsteel
 outCfg= lsd.VerifOutVars(setCalc=setCalc,appendToResFile='Y',listFile='N',calcMeanCF='Y')
 
 limitState=lsd.shearResistance
-limitState.controller= EC3lscheck.ShearController(limitState.label)
+outCfg.controller= EC3lscheck.ShearController(limitState.label)
 a=limitState.runChecking(outCfg)
 
 

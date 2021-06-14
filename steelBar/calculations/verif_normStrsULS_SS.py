@@ -13,7 +13,7 @@ exec(open("../steel_beams_def.py").read())
 outCfg= lsd.VerifOutVars(setCalc=beamY,appendToResFile='N',listFile='N',calcMeanCF='Y')
 
 limitState=lsd.normalStressesResistance
-limitState.controller= EC3lscheck.BiaxialBendingNormalStressController(limitState.label)
+outCfg.controller= EC3lscheck.BiaxialBendingNormalStressController(limitState.label)
 a=limitState.runChecking(outCfg)
 
 

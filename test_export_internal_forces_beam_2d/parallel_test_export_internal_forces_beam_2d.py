@@ -132,10 +132,10 @@ reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=bea
 
 # #Checking normal stresses.
 limitStateLabel= lsd.normalStressesResistance.label
-lsd.normalStressesResistance.controller= SIA262_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
+outCfg.controller= SIA262_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
 meanFCs= lsd.normalStressesResistance.check(reinfConcreteSectionDistribution)
 
 #Shear checking.
 # limitStateLabel= lsd.shearResistance.label
-# lsd.shearResistance.controller= SIA262_limit_state_checking.ShearController(limitStateLabel)
+# outCfg.controller= SIA262_limit_state_checking.ShearController(limitStateLabel)
 # meanFCs= lsd.shearResistance.check(reinfConcreteSectionDistribution)

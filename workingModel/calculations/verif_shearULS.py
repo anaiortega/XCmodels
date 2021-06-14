@@ -20,7 +20,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 outCfg= lsd.VerifOutVars(setCalc=decks,appendToResFile='N',listFile='N')
 
 limitStateLabel= lsd.shearResistance.label
-lsd.shearResistance.controller= lschck.ShearController(limitStateLabel)
+outCfg.controller= lschck.ShearController(limitStateLabel)
 lsd.shearResistance.check(reinfConcreteSections,outCfg)
 
 

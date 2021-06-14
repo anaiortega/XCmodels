@@ -14,7 +14,7 @@ lsd.LimitStateData.envConfig= cfg
 sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 
 limitStateLabel= lsd.fatigueResistance.label
-lsd.fatigueResistance.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
+outCfg.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
 lsd.fatigueResistance.check(sections,sectionNamesForEveryElement)
 
 

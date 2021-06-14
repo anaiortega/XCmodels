@@ -19,7 +19,7 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 outCfg= lsd.VerifOutVars(setCalc=overallSet,appendToResFile='N',listFile='N',calcMeanCF='Y')
 
 limitState=lsd.normalStressesResistance
-limitState.controller= lscheck.BiaxialBendingNormalStressController(limitState.label)
+outCfg.controller= lschck.BiaxialBendingNormalStressController(limitState.label)
 mean=lsd.normalStressesResistance.check(reinfConcreteSections,outCfg)
 
 

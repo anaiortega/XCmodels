@@ -16,7 +16,7 @@ lsd.LimitStateData.check_results_directory= projectDirs.getCheckResultsDirectory
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.normalStressesResistance.label
-lsd.normalStressesResistance.controller= SIA262_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
+outCfg.controller= SIA262_limit_state_checking.BiaxialBendingNormalStressController(limitStateLabel)
 lsd.normalStressesResistance.check(reinfConcreteSections)
 
 

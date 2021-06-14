@@ -17,7 +17,7 @@ lsd.LimitStateData.envConfig= cfg
 sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 
 limitStateLabel= lsd.normalStressesResistance.label
-lsd.normalStressesResistance.controller= ns.BiaxialBendingNormalStressController(limitStateLabel)
+outCfg.controller= ns.BiaxialBendingNormalStressController(limitStateLabel)
 lsd.normalStressesResistance.check(sections,sectionNamesForEveryElement)
 
 

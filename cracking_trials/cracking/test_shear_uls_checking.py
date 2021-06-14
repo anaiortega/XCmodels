@@ -124,8 +124,8 @@ sections.append(beamRCsect)
 reinfConcreteSectionDistribution.assign(elemSet=totalSet.elements,setRCSects=beamRCsect)
 
 #Checking shear.
-lsd.shearResistance.controller= EHE_limit_state_checking.ShearController(limitStateLabel= lsd.shearResistance.label)
-lsd.shearResistance.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
+outCfg.controller= EHE_limit_state_checking.ShearController(limitStateLabel= lsd.shearResistance.label)
+outCfg.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
 lsd.LimitStateData.check_results_directory= '/tmp/'
 lsd.normalStressesResistance.outputDataBaseFileName= 'resVerif'
 

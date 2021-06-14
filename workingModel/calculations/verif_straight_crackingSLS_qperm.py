@@ -24,8 +24,8 @@ reinfConcreteSections=RC_material_distribution.loadRCMaterialDistribution()
 reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcementTenStiff.pkl'
 #Checking material for limit state.
 limitStateLabel= lsd.freqLoadsCrackControl.label
-lsd.freqLoadsCrackControl.controller= lschck.CrackStraightController(limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label)
-lsd.freqLoadsCrackControl.controller.solutionProcedureType= predefined_solutions.PlainStaticModifiedNewton
+outCfg.controller= lschck.CrackStraightController(limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label)
+outCfg.controller.solutionProcedureType= predefined_solutions.PlainStaticModifiedNewton
 lsd.quasiPermanentLoadsCrackControl.check(reinfConcreteSections,outCfg)
 
 

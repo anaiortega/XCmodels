@@ -15,7 +15,7 @@ lsd.LimitStateData.check_results_directory= projectDirs.getCheckResultsDirectory
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.fatigueResistance.label
-lsd.fatigueResistance.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
+outCfg.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
 lsd.fatigueResistance.check(reinfConcreteSections)
 
 

@@ -17,7 +17,7 @@ outCfg= lsd.VerifOutVars(setCalc=beamX,appendToResFile='N',listFile='N')
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 
 limitStateLabel= lsd.fatigueResistance.label
-lsd.fatigueResistance.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
+outCfg.controller= SIA262_limit_state_checking.FatigueController(limitStateLabel)
 lsd.fatigueResistance.check(reinfConcreteSections,outCfg)
 
 

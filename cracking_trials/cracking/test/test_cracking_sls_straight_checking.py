@@ -140,8 +140,8 @@ sect2E1=reinfConcreteSectionDistribution.getSectionDefinitionsForElement(1)[1]
 
 ####
 #Crack checking.
-lsd.freqLoadsCrackControl.controller= EHE_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
-lsd.freqLoadsCrackControl.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
+outCfg.controller= EHE_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
+outCfg.controller.solutionProcedureType= predefined_solutions.PlainNewtonRaphson
 lsd.LimitStateData.check_results_directory= '/tmp/'
 lsd.normalStressesResistance.outputDataBaseFileName= 'resVerif'
 
@@ -152,7 +152,7 @@ from postprocess import phantom_model as phm
 phantomModel= phm.PhantomModel(preprocessor,reinfConcreteSectionDistribution)
 limitStateData=lsd.freqLoadsCrackControl
 intForcCombFileName= limitStateData.getInternalForcesFileName()
-controller= limitStateData.controller
+controller= outCfg.controller
 meanCFs= -1.0
 phantomElements=phantomModel.build(intForcCombFileName,controller) #=> elements ZeroLengthSections, whose sections (reachable by means of method .getSection()) are fiber section models.
 combs= preprocessor.getLoadHandler.getLoadPatterns

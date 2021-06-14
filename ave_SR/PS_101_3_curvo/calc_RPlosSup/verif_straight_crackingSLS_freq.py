@@ -19,8 +19,8 @@ reinfConcreteSections.mapSectionsFileName='./mapSectionsReinforcementTenStiff.pk
 reinfConcreteSections=RC_material_distribution.loadRCMaterialDistribution()
 #Checking material for limit state.
 limitStateLabel= lsd.freqLoadsCrackControl.label
-lsd.freqLoadsCrackControl.controller= EC2_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
-lsd.freqLoadsCrackControl.controller.solutionProcedureType= predefined_solutions.PlainStaticModifiedNewton
+outCfg.controller= EC2_limit_state_checking.CrackStraightController(limitStateLabel= lsd.freqLoadsCrackControl.label)
+outCfg.controller.solutionProcedureType= predefined_solutions.PlainStaticModifiedNewton
 lsd.freqLoadsCrackControl.check(reinfConcreteSections)
 
 

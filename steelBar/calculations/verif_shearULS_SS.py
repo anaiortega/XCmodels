@@ -13,7 +13,7 @@ exec(open("../steel_beams_def.py").read())
 outCfg= lsd.VerifOutVars(setCalc=beamY,appendToResFile='N',listFile='Y',calcMeanCF='Y')
 
 limitState=lsd.shearResistance
-limitState.controller= EC3lscheck.ShearController(limitState.label)
+outCfg.controller= EC3lscheck.ShearController(limitState.label)
 a=limitState.runChecking(outCfg)
 
 

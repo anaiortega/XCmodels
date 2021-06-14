@@ -15,7 +15,7 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 #Checking material for limit state.
 limitStress= 350e6 #XXX
 limitStateLabel= lsd.freqLoadsCrackControl.label
-lsd.freqLoadsCrackControl.controller= cc.CrackControlSIA262PlanB(limitStateLabel,limitStress)
+outCfg.controller= cc.CrackControlSIA262PlanB(limitStateLabel,limitStress)
 lsd.freqLoadsCrackControl.check(sections,sectionNamesForEveryElement)
 
 

@@ -19,7 +19,7 @@ setCalc=beamXsteel+columnZsteel
 outCfg= lsd.VerifOutVars(setCalc=setCalc,appendToResFile='Y',listFile='N',calcMeanCF='Y')
 
 limitState=lsd.normalStressesResistance
-limitState.controller= EC3lscheck.BiaxialBendingNormalStressController(limitState.label)
+outCfg.controller= EC3lscheck.BiaxialBendingNormalStressController(limitState.label)
 mean=limitState.runChecking(outCfg)
 
 

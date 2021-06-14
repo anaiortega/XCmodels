@@ -21,6 +21,6 @@ reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()
 #Checking material for limit state.
 limitStress= 350e6 #XXX 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
-lsd.quasiPermanentLoadsCrackControl.controller= lschck.CrackControlSIA262PlanB(limitStateLabel,limitStress)
+outCfg.controller= lschck.CrackControlSIA262PlanB(limitStateLabel,limitStress)
 lsd.quasiPermanentLoadsCrackControl.check(reinfConcreteSections,outCfg)
 

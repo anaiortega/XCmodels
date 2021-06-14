@@ -15,6 +15,6 @@ sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()
 #Checking material for limit state.
 limitStress= 350e6 #XXX 
 limitStateLabel= lsd.quasiPermanentLoadsCrackControl.label
-lsd.quasiPermanentLoadsCrackControl.controller= cc.CrackControlSIA262PlanB(limitStateLabel,limitStress)
+outCfg.controller= cc.CrackControlSIA262PlanB(limitStateLabel,limitStress)
 lsd.quasiPermanentLoadsCrackControl.check(sections,sectionNamesForEveryElement)
 
