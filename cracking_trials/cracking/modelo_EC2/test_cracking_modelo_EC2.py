@@ -69,7 +69,7 @@ from materials.sections import section_properties as sectpr
 geomSectBeam=sectpr.RectangularSection(name='geomSectBeamX',b=width,h=depth)
 
 # Elastic material-section appropiate for 3D beam analysis, including shear
-beam_mat= typical_materials.defElasticShearSection3d(preprocessor=preprocessor,name='beam_mat',A=geomSectBeam.A(),E=concrete.Ecm(),G=concrete.Gcm(),Iz=geomSectBeam.Iz(),Iy=geomSectBeam.Iy(),J=geomSectBeam.J(),alpha=geomSectBeam.alphaY())
+beam_mat= typical_materials.defElasticShearSection3d(preprocessor=preprocessor,name='beam_mat',A=geomSectBeam.A(),E=concrete.Ecm(),G=concrete.Gcm(),Iz=geomSectBeam.Iz(),Iy=geomSectBeam.Iy(),J=geomSectBeam.J(), alpha_y=geomSectBeam.alphaY(), alpha_z=geomSectBeam.alphaZ())
 
 
 
@@ -200,19 +200,19 @@ h=sccEl1.getLeverArm()
 
 As=setsRCEl1.tensionFibers.getArea(1.0)
 
-print 'As= ',As
+print('As= ',As)
 #maximum depth of the effective area:
 hceff=EC2_limit_state_checking.h_c_eff(depth_tot=h,depht_eff=abs(d),depth_neutral_axis=abs(x))
 
-print 'depth of the effective area: ',hceff,' m'
+print('depth of the effective area: ',hceff,' m')
 #Aceff_EHE_gross=sccEl1.getGrossEffectiveConcreteArea(hceff)
 Aceff=sccEl1.getNetEffectiveConcreteArea(hceff,'reinfSetFbEl1',15.0)
-print 'effective concrete tension area: ',Aceff,' m2'
+print('effective concrete tension area: ',Aceff,' m2')
 ro_s_eff=As/Aceff      #effective ratio of reinforcement
-print 'effective ratio of reinforcement=', ro_s_eff
+print('effective ratio of reinforcement=', ro_s_eff)
 #maximum crack spacing
 srmax=EC2_limit_state_checking.s_r_max(k1=0.8,k2=0.5,k3=3.4,k4=0.425,cover=cover,fiReinf=0.024,ro_eff=ro_s_eff)
-# print 'maximum crack spacing: ',srmax,' m'
+# print('maximum crack spacing: ',srmax,' m')
 #mean strain in the concrete between cracks
 eps_cm=concrete.fctm()/concrete.E0()/2.0
 #mean strain in the reinforcemen takin into account the effects of tension stiffening
@@ -221,25 +221,25 @@ epsSMax= fReinfMax.getMaterial().getStrain() # maximum strain among steel fibers
 eps_sm=epsSMax
 #crack withs
 w_k=srmax*(eps_sm-eps_cm)
-print 'crack widths: ',w_k*1e3, ' mm'
+print('crack widths: ',w_k*1e3, ' mm')
 ro_s_eff=0.0643875431034
 
 dom=preprocessor.getDomain
 
 #step 2
-print 'step 2'
+print('step 2')
 exec(open('calc_fis.py').read())
 quit()
 #step 3
-print 'step 3'
+print('step 3')
 exec(open('calc_fis.py').read())
 
 #step 4
-print 'step 4'
+print('step 4')
 exec(open('calc_fis.py').read())
 
 #step 5
-print 'step 5'
+print('step 5')
 exec(open('calc_fis.py').read())
 
 

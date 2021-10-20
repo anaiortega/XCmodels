@@ -113,7 +113,7 @@ respVz= typical_materials.defElasticMaterial(preprocessor, "respVz",1e3) # Shear
 materialHandler= preprocessor.getMaterialHandler
 sctFibers= materialHandler.newMaterial("fiberSectionShear3d","sctFibers")
 fiberSectionRepr= sctFibers.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed("geomSectFibers")
+fiberSectionRepr.setGeomNamed(geomSectFibers.name)
 sctFibers.setupFibers()
 sctFibers.setRespVyByName("respVy")
 sctFibers.setRespVzByName("respVz")

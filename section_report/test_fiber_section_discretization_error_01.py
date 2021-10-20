@@ -41,7 +41,7 @@ rg.pMax= geom.Pos2d(y0+y1,z0+z1)
 import os
 quadFibers= preprocessor.getMaterialHandler.newMaterial("fiber_section_3d","quadFibers")
 fiberSectionRepr= quadFibers.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed("geomSCC")
+fiberSectionRepr.setGeomNamed(geomSCC.name)
 quadFibers.setupFibers()
 fibers= quadFibers.getFibers()
 

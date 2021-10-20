@@ -54,7 +54,7 @@ reinforcementSup.p2= geom.Pos2d(depth/2.0-cover,width/2.0-cover)
 materialHandler= preprocessor.getMaterialHandler
 secHA= materialHandler.newMaterial("fiber_section_3d","secHA")
 fiberSectionRepr= secHA.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed("geomRCSection")
+fiberSectionRepr.setGeomNamed(geomRCSection.name)
 secHA.setupFibers()
 fibers= secHA.getFibers()
 
