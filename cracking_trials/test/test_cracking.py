@@ -31,8 +31,8 @@ modelSpace= predefined_spaces.StructuralMechanics3D(nodes) #Defines the
 beamSet=prep.getSets.defSet('beamSet')
 # points
 points=prep.getMultiBlockTopology.getPoints
-pnt1=points.newPntIDPos3d(1,geom.Pos3d(0,0,0)) #start point
-pnt2=points.newPntIDPos3d(2,geom.Pos3d(Lbeam,0,0)) #end point
+pnt1=points.newPoint(1,geom.Pos3d(0,0,0)) #start point
+pnt2=points.newPoint(2,geom.Pos3d(Lbeam,0,0)) #end point
 beamSet.getPoints.append(pnt1)
 beamSet.getPoints.append(pnt2)
 

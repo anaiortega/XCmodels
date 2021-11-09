@@ -66,7 +66,7 @@ prismGeom=tensegrity.tensegrityPrism(nSidPol=nSidPol,RbaseC=rBasCirc,RtopC=rTopC
 #Joints generation
 jointsCCoor=prismGeom.genJointsCoor()
 for i in jointsCCoor.index:
-    points.newPntIDPos3d(int(float(i[2:])),geom.Pos3d(jointsCCoor.loc[i].X,jointsCCoor.loc[i].Y,jointsCCoor.loc[i].Z))
+    points.newPoint(int(float(i[2:])),geom.Pos3d(jointsCCoor.loc[i].X,jointsCCoor.loc[i].Y,jointsCCoor.loc[i].Z))
     
 #Lines generation
 linsJoints=prismGeom.genLineLinkedJoints()

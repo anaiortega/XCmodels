@@ -24,18 +24,18 @@ modelSpace= predefined_spaces.StructuralMechanics3D(prep.getNodeHandler)
 
 points= prep.getMultiBlockTopology.getPoints
 # Deck cantilever
-pt1= points.newPntFromPos3d(geom.Pos3d(-cantileverWidth,0.0,0.0))
-pt2= points.newPntFromPos3d(geom.Pos3d(-cantileverWidth,modelLength,0.0))
-pt3= points.newPntFromPos3d(geom.Pos3d(0.0,modelLength,0.0))
-pt4= points.newPntFromPos3d(geom.Pos3d(0.0,0.0,0.0))
+pt1= points.newPoint(geom.Pos3d(-cantileverWidth,0.0,0.0))
+pt2= points.newPoint(geom.Pos3d(-cantileverWidth,modelLength,0.0))
+pt3= points.newPoint(geom.Pos3d(0.0,modelLength,0.0))
+pt4= points.newPoint(geom.Pos3d(0.0,0.0,0.0))
 
 # Parapet body
-pt5= points.newPntFromPos3d(geom.Pos3d(0.0,0.0,parapetBodyHeight))
-pt6= points.newPntFromPos3d(geom.Pos3d(0.0,modelLength,parapetBodyHeight))
+pt5= points.newPoint(geom.Pos3d(0.0,0.0,parapetBodyHeight))
+pt6= points.newPoint(geom.Pos3d(0.0,modelLength,parapetBodyHeight))
 
 # Parapet head
-pt7= points.newPntFromPos3d(geom.Pos3d(0.0,modelLength,parapetHeight))
-pt8= points.newPntFromPos3d(geom.Pos3d(0.0,0.0,parapetHeight))
+pt7= points.newPoint(geom.Pos3d(0.0,modelLength,parapetHeight))
+pt8= points.newPoint(geom.Pos3d(0.0,0.0,parapetHeight))
 
 
 surfaces= prep.getMultiBlockTopology.getSurfaces

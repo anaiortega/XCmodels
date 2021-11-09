@@ -140,22 +140,22 @@ def createPoints(refSys):
     centroids= retval['beamCentroids']
     for p in beamCentroids:
         pGlobal= refSys.getGlobalPosition(p)
-        centroids.append(points.newPntFromPos3d(pGlobal))
+        centroids.append(points.newPoint(pGlobal))
     retval['beamBottoms']= []
     bottoms= retval['beamBottoms']
     for p in beamBottoms:
         pGlobal= refSys.getGlobalPosition(p)
-        bottoms.append(points.newPntFromPos3d(pGlobal))
+        bottoms.append(points.newPoint(pGlobal))
     retval['beamSupports']= []
     supports= retval['beamSupports']
     for p in beamSupports:
         pGlobal= refSys.getGlobalPosition(p)
-        supports.append(points.newPntFromPos3d(pGlobal))
+        supports.append(points.newPoint(pGlobal))
     retval['deckLines']= []
     deck= retval['deckLines']
     for p in deckLines:
         pGlobal= refSys.getGlobalPosition(p)
-        deck.append(points.newPntFromPos3d(pGlobal))
+        deck.append(points.newPoint(pGlobal))
     return retval
        
 
@@ -219,9 +219,9 @@ def createPier(posPier,foundationLevel):
     bottomPoints= list()
     for p in deckPoints:
         supportPoint= p.getPos-offset
-        supportPoints.append(points.newPntFromPos3d(supportPoint))
+        supportPoints.append(points.newPoint(supportPoint))
         bottomPoint= geom.Pos3d(supportPoint.x,supportPoint.y,foundationLevel)
-        bottomPoints.append(points.newPntFromPos3d(bottomPoint))
+        bottomPoints.append(points.newPoint(bottomPoint))
     sz= len(supportPoints)
     for i in range(0,sz-1):
         pierSurfaces.getSurfaces.append(surfaces.newQuadSurfacePts(supportPoints[i].tag,bottomPoints[i].tag,bottomPoints[i+1].tag,supportPoints[i+1].tag))
@@ -237,7 +237,7 @@ def createLegLinesPier(pos,pierSupports):
     sz= len(pointsBeams)
     for i in range(0,sz):
         pierLegLines.getLines.append(lines.newLine(pointsBeams[i].tag,supportsBeams[i].tag))
-        dupPoint= points.newPntFromPos3d(supportsBeams[i].getPos)
+        dupPoint= points.newPoint(supportsBeams[i].getPos)
         corbelLine= lines.newLine(dupPoint.tag,pierSupports[i+1].tag)
         tgVector= corbelLine.getTang(0.0)
         xVector= geom.Vector3d(tgVector[0],tgVector[1],tgVector[2])

@@ -9,9 +9,9 @@ import xc
 def defineArco(pt1,cooC,R,angI,angF):
   mastPoints.append(pt1)
   angM= (angI+angF)/2.0
-  pt2= points.newPntFromPos3d(geom.Pos3d(cooC[0]+R*math.cos(angM), cooC[1], cooC[2]+R*math.sin(angM)))
+  pt2= points.newPoint(geom.Pos3d(cooC[0]+R*math.cos(angM), cooC[1], cooC[2]+R*math.sin(angM)))
   mastPoints.append(pt2)
-  pt3= points.newPntFromPos3d(geom.Pos3d(cooC[0]+R*math.cos(angF), cooC[1], cooC[2]+R*math.sin(angF)))
+  pt3= points.newPoint(geom.Pos3d(cooC[0]+R*math.cos(angF), cooC[1], cooC[2]+R*math.sin(angF)))
   l= lines.newCircleArc(pt1.tag,pt2.tag,pt3.tag)
   if(abs(angF-angI)<3):
     l.ndiv= 2
@@ -34,7 +34,7 @@ mastPoints= []
 radio= 33
 angIni= -math.radians(0.58)
 C= [0,0,20]
-pt= points.newPntIDPos3d(1, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
+pt= points.newPoint(1, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
 pt= defineArco(pt,C,radio,angIni,math.radians(0.0))
 pt= defineArco(pt,C,radio,math.radians(0.0),math.radians(12.19))
 pt= defineArco(pt,C,radio,math.radians(12.19),math.radians(12.19+3.99))
@@ -45,7 +45,7 @@ mastPoints.append(pt)
 # Mast 2
 angIni= math.pi-math.radians(0.42)
 C= [67.1504,0,19.4466]
-pt= points.newPntIDPos3d(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
+pt= points.newPoint(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
 pt= defineArco(pt,C,radio,math.pi-math.radians(0.42+0.53),math.pi-math.radians(0.42+0.53+12.19))
 pt= defineArco(pt,C,radio,math.pi-math.radians(0.42+0.53+12.19),math.pi-math.radians(0.42+0.53+12.19+9.46))
 pt= defineArco(pt,C,radio,math.pi-math.radians(0.42+0.53+12.19+9.46),math.pi-math.radians(0.42+0.53+12.19+9.46+8.65))
@@ -55,7 +55,7 @@ mastPoints.append(pt)
 # Mast 3
 angIni= -math.radians(0.48)
 C= [67.1564,0,19.7814]
-pt= points.newPntIDPos3d(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
+pt= points.newPoint(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
 pt= defineArco(pt,C,radio,angIni,math.radians(0.0))
 pt= defineArco(pt,C,radio,math.radians(0.0),math.radians(18.09))
 pt= defineArco(pt,C,radio,math.radians(18.09),math.radians(18.09+11.89))
@@ -67,7 +67,7 @@ mastPoints.append(pt)
 # Mast 4
 angIni= math.pi-math.radians(-0.50)
 C= [134.3007,0,19.7911]
-pt= points.newPntIDPos3d(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
+pt= points.newPoint(points.defaultTag, geom.Pos3d( C[0]+radio*math.cos(angIni), C[1], C[2]+radio*math.sin(angIni)) )
 pt= defineArco(pt,C,radio,angIni,math.pi-math.radians(0.0))
 pt= defineArco(pt,C,radio,math.pi-math.radians(0.0),math.pi-math.radians(18.08))
 pt= defineArco(pt,C,radio,math.pi-math.radians(18.08),math.pi-math.radians(18.08+11.89))
@@ -80,28 +80,28 @@ puntosAltosMastil= 11,20,33,46 #
 
 #Pipe
 pipePoints= []
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 21.6001, 0, 20.1625 ) )) # Retenidas estribo izquierdo
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 24.0001, 0, 20.1259 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 26.4001, 0, 20.0892 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 21.6001, 0, 20.1625 ) )) # Retenidas estribo izquierdo
+pipePoints.append(points.newPoint( geom.Pos3d( 24.0001, 0, 20.1259 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 26.4001, 0, 20.0892 ) ))
 
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 37.8007, 0, 16.7840 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 37.8007, 0, 16.7840 ) ))
 
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 43.6266, 0, 16.7960 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 49.5969, 0, 16.8084 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 55.5651, 0, 16.8207 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 43.6266, 0, 16.7960 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 49.5969, 0, 16.8084 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 55.5651, 0, 16.8207 ) ))
 
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 63.2332, 0, 16.8365 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 69.0707, 0, 16.8485 ) )) # Apeo tuberia
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 71.2733, 0, 16.8531 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 79.3123, 0, 16.8697 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 87.3482, 0, 16.8862 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 63.2332, 0, 16.8365 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 69.0707, 0, 16.8485 ) )) # Apeo tuberia
+pipePoints.append(points.newPoint( geom.Pos3d( 71.2733, 0, 16.8531 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 79.3123, 0, 16.8697 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 87.3482, 0, 16.8862 ) ))
 
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 97.3564, 0, 16.9069 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 97.3564, 0, 16.9069 ) ))
 
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 111.6132, 0, 19.5561 ) )) # Retenidas estribo derecho
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 119.2003, 0, 20.0335 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 125.2004, 0, 20.4143 ) ))
-pipePoints.append(points.newPntFromPos3d( geom.Pos3d( 128.7504, 0, 20.6393 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 111.6132, 0, 19.5561 ) )) # Retenidas estribo derecho
+pipePoints.append(points.newPoint( geom.Pos3d( 119.2003, 0, 20.0335 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 125.2004, 0, 20.4143 ) ))
+pipePoints.append(points.newPoint( geom.Pos3d( 128.7504, 0, 20.6393 ) ))
 
 # Pipe
 pipeLines= []
