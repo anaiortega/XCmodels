@@ -87,7 +87,7 @@ lin= trfs.newLinearCrdTransf3d('lin')
 lin.xzVector= xc.Vector([0,1,0])
 seedElem= preprocessor.getElementHandler.seedElemHandler
 seedElem.defaultTransformation= 'lin'
-seedElem.defaultMaterial= IPE450A.sectionName
+seedElem.defaultMaterial= IPE450A.name
 elem= seedElem.newElement("ElasticBeam3d",xc.ID([0,0]))
 for key in lineDict:
   l= lineDict[key]
@@ -97,7 +97,7 @@ for key in lineDict:
 joint= EC3_materials.IPEShape(S235JR,'IPE_300')
 fs3djoint= joint.defElasticShearSection3d(preprocessor)
 elements= preprocessor.getElementHandler
-elements.defaultMaterial= joint.sectionName
+elements.defaultMaterial= joint.name
 zl= elements.newElement("ZeroLengthSection",xc.ID([pt[10].getNode().tag,pt[21].getNode().tag]))
 zl.setupVectors(xc.Vector([1,0,0]),xc.Vector([0,0,1]))
 # print 'order= ', zl.getOrder

@@ -66,31 +66,31 @@ for sect in sections.sections:
   #Section 1
   # plotting of section geometric and mechanical properties
   sect1inf=section_report.SectionInfoHASimple(preprocessor,sect1)
-  texFileName=report_graphics_outDir+sect1.sectionName+'.tex'
-  epsFileName=report_graphics_outDir+sect1.sectionName+'.eps'
+  texFileName=report_graphics_outDir+sect1.name+'.tex'
+  epsFileName=report_graphics_outDir+sect1.name+'.eps'
   sect1inf.writeReport(texFileName,epsFileName)
   report.write('\input{'+texFileName+'}\n')
   # plotting of interaction diagrams
   diagNMy= sect1.defInteractionDiagramNMy(preprocessor)
-  grFileName=report_graphics_outDir+sect1.sectionName+'NMy'
-  plotIntDiag(diag=diagNMy,title=sect1.sectionName+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
+  grFileName=report_graphics_outDir+sect1.name+'NMy'
+  plotIntDiag(diag=diagNMy,title=sect1.name+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   diagNMz= sect1.defInteractionDiagramNMz(preprocessor)
-  grFileName=report_graphics_outDir+sect1.sectionName+'NMz'
-  plotIntDiag(diag=diagNMz,title=sect1.sectionName+ ' N-Mz interaction diagram',xAxLab='Mz [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
+  grFileName=report_graphics_outDir+sect1.name+'NMz'
+  plotIntDiag(diag=diagNMz,title=sect1.name+ ' N-Mz interaction diagram',xAxLab='Mz [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   #Section 2
   # plotting of section geometric and mechanical properties
   sect2inf=section_report.SectionInfoHASimple(preprocessor,sect2)
-  texFileName=report_graphics_outDir+sect2.sectionName+'.tex'
-  epsFileName=report_graphics_outDir+sect2.sectionName+'.eps'
+  texFileName=report_graphics_outDir+sect2.name+'.tex'
+  epsFileName=report_graphics_outDir+sect2.name+'.eps'
   sect2inf.writeReport(texFileName,epsFileName)
   report.write('\input{'+texFileName+'}\n')
   # plotting of interaction diagrams
   diagNMy= sect2.defInteractionDiagramNMy(preprocessor)
-  grFileName=report_graphics_outDir+sect2.sectionName+'NMy'
-  plotIntDiag(diag=diagNMy,title=sect2.sectionName+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
+  grFileName=report_graphics_outDir+sect2.name+'NMy'
+  plotIntDiag(diag=diagNMy,title=sect2.name+ ' N-My interaction diagram',xAxLab='My [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   diagNMz= sect2.defInteractionDiagramNMz(preprocessor)
-  grFileName=report_graphics_outDir+sect2.sectionName+'NMz'
-  plotIntDiag(diag=diagNMz,title=sect2.sectionName+ ' N-Mz interaction diagram',xAxLab='Mz [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
+  grFileName=report_graphics_outDir+sect2.name+'NMz'
+  plotIntDiag(diag=diagNMz,title=sect2.name+ ' N-Mz interaction diagram',xAxLab='Mz [kNm]',yAxLab='N [kN]',grFileNm=grFileName,reportFile=report)
   
 report.write('% \end{document}\n')
 

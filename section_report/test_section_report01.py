@@ -35,7 +35,7 @@ reinfSteel= EHE_materials.B500S
 
 dRebar= 0.15
 sccData= def_simple_RC_section.RCRectangularSection()
-sccData.sectionName= "sccData"
+sccData.name= "sccData"
 sccData.sectionDescr= "Prueba."
 sccData.fiberSectionParameters.concrType= concrete
 sccData.h= 0.5
