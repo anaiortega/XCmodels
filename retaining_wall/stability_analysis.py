@@ -3,8 +3,6 @@
 
 exec(open('retaining_wall.py').read())
 
-from postprocess.reports import common_formats as fmt
-
 reactions= {}
 forces= None
 

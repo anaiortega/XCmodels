@@ -75,15 +75,15 @@ class FillingCharacteristics(object):
     return 2*math.sqrt(self.getKp())
 
 class trafficLoad(object):
-  delta= math.radians(30)
-  fillThickKeys= 1.5 # Hauteur du remplissage sur la clé de la voûte (m).
-  Q= 160000 # Charge ponctuelle due au trafic (N).
-  qrep= 0.005e6 # Charge uniformément repartie due au trafic (Pa).
-  def __init__(self,delta= math.radians(30),fillThickKeys= 1.5,Q= 160000,qrep= 0.005e6):
-    self.delta=delta
-    self.fillThickKeys=fillThickKeys
-    self.Q=Q
-    self.qrep=qrep
+    delta= math.radians(30)
+    fillThickKeys= 1.5 # Hauteur du remplissage sur la clé de la voûte (m).
+    Q= 160000 # Punctual load due to traffic (N).
+    qrep= 0.005e6 # Uniform load due to traffic (Pa).
+    def __init__(self,delta= math.radians(30),fillThickKeys= 1.5,Q= 160000,qrep= 0.005e6):
+        self.delta=delta
+        self.fillThickKeys=fillThickKeys
+        self.Q=Q
+        self.qrep=qrep
 
 class permLoadResult(object):
   """Permanent load resultants"""

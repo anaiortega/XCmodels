@@ -14,6 +14,7 @@ from model.boundary_cond import spring_bound_cond as sprbc
 from materials.astm_aisc import ASTM_materials as astm
 from actions import loads
 from actions import load_cases as lcases
+from misc_utils import units_utils
 
 from postprocess.config import default_config
 from postprocess import output_styles as outSty
@@ -21,15 +22,9 @@ from postprocess import output_handler as outHndl
 
 # Example 5.1 of AISC Steel Design Guide 9 Torsional Analysis of Structural Steel Members
 
-#units
-in2m=0.0254
-kip2N=4448.22
-m2in=1/in2m
-N2kip=1/kip2N
-Pa2ksi=1.45038e-7
 #data
-L=15*12*in2m # beam length
-T=60*kip2N*in2m # service load torque (60 kip-in)
+L=15*12*unit_utils.inchToMeter # beam length
+T=60*units_utils.kipToN*unit_utils.inchToMeter # service load torque (60 kip-in)
 
 sty=outSty.OutputStyle() 
 FEcase= xc.FEProblem()
@@ -57,7 +52,7 @@ J=beam_mat.J()*(m2in**4)
 Jcomp=1.39
 ratio0=(J-Jcomp)/Jcomp
 
-G=steel_W.G()*Pa2ksi
+G=steel_W.G()/units_utils.ksiToPa
 Gcomp=11200
 ratio1=(G-Gcomp)/Gcomp
 

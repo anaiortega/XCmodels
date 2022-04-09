@@ -11,10 +11,10 @@ from model.mesh import finit_el_model as fem
 from model.sets import sets_mng
 from model import predefined_spaces
 from materials import bridge_bearings
-from actions.roadway_trafic import ofrou_report_664 as ofrou664
+from actions.roadway_traffic import ofrou_report_664 as ofrou664
 from actions import load_cases as lcm
 from actions import combinations as cc
-from actions.roadway_trafic import load_model_base as lmb
+from actions.roadway_traffic import load_model_base as lmb
 
 exec(open('./model_geometry.py').read())
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8
 # Definición de acciones.
 
-from actions.railway_trafic import IAPF_rail_load_models as iapf
+from actions.railway_traffic import IAPF_rail_load_models as iapf
 from actions.wind import IAPF_wind
 
 loadCaseManager= lcm.LoadCaseManager(preprocessor)

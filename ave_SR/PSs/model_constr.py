@@ -561,8 +561,8 @@ yCent_van3=(yPil2+yEstr2)/2.0
 yExtr_van1=2
 yExtr_van2=yPil1+2
 
-from actions.roadway_trafic import IAP_load_models as slm
-from actions.roadway_trafic import load_model_base as lmb
+from actions.roadway_traffic import IAP_load_models as slm
+from actions.roadway_traffic import load_model_base as lmb
 Q1c_vext_v1=lmb.VehicleDistrLoad(name='Q1c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_carril_virt1, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
 Q1c_vext_v2=lmb.VehicleDistrLoad(name='Q1c_vext_v2',xcSet=supTablero,loadModel=slm.IAP_carril_virt1, xCentr=xCent_vext,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
 Q2c_vcent_v1=lmb.VehicleDistrLoad(name='Q2c_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_carril_virt2, xCentr=xCent_vcent,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)

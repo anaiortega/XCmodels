@@ -78,11 +78,11 @@ gravityWallWeightSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(gravityWa
 print 'gravityWallWeightSVS: ', gravityWallWeightSVS
 
 # permanent load on the backfill.
-traficLoadOnBackfillPosition= geom.Pos2d(B,H/2.0)
-traficLoadOnBackfillValueH= -K*5e3
-traficLoadOnBackfillValueV= traficLoadOnBackfillValueH*math.tan(delta)
-traficLoadOnBackfillSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(traficLoadOnBackfillPosition,geom.Vector2d(traficLoadOnBackfillValueH,traficLoadOnBackfillValueV)))
-print 'traficLoadOnBackfillValue: ', traficLoadOnBackfillSVS
+trafficLoadOnBackfillPosition= geom.Pos2d(B,H/2.0)
+trafficLoadOnBackfillValueH= -K*5e3
+trafficLoadOnBackfillValueV= trafficLoadOnBackfillValueH*math.tan(delta)
+trafficLoadOnBackfillSVS= geom.SlidingVectorsSystem2d(geom.SlidingVector2d(trafficLoadOnBackfillPosition,geom.Vector2d(trafficLoadOnBackfillValueH,trafficLoadOnBackfillValueV)))
+print 'trafficLoadOnBackfillValue: ', trafficLoadOnBackfillSVS
 
 selfWeightSVS= gravityWallWeightSVS
 
@@ -118,8 +118,8 @@ def getSlidingSafetyFactor(svd):
 # Resultant.
 svdAB= 0.9*selfWeightSVS+1.35*earthPressureSVS
 svdAG= 0.8*selfWeightSVS+1.35*earthPressureSVS
-svdBB= 0.9*selfWeightSVS+1.35*earthPressureSVS+1.35*traficLoadOnBackfillSVS
-svdBG= 0.8*selfWeightSVS+1.35*earthPressureSVS+1.35*traficLoadOnBackfillSVS
+svdBB= 0.9*selfWeightSVS+1.35*earthPressureSVS+1.35*trafficLoadOnBackfillSVS
+svdBG= 0.8*selfWeightSVS+1.35*earthPressureSVS+1.35*trafficLoadOnBackfillSVS
 
 
 Fo= getOverturningSafetyFactor(svdAB)
