@@ -6,7 +6,6 @@ __license__= "GPL"
 __version__= "3.0"
 __email__= " ana.Ortega@ciccp.es "
 
-import xc_base
 import geom
 import xc
 from postprocess.xcVtk.FE_model import vtk_FE_graphic

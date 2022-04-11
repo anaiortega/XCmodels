@@ -1,6 +1,5 @@
 from model.sets import sets_mng as sUtils
 import math
-import xc_base
 import geom
 import xc
 

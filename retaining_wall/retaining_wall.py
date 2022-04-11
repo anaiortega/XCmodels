@@ -2,7 +2,6 @@
 
 import math
 from rough_calculations import ng_retaining_wall
-import xc_base
 import geom
 import xc
 from materials.sia262 import SIA262_materials

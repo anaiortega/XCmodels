@@ -2,7 +2,6 @@
 ''' Response spectrum modal analysis test
 taken from the publication from Andrés Sáez Pérez: «Estructuras III»
  E.T.S. de Arquitectura de Sevilla (España).'''
-import xc_base
 import geom
 import xc
 

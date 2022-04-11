@@ -2,7 +2,6 @@
 
 import math
 import vtk
-import xc_base
 import geom
 import xc
 from solution import predefined_solutions

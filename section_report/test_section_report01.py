@@ -3,7 +3,6 @@
    Home made test. '''
 from __future__ import division
 # Macros
-import xc_base
 import geom
 import xc
 

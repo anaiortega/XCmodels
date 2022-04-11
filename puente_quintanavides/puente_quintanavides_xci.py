@@ -14,7 +14,6 @@ from __future__ import division
 from __future__ import print_function
 
 import math
-import xc_base
 import geom
 import xc
 import deck_geometry

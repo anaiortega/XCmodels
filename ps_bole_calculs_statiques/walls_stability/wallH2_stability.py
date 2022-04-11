@@ -6,7 +6,6 @@
 from geotechnics import earth_pressure
 import math
 import scipy.integrate
-import xc_base
 import geom
 
 gammaSoil= 18 #16 to 22 kN/m3

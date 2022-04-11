@@ -7,7 +7,6 @@
 #reinforcing steel B450C
 
 import os
-import xc_base
 import geom
 import xc
 from model.grid_based_oldStyle_deprecated import ijkGrid

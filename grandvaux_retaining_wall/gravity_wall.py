@@ -6,7 +6,6 @@
 import math
 from geotechnics import earth_pressure
 import scipy.integrate
-import xc_base
 import geom
 
 B= 1.60 #1.35

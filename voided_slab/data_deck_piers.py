@@ -2,7 +2,6 @@
 from __future__ import division
 
 import math
-import xc_base
 from misc_utils import units_utils as uu
 from materials.ehe import EHE_materials
 

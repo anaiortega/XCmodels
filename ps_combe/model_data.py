@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import csv
-import xc_base
 import geom
 import xc
 from materials.sections import section_properties

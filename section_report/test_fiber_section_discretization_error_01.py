@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 # Test de funcionamiento del comando reg_cuad
 
-import xc_base
 import geom
 import xc
 from model import predefined_spaces

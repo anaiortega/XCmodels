@@ -8,7 +8,6 @@ __version__= "3.0"
 __email__= "ana.ortega@ciccp.es l.pereztato@ciccp.es" 
 
 import os
-import xc_base
 import geom
 import xc
 from model.geometry import tensegrity

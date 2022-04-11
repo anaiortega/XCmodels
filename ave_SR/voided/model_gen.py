@@ -3,7 +3,6 @@ from __future__ import division
 from postprocess.config import default_config
 
 import os
-import xc_base
 import geom
 import xc
 import math

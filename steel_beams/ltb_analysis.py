@@ -3,7 +3,6 @@
 #Lateral-torsional buckling (see Aitziber López, Danny J. Yong and Miguel A. Serna article)
 from __future__ import division
 import math
-import xc_base
 import geom
 import xc
 import scipy.interpolate

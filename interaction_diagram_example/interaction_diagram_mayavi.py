@@ -2,7 +2,6 @@
 ''' display a 3D interaction diagram.'''
 from __future__ import division
 # Macros
-import xc_base
 import geom
 import xcGnuGts
 import xc

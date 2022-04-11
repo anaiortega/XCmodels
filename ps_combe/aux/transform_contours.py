@@ -1,4 +1,3 @@
-import xc_base
 import geom
 
 def getType4BeamPoints(offset):

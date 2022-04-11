@@ -11,7 +11,6 @@ sections.
 It imports the geometric, material and load data from a file
 '''
 
-import xc_base
 import geom
 import xc
 import math

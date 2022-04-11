@@ -2,7 +2,6 @@
 import math
 
 import os
-import xc_base
 import geom
 import xc
 import math

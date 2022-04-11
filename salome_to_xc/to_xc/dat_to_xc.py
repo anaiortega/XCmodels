@@ -2,7 +2,6 @@
 #!/usr/bin/env python
 import os
 
-import xc_base
 import geom
 import xc
 

@@ -3,7 +3,6 @@
 #Reproduction of an X tensegrity model, from the document «Desarrollo de una metodología basada en el método de los elementos finitos para la proyección de estructuras tenségridas», by Puigoriol Forcada et al.
 
 
-import xc_base
 import geom
 import xc
 from solution import predefined_solutions

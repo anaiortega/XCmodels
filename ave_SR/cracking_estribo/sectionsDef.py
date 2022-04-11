@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 #import os
-import xc_base
 import geom
 import xc
 from materials.sections.fiber_section import def_simple_RC_section as rcs

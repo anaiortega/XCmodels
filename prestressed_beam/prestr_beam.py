@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 from scipy import interpolate
 from scipy.spatial import distance
 import math
-import xc_base
 import geom
 import xc
 from materials import typical_materials as tm

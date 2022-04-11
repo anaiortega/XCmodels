@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import xc_base
 import loadCombinations
 from loadCombinationUtils import iap11
 

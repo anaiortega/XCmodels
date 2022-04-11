@@ -4,7 +4,6 @@ import math
 import inspect
 import os
 import sys
-import xc_base
 import geom
 import xc
 import math
