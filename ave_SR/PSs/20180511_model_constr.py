@@ -561,27 +561,27 @@ Q2c_vint_v1=lmb.VehicleDistrLoad(name='Q2c_vint_v1',xcSet=supTablero,loadModel=s
 Q3c_vext_v1=lmb.VehicleDistrLoad(name='Q3c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
 
 # Carro concomitante con frenado
-frQ1c_vext_v1=lmb.VehicleDistrLoad(name='frQ1c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ1c_vext_v2=lmb.VehicleDistrLoad(name='frQ1c_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vext,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2c_vcent_v1=lmb.VehicleDistrLoad(name='frQ2c_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vcent,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2c_vcent_v2=lmb.VehicleDistrLoad(name='frQ2c_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vcent,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3c_vint_v1=lmb.VehicleDistrLoad(name='frQ3c_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vint,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3c_vint_v2=lmb.VehicleDistrLoad(name='frQ3c_intt_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vint,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ1c_vcent_v2=lmb.VehicleDistrLoad(name='frQ1c_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vcent,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2c_vint_v2=lmb.VehicleDistrLoad(name='frQ2c_vint_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vint,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3c_vext_v2=lmb.VehicleDistrLoad(name='frQ3c_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vext,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1c_vext_v1=lmb.VehicleDistrLoad(name='frQ1c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1c_vext_v2=lmb.VehicleDistrLoad(name='frQ1c_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vext,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2c_vcent_v1=lmb.VehicleDistrLoad(name='frQ2c_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vcent,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2c_vcent_v2=lmb.VehicleDistrLoad(name='frQ2c_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vcent,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3c_vint_v1=lmb.VehicleDistrLoad(name='frQ3c_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vint,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3c_vint_v2=lmb.VehicleDistrLoad(name='frQ3c_intt_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vint,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1c_vcent_v2=lmb.VehicleDistrLoad(name='frQ1c_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vcent,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2c_vint_v2=lmb.VehicleDistrLoad(name='frQ2c_vint_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vint,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3c_vext_v2=lmb.VehicleDistrLoad(name='frQ3c_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vext,yCentr=yCent_van2,hDistr=hDistrQ,slopeDistr=1.0)
 
-frQ1e_vcent_v2=lmb.VehicleDistrLoad(name='frQ1e_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vcent,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2e_vint_v2=lmb.VehicleDistrLoad(name='frQ2e_vint_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vint,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3e_vext_v2=lmb.VehicleDistrLoad(name='frQ3e_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vext,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1e_vcent_v2=lmb.VehicleDistrLoad(name='frQ1e_vcent_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vcent,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2e_vint_v2=lmb.VehicleDistrLoad(name='frQ2e_vint_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vint,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3e_vext_v2=lmb.VehicleDistrLoad(name='frQ3e_vext_v2',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vext,yCentr=yExtr_van2,hDistr=hDistrQ,slopeDistr=1.0)
 
-frQ1e_vcent_v1=lmb.VehicleDistrLoad(name='frQ1e_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vcent,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2e_vint_v1=lmb.VehicleDistrLoad(name='frQ2e_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vint,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3e_vext_v1=lmb.VehicleDistrLoad(name='frQ3e_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vext,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1e_vcent_v1=lmb.VehicleDistrLoad(name='frQ1e_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vcent,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2e_vint_v1=lmb.VehicleDistrLoad(name='frQ2e_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vint,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3e_vext_v1=lmb.VehicleDistrLoad(name='frQ3e_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vext,yCentr=yExtr_van1,hDistr=hDistrQ,slopeDistr=1.0)
 
-frQ1c_vcent_v1=lmb.VehicleDistrLoad(name='frQ1c_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_fren, xCentr=xCent_vcent,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ2c_vint_v1=lmb.VehicleDistrLoad(name='frQ2c_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_fren, xCentr=xCent_vint,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
-frQ3c_vext_v1=lmb.VehicleDistrLoad(name='frQ3c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_fren, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ1c_vcent_v1=lmb.VehicleDistrLoad(name='frQ1c_vcent_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane1_brake, xCentr=xCent_vcent,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ2c_vint_v1=lmb.VehicleDistrLoad(name='frQ2c_vint_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane2_brake, xCentr=xCent_vint,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
+frQ3c_vext_v1=lmb.VehicleDistrLoad(name='frQ3c_vext_v1',xcSet=supTablero,loadModel=slm.IAP_notional_lane3_brake, xCentr=xCent_vext,yCentr=yCent_van1,hDistr=hDistrQ,slopeDistr=1.0)
 
 #    ***LOAD CASES***
 #auxiliar lists
