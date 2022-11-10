@@ -11,71 +11,71 @@ G2=lcg.insert("IAP11","permanentes",loadCombinations.Action("G2","Carga muerta" 
 G3=lcg.insert("IAP11","permanentes_nc",loadCombinations.Action("G3","Reológicas"),"permanente","nc_Reologic")
 
 Q1a_1=lcg.insert("IAP11","variables",loadCombinations.Action("Q1a_1","Tren cargas pos. A1"),"vehículos_pesados","SCuso")
-Q1a_1.getRelaciones.agregaIncompatible("Q1.*")
-Q1a_1.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1a_1.relationships.agregaIncompatible("Q1.*")
+Q1a_1.relationships.agregaIncompatible("Q2_1.*")
 
 Q1a_2=lcg.insert("IAP11","variables",loadCombinations.Action("Q1a_2","Tren cargas pos. A2"),"vehículos_pesados","SCuso")
-Q1a_2.getRelaciones.agregaIncompatible("Q1.*")
-Q1a_2.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1a_2.relationships.agregaIncompatible("Q1.*")
+Q1a_2.relationships.agregaIncompatible("Q2_1.*")
 
 Q1b_1=lcg.insert("IAP11","variables",loadCombinations.Action("Q1b_1","Tren cargas pos. B1"),"vehículos_pesados","SCuso")
-Q1b_1.getRelaciones.agregaIncompatible("Q1.*")
-Q1b_1.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1b_1.relationships.agregaIncompatible("Q1.*")
+Q1b_1.relationships.agregaIncompatible("Q2_1.*")
 
 Q1b_2=lcg.insert("IAP11","variables",loadCombinations.Action("Q1b_2","Tren cargas pos. B2"),"vehículos_pesados","SCuso")
-Q1b_2.getRelaciones.agregaIncompatible("Q1.*")
-Q1b_2.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1b_2.relationships.agregaIncompatible("Q1.*")
+Q1b_2.relationships.agregaIncompatible("Q2_1.*")
 
 Q1c=lcg.insert("IAP11","variables",loadCombinations.Action("Q1c","Tren cargas pos. C"),"vehículos_pesados","SCuso")
-Q1c.getRelaciones.agregaIncompatible("Q1.*")
-Q1c.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1c.relationships.agregaIncompatible("Q1.*")
+Q1c.relationships.agregaIncompatible("Q2_1.*")
 
 Q1d=lcg.insert("IAP11","variables",loadCombinations.Action("Q1d","Tren cargas pos. D"),"vehículos_pesados","SCuso")
-Q1d.getRelaciones.agregaIncompatible("Q1.*")
-Q1d.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1d.relationships.agregaIncompatible("Q1.*")
+Q1d.relationships.agregaIncompatible("Q2_1.*")
 
 Q1e=lcg.insert("IAP11","variables",loadCombinations.Action("Q1e","Tren cargas pos. E"),"vehículos_pesados","SCuso")
-Q1e.getRelaciones.agregaIncompatible("Q1.*")
-Q1e.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1e.relationships.agregaIncompatible("Q1.*")
+Q1e.relationships.agregaIncompatible("Q2_1.*")
 
 Q1f=lcg.insert("IAP11","variables",loadCombinations.Action("Q1f","Tren cargas pos. F"),"vehículos_pesados","SCuso")
-Q1f.getRelaciones.agregaIncompatible("Q1.*")
-Q1f.getRelaciones.agregaIncompatible("Q2_1.*")
+Q1f.relationships.agregaIncompatible("Q1.*")
+Q1f.relationships.agregaIncompatible("Q2_1.*")
 
 Q1b_fren=lcg.insert("IAP11","variables",loadCombinations.Action("Q1b_fren","Tren cargas pos. B1 + frenado"),"vehículos_pesados","SCuso")
-Q1b_fren.getRelaciones.agregaIncompatible("Q.*")
+Q1b_fren.relationships.agregaIncompatible("Q.*")
 
 Q1d_fren=lcg.insert("IAP11","variables",loadCombinations.Action("Q1d_fren","Tren cargas pos. D + frenado"),"vehículos_pesados","SCuso")
-Q1d_fren.getRelaciones.agregaIncompatible("Q.*")
+Q1d_fren.relationships.agregaIncompatible("Q.*")
 
 Q1e_fren=lcg.insert("IAP11","variables",loadCombinations.Action("Q1e_fren","Tren cargas pos. E + frenado"),"vehículos_pesados","SCuso")
-Q1e_fren.getRelaciones.agregaIncompatible("Q.*")
+Q1e_fren.relationships.agregaIncompatible("Q.*")
 
 Q2_1=lcg.insert("IAP11","variables",loadCombinations.Action("Q2_1","Viento"),"viento_sit_persistente","SCuso")
-Q2_1.getRelaciones.agregaIncompatible("Q1.*")
-Q2_1.getRelaciones.agregaIncompatible("Q2_2.*")
-Q2_1.getRelaciones.agregaIncompatible("Q3.*")
+Q2_1.relationships.agregaIncompatible("Q1.*")
+Q2_1.relationships.agregaIncompatible("Q2_2.*")
+Q2_1.relationships.agregaIncompatible("Q3.*")
 
 Q2_2=lcg.insert("IAP11","variables",loadCombinations.Action("Q2_2","Viento con SC uso"),"viento_sit_persistente","SCuso")
-Q2_2.getRelaciones.agregaIncompatible("Q2_1.*")
-Q2_2.getRelaciones.agregaIncompatible("Q3.*")
+Q2_2.relationships.agregaIncompatible("Q2_1.*")
+Q2_2.relationships.agregaIncompatible("Q3.*")
 
 
 Q3_1=lcg.insert("IAP11","variables",loadCombinations.Action("Q3_1","Temperatura uniforme, contracción"),"termica","SCuso")
-Q3_1.getRelaciones.agregaIncompatible("Q2.*")
-Q3_1.getRelaciones.agregaIncompatible("Q3.*")
+Q3_1.relationships.agregaIncompatible("Q2.*")
+Q3_1.relationships.agregaIncompatible("Q3.*")
 
 Q3_2=lcg.insert("IAP11","variables",loadCombinations.Action("Q3_2","Temperatura uniforme, dilatación"),"termica","SCuso")
-Q3_2.getRelaciones.agregaIncompatible("Q2.*")
-Q3_2.getRelaciones.agregaIncompatible("Q3.*")
+Q3_2.relationships.agregaIncompatible("Q2.*")
+Q3_2.relationships.agregaIncompatible("Q3.*")
 
 Q3_3=lcg.insert("IAP11","variables",loadCombinations.Action("Q3_3","Diferencia temperatura, fibra sup. más caliente"),"termica","SCuso")
-Q3_3.getRelaciones.agregaIncompatible("Q2.*")
-Q3_3.getRelaciones.agregaIncompatible("Q3.*")
+Q3_3.relationships.agregaIncompatible("Q2.*")
+Q3_3.relationships.agregaIncompatible("Q3.*")
 
 Q3_4=lcg.insert("IAP11","variables",loadCombinations.Action("Q3_4","Diferencia temperatura, fibra sup. más fría"),"termica","SCuso")
-Q3_4.getRelaciones.agregaIncompatible("Q2.*")
-Q3_4.getRelaciones.agregaIncompatible("Q3.*")
+Q3_4.relationships.agregaIncompatible("Q2.*")
+Q3_4.relationships.agregaIncompatible("Q3.*")
 
 lcg.genera()
 ldComb=lcg.getLoadCombinations
