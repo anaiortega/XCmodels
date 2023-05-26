@@ -9,7 +9,7 @@ from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
 from materials.ehe import EHE_materials
 from materials import typical_materials as tm
-from model.boundary_cond import spring_bound_cond as sbc
+from geotechnics.foundations import guia_cimentaciones_oc as guia
 from solution import predefined_solutions
 
 #Data
@@ -69,7 +69,8 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[pile_mesh])
 
 
 #                       ***BOUNDARY CONDITIONS***
-pileBC=sbc.PileFoundation(setPile=pile,pileDiam=fiPile,E=concrete.Ecm(),pileType='endBearing',pileBearingCapacity=bearCap,groundLevel=zGround,soilsProp=soils)
+soilLayers= guia.SoilLayers(soilProfile= soils, groundLevel= zGround)
+pileBC=guia.PileFoundation(pileSet=pile,pileDiam=fiPile,E=concrete.Ecm(),pileType='endBearing',pileBearingCapacity=bearCap, soilLayers= soilLayers)
 pileBC.generateSpringsPile(alphaKh_x=1,alphaKh_y=1,alphaKv_z=1)
 springs=pileBC.springs
 springSet=preprocessor.getSets.defSet('springSet')
