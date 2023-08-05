@@ -301,8 +301,8 @@ w_k=srmax*(eps_sm-eps_cm)
 
 ####  FIGURES & REPORTS
 # plotting of section geometric and mechanical properties
-#from materials.sections.fiber_section import plotSectionGeometry as pg
-#pg.plotSectionGeometry(geomSectFibers,'./secEx74.eps')
+#from materials.sections.fiber_section import plot_fiber-section as pfs
+#pfs.plot_section_geometry(geomSectFibers,'./secEx74.eps')
 
 #sectInf=section_report.SectionInfo(preprocessor=preprocessor,section=sctFibers) #Obtains section parameters for report
 #sectInf.writeReport(archTex='./secEx74.tex', pathFigura='./secEx74.eps')

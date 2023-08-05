@@ -256,9 +256,9 @@ concrDiagram.revertToStart()
 
 quit()
 
-# # plotting of section geometric and mechanical properties
-# from materials.sections.fiber_section import plotSectionGeometry as pg
-# pg.plotSectionGeometry(geomSectFibers,'./secEx74.eps')
+# # plotting of section geometric and mechanical propertie
+# from materials.sections.fiber_section import plot_fiber-section as pfs
+# pfs.plot_section_geometry(geomSectFibers,'./secEx74.eps')
 
 
 #sectInf=section_report.SectionInfo(preprocessor=preprocessor,section=sctFibers) #Obtains section parameters for report

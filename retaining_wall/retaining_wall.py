@@ -82,8 +82,8 @@ kS= 40e6 #Module de réaction du sol (estimé).
 kX= typical_materials.defElasticMaterial(preprocessor, "kX",kS/10.0)
 kY= typical_materials.defElasticMaterial(preprocessor, "kY",kS)
 #kY= typical_materials.defElastNoTensMaterial(preprocessor, "kY",kS)
-backFillSoilModel= ep.RankineSoil(phi= math.radians(32),rho= 2000) #Characteristic values.
-backFillDelta= 0.0#2.0/3.0*backFillSoilModel.phi
+backfillSoilModel= ep.RankineSoil(phi= math.radians(32),rho= 2000) #Characteristic values.
+backfillDelta= 0.0#2.0/3.0*backfillSoilModel.phi
 hi= [0.65,100.0]
 rhoi= [2000,2100]
 phii= [math.radians(34),math.radians(28)]
@@ -111,31 +111,31 @@ wall.createSelfWeightLoads(rho= 2500,grav= gravity)
 
 #Dead load.
 #  Dead load. Earth self weight.
-gSoil= backFillSoilModel.rho*gravity
+gSoil= backfillSoilModel.rho*gravity
 frontFillDepth= 1.0
 deadLoad= loadCaseManager.setCurrentLoadCase('deadLoad')
-wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,rho= backFillSoilModel.rho, grav= gravity)
+wall.createDeadLoad(heelFillDepth= wall.stemHeight,toeFillDepth= frontFillDepth,rho= backfillSoilModel.rho, grav= gravity)
 
 #  Dead load. Earth pressure.
-Ka= backFillSoilModel.Ka()
-zGroundBackFill= 0.0 #Back fill
-backFillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackFill, zBottomSoils=[-10],KSoils= [Ka],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
-wall.createBackFillPressures(backFillPressureModel, Delta= backFillDelta)
-zGroundFrontFill= zGroundBackFill-wall.stemHeight+frontFillDepth #Front fill
+Ka= backfillSoilModel.Ka()
+zGroundBackfill= 0.0 #Back fill
+backfillPressureModel=  earth_pressure.EarthPressureModel( zGround= zGroundBackfill, zBottomSoils=[-10],KSoils= [Ka],gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
+wall.createBackfillPressures(backfillPressureModel, Delta= backfillDelta)
+zGroundFrontFill= zGroundBackfill-wall.stemHeight+frontFillDepth #Front fill
 frontFillPressureModel=  earth_pressure.EarthPressureModel(zGround= zGroundFrontFill, zBottomSoils=[-10],KSoils= [Ka], gammaSoils= [gSoil], zWater= -1e3, gammaWater= 1000*gravity)
 wall.createFrontFillPressures(frontFillPressureModel)
 
 #Live load. Crowd loading.
 crowdLoad= loadCaseManager.setCurrentLoadCase('crowdLoad')
 crowdEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 4e3,zLoad= 0.0, distWall= 2.5/2.0, stripWidth= 2.5)
-wall.createPressuresFromLoadOnBackFill(crowdEarthPressure, Delta= backFillDelta)
+wall.createPressuresFromLoadOnBackfill(crowdEarthPressure, Delta= backfillDelta)
 wall.createLoadOnTopOfStem(xc.Vector([-3e3,0.0,3.6e3]))
 
 #Live load. Rail traffic load.
 distRailCLWall= 4.12 #Distance from the center line of the rail track to the wall.  
 railLoad= loadCaseManager.setCurrentLoadCase('railLoad')
 railLoadEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 62.5e3,zLoad= -0.6, distWall= distRailCLWall, stripWidth= 2.0)
-wall.createPressuresFromLoadOnBackFill(railLoadEarthPressure, Delta= backFillDelta)
+wall.createPressuresFromLoadOnBackfill(railLoadEarthPressure, Delta= backfillDelta)
 #Nosing load
 fNosingLoad= 60e3
 nosingLoadLength= 1.8+(distRailCLWall-1.0)
@@ -147,22 +147,22 @@ v= 40/3.6 #Speed.
 R= 71 #Rayon (m)
 qZk=  v*v*62.5e3/R/9.81
 print 'qZk= ', qZk
-horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(backFillSoilModel.phi,qLoad= qZk+qNosingLoad,zLoad= -0.6, distWall= distRailCLWall, widthLoadArea= 2.0)
+horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(backfillSoilModel.phi,qLoad= qZk+qNosingLoad,zLoad= -0.6, distWall= distRailCLWall, widthLoadArea= 2.0)
 wall.createEarthPressureLoadOnStem(horizontalLoad)
 
 #Accidental actions. Derailment
 derailmentLoad= loadCaseManager.setCurrentLoadCase('derailmentLoad')
 derailmentLoaddEarthPressure= earth_pressure.StripLoadOnBackfill(qLoad= 62.5e3,zLoad= -0.6, distWall= 3.12, stripWidth= 2.0)
-wall.createPressuresFromLoadOnBackFill(derailmentLoaddEarthPressure, Delta= backFillDelta)
+wall.createPressuresFromLoadOnBackfill(derailmentLoaddEarthPressure, Delta= backfillDelta)
 
 #Accidental actions. Quake
 quakeLoad= loadCaseManager.setCurrentLoadCase('quakeLoad')
 kh=  0.067957866123
 kv=  0.0339789330615
-Aq= wall.getMononobeOkabeDryOverpressure(backFillSoilModel,kv,kh)
+Aq= wall.getMononobeOkabeDryOverpressure(backfillSoilModel,kv,kh)
 print 'Aq= ',Aq
 quakeEarthPressure= earth_pressure.UniformLoadOnStem(Aq)
-wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backFillDelta)
+wall.createEarthPressureLoadOnStem(quakeEarthPressure, Delta= backfillDelta)
 
 #Load combinations
 combContainer= combinations.CombContainer()

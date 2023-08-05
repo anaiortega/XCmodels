@@ -114,7 +114,7 @@ casos.addToDomain("0")
 analysis= predefined_solutions.plain_newton_raphson(feProblem)
 analOk= analysis.analyze(10)
 if(analOk!=0):
-  print "Error!; failed to converge."
+  print("Error!; failed to converge.")
   exit()
 
 
@@ -139,7 +139,7 @@ cargas= preprocessor.getLoadHandler.addToDomain("1") # Añadimos la otra carga.
 
 analOk= analysis.analyze(10)
 if(analOk!=0):
-  print "Error!; failed to converge."
+  print("Error!; failed to converge.")
   exit()
 
 
@@ -155,7 +155,7 @@ cargas= preprocessor.getLoadHandler.addToDomain("2") # Añadimos la otra carga.
 
 analOk= analysis.analyze(10)
 if(analOk!=0):
-  print "Error!; failed to converge."
+  print("Error!; failed to converge.")
   exit()
 
 
@@ -193,6 +193,6 @@ import os
 from misc_utils import log_messages as lmsg
 fname= os.path.basename(__file__)
 if (abs(ratio1)<1e-5) & (abs(ratio2)<0.03) & (abs(ratio3)<1e-5):
-  print "test ",fname,": ok."
+  print ("test ",fname,": ok.")
 else:
   lmsg.error(fname+' ERROR.')
