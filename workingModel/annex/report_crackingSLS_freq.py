@@ -1,37 +1,38 @@
 # -*- coding: utf-8 -*-
 from postprocess.control_vars import *
 from postprocess import limit_state_data as lsd
-from postprocess.reports import graphical_reports
+from postprocess.reports import report_generator as rprt
 
-exec(open("../model_gen.py").read()) #FE model generation
+exec(open("../xc_model.py").read()) #FE model generation
+
+report=rprt.ReportGenerator(modelSpace,cfg)
 
 #Load properties to display:
 exec(open(cfg.projectDirTree.getVerifCrackFreqFile()).read())
-
 
 limitStateLabel= lsd.freqLoadsCrackControl.label
 
 
 # Ordered list of sets (defined in model_data.py as instances of
 # utils_display.setToDisplay) to be included in the report
-setsShEl=[decks]
+setsShEl=[overallSet]
 # Ordered list of arguments to be included in the report
 # Possible arguments: 'getMaxSteelStress', 'getCF'
-argsShEl= ['getMaxSteelStress']
+argsShEl= ['getCF','getMaxSteelStress']
 # Ordered list of lists [set of beam elements, view to represent this set] to
 # be included in the report. 
 # The sets are defined in model_data.py as instances of
 # utils_display.setToDisplay and the possible views are: 'XYZPos','XNeg','XPos',
 # 'YNeg','YPos','ZNeg','ZPos'  (defaults to 'XYZPos')
-setsBmElView=[[beamXconcr,'XYZPos']]
-setsBmElView=[]
+
+setsBmEl=[]
 
 # Ordered list of lists [arguments, scale to represent the argument] to be
 # included in the report for beam elements
 # Possible arguments: 'getMaxSteelStress', 'getCF'
-argsBmElScale=[['getCF',1],['getMaxSteelStress',1]]
-argsBmElScale=[]
 
+argsBmEl=[]
+     
+report.checksReport(limitStateLabel,setsShEl,argsShEl,setsBmEl,argsBmEl)
 
-graphical_reports.checksReports(limitStateLabel=limitStateLabel,setsShEl=setsShEl,argsShEl=argsShEl,capTexts= cfg.capTexts,pathGr= cfg.reportCrackFreqGrPath,texReportFile= cfg.reportCrackFreqFile,grWdt= cfg.grWidth,setsBmElView=setsBmElView,argsBmElScale=argsBmElScale)
 
