@@ -6,7 +6,7 @@ exec(open("model_data.py").read())
 for part in modelSurfaces:
   weight= part.selfWeight
   for e in part.elements:
-    mats= e.getPhysicalProperties.getVectorMaterials #Materials at gauss points.
+    mats= e.physicalProperties.getVectorMaterials #Materials at gauss points.
     for m in mats:
       m.rho= 0.0
   part.computeTributaryAreas(False)

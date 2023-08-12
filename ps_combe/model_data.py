@@ -254,8 +254,8 @@ grav= 9.81 #Gravity acceleration (m/s2)
 shells.computeTributaryAreas(False)
 cLC= loadCaseManager.setCurrentLoadCase('GselfWeight')
 for e in shells.elements:
-    thickness= e.getPhysicalProperties.getVectorMaterials[0].h
-    rho= e.getPhysicalProperties.getVectorMaterials[0].rho
+    thickness= e.physicalProperties.getVectorMaterials[0].h
+    rho= e.physicalProperties.getVectorMaterials[0].rho
     inertialMass= rho*thickness
     load= grav*inertialMass
     e.vector3dUniformLoadGlobal(xc.Vector([0.0,0.0,-load]))

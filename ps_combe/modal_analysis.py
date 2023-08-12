@@ -4,7 +4,7 @@ exec(open("model_data.py").read())
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 
 for e in shells.elements:
-    mats= e.getPhysicalProperties.getVectorMaterials #Materials at gauss points.
+    mats= e.physicalProperties.getVectorMaterials #Materials at gauss points.
     for m in mats:
       m.rho= 0.0
 
