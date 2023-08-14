@@ -144,8 +144,8 @@ deltaY= nod2.getDisp[1]
 
 sigmaElem= ctruss1.getN()/area*1e-6
 
-print 'R2X= ', R2X, 'N'
-print 'R2Y= ', R2Y, 'N'
-print 'deltaX= ', deltaX, 'm'
-print 'deltaY= ', deltaY, 'm'
-print 'sigmaElem= ',sigmaElem, 'MPa'
+print('R2X= ', R2X, 'N')
+print('R2Y= ', R2Y, 'N')
+print('deltaX= ', deltaX, 'm')
+print('deltaY= ', deltaY, 'm')
+print('sigmaElem= ',sigmaElem, 'MPa')

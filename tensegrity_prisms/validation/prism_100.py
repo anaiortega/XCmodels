@@ -75,21 +75,21 @@ ljInd=linsJoints.index
 strutSet=prep.getSets.defSet('strutSet')
 indStruts=[ljInd[i] for i in range(len(ljInd)) if 'strut' in ljInd[i]]
 for i in indStruts:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   #initialization of number or divisions
     strutSet.getLines.append(l)
 #lines to saddle cables
 saddSet=prep.getSets.defSet('saddSet')
 indSadd=[ljInd[i] for i in range(len(ljInd)) if 'sadd' in ljInd[i]]
 for i in indSadd:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     saddSet.getLines.append(l)
 #lines to diagonal cables
 diagSet=prep.getSets.defSet('diagSet')
 indDiag=[ljInd[i] for i in range(len(ljInd)) if 'diag' in ljInd[i]]
 for i in indDiag:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     diagSet.getLines.append(l)
 
@@ -146,7 +146,7 @@ constr.newSPConstraint(n1.tag,1,0.0) # uy=0
 constr.newSPConstraint(n1.tag,2,0.0) # uz=0
 for p in range(2,nSidPol+1):
     n=points.get(p).getNode()
-    print 'node',n.tag, 'z=', n.getCoo[2]
+    print('node',n.tag, 'z=', n.getCoo[2])
     constr.newSPConstraint(n.tag,2,0.0) # uz=0
 
     
@@ -229,8 +229,8 @@ q_diag=t_diag/l_diag
 q_sadd=t_sadd/l_sadd
 
 
-print "Prism & $t_{strut}$ & $l_{strut}$ & $q_{strut}$ & $t_{diag}$ & $l_{diag}$ & $q_{diag}$ &  $t_{sadd}$ & $l_{sadd}$ & $q_{sadd}$ & $q_{strut} + q_{diag}$ &$q_{strut} + 2 sin(\Pi/n) q_{sadd}$ \\\\"
-print '50-plex &',round(t_strut,4),' & ',round(l_strut,4),' & ',round(q_strut,4),' & ',round(t_diag,4),' & ',round(l_diag,4),' & ',round(q_diag),' & ',round(t_sadd,4),' & ',round(l_sadd,4),' & ',round(q_sadd,4),' & ',round(q_strut+q_diag,6),' & ',round(q_strut+2*math.sin(math.pi/(1.0*nSidPol))*q_sadd,6), '\\\\'
+print("Prism & $t_{strut}$ & $l_{strut}$ & $q_{strut}$ & $t_{diag}$ & $l_{diag}$ & $q_{diag}$ &  $t_{sadd}$ & $l_{sadd}$ & $q_{sadd}$ & $q_{strut} + q_{diag}$ &$q_{strut} + 2 sin(\Pi/n) q_{sadd}$ \\\\")
+print('50-plex &',round(t_strut,4),' & ',round(l_strut,4),' & ',round(q_strut,4),' & ',round(t_diag,4),' & ',round(l_diag,4),' & ',round(q_diag),' & ',round(t_sadd,4),' & ',round(l_sadd,4),' & ',round(q_sadd,4),' & ',round(q_strut+q_diag,6),' & ',round(q_strut+2*math.sin(math.pi/(1.0*nSidPol))*q_sadd,6), '\\\\')
 
 from postprocess import utils_display
 from postprocess.xcVtk.FE_model import quick_graphics as qg
@@ -241,6 +241,6 @@ lcs=qg.LoadCaseResults(FEcase)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa                                                   '         
 xcTotalSet.elSet.name=''
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1,unitDescription=': Axial internal forces [kN] ',viewDef= vtk_graphic_base.CameraParameters('XYZPos',1.0),fileName=None,defFScale=40.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fileName=None,defFScale=40.0)
 quit()
 

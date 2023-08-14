@@ -75,21 +75,21 @@ ljInd=linsJoints.index
 strutSet=prep.getSets.defSet('strutSet')
 indStruts=[ljInd[i] for i in range(len(ljInd)) if 'strut' in ljInd[i]]
 for i in indStruts:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   #initialization of number or divisions
     strutSet.getLines.append(l)
 #lines to saddle cables
 saddSet=prep.getSets.defSet('saddSet')
 indSadd=[ljInd[i] for i in range(len(ljInd)) if 'sadd' in ljInd[i]]
 for i in indSadd:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     saddSet.getLines.append(l)
 #lines to diagonal cables
 diagSet=prep.getSets.defSet('diagSet')
 indDiag=[ljInd[i] for i in range(len(ljInd)) if 'diag' in ljInd[i]]
 for i in indDiag:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     diagSet.getLines.append(l)
 
@@ -165,7 +165,7 @@ for p in range(2,nSidPol+1):
     constr.newSPConstraint(n.tag,2,0.0) # uz=0
 # for p in range(2,7):
 #     n=points.get(p).getNode()
-#     print 'node', n.tag
+#     print('node', n.tag)
 #     constr.newSPConstraint(n.tag,0,0.0)
 #     constr.newSPConstraint(n.tag,1,0.0)
 #     constr.newSPConstraint(n.tag,2,0.0) # uz=0
@@ -214,11 +214,11 @@ analysis= predefined_solutions.simple_static_linear(test)
 result= analysis.analyze(1)
 
 # for e in diagSet.elements:
-#     print e.tag
+#     print(e.tag)
 #     e.getMaterial().prestress=sigmaPrestrDiagCable
 
 # for e in saddSet.elements:
-#     print e.tag
+#     print(e.tag)
 #     e.getMaterial().prestress=sigmaPrestrSaddCable
 
 # analysis= predefined_solutions.simple_static_linear(test)
@@ -262,12 +262,12 @@ n3=points.get(3).getNode()
 n4=points.get(4).getNode()
 n5=points.get(5).getNode()
 n6=points.get(6).getNode()
-print 'displ. node 1',n1.getDisp[0],n1.getDisp[1],n1.getDisp[2]
-print 'displ. node 2',n2.getDisp[0],n2.getDisp[1],n2.getDisp[2]
-print 'displ. node 3',n3.getDisp[0],n3.getDisp[1],n3.getDisp[2]
-print 'displ. node 4',n4.getDisp[0],n4.getDisp[1],n4.getDisp[2]
-print 'displ. node 5',n5.getDisp[0],n5.getDisp[1],n5.getDisp[2]
-print 'displ. node 6',n6.getDisp[0],n6.getDisp[1],n6.getDisp[2]
+print('displ. node 1',n1.getDisp[0],n1.getDisp[1],n1.getDisp[2])
+print('displ. node 2',n2.getDisp[0],n2.getDisp[1],n2.getDisp[2])
+print('displ. node 3',n3.getDisp[0],n3.getDisp[1],n3.getDisp[2])
+print('displ. node 4',n4.getDisp[0],n4.getDisp[1],n4.getDisp[2])
+print('displ. node 5',n5.getDisp[0],n5.getDisp[1],n5.getDisp[2])
+print('displ. node 6',n6.getDisp[0],n6.getDisp[1],n6.getDisp[2])
 
 
 # from postprocess.xcVtk.FE_model import quick_graphics as qg
@@ -275,12 +275,12 @@ print 'displ. node 6',n6.getDisp[0],n6.getDisp[1],n6.getDisp[2]
 # lcs.displayDispRot(itemToDisp='uX')
 # quit()
 
-print 'react. node 1',n1.getReaction
-print 'react. node 2',n2.getReaction
-print 'react. node 3',n3.getReaction
-print 'react. node 4',n4.getReaction
-print 'react. node 5',n5.getReaction
-print 'react. node 6',n6.getReaction
+print('react. node 1',n1.getReaction)
+print('react. node 2',n2.getReaction)
+print('react. node 3',n3.getReaction)
+print('react. node 4',n4.getReaction)
+print('react. node 5',n5.getReaction)
+print('react. node 6',n6.getReaction)
 
 quit()
 

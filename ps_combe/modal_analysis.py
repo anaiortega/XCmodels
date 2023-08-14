@@ -32,10 +32,10 @@ class PP(object):
     solutionStrategies= self.solCtrl.getSolutionStrategyContainer
     self.solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm")
     self.solAlgo= self.solutionStrategy.newSolutionAlgorithm("frequency_soln_algo")
-    self.integ= self.solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
     self.soe= self.solutionStrategy.newSystemOfEqn("band_arpack_soe")
     self.solver= self.soe.newSolver("band_arpack_solver")
     self.analysis= self.solu.newAnalysis("modal_analysis","solutionStrategy","")
+    self.integ= self.solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
     return self.analysis
 
 pp= PP()
@@ -58,11 +58,11 @@ a= seismeSIA.designSpectrum(soilClass,accelTerrain,CO,periods[0],q)
 ah.append(a)
 av.append(0.7*a)
 
-print "periods= ", periods, ' s'
-print "accelerations: ", ah, ' m/s2'
-print "modalParticipationFactors: ",modalParticipationFactors
-print "effectiveModalMasses: ",effectiveModalMasses
-print "totalMass: ",totalMass
+print("periods= ", periods, ' s')
+print("accelerations: ", ah, ' m/s2')
+print("modalParticipationFactors: ",modalParticipationFactors)
+print("effectiveModalMasses: ",effectiveModalMasses)
+print("totalMass: ",totalMass)
 #Display de deformed shape and the equivalent static loads 
 #associated with mode
 modeToDisplay= 1

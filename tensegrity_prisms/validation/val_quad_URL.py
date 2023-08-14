@@ -149,33 +149,33 @@ lengthIncr_el4=length_el4-ctruss4.getLineSegment(True).getLength()
 lengthIncr_el5=length_el5-ctruss5.getLineSegment(True).getLength()
 lengthIncr_el6=length_el6-ctruss6.getLineSegment(True).getLength()
 
-print 'R1X= ', R1X
-print 'R1Y= ', R1Y
-print 'R2Y= ', R2Y
-print
-print 'deltaX_n2= ', deltaX_n2
-print 'deltaX_n3= ', deltaX_n3
-print 'deltaY_n3= ', deltaY_n3
-print 'deltaX_n4= ', deltaX_n4
-print 'deltaY_n4= ', deltaY_n4
-print
-print 'stress_el1= ',stress_el1
-print 'stress_el2= ',stress_el2
-print 'stress_el3= ',stress_el3
-print 'stress_el4= ',stress_el4
-print 'stress_el5= ',stress_el5
-print 'stress_el6= ',stress_el6
-print
-print 'length_el1= ',length_el1
-print 'length_el2= ',length_el2
-print 'length_el3= ',length_el3
-print 'length_el4= ',length_el4
-print 'length_el5= ',length_el5
-print 'length_el6= ',length_el6
-print
-print 'lengthIncr_el1= ',lengthIncr_el1
-print 'lengthIncr_el2= ',lengthIncr_el2
-print 'lengthIncr_el3= ',lengthIncr_el3
-print 'lengthIncr_el4= ',lengthIncr_el4
-print 'lengthIncr_el5= ',lengthIncr_el5
-print 'lengthIncr_el6= ',lengthIncr_el6
+print('R1X= ', R1X)
+print('R1Y= ', R1Y)
+print('R2Y= ', R2Y)
+
+print('\ndeltaX_n2= ', deltaX_n2)
+print('deltaX_n3= ', deltaX_n3)
+print('deltaY_n3= ', deltaY_n3)
+print('deltaX_n4= ', deltaX_n4)
+print('deltaY_n4= ', deltaY_n4)
+
+print('\nstress_el1= ',stress_el1)
+print('stress_el2= ',stress_el2)
+print('stress_el3= ',stress_el3)
+print('stress_el4= ',stress_el4)
+print('stress_el5= ',stress_el5)
+print('stress_el6= ',stress_el6)
+
+print('\nlength_el1= ',length_el1)
+print('length_el2= ',length_el2)
+print('length_el3= ',length_el3)
+print('length_el4= ',length_el4)
+print('length_el5= ',length_el5)
+print('length_el6= ',length_el6)
+
+print('\nlengthIncr_el1= ',lengthIncr_el1)
+print('lengthIncr_el2= ',lengthIncr_el2)
+print('lengthIncr_el3= ',lengthIncr_el3)
+print('lengthIncr_el4= ',lengthIncr_el4)
+print('lengthIncr_el5= ',lengthIncr_el5)
+print('lengthIncr_el6= ',lengthIncr_el6)

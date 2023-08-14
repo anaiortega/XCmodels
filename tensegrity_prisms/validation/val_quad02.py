@@ -141,36 +141,35 @@ length_el4=ctruss4.getLineSegment(False).getLength()
 length_el5=ctruss5.getLineSegment(False).getLength()
 length_el6=ctruss6.getLineSegment(False).getLength()
 
-print 'R1X= ', R1X
-print 'R1Y= ', R1Y
-print 'R2Y= ', R2Y
-print
-print 'deltaX_n2= ', deltaX_n2
-print 'deltaX_n3= ', deltaX_n3
-print 'deltaY_n3= ', deltaY_n3
-print 'deltaX_n4= ', deltaX_n4
-print 'deltaY_n4= ', deltaY_n4
-print
-print 'F_el1= ',F_el1
-print 'F_el2= ',F_el2
-print 'F_el3= ',F_el3
-print 'F_el4= ',F_el4
-print 'F_el5= ',F_el5
-print 'F_el6= ',F_el6
+print('R1X= ', R1X)
+print('R1Y= ', R1Y)
+print('R2Y= ', R2Y)
+
+print('\ndeltaX_n2= ', deltaX_n2)
+print('deltaX_n3= ', deltaX_n3)
+print('deltaY_n3= ', deltaY_n3)
+print('deltaX_n4= ', deltaX_n4)
+print('deltaY_n4= ', deltaY_n4)
+
+print('\nF_el1= ',F_el1)
+print('F_el2= ',F_el2)
+print('F_el3= ',F_el3)
+print('F_el4= ',F_el4)
+print('F_el5= ',F_el5)
+print('F_el6= ',F_el6)
 # print
-# print 'length_el1= ',length_el1
-# print 'length_el2= ',length_el2
-# print 'length_el3= ',length_el3
-# print 'length_el4= ',length_el4
-# print 'length_el5= ',length_el5
-# print 'length_el6= ',length_el6
-print
-print 'delta_length_el1= ',length_el1-l
-print 'delta_length_el2= ',length_el2-l
-print 'delta_length_el3= ',length_el3-l
-print 'delta_length_el4= ',length_el4-l
-print 'delta_length_el5= ',length_el5-l*math.sqrt(2)
-print 'delta_length_el6= ',length_el6-l*math.sqrt(2)
+# print('\nlength_el1= ',length_el1)
+# print('length_el2= ',length_el2)
+# print('length_el3= ',length_el3)
+# print('length_el4= ',length_el4)
+# print('length_el5= ',length_el5)
+# print('length_el6= ',length_el6)
+print('\ndelta_length_el1= ',length_el1-l)
+print('delta_length_el2= ',length_el2-l)
+print('delta_length_el3= ',length_el3-l)
+print('delta_length_el4= ',length_el4-l)
+print('delta_length_el5= ',length_el5-l*math.sqrt(2))
+print('delta_length_el6= ',length_el6-l*math.sqrt(2))
 
 
 
@@ -186,7 +185,7 @@ lcs=QGrph.LoadCaseResults(FEcase)
 # lcs.displayDispRot(itemToDisp='uY')
 lcs.loadCaseName='Prestressing stress= 420 Mpa,  Load : Fx,node4= 21 kN                           '
 xcTotalSet.elSet.name=''
-lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet,fConvUnits= 1.0e-3,scaleFactor=1,unitDescription=': Axial internal forces [kN] ',  viewDef=vtk_graphic_base.CameraParameters('ZPos',1),fileName='val_quad02.jpg',defFScale=40.0)
+lcs.displayIntForcDiag(itemToDisp='N',setToDisplay=xcTotalSet.elSet, fileName='val_quad02.jpg',defFScale=40.0)
 
 
 

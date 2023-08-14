@@ -114,7 +114,7 @@ numberer.useAlgorithm("rcm")
 solutionStrategies= solCtrl.getSolutionStrategyContainer
 solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm")
 solAlgo= solutionStrategy.newSolutionAlgorithm("frequency_soln_algo")
-integ= solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
+integ= solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([]))
 soe= solutionStrategy.newSystemOfEqn("sym_band_eigen_soe")
 solver= soe.newSolver("sym_band_eigen_solver")
 analysis= solu.newAnalysis("modal_analysis","solutionStrategy","")
@@ -174,7 +174,7 @@ import os
 from misc_utils import log_messages as lmsg
 fname= os.path.basename(__file__)
 if((ratio1<1e-3) & (ratio2<5e-2) & (ratio3<1e-12) & (ratio4<5e-2)):
-  print "test ",fname,": ok."
+  print("test ",fname,": ok.")
 else:
   lmsg.error(fname+' ERROR.')
 

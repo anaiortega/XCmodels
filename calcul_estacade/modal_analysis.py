@@ -61,10 +61,10 @@ class PP(object):
     solutionStrategies= self.solCtrl.getSolutionStrategyContainer
     self.solutionStrategy= solutionStrategies.newSolutionStrategy("solutionStrategy","sm")
     self.solAlgo= self.solutionStrategy.newSolutionAlgorithm("frequency_soln_algo")
-    self.integ= self.solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
     self.soe= self.solutionStrategy.newSystemOfEqn("band_arpack_soe")
     self.solver= self.soe.newSolver("band_arpack_solver")
     self.analysis= self.solu.newAnalysis("modal_analysis","solutionStrategy","")
+    self.integ= self.solutionStrategy.newIntegrator("eigen_integrator",xc.Vector([1.0,1,1.0,1.0]))
     return self.analysis
 
 pp= PP()

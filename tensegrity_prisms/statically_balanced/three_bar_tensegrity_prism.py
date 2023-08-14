@@ -73,21 +73,21 @@ ljInd=linsJoints.index
 strutSet=prep.getSets.defSet('strutSet')
 indStruts=[ljInd[i] for i in range(len(ljInd)) if 'strut' in ljInd[i]]
 for i in indStruts:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   #initialization of number or divisions
     strutSet.getLines.append(l)
 #lines to saddle cables
 saddSet=prep.getSets.defSet('saddSet')
 indSadd=[ljInd[i] for i in range(len(ljInd)) if 'sadd' in ljInd[i]]
 for i in indSadd:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     saddSet.getLines.append(l)
 #lines to diagonal cables
 diagSet=prep.getSets.defSet('diagSet')
 indDiag=[ljInd[i] for i in range(len(ljInd)) if 'diag' in ljInd[i]]
 for i in indDiag:
-    l=lines.newLine(linsJoints.loc[i].i_jt,linsJoints.loc[i].j_jt)
+    l=lines.newLine(int(linsJoints.loc[i].i_jt),int(linsJoints.loc[i].j_jt))
     l.nDiv=1   
     diagSet.getLines.append(l)
 
@@ -183,11 +183,11 @@ analysis= predefined_solutions.simple_static_linear(test)
 result= analysis.analyze(1)
 
 for e in diagSet.elements:
-    print e.tag
+    print(e.tag)
     e.getMaterial().prestress=sigmaPrestrDiagCable
 
 for e in saddSet.elements:
-    print e.tag
+    print(e.tag)
     e.getMaterial().prestress=sigmaPrestrSaddCable
 
 analysis= predefined_solutions.simple_static_linear(test)
@@ -201,8 +201,8 @@ n3=points.get(3).getNode()
 n4=points.get(4).getNode()
 n5=points.get(5).getNode()
 n6=points.get(6).getNode()
-print n1.getDisp[0],n1.getDisp[1],n1.getDisp[2]
-print n4.getDisp[0],n4.getDisp[1],n4.getDisp[2]
+print(n1.getDisp[0],n1.getDisp[1],n1.getDisp[2])
+print(n4.getDisp[0],n4.getDisp[1],n4.getDisp[2])
 quit()
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 lcs=qg.QuickGraphics(test)
@@ -213,8 +213,8 @@ quit()
 # analysis= predefined_solutions.plain_newton_raphson(test)
 # result= analysis.analyze(10)
 
-print n1.getReaction
-print n4.getDisp
+print(n1.getReaction)
+print(n4.getDisp)
 quit()
 
 
@@ -250,6 +250,6 @@ n3=points.get(3).getNode()
 n4=points.get(4).getNode()
 n5=points.get(5).getNode()
 n6=points.get(6).getNode()
-print n1.getReaction
-print n4.getDisp
+print(n1.getReaction)
+print(n4.getDisp)
 

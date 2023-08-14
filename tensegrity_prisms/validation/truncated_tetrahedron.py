@@ -240,8 +240,8 @@ n3=points.get(3).getNode()
 n4=points.get(4).getNode()
 n5=points.get(5).getNode()
 n6=points.get(6).getNode()
-print n1.getDisp[0],n1.getDisp[1],n1.getDisp[2]
-print n4.getDisp[0],n4.getDisp[1],n4.getDisp[2]
+print(n1.getDisp[0],n1.getDisp[1],n1.getDisp[2])
+print(n4.getDisp[0],n4.getDisp[1],n4.getDisp[2])
 
 strut1=elements.getElement(1)
 strut2=elements.getElement(2)
@@ -269,31 +269,31 @@ F_saddBot1=saddBot1.getN()
 F_saddBot2=saddBot2.getN()
 F_saddBot3=saddBot3.getN()
 
-print "F_strut1", F_strut1
-print "F_strut2", F_strut2
-print "F_strut3", F_strut3
-print "F_diag1", F_diag1
-print "F_diag2", F_diag2
-print "F_diag3", F_diag3
-print "F_saddTop1", F_saddTop1
-print "F_saddTop2", F_saddTop2
-print "F_saddTop3", F_saddTop3
-print "F_saddBot1", F_saddBot1
-print "F_saddBot2", F_saddBot2
-print "F_saddBot3", F_saddBot3
+print("F_strut1", F_strut1)
+print("F_strut2", F_strut2)
+print("F_strut3", F_strut3)
+print("F_diag1", F_diag1)
+print("F_diag2", F_diag2)
+print("F_diag3", F_diag3)
+print("F_saddTop1", F_saddTop1)
+print("F_saddTop2", F_saddTop2)
+print("F_saddTop3", F_saddTop3)
+print("F_saddBot1", F_saddBot1)
+print("F_saddBot2", F_saddBot2)
+print("F_saddBot3", F_saddBot3)
 
-print "Linic_strut1", strut1.getLineSegment(True).getLength()
-print "Linic_strut2", strut2.getLineSegment(True).getLength()
-print "Linic_strut3", strut3.getLineSegment(True).getLength()
-print "Linic_diag1", diag1.getLineSegment(True).getLength()
-print "Linic_diag2", diag2.getLineSegment(True).getLength()
-print "Linic_diag3", diag3.getLineSegment(True).getLength()
-print "Linic_saddTop1", saddTop1.getLineSegment(True).getLength()
-print "Linic_saddTop2", saddTop2.getLineSegment(True).getLength()
-print "Linic_saddTop3", saddTop3.getLineSegment(True).getLength()
-print "Linic_saddBot1", saddBot1.getLineSegment(True).getLength()
-print "Linic_saddBot2", saddBot2.getLineSegment(True).getLength()
-print "Linic_saddBot3", saddBot3.getLineSegment(True).getLength()
+print("Linic_strut1", strut1.getLineSegment(True).getLength())
+print("Linic_strut2", strut2.getLineSegment(True).getLength())
+print("Linic_strut3", strut3.getLineSegment(True).getLength())
+print("Linic_diag1", diag1.getLineSegment(True).getLength())
+print("Linic_diag2", diag2.getLineSegment(True).getLength())
+print("Linic_diag3", diag3.getLineSegment(True).getLength())
+print("Linic_saddTop1", saddTop1.getLineSegment(True).getLength())
+print("Linic_saddTop2", saddTop2.getLineSegment(True).getLength())
+print("Linic_saddTop3", saddTop3.getLineSegment(True).getLength())
+print("Linic_saddBot1", saddBot1.getLineSegment(True).getLength())
+print("Linic_saddBot2", saddBot2.getLineSegment(True).getLength())
+print("Linic_saddBot3", saddBot3.getLineSegment(True).getLength())
 
 deltaL_strut1= strut1.getLineSegment(True).getLength()-strut1.getLineSegment(False).getLength()
 deltaL_strut2= strut2.getLineSegment(True).getLength()-strut2.getLineSegment(False).getLength()
@@ -308,18 +308,18 @@ deltaL_saddBot1= saddBot1.getLineSegment(True).getLength()-saddBot1.getLineSegme
 deltaL_saddBot2= saddBot2.getLineSegment(True).getLength()-saddBot2.getLineSegment(False).getLength()
 deltaL_saddBot3= saddBot3.getLineSegment(True).getLength()-saddBot3.getLineSegment(False).getLength()
 
-print "deltaL_strut1", deltaL_strut1
-print "deltaL_strut2", deltaL_strut2
-print "deltaL_strut3", deltaL_strut3
-print "deltaL_diag1", deltaL_diag1
-print "deltaL_diag2", deltaL_diag2
-print "deltaL_diag3", deltaL_diag3
-print "deltaL_saddTop1", deltaL_saddTop1
-print "deltaL_saddTop2", deltaL_saddTop2
-print "deltaL_saddTop3", deltaL_saddTop3
-print "deltaL_saddBot1", deltaL_saddBot1
-print "deltaL_saddBot2", deltaL_saddBot2
-print "deltaL_saddBot3", deltaL_saddBot3
+print("deltaL_strut1", deltaL_strut1)
+print("deltaL_strut2", deltaL_strut2)
+print("deltaL_strut3", deltaL_strut3)
+print("deltaL_diag1", deltaL_diag1)
+print("deltaL_diag2", deltaL_diag2)
+print("deltaL_diag3", deltaL_diag3)
+print("deltaL_saddTop1", deltaL_saddTop1)
+print("deltaL_saddTop2", deltaL_saddTop2)
+print("deltaL_saddTop3", deltaL_saddTop3)
+print("deltaL_saddBot1", deltaL_saddBot1)
+print("deltaL_saddBot2", deltaL_saddBot2)
+print("deltaL_saddBot3", deltaL_saddBot3)
 
 from postprocess.xcVtk.FE_model import quick_graphics as qg
 lcs=qg.LoadCaseResults(FEcase)
