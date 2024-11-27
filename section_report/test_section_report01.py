@@ -96,7 +96,7 @@ IzHomogBarsDownTeor= n*(6*math.pi*(3e-3)**4/4.0+2*areaFi6*((dRebar/2.0)**2+(dReb
 IzHomogBarsDown= sccData.posReinfLayers[0].getReinfBars.getIzHomogenizedSection(si.tangConcr)
 IzHomog= IzGross+IzHomogBarsUpTeor+IzHomogBarsDownTeor
 
-fiberModel= sccData.fs
+fiberModel= sccData.fiberSection
 fibers= fiberModel.getFibers()
 Afibers= fibers.getAreaHomogenizedSection(si.tangConcr)
 fibersCenterOfMass= fibers.getCenterOfMassHomogenizedSection(si.tangConcr)
