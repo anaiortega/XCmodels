@@ -16,7 +16,7 @@ t=10000     #age of the concrete t infinito
 ts=1     #drying shrinkage begins at the age 1 day
 Ac=area_deck     #area of the concrete slab (m2)
 u=perim_deck     #perimeter exposed to drying (m)
-h0mm=2*Ac/u*1000    #notional size of the member h0 (mm)
+h0=2*Ac/u    #notional size of the member h0 (m)
 #   autogenous shrinkage
 Epscainf=concrDeck.getShrEpscainf(t)  #coefficient for calculating the autogenous shrinkage strain
 #print 'Epscainf=',Epscainf
@@ -34,13 +34,13 @@ Alfads2=concrDeck.getShrAlfads2()   #Coefficient for the calculation of the
 #print 'Alfads2=',Alfads2
 Epscd0=concrDeck.getShrEpscd0(RH)   #Basic drying shrinkage strain
 #print 'Epscd0=',Epscd0
-Kh=concrDeck.getShrKh(h0mm)         #coefficient  for the calculation of the
+Kh=concrDeck.getShrKh(h0)         #coefficient  for the calculation of the
                                     #drying shrinkage strain
 #print 'Kh=',Kh
-Betadstts=concrDeck.getShrBetadstts(t,ts,h0mm)   #coefficient  for the
+Betadstts=concrDeck.getShrBetadstts(t,ts,h0)   #coefficient  for the
                                     #calculation of the drying shrinkage strain
 #print 'Betadstts=',Betadstts
-Epscd=concrDeck.getShrEpscd(t,ts,RH,h0mm)   #Drying shrinkage strain
+Epscd=concrDeck.getShrEpscd(t,ts,RH,h0)   #Drying shrinkage strain
 #print 'Epscd=',Epscd
-Epscs=concrDeck.getShrEpscs(t,ts,RH,h0mm)   #Total shrinkage 
+Epscs=concrDeck.getShrEpscs(t,ts,RH,h0)   #Total shrinkage 
 print 'Epscs=',Epscs
