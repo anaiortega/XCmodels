@@ -32,4 +32,4 @@ cierra_archivo_salida("reacc")
 quit()
 
 exec(open('graficos_vtk_xci.py').read())
-VtkMuestraVentana("renderer",800,600)
+setup_render_window(renderer,800,600)

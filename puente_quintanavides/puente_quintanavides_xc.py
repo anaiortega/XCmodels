@@ -14,4 +14,4 @@ mdlr(loads(exec(open('combinaciones/def_hip_elspf_xci.py')).read())
 exec(open('combinaciones/calc_hip_elspf_xci.py').read())
 '''
 exec(open('graficos_vtk_xci.py').read())
-VtkMuestraVentana("renderer",800,600)
+setup_render_window("renderer",800,600)
