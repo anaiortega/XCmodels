@@ -22,11 +22,11 @@ loadCasesGr=[]    #List of objects of type graphLoadCase.LoadCaseDispParameters
   #                  the units (defaults to 1).
   #  vectorScale:    factor to apply to the vectors length in the 
   #                  representation (defaults to 1).
-  #  multByElemArea: boolean value that must be True if we want to 
+  #  multByElemSize: boolean value that must be True if we want to 
   #                  represent the total load on each element 
-  #                  (=load multiplied by element area) and False if we 
+  #                  (=load multiplied by element size) and False if we 
   #                  are going to depict the value of the uniform load 
-  #                  per unit area (defaults to False)
+  #                  per unit size (defaults to False)
   #  cameraParameters:  parameters that define the position and orientation of the
   #                     camera (defaults to "XYZPos")
   #  descGrph:       description text to be displayed in the graphic

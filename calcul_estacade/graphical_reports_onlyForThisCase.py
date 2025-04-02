@@ -36,11 +36,11 @@ class LoadCaseDispParameters(object):
                    representation of element loads (defaults to 1).
   :ivar vectorScalePointLoads: factor to apply to the vectors length in the 
                    representation of nodal loads (defaults to 1).
-  :ivar multByElemAreaLoads: boolean value that must be True if we want to 
+  :ivar multByElemSizeLoads: boolean value that must be True if we want to 
                    represent the total load on each element 
-                   (=load multiplied by element area) and False if we 
+                   (=load multiplied by element size) and False if we 
                    are going to depict the value of the uniform load 
-                   per unit area (defaults to False)
+                   per unit size (defaults to False)
   :ivar listDspRot: ordered list of displacement or rotations to be displayed
                    available components: 'uX', 'uY', 'uZ', 'rotX', rotY', 'rotZ'
                    (defaults to ['uX', 'uY', 'uZ'])
@@ -92,7 +92,7 @@ class LoadCaseDispParameters(object):
     self.unitsLoads='units:[m,kN]'
     self.vectorScaleLoads=1.0
     self.vectorScalePointLoads=1.0
-    self.multByElemAreaLoads=False
+    self.multByElemSizeLoads=False
     self.listDspRot=['uX', 'uY', 'uZ']
     self.setsToDispDspRot=setsToDispDspRot
     self.unitsScaleDispl=1.0
@@ -123,8 +123,8 @@ class LoadCaseDispParameters(object):
     for st in self.setsToDispLoads:
       grfname=pathGr+self.loadCaseName+st.elSet.name
       capt=self.loadCaseDescr + ', ' +  ', '  + self.unitsLoads
-      gridmodl.displayLoad(setToDisplay=st.elSet,loadCaseNm=self.loadCaseName,unitsScale=self.unitsScaleLoads,vectorScale=self.vectorScaleLoads, multByElemArea=self.multByElemAreaLoads,viewDef= self.cameraParameters,caption= capt,fileName=grfname+'.jpg')
-      gridmodl.displayLoad(setToDisplay=st.elSet,loadCaseNm=self.loadCaseName,unitsScale=self.unitsScaleLoads,vectorScale=self.vectorScaleLoads, multByElemArea=self.multByElemAreaLoads,viewDef= self.cameraParameters,caption= capt,fileName=grfname+'.eps')
+      gridmodl.displayLoad(setToDisplay=st.elSet,loadCaseNm=self.loadCaseName,unitsScale=self.unitsScaleLoads,vectorScale=self.vectorScaleLoads, multByElemSize=self.multByElemSizeLoads,viewDef= self.cameraParameters,caption= capt,fileName=grfname+'.jpg')
+      gridmodl.displayLoad(setToDisplay=st.elSet,loadCaseNm=self.loadCaseName,unitsScale=self.unitsScaleLoads,vectorScale=self.vectorScaleLoads, multByElemSize=self.multByElemSizeLoads,viewDef= self.cameraParameters,caption= capt,fileName=grfname+'.eps')
       insertGrInTex(texFile=texFile,grFileNm=grfname,grWdt=grWdt,capText=capt,labl=labl) 
     for st in self.setsToDispBeamLoads:
       grfname=pathGr+self.loadCaseName+st.elSet.name

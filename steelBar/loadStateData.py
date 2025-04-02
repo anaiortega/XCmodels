@@ -24,11 +24,11 @@ Definition of record objects with these attributes:
                  representation of loads (defaults to 1 -> auto-scale).
   vectorScalePointLoads: factor to apply to the vectors length in the 
                  representation of nodal loads (defaults to 1).
-  multByElemAreaLoads: boolean value that must be True if we want to 
+  multByElemSizeLoads: boolean value that must be True if we want to 
                  represent the total load on each element 
-                 (=load multiplied by element area) and False if we 
+                 (=load multiplied by element size) and False if we 
                  are going to depict the value of the uniform load 
-                 per unit area (defaults to False)
+                 per unit size (defaults to False)
   listDspRot: ordered list of displacement or rotations to be displayed
                  available components: 'uX', 'uY', 'uZ', 'rotX', rotY', 'rotZ'
                  (defaults to ['uX', 'uY', 'uZ'])
