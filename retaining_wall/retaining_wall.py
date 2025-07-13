@@ -147,7 +147,7 @@ v= 40/3.6 #Speed.
 R= 71 #Rayon (m)
 qZk=  v*v*62.5e3/R/9.81
 print 'qZk= ', qZk
-horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(backfillSoilModel.phi,qLoad= qZk+qNosingLoad,zLoad= -0.6, distWall= distRailCLWall, widthLoadArea= 2.0)
+horizontalLoad= earth_pressure.HorizontalLoadOnBackfill(phi= backfillSoilModel.phi,qLoad= qZk+qNosingLoad,zLoad= -0.6, distWall= distRailCLWall, loadedAreaWidth= 2.0)
 wall.createEarthPressureLoadOnStem(horizontalLoad)
 
 #Accidental actions. Derailment
