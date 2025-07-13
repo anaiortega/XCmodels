@@ -320,7 +320,7 @@ lineL01=ep.LineVerticalLoadOnBackfill(qLoad=1e5, zLoad=zList[lastZpos],distWall=
 earthPColumnLinL= loads.EarthPressLoad(name= 'earthPColumnLinL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnLinL.lineLoads=[lineL01]
 
-hrzL01=ep.HorizontalLoadOnBackfill(soilIntFi=30, qLoad=2e5, zLoad=zList[lastZpos],distWall=1,widthLoadArea=0.5,lengthLoadArea=1.5,horDistrAngle=45)
+hrzL01=ep.HorizontalLoadOnBackfill(phi= math.radians(30), qLoad=2e5, zLoad=zList[lastZpos],distWall=1, loadedAreaWidth= 0.5, loadedAreaLength= 1.5, horDistrAngle=45)
 earthPColumnHrzL=loads.EarthPressLoad(name= 'earthPColumnHrzL', xcSet=columnZconcr,soilData=None, vDir=xc.Vector([0,1,0]))
 earthPColumnHrzL.horzLoads=[hrzL01]
 
