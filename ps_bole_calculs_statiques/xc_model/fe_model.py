@@ -6,7 +6,7 @@ from solution import predefined_solutions
 from model import predefined_spaces
 from materials import typical_materials
 from materials.sections import section_properties
-from model.sets import sets_mng as sUtils
+from model.sets import sets_mng
 from actions import load_cases as lcm
 from materials.sia262 import SIA262_materials
 from actions import combinations as cc
@@ -119,9 +119,9 @@ lngTot= 0.0
 spandrelFixedNodes= []
 spandrelBearingElements= []
 spandrelSupported.fillDownwards()
-spandrelSupported.computeTributaryLengths(False)
+tributaryLengths= sets_mng.get_tributary_lengths(xcSet= spandrelSupported, initialGeometry= False)
 for n in spandrelSupported.nodes:
-    lT= n.getTributaryLength()
+    lT= tributaryLengths[n.tag]
     lngTot+= lT
     kYSpandrel.E= kSpandrel*lT
     idFixedNode, idElem= modelSpace.setBearing(n.tag,[kXSpandrel.name,kYSpandrel.name])
@@ -132,9 +132,9 @@ for n in spandrelSupported.nodes:
 fillFixedNodes= []
 fillBearingElements= []
 fillSupported.fillDownwards()
-fillSupported.computeTributaryLengths(False)
+tributaryLengths= sets_mng.get_tributary_lengths(xcSet= fillSupported, initialGeometry= False)
 for n in fillSupported.nodes:
-    lT= n.getTributaryLength()
+    lT= tributaryLengths[n.tag]
     lngTot+= lT
     kYFill.E= kFill*lT
     idFixedNode, idElem= modelSpace.setBearing(n.tag,[kXFill.name,kYFill.name])

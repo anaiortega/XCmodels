@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from model.sets import sets_mng 
 
 exec(open("model_data.py").read())
 #gilamontDock.errFileName= './err.txt'
@@ -9,10 +10,10 @@ for part in modelSurfaces:
     mats= e.physicalProperties.getVectorMaterials #Materials at gauss points.
     for m in mats:
       m.rho= 0.0
-  part.computeTributaryAreas(False)
+  tributaryAreas= sets_mng.get_tributary_areas(xcSet= part, initialGeometry= False)    
   rhoPart= -part.selfWeight[2]/9.81
   for nn in part.nodes:
-    dM= rhoPart*nn.getTributaryArea()
+    dM= rhoPart*tributaryAreas[nn.tag]
     nn.setProp("deadMass",dM)
     nn.mass= xc.Matrix([[dM,0,0,0,0,0],
                            [0,dM,0,0,0,0],
@@ -22,10 +23,10 @@ for part in modelSurfaces:
                            [0,0,0,0,0,1e-4]])
     
 for part in modelLines:
-  part.computeTributaryLengths(False)
+  tributaryLengths= sets_mng.get_tributary_lengths(xcSet= part, initialGeometry= False)
   rhoPart= -part.selfWeight[2]/9.81
   for nn in part.nodes:
-    dM= rhoPart*nn.getTributaryLength()
+    dM= rhoPart*tributaryLengths[nn.tag]
     nn.setProp("deadMass",dM)
     nn.mass= xc.Matrix([[dM,0,0,0,0,0],
                            [0,dM,0,0,0,0],

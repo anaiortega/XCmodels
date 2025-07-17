@@ -251,7 +251,7 @@ loadCaseManager.defineSimpleLoadCases(loadCaseNames)
 grav= 9.81 #Gravity acceleration (m/s2)
 
 # Self weight.
-shells.computeTributaryAreas(False)
+tributaryAreas= sets_mng.get_tributary_areas(xcSet= shells, initialGeometry= False)
 cLC= loadCaseManager.setCurrentLoadCase('GselfWeight')
 for e in shells.elements:
     thickness= e.physicalProperties.getVectorMaterials[0].h
@@ -262,13 +262,13 @@ for e in shells.elements:
     #For modal analysis.
     eNodes= e.getNodes
     for n in eNodes:
-        tributaryMass= e.getTributaryArea(n)*inertialMass
+        tributaryMass= tributaryAreas[n.tag]*inertialMass
         if(n.hasProp('tributaryMass')):
           n.setProp('tributaryMass',n.getProp('tributaryMass')+tributaryMass)
         else:
           n.setProp('tributaryMass',tributaryMass)
 
-beams.computeTributaryLengths(False)
+tributaryLengths= sets_mng.get_tributary_lengths(xcSet= beams, initialGeometry= False)
 for e in beams.elements:
     area= e.sectionProperties.A
     inertialMass= 2500*area
