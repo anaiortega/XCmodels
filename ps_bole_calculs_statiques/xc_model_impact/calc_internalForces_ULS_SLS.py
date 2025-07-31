@@ -8,7 +8,7 @@ exec(open("model_data.py").read())
 
 #RC sections definition.
 exec(open("sectionsDef.py").read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Define section names for each element.
 

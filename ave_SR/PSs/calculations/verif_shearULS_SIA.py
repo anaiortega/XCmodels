@@ -12,7 +12,7 @@ from materials.sia262 import SIA262_limit_state_checking
 
 from solution import predefined_solutions
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

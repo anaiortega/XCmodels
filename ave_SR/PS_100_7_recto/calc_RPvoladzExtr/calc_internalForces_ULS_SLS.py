@@ -11,7 +11,7 @@ exec(open("../model_data.py").read())
 exec(open("./setCalcDisp.py").read())
 #Limit states
 exec(open("../../PSs/loadComb.py").read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

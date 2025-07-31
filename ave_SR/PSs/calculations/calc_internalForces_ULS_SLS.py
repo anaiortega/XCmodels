@@ -9,7 +9,7 @@ model_path="../"
 exec(open(model_path+'env_config.py').read())
 #FE model generation
 exec(open("../model_data.py").read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

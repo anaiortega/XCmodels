@@ -10,7 +10,7 @@ from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 exec(open('./directs.py').read())
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

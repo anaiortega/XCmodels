@@ -9,7 +9,7 @@ import os
 #Project directory structure
 exec(open("../env_config.py").read())
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

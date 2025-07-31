@@ -6,7 +6,7 @@ from postprocess import RC_material_distribution
 
 #Project directory structure
 exec(open('../../PSs/env_config.py').read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 #FE model generation
 exec(open("../model_data.py").read())
 #Limit states

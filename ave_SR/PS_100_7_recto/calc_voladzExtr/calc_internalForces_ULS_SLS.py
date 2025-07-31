@@ -7,7 +7,7 @@ from postprocess import RC_material_distribution
 exec(open("../model_data.py").read())
 exec(open('./directs.py').read())
 exec(open('setCalcDisp.py').read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Limit states
 exec(open("../../PSs/loadComb.py").read())

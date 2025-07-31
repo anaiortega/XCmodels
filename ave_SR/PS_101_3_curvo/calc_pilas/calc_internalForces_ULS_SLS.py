@@ -6,7 +6,7 @@ from postprocess import RC_material_distribution
 #FE model generation
 exec(open("../model_data.py").read())
 exec(open('./directs.py').read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 #lsd.LimitStateData.internal_forces_results_directory= dir_int_forces
 exec(open('./setCalcDisp.py').read())
 #Limit states

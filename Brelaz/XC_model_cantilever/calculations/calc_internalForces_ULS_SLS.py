@@ -11,7 +11,7 @@ lsd.LimitStateData.internal_forces_results_directory= projectDirs.getInternalFor
 
 #RC sections definition.
 exec(open("../sectionsDef.py").read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Define section names for each element.
 

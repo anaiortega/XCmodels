@@ -3,7 +3,7 @@
 from postprocess import output_handler
 
 exec(open('model_data.py').read())
-#lsd.LimitStateData.envConfig= cfg
+#lsd.LimitStateData.setEnvConfig(cfg)
 from materials.ec3 import EC3Beam as ec3b
 
 crossSectionClass= 1

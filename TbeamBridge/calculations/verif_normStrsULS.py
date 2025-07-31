@@ -11,7 +11,7 @@ exec(open("../sectionsDef.py").read())
 
 
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Information about element sections.
 sectionNamesForEveryElement= ElementSectionMap.loadShellElementSectionMap()

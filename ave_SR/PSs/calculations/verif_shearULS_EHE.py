@@ -9,7 +9,7 @@ from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

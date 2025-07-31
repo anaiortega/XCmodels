@@ -5,13 +5,13 @@ import os
 
 #Project directory structure
 exec(open("../env_config.py").read())
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 from postprocess import limit_state_data as lsd
 from postprocess import RC_material_distribution
 from materials.sia262 import SIA262_limit_state_checking
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 #Reinforced concrete sections on each element.
 reinfConcreteSections= RC_material_distribution.loadRCMaterialDistribution()

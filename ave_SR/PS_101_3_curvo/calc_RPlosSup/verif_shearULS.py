@@ -15,7 +15,7 @@ from postprocess import RC_material_distribution
 from materials.ehe import EHE_limit_state_checking
 from solution import predefined_solutions
 
-lsd.LimitStateData.envConfig= cfg
+lsd.LimitStateData.setEnvConfig(cfg)
 
 
 #Reinforced concrete sections on each element.
