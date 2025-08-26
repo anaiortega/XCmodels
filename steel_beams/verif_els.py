@@ -8,7 +8,7 @@ from postprocess import recorders
 span= 15.697
 for n in setTotal.nodes:
   n.setProp('span',span)
-recorder= recorders.installNodeDisplacementRecorder("node_prop_recorder",setTotal.nodes)
+recorder= recorders.install_node_displacement_recorder("node_prop_recorder",setTotal.nodes)
 
 def resultComb(prb,nmbComb):
   preprocessor.resetLoadCase()
