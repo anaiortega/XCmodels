@@ -19,7 +19,7 @@ areaFi32= 8.04e-4
         \geom_secc["geomSecHA1"]
           {
             # Hormigón
-            \regiones{\reg_cuad[HP50.nmbDiagD]
+            \regiones{\reg_cuad[HP50.getDDiagName()]
               {
                 nDivIJ(10)
                 nDivJK(10)
@@ -29,14 +29,14 @@ areaFi32= 8.04e-4
             # XXX Armadura
             \armaduras
               {
-                \capa_armadura_recta[B500S.nmbDiagD]
+                \capa_armadura_recta[B500S.getDDiagName()]
                   {
                     numReinfBars(11)
                     barArea(areaFi32)
                     \p1{-ancho/2+recneg,-canto/2+recneg} # Armadura cara -
                     \p2{ancho/2-recneg,-canto/2+recneg}
                   }
-                \capa_armadura_recta[B500S.nmbDiagD]
+                \capa_armadura_recta[B500S.getDDiagName()]
                   {
                     numReinfBars(11)
                     barArea(areaFi32)

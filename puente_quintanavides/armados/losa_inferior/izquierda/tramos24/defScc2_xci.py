@@ -19,7 +19,7 @@ areaFi25= 4.608e-4
         \geom_secc["geomSecHA2"]
           {
             # Hormigón
-            \regiones{\reg_cuad[HP50.nmbDiagD]
+            \regiones{\reg_cuad[HP50.getDDiagName()]
               {
                 nDivIJ(10)
                 nDivJK(10)
@@ -27,14 +27,14 @@ areaFi25= 4.608e-4
                 pMax(ancho/2,canto/2)
               }}
             # Armadura
-            \armaduras{\capa_armadura_recta[B500S.nmbDiagD]
+            \armaduras{\capa_armadura_recta[B500S.getDDiagName()]
               {
                 numReinfBars(7)
                 barArea(areaFi20)
                 \p1{-ancho/2+recneg,-canto/2+recneg} # Armadura cara -).
                 \p2{ancho/2-recneg,-canto/2+recneg}
               }
-            \capa_armadura_recta[B500S.nmbDiagD]
+            \capa_armadura_recta[B500S.getDDiagName()]
               {
                 numReinfBars(7)
                 barArea(areaFi20)

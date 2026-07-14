@@ -82,7 +82,7 @@ paramTS=concrete_base.paramTensStiffness(concrMat=concrete,reinfMat=rfSteel,rein
 concrete.tensionStiffparam=paramTS           #parameters for tension stiffening are assigned to concrete
 ftdiag=concrete.tensionStiffparam.pointOnsetCracking()['ft']      #stress at the adopted point for concrete onset cracking
 Etsdiag=abs(concrete.tensionStiffparam.regresLine()['slope'])
-concrete.materialDiagramK=typical_materials.defConcrete02(preprocessor=preprocessor,name=concrete.nmbDiagK,epsc0=concrete.epsilon0(),fpc=concrete.fmaxK(),fpcu=0.85*concrete.fmaxK(),epscu=concrete.epsilonU(),ratioSlope=0.1,ft=ftdiag,Ets=Etsdiag)
+concrete.materialDiagramK=typical_materials.defConcrete02(preprocessor=preprocessor,name=concrete.getKDiagName(),epsc0=concrete.epsilon0(),fpc=concrete.fmaxK(),fpcu=0.85*concrete.fmaxK(),epscu=concrete.epsilonU(),ratioSlope=0.1,ft=ftdiag,Ets=Etsdiag)
 concrete.matTagK=concrete.materialDiagramK.tag
 
 
@@ -92,7 +92,7 @@ y1= width/2.0
 z1= depth/2.0
 #concrete region
 regiones= geomSectFibers.getRegions
-concrSect= regiones.newQuadRegion(concrete.nmbDiagK)
+concrSect= regiones.newQuadRegion(concrete.getKDiagName())
 concrSect.nDivIJ= nDivIJ
 concrSect.nDivJK= nDivJK
 concrSect.pMin= geom.Pos2d(-y1,-z1)
@@ -101,7 +101,7 @@ concrSect.pMax= geom.Pos2d(+y1,+z1)
 #reinforcement layers
 reinforcement= geomSectFibers.getReinfLayers
 #bottom layer (positive bending)
-reinfBottLayer= reinforcement.newStraightReinfLayer(rfSteel.nmbDiagK) #Steel stress-strain diagram to use.
+reinfBottLayer= reinforcement.newStraightReinfLayer(rfSteel.getKDiagName()) #Steel stress-strain diagram to use.
 reinfBottLayer.numReinfBars= 13
 reinfBottLayer.barArea= areaFi26
 yBotL=(width-2*coverLat-0.026)/2.0

@@ -68,7 +68,7 @@ epsct0=ftdiag/concrete.E0()
 #Ets0=ft0/(19*epsct0)     #Schnobrich: epscu=20*epsct0
 Etsdiag=ftdiag/(5*epsct0)
 
-concrete.materialDiagramK=typical_materials.defConcrete02(preprocessor=preprocessor,name=concrete.nmbDiagK,epsc0=concrete.epsilon0(),fpc=concrete.fmaxK(),fpcu=0.85*concrete.fmaxK(),epscu=concrete.epsilonU(),ratioSlope=0.1,ft=ftdiag,Ets=Etsdiag)
+concrete.materialDiagramK=typical_materials.defConcrete02(preprocessor=preprocessor,name=concrete.getKDiagName(),epsc0=concrete.epsilon0(),fpc=concrete.fmaxK(),fpcu=0.85*concrete.fmaxK(),epscu=concrete.epsilonU(),ratioSlope=0.1,ft=ftdiag,Ets=Etsdiag)
 concrete.matTagK=concrete.materialDiagramK.tag
 
 
@@ -78,7 +78,7 @@ y1= width/2.0
 z1= depth/2.0
 #concrete region
 regiones= geomSectFibers.getRegions
-concrSect= regiones.newQuadRegion(concrete.nmbDiagK)
+concrSect= regiones.newQuadRegion(concrete.getKDiagName())
 concrSect.nDivIJ= nDivIJ
 concrSect.nDivJK= nDivJK
 concrSect.pMin= geom.Pos2d(-y1,-z1)
@@ -87,7 +87,7 @@ concrSect.pMax= geom.Pos2d(+y1,+z1)
 #reinforcement layers
 reinforcement= geomSectFibers.getReinfLayers
 #bottom layer (positive bending)
-reinfBottLayer= reinforcement.newStraightReinfLayer(rfSteel.nmbDiagK) #Steel stress-strain diagram to use.
+reinfBottLayer= reinforcement.newStraightReinfLayer(rfSteel.getKDiagName()) #Steel stress-strain diagram to use.
 reinfBottLayer.numReinfBars= nmbBarsBott
 reinfBottLayer.barArea= math.pi*fiBott**2/4.0
 yBotL=(width-2*cover-fiBott)/2.0
@@ -97,7 +97,7 @@ reinfBottLayer.p2= geom.Pos2d(yBotL,zBotL) # center point position of the starti
 
 #top layer (negative bending)
 if nmbBarsTop > 0:
-    reinfTopLayer= reinforcement.newStraightReinfLayer(rfSteel.nmbDiagK) #Steel stress-strain diagram to use.
+    reinfTopLayer= reinforcement.newStraightReinfLayer(rfSteel.getKDiagName()) #Steel stress-strain diagram to use.
     reinfTopLayer.numReinfBars= nmbBarsTop
     reinfTopLayer.barArea= math.pi*fiTop**2/4.0
     yTopL=(width-2*cover-fiTop)/2.0
