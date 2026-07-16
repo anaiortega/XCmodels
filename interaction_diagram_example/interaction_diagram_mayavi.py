@@ -51,16 +51,14 @@ reinforcementSup.p1= geom.Pos2d(depth/2.0-cover,cover-width/2.0) # Top reinforce
 reinforcementSup.p2= geom.Pos2d(depth/2.0-cover,width/2.0-cover)
 
 materialHandler= preprocessor.getMaterialHandler
-secHA= materialHandler.newMaterial("fiber_section_3d","secHA")
-fiberSectionRepr= secHA.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomRCSection.name)
-secHA.setupFibers()
+secHA= geomRCSection.getFiberSection3d("secHA")
+
 fibers= secHA.getFibers()
 
 param= xc.InteractionDiagramParameters()
-param.concreteTag= concr.matTagD
-param.reinforcementTag= reinfSteel.matTagD
-diagIntsecHA= materialHandler.calcInteractionDiagram("secHA",param)
+param.concreteTag= concr.getMatTagD()
+param.reinforcementTag= reinfSteel.getMatTagD()
+diagIntsecHA= materialHandler.calcInteractionDiagram(secHA.name, param)
 
 mayaviGraphic= mg.InteractionDiagram3DGraphic(diagIntsecHA)
 
