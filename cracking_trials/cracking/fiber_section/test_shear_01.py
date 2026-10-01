@@ -75,15 +75,10 @@ reinforcementSup.barArea= areaBarra
 reinforcementSup.p1= geom.Pos2d(cover-width/2.0,depth/2.0-cover) # Top reinforcement.
 reinforcementSup.p2= geom.Pos2d(width/2.0-cover,depth/2.0-cover)
 
-secHA= materialHandler.newMaterial("fiberSectionShear3d","secHA")
-fiberSectionRepr= secHA.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomSecHA.name)
-secHA.setupFibers()
-secHA.setRespVyByName("respVy")
-secHA.setRespVzByName("respVz")
-secHA.setRespTByName("respT")
+# Create fiber section with shear and torsional respones.
+secHA= geomSecHA.getFiberSectionShear3d("secHA", respVy.name, respVz.name, respT.name) # Set the shear and torsional responses.
 
-scc3d_testing_bench.sectionModel(preprocessor, "secHA")
+scc3d_testing_bench.sectionModel(preprocessor, secHA.name)
 
 
 # Constraints

@@ -40,18 +40,11 @@ respT= typical_materials.defElasticMaterial(preprocessor, "respT",1e6) # Torsion
 respVy= typical_materials.defElasticMaterial(preprocessor, "respVy",1e6) # Shear response in y direction.
 respVz= typical_materials.defElasticMaterial(preprocessor, "respVz",1e6) # Shear response in y direction.
 
-# Section geometry
-#creation
+# Section geometry creation.
 geomRectang= preprocessor.getMaterialHandler.newSectionGeometry("geomRectang")
 reg= scc1x1.getRegion(geomRectang,"elast")
-sa= preprocessor.getMaterialHandler.newMaterial("fiberSectionShear3d","sa")
-fiberSectionRepr= sa.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomRectang.name)
-sa.setupFibers()
+sa= eomRectang.getFiberSectionShear3d("sa", respVy.name, respVz.name, respT.name)
 extractFiberSectionProperties(sa,scc1x1)
-sa.setRespVyByName("respVy")
-sa.setRespVzByName("respVz")
-sa.setRespTByName("respT")
 
 scc3d_testing_bench.sectionModel(preprocessor, "sa")
 # Constraints

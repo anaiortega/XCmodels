@@ -34,13 +34,9 @@ if(not pth):
   pth= "."
 #print "pth= ", pth
 exec(open(pth+"/prestressed_concrete_section_01.py").read())
-materialHandler= preprocessor.getMaterialHandler
-secHP= materialHandler.newMaterial("fiber_section_3d","secHP")
-fiberSectionRepr= secHP.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomSecPret01.name)
-secHP.setupFibers()
+secHP= geomSecPret01.getFiberSection3d("secHP")
 
-elem= scc3d_testing_bench.sectionModel(preprocessor, "secHP")
+elem= scc3d_testing_bench.sectionModel(preprocessor, secHP.name)
 
 # Constraints
 modelSpace= predefined_spaces.getStructuralMechanics3DSpace(preprocessor)
