@@ -100,15 +100,10 @@ respT= typical_materials.defElasticMaterial(preprocessor, "respT",1e10) # Torsio
 respVy= typical_materials.defElasticMaterial(preprocessor, "respVy",1e6) # Shear response in y direction.
 respVz= typical_materials.defElasticMaterial(preprocessor, "respVz",1e3) # Shear response in y direction.
 
-materialHandler= preprocessor.getMaterialHandler
-sctFibers= materialHandler.newMaterial("fiberSectionShear3d","sctFibers")
-fiberSectionRepr= sctFibers.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomSectFibers.name)
-sctFibers.setupFibers()
-sctFibers.setRespVyByName("respVy")
-sctFibers.setRespVzByName("respVz")
-sctFibers.setRespTByName("respT")
-scc3d_testing_bench.sectionModel(preprocessor, "sctFibers")
+# Create fiber section with shear ang torsional responses.
+sctFibers= geomSectFibers.getFiberSectionShear3d("sctFibers", respVy.name, respVz.name, respT.name) # Set the shear and torsional responses.
+
+scc3d_testing_bench.sectionModel(preprocessor, sctFibers.name)
 
 # #report of the section material
 # sectParam=section_report.SectionInfo(preprocessor=preprocessor,sectName='example_7.3_EC2W',sectDescr='Test example 7.3 EC2 Worked examples. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
