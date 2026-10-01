@@ -121,13 +121,7 @@ reinfTopLayer.p2= geom.Pos2d(yTopL,zTopL) # center point position of the startin
 #it is a generic section created to be assigned to the elements specified
 #its stress and strain state is neutral (if we ask this section for stress or strain
 #values the result is always 0)
-materialHandler= preprocessor.getMaterialHandler
-sctFibers= materialHandler.newMaterial("fiber_section_3d","sctFibers")
-
-fiberSectionRepr= sctFibers.getFiberSectionRepr()
-fiberSectionRepr.setGeomNamed(geomSectFibers.name)
-sctFibers.setupFibers()
-
+sctFibers= geomSectFibers.getFiberSection3d("sctFibers")
 
 # #report of the section material
 # sectParam=section_report.SectionInfo(preprocessor=preprocessor,sectName='example_7.3_EC2W',sectDescr='Test example 7.3 EC2 Worked examples. Section definition',concrete=concrete,rfSteel=rfSteel,concrDiag=concrDiagram,rfStDiag=steelDiagram,geomSection=geomSectFibers,width=width,depth=depth) #Obtains section parameters for report
@@ -136,7 +130,7 @@ sctFibers.setupFibers()
 
 # Elements definition
 elements= preprocessor.getElementHandler
-elements.defaultMaterial='sctFibers'
+elements.defaultMaterial= sctFibers.name
 elements.dimElem= 3 # Dimension of element space
 elements.defaultTag= 1
 elem= elements.newElement("ZeroLengthSection",xc.ID([1,2]))
