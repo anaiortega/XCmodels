@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import spring_bound_cond as sbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -316,13 +317,13 @@ viaCent=viaCent_vano1_set+viaCent_vano2_set+viaCent_vano3_set
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
-#found_wink=sprbc.ElasticFoundation(wModulus=20e7,cRoz=0.2)
+#found_wink=sef.ShallowElasticFoundation(wModulus=20e7,cRoz=0.2)
 #found_wink.generateSprings(xcSet=found)
 
 # Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...
 # Default values for Kx, Ky, Kz are 0, which means that no spring is
 # created in the corresponding direction
-#spring_roof=sprbc.SpringBC(name='spring_roof',modelSpace=modelSpace,Kx=1000,Ky=0,Kz=3000)
+#spring_roof=sbc.SpringBC(name='spring_roof',modelSpace=modelSpace,Kx=1000,Ky=0,Kz=3000)
 #a=spring_roof.applyOnNodesIn3Dpos(lst3DPos=[geom.Pos3d(LbeamX/2.0,LbeamY/2.0,LcolumnZ/2.0)])
 
 #List of contrained nodes

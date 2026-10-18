@@ -8,7 +8,7 @@ import math
 from model import predefined_spaces
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -159,7 +159,7 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[foundExtSlab_mesh,foundIntSlab_mes
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
 #foundationElasticSupports=
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -309,7 +309,7 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[foundExtSlab_mesh,foundIntSlab_mes
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
-foundationElasticSupports=sprbc.ElasticFoundation(wModulus=winkMod,cRoz=coefHorVerSprings)
+foundationElasticSupports=sef.ShallowElasticFoundation(wModulus=winkMod,cRoz=coefHorVerSprings)
 found=foundExtSlab+foundIntSlab
 foundationElasticSupports.generateSprings(xcSet=found)
 

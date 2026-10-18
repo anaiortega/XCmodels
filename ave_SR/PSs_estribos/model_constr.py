@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -126,7 +126,7 @@ else:
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
 cRoz=0.5
-found_wink=sprbc.ElasticFoundation(wModulus=Kbalasto,cRoz=0.2)
+found_wink=sef.ShallowElasticFoundation(wModulus=Kbalasto,cRoz=0.2)
 found_wink.generateSprings(xcSet=zap)
 
 #                       ***ACTIONS***

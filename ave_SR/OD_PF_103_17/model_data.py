@@ -9,7 +9,7 @@ import numpy as np
 from model import predefined_spaces
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -352,7 +352,7 @@ losas_M1M2.description='Losas'
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
 #foundationElasticSupports=
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -367,7 +367,7 @@ from actions.earth_pressure import earth_pressure as ep
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
 cRoz=0.5
-foundationElasticSupports=sprbc.ElasticFoundation(wModulus=Kbalasto,cRoz=cRoz)
+foundationElasticSupports=sef.ShallowElasticFoundation(wModulus=Kbalasto,cRoz=cRoz)
 foundationElasticSupports.generateSprings(xcSet=losCim)
 
 #                       ***ACTIONS***

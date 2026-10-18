@@ -14,7 +14,7 @@ import math
 from model import predefined_spaces
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import spring_bound_cond as sbc
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -164,24 +164,24 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[slab_unif_mesh,slab_step1_mesh,sla
 # created in the corresponding direction
 
 #abutment A- springs XY
-abutmA_spr1=sprbc.SpringBC(name='abutmA_spr1',modelSpace=modelSpace,Kx=9.55/12.*1e6,Ky=178.8/12.*1e6)
+abutmA_spr1=sbc.SpringBC(name='abutmA_spr1',modelSpace=modelSpace,Kx=9.55/12.*1e6,Ky=178.8/12.*1e6)
 r= gm.IJKRange((1,8,0),(3,11,0))
 abutmA_spr1_setkp=gridGeom.getSetPntRange(ijkRange=r, setName='abutmA_spr1_setkp')
 abutmA_spr1.applyOnPointsInSet(setEnt=abutmA_spr1_setkp)
 
 #abutments A and B- springs Z
-abutmAB_spr2=sprbc.SpringBC(name='abutmAB_spr2',modelSpace=modelSpace,Kx=0,Ky=0,Kz=10.02/2.*1e6)
+abutmAB_spr2=sbc.SpringBC(name='abutmAB_spr2',modelSpace=modelSpace,Kx=0,Ky=0,Kz=10.02/2.*1e6)
 lstpos=[geom.Pos3d(xList[2],yList[5],zList[0]),geom.Pos3d(xList[2],yList[14],zList[0]),geom.Pos3d(xList[19],yList[5],zList[0]),geom.Pos3d(xList[19],yList[14],zList[0])]
 abutmAB_spr2.applyOnNodesIn3Dpos(lst3DPos=lstpos)
 
 #abutment B- springs Y
-abutmB_spr1=sprbc.SpringBC(name='abutmB_spr1',modelSpace=modelSpace,Kx=0,Ky=2.78/6.*1e6)
+abutmB_spr1=sbc.SpringBC(name='abutmB_spr1',modelSpace=modelSpace,Kx=0,Ky=2.78/6.*1e6)
 r= gm.IJKRange((18,9,0),(20,10,0))
 abutmB_spr1_setkp=gridGeom.getSetPntRange(ijkRange=r, setName='abutmB_spr1_setkp')
 abutmB_spr1.applyOnPointsInSet(setEnt=abutmB_spr1_setkp)
 
 #piers 1 and 2 springs Z
-piers1_2_spr1=sprbc.SpringBC(name='piers1_2_spr1',modelSpace=modelSpace,Kx=0,Ky=0,Kz=11.61/18.*1e6)
+piers1_2_spr1=sbc.SpringBC(name='piers1_2_spr1',modelSpace=modelSpace,Kx=0,Ky=0,Kz=11.61/18.*1e6)
 r1= gm.IJKRange((7,11,0),(9,13,0))
 piers1_2_spr1_setkp1=gridGeom.getSetPntRange(ijkRange=r1, setName='piers1_2_spr1_setkp1')
 r2= gm.IJKRange((12,11,0),(14,13,0))
@@ -190,13 +190,13 @@ piers1_2_spr1_setkp=piers1_2_spr1_setkp1+piers1_2_spr1_setkp2
 piers1_2_spr1.applyOnPointsInSet(setEnt=piers1_2_spr1_setkp)
 
 #pier 1- springs YZ
-pier1_spr1=sprbc.SpringBC(name='pier1_spr1',modelSpace=modelSpace,Kx=0,Ky=4.74/9.*1e6,Kz=11.61/18.*1e6)
+pier1_spr1=sbc.SpringBC(name='pier1_spr1',modelSpace=modelSpace,Kx=0,Ky=4.74/9.*1e6,Kz=11.61/18.*1e6)
 r= gm.IJKRange((7,6,0),(9,8,0))
 pier1_spr1_setkp=gridGeom.getSetPntRange(ijkRange=r, setName='pier1_spr1_setkp')
 pier1_spr1.applyOnPointsInSet(setEnt=pier1_spr1_setkp)
 
 #pier 2- springs YZ
-pier2_spr1=sprbc.SpringBC(name='pier2_spr1',modelSpace=modelSpace,Kx=0,Ky=2.66/9.*1e6,Kz=11.61/18.*1e6)
+pier2_spr1=sbc.SpringBC(name='pier2_spr1',modelSpace=modelSpace,Kx=0,Ky=2.66/9.*1e6,Kz=11.61/18.*1e6)
 r= gm.IJKRange((12,6,0),(14,8,0))
 pier2_spr1_setkp=gridGeom.getSetPntRange(ijkRange=r, setName='pier2_spr1_setkp')
 pier2_spr1.applyOnPointsInSet(setEnt=pier2_spr1_setkp)

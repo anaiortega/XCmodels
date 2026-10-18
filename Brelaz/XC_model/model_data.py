@@ -8,7 +8,7 @@ import math
 from model import predefined_spaces
 from model.geometry import grid_model as gm
 from model.mesh import finit_el_model as fem
-from model.boundary_cond import spring_bound_cond as sprbc
+from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
 from materials import typical_materials as tm
 from actions import loads
@@ -270,11 +270,11 @@ exec(open(workingDirectory+'sets_springs.py').read())
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
 #       cRoz:     fraction of the Winkler modulus to apply for friction in
 #                 the contact plane (springs in X, Y directions)
-found_wink_walls=sprbc.ElasticFoundation(wModulus=wModulus_walls,cRoz=0.002)
+found_wink_walls=sef.ShallowElasticFoundation(wModulus=wModulus_walls,cRoz=0.002)
 found_wink_walls.generateSprings(xcSet=setShortWall)
 found_wink_walls.generateSprings(xcSet=setLongWall)
 
-found_wink_fill=sprbc.ElasticFoundation(wModulus=wModulus_fill,cRoz=0.002)
+found_wink_fill=sef.ShallowElasticFoundation(wModulus=wModulus_fill,cRoz=0.002)
 found_wink_fill.generateSprings(xcSet=setInsideArea)
 
 
