@@ -326,9 +326,9 @@ viaCent=viaCent_vano1_set+viaCent_vano2_set+viaCent_vano3_set
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-#found_wink=sef.ShallowElasticFoundation(wModulus=20e7,cRoz=0.2)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
+#found_wink=sef.ShallowElasticFoundation(wModulus=20e7,hModulusFraction=0.2)
 #found_wink.generateSprings(xcSet=found)
 
 # Springs (defined by Kx,Ky,Kz) to apply on nodes, points, 3Dpos, ...

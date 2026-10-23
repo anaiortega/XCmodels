@@ -298,13 +298,13 @@ for n in cablNod:
 exec(open(modelDataScriptDir+'/sets_springs.py').read())
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-found_wink_walls=sef.ShallowElasticFoundation(wModulus=wModulus_walls,cRoz=0.05)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
+found_wink_walls=sef.ShallowElasticFoundation(wModulus=wModulus_walls,hModulusFraction=0.05)
 found_wink_walls.generateSprings(xcSet=setShortWall)
 found_wink_walls.generateSprings(xcSet=setLongWall)
 
-found_wink_fill=sef.ShallowElasticFoundation(wModulus=wModulus_fill,cRoz=0.05)
+found_wink_fill=sef.ShallowElasticFoundation(wModulus=wModulus_fill,hModulusFraction=0.05)
 found_wink_fill.generateSprings(xcSet=setInsideArea)
 
 # Gluing of slabs

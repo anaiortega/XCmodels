@@ -331,11 +331,11 @@ conjLines= model.setMaterialLinesMap(objColumns)
     # Regions resting on springs (Winkler elastic foundation)
     #   name:     name to identify the region
     #   wModulus: Winkler modulus of the foundation (springs in Z direction)
-    #   cRoz:     fraction of the Winkler modulus to apply for friction in
-    #             the contact plane (springs in X, Y directions)
+    #   hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+    #                     in the contact plane (springs in X and Y directions).
     #   ranges:   lists of grid ranges to delimit the regions of 
     #             the type of foundation in question
-# foundationElasticSupports= model.newElasticFoundationRanges('apElT1', wModulus= winkMod,cRoz=coefHorVerSprings)
+# foundationElasticSupports= model.newElasticFoundationRanges('apElT1', wModulus= winkMod,hModulusFraction=coefHorVerSprings)
 # foundationElasticSupports.ranges.extend(foundExtSlab.ranges)
 # foundationElasticSupports.ranges.extend(foundIntSlab.ranges)
 

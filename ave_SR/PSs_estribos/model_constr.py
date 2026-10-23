@@ -123,10 +123,10 @@ else:
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-cRoz=0.5
-found_wink=sef.ShallowElasticFoundation(wModulus=Kbalasto,cRoz=0.2)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
+hModulusFraction=0.5
+found_wink=sef.ShallowElasticFoundation(wModulus=Kbalasto,hModulusFraction=0.2)
 found_wink.generateSprings(xcSet=zap)
 
 #                       ***ACTIONS***

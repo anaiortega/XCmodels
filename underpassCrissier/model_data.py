@@ -156,8 +156,8 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[foundExtSlab_mesh,foundIntSlab_mes
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
 #foundationElasticSupports=
 from model.boundary_cond import shallow_elastic_foundation as sef
 from model.sets import sets_mng as sets
@@ -307,9 +307,9 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[foundExtSlab_mesh,foundIntSlab_mes
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-foundationElasticSupports=sef.ShallowElasticFoundation(wModulus=winkMod,cRoz=coefHorVerSprings)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
+foundationElasticSupports=sef.ShallowElasticFoundation(wModulus=winkMod,hModulusFraction=coefHorVerSprings)
 found=foundExtSlab+foundIntSlab
 foundationElasticSupports.generateSprings(xcSet=found)
 

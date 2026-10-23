@@ -238,9 +238,9 @@ fem.multi_mesh(preprocessor=prep,lstMeshSets=[beamXconcr_mesh,beamXsteel_mesh,be
 #                       ***BOUNDARY CONDITIONS***
 # Regions resting on springs (Winkler elastic foundation)
 #       wModulus: Winkler modulus of the foundation (springs in Z direction)
-#       cRoz:     fraction of the Winkler modulus to apply for friction in
-#                 the contact plane (springs in X, Y directions)
-foot_wink=sef.ShallowElasticFoundation(wModulus=20e7,cRoz=0.2)
+#       hModulusFraction: fraction of the Winkler modulus to apply as stiffness
+#                         in the contact plane (springs in X and Y directions).
+foot_wink=sef.ShallowElasticFoundation(wModulus=20e7,hModulusFraction=0.2)
 foot_wink.generateSprings(xcSet=foot)
 #out.displayFEMesh()
 
